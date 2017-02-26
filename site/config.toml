@@ -2,7 +2,7 @@ baseurl = "/"
 languageCode = "en-us"
 theme = "citra-bs-theme"
 
-googleAnalytics = "UA-73966905-1"
+googleanalytics = "UA-73966905-1"
 
 # Define how many objects appear per pagination.
 paginate = 10
