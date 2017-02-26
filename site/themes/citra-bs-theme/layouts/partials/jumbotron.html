@@ -1,0 +1,47 @@
+<div id="jumbotron">
+
+  <div class="width: 300px; margin: auto;">
+    <div class="site-logo hidden-xs hidden-sm" style="position: absolute; left: 0; top: 48px; background-size: 172px 172px; z-index: 10">&nbsp;</div>
+  </div>
+
+  <div id="carousel" class="carousel slide" data-ride="carousel">
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+      {{ $jumbotronFiles := readDir "/static/images/jumbotron/" }}
+      {{ range $index, $element := $jumbotronFiles }}
+          {{ $fileTitle := (index (split .Name "-") 1) }}
+          {{ $fileTitle := (index (split $fileTitle ".") 0) }}
+          <div class="item {{if eq $index 0}}active{{end}}">
+            <img class="article-image img-responsive center-block" src="/images/jumbotron{{ $element.Name | relURL }}" alt="...">
+            <div class="carousel-caption">{{ $fileTitle }}</div>
+          </div>
+      {{ end }}
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+
+  </div> <!-- Carousel -->
+
+  <div class="panel panel-default panel-body carousel-content">
+
+    <div class="row">
+      <div id="carousel-description" class="col-md-12">
+        <b>Citra</b> is an open-source emulator for the Nintendo 3DS capable of playing many of your favorite games. <a href="/wiki/FAQ/">Learn More.<a/>
+      </div>
+
+      <div class="col-md-12 jumbotron-action" id="jumbotron-download" style = "padding-top: 6%; padding-bottom: 2%; text-align: center;">
+        <a href="/download/" class="button-action">Download for Windows, Linux, and Mac</a>
+      </div>
+      <div class="col-md-12 jumbotron-action" id="jumbotron-forums" style = "padding-top: 6%; padding-bottom: 2%; text-align: center;">
+        <a href="https://community.citra-emu.org/" class="button-action">Join the discussion on our forums</a>
+      </div>
+    </div>
+  </div>
+</div>

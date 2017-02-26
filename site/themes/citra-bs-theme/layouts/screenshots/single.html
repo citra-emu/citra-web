@@ -1,0 +1,43 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+
+  {{ $files := readDir "/static/images/screenshots/" }}
+  {{ range $index, $element := $files }}
+    {{ $fileTitle := (index (split .Name "-") 1) }}
+    {{ $fileTitle := (index (split $fileTitle ".") 0) }}
+    <div class="popup-gallery col-lg-3 col-md-4 col-xs-6 thumb">
+      <a class="thumbnail" href="/images/screenshots/{{ .Name }}" title="{{ $fileTitle }}">
+        <img class="img-responsive nearest-neighbor" src="/images/screenshots/{{ .Name }}">
+      </a>
+    </div>
+  {{ end }}
+
+{{ end }}
+
+{{ define "scripts" }}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha256-P93G0oq6PBPWTP1IR8Mz/0jHHUpaWL0aBJTKauisG7Q=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" integrity="sha256-PZLhE6wwMbg4AB3d35ZdBF9HD/dI/y4RazA3iRDurss=" crossorigin="anonymous" />
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.popup-gallery').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        tLoading: 'Loading image #%curr%...',
+        mainClass: 'mfp-img-mobile',
+        gallery: {
+          enabled: true,
+          navigateByImgClick: true,
+          preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+        },
+        image: {
+          tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+          titleSrc: function(item) {
+            return item.el.attr('title');
+          }
+        }
+      });
+    });
+  </script>
+{{ end }}

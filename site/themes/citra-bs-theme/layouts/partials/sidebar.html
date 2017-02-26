@@ -1,0 +1,31 @@
+<div id="advertisement" class = "ad">
+  <h3>Advertisement</h3>
+  <ins class="ad adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4126545610079023"
+       data-ad-slot="4223809695"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="tagcloud hidden-sm hidden-xs">
+  <h3>News Tag Cloud</h3>
+  <ul>
+    {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+      <li><a class="taxonomy-{{ $name}}" href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a></li>
+    {{ end }}
+  </ul>
+</div>
+
+<div id="twitter" class="hidden-sm hidden-xs">
+  <h3>Twitter Feed</h3>
+  {{ if .Site.Data.twitter }}
+    {{ range sort .Site.Data.twitter "order" }}
+      <blockquote>
+        <p>{{ .message }}</p>
+        <footer>
+          <a href="https://twitter.com/citraemu/status/{{ .id }}/" class="author">{{ .author }} - {{ .date }}</a>
+        </footer>
+    </blockquote>
+    {{ end }}
+  {{ end }}
+</div>

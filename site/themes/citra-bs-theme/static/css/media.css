@@ -1,0 +1,91 @@
+/* Small Devices, Tablets */
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+  .ad {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .ad {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+  .ad {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  .ad {
+    width: 320px;
+    height: 50px;
+  }
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  .ad {
+    width: 250px;
+    height: 250px;
+  }
+  #advertisement {
+    margin-bottom: 75px;
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 992px) {
+  #footer .row {
+    padding-left: 15%;
+  }
+  #advertisement {
+    margin-top: -25px;
+    margin-bottom: 50px;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 992px) {
+  .navbar-right {
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+  #jumbotron {
+    height: 200px;
+    background: transparent;
+  }
+  .carousel-content {
+    top: 95px;
+    text-align: center;
+    margin-left: -47%;
+    width: 95%;
+  }
+  .jumbotron-action {
+    display: none;
+  }
+  #carousel {
+    display: none;
+  }
+  #advertisement {
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 45px;
+  }
+  .ad {
+    width: 320px;
+    height: 100px;
+  }
+  #footer h1 {
+    border-bottom: 1px solid #99a;
+  }
+}

@@ -1,0 +1,319 @@
+body {
+    font-family: "Ubuntu","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #333333;
+    background-color: #e5e5e5;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Dosis Regular'), local('Dosis-Regular'), url(https://fonts.gstatic.com/s/dosis/v6/4hYyXH_8WmbBLamf6WjLwg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu'), url(https://fonts.gstatic.com/s/ubuntu/v9/2Q-AW1e_taO6pHwMXcXW5w.ttf) format('truetype');
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Dosis","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #888888;
+  margin: 10px 0;
+  padding-top: 3%;
+}
+h1 {
+  padding-top: 0;
+  color: #FF8E03;
+}
+#jumbotron {
+  height: 630px;
+  margin-top: -16px;
+  margin-bottom: 2%;
+  padding-top: 62px;
+  background-image: url('../images/rays.svg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#mainContainer {
+  padding-top: 70px;
+  padding-bottom: 2%;
+  background-color: white;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1);
+}
+#content img {
+  max-width: 100%;
+  height: auto;
+}
+#content a, #carousel-description a, #twitter a {
+  color: #FF8E03;
+  border-bottom: 1px solid #E7EDF3;
+  text-decoration: none;
+}
+#content a:hover, #content a:focus, #carousel-description a:hover, #carousel-description a:focus, #twitter a:hover, #twitter a:focus {
+  color: #ffb050;
+}
+a:hover, a:focus {
+  text-decoration: none;
+}
+#footer {
+  font-size: 14px;
+  padding-top: 1%;
+  padding-bottom: 2%;
+}
+#footer h1 {
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+}
+#footer a {
+  display: inline-block;
+  width: 100%;
+  padding: 4px 0;
+  color: gray;
+}
+#footer-bottom {
+  padding-top: 2%;
+}
+#footer-legal {
+  font-size: 12px;
+  padding-top: 2%;
+  color: #989898;
+}
+#footer-brand {
+  float: right;
+  width: 135px;
+  height: 50px;
+  background: url('../images/namefooter.png') no-repeat;
+  background-size: 100% auto;
+}
+
+/* Bootstrap NavBar */
+.navbar, #navbar.in, #navbar.collapsing {
+  background-color: #fff;
+  background-image: none;
+  filter: none;
+}
+.navbar-brand {
+  margin-right: 10px;
+  padding-right: 56px;
+  padding-left: 25px;
+  background: url('../images/name.png') no-repeat 50% 50%;
+  background-size: 64px;
+}
+.navbar-default {
+  font-family: 'Dosis', sans-serif;
+  font-size: 18px;
+  text-transform: lowercase;
+  height: 64px;
+}
+.navbar .container { padding-top: 5px; }
+#navbar a:hover {color: #FF8E03;}
+
+/* Navbar in mobile view, when active, change to @brand-primary */
+
+.navbar-default .navbar-toggle:not(.collapsed) .icon-bar {
+  background-color: #FF8E03;
+}
+.navbar-right {
+  padding-top: 1%;
+}
+.navbar-right .form-control {
+  padding: 0px;
+  text-indent: 6px;
+}
+.dropdown-menu {
+  background-color: #fff;
+  font-size: inherit;
+}
+
+/* Removing shading from focused dropdown menu items */
+.navbar-default .navbar-nav > .open {
+  background-color: white;
+  background-image: none;
+  box-shadow: none;
+}
+
+/* Carousel */
+
+#carousel {
+  margin: auto;
+  margin-top: 40px;
+  width: 800px;
+  height: 470px;
+  border: 10px solid #FFF;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 2;
+}
+.carousel-inner .item {
+  overflow: hidden;
+}
+.carousel-inner .item .article-image {
+  width: 100%;
+  height: 100%;
+}
+.carousel-caption {
+  text-align: left;
+  padding-bottom: 0px;
+  height: 25px;
+  font-size: 12px;
+  left: 15px;
+  top: -12px;
+}
+.carousel-name {
+  position: absolute;
+  top: 375px;
+  left: 50%;
+  margin-left: -62px;
+  z-index: 99;
+  width: 125px;
+  height: 50px;
+  background: url('../images/name.png') no-repeat;
+  background-size: 100% auto;
+}
+.carousel-content {
+  position: absolute;
+  top: 440px;
+  left: 50%;
+  margin-left: -212px;
+  background-color: white;
+  width: 425px;
+  z-index: 5;
+}
+
+/* General */
+
+.site-logo {
+  width: 100%;
+  height: 215px;
+  z-index: 3;
+  background-image: url('../images/logo.png');
+  background-size: 215px 215px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.content-logo {
+  width: 100%;
+  height: 50px;
+  z-index: 3;
+  background-image: url('../images/contentlogo.svg');
+  background-size: 125px 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: -20px;
+}
+.link-action {
+  font-family: 'Dosis', sans-serif;
+  font-size: 20px;
+  float: right;
+  color: #FF8E03;
+  font-weight: 600;
+}
+.button-action {
+  font-size: 16px;
+  border-radius: 20px;
+  padding: 15px;
+  color: white;
+  background: radial-gradient(circle at 50% 100px, #ff8a10, #ff6a03) #ff9707;
+}
+
+.button-action:hover, .button-action:active, .button-action:visited {
+  color: white;
+  background: radial-gradient(circle at 50% 100px, #ff9a10, #ff7a03) #ff9707;
+  box-shadow: 0 0 30px 0 rgba(0,0,0,0.15);
+}
+.avatar {
+  float: left;
+  width: 64px;
+  height: 64px;
+  border-radius: 36px;
+  font-size: 18px;
+  line-height: 36px;
+  display: inline-block;
+  box-sizing: content-box;
+  vertical-align: top;
+  margin-top: 2px;
+  margin-right: 12px;
+}
+.nearest-neighbor {
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: pixelated;
+}
+
+/* User Profiles - Flarum Integration */
+.profile-avatar {
+  border-radius: 24px;
+}
+
+/* Sidebar */
+#sidebar h3 {
+  font-family: "Dosis","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: gray;
+}
+#twitter p {
+  font-size: 14px;
+  color: #999;
+}
+
+/* Entry */
+
+.entry {
+  box-sizing: border-box;
+  padding-bottom: 64px;
+}
+.entry-embed {
+  width: 100%;
+  height: 270px;
+  background-size: cover !important;
+  position: relative;
+}
+.entry-embed-header {
+  padding-bottom: 6px;
+}
+.entry-embed > header {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.entry-embed > header > h1 {
+  font-size: 48px;
+  color: #FF8E03;
+  background-color: #fff;
+  margin: 0px !important;
+  padding-right: 15px;
+}
+.entry-meta {
+  font-size: 16px;
+  padding: 5px;
+  background-color: white;
+}
+.entry-meta a {
+  font-weight: normal;
+}
+.entry-content {
+  padding: 2%;
+  padding-top: 0.5%;
+}
+.entry-written-by {
+  font-size: 18px;
+  padding-bottom: 26px;
+}
+.entry-written-by p {
+  color: #888;
+  font-size: 21px;
+  padding-top: 16px;
+  margin-left: 4px;
+}
+.entry-comments {
+  padding-top: 16px;
+}

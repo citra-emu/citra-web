@@ -1,0 +1,46 @@
+{{ define "main" }}
+  {{ .Render "header" }}
+
+  <div class="entry-content">
+    {{ .Content }}
+  </div>
+
+  {{ $author := index .Site.Data.authors ( .Params.author | default "" ) }}
+  {{ $coauthor := index .Site.Data.authors ( .Params.coauthor | default "" ) }}
+
+  <div class="entry-written-by">
+    {{ if $author }}
+      <a href="https://community.citra-emu.org/users/{{ $author.key }}">
+          <img src="{{ $author.avatar }}" class="avatar">
+      </a>
+    {{ end }}
+    {{ if $coauthor }}
+      <a href="https://community.citra-emu.org/users/{{ $coauthor.key }}">
+          <img src="{{ $coauthor.avatar }}" class="avatar">
+      </a>
+    {{ end }}
+
+    {{ if and $author $coauthor }}
+      <p>Written by <a href="https://community.citra-emu.org/users/{{ $author.key }}">{{ $author.name }}</a> and <a href="https://community.citra-emu.org/users/{{ $coauthor.key }}">{{ $coauthor.name }}</a> on {{ .Date.Format "Monday January 02, 2006" }}</p>
+    {{ else if $author }}
+      <p>Written by <a href="https://community.citra-emu.org/users/{{ $author.key }}">{{ $author.name }}</a> on {{ .Date.Format "Monday January 02, 2006" }}</p>
+    {{ else }}
+      <p>No author was provided. Written on {{ .Date.Format "Monday January 02, 2006" }}</p>
+    {{ end }}
+  </div>
+
+  {{ if .Params.forum }}
+    <div class="entry-comments">
+      <div id="discourse-comments"></div>
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://community.citra-emu.org/', topicId: "{{ .Params.forum }}" };
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+    </div>
+  {{ end }}
+
+{{ end }}

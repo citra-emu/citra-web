@@ -1,0 +1,15 @@
+{
+  "name": "citra-twitter",
+  "version": "1.0.0",
+  "description": "Used in Citra Hugo to import Twitter tweets.",
+  "homepage": "https://citra-emu.org/",
+  "author": "Flame Sage <chris062689@gmail.com>",
+  "main": "app.js",
+  "dependencies": {
+    "jsonfile": "^2.4.0",
+    "winston": "^2.2.0"
+  },
+  "preferGlobal": false,
+  "private": true,
+  "license": "GPLv3"
+}

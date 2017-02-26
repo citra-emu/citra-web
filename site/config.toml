@@ -1,0 +1,14 @@
+baseurl = "/"
+languageCode = "en-us"
+theme = "citra-bs-theme"
+
+googleAnalytics = "UA-73966905-1"
+
+# Define how many objects appear per pagination.
+paginate = 10
+
+[Languages]
+  [Languages.en]
+    title = "Citra"
+    description = "Citra is an open-source emulator for the Nintendo 3DS capable of playing many of your favorite 3DS games."
+    weight = 1

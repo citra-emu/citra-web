@@ -1,0 +1,17 @@
+{{ define "main" }}
+	<h1>{{ .Title }}</h1>
+
+	{{ .Content }}
+
+	{{ with .Params.advertisement }}
+		<div class = "ad">
+			<h3>Advertisement</h3>
+			<ins class="adsbygoogle"
+				 style="display:inline-block;width:728px;height:90px"
+				 data-ad-client="ca-pub-4126545610079023"
+				 data-ad-slot="7542251299"></ins>
+			<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+		</div>
+	{{ end }}
+
+{{ end }}
