@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "https://citra-emu.org/"
 languageCode = "en-us"
 theme = "citra-bs-theme"
 
