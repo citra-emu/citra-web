@@ -92,5 +92,6 @@ gulp.task('html', ['hugo', 'css', 'images'], () => (
 
 gulp.task('deploy', ['hugo', 'css', 'images', 'html'], () => {
   require('fs').writeFileSync(`${distPath}/CNAME`, `${cname}`);
+  require('fs').writeFileSync(`${distPath}/robots.txt`, `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
   return gulp.src(`${distPath}/**/*`).pipe(ghPages(deployOptions));
 });
