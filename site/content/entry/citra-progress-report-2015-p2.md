@@ -78,6 +78,7 @@ forum = 36
 <div class="col-xs-12 col-sm-6" style="text-align:center; margin-bottom: 1em;"><img alt="" src="/images/entry/citra-progress-report-2015-p2/moonafter.png" style="max-width: 100%; border-style: none; margin-bottom: 1em;" />
  With fragment lighting implemented, the moon became even scarier! H-hurray? 
 </div>
+</div>
 
  While no more major features were merged into Citra by the turn of the year, [Subv](https://github.com/Subv) came up with one final teaser of things to come before letting 2015 come to a close. CROs, the dynamically linked libraries of the 3DS (similiar to DLLs on Windows), blocked several very popular 3DS games from booting in Citra, such as Pokemon X, Y, Omega Ruby, Alpha Sapphire and Super Smash Bros. for 3DS. While the implementation was far from done, it still was able to boot up some of the games that relied heavily on this feature. 
 <br></br>
