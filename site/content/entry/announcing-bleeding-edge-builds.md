@@ -16,7 +16,7 @@ Since these releases are official, unlike other random builds you might find on 
 
 Because updates will come at a rapid pace and there is a chance of these changes adversely affecting emulation, the builds will let you know when a newer version is available and **auto-update** if you allow it.
 
-You can download the bleeding edge development builds at our <a href="https://citra-emu.org/page/download">downloads page</a> right now!
+You can download the bleeding edge development builds at our <a href="https://citra-emu.org/download/">downloads page</a> right now!
 While Windows is the only operating system targeted at this time, the other operating systems will follow shortly.
 
 While these builds aren't technically supported, they can be extremely useful for catching regressions and other issues from the various experimental features rolled into them.
