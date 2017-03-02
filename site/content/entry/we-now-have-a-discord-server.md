@@ -19,6 +19,6 @@ There are 5 channels:
 * #dumping-support - Support for dumping games/system files for Citra.
 * #offtopic - Anything not related to Citra that doesn't belong in #citra-general goes here.
 
-The [Citra](https://citra-emu.org/page/rules) Community Rules also apply to this server.
+The [Citra](https://citra-emu.org/rules/) Community Rules also apply to this server.
 
 Have fun!
