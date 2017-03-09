@@ -5,6 +5,8 @@ author = "thekoopakingdom"
 forum = 40
 +++
 
+```DISCLAIMER: You do NOT need to follow this guide if you downloaded Citra for the first time after December 6th, 2016 OR if you have freshly installed Citra since using an older build.```
+
 In new versions of Citra, the location of saves has changed, so this guide will show how to migrate your saves to the new location on Window (Linux and macOS Bleeding Edge builds are planned, we are currently busy working on bringing nightly builds back.).
 
 1. Press Windows + R, type ```explorer %localappdata%```, this should bring up a Windows Explorer window in a ```Local``` folder. Navigate to the ```citra``` folder.
