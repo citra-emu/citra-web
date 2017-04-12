@@ -4,7 +4,7 @@ title = "Texture Forwarding brings HD output to Citra"
 tags = ["feature-update"]
 author = "jmc47"
 coauthor = "tfarley"
-forum = 190
+forum = 35
 +++
 
 One of the big things everyone has been wondering about Citra is when it will be able to render games at HD resolutions. One of the great things about emulators is that they can surpass the limitations of the original console, especially when it comes to graphical fidelity. With the 3DS specifically, many beautifully detailed games are hidden behind staggeringly low resolution screens topping out at 400x240. With **Texture Forwarding** (from tfarley, based on yuriks early implementation), Citra can now output games at any resolution, and runs faster as well!
