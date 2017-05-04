@@ -63,24 +63,12 @@ gulp.task("css", ['hugo'], () => (
 
 gulp.task('images', ['hugo'], () => (
   gulp.src(`${distPath}/images/*`, {base: './'})
-      .pipe(image({
-        mozjpeg: false,
-        jpegoptim: false
-      }))
       .pipe(gulp.dest('./')),
   gulp.src(`${distPath}/images/jumbotron/*`, {base: './'})
       .pipe(jimp({ sizes: [{"width": 786, "height": 471 }] }))
-      .pipe(image({
-        mozjpeg: false,
-        jpegoptim: false
-      }))
       .pipe(gulp.dest('./')),
   gulp.src(`${distPath}/images/banners/*`, {base: './'})
       .pipe(jimp({ sizes: [{"width": 824, "height": 306 }] }))
-      .pipe(image({
-        mozjpeg: false,
-        jpegoptim: false
-      }))
       .pipe(gulp.dest('./'))
 ));
 
