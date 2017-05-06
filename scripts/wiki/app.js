@@ -10,8 +10,9 @@ var exec = require('sync-exec');
 var inputDirectory = './citra.wiki/';
 var outputDirectory = '../../site/content/wiki/';
 
+// The URL
 function url(title) {
-  return '/wiki/' + title.replace(/\s+/g, '-');
+  return '/wiki/' + title.replace(/\s+/g, '-').toLowerCase();
 }
 
 if (fs.existsSync(inputDirectory)) {
@@ -75,9 +76,10 @@ fs.readdir(inputDirectory, function(err, items) {
             // Create the new markdown header for Hugo.
             let newFileContents = `+++\ntitle = "${title}"\ndate = "${modified.toISOString()}"\n+++\n${cleanData}`;
 
-            fs.writeFile(`${outputDirectory}${item}`, newFileContents, function(err) {
+            let itemOutput = item.toLowerCase();
+            fs.writeFile(`${outputDirectory}${itemOutput}`, newFileContents, function(err) {
                 if (err) return logger.error(err);
-                logger.info(`Wrote file ${item} to filesystem.`);
+                logger.info(`Wrote file ${itemOutput} to filesystem.`);
             });
           } catch (ex) {
             logger.error(ex);
