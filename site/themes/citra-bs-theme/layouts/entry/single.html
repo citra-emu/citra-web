@@ -18,9 +18,9 @@
           <li>
             {{ if and $author.key $author.avatar }}
               <a href="https://community.citra-emu.org/users/{{ $author.key }}" class="clearfix">
-                <img  src="http://placehold.it/100x100" src="{{ $author.avatar }}" class="avatar">
+                <img src="{{ $author.avatar }}" class="avatar">
             {{ else if $author.avatar }}
-              <img src="http://placehold.it/100x100" src="{{ $author.avatar }}" class="avatar">
+              <img src="{{ $author.avatar }}" class="avatar">
             {{ end }}
 
             {{ if $author.key }}
