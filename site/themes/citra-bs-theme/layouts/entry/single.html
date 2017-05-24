@@ -4,8 +4,7 @@
   <div class="entry-content">
     {{ .Content }}
   </div>
-
-  {{ $allAuthors := .Site.Data.authors }}
+  
   {{ $date := .Date.Format "Monday January 02, 2006" }}
 
   <div class="entry-written-by">
@@ -14,7 +13,7 @@
 
       <ul>
         {{ range $authorName := .Params.authors }}
-          {{ $author := index $allAuthors ( $authorName ) }}
+          {{ $author := index $.Site.Data.authors ( $authorName ) }}
           <li>
             {{ if and $author.key $author.avatar }}
               <a href="https://community.citra-emu.org/users/{{ $author.key }}" class="clearfix">
