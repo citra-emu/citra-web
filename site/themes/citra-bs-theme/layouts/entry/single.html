@@ -5,27 +5,38 @@
     {{ .Content }}
   </div>
 
-  {{ $author := index .Site.Data.authors ( .Params.author | default "" ) }}
-  {{ $coauthor := index .Site.Data.authors ( .Params.coauthor | default "" ) }}
+  {{ $allAuthors := .Site.Data.authors }}
+  {{ $date := .Date.Format "Monday January 02, 2006" }}
 
   <div class="entry-written-by">
-    {{ if $author }}
-      <a href="https://community.citra-emu.org/users/{{ $author.key }}">
-          <img src="{{ $author.avatar }}" class="avatar">
-      </a>
-    {{ end }}
-    {{ if $coauthor }}
-      <a href="https://community.citra-emu.org/users/{{ $coauthor.key }}">
-          <img src="{{ $coauthor.avatar }}" class="avatar">
-      </a>
-    {{ end }}
+    {{ if .Params.authors }}
+      <h2>Written By</h2>
 
-    {{ if and $author $coauthor }}
-      <p>Written by <a href="https://community.citra-emu.org/users/{{ $author.key }}">{{ $author.name }}</a> and <a href="https://community.citra-emu.org/users/{{ $coauthor.key }}">{{ $coauthor.name }}</a> on {{ .Date.Format "Monday January 02, 2006" }}</p>
-    {{ else if $author }}
-      <p>Written by <a href="https://community.citra-emu.org/users/{{ $author.key }}">{{ $author.name }}</a> on {{ .Date.Format "Monday January 02, 2006" }}</p>
+      <ul>
+        {{ range $authorName := .Params.authors }}
+          {{ $author := index $allAuthors ( $authorName ) }}
+          <li>
+            {{ if and $author.key $author.avatar }}
+              <a href="https://community.citra-emu.org/users/{{ $author.key }}" class="clearfix">
+                <img  src="http://placehold.it/100x100" src="{{ $author.avatar }}" class="avatar">
+            {{ else if $author.avatar }}
+              <img src="http://placehold.it/100x100" src="{{ $author.avatar }}" class="avatar">
+            {{ end }}
+
+            {{ if $author.key }}
+                <span>{{ $author.name }}</span>
+              </a>
+            {{ else }}
+              <span>{{ $author.name }}</span>
+            {{ end }}
+          </li>
+        {{ end }}
+      </ul>
+
+      <span class="entry-written-date">on {{ $date }}</span>
+
     {{ else }}
-      <p>No author was provided. Written on {{ .Date.Format "Monday January 02, 2006" }}</p>
+      <p class="entry-written-by-empty">No author was provided. Written on {{ $date }}</p>
     {{ end }}
   </div>
 

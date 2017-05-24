@@ -2,8 +2,7 @@
 date = "2016-10-11T14:49:00-05:00"
 title = "Announcing Bleeding Edge Builds"
 tags = [ "citra-release" ]
-author = "jmc47"
-coauthor = "jroweboy"
+authors = [ "jmc47", "jroweboy" ]
 forum = 42
 +++
 

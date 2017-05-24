@@ -1,7 +1,7 @@
 +++
 date = "2016-02-22T22:18:00-05:00"
 title = "Welcome to the New Citra!"
-author = "flamesage"
+authors = [ "flamesage" ]
 forum = 8
 +++
 

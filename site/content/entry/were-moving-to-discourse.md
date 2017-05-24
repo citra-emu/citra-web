@@ -1,8 +1,7 @@
 +++
 date = "2017-01-17T20:36:00-05:00"
 title = "We're Moving to Discourse!"
-author = "flamesage"
-coauthor = "bunnei"
+authors = [ "flamesage", "bunnei" ]
 forum = 54
 +++
 
