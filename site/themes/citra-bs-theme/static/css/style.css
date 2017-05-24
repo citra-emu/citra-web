@@ -332,30 +332,29 @@ a:hover, a:focus {
 .entry-written-by ul li {
   display: inline-block;
   margin: 5px;
+}
+.entry-written-by ul li a {
+  display: block;
+  border-bottom: 0 !important;
   background: #FFFFFF;
   border-radius: 3px;
   transition: all .3s ease;
 }
-.entry-written-by ul li:hover {
+.entry-written-by ul li a:hover {
   transform: translateY(-3px);
   box-shadow: 0 7px 25px rgba(0, 0, 0, .1);
 }
-.entry-written-by ul li a {
-  display: block;
-  line-height: 40px;
-  border-bottom: 0 !important;
-  padding-right: 15px;
-  transition: all .3s ease;
-}
-.entry-written-by ul li a img {
+.entry-written-by ul li img {
   height: 40px !important;
   width: auto;
   border-radius: 3px 0 0 3px;
   margin-top: 0;
-  margin-right: 15px;
+  margin-right: 0;
 }
-.entry-written-by ul li a span {
-  vertical-align: top;
+.entry-written-by ul li span {
+  display: inline-block;
+  line-height: 40px;
+  padding: 0 15px;
 }
 .entry-written-date {
   font-size: 16px;
