@@ -12,6 +12,12 @@ before_script:
   - node app.js
   - cd $TRAVIS_BUILD_DIR
 
+  - echo '========== Importing games wiki articles into hugo =========='
+  - cd ./scripts/games/
+  - npm install
+  - node app.js
+  - cd $TRAVIS_BUILD_DIR
+
   - echo '========== Importing twitter tweets into hugo =========='
   - cd ./scripts/twitter/
   - npm install
