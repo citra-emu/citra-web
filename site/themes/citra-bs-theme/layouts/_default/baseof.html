@@ -23,7 +23,11 @@
     
     {{ if (eq .Section "entry") | or (eq .Section "wiki") | or (eq .Section "games") }}
       <meta property="og:type" content="article" />
-      <meta property="og:image" content="{{ .Site.BaseURL }}images/banners/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
+      {{ if (eq .Section "entry") | or (eq .Section "wiki") }}
+        <meta property="og:image" content="{{ .Site.BaseURL }}images/banners/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
+      {{ else if (eq .Section "games") }}
+        <meta property="og:image" content="{{ .Site.BaseURL }}images/games/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
+      {{ end }}
       <meta property="og:article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}" />
       {{ range .Params.tags }}
         <meta property="og:article:tag" content="{{ . }}" />
