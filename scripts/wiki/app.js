@@ -16,8 +16,8 @@ function url(title) {
 }
 
 if (fs.existsSync(inputDirectory)) {
-    logger.info(`Purging input directory: ${outputDirectory}`);
-    del.sync(outputDirectory, {force: true});
+    logger.info(`Purging input directory: ${inputDirectory}`);
+    del.sync(inputDirectory, {force: true});
 }
 
 exec('git clone https://github.com/citra-emu/citra.wiki.git');
@@ -74,7 +74,7 @@ fs.readdir(inputDirectory, function(err, items) {
             });
 
             // Create the new markdown header for Hugo.
-            let newFileContents = `+++\ntitle = "${title}"\ndate = "${modified.toISOString()}"\n+++\n${cleanData}`;
+            let newFileContents = `+++\r\ntitle = "${title}"\r\ndate = "${modified.toISOString()}"\r\n+++\r\n\r\n${cleanData}\r\n`;
 
             let itemOutput = item.toLowerCase();
             fs.writeFile(`${outputDirectory}${itemOutput}`, newFileContents, function(err) {
