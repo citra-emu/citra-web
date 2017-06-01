@@ -10,7 +10,7 @@ var exec = require('sync-exec');
 
 var inputDirectoryGame = './citra-games-wiki/';
 var inputDirectoryWiki = './citra-games-wiki.wiki/';
-var outputDirectoryMd = '../../site/content/games/';
+var outputDirectoryMd = '../../site/content/game/';
 var outputDirectoryBoxart = '../../site/static/images/games/'
 
 // The URL
