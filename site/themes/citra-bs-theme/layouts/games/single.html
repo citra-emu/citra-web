@@ -1,0 +1,55 @@
+{{ define "main" }}
+  {{ $rating := index .Site.Data.compatibility ( string .Params.compatibility | default "0" ) }}
+  <div class="alert alert-info">
+    <div class="row">
+      <div class="col-md-2">
+        <strong>Reminder!</strong>
+      </div>
+      <div class="col-md-10">
+        <p>Citra is currently in very early stages of development. Games usually run less than full-speed even on the best computers. Expect bugs and glitches to appear in most games. Many features found in more mature emulators are still in the works.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-warning">
+    <div class="row">
+      <div class="col-md-2">
+        <strong>Read First!</strong>
+      </div>
+      <div class="col-md-10">
+        The below game article is based on user submitted content.<br>
+        See a mistake? Want to contribute? <a href="https://github.com/citra-emu/citra-games-wiki/wiki/{{ .File.BaseFileName }}/_edit/">Edit this game article on Github</a>
+      </div>
+    </div>
+  </div>
+
+	<h1>{{ .Title }}</h1>
+  <div class="row">
+    <div class="col-md-5">
+      <img class="center-block img-responsive" style="height: 300px;" src="{{ .Site.BaseURL }}images/games/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
+    </div>
+    <div class="col-md-7">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td>Status</td>
+            <td><b>{{ $rating.name }}</b><br />{{ $rating.description }}</td>
+          </tr>
+          <tr>
+            <td>Tested Date</td>
+            <td>{{ dateFormat "January 2, 2006" .Params.tested_date }}</td>
+          </tr>
+          <tr>
+            <td>Tested Version</td>
+            <td>{{ .Params.tested_version }}</td>
+          </tr>
+          <tr>
+            <td>Title IDs</td>
+            <td>{{ delimit .Params.id ", " }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+	{{ .Content }}
+{{ end }}
