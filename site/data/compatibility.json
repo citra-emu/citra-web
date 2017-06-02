@@ -1,8 +1,8 @@
 {
   "0": { "name": "Won't Boot", "description": "The game crashes when attempting to startup." },
   "1": { "name": "Garbage", "description": "Game is completely unplayable due to major graphical or audio glitches. Unable to progress past the Start Screen." },
-  "2": { "name": "Bronze", "description": "Game functions with major graphical or audio glitches, unable to progress in specific areas due to glitches even with workarounds." },
-  "3": { "name": "Silver", "description": "Game functions with major graphical or audio glitches, but game is playable from start to finish with workarounds." },
-  "4": { "name": "Gold", "description": "Game functions with very minor graphical or audio glitches, game is playable from start to finish without any workarounds needed." },
+  "2": { "name": "Bronze", "description": "Game functions, but with major graphical or audio glitches. Unable to progress in specific areas due to glitches even with workarounds." },
+  "3": { "name": "Silver", "description": "Game functions with minor graphical or audio glitches, but game is playable from start to finish with workarounds." },
+  "4": { "name": "Gold", "description": "Game functions with minor graphical or audio glitches, game is playable from start to finish without any workarounds needed." },
   "5": { "name": "Platinum", "description": "Game functions flawless with no audio or graphical glitches, all tested functionality works as intended without any workarounds needed." }
 }
