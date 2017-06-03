@@ -90,9 +90,9 @@
           <tbody>
             {{ range .Params.savefiles }}
               <tr>
-                <th><a href="/static/savefiles/{{ $gameName }}/{{ .filename }}">{{ .title }}</a></th>
+                <th><a href="/savefiles/{{ $gameName }}/{{ .filename }}">{{ .title }}</a></th>
                 <th>{{ .description }}</th>
-                <th>{{ .author }}</th>
+                <th><a href="https://community.citra-emu.org/u/{{ .author }}/summary">{{ .author }}</a></th>
                 <th>{{ dateFormat "January 2, 2006" .date }}</th>
               </tr>
             {{ end }}
