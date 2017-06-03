@@ -15,6 +15,7 @@ const inputDirectoryGame = './citra-games-wiki';
 const inputDirectoryWiki = './citra-games-wiki.wiki';
 const outputDirectoryMd = '../../site/content/game';
 const outputDirectoryBoxart = '../../site/static/images/game/boxart';
+const outputDirectoryIcons = '../../site/static/images/game/icons';
 
 // The URL
 function url(title) {
@@ -53,6 +54,11 @@ if (fs.existsSync(outputDirectoryBoxart) == false) {
     fs.mkdirSync(outputDirectoryBoxart);
 }
 
+if (fs.existsSync(outputDirectoryIcons) == false) {
+    logger.info(`Creating missing output directory: ${outputDirectoryIcons}`);
+    fs.mkdirSync(outputDirectoryIcons);
+}
+
 try {
   // Loop through each game folder.
   getDirectories(inputDirectoryGame).forEach(function(game) {
@@ -61,8 +67,16 @@ try {
     logger.info(`Creating Hugo files for ${game}`);
 
     // Copy the boxart for the game.
-    fsextra.copySync(`${inputDirectoryGame}/${game}/boxart.png`, `${outputDirectoryBoxart}/${game}.png`);
-
+    let boxartPath = `${inputDirectoryGame}/${game}/boxart.png`;
+    if (fs.existsSync(path)) {
+      fsextra.copySync(boxartPath, `${outputDirectoryBoxart}/${game}.png`);
+    }
+    
+    // Copy the icon for the game.
+    let iconPath = `${inputDirectoryGame}/${game}/icon.png`;
+    if (fs.existsSync(path)) {
+      fsextra.copySync(iconPath, `${outputDirectoryIcons}/${game}.png`);
+    }
     // Create the markdown file to be displayed in Hugo.
     let title = game.replace(/-/g, ' ').slice(0, -3);
     var stats = fs.statSync(`${inputDirectoryGame}/${game}/game.dat`);
