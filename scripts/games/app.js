@@ -16,6 +16,8 @@ const inputDirectoryWiki = './citra-games-wiki.wiki';
 const outputDirectoryMd = '../../site/content/game';
 const outputDirectoryBoxart = '../../site/static/images/game/boxart';
 const outputDirectoryIcons = '../../site/static/images/game/icons';
+const outputDirectoryScreenshots = '../../site/static/images/screenshots0';
+const outputDirectorySavefiles = '../../site/static/savefiles/';
 
 // The URL
 function url(title) {
@@ -25,9 +27,11 @@ function url(title) {
 function gitPull(directory, repository) {
   if (fs.existsSync(directory)) {
       logger.info(`Fetching latest from Github : ${directory}`);
+      logger.info(`git --git-dir=${directory} pull`);
       exec(`git --git-dir=${directory} pull`);
   } else {
       logger.info(`Cloning repository from Github : ${directory}`);
+      logger.info(`git clone ${repository}`);
       exec(`git clone ${repository}`);
   }
 }
@@ -59,6 +63,16 @@ if (fs.existsSync(outputDirectoryIcons) == false) {
     fs.mkdirSync(outputDirectoryIcons);
 }
 
+if (fs.existsSync(outputDirectorySavefiles) == false) {
+    logger.info(`Creating missing output directory: ${outputDirectorySavefiles}`);
+    fs.mkdirSync(outputDirectorySavefiles);
+}
+
+if (fs.existsSync(outputDirectoryScreenshots) == false) {
+    logger.info(`Creating missing output directory: ${outputDirectoryScreenshots}`);
+    fs.mkdirSync(outputDirectoryScreenshots);
+}
+
 try {
   // Loop through each game folder.
   getDirectories(inputDirectoryGame).forEach(function(game) {
@@ -77,10 +91,52 @@ try {
     if (fs.existsSync(iconPath)) {
       fsextra.copySync(iconPath, `${outputDirectoryIcons}/${game}.png`);
     }
+
+    // Copy the savefiles for the game.
+    let inputDirectorySavefilesGame = `${inputDirectoryGame}/${game}/savefiles/`;
+    let outputDirectorySavefilesGame = `${outputDirectorySavefiles}/${game}/`;
+    let savefileMetadataContents = [];
+
+    if (fs.existsSync(inputDirectorySavefilesGame)) {
+      // Create the savefile directory for each game.
+      if (fs.existsSync(outputDirectorySavefilesGame) == false) {
+          fs.mkdirSync(outputDirectorySavefilesGame);
+      }
+
+      // Copy all savefiles into the output folder and store their contents.
+      fs.readdirSync(inputDirectorySavefilesGame).forEach(file => {
+        if (file.slice(-5) == '.csav') {
+          fsextra.copySync(`${inputDirectorySavefilesGame}/${file}`, `${outputDirectorySavefilesGame}/${file}`);
+        } else if (file.slice(-4) == '.dat') {
+          // Store the contents of the file in memory for adding it into the markdown later.
+          savefileMetadataContents.push({ filename: file.replace('.dat', '.csav'), contents: fs.readFileSync(`${inputDirectorySavefilesGame}/${file}`, 'utf8') });
+        }
+      });
+    }
+
+    // Copy the screenshots for the game.
+    let inputDirectoryScreenshotsGame = `${inputDirectoryGame}/${game}/screenshots/`;
+    let outputDirectoryScreenshotsGame = `${outputDirectoryScreenshots}/${game}/`;
+
+    if (fs.existsSync(inputDirectoryScreenshotsGame)) {
+      // Create the savefile directory for each game.
+      if (fs.existsSync(outputDirectoryScreenshotsGame) == false) {
+          fs.mkdirSync(outputDirectoryScreenshotsGame);
+      }
+
+      // Copy all screenshots into the output folder.
+      fs.readdirSync(inputDirectoryScreenshotsGame).forEach(file => {
+        if (file.slice(-4) == '.png') {
+          fsextra.copySync(`${inputDirectoryScreenshotsGame}/${file}`, `${outputDirectoryScreenshotsGame}/${file}`);
+        }
+      });
+    }
+
+
     // Create the markdown file to be displayed in Hugo.
     let title = game.replace(/-/g, ' ').slice(0, -3);
     var stats = fs.statSync(`${inputDirectoryGame}/${game}/game.dat`);
-    var modified = new Date(util.inspect(stats.mtime));
+    let modified = new Date(util.inspect(stats.mtime));
 
     let datContents = fs.readFileSync(`${inputDirectoryGame}/${game}/game.dat`, 'utf8');
     let wikiContents = fs.readFileSync(`${inputDirectoryWiki}/${game}.md`, 'utf8');
@@ -89,7 +145,13 @@ try {
     wikiContents = blackfriday.fixLists(wikiContents);
     wikiContents = blackfriday.fixLinks(wikiContents);
 
-    let output = `+++\r\ndate = "${modified.toISOString()}"\r\n${datContents}+++\r\n\r\n${wikiContents}\r\n`;
+    // Read all savefiles from array and copy them into the markdown.
+    savefileMetadataContents.forEach(function(savefile) {
+      let modified = new Date(util.inspect(stats.mtime));
+      datContents += `\r\n\r\n[[ savefiles ]]\r\n${savefile.contents}\r\nfilename = "${savefile.filename}"\r\ndate = "${modified.toISOString()}"\r\n`;
+    });
+
+    let output = `+++\r\ndate = "${modified.toISOString()}"\r\n${datContents}\r\n+++\r\n\r\n${wikiContents}\r\n`;
     fs.writeFileSync(`${outputDirectoryMd}/${game}.md`, output);
   });
 } catch (ex) {
