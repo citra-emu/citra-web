@@ -37,10 +37,10 @@ function getDirectories (srcpath) {
 }
 
 // Fetch game information stored in Github repository.
-// gitPull(inputDirectoryGame, 'https://github.com/citra-emu/citra-games-wiki.git');
+gitPull(inputDirectoryGame, 'https://github.com/citra-emu/citra-games-wiki.git');
 
 // Fetch game articles stored in Github wiki.
-// gitPull(inputDirectoryWiki, 'https://github.com/citra-emu/citra-games-wiki.wiki.git');
+gitPull(inputDirectoryWiki, 'https://github.com/citra-emu/citra-games-wiki.wiki.git');
 
 // Make sure the output directories in Hugo exist.
 if (fs.existsSync(outputDirectoryMd) == false) {
