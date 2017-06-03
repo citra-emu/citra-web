@@ -39,14 +39,6 @@
             <td><b>{{ $rating.name }}</b><br />{{ $rating.description }}</td>
           </tr>
           <tr>
-            <td>Tested Date</td>
-            <td>{{ dateFormat "January 2, 2006" .Params.tested_date }}</td>
-          </tr>
-          <tr>
-            <td>Tested Version</td>
-            <td>{{ .Params.tested_version }}</td>
-          </tr>
-          <tr>
             <td>Game Icon</td>
             <td><img class="img-responsive" src="{{ .Site.BaseURL }}images/game/icons/{{ default (print .File.BaseFileName ".png") }}" /></td>
           </tr>
@@ -74,6 +66,31 @@
   <p>{{ .Params.Description }}</p>
 	{{ .Content }}
 
+  <!-- Compatibility -->
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Compatibility</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Tested By</th>
+            <th>Citra Version</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ dateFormat "January 2, 2006" .Params.tested_date }}</td>
+            <td><a href="https://community.citra-emu.org/u/{{ .Params.tested_by }}/summary">{{ .Params.tested_by }}</a></td>
+            <td>{{ .Params.tested_version }}</td>
+            <td><b>{{ $rating.name }}</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   {{ if (where (readDir "/static/savefiles") "Name" .File.BaseFileName) }}
     <div class="row">
       <div class="col-md-12">
@@ -90,10 +107,10 @@
           <tbody>
             {{ range .Params.savefiles }}
               <tr>
-                <th><a href="/savefiles/{{ $gameName }}/{{ .filename }}">{{ .title }}</a></th>
-                <th>{{ .description }}</th>
-                <th><a href="https://community.citra-emu.org/u/{{ .author }}/summary">{{ .author }}</a></th>
-                <th>{{ dateFormat "January 2, 2006" .date }}</th>
+                <td><a href="/savefiles/{{ $gameName }}/{{ .filename }}">{{ .title }}</a></td>
+                <td>{{ .description }}</td>
+                <td><a href="https://community.citra-emu.org/u/{{ .author }}/summary">{{ .author }}</a></td>
+                <td>{{ dateFormat "January 2, 2006" .date }}</td>
               </tr>
             {{ end }}
           </tbody>
