@@ -68,13 +68,13 @@ try {
 
     // Copy the boxart for the game.
     let boxartPath = `${inputDirectoryGame}/${game}/boxart.png`;
-    if (fs.existsSync(path)) {
+    if (fs.existsSync(boxartPath)) {
       fsextra.copySync(boxartPath, `${outputDirectoryBoxart}/${game}.png`);
     }
-    
+
     // Copy the icon for the game.
     let iconPath = `${inputDirectoryGame}/${game}/icon.png`;
-    if (fs.existsSync(path)) {
+    if (fs.existsSync(iconPath)) {
       fsextra.copySync(iconPath, `${outputDirectoryIcons}/${game}.png`);
     }
     // Create the markdown file to be displayed in Hugo.
