@@ -32,10 +32,10 @@
     </div>
     <div class="col-md-7">
       <!-- Metadata information -->
-      <table class="table table-striped">
+      <table class="table table-striped table-bordered">
         <tbody>
           <tr>
-            <td>Status</td>
+            <td style="width: 100px;">Status</td>
             <td><b>{{ $rating.name }}</b><br />{{ $rating.description }}</td>
           </tr>
           <tr>
@@ -52,11 +52,11 @@
           </tr>
           <tr>
             <td>System Files Required?</td>
-            <td>{{ if eq .Params.needs_system_files true }}Yes{{ else }}No{{ end }}</td>
+            <td>{{ if eq .Params.needs_system_files true }}Yes{{ else if eq .Params.needs_system_files false }}No{{ else }}N/A{{ end }}</td>
           </tr>
           <tr>
             <td>Shared Font Required?</td>
-            <td>{{ if eq .Params.needs_shared_font true }}Yes{{ else }}No{{ end }}</td>
+            <td>{{ if eq .Params.needs_shared_font true }}Yes{{ else if eq .Params.needs_shared_font false }}No{{ else }}N/A{{ end }}</td>
           </tr>
         </tbody>
       </table>
