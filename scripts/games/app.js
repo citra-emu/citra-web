@@ -14,7 +14,7 @@ const exec = require('sync-exec');
 const inputDirectoryGame = './citra-games-wiki';
 const inputDirectoryWiki = './citra-games-wiki.wiki';
 const outputDirectoryMd = '../../site/content/game';
-const outputDirectoryBoxart = '../../site/static/images/games/boxart';
+const outputDirectoryBoxart = '../../site/static/images/game/boxart';
 
 // The URL
 function url(title) {
