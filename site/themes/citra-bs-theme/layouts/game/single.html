@@ -29,6 +29,7 @@
       <img class="center-block img-responsive" style="height: 300px;" src="{{ .Site.BaseURL }}images/game/boxart/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
     </div>
     <div class="col-md-7">
+      <!-- Metadata information -->
       <table class="table table-striped">
         <tbody>
           <tr>
@@ -45,11 +46,24 @@
           </tr>
           <tr>
             <td>Title IDs</td>
-            <td>{{ delimit .Params.id ", " }}</td>
+            <td>
+              {{ range .Params.releases }}
+                {{ .title }} ({{ .region }}) <br />
+              {{ end }}
+            </td>
+          </tr>
+          <tr>
+            <td>System Files Required?</td>
+            <td>{{ if eq .Params.needs_system_files true }}Yes{{ else }}No{{ end }}</td>
+          </tr>
+          <tr>
+            <td>Shared Font Required?</td>
+            <td>{{ if eq .Params.needs_shared_font true }}Yes{{ else }}No{{ end }}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+    <p>{{ .Params.Description }}</p>
 	{{ .Content }}
 {{ end }}
