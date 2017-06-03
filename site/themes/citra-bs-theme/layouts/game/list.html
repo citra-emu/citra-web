@@ -1,0 +1,27 @@
+{{ define "main" }}
+    {{ $paginator := .Paginate .Data.Pages }}
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Compatibility</th>
+          <th>Date Tested</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range $paginator.Pages }}
+          {{ $rating := index .Site.Data.compatibility ( string .Params.compatibility | default "0" ) }}
+          <tr>
+            <td><img class="img-responsive" src="{{ .Site.BaseURL }}images/game/icons/{{ default (print .File.BaseFileName ".png") }}" /></td>
+            <td><a href="{{ .Permalink }}">{{ .Params.title }}</a></td>
+            <td>{{ $rating.name }}</td>
+            <td>{{ dateFormat "January 2, 2006" .Params.tested_date }}</td>
+          </tr>
+        {{ end }}
+      </tbody>
+    </table>
+
+    {{ partial "pagination" . }}
+{{ end }}
