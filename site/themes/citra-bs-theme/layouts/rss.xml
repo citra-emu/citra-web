@@ -26,7 +26,7 @@
         <description>{{ .Summary | html }}</description>
       </item>
       {{ end }}
-      {{ range where .Data.Pages "Section" "games" }}
+      {{ range where .Data.Pages "Section" "game" }}
         <item>
           <title>{{ .Title }}</title>
           <link>{{ .Permalink }}</link>
