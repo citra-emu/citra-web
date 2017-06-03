@@ -1,6 +1,48 @@
 {{ define "main" }}
     {{ $paginator := .Paginate .Data.Pages }}
-
+	<h1>Game Compatibility List</h1>
+	<p>The Citra Emulator compatibility list contains all the games we tested, sorted by how well they work on the emulator.</p>
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Rating</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Perfect</td>
+				<td>Game functions flawless with no audio or graphical glitches, all tested functionality works as intended without any workarounds needed.</td>
+			</tr>
+			<tr>
+				<td>Excellent</td>
+				<td>Game functions with minor graphical or audio glitches, game is playable from start to finish without any workarounds needed.</td>
+			</tr>
+			<tr>
+				<td>Great</td>
+				<td>Game functions with minor graphical or audio glitches, but game is playable from start to finish with workarounds.</td>
+			</tr>
+			<tr>
+				<td>Okay</td>
+				<td>Game functions with major graphical or audio glitches, but game is playable from start to finish with workarounds.</td>
+			</tr>
+			<tr>
+				<td>Bad</td>
+				<td>Game functions, but with major graphical or audio glitches. Unable to progress in specific areas due to glitches even with workarounds.</td>
+			</tr>
+			<tr>
+				<td>Intro/Menu</td>
+				<td>Game is completely unplayable due to major graphical or audio glitches. Unable to progress past the Start Screen.</td>
+			</tr>
+			<tr>
+				<td>Won't Boot</td>
+				<td>The game crashes when attempting to startup.</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<h2>Games</h2>
     <table class="table">
       <thead>
         <tr>
