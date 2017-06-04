@@ -58,6 +58,12 @@ gulp.task('images', ['hugo'], () => (
   gulp.src(`${distPath}/images/banners/*`, {base: './'})
       .pipe(jimp({ sizes: [{"width": 824, "height": 306 }] }))
       .pipe(gulp.dest('./'))
+  gulp.src(`${distPath}/images/game/boxart/*`, {base: './'})
+      .pipe(jimp({ sizes: [{"width": 328, "height": 300 }] }))
+      .pipe(gulp.dest('./'))
+  gulp.src(`${distPath}/images/game/icons/*`, {base: './'})
+      .pipe(jimp({ sizes: [{"width": 48, "height": 48 }] }))
+      .pipe(gulp.dest('./'))
 ));
 
 gulp.task('html', ['hugo', 'css', 'images'], () => (
