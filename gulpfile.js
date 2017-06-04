@@ -44,18 +44,6 @@ gulp.task('hugo', ['setup'], function (cb) {
 gulp.task("css", ['hugo'], () => (
   gulp.src(`${distPath}/css/**/*.css`, {base: './'})
     .pipe(postcss([cssnext(), cssImport({from: `${distPath}/css/main.css`})]))
-    .pipe(uncss({
-      html: [`${distPath}/**/*.html`],
-      ignore: [/\w\.in/,
-              ".fade",
-              ".collapse",
-              ".collapsing",
-              ".table",
-              ".thumbnail",
-              /(#|\.)navbar(\-[a-zA-Z]+)?/,
-              /(#|\.)dropdown(\-[a-zA-Z]+)?/,
-              /(#|\.)carousel(\-[a-zA-Z]+)?/,
-            ]}))
     .pipe(cleanCSS())
     .pipe(md5(10, `${distPath}/**/*.html`))
     .pipe(gulp.dest('./'))
