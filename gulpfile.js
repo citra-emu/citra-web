@@ -57,10 +57,10 @@ gulp.task('images', ['hugo'], () => (
       .pipe(gulp.dest('./')),
   gulp.src(`${distPath}/images/banners/*`, {base: './'})
       .pipe(jimp({ sizes: [{"width": 824, "height": 306 }] }))
-      .pipe(gulp.dest('./'))
+      .pipe(gulp.dest('./')),
   gulp.src(`${distPath}/images/game/boxart/*`, {base: './'})
       .pipe(jimp({ sizes: [{"width": 328, "height": 300 }] }))
-      .pipe(gulp.dest('./'))
+      .pipe(gulp.dest('./')),
   gulp.src(`${distPath}/images/game/icons/*`, {base: './'})
       .pipe(jimp({ sizes: [{"width": 48, "height": 48 }] }))
       .pipe(gulp.dest('./'))
