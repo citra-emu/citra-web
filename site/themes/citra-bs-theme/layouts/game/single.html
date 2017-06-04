@@ -47,7 +47,7 @@
             <td>Title IDs</td>
             <td>
               {{ range .Params.releases }}
-                <div>{{ .title }} <img src="{{ $BaseURL }}images/regions/{{ .region }}.png" /></div>
+                <div><img src="{{ $BaseURL }}images/regions/{{ .region }}.png" /> {{ .title }}</div>
               {{ end }}
             </td>
           </tr>
