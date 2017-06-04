@@ -1,0 +1,69 @@
+{{ define "main" }}
+    {{ $paginator := .Paginate .Data.Pages }}
+	<h1>Game Compatibility List</h1>
+	<p>The Citra Emulator compatibility list contains all the games we tested, sorted by how well they work on the emulator.</p>
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Rating</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Perfect</td>
+				<td>Game functions flawless with no audio or graphical glitches, all tested functionality works as intended without any workarounds needed.</td>
+			</tr>
+			<tr>
+				<td>Excellent</td>
+				<td>Game functions with minor graphical or audio glitches, game is playable from start to finish without any workarounds needed.</td>
+			</tr>
+			<tr>
+				<td>Great</td>
+				<td>Game functions with minor graphical or audio glitches, but game is playable from start to finish with workarounds.</td>
+			</tr>
+			<tr>
+				<td>Okay</td>
+				<td>Game functions with major graphical or audio glitches, but game is playable from start to finish with workarounds.</td>
+			</tr>
+			<tr>
+				<td>Bad</td>
+				<td>Game functions, but with major graphical or audio glitches. Unable to progress in specific areas due to glitches even with workarounds.</td>
+			</tr>
+			<tr>
+				<td>Intro/Menu</td>
+				<td>Game is completely unplayable due to major graphical or audio glitches. Unable to progress past the Start Screen.</td>
+			</tr>
+			<tr>
+				<td>Won't Boot</td>
+				<td>The game crashes when attempting to startup.</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<h2>Games</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Compatibility</th>
+          <th>Date Tested</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range $paginator.Pages }}
+          {{ $rating := index .Site.Data.compatibility ( string .Params.compatibility | default "0" ) }}
+          <tr>
+            <td><img class="img-responsive" src="{{ .Site.BaseURL }}images/game/icons/{{ default (print .File.BaseFileName ".png") }}" /></td>
+            <td><a href="{{ .Permalink }}">{{ .Params.title }}</a></td>
+            <td>{{ $rating.name }}</td>
+            <td>{{ dateFormat "January 2, 2006" .Params.tested_date }}</td>
+          </tr>
+        {{ end }}
+      </tbody>
+    </table>
+
+    {{ partial "pagination" . }}
+{{ end }}
