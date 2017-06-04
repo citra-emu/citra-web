@@ -1,8 +1,7 @@
 {{ define "main" }}
-    {{ $paginator := .Paginate .Data.Pages }}
 	<h1>Game Compatibility List</h1>
 	<p>The Citra Emulator compatibility list contains all the games we tested, sorted by how well they work on the emulator.</p>
-	
+
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -41,7 +40,7 @@
 			</tr>
 		</tbody>
 	</table>
-	
+
 	<h2>Games</h2>
     <table class="table">
       <thead>
@@ -53,10 +52,11 @@
         </tr>
       </thead>
       <tbody>
+        {{ $paginator := .Paginate .Data.Pages 50 }}
         {{ range $paginator.Pages }}
           {{ $rating := index .Site.Data.compatibility ( string .Params.compatibility | default "0" ) }}
           <tr>
-            <td><img class="img-responsive" src="{{ .Site.BaseURL }}images/game/icons/{{ default (print .File.BaseFileName ".png") }}" /></td>
+            <td><img class="img-responsive" style="width: 24px; height: 24px;" src="{{ .Site.BaseURL }}images/game/icons/{{ default (print .File.BaseFileName ".png") }}" /></td>
             <td><a href="{{ .Permalink }}">{{ .Params.title }}</a></td>
             <td>{{ $rating.name }}</td>
             <td>{{ dateFormat "January 2, 2006" .Params.tested_date }}</td>
