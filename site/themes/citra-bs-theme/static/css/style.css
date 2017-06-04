@@ -306,13 +306,60 @@ a:hover, a:focus {
 }
 .entry-written-by {
   font-size: 18px;
-  padding-bottom: 26px;
+  padding: 25px;
+  background: #F9F9F9;
+  border-radius: 3px;
 }
 .entry-written-by p {
   color: #888;
   font-size: 21px;
   padding-top: 16px;
   margin-left: 4px;
+}
+.entry-written-by h2 {
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 15px;
+  border-bottom: 2px dashed rgba(0, 0, 0, .05);
+  font-size: 24px;
+  font-weight: bold;
+}
+.entry-written-by ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+.entry-written-by ul li {
+  display: inline-block;
+  margin: 5px;
+}
+.entry-written-by ul li a {
+  display: block;
+  border-bottom: 0 !important;
+  background: #FFFFFF;
+  border-radius: 3px;
+  transition: all .3s ease;
+}
+.entry-written-by ul li a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, .1);
+}
+.entry-written-by ul li img {
+  height: 40px !important;
+  width: auto;
+  border-radius: 3px 0 0 3px;
+  margin-top: 0;
+  margin-right: 0;
+}
+.entry-written-by ul li span {
+  display: inline-block;
+  line-height: 40px;
+  padding: 0 15px;
+}
+.entry-written-date {
+  font-size: 16px;
+  opacity: .6;
+  font-style: italic;
 }
 .entry-comments {
   padding-top: 16px;

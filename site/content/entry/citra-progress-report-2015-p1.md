@@ -2,7 +2,7 @@
 date = "2016-02-23T23:30:00-05:00"
 title = "Citra Progress Report - 2015 P1"
 tags = [ "progress-report" ]
-author = "bunnei"
+authors = [ "bunnei" ]
 forum = 33
 +++
 

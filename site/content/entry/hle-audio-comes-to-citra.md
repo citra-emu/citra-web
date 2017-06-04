@@ -2,7 +2,7 @@
 date = "2016-05-20T18:04:00-05:00"
 title = "HLE Audio Comes to Citra"
 tags = [ "feature-update" ]
-author = "merrymage"
+authors = [ "merrymage" ]
 forum = 38
 +++
 

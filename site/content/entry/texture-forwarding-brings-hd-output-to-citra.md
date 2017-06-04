@@ -2,8 +2,7 @@
 date = "2016-05-01T21:56:00-05:00"
 title = "Texture Forwarding brings HD output to Citra"
 tags = ["feature-update"]
-author = "jmc47"
-coauthor = "tfarley"
+authors = [ "jmc47", "tfarley" ]
 forum = 35
 +++
 

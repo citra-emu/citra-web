@@ -2,7 +2,7 @@
 date = "2017-05-03T23:20:00-04:00"
 title = "Citra Progress Report - 2017 P1"
 tags = [ "progress-report" ]
-author = "anodium"
+authors = [ "anodium" ]
 forum = 1602
 +++
 

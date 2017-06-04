@@ -2,8 +2,7 @@
 date = "2017-01-05T00:00:00-05:00"
 title = "The Nightly Builds are back!"
 tags = ["citra-release"]
-author = "leo121"
-coauthor = "flamboyant_ham"
+authors = [ "leo121", "flamboyant_ham" ]
 forum = 41
 +++
 
