@@ -2,32 +2,36 @@
 
 language: node_js
 
-node_js:
-  - "6"
+node_js: "6"
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
 
 before_script:
   - echo '========== Importing wiki articles into hugo =========='
   - cd ./scripts/wiki/
-  - npm install
+  - yarn install
   - node app.js
   - cd $TRAVIS_BUILD_DIR
 
   - echo '========== Importing games wiki articles into hugo =========='
   - cd ./scripts/games/
-  - npm install
+  - yarn install
   - node app.js
   - cd $TRAVIS_BUILD_DIR
 
   - echo '========== Importing twitter tweets into hugo =========='
   - cd ./scripts/twitter/
-  - npm install
+  - yarn install
   - node app.js
   - cd $TRAVIS_BUILD_DIR
 
   - echo '========== Installing gulp / hugo dependencies =========='
-  - npm install -g @alrra/travis-scripts
-  - npm install -g gulp
-  - npm install -g hugo-bin
+  - yarn global add @alrra/travis-scripts
+  - yarn global add gulp
+  - yarn global add hugo-bin
   - hugo version
 
   - echo '========== Configuring Github Pages =========='

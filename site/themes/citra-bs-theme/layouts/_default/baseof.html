@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta name="theme-color" content="#FF8E03">
+
     {{ .Hugo.Generator }}
 
     <link rel="icon" href="{{ .Site.BaseURL }}favicon.ico" />
@@ -12,21 +13,33 @@
     <link rel="canonical" href="{{ .Permalink }}">
 
     {{ if .RSSLink }}
-      <link href="{{ .Site.BaseURL }}index.xml" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-      <link href="{{ .Site.BaseURL }}index.xml" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+    <link href="{{ .Site.BaseURL }}index.xml" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+    <link href="{{ .Site.BaseURL }}index.xml" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
     {{ end }}
 
+    <title>{{ if .IsHome }}Homepage{{ else }}{{ .Title }}{{ end }} | {{ .Site.Title }} | Nintendo 3DS Emulator</title>
+
+    <!-- Meta Properties -->
     <meta property="og:title" content="{{ if ne .URL "/" }} {{ .Title }} &middot; {{ end }} {{ .Site.Title }}" />
+
+    {{ if (eq .Section "game") }}
+    {{ $rating := index .Site.Data.compatibility ( string .Params.compatibility | default "0" ) }}
+    <meta property="og:description" content="{{ $rating.name }} - {{ $rating.description }}" />
+    <meta name="description" content="{{ $rating.name }} - {{ $rating.description }}">
+    {{ else }}
     <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}" />
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}">
+    {{ end }}
+
    	<meta property="og:site_name" content="{{ .Site.Title }}" />
     <meta property="og:url" content="{{ .Permalink }}" />
     
     {{ if (eq .Section "entry") | or (eq .Section "wiki") | or (eq .Section "game") }}
       <meta property="og:type" content="article" />
-      {{ if (eq .Section "entry") | or (eq .Section "wiki") }}
+      {{ if (eq .Section "entry") }}
         <meta property="og:image" content="{{ .Site.BaseURL }}images/banners/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
       {{ else if (eq .Section "game") }}
-        <meta property="og:image" content="{{ .Site.BaseURL }}images/game/boxart/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
+        <meta property="og:image" content="{{ .Site.BaseURL }}images/game/icons/{{ .File.BaseFileName }}.png" />
       {{ end }}
       <meta property="og:article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}" />
       {{ range .Params.tags }}
@@ -35,10 +48,7 @@
     {{ else }}
       <meta property="og:type" content="website" />
     {{ end }}
-
-    {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
-
-    <title>{{ if .IsHome }}Homepage{{ else }}{{ .Title }}{{ end }} | {{ .Site.Title }} | Nintendo 3DS Emulator</title>
+    <!-- End Meta Properties -->
 
     {{ if eq (getenv "GULP") "true" }}
       <link rel="stylesheet" href="/css/main.css"/>

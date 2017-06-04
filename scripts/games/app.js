@@ -105,11 +105,11 @@ try {
 
       // Copy all savefiles into the output folder and store their contents.
       fs.readdirSync(inputDirectorySavefilesGame).forEach(file => {
-        if (file.slice(-5) == '.csav') {
-          fsextra.copySync(`${inputDirectorySavefilesGame}/${file}`, `${outputDirectorySavefilesGame}/${file}`);
-        } else if (file.slice(-4) == '.dat') {
+        if (path.extname(file) == '.zip') {
+          fsextra.copySync(`${inputDirectorySavefilesGame}/${file}`, `${outputDirectorySavefilesGame}/${file.replace('.zip', '.zip')}`);
+        } else if (path.extname(file) == '.dat') {
           // Store the contents of the file in memory for adding it into the markdown later.
-          savefileMetadataContents.push({ filename: file.replace('.dat', '.csav'), contents: fs.readFileSync(`${inputDirectorySavefilesGame}/${file}`, 'utf8') });
+          savefileMetadataContents.push({ filename: file.replace('.dat', '.zip'), contents: fs.readFileSync(`${inputDirectorySavefilesGame}/${file}`, 'utf8') });
         }
       });
     }
@@ -126,7 +126,7 @@ try {
 
       // Copy all screenshots into the output folder.
       fs.readdirSync(inputDirectoryScreenshotsGame).forEach(file => {
-        if (file.slice(-4) == '.png') {
+        if (path.extname(file) == '.png') {
           fsextra.copySync(`${inputDirectoryScreenshotsGame}/${file}`, `${outputDirectoryScreenshotsGame}/${file}`);
         }
       });
