@@ -106,10 +106,10 @@ try {
       // Copy all savefiles into the output folder and store their contents.
       fs.readdirSync(inputDirectorySavefilesGame).forEach(file => {
         if (path.extname(file) == '.zip') {
-          fsextra.copySync(`${inputDirectorySavefilesGame}/${file}`, `${outputDirectorySavefilesGame}/${file.replace('.zip', '.csav')}`);
+          fsextra.copySync(`${inputDirectorySavefilesGame}/${file}`, `${outputDirectorySavefilesGame}/${file.replace('.zip', '.zip')}`);
         } else if (path.extname(file) == '.dat') {
           // Store the contents of the file in memory for adding it into the markdown later.
-          savefileMetadataContents.push({ filename: file.replace('.dat', '.csav'), contents: fs.readFileSync(`${inputDirectorySavefilesGame}/${file}`, 'utf8') });
+          savefileMetadataContents.push({ filename: file.replace('.dat', '.zip'), contents: fs.readFileSync(`${inputDirectorySavefilesGame}/${file}`, 'utf8') });
         }
       });
     }
