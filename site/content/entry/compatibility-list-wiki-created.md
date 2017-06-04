@@ -1,7 +1,7 @@
 +++
-date = "2017-06-03T11:30:00-04:00"
+date = "2017-06-04T11:10:00-08:00"
 title = "Citra Now Has A Game Compatibility Wiki!"
-author = "Saphiresurf"
+author = "saphiresurf"
 +++
 
 As game compatibility has broadened and the popularity of Citra has risen there's always been a lack of consistent information on what could be played in Citra and what couldn't. Often times the best way to find out if a game was working properly in Citra was to jump in and test it for yourself, but if any issues were encountered you'd be left scouring through forums sifting through potentially out of date information for answers.
