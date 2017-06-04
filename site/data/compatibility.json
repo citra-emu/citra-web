@@ -1,8 +1,8 @@
 {
-  "5": { "name": "Perfect", "description": "Game functions flawless with no audio or graphical glitches, all tested functionality works as intended without any workarounds needed." },
-  "4": { "name": "Great", "description": "Game functions with minor graphical or audio glitches and is playable from start to finish. May require some workarounds." },
-  "3": { "name": "Okay", "description": "Game functions with major graphical or audio glitches, but game is playable from start to finish with workarounds." },
-  "2": { "name": "Bad", "description": "Game functions, but with major graphical or audio glitches. Unable to progress in specific areas due to glitches even with workarounds." },
-  "1": { "name": "Intro/Menu", "description": "Game is completely unplayable due to major graphical or audio glitches. Unable to progress past the Start Screen." },
-  "0": { "name": "Won't Boot", "description": "The game crashes when attempting to startup." }
+  "0": { "name": "Perfect", "description": "Game functions flawless with no audio or graphical glitches, all tested functionality works as intended without any workarounds needed." },
+  "1": { "name": "Great", "description": "Game functions with minor graphical or audio glitches and is playable from start to finish. May require some workarounds." },
+  "2": { "name": "Okay", "description": "Game functions with major graphical or audio glitches, but game is playable from start to finish with workarounds." },
+  "3": { "name": "Bad", "description": "Game functions, but with major graphical or audio glitches. Unable to progress in specific areas due to glitches even with workarounds." },
+  "4": { "name": "Intro/Menu", "description": "Game is completely unplayable due to major graphical or audio glitches. Unable to progress past the Start Screen." },
+  "5": { "name": "Won't Boot", "description": "The game crashes when attempting to startup." }
 }
