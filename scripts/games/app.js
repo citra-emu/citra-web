@@ -105,7 +105,7 @@ try {
 
       // Copy all savefiles into the output folder and store their contents.
       fs.readdirSync(inputDirectorySavefilesGame).forEach(file => {
-        if (file.slice(-5) == '.csav') {
+        if (file.slice(-5) == '.zip') {
           fsextra.copySync(`${inputDirectorySavefilesGame}/${file}`, `${outputDirectorySavefilesGame}/${file.replace('.zip', '.csav')}`);
         } else if (file.slice(-4) == '.dat') {
           // Store the contents of the file in memory for adding it into the markdown later.
