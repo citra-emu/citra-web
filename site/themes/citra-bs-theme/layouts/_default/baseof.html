@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta name="theme-color" content="#FF8E03">
+
     {{ .Hugo.Generator }}
 
     <link rel="icon" href="{{ .Site.BaseURL }}favicon.ico" />
@@ -12,12 +13,23 @@
     <link rel="canonical" href="{{ .Permalink }}">
 
     {{ if .RSSLink }}
-      <link href="{{ .Site.BaseURL }}index.xml" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-      <link href="{{ .Site.BaseURL }}index.xml" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+    <link href="{{ .Site.BaseURL }}index.xml" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+    <link href="{{ .Site.BaseURL }}index.xml" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
     {{ end }}
 
+    <title>{{ if .IsHome }}Homepage{{ else }}{{ .Title }}{{ end }} | {{ .Site.Title }} | Nintendo 3DS Emulator</title>
+
+    <!-- Meta Properties -->
     <meta property="og:title" content="{{ if ne .URL "/" }} {{ .Title }} &middot; {{ end }} {{ .Site.Title }}" />
+
+    {{ if (eq .Section "game") }}
+    <meta property="og:description" content="{{ $rating.name }} - {{ $rating.description }}" />
+    <meta name="description" content="{{ $rating.name }} - {{ $rating.description }}">
+    {{ else }}
     <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}" />
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}">
+    {{ end }}
+
    	<meta property="og:site_name" content="{{ .Site.Title }}" />
     <meta property="og:url" content="{{ .Permalink }}" />
     
@@ -35,10 +47,7 @@
     {{ else }}
       <meta property="og:type" content="website" />
     {{ end }}
-
-    {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
-
-    <title>{{ if .IsHome }}Homepage{{ else }}{{ .Title }}{{ end }} | {{ .Site.Title }} | Nintendo 3DS Emulator</title>
+    <!-- End Meta Properties -->
 
     {{ if eq (getenv "GULP") "true" }}
       <link rel="stylesheet" href="/css/main.css"/>

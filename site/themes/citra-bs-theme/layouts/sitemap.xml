@@ -6,10 +6,6 @@
 
     <loc>{{ .Permalink }}</loc>
 
-    {{ if (eq .Section "game") }}
-    <description>{{ $rating.name }} - {{ $rating.description }}</description>
-    {{ end }}
-
     {{ if (eq .Section "entry") }}
     <image:image>
       <image:loc>{{ .Site.BaseURL }}images/banners/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}</image:loc>
