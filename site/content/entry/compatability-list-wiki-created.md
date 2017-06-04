@@ -1,15 +1,15 @@
 +++
 date = "2017-06-03T11:30:00-04:00"
-title = "Compatibility List/Wiki Created!"
+title = "Citra Now Has a Games Compatibility Wiki!"
 author = "Saphiresurf"
-forum = 1603
 +++
 
+
+As game compatibility has broadened and the popularity of Citra has risen there's always been a lack of consistent information on what could be played in Citra and what couldn't. Often times the best way to find out if a game was working properly in Citra was to jump in and test it for yourself, but if any issues were encountered you'd be left scouring through forums sifting through potentially out of date information for answers.
+
+In order to address this issue Flame Sage, Flamboyant Ham, Leo121, Anodium, and Koopa have worked hard to create a new game compatibility wiki! As time goes on more and more titles from the 3DS library will be added to this list. As they're added in, each game will be given a compatibility rating based on how well and how smoothly they run in Citra. On each games individual page there will be a summary of the game itself, how it runs on Citra, as well as any problems that arise when running the game. With all of this information it works to give you a much better idea of how it runs and what to expect.
+
+
+Look forward to this compatiblity list expanding as the project continues to mature!
+
 [Check it Out Here] (https://citra-emu.org/game/)
-
-As game compatibility has broadened and the popularity of Citra has risen there's continued to be a bit of a void for information in terms of what you can actually play with Citra. When you launch a game it's been a bit of a blind test when you launch a game or even when progressing through them unless you do your own research.
-
-In order to fill this void we've decided to create a new game compatibility wiki! The 3DS' game library is slowly going to be populated into this list and each game will be assigned a rating of bronze, silver, gold, or platinum based on how well and how smoothly they run in Citra. We'll have a section on each games page titled "Notes" that will be a wiki editable by anyone that will be specifically for issues you may have had running the game, things you may have done to circumvent those issues, or generally anything having to do with running the game on official builds of Citra.
-
-
-Look forward to this compatiblity list expanding as we continue to grow!
