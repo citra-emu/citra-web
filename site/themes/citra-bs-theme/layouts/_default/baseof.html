@@ -23,7 +23,7 @@
     
     {{ if (eq .Section "entry") | or (eq .Section "wiki") | or (eq .Section "game") }}
       <meta property="og:type" content="article" />
-      {{ if (eq .Section "entry") | or (eq .Section "wiki") }}
+      {{ if (eq .Section "entry") }}
         <meta property="og:image" content="{{ .Site.BaseURL }}images/banners/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
       {{ else if (eq .Section "game") }}
         <meta property="og:image" content="{{ .Site.BaseURL }}images/game/boxart/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
