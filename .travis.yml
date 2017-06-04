@@ -4,7 +4,10 @@ language: node_js
 
 node_js: "6"
 
-cache: yarn
+cache:
+  yarn: true
+  directories:
+    - node_modules
 
 before_script:
   - echo '========== Importing wiki articles into hugo =========='
