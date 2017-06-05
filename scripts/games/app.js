@@ -41,11 +41,10 @@ function getDirectories (srcpath) {
 
 String.prototype.trimNewline = function() {
   let string = this.toString();
-  let match = '\r\n'
   if (string.endsWith('\r\n')) {
-    return string.slice(0, -4);
-  } else if (string.endsWith('\r') || string.endsWith('\n')) {
     return string.slice(0, -2);
+  } else if (string.endsWith('\r') || string.endsWith('\n')) {
+    return string.slice(0, -1);
   } else {
     return string;
   }
