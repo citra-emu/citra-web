@@ -133,7 +133,6 @@ try {
         });
       }
 
-
       // Create the markdown file to be displayed in Hugo.
       let title = game.replace(/-/g, ' ').slice(0, -3);
       var stats = fs.statSync(`${inputDirectoryGame}/${game}/game.dat`);
