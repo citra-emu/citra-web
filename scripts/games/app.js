@@ -27,11 +27,9 @@ function url(title) {
 function gitPull(directory, repository) {
   if (fs.existsSync(directory)) {
       logger.info(`Fetching latest from Github : ${directory}`);
-      logger.info(`git --git-dir=${directory} pull`);
-      exec(`git --git-dir=${directory} pull`);
+      exec(`cd ${directory} && git pull && cd -`);
   } else {
       logger.info(`Cloning repository from Github : ${directory}`);
-      logger.info(`git clone ${repository}`);
       exec(`git clone ${repository}`);
   }
 }
@@ -39,6 +37,18 @@ function gitPull(directory, repository) {
 function getDirectories (srcpath) {
   return fs.readdirSync(srcpath)
     .filter(file => fs.lstatSync(path.join(srcpath, file)).isDirectory())
+}
+
+String.prototype.trimNewline = function() {
+  let string = this.toString();
+  let match = '\r\n'
+  if (string.endsWith('\r\n')) {
+    return string.slice(0, -4);
+  } else if (string.endsWith('\r') || string.endsWith('\n')) {
+    return string.slice(0, -2);
+  } else {
+    return string;
+  }
 }
 
 // Fetch game information stored in Github repository.
@@ -110,7 +120,10 @@ try {
             fsextra.copySync(`${inputDirectorySavefilesGame}/${file}`, `${outputDirectorySavefilesGame}/${file.replace('.zip', '.zip')}`);
           } else if (path.extname(file) == '.dat') {
             // Store the contents of the file in memory for adding it into the markdown later.
-            savefileMetadataContents.push({ filename: file.replace('.dat', '.zip'), contents: fs.readFileSync(`${inputDirectorySavefilesGame}/${file}`, 'utf8') });
+            savefileMetadataContents.push({
+              filename: file.replace('.dat', '.zip'),
+              contents: fs.readFileSync(`${inputDirectorySavefilesGame}/${file}`, 'utf8').trimNewline()
+            });
           }
         });
       }
@@ -138,14 +151,14 @@ try {
       var stats = fs.statSync(`${inputDirectoryGame}/${game}/game.dat`);
       let modified = new Date(util.inspect(stats.mtime));
 
-      let datContents = fs.readFileSync(`${inputDirectoryGame}/${game}/game.dat`, 'utf8');
+      let datContents = fs.readFileSync(`${inputDirectoryGame}/${game}/game.dat`, 'utf8').trimNewline();
 
       var wikiContents = "";
       let wikiPathGame = `${inputDirectoryWiki}/${game}.md`;
       if (fs.existsSync(wikiPathGame)) {
-        wikiContents = fs.readFileSync(wikiPathGame, 'utf8');
+        wikiContents = fs.readFileSync(wikiPathGame, 'utf8').trimNewline();
       } else {
-        wikiContents = "No wiki exists yet for this game.";
+        wikiContents = "## No wiki exists yet for this game.";
       }
 
       // Fix Blackfriday markdown rendering differences.
@@ -155,13 +168,14 @@ try {
       // Read all savefiles from array and copy them into the markdown.
       savefileMetadataContents.forEach(function(savefile) {
         let modified = new Date(util.inspect(stats.mtime));
-        datContents += `\r\n\r\n[[ savefiles ]]\r\n${savefile.contents}\r\nfilename = "${savefile.filename}"\r\ndate = "${modified.toISOString()}"\r\n`;
+        datContents += `\r\n\r\n[[ savefiles ]]\r\nfilename = "${savefile.filename}"\r\ndate = "${modified.toISOString()}"\r\n${savefile.contents}`;
       });
 
       let output = `+++\r\ndate = "${modified.toISOString()}"\r\n${datContents}\r\n+++\r\n\r\n${wikiContents}\r\n`;
       fs.writeFileSync(`${outputDirectoryMd}/${game}.md`, output);
     } catch (ex) {
       logger.error(`${game} failed to generate: ${ex}`);
+      logger.error(ex);
     }
   });
 } catch (ex) {
