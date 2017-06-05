@@ -10,3 +10,6 @@ paginate = 10
     title = "Citra"
     description = "Citra is an open-source emulator for the Nintendo 3DS capable of playing many of your favorite 3DS games."
     weight = 1
+
+[outputs]
+section = [ "HTML", "JSON" ]
