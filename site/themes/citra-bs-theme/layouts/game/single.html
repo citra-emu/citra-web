@@ -27,9 +27,9 @@
   </div>
 
 	<h1>{{ .Title }}</h1>
-  <div class="row">
+  <div class="row" style="padding-bottom: 16px;">
     <div class="col-md-5">
-      <img class="center-block img-responsive" style="padding-top: 6px;" src="{{ .Site.BaseURL }}images/game/boxart/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
+      <img class="center-block img-responsive compatibility-boxart" style="padding-top: 6px;" src="{{ .Site.BaseURL }}images/game/boxart/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
     </div>
     <div class="col-md-7">
       <!-- Metadata information -->
