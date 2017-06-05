@@ -76,83 +76,94 @@ if (fs.existsSync(outputDirectoryScreenshots) == false) {
 try {
   // Loop through each game folder.
   getDirectories(inputDirectoryGame).forEach(function(game) {
-    if (game == '.git') { return; }
+    try {
+      if (game == '.git') { return; }
 
-    logger.info(`Creating Hugo files for ${game}`);
+      logger.info(`Creating Hugo files for ${game}`);
 
-    // Copy the boxart for the game.
-    let boxartPath = `${inputDirectoryGame}/${game}/boxart.png`;
-    if (fs.existsSync(boxartPath)) {
-      fsextra.copySync(boxartPath, `${outputDirectoryBoxart}/${game}.png`);
-    }
-
-    // Copy the icon for the game.
-    let iconPath = `${inputDirectoryGame}/${game}/icon.png`;
-    if (fs.existsSync(iconPath)) {
-      fsextra.copySync(iconPath, `${outputDirectoryIcons}/${game}.png`);
-    }
-
-    // Copy the savefiles for the game.
-    let inputDirectorySavefilesGame = `${inputDirectoryGame}/${game}/savefiles/`;
-    let outputDirectorySavefilesGame = `${outputDirectorySavefiles}/${game}/`;
-    let savefileMetadataContents = [];
-
-    if (fs.existsSync(inputDirectorySavefilesGame)) {
-      // Create the savefile directory for each game.
-      if (fs.existsSync(outputDirectorySavefilesGame) == false) {
-          fs.mkdirSync(outputDirectorySavefilesGame);
+      // Copy the boxart for the game.
+      let boxartPath = `${inputDirectoryGame}/${game}/boxart.png`;
+      if (fs.existsSync(boxartPath)) {
+        fsextra.copySync(boxartPath, `${outputDirectoryBoxart}/${game}.png`);
       }
 
-      // Copy all savefiles into the output folder and store their contents.
-      fs.readdirSync(inputDirectorySavefilesGame).forEach(file => {
-        if (path.extname(file) == '.zip') {
-          fsextra.copySync(`${inputDirectorySavefilesGame}/${file}`, `${outputDirectorySavefilesGame}/${file.replace('.zip', '.zip')}`);
-        } else if (path.extname(file) == '.dat') {
-          // Store the contents of the file in memory for adding it into the markdown later.
-          savefileMetadataContents.push({ filename: file.replace('.dat', '.zip'), contents: fs.readFileSync(`${inputDirectorySavefilesGame}/${file}`, 'utf8') });
-        }
-      });
-    }
-
-    // Copy the screenshots for the game.
-    let inputDirectoryScreenshotsGame = `${inputDirectoryGame}/${game}/screenshots/`;
-    let outputDirectoryScreenshotsGame = `${outputDirectoryScreenshots}/${game}/`;
-
-    if (fs.existsSync(inputDirectoryScreenshotsGame)) {
-      // Create the savefile directory for each game.
-      if (fs.existsSync(outputDirectoryScreenshotsGame) == false) {
-          fs.mkdirSync(outputDirectoryScreenshotsGame);
+      // Copy the icon for the game.
+      let iconPath = `${inputDirectoryGame}/${game}/icon.png`;
+      if (fs.existsSync(iconPath)) {
+        fsextra.copySync(iconPath, `${outputDirectoryIcons}/${game}.png`);
       }
 
-      // Copy all screenshots into the output folder.
-      fs.readdirSync(inputDirectoryScreenshotsGame).forEach(file => {
-        if (path.extname(file) == '.png') {
-          fsextra.copySync(`${inputDirectoryScreenshotsGame}/${file}`, `${outputDirectoryScreenshotsGame}/${file}`);
+      // Copy the savefiles for the game.
+      let inputDirectorySavefilesGame = `${inputDirectoryGame}/${game}/savefiles/`;
+      let outputDirectorySavefilesGame = `${outputDirectorySavefiles}/${game}/`;
+      let savefileMetadataContents = [];
+
+      if (fs.existsSync(inputDirectorySavefilesGame)) {
+        // Create the savefile directory for each game.
+        if (fs.existsSync(outputDirectorySavefilesGame) == false) {
+            fs.mkdirSync(outputDirectorySavefilesGame);
         }
-      });
-    }
+
+        // Copy all savefiles into the output folder and store their contents.
+        fs.readdirSync(inputDirectorySavefilesGame).forEach(file => {
+          if (path.extname(file) == '.zip') {
+            fsextra.copySync(`${inputDirectorySavefilesGame}/${file}`, `${outputDirectorySavefilesGame}/${file.replace('.zip', '.zip')}`);
+          } else if (path.extname(file) == '.dat') {
+            // Store the contents of the file in memory for adding it into the markdown later.
+            savefileMetadataContents.push({ filename: file.replace('.dat', '.zip'), contents: fs.readFileSync(`${inputDirectorySavefilesGame}/${file}`, 'utf8') });
+          }
+        });
+      }
+
+      // Copy the screenshots for the game.
+      let inputDirectoryScreenshotsGame = `${inputDirectoryGame}/${game}/screenshots/`;
+      let outputDirectoryScreenshotsGame = `${outputDirectoryScreenshots}/${game}/`;
+
+      if (fs.existsSync(inputDirectoryScreenshotsGame)) {
+        // Create the savefile directory for each game.
+        if (fs.existsSync(outputDirectoryScreenshotsGame) == false) {
+            fs.mkdirSync(outputDirectoryScreenshotsGame);
+        }
+
+        // Copy all screenshots into the output folder.
+        fs.readdirSync(inputDirectoryScreenshotsGame).forEach(file => {
+          if (path.extname(file) == '.png') {
+            fsextra.copySync(`${inputDirectoryScreenshotsGame}/${file}`, `${outputDirectoryScreenshotsGame}/${file}`);
+          }
+        });
+      }
 
 
-    // Create the markdown file to be displayed in Hugo.
-    let title = game.replace(/-/g, ' ').slice(0, -3);
-    var stats = fs.statSync(`${inputDirectoryGame}/${game}/game.dat`);
-    let modified = new Date(util.inspect(stats.mtime));
-
-    let datContents = fs.readFileSync(`${inputDirectoryGame}/${game}/game.dat`, 'utf8');
-    let wikiContents = fs.readFileSync(`${inputDirectoryWiki}/${game}.md`, 'utf8');
-
-    // Fix Blackfriday markdown rendering differences.
-    wikiContents = blackfriday.fixLists(wikiContents);
-    wikiContents = blackfriday.fixLinks(wikiContents);
-
-    // Read all savefiles from array and copy them into the markdown.
-    savefileMetadataContents.forEach(function(savefile) {
+      // Create the markdown file to be displayed in Hugo.
+      let title = game.replace(/-/g, ' ').slice(0, -3);
+      var stats = fs.statSync(`${inputDirectoryGame}/${game}/game.dat`);
       let modified = new Date(util.inspect(stats.mtime));
-      datContents += `\r\n\r\n[[ savefiles ]]\r\n${savefile.contents}\r\nfilename = "${savefile.filename}"\r\ndate = "${modified.toISOString()}"\r\n`;
-    });
 
-    let output = `+++\r\ndate = "${modified.toISOString()}"\r\n${datContents}\r\n+++\r\n\r\n${wikiContents}\r\n`;
-    fs.writeFileSync(`${outputDirectoryMd}/${game}.md`, output);
+      let datContents = fs.readFileSync(`${inputDirectoryGame}/${game}/game.dat`, 'utf8');
+
+      var wikiContents = "";
+      let wikiPathGame = `${inputDirectoryWiki}/${game}.md`;
+      if (fs.existsSync(wikiPathGame)) {
+        wikiContents = fs.readFileSync(wikiPathGame, 'utf8');
+      } else {
+        wikiContents = "No wiki exists yet for this game.";
+      }
+
+      // Fix Blackfriday markdown rendering differences.
+      wikiContents = blackfriday.fixLists(wikiContents);
+      wikiContents = blackfriday.fixLinks(wikiContents);
+
+      // Read all savefiles from array and copy them into the markdown.
+      savefileMetadataContents.forEach(function(savefile) {
+        let modified = new Date(util.inspect(stats.mtime));
+        datContents += `\r\n\r\n[[ savefiles ]]\r\n${savefile.contents}\r\nfilename = "${savefile.filename}"\r\ndate = "${modified.toISOString()}"\r\n`;
+      });
+
+      let output = `+++\r\ndate = "${modified.toISOString()}"\r\n${datContents}\r\n+++\r\n\r\n${wikiContents}\r\n`;
+      fs.writeFileSync(`${outputDirectoryMd}/${game}.md`, output);
+    } catch (ex) {
+      logger.error(`${game} failed to generate: ${ex}`);
+    }
   });
 } catch (ex) {
   logger.error(ex);
