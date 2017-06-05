@@ -323,4 +323,4 @@ a:hover, a:focus {
 
 /* Games Module */
 .game-icon-list { }
-.compatibility-boxart { width: 328px; height: 300px; }
+.compatibility-boxart { width: 328px; height: 300px; padding-bottom: 16px; }
