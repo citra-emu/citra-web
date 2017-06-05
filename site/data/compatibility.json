@@ -4,5 +4,5 @@
   "2": { "name": "Okay", "color": "#94b242", "description": "Game functions with major graphical or audio glitches, but game is playable from start to finish with workarounds." },
   "3": { "name": "Bad", "color": "#f2d624", "description": "Game functions, but with major graphical or audio glitches. Unable to progress in specific areas due to glitches even with workarounds." },
   "4": { "name": "Intro/Menu", "color": "red", "description": "Game is completely unplayable due to major graphical or audio glitches. Unable to progress past the Start Screen." },
-  "5": { "name": "Won't Boot", "color": "red", "description": "The game crashes when attempting to startup." }
+  "5": { "name": "Won't Boot", "color": "#828282", "description": "The game crashes when attempting to startup." }
 }
