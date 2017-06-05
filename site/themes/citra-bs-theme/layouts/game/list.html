@@ -13,7 +13,7 @@
 		</tbody>
 	</table>
 
-  <table class="table">
+  <table class="table table-responsive">
     <thead>
       <tr>
         <th></th>
@@ -23,11 +23,10 @@
       </tr>
     </thead>
     <tbody>
-      {{ $paginator := .Paginate .Data.Pages 50 }}
-      {{ range $paginator.Pages }}
+      {{ range .Data.Pages }}
         {{ $rating := index .Site.Data.compatibility ( string .Params.compatibility | default "0" ) }}
         <tr>
-          <td><img class="img-responsive" src="{{ .Site.BaseURL }}images/game/icons/{{ default (print .File.BaseFileName ".png") }}" /></td>
+          <td style="width: 55px;"><img class="img-responsive game-icon-list" src="{{ .Site.BaseURL }}images/game/icons/{{ default (print .File.BaseFileName ".png") }}" /></td>
           <td><a href="{{ .Permalink }}">{{ .Params.title }}</a></td>
           <td><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</td>
           <td>{{ dateFormat "January 2, 2006" .Params.tested_date }}</td>
@@ -35,6 +34,4 @@
       {{ end }}
     </tbody>
   </table>
-
-  {{ partial "pagination" . }}
 {{ end }}
