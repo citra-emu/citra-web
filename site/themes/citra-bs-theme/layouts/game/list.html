@@ -1,7 +1,6 @@
 {{ define "main" }}
 	<h1>Game Compatibility List</h1>
 	<p>The Citra Emulator compatibility list contains all the games we tested, sorted by how well they work on the emulator.</p>
-
 	<table class="table table-striped table-bordered">
 		<tbody>
       {{ range .Site.Data.compatibility }}
@@ -12,6 +11,8 @@
       {{ end }}
 		</tbody>
 	</table>
+
+	<div id="highchart-container" style="height: 100px; margin: 0 auto"></div>
 
   <table class="table table-responsive">
     <thead>
@@ -28,10 +29,34 @@
         <tr>
           <td style="width: 55px;"><img class="img-responsive game-icon-list" src="{{ .Site.BaseURL }}images/game/icons/{{ default (print .File.BaseFileName ".png") }}" /></td>
           <td><a href="{{ .Permalink }}">{{ .Params.title }}</a></td>
-          <td><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</td>
+          <td class="compatibility-row"><div class="square-icon compatibility-{{ replace ($rating.name | urlize) "/" "" }}" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</td>
           <td>{{ dateFormat "January 2, 2006" .Params.tested_date }}</td>
         </tr>
       {{ end }}
     </tbody>
   </table>
+{{ end }}
+
+{{ define "scripts" }}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<script type="text/javascript">
+Highcharts.chart('highchart-container', {
+    chart: { type: 'bar' },
+    colors: [{{ range .Site.Data.compatibility }}"{{ .color }}", {{- end }}],
+    credits: { enabled: false },
+		exporting: { enabled: false },
+    title: { text: '' },
+    xAxis: { categories: [''] },
+    yAxis: { min: 0, max: $(".compatibility-row").length, title: { text: '' } },
+    legend: { enabled: false },
+    plotOptions: { series: { stacking: 'normal' } },
+    series: [
+			{{ range .Site.Data.compatibility }}
+			{ "name": "{{ .name }}", "data": [$(".compatibility-{{ replace (.name | urlize) "/" "" }}").length] },
+			{{ end }}
+		]
+});
+</script>
 {{ end }}
