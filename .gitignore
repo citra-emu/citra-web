@@ -10,6 +10,12 @@ site/public/
 
 # Dynamic content imported on deploy.
 site/content/wiki/
+site/content/game/
+site/static/images/game/icons
+site/static/images/game/boxart
+!site/static/images/game/boxart/default.png
+site/static/images/screenshots0/
+site/static/savefiles/
 site/data/twitter.json
 
 # Filesystem stuff.
