@@ -35,7 +35,7 @@
       <table class="table table-responsive table-striped table-bordered">
         <tbody>
           <tr>
-            {{- $rating := index .Site.Data.compatibility ( string .Params.compatibility | default "99" ) }}
+            {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
             <td style="width: 100px;">Status</td>
             <td><b><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</b><br />{{ $rating.description }}</td>
           </tr>
@@ -72,8 +72,7 @@
   {{ if isset .Params "testcases" }}
     {{ $siteCompatibility := .Site.Data.compatibility }}
     {{ range .Params.testcases }}
-      {{ $testcase := . }}
-      {{ $rating := index $siteCompatibility ( string $testcase.compatibility | default "0" ) }}
+      {{- $rating := index $siteCompatibility .compatibility }}
       <div class="row">
         <div class="col-md-12">
           <h2>Compatibility</h2>
@@ -88,9 +87,9 @@
             </thead>
             <tbody>
               <tr>
-                <td>{{ dateFormat "January 2, 2006" $testcase.date }}</td>
-                <td><a href="https://community.citra-emu.org/u/{{ $testcase.owner }}/summary">{{ $testcase.author }}</a></td>
-                <td>{{ $testcase.version }}</td>
+                <td>{{ dateFormat "January 2, 2006" .date }}</td>
+                <td><a href="https://community.citra-emu.org/u/{{ .owner }}/summary">{{ .author }}</a></td>
+                <td>{{ .version }}</td>
                 <td><b><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</b></td>
               </tr>
             </tbody>

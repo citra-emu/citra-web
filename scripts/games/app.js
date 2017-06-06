@@ -145,10 +145,10 @@ try {
       // Parse testcase information out of the dat to reinject as shortcut values.
       var dat = toml.parse(datContents);
       if (dat.testcases == null || dat.testcases.length == 0) {
-        datContents = `compatibility = 99"\r\ntestcase_date = "2000-01-01"\r\n` + datContents;
+        datContents = `compatibility = \"99\"\r\ntestcase_date = "2000-01-01"\r\n` + datContents;
       } else {
         let recent = dat.testcases[0];
-        datContents = `compatibility = ${recent.compatibility}\r\ntestcase_date = "${recent.date}"\r\n` + datContents;
+        datContents = `compatibility = \"${recent.compatibility}\"\r\ntestcase_date = "${recent.date}"\r\n` + datContents;
       }
 
       var wikiContents = "";

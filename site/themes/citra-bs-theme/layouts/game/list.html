@@ -5,8 +5,8 @@
 		<tbody>
       {{ range .Site.Data.compatibility }}
         <tr>
-  				<td style="width: 128px;"><div class="square-icon" style="background-color: {{ .color }}"></div> {{ .name }}</td>
-  				<td>{{ .description }}</td>
+  				<td style="width: 120px;"><div class="square-icon" style="background-color: {{ .color }}"></div> {{ .name }}</td>
+  				<td class="row-compat-desc">{{ .description }}</td>
   			</tr>
       {{ end }}
 		</tbody>
@@ -25,11 +25,11 @@
     </thead>
     <tbody>
 			{{ range .Data.Pages }}
-				{{- $rating := index .Site.Data.compatibility ( string .Params.compatibility | default "99" ) }}
+				{{- $rating := index .Site.Data.compatibility .Params.compatibility }}
 	      <tr>
 	        <td style="width: 55px;"><img class="img-responsive game-icon-list" src="{{ .Site.BaseURL }}images/game/icons/{{ default (print .File.BaseFileName ".png") }}" /></td>
 	        <td><a href="{{ .Permalink }}">{{ .Params.title }}</a></td>
-					<td class="compatibility-row"><div class="square-icon compatibility-{{ replace ($rating.name | urlize) "/" "" }}" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</td>
+					<td class="compatibility-row"><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</td>
 	        <td>{{ dateFormat "January 2, 2006" .Params.testcase_date }}</td>
 	      </tr>
 			{{ end }}
@@ -49,13 +49,15 @@ Highcharts.chart('highchart-container', {
 		exporting: { enabled: false },
     title: { text: '' },
     xAxis: { categories: [''] },
-    yAxis: { min: 0, max: $(".compatibility-row").length, title: { text: '' } },
+    yAxis: { min: 0, max: {{ len .Data.Pages }}, title: { text: '' } },
     legend: { enabled: false },
     plotOptions: { series: { stacking: 'normal' } },
     series: [
-			{{ range .Site.Data.compatibility }}
-			{ "name": "{{ .name }}", "data": [$(".compatibility-{{ replace (.name | urlize) "/" "" }}").length] },
-			{{ end }}
+			{{- $dataPages := .Data.Pages }}
+			{{- range .Site.Data.compatibility }}
+			{{- $dataPagesFiltered := where $dataPages ".Params.compatibility" .key }}
+			{ "name": "{{ .name }}", "data": [ {{ len $dataPagesFiltered }} ] },
+			{{- end }}
 		]
 });
 </script>

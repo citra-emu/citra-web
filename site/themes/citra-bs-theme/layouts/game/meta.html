@@ -1,4 +1,4 @@
-{{- $rating := index .Site.Data.compatibility ( string .Params.compatibility | default "99" ) }}
+{{- $rating := index .Site.Data.compatibility .Params.compatibility }}
 <meta property="og:description" content="{{ $rating.name }} - {{ $rating.description }}" />
 <meta name="description" content="{{ $rating.name }} - {{ $rating.description }}" />
 
