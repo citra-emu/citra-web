@@ -11,6 +11,7 @@
     "rimraf": "^2.6.1",
     "sanitize-html": "^1.14.1",
     "sync-exec": "^0.6.2",
+    "toml": "^2.3.2",
     "winston": "^2.2.0"
   },
   "preferGlobal": false,
