@@ -143,16 +143,12 @@ try {
       datContents = `date = "${modified.toISOString()}"\r\n` + datContents;
 
       // Parse testcase information out of the dat to reinject as shortcut values.
-      try {
-        var dat = toml.parse(datContents);
-        if (dat.testcases == null || dat.testcases.length == 0) {
-          datContents = `compatibility = 99"\r\ntestcase_date = "2000-01-01"\r\n` + datContents;
-        } else {
-          let recent = dat.testcases[0];
-          datContents = `compatibility = ${recent.compatibility}\r\ntestcase_date = "${recent.date}"\r\n` + datContents;
-        }
-      } catch (e) {
-        console.error(`Parsing dat file error on line ${e.line}, column ${e.column}: ${e.message}`);
+      var dat = toml.parse(datContents);
+      if (dat.testcases == null || dat.testcases.length == 0) {
+        datContents = `compatibility = 99"\r\ntestcase_date = "2000-01-01"\r\n` + datContents;
+      } else {
+        let recent = dat.testcases[0];
+        datContents = `compatibility = ${recent.compatibility}\r\ntestcase_date = "${recent.date}"\r\n` + datContents;
       }
 
       var wikiContents = "";
@@ -160,7 +156,8 @@ try {
       if (fs.existsSync(wikiPathGame)) {
         wikiContents = fs.readFileSync(wikiPathGame, 'utf8');
       } else {
-        wikiContents = "No wiki exists yet for this game.";
+        logger.warn(`CompatDB: No wiki exists for game ${game}.`);
+        wikiContents = "## No wiki exists yet for this game.";
       }
 
       // Fix Blackfriday markdown rendering differences.
@@ -176,7 +173,8 @@ try {
       let output = `+++\r\n${datContents}\r\n+++\r\n\r\n${wikiContents}\r\n`;
       fs.writeFileSync(`${outputDirectoryMd}/${game}.md`, output);
     } catch (ex) {
-      logger.error(`${game} failed to generate: ${ex}`);
+      logger.warn(`${game} failed to generate: ${ex}`);
+      logger.error(ex);
     }
   });
 } catch (ex) {
