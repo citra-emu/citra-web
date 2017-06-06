@@ -1,7 +1,7 @@
 body {
-    font-family: "Ubuntu","Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: #333333;
-    background-color: #e5e5e5;
+  font-family: "Ubuntu","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #333333;
+  background-color: #e5e5e5;
 }
 
 /* latin */
@@ -41,7 +41,7 @@ h1 {
   background-size: cover;
 }
 #mainContainer {
-  padding-top: 70px;
+  padding-top: 85px;
   padding-bottom: 2%;
   background-color: white;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1);
