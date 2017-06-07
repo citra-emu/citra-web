@@ -36,7 +36,7 @@
         <tbody>
           <tr>
             {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
-            <td style="width: 100px;">Status</td>
+            <td style="width: 120px;">Status</td>
             <td><b><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</b><br />{{ $rating.description }}</td>
           </tr>
           <tr>
