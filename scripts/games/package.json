@@ -12,6 +12,7 @@
     "sanitize-html": "^1.14.1",
     "sync-exec": "^0.6.2",
     "toml": "^2.3.2",
+    "tomlify-j0.4": "^2.0.0",
     "winston": "^2.2.0"
   },
   "preferGlobal": false,
