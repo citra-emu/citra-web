@@ -77,7 +77,6 @@ try {
         model.testcase_date = "2000-01-01";
       } else {
         let recent = model.testcases[0];
-        
         model.compatibility = recent.compatibility;
         model.testcase_date = recent.date;
       }
@@ -101,8 +100,11 @@ try {
             // Read the data file into an object.
             let savefile = toml.parse(fs.readFileSync(`${fsPathCodeSavefilesGame}/${file}`, 'utf8'));
 
+            let stats = fs.statSync(`${fsPathCodeSavefilesGame}/${file}`);
+
             // Store the contents of the file in memory for adding it into the markdown later.
             model.savefiles.push({
+              date: new Date(util.inspect(stats.mtime)),
               filename: file.replace('.dat', '.zip'),
               title: savefile.title,
               description: savefile.description,
