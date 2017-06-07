@@ -8,6 +8,8 @@
   "dependencies": {
     "delete": "^0.3.2",
     "fs-extra": "^3.0.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
     "rimraf": "^2.6.1",
     "sanitize-html": "^1.14.1",
     "sync-exec": "^0.6.2",

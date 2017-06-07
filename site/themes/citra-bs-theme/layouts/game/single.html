@@ -99,38 +99,70 @@
     {{ end }}
   {{ end }}
 
-  {{ if (where (readDir "/static/savefiles") "Name" .File.BaseFileName) }}
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Savefiles</h2>
-        <table class="table table-responsive table-striped">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Uploaded By</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{ range .Params.savefiles }}
-              <tr>
-                <td><a href="/savefiles/{{ $gameName }}/{{ .filename }}">{{ .title }}</a></td>
-                <td>{{ .description }}</td>
-                <td><a href="https://community.citra-emu.org/u/{{ .author }}/summary">{{ .author }}</a></td>
-                <td>{{ dateFormat "January 2, 2006" .date }}</td>
-              </tr>
-            {{ end }}
-          </tbody>
-        </table>
-      </div>
+  <!-- Github Issues -->
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Known Issues</h2>
+      {{- if isset .Params "issues" }}
+      <table class="table table-responsive table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Created</th>
+            <th>Last Updated</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{- range .Params.issues }}
+          <tr>
+            <th><a href="https://github.com/citra-emu/citra/issues/{{ .number }}">{{ .title }}</a></th>
+            <td>{{ dateFormat "January 2, 2006" .created_at }}</td>
+            <td>{{ dateFormat "January 2, 2006" .updated_at }}</td>
+          </tr>
+          {{- end }}
+        </tbody>
+      </table>
+      {{- else }}
+        <p>No issues have been reported for this game.</p>
+      {{- end }}
     </div>
-  {{ end }}
+  </div>
 
-  {{ if (where (readDir "/static/images/screenshots0") "Name" .File.BaseFileName) }}
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Screenshots</h2>
+  <!-- Savefiles -->
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Savefiles</h2>
+      {{ if (where (readDir "/static/savefiles") "Name" .File.BaseFileName) }}
+      <table class="table table-responsive table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Uploaded By</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range .Params.savefiles }}
+            <tr>
+              <td><a href="/savefiles/{{ $gameName }}/{{ .filename }}">{{ .title }}</a></td>
+              <td>{{ .description }}</td>
+              <td><a href="https://community.citra-emu.org/u/{{ .author }}/summary">{{ .author }}</a></td>
+              <td>{{ dateFormat "January 2, 2006" .date }}</td>
+            </tr>
+          {{ end }}
+        </tbody>
+      </table>
+      {{ else }}
+      <p>No savefiles have been uploaded for this game.</p>
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Screenshots</h2>
+      {{ if (where (readDir "/static/images/screenshots0") "Name" .File.BaseFileName) }}
         {{ $files := readDir (printf "/static/images/screenshots0/%s/" .File.BaseFileName) }}
         {{ range $index, $element := $files }}
           <div class="popup-gallery col-lg-3 col-md-4 col-xs-6 thumb">
@@ -139,10 +171,11 @@
             </a>
           </div>
         {{ end }}
-      </div>
+      {{ else }}
+        <p>No screenshots have been uploaded for this game.</p>
+      {{ end }}
     </div>
-  {{ end }}
-
+  </div>
 {{ end }}
 
 {{ define "scripts" }}
