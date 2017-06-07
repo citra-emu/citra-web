@@ -1,7 +1,7 @@
 {
-  "name": "citra-wiki",
+  "name": "citra-games-wiki",
   "version": "1.0.0",
-  "description": "Used in Citra Hugo to import Wiki articles.",
+  "description": "Used in Citra Hugo to import Game Wiki articles.",
   "homepage": "https://citra-emu.org/",
   "author": "Flame Sage <chris062689@gmail.com>",
   "main": "app.js",
