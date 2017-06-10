@@ -26,9 +26,11 @@
   </div>
 
 	<h1>{{ .Title }}</h1>
-  <div class="row" style="padding-bottom: 16px;">
+  <div class="row">
     <div class="col-md-5">
-      <img class="center-block img-responsive compatibility-boxart" style="padding-top: 6px;" src="{{ .Site.BaseURL }}images/game/boxart/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
+      <div class="boxart">
+        <img src="{{ .Site.BaseURL }}images/game/boxart/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
+      </div>
     </div>
     <div class="col-md-7">
       <!-- Metadata information -->
@@ -36,7 +38,7 @@
         <tbody>
           <tr>
             {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
-            <td style="width: 120px;">Status</td>
+            <td style="width: 120px;">Rating</td>
             <td><b><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</b><br />{{ $rating.description }}</td>
           </tr>
           <tr>
@@ -81,6 +83,7 @@
               <tr>
                 <th>Date</th>
                 <th>Tested By</th>
+                <th>Hardware</th>
                 <th>Citra Version</th>
                 <th>Rating</th>
               </tr>
@@ -89,6 +92,7 @@
               <tr>
                 <td>{{ dateFormat "January 2, 2006" .date }}</td>
                 <td><a href="https://community.citra-emu.org/u/{{ .author }}/summary">{{ .author }}</a></td>
+                <td>{{ .cpu }}<br />{{ .gpu }}<br />{{ .os }}</td>
                 <td>{{ .version }}</td>
                 <td><b><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</b></td>
               </tr>

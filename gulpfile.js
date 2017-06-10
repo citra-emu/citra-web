@@ -1,22 +1,18 @@
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var exec = require('child_process').exec;
-var rimraf = require('rimraf');
+const gulp = require('gulp');
+const exec = require('child_process').exec;
+const rimraf = require('rimraf');
 
-var postcss = require('gulp-postcss');
-var cssImport = require('postcss-import');
-var cssnext = require('postcss-cssnext');
+const ghPages = require('gulp-gh-pages');
 
-var md5 = require("gulp-md5-plus");
+const md5 = require("gulp-md5-plus");
+const postcss = require('gulp-postcss');
+const cssImport = require('postcss-import');
+const cssnext = require('postcss-cssnext');
+const cleanCSS = require('gulp-clean-css');
 
-var ghPages = require('gulp-gh-pages');
+const imageResize = require('gulp-image-resize');
 
-var uncss = require('gulp-uncss');
-var cleanCSS = require('gulp-clean-css');
-var image = require('gulp-image');
-var jimp = require("gulp-jimp-resize");
-
-var htmlmin = require('gulp-htmlmin');
+const htmlmin = require('gulp-htmlmin');
 
 const distPath = './site/public';
 const cname = 'citra-emu.org';
@@ -53,16 +49,16 @@ gulp.task('images', ['hugo'], () => (
   gulp.src(`${distPath}/images/*`, {base: './'})
       .pipe(gulp.dest('./')),
   gulp.src(`${distPath}/images/jumbotron/*`, {base: './'})
-      .pipe(jimp({ sizes: [{"width": 786, "height": 471 }] }))
+      .pipe(imageResize({ width: 786, height: 471, crop: true }))
       .pipe(gulp.dest('./')),
   gulp.src(`${distPath}/images/banners/*`, {base: './'})
-      .pipe(jimp({ sizes: [{"width": 824, "height": 306 }] }))
+      .pipe(imageResize({ width: 824, height: 306, crop: false }))
       .pipe(gulp.dest('./')),
   gulp.src(`${distPath}/images/game/boxart/*`, {base: './'})
-      .pipe(jimp({ sizes: [{"width": 328, "height": 300 }] }))
+      .pipe(imageResize({ width: 328, height: 300, crop: true }))
       .pipe(gulp.dest('./')),
   gulp.src(`${distPath}/images/game/icons/*`, {base: './'})
-      .pipe(jimp({ sizes: [{"width": 48, "height": 48 }] }))
+      .pipe(imageResize({ width: 48, height: 48, crop: true }))
       .pipe(gulp.dest('./'))
 ));
 

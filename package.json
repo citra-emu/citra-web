@@ -9,12 +9,8 @@
     "gulp-clean-css": "^3.0.3",
     "gulp-gh-pages": "^0.5.4",
     "gulp-htmlmin": "^3.0.0",
-    "gulp-image": "^2.7.5",
-    "gulp-jimp-resize": "^2.0.2",
+    "gulp-image-resize": "^0.12.0",
     "gulp-md5-plus": "^0.2.5",
-    "gulp-postcss": "^6.3.0",
-    "gulp-uncss": "^1.0.6",
-    "gulp-util": "^3.0.8",
     "postcss-cssnext": "^2.9.0",
     "postcss-import": "^8.2.0",
     "rimraf": "^2.6.1"
