@@ -45,7 +45,7 @@ async function getGithubIssues() {
   // Force the while loop out after 10 calls.
   for (var page = 0; page <= 3; page++) {
     let options = {
-      url: `https://api.github.com/repos/citra-emu/citra/issues?per_page=99&page=${page}&client_id=fca88d03a8f4e3ae45f8&client_secret=97c8f5633b5f03a78bfa84f0ab50659db1303035`,
+      url: `https://api.github.com/repos/citra-emu/citra/issues?per_page=99&page=${page}`,
       headers: { 'User-Agent': 'citrabot' }
     };
 
