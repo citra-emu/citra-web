@@ -46,6 +46,10 @@ before_script:
 env:
   - HUGO_ENV=PRD
 
+notifications:
+  email:
+    - mods@citra-emu.org
+
 # set-up-ssh is provided by travis-scripts.
 # Setting up the SSH key for Github is described here.
 # https://github.com/alrra/travis-scripts/blob/master/doc/github-deploy-keys.md
