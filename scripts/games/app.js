@@ -123,6 +123,13 @@ function processGame(game) {
       model.compatibility = recent.compatibility;
       model.testcase_date = recent.date;
     }
+
+    let section_id = `${model.title[0]}`.toLowerCase();
+    if (!section_id.match(/[a-z]+/)) {
+        section_id = "#";
+    }
+
+    model.section_id = section_id;
     // END SHORTCUTS BLOCK
 
     // SAVEFILE BLOCK

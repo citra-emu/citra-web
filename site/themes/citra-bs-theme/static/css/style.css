@@ -323,3 +323,16 @@ a:hover, a:focus {
 
 /* Games Module */
 .game-icon-list { }
+
+#game-sections {
+  display: table;
+  margin: 0 auto;
+}
+
+#game-sections .btn {
+  padding: 6px 10px;
+}
+
+#game-section-header {
+  border: 0;
+}
