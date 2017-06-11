@@ -124,7 +124,16 @@ function processGame(game) {
       model.testcase_date = recent.date;
     }
 
-    let section_id = `${model.title[0]}`.toLowerCase();
+    const toTrim = ["the", "a", "an"];
+
+    let trimmedTitle = model.title.toLowerCase();
+    toTrim.forEach(trim => {
+        if (trimmedTitle.startsWith(trim)) {
+            trimmedTitle = trimmedTitle.substr(trim.length + 1);
+        }
+    });
+
+    let section_id = `${trimmedTitle[0]}`;
     if (!section_id.match(/[a-z]+/)) {
         section_id = "#";
     }
