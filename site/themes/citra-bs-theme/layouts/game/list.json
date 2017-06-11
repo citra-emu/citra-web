@@ -5,7 +5,8 @@
     {{- $gameIndex := $index }}
     {{- $lenRegions := sub (len .Params.releases) 1 }}
     {{- range $regionIndex, $element := .Params.releases }}
-        "{{ $element.title }}": { "region": "{{ .region }}", "gameID": "{{ $game.File.BaseFileName }}", "gameName": "{{ $game.Title | plainify }}" }{{- if and (eq $gameIndex $lenGames) (eq $regionIndex $lenRegions) }}{{ else }},{{ end }}
+        "{{ $element.title }}": { "region": "{{ .region }}", "gameID": "{{ $game.File.BaseFileName }}",
+          "gameName": "{{ $game.Title | plainify }}" }{{- if and (eq $gameIndex $lenGames) (eq $regionIndex $lenRegions) }}{{ else }},{{ end }}
     {{- end }}
   {{- end }}
 }
