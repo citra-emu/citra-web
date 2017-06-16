@@ -133,7 +133,7 @@
         <tbody>
           {{- range .Params.issues }}
           <tr>
-            <th><a href="https://github.com/citra-emu/citra/issues/{{ .number }}">{{ .title }}</a></th>
+            <td><a href="https://github.com/citra-emu/citra/issues/{{ .number }}">{{ .title }}</a></td>
             <td>{{ dateFormat "January 2, 2006" .created_at }}</td>
             <td>{{ dateFormat "January 2, 2006" .updated_at }}</td>
           </tr>
