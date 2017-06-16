@@ -30,6 +30,7 @@
 			<tr>
 				<th></th>
 				<th>Title</th>
+				<th>Type</th>
 				<th>Compatibility</th>
 				<th>Date Tested</th>
 			</tr>
@@ -44,12 +45,14 @@
 
 			{{ range .Pages }}
 			  {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
-			  <tr>
-				<td style="width: 55px;"><img class="img-responsive game-icon-list" src="{{ .Site.BaseURL }}images/game/icons/{{ default (print .File.BaseFileName ".png") }}" /></td>
-				<td><a href="{{ .Permalink }}">{{ .Params.title }}</a></td>
-						<td class="compatibility-row"><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</td>
-				<td>{{ dateFormat "January 2, 2006" .Params.testcase_date }}</td>
-			  </tr>
+				{{- $type := index .Site.Data.gameTypes (.Params.game_type | default "3ds") }}
+				<tr>
+	        <td class="col-md-1"><img src="{{ .Site.BaseURL }}images/game/icons/{{ .File.BaseFileName }}.png" /></td>
+	        <td class="col-md-6"><a href="{{ .Permalink }}">{{ .Params.title }}</a></td>
+					<td class="col-md-1"><img src="{{ .Site.BaseURL }}images/game/types/{{ $type.key }}.png" title="{{ $type.name }}" /></td>
+					<td class="col-md-1"><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</td>
+	        <td class="col-md-3">{{ dateFormat "January 2, 2006" .Params.testcase_date }}</td>
+	      </tr>
 			{{ end }}
 		{{ end }}
 		</tbody>

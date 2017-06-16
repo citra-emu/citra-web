@@ -1,6 +1,7 @@
 {{ define "main" }}
   {{ $BaseURL := .Site.BaseURL }}
   {{ $gameName := .File.BaseFileName }}
+  {{- $type := index .Site.Data.gameTypes (.Params.game_type | default "3ds") }}
 
   <div class="alert alert-info">
     <div class="row">
@@ -40,6 +41,19 @@
             {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
             <td style="width: 120px;">Rating</td>
             <td><b><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</b><br />{{ $rating.description }}</td>
+          </tr>
+          <tr>
+            <td>Type</td>
+            <td>
+              <img src="{{ .Site.BaseURL }}images/game/types/{{ $type.key }}.png" title="{{ $type.name }}" />
+              {{- if eq $type.key "3ds" }}
+              {{- else if eq $type.key "vc" }}
+                {{- $vcSystem := index .Site.Data.vcSystems .Params.vc_system }}
+                {{ $vcSystem.name }}
+              {{- else }}
+                {{ $type.name }}
+              {{ end }}
+            </td>
           </tr>
           <tr>
             <td>Game Icon</td>

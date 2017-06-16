@@ -1,0 +1,8 @@
+{
+  "nes": { "key": "nes", "name": "Nintendo Entertainment System" },
+  "snes": { "key": "snes", "name": "Super Nintendo Entertainment System" },
+  "gb": { "key": "gb", "name": "Game Boy" },
+  "gbc": { "key": "gbc", "name": "Game Boy Color" },
+  "gba": { "key": "gba", "name": "Game Boy Advance" },
+  "gg": { "key": "gg", "name": "Game Gear" }
+}
