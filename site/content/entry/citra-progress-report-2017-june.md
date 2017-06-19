@@ -22,13 +22,14 @@ IMAGE COMMENT HERE
 
 #### START CANDITATE PULL REQUESTS ####
 
-## [Create a random console_unique_id](https://github.com/citra-emu/citra/pull/2668) by [B3n30](https://github.com/B3n30)
-
-    ### Unique UUIDs for Citra installs like real 3DSes.
-
 ## [Services/UDS: Generate 802.11 beacon frames when a network is open.](https://github.com/citra-emu/citra/pull/2661) by [Subv](https://github.com/Subv)
 
     ### UDS allows multiplayer on Citra. Also, [Subv](https://github.com/Subv) said it's fine to talk about it now. 🚂
+
+## [Create a random console_unique_id](https://github.com/citra-emu/citra/pull/2668) by [B3n30](https://github.com/B3n30)
+
+    ### Unique UUIDs for Citra installs like real 3DSes.
+    #### For `nwm::UDS` since that's already being worked on.
 
 ## [Stdin software keyboard implementation](https://github.com/citra-emu/citra/pull/2334) by [jroweboy](https://github.com/jroweboy)
 
