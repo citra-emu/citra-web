@@ -128,8 +128,8 @@ function processGame(game) {
 
     let trimmedTitle = model.title.toLowerCase();
     toTrim.forEach(trim => {
-        if (trimmedTitle.startsWith(trim)) {
-            trimmedTitle = trimmedTitle.substr(trim.length + 1);
+        if (trimmedTitle.startsWith(trim + " ")) {
+            trimmedTitle = trimmedTitle.substr(trim.length + 2);
         }
     });
 
