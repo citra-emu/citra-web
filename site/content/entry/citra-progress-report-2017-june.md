@@ -16,7 +16,7 @@ forum = 0000
 
 3DS consoles all have a unique identifier that allow them to be differentiated between each other. Outside of online play, this console ID is largely useless, and so Citra has always left it as statically as `0xDEADC0DE`. But, because of the work [Subv](https://github.com/Subv) has done for multiplayer support, the need for unique console IDs is returning.
 
-Thanks to this patch by [B3n30](https://github.com/B3n30), Citra will now generate a random identifier on every new installation, and every installation that does not already have a new identifier. Even though for now this does not do much now, it will prevent a significant amount of headache by the multiplayer experience when the time for that comes.
+Thanks to this patch by [B3n30](https://github.com/B3n30), Citra will now generate a random identifier on every new installation, and every installation that does not already have a new identifier. Even though for now this does not do much now, it will prevent a significant amount of headache that would've been caused by the multiplayer experience when the time for that comes.
 
 #### END PARAGRAPH HERE
 
