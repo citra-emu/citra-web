@@ -8,28 +8,19 @@ forum = 0000
 
 #### INTRO PARAGRAPH HERE
 
-## [PR TITLE HERE](PR LINK HERE) by [AUTHOR NAME HERE](AUTHOR GITHUB HERE)
-
-#### PR PARAGRAPH(S) HERE
-
-<p style="text-align: center;">
-<img alt="" src="IMAGE LINK HERE" />
-IMAGE COMMENT HERE
-</p>
-
-#### CLOSING PARAGRAPH HERE
-
-
-#### START CANDITATE PULL REQUESTS ####
-
 ## [Services/UDS: Generate 802.11 beacon frames when a network is open.](https://github.com/citra-emu/citra/pull/2661) by [Subv](https://github.com/Subv)
 
     ### UDS allows multiplayer on Citra. Also, [Subv](https://github.com/Subv) said it's fine to talk about it now. 🚂
 
 ## [Create a random console_unique_id](https://github.com/citra-emu/citra/pull/2668) by [B3n30](https://github.com/B3n30)
 
-    ### Unique UUIDs for Citra installs like real 3DSes.
-    #### For `nwm::UDS` since that's already being worked on.
+3DS consoles all have a unique identifier that allow them to be differentiated between each other. Outside of online play, this console ID is largely useless, and so Citra has always left it as statically as `0xDEADC0DE`. But, because of the work [Subv](https://github.com/Subv) has done for multiplayer support, the need for unique console IDs is returning.
+
+Thanks to this patch by [B3n30](https://github.com/B3n30), Citra will now generate a random identifier on every new installation, and every installation that does not already have a new identifier. Even though for now this does not do much now, it will prevent a significant amount of headache by the multiplayer experience when the time for that comes.
+
+#### END PARAGRAPH HERE
+
+#### START CANDITATE PULL REQUESTS ####
 
 ## [Stdin software keyboard implementation](https://github.com/citra-emu/citra/pull/2334) by [jroweboy](https://github.com/jroweboy)
 
