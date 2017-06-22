@@ -18,7 +18,11 @@ This patch is actually only the latest in a months-long series of patches, all o
 
 Thanks to this patch by [B3n30](https://github.com/B3n30), Citra will now generate a random identifier on every new installation, and every installation that does not already have a unique identifier. Even though for now this does not do much now, it will prevent a significant amount of headache that would've been caused by the multiplayer experience when the time for that comes.
 
-#### END PARAGRAPH HERE
+## Contributors of June 2017
+
+It has been absolutely amazing to see so much work be put in by people from all over the world, in ever-increasing rates. I never thought that we would get to the point where tripling the rate at which these reports are published would be warranted, but here we are. And though the work will only get harder, I absolutely welcome more people wanting to help make this the best emulator it can be.
+
+ As always, thank [you all](https://github.com/citra-emu/citra/graphs/contributors?from=2017-04-16&amp;to=2017-06-22&amp;type=c) very much for taking the time to work on Citra, and helping it become what is has, and will be.
 
 #### START CANDITATE PULL REQUESTS ####
 
