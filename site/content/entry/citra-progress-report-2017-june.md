@@ -10,7 +10,7 @@ forum = 0000
 
 ## [Services/UDS: Generate 802.11 beacon frames when a network is open.](https://github.com/citra-emu/citra/pull/2661) by [Subv](https://github.com/Subv)
 
-    ### UDS allows multiplayer on Citra. Also, [Subv](https://github.com/Subv) said it's fine to talk about it now. 🚂
+This patch is actually only the latest in a $(length)-long series of patches, all of which are to implement the highly anticipated local WLAN emulation! Though this is all in very early stages (with developers saying it's about 10% complete as a very optimistic estimate), multiplayer between Citra instances could be working in a not too far off future, and a bridge for real 3DS consoles in the plans as well.
 
 ## [Create a random console_unique_id](https://github.com/citra-emu/citra/pull/2668) by [B3n30](https://github.com/B3n30)
 
