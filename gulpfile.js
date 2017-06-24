@@ -45,6 +45,12 @@ gulp.task("css", ['hugo'], () => (
     .pipe(gulp.dest('./'))
 ));
 
+gulp.task("js", ['hugo'], () => (
+  gulp.src(`${distPath}/js/**/*.js`, {base: './'})
+    .pipe(md5(10, `${distPath}/**/*.html`))
+    .pipe(gulp.dest('./'))
+));
+
 gulp.task('images', ['hugo'], () => (
   gulp.src(`${distPath}/images/*`, {base: './'})
       .pipe(gulp.dest('./')),
@@ -62,13 +68,13 @@ gulp.task('images', ['hugo'], () => (
       .pipe(gulp.dest('./'))
 ));
 
-gulp.task('html', ['hugo', 'css', 'images'], () => (
+gulp.task('html', ['hugo', 'css', 'js', 'images'], () => (
   gulp.src(`${distPath}/**/*.html`, {base: './'})
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('./'))
 ));
 
-gulp.task('deploy', ['hugo', 'css', 'images', 'html'], () => {
+gulp.task('deploy', ['html'], () => {
   require('fs').writeFileSync(`${distPath}/CNAME`, `${cname}`);
   require('fs').writeFileSync(`${distPath}/robots.txt`, `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
   return gulp.src(`${distPath}/**/*`).pipe(ghPages(deployOptions));
