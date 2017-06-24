@@ -9,6 +9,7 @@ const postcss = require('gulp-postcss');
 const cssImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
 const cleanCSS = require('gulp-clean-css');
+const rename = require("gulp-rename");
 
 const imageResize = require('gulp-image-resize');
 
@@ -65,7 +66,11 @@ gulp.task('images', ['hugo'], () => (
       .pipe(gulp.dest('./')),
   gulp.src(`${distPath}/images/game/icons/*`, {base: './'})
       .pipe(imageResize({ width: 48, height: 48, crop: true }))
-      .pipe(gulp.dest('./'))
+      .pipe(gulp.dest('./')),
+  
+  gulp.src(`${distPath}/images/screenshots/*`)
+      .pipe(imageResize({ width: 400, height: 240, crop: false }))
+      .pipe(gulp.dest(`${distPath}/images/screenshots/thumbs`))
 ));
 
 gulp.task('html', ['hugo', 'css', 'js', 'images'], () => (
