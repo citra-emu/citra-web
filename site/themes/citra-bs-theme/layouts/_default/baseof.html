@@ -8,7 +8,9 @@
     <meta property="og:title" content="{{ if ne .URL "/" }}{{ .Title }} &middot; {{ end }}{{ .Site.Title }}" />
     <meta property="og:site_name" content="{{ .Site.Title }}" />
     <meta property="og:url" content="{{ .Permalink }}" />
+    {{- if eq .IsPage true }}
     {{ .Render "meta" }}
+    {{- end }}
 
     {{ .Hugo.Generator }}
 
@@ -115,7 +117,7 @@
 		    </div>
 		    <div id="footer-bottom">
 		        <div id="footer-brand"></div>
-		        <div id="footer-legal">Copyright © {{ .Now.Format "2006" }} Citra Emulator Project</div>
+		        <div id="footer-legal">Copyright © {{ now.Format "2006" }} Citra Emulator Project</div>
 		    </div>
 		</div>
 
