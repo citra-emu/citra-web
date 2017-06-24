@@ -177,10 +177,10 @@ function processGame(game) {
     // END SAVEFILE BLOCK
 
     // GITHUB ISSUES BLOCK
+    model.issues = [];
+    model.closed_issues = [];
+    
     if (model.github_issues != null && model.github_issues.length > 0) {
-      model.issues = [];
-      model.closed_issues = [];
-
       model.github_issues.forEach(function(number) {
         let issue = githubIssues.find(x => x.number == number);
         if (issue == null) {
