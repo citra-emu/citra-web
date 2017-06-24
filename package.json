@@ -5,6 +5,7 @@
   "author": "",
   "license": "GPLv3",
   "dependencies": {
+    "browser-sync": "^2.18.12",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.0.3",
     "gulp-gh-pages": "^0.5.4",
@@ -13,6 +14,7 @@
     "gulp-md5-plus": "^0.2.5",
     "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.8",
     "postcss-cssnext": "^2.9.0",
     "postcss-import": "^8.2.0",
     "rimraf": "^2.6.1"
