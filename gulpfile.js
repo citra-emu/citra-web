@@ -17,14 +17,15 @@ const imageResize = require('gulp-image-resize');
 
 const htmlmin = require('gulp-htmlmin');
 
-const distPath = './site/public';
+const hugoPath = './site';
+const distPath = './public';
 const cname = 'citra-emu.org';
 const deployOptions = {
   remoteUrl: "git@github.com:CitraBotWeb/CitraBotWeb.github.io.git",
   branch: "master"
 };
 
-gulp.task("default", ['serve']);
+gulp.task("default", ['setup', 'serve']);
 
 // PHASE 1 - Setup
 gulp.task('setup', function(cb) {
@@ -44,8 +45,8 @@ gulp.task('setup', function(cb) {
 // PHASE 2 - Data Dependencies
 
 // PHASE 3 - Building
-gulp.task('hugo', ['setup'], function (cb) {
-  exec('hugo -s ./site/ -v', function (err, stdout, stderr) {
+gulp.task('hugo', function (cb) {
+  exec('hugo -s ./site/ -d ../public/ -v', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
@@ -80,7 +81,10 @@ gulp.task('images', ['hugo'], () => (
 ));
 
 // This task ensures all phases up to PHASE 3 are completed.
-gulp.task('build', ['hugo', 'css', 'images']);
+gulp.task('build', ['hugo', 'css', 'images'], function (done) {
+    browsersync.reload();
+    done();
+});
 
 // STAGE 4 - Optimization
 gulp.task('compress', ['build'], () => (
@@ -107,10 +111,12 @@ gulp.task('serve', ['build'], () => {
       },
       open: false
   });
+
+  gulp.watch('./site/**/*', ['build']);
 });
 
 // Used for Production
-gulp.task('deploy', ['build', 'compress'], () => {
+gulp.task('deploy', ['setup', 'build', 'compress'], () => {
   require('fs').writeFileSync(`${distPath}/CNAME`, `${cname}`);
   require('fs').writeFileSync(`${distPath}/robots.txt`, `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
   return gulp.src(`${distPath}/**/*`).pipe(ghPages(deployOptions));
