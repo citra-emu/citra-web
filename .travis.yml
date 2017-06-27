@@ -28,13 +28,11 @@ before_script:
   - node app.js
   - cd $TRAVIS_BUILD_DIR
 
-  - echo '========== Installing gulp / hugo dependencies =========='
+  - echo '========== Installing gulp & dependencies =========='
   - sudo apt-get install graphicsmagick
   - convert -help
   - yarn global add @alrra/travis-scripts
   - yarn global add gulp
-  - yarn global add hugo-bin
-  - hugo version
 
   - echo '========== Configuring Github Pages =========='
   - git config --global user.email "citra+citrabotweb@citra-emu.org"

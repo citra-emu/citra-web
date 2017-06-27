@@ -42,11 +42,9 @@ gulp.task('setup', function(cb) {
   rimraf(`${distPath}`, cb);
 });
 
-// PHASE 2 - Data Dependencies
-
-// PHASE 3 - Building
+// PHASE 2 - Building
 gulp.task('hugo', function (cb) {
-  exec('hugo -s ./site/ -d ../public/ -v', function (err, stdout, stderr) {
+  exec('$(npm bin)/hugo -s ./site/ -d ../public/ -v', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
@@ -80,13 +78,13 @@ gulp.task('images', ['hugo'], () => (
       .pipe(gulp.dest(`${distPath}/images/screenshots/thumbs`))
 ));
 
-// This task ensures all phases up to PHASE 3 are completed.
+// This task ensures all phases up to PHASE 2 are completed.
 gulp.task('build', ['hugo', 'css', 'images'], function (done) {
     browsersync.reload();
     done();
 });
 
-// STAGE 4 - Optimization
+// STAGE 3 - Optimization
 gulp.task('compress', ['build'], () => (
   gulp.src(`${distPath}/js/**/*.js`, {base: './'})
     .pipe(md5(10, `${distPath}/**/*.html`))
@@ -100,7 +98,7 @@ gulp.task('compress', ['build'], () => (
     .pipe(gulp.dest('./'))
 ));
 
-// STAGE 5 - Deploy
+// STAGE 4 - Deploy
 
 // Used for Development
 gulp.task('serve', ['build'], () => {
