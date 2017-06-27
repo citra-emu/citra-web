@@ -76,7 +76,7 @@ function filterTable(e){
         clearFilter();
         window.lastClicked = colorNum;
         var chart = $("#highchart-container").highcharts()
-        window.clearButton = chart.renderer.button('Clear', null, null, function(){ clearFilter() }, {
+        window.clearButton = chart.renderer.button('Clear Filter', null, null, function(){ clearFilter() }, {
             zIndex: 20
         }).attr({
             align: 'right',
