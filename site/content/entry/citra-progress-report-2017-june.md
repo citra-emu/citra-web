@@ -18,25 +18,17 @@ This patch is actually only the latest in a months-long series of patches, all o
 
 Thanks to this patch by [B3n30](https://github.com/B3n30), Citra will now generate a random identifier on every new installation, and every installation that does not already have a unique identifier. Even though for now this does not do much now, it will prevent a significant amount of headache that would've been caused by the multiplayer experience when the time for that comes.
 
+## [Remove built-in disassembler and related code](https://github.com/citra-emu/citra/pull/2689) by [yuriks](https://github.com/yuriks)
+
+The Citra disassembler and debugger was planned to be a fully-featured debugger for 3DS programs, as how Dolphin, No$GBA, or other emulators have done. Unfortunately, they were never given the care that was needed to get them up to speed, and so it was extremely buggy, disassembling code to complete nonsense at times. Not to mention that it was missing a lot of essential features, such as setting breakpoints. All of these things, combined with the fact that we already have added 3DS support to `gdb`, it just made sense to get rid of this one and focus on the other.
+
 ## Contributors of June 2017
 
 It has been absolutely amazing to see so much work be put in by people from all over the world, in ever-increasing rates. I never thought that we would get to the point where tripling the rate at which these reports are published would be warranted, but here we are. And though the work will only get harder, I absolutely welcome more people wanting to help make this the best emulator it can be.
 
  As always, thank [you all](https://github.com/citra-emu/citra/graphs/contributors?from=2017-04-16&amp;to=2017-06-22&amp;type=c) very much for taking the time to work on Citra, and helping it become what is has, and will be.
 
-#### START CANDITATE PULL REQUESTS ####
-
-## [Stdin software keyboard implementation](https://github.com/citra-emu/citra/pull/2334) by [jroweboy](https://github.com/jroweboy)
-
-    ### Even though PR was closed, I find it important to accentuate the need for swkbd.
-
-## [Telemetry framework Part 1](https://github.com/citra-emu/citra/pull/2683) by [bunnei](https://github.com/bunnei)
-
-    ### Diagnostics, telemetry, and stats. Very helpful, and could accentuate the easy updating of the game wiki.
-
-## [Remove built-in disassembler and related code](https://github.com/citra-emu/citra/pull/2689) by [yuriks](https://github.com/yuriks)
-
-    ### Maybe include? Would be good as a call-to-action, but not sure.
+### START CANDIDATE PULL REQUESTS ####
 
 ## [OpenGL: Improve accuracy of quaternion interpolation](https://github.com/citra-emu/citra/pull/2729) by [yuriks](https://github.com/yuriks)
 
