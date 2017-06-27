@@ -65,15 +65,15 @@
 
 <script type="text/javascript">
 function filterTable(e){
-    var compatMap = {0: 'Perfect', 1: 'Great', 2: 'Okay', 3: 'Bad', 4: 'Intro/Menu', 5: 'Won\'t Boot', 6: 'Not Tested'};
-    var className = Array.prototype.filter.call(e.target.classList, function(className){
-        return className.startsWith('highcharts-color-');
+	var compatMap = {0: 'Perfect', 1: 'Great', 2: 'Okay', 3: 'Bad', 4: 'Intro/Menu', 5: 'Won\'t Boot', 6: 'Not Tested'};
+	var className = Array.prototype.filter.call(e.target.classList, function(className){
+		return className.startsWith('highcharts-color-');
     })[0];
-    var colorNum = className.slice(-1);
-    clearFilter();
+	var colorNum = className.slice(-1);
 
     //If clicked on a new color, hides all other colors
     if (colorNum != window.lastClicked){
+        clearFilter();
         window.lastClicked = colorNum;
         var chart = $("#highchart-container").highcharts()
         window.clearButton = chart.renderer.button('Clear', null, null, function(){ clearFilter() }, {
@@ -99,7 +99,7 @@ function filterTable(e){
                 $(this).css('display', 'none');
         })
     } else {
-        window.lastClicked = undefined;
+        clearFilter();
     }
 }
 function clearFilter(){
@@ -107,6 +107,7 @@ function clearFilter(){
     if (window.clearButton){
         window.clearButton.destroy();
         window.clearButton = undefined;
+        window.lastClicked = undefined;
     }
 }
 
