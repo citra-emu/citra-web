@@ -65,14 +65,14 @@
 
 <script type="text/javascript">
 function filterTable(e){
-	var compatMap = {0: 'Perfect', 1: 'Great', 2: 'Okay', 3: 'Bad', 4: 'Intro/Menu', 5: 'Won\'t Boot', 6: 'Not Tested'};
-	var className = Array.prototype.filter.call(e.target.classList, function(className){
-		return className.startsWith('highcharts-color-');
+    var compatMap = {0: 'Perfect', 1: 'Great', 2: 'Okay', 3: 'Bad', 4: 'Intro/Menu', 5: 'Won\'t Boot', 6: 'Not Tested'};
+    var className = Array.prototype.filter.call(e.target.classList, function(className){
+        return className.startsWith('highcharts-color-');
     })[0];
-	var colorNum = className.slice(-1);
+    var colorNum = className.slice(-1);
 
     //Unhides all table rows
-	$("#compatibility-list tbody tr").css('display', '');
+    $("#compatibility-list tbody tr").css('display', '');
 
     //If clicked on a new color, hides all other colors
     if (colorNum != window.lastClicked){
