@@ -65,18 +65,28 @@
 
 <script type="text/javascript">
 function filterTable(e){
-    var compatMap = {0: 'Perfect', 1: 'Great', 2: 'Okay', 3: 'Bad', 4: 'Intro/Menu', 5: 'Won\'t Boot', 6: 'Not Tested'};
-    var className = Array.prototype.filter.call(e.target.classList, function(className){
-        return className.startsWith('highcharts-color-');
+	var compatMap = {0: 'Perfect', 1: 'Great', 2: 'Okay', 3: 'Bad', 4: 'Intro/Menu', 5: 'Won\'t Boot', 6: 'Not Tested'};
+	var className = Array.prototype.filter.call(e.target.classList, function(className){
+		return className.startsWith('highcharts-color-');
     })[0];
-    var colorNum = className.slice(-1);
-
-    //Unhides all table rows
-    $("#compatibility-list tbody tr").css('display', '');
+	var colorNum = className.slice(-1);
+    clearFilter();
 
     //If clicked on a new color, hides all other colors
     if (colorNum != window.lastClicked){
         window.lastClicked = colorNum;
+        var chart = $("#highchart-container").highcharts()
+        window.clearButton = chart.renderer.button('Clear', null, null, function(){ clearFilter() }, {
+            zIndex: 20
+        }).attr({
+            align: 'right',
+            title: 'Clear compatibility filter'
+        }).add().align({
+            align: 'right',
+            x: -16,
+            y: 18
+        }, false, null);
+
         $("#compatibility-list tbody tr[data-compatibility][data-compatibility!=\"" + compatMap[colorNum] + "\"]").css('display', 'none');
 
         //Checks if section headers are empty and hides them if they are
@@ -90,6 +100,13 @@ function filterTable(e){
         })
     } else {
         window.lastClicked = undefined;
+    }
+}
+function clearFilter(){
+    $("#compatibility-list tbody tr").css('display', '');
+    if (window.clearButton){
+        window.clearButton.destroy();
+        window.clearButton = undefined;
     }
 }
 
