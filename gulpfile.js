@@ -11,7 +11,6 @@ const postcss = require('gulp-postcss');
 const cssImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
 const cleanCSS = require('gulp-clean-css');
-const rename = require("gulp-rename");
 
 const imageResize = require('gulp-image-resize');
 
