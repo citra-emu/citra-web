@@ -8,16 +8,6 @@ forum = 0000
 
 The summer of 2017 has just rolled in, and although we don't have a [summer of code](https://developers.google.com/open-source/gsoc/), the patches continue rolling in regardless. Because the rate of patches being submitted continues to increase, we've decided to switch from a quarterly schedule to a monthly schedule with the progress reports. With that small announcement out of the way, let's dive right into this month's batch.
 
-## [Services/UDS: Implement DecryptBeaconData.](https://github.com/citra-emu/citra/pull/2737) by [Subv](https://github.com/Subv)
-
-This patch is actually only the latest in a months-long series of patches, all of which are to implement the highly anticipated local WLAN emulation! Though this is all in very early stages (with developers saying it's about 10% complete as a very optimistic estimate), multiplayer between Citra instances could be working in a not too far off future, and a bridge for real 3DS consoles in the plans as well.
-
-## [Create a random console_unique_id](https://github.com/citra-emu/citra/pull/2668) by [B3n30](https://github.com/B3n30)
-
-3DS consoles all have a unique identifier that allow them to be differentiated between each other. Outside of online play, this console ID is largely useless, and so Citra has always left it statically as `0xDEADC0DE`. But, because of the work [Subv](https://github.com/Subv) has done for multiplayer support, the need for unique console IDs is returning.
-
-Thanks to this patch by [B3n30](https://github.com/B3n30), Citra will now generate a random identifier on every new installation, and every installation that does not already have a unique identifier. Even though for now this does not do much now, it will prevent a significant amount of headache that would've been caused by the multiplayer experience when the time for that comes.
-
 ## [OpenGL: Improve accuracy of quaternion interpolation](https://github.com/citra-emu/citra/pull/2729) by [yuriks](https://github.com/yuriks)
 
 To calculates lighting on any given object, the 3DS' GPU interpolates the light quaternion (the quotient of two vectors) with the surface quaternion of that object. There are three main methods to doing so, the **l**inear int**erp**olation (**lerp**), the **q**uadratic **l**inear int**erp**olation (**qlerp**), and the **s**pherical **l**inear int**erp**olation (**slerp**). All this time Citra used a lerp, which, although the fastest, can lead to a lot of distortion at certain rotation angles.
