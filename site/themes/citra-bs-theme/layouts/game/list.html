@@ -25,7 +25,7 @@
 		</div>
 	</div>
 
-	<table class="table table-responsive">
+	<table id="compatibility-list" class="table table-responsive">
 		<thead>
 			<tr>
 				<th></th>
@@ -46,7 +46,7 @@
 			{{ range .Pages }}
 			  {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
 				{{- $type := index .Site.Data.gameTypes (.Params.game_type | default "3ds") }}
-				<tr>
+				<tr data-compatibility="{{ $rating.name }}">
 	        <td class="col-md-1"><img src="{{ .Site.BaseURL }}images/game/icons/{{ .File.BaseFileName }}.png" /></td>
 	        <td class="col-md-6"><a href="{{ .Permalink }}">{{ .Params.title }}</a></td>
 					<td class="col-md-1"><img src="{{ .Site.BaseURL }}images/game/types/{{ $type.key }}.png" title="{{ $type.name }}" /></td>
@@ -64,6 +64,35 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 <script type="text/javascript">
+function filterTable(e){
+	var compatMap = {0: 'Perfect', 1: 'Great', 2: 'Okay', 3: 'Bad', 4: 'Intro/Menu', 5: 'Won\'t Boot', 6: 'Not Tested'};
+	var className = Array.prototype.filter.call(e.target.classList, function(className){
+		return className.startsWith('highcharts-color-');
+    })[0];
+	var colorNum = className.slice(-1);
+
+    //Unhides all table rows
+	$("#compatibility-list tbody tr").css('display', '');
+
+    //If clicked on a new color, hides all other colors
+    if (colorNum != window.lastClicked){
+        window.lastClicked = colorNum;
+        $("#compatibility-list tbody tr[data-compatibility][data-compatibility!=\"" + compatMap[colorNum] + "\"]").css('display', 'none');
+
+        //Checks if section headers are empty and hides them if they are
+        $("#compatibility-list tbody tr:not([data-compatibility])").each(function(){
+            var elements = $(this).nextUntil("#compatibility-list tbody tr:not([data-compatibility])").filter(function(){
+                return $(this).css('display') != 'none';
+            });
+            var containsVisible = !!elements.length;
+            if (!containsVisible)
+                $(this).css('display', 'none');
+        })
+    } else {
+        window.lastClicked = undefined;
+    }
+}
+
 Highcharts.chart('highchart-container', {
     chart: { type: 'bar' },
     colors: [{{ range .Site.Data.compatibility }}"{{ .color }}", {{- end }}],
@@ -73,7 +102,13 @@ Highcharts.chart('highchart-container', {
     xAxis: { categories: [''] },
     yAxis: { min: 0, max: {{ len .Data.Pages }}, title: { text: '' } },
     legend: { enabled: false },
-    plotOptions: { series: { stacking: 'normal' } },
+    plotOptions: { series: {
+        stacking: 'normal',
+        cursor: 'pointer',
+        events: {
+            click: filterTable
+        }
+    } },
     series: [
 			{{- $dataPages := .Data.Pages }}
 			{{- range .Site.Data.compatibility }}
