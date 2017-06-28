@@ -11,7 +11,7 @@ The summer of 2017 has just rolled in, and although we don't have a [summer of c
 
 ## [OpenGL: Improve accuracy of quaternion interpolation](https://github.com/citra-emu/citra/pull/2729) by [yuriks](https://github.com/yuriks)
 
-To calculates lighting on any given object, the 3DS' GPU interpolates the light quaternion (the quotient of two vectors) with the surface quaternion of that object. There are three main methods to doing so, the **l**inear int**erp**olation (**lerp**), the **q**uadratic **l**inear int**erp**olation (**qlerp**), and the **s**pherical **l**inear int**erp**olation (**slerp**). All this time Citra used a lerp, which, although the fastest, can lead to a lot of distortion at certain rotation angles.
+To calculate lighting on any given object, the 3DS' GPU interpolates the light quaternion (the quotient of two vectors) with the surface quaternion of that object. There are three main methods to doing so, the **l**inear int**erp**olation (**lerp**), the **q**uadratic **l**inear int**erp**olation (**qlerp**), and the **s**pherical **l**inear int**erp**olation (**slerp**). All this time Citra used a lerp, which, although the fastest, can lead to a lot of distortion at certain rotation angles.
 
 <p style="text-align: center; font-size: small; padding: 1%">
 <img style="padding: 0% 0% 1% 0%" alt="lerp, qlerp, and slerp being compared with a 145 degree rotation" src="/images/entry/citra-progress-report-2017-june/lerp-qlerp-slerp.gif" />
