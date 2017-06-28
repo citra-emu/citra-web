@@ -25,7 +25,7 @@
 		</div>
 	</div>
 
-	<table class="table table-responsive">
+	<table id="compatibility-list" class="table table-responsive">
 		<thead>
 			<tr>
 				<th></th>
@@ -46,7 +46,7 @@
 			{{ range .Pages }}
 			  {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
 				{{- $type := index .Site.Data.gameTypes (.Params.game_type | default "3ds") }}
-				<tr>
+				<tr data-compatibility="{{ $rating.name }}">
 	        <td class="col-md-1"><img src="{{ .Site.BaseURL }}images/game/icons/{{ .File.BaseFileName }}.png" /></td>
 	        <td class="col-md-6"><a href="{{ .Permalink }}">{{ .Params.title }}</a></td>
 					<td class="col-md-1"><img src="{{ .Site.BaseURL }}images/game/types/{{ $type.key }}.png" title="{{ $type.name }}" /></td>
@@ -64,6 +64,49 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 <script type="text/javascript">
+function filterTable(e){
+    var rating = this.name;
+
+    //If clicked on a new color, hides all other colors
+    if (rating != window.lastClicked){
+        clearFilter();
+        window.lastClicked = rating;
+        var chart = $("#highchart-container").highcharts()
+        window.clearButton = chart.renderer.button('Clear Filter', null, null, function(){ clearFilter() }, {
+            zIndex: 20
+        }).attr({
+            align: 'right',
+            title: 'Clear compatibility filter'
+        }).add().align({
+            align: 'right',
+            x: -16,
+            y: 18
+        }, false, null);
+
+        $("#compatibility-list tbody tr[data-compatibility][data-compatibility!=\"" + rating + "\"]").css('display', 'none');
+
+        //Checks if section headers are empty and hides them if they are
+        $("#compatibility-list tbody tr:not([data-compatibility])").each(function(){
+            var elements = $(this).nextUntil("#compatibility-list tbody tr:not([data-compatibility])").filter(function(){
+                return $(this).css('display') != 'none';
+            });
+            var containsVisible = !!elements.length;
+            if (!containsVisible)
+                $(this).css('display', 'none');
+        })
+    } else {
+        clearFilter();
+    }
+}
+function clearFilter(){
+    $("#compatibility-list tbody tr").css('display', '');
+    if (window.clearButton){
+        window.clearButton.destroy();
+        window.clearButton = undefined;
+        window.lastClicked = undefined;
+    }
+}
+
 Highcharts.chart('highchart-container', {
     chart: { type: 'bar' },
     colors: [{{ range .Site.Data.compatibility }}"{{ .color }}", {{- end }}],
@@ -73,7 +116,13 @@ Highcharts.chart('highchart-container', {
     xAxis: { categories: [''] },
     yAxis: { min: 0, max: {{ len .Data.Pages }}, title: { text: '' } },
     legend: { enabled: false },
-    plotOptions: { series: { stacking: 'normal' } },
+    plotOptions: { series: {
+        stacking: 'normal',
+        cursor: 'pointer',
+        events: {
+            click: filterTable
+        }
+    } },
     series: [
 			{{- $dataPages := .Data.Pages }}
 			{{- range .Site.Data.compatibility }}
