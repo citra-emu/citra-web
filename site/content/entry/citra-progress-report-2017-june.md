@@ -25,6 +25,10 @@ Notice how the plain lerp (magenta line) lags behind the qlerp (red line) and sl
 
 The Citra disassembler and debugger was planned to be a fully-featured debugger for 3DS programs, as how Dolphin, No$GBA, or other emulators have done. Unfortunately, they were never given the care that was needed to get them up to speed, and so it was extremely buggy, disassembling code to complete nonsense at times. Not to mention that it was missing a lot of essential features, such as setting breakpoints. All of these things, combined with the fact that we already have added 3DS support to `gdb`, it just made sense to get rid of this one and focus on the other.
 
+## [Display QMessageBox Dialogs For Errors](https://github.com/citra-emu/citra/pull/2611) by [TheKoopaKingdom](https://github.com/TheKoopaKingdom)
+
+A lot of the questions we see on our Discord server all generally have the same answers; [missing system or font files](https://citra-emu.org/wiki/dumping-system-archives-and-the-shared-fonts-from-a-3ds-console/), [missing config file](https://citra-emu.org/wiki/dumping-config-savegame-from-a-3ds-console/), an incorrectly dumped [game](https://citra-emu.org/wiki/dumping-installed-titles/) or [cartridge](https://citra-emu.org/wiki/dumping-game-cartridges/), or simply not having [modern enough hardware](https://citra-emu.org/wiki/faq/#what-kind-of-specification-do-i-need-to-run-citra) to run Citra. Because of this, [TheKoopaKingdom](https://github.com/TheKoopaKingdom) has written a patch to auto-detect these problems, report them to the user, and link them to a guide that will help them fix it, all without human intervention!
+
 ## Contributors of June 2017
 
 It has been absolutely amazing to see so much work be put in by people from all over the world, in ever-increasing rates. I never thought that we would get to the point where tripling the rate at which these reports are published would be warranted, but here we are. And though the work will only get harder, I absolutely welcome more people wanting to help make this the best emulator it can be.
@@ -38,7 +42,6 @@ Although this progress report was a bit bare than most, the majority of it was c
 
 ## [Implement fragment lighting in the sw renderer.](https://github.com/citra-emu/citra/pull/2766) by [Subv](https://github.com/Subv)
 ## [Implemented Procedural Texture (Texture Unit 3)](https://github.com/citra-emu/citra/pull/2697) by [wwylele](https://github.com/wwylele)
-## [Display QMessageBox Dialogs For Errors](https://github.com/citra-emu/citra/pull/2611) by [TheKoopaKingdom](https://github.com/TheKoopaKingdom)
 ## [Fragment lighting: implement spot light](https://github.com/citra-emu/citra/pull/2727) by [wwylele](https://github.com/wwylele)
 ## [Prepare Pica registers for Geometry Shaders](https://github.com/citra-emu/citra/pull/2695) by [JayFoxRox](https://github.com/JayFoxRox)
 ## [Fragment lighting: implement lut input 5 (CP) and tangent mapping](https://github.com/citra-emu/citra/pull/2762) by [wwylele](https://github.com/wwylele)
