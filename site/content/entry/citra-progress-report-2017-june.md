@@ -40,7 +40,6 @@ Although this progress report was a bit bare than most, the majority of it was c
 
 #### START CANDIDATE PULL REQUESTS ####
 
-## [Implement fragment lighting in the sw renderer.](https://github.com/citra-emu/citra/pull/2766) by [Subv](https://github.com/Subv)
 ## [Implemented Procedural Texture (Texture Unit 3)](https://github.com/citra-emu/citra/pull/2697) by [wwylele](https://github.com/wwylele)
 ## [Fragment lighting: implement spot light](https://github.com/citra-emu/citra/pull/2727) by [wwylele](https://github.com/wwylele)
 ## [Fragment lighting: implement lut input 5 (CP) and tangent mapping](https://github.com/citra-emu/citra/pull/2762) by [wwylele](https://github.com/wwylele)
