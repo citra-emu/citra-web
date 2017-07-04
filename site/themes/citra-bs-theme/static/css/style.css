@@ -336,3 +336,15 @@ a:hover, a:focus {
 #game-section-header {
   border: 0;
 }
+
+.pagination {
+  margin: 0;
+}
+
+.clear-search {
+  cursor: pointer;
+}
+
+.search-box {
+  margin: 0 20px;
+}

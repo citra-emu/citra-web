@@ -16,120 +16,127 @@
 
 	<hr />
 
-	<div id="game-sections">
-		<div class="btn-group" role="group">
-			<a class="btn btn-secondary" href="##">#</a>
-			{{ range (seq 'a' 'z') }}
-			<a class="btn btn-secondary" href="#{{ printf "%c" . }}">{{ printf "%c" . }}</a>
-			{{ end }}
+	<div id="game-listing">
+		<div>
+			<form class="pull-right">
+				<div class="form-group">
+					<table>
+						<tr>
+							<td>
+								<div class="input-group search-box">
+									<input type="text" class="form-control fuzzy-search" id="search-box" placeholder="Search...">
+									<span onclick="clearSearch()" class="clear-search input-group-addon">X</span>
+								</div>
+							</td>
+							<td>
+								<a href="https://services.citra-emu.org/game/" class="btn btn-default">Add a Game</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</form>
 		</div>
-	</div>
 
-	<table id="compatibility-list" class="table table-responsive">
-		<thead>
-			<tr>
-				<th></th>
-				<th>Title</th>
-				<th>Type</th>
-				<th>Compatibility</th>
-				<th>Date Tested</th>
-			</tr>
-		</thead>
-		<tbody>
-		{{ range .Data.Pages.GroupByParam "section_id" }}
-			<tr>
-				<td id="game-section-header">
-					<h3 id="{{ .Key }}">{{ .Key }}</h3>
-				</td>
-			</tr>
+		<ul class="pagination pull-left"></ul>
 
-			{{ range .Pages }}
-			  {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
-				{{- $type := index .Site.Data.gameTypes (.Params.game_type | default "3ds") }}
-				<tr data-compatibility="{{ $rating.name }}">
-	        <td class="col-md-1"><img src="{{ .Site.BaseURL }}images/game/icons/{{ .File.BaseFileName }}.png" /></td>
-	        <td class="col-md-6"><a href="{{ .Permalink }}">{{ .Params.title }}</a></td>
-					<td class="col-md-1"><img src="{{ .Site.BaseURL }}images/game/types/{{ $type.key }}.png" title="{{ $type.name }}" /></td>
-					<td class="col-md-1"><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</td>
-	        <td class="col-md-3">{{ dateFormat "January 2, 2006" .Params.testcase_date }}</td>
-	      </tr>
+		<table id="compatibility-list" class="table table-responsive">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Title</th>
+					<th>Type</th>
+					<th>Compatibility</th>
+					<th>Date Tested</th>
+				</tr>
+			</thead>
+			<tbody class="list">
+			{{ range .Data.Pages.GroupByParam "section_id" }}
+				<tr>
+					<td id="game-section-header">
+						<h3 id="{{ .Key }}">{{ .Key }}</h3>
+					</td>
+				</tr>
+
+				{{ range .Pages }}
+				  {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
+					{{- $type := index .Site.Data.gameTypes (.Params.game_type | default "3ds") }}
+					<tr data-compatibility="{{ $rating.name }}">
+						<td class="hidden listing-metadata">
+							{{ .Params.title }} {{ $type.name }} {{ $rating.name }} {{ dateFormat "January 2, 2006" .Params.testcase_date }}
+						</td>
+						<td class="col-md-1">
+							<img src="/images/game/icons/{{ .File.BaseFileName }}.png" />
+						</td>
+						<td class="col-md-6">
+							<a href="{{ .Permalink }}">{{ .Params.title }}</a>
+						</td>
+						<td class="col-md-1">
+							<img src="/images/game/types/{{ $type.key }}.png" title="{{ $type.name }}" />
+						</td>
+						<td class="col-md-1">
+							<div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}
+						</td>
+						<td class="col-md-3">
+							{{ dateFormat "January 2, 2006" .Params.testcase_date }}
+						</td>
+					</tr>
+				{{ end }}
 			{{ end }}
-		{{ end }}
-		</tbody>
-	</table>
+			</tbody>
+		</table>
+	</div>
 {{ end }}
 
 {{ define "scripts" }}
+<script src="/js/vendor/list.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 <script type="text/javascript">
-function filterTable(e){
-    var rating = this.name;
+    var options = {
+        valueNames: ['listing-metadata'],
+        pagination: true,
+        indexAsync: true,
+		page: 50
+    };
 
-    //If clicked on a new color, hides all other colors
-    if (rating != window.lastClicked){
-        clearFilter();
-        window.lastClicked = rating;
-        var chart = $("#highchart-container").highcharts()
-        window.clearButton = chart.renderer.button('Clear Filter', null, null, function(){ clearFilter() }, {
-            zIndex: 20
-        }).attr({
-            align: 'right',
-            title: 'Clear compatibility filter'
-        }).add().align({
-            align: 'right',
-            x: -16,
-            y: 18
-        }, false, null);
+    var list = new List('game-listing', options);
 
-        $("#compatibility-list tbody tr[data-compatibility][data-compatibility!=\"" + rating + "\"]").css('display', 'none');
+	function filterTable(_) {
+		var rating = this.name;
 
-        //Checks if section headers are empty and hides them if they are
-        $("#compatibility-list tbody tr:not([data-compatibility])").each(function(){
-            var elements = $(this).nextUntil("#compatibility-list tbody tr:not([data-compatibility])").filter(function(){
-                return $(this).css('display') != 'none';
-            });
-            var containsVisible = !!elements.length;
-            if (!containsVisible)
-                $(this).css('display', 'none');
-        })
-    } else {
-        clearFilter();
-    }
-}
-function clearFilter(){
-    $("#compatibility-list tbody tr").css('display', '');
-    if (window.clearButton){
-        window.clearButton.destroy();
-        window.clearButton = undefined;
-        window.lastClicked = undefined;
-    }
-}
+        $("#search-box").val(rating);
+        list.fuzzySearch(rating);
+	}
 
-Highcharts.chart('highchart-container', {
-    chart: { type: 'bar' },
-    colors: [{{ range .Site.Data.compatibility }}"{{ .color }}", {{- end }}],
-    credits: { enabled: false },
-		exporting: { enabled: false },
-    title: { text: '' },
-    xAxis: { categories: [''] },
-    yAxis: { min: 0, max: {{ len .Data.Pages }}, title: { text: '' } },
-    legend: { enabled: false },
-    plotOptions: { series: {
-        stacking: 'normal',
-        cursor: 'pointer',
-        events: {
-            click: filterTable
-        }
-    } },
-    series: [
-			{{- $dataPages := .Data.Pages }}
-			{{- range .Site.Data.compatibility }}
-			{{- $dataPagesFiltered := where $dataPages ".Params.compatibility" .key }}
-			{ "name": "{{ .name }}", "data": [ {{ len $dataPagesFiltered }} ] },
-			{{- end }}
-		]
-});
+	function clearSearch() {
+        $("#search-box").val("");
+        list.fuzzySearch();
+	}
+
+	Highcharts.chart('highchart-container', {
+		chart: { type: 'bar' },
+		colors: [{{ range .Site.Data.compatibility }}"{{ .color }}", {{- end }}],
+		credits: { enabled: false },
+			exporting: { enabled: false },
+		title: { text: '' },
+		xAxis: { categories: [''] },
+		yAxis: { min: 0, max: {{ len .Data.Pages }}, title: { text: '' } },
+		legend: { enabled: false },
+		plotOptions: { series: {
+			stacking: 'normal',
+			cursor: 'pointer',
+			events: {
+				click: filterTable
+			}
+		} },
+		series: [
+				{{- $dataPages := .Data.Pages }}
+				{{- range .Site.Data.compatibility }}
+				{{- $dataPagesFiltered := where $dataPages ".Params.compatibility" .key }}
+				{ "name": "{{ .name }}", "data": [ {{ len $dataPagesFiltered }} ] },
+				{{- end }}
+			]
+	});
 </script>
 {{ end }}
