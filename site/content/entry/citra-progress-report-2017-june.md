@@ -50,6 +50,5 @@ Although this progress report was a bit bare than most, the majority of it was c
 ## [citra-qt: game list search function](https://github.com/citra-emu/citra/pull/2673) by [nicoboss](https://github.com/nicoboss)
 ## [Kernel: Map special regions according to ExHeader](https://github.com/citra-emu/citra/pull/2687) by [yuriks](https://github.com/yuriks)
 ## [Frontend: Prevent FileSystemWatcher from blocking UI thread](https://github.com/citra-emu/citra/pull/2669) by [jroweboy](https://github.com/jroweboy)
-## [swrasterizer: implemented TextureCube](https://github.com/citra-emu/citra/pull/2721) by [wwylele](https://github.com/wwylele)
 
 #### END CANDIDATE PULL REQUESTS ####
