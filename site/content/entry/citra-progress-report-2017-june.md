@@ -14,7 +14,7 @@ The summer of 2017 has just rolled in, and although we don't have a [summer of c
 There is a rarely used feature in the 3DS' GPU called procedural textures, "proctex" for short. It allows games to generate new textures on the fly by just plugging in a few parameters. Mario & Luigi: Paper Jam, and Kirby: Planet Robobot both use it to generate realistic sea surfaces. The formula behind proctex had to be reverse-engineered in order to be implemented, which fortunately [fincs](https://github.com/fincs) did [and documented](https://gist.github.com/fincs/543f7e1375815f495f10020a053f14e9). Using this documentation, [wwylele](https://github.com/wwylele) simply translated it into code, and dropped it into Citra, fixing both those games.
 
 <p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" alt="Mario &amp; Luigi: Paper Jam's intro cutscene, showing Peach's castle, and the sea behind it" src="/images/entry/citra-progress-report-2017-june/paper-jam-foam.png" />
+<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Mario &amp; Luigi: Paper Jam's intro cutscene, showing Peach's castle, and the sea behind it" src="/images/entry/citra-progress-report-2017-june/paper-jam-foam.png" />
 <br />
 Look at that beautiful sea foam. ❤︎
 </p>
