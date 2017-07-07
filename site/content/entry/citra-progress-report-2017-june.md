@@ -41,6 +41,10 @@ Although the OpenGL hack provided a slight increase in efficiency, in the end [w
 Much better, guess the lighting got an acne treatment.
 </p>
 
+## Implement the [Circle Pad Pro](https://github.com/citra-emu/citra/pull/2606) and the [New 3DS C-Stick](https://github.com/citra-emu/citra/pull/2676) by [wwylele](https://github.com/wwylele)
+
+The Circle Pad Pro was an accessory that added a secondary circle pad and ZL/ZR buttons to the old 3DS, years before the New 3DS was even annouced. It communicated with the 3DS via infrared, which allowed dropping the console into it directly without having to plug in any wires or modify the console. The New 3DS' C-stick exposes itself to the system via a new, simpler (and incompatible) API, but for backwards compatibility, still exposes it via the infrared API, this allows games that were made years before the New 3DS to work perfectly well with the C-stick. These two additions give C-stick support to Citra, one through the C-stick API, and one through the infrared API.
+
 ## Implement [Various](https://github.com/citra-emu/citra/pull/2727) [Fragment](https://github.com/citra-emu/citra/pull/2762) [Lighting](https://github.com/citra-emu/citra/pull/2776) Features by [wwylele](https://github.com/wwylele)
 
 These new features are all just features that were not known or not researched enough when the original lighting implementation was written. A few small fixes leads to big changes, such as the fact that Super Smash Bros. for 3DS now has proper lighting, instead of colours looking washed out and very bright.
@@ -85,8 +89,6 @@ Although this progress report was a bit bare than most, the majority of it was c
 
 #### START CANDIDATE PULL REQUESTS ####
 
-## [ir: implement circle pad pro](https://github.com/citra-emu/citra/pull/2606) by [wwlele](https://github.com/wwylele)
-## [ir: implement new 3ds HID via ir:rst](https://github.com/citra-emu/citra/pull/2676) by [wwylele](https://github.com/wwylele)
 ## [citra-qt: game list search function](https://github.com/citra-emu/citra/pull/2673) by [nicoboss](https://github.com/nicoboss)
 ## [Kernel: Map special regions according to ExHeader](https://github.com/citra-emu/citra/pull/2687) by [yuriks](https://github.com/yuriks)
 ## [Frontend: Prevent FileSystemWatcher from blocking UI thread](https://github.com/citra-emu/citra/pull/2669) by [jroweboy](https://github.com/jroweboy)
