@@ -19,6 +19,15 @@ There is a rarely used feature in the 3DS' GPU called procedural textures, "proc
 Look at that beautiful sea foam. ❤︎
 </p>
 
+## [gl_rasterizer: fix lighting LUT interpolation](https://github.com/citra-emu/citra/pull/2792) by [wwylele](https://github.com/wwylele)
+
+<p style="text-align: center; font-size: small; padding: 1%">
+<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Kyogre in Pok&eacute;mon Alpha Sapphire before the fix. (Commit Hash: 2f746e9946f78a2e283dfdcbeda9cf332e44d09)" src="/images/entry/citra-progress-report-2017-june/lut-fix-before.png" />
+<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Kyogre in Pok&eacute;mon Alpha Sapphire after the fix. (Commit Hash: 72b69cea4bf9d01e520fb984a382de3e85af4e36)" src="/images/entry/citra-progress-report-2017-june/lut-fix-after.png" />
+<br />
+Much better, guess the lighting got an acne treatment.
+</p>
+
 ## [OpenGL: Improve accuracy of quaternion interpolation](https://github.com/citra-emu/citra/pull/2729) by [yuriks](https://github.com/yuriks)
 
 To calculate lighting on any given object, the 3DS' GPU interpolates the light quaternion (the quotient of two vectors) with the surface quaternion of that object. There are three main methods to doing so, the **l**inear int**erp**olation (**lerp**), the **q**uadratic **l**inear int**erp**olation (**qlerp**), and the **s**pherical **l**inear int**erp**olation (**slerp**). All this time Citra used a lerp, which, although the fastest, can lead to a lot of distortion at certain rotation angles.
@@ -52,7 +61,6 @@ Although this progress report was a bit bare than most, the majority of it was c
 
 ## [Fragment lighting: implement spot light](https://github.com/citra-emu/citra/pull/2727) by [wwylele](https://github.com/wwylele)
 ## [Fragment lighting: implement lut input 5 (CP) and tangent mapping](https://github.com/citra-emu/citra/pull/2762) by [wwylele](https://github.com/wwylele)
-## [gl_rasterizer: fix lighting LUT interpolation](https://github.com/citra-emu/citra/pull/2792) by [wwylele](https://github.com/wwylele)
 ## [Fragment lighting: implement geometric factor](https://github.com/citra-emu/citra/pull/2776) by [wwylele](https://github.com/wwylele)
 ## [ir: implement circle pad pro](https://github.com/citra-emu/citra/pull/2606) by [wwlele](https://github.com/wwylele)
 ## [ir: implement new 3ds HID via ir:rst](https://github.com/citra-emu/citra/pull/2676) by [wwylele](https://github.com/wwylele)
