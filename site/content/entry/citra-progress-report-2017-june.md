@@ -43,7 +43,14 @@ Much better, guess the lighting got an acne treatment.
 
 ## Implement [Various](https://github.com/citra-emu/citra/pull/2727) [Fragment](https://github.com/citra-emu/citra/pull/2762) [Lighting](https://github.com/citra-emu/citra/pull/2776) Features by [wwylele](https://github.com/wwylele)
 
+These new features are all just features that were not known or not researched enough when the original lighting implementation was written. A few small fixes leads to big changes, such as the fact that Super Smash Bros. for 3DS now has proper lighting, instead of colours looking washed out and very bright.
 
+<p style="text-align: center; font-size: small; padding: 1%">
+<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Super Smash Bros. for 3DS before the new lighting features" src="/images/entry/citra-progress-report-2017-june/smash-bright-before.png" />
+<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Super Smash Bros. for 3DS after the new lighting features" src="/images/entry/citra-progress-report-2017-june/smash-bright-after.png" />
+<br />
+A before and after of these additions shows the improvement plainly.
+</p>
 
 ## [OpenGL: Improve accuracy of quaternion interpolation](https://github.com/citra-emu/citra/pull/2729) by [yuriks](https://github.com/yuriks)
 
