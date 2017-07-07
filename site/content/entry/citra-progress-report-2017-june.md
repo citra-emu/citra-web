@@ -19,6 +19,20 @@ There is a rarely used feature in the 3DS' GPU called procedural textures, "proc
 Look at that beautiful sea foam. ❤︎
 </p>
 
+## [OpenGL: Improve accuracy of quaternion interpolation](https://github.com/citra-emu/citra/pull/2729) by [yuriks](https://github.com/yuriks)
+
+To calculate lighting on any given object, the 3DS' GPU interpolates the light quaternion (the quotient of two vectors) with the surface quaternion of that object. There are three main methods to doing so, the **l**inear int**erp**olation (**lerp**), the **q**uadratic **l**inear int**erp**olation (**qlerp**), and the **s**pherical **l**inear int**erp**olation (**slerp**). All this time Citra used a lerp, which, although the fastest, can lead to a lot of distortion at certain rotation angles.
+
+<p style="text-align: center; font-size: small; padding: 1%">
+<img style="padding: 0% 0% 1% 0%" alt="lerp, qlerp, and slerp being compared with a 145 degree rotation" src="/images/entry/citra-progress-report-2017-june/lerp-qlerp-slerp.gif" />
+<br />
+Notice how the plain lerp (magenta line) and the qlerp (red line) lag behind the slerp (blue line), and then speed up to the other side.
+<br />
+Whereas the slerp remains at a constant speed through the entire rotation.
+</p>
+
+[yuriks](https://github.com/yuriks) researched and implemented slerp on Citra, and after a long while of work, it turns out that the 3DS uses lerp as well! The bug in Citra was caused by Citra normalizing the quaternions after interpolating them, when the 3DS normalizes them before, which greatly affected the results since interpolation is not commutative. This particular issue sent them down a very deep rabbit hole, only to lead to a red herring. But, at least it was (eventually) fixed!
+
 ## [gl_rasterizer: fix lighting LUT interpolation](https://github.com/citra-emu/citra/pull/2792) by [wwylele](https://github.com/wwylele)
 
 For fragment lighting, the 3DS has a hardcoded **L**ook-**u**p **T**able of values to calculate things more quickly, but is relatively small, only 256 entries big. Because of this, every time a lookup falls between two values, the 3DS computes the differences between the two values and stores them in a seperate table in memory, called the delta table, so that it won't have to compute them again after the first time.
@@ -41,9 +55,17 @@ Although the OpenGL hack provided a slight increase in efficiency, in the end [w
 Much better, guess the lighting got an acne treatment.
 </p>
 
+## [Remove built-in disassembler and related code](https://github.com/citra-emu/citra/pull/2689) by [yuriks](https://github.com/yuriks)
+
+The Citra disassembler and debugger was planned to be a fully-featured debugger for 3DS programs, as how Dolphin, No$GBA, or other emulators have done. Unfortunately, they were never given the care that was needed to get them up to speed, and so it was extremely buggy, disassembling code to complete nonsense at times. Not to mention that it was missing a lot of essential features, such as setting breakpoints. All of these things, combined with the fact that we already have added 3DS support to `gdb`, it just made sense to get rid of this one and focus on the other.
+
 ## Implement the [Circle Pad Pro](https://github.com/citra-emu/citra/pull/2606) and the [New 3DS C-Stick](https://github.com/citra-emu/citra/pull/2676) by [wwylele](https://github.com/wwylele)
 
 The Circle Pad Pro was an accessory that added a secondary circle pad and ZL/ZR buttons to the old 3DS, years before the New 3DS was even annouced. It communicated with the 3DS via infrared, which allowed dropping the console into it directly without having to plug in any wires or modify the console. The New 3DS' C-stick exposes itself to the system via a new, simpler (and incompatible) API, but for backwards compatibility, still exposes it via the infrared API, this allows games that were made years before the New 3DS to work perfectly well with the C-stick. These two additions give C-stick support to Citra, one through the C-stick API, and one through the infrared API.
+
+## [Display QMessageBox Dialogs For Errors](https://github.com/citra-emu/citra/pull/2611) by [TheKoopaKingdom](https://github.com/TheKoopaKingdom)
+
+A lot of the questions we see on our Discord server all generally have the same answers; [missing system or font files](https://citra-emu.org/wiki/dumping-system-archives-and-the-shared-fonts-from-a-3ds-console/), [missing config file](https://citra-emu.org/wiki/dumping-config-savegame-from-a-3ds-console/), an incorrectly dumped [game](https://citra-emu.org/wiki/dumping-installed-titles/) or [cartridge](https://citra-emu.org/wiki/dumping-game-cartridges/), or simply not having [modern enough hardware](https://citra-emu.org/wiki/faq/#what-kind-of-specification-do-i-need-to-run-citra) to run Citra. Because of this, [TheKoopaKingdom](https://github.com/TheKoopaKingdom) has written a patch to auto-detect these problems, report them to the user, and link them to a guide that will help them fix it, all without human intervention!
 
 ## Implement [Various](https://github.com/citra-emu/citra/pull/2727) [Fragment](https://github.com/citra-emu/citra/pull/2762) [Lighting](https://github.com/citra-emu/citra/pull/2776) Features by [wwylele](https://github.com/wwylele)
 
@@ -55,28 +77,6 @@ These new features are all just features that were not known or not researched e
 <br />
 A before and after of these additions shows the improvement plainly.
 </p>
-
-## [OpenGL: Improve accuracy of quaternion interpolation](https://github.com/citra-emu/citra/pull/2729) by [yuriks](https://github.com/yuriks)
-
-To calculate lighting on any given object, the 3DS' GPU interpolates the light quaternion (the quotient of two vectors) with the surface quaternion of that object. There are three main methods to doing so, the **l**inear int**erp**olation (**lerp**), the **q**uadratic **l**inear int**erp**olation (**qlerp**), and the **s**pherical **l**inear int**erp**olation (**slerp**). All this time Citra used a lerp, which, although the fastest, can lead to a lot of distortion at certain rotation angles.
-
-<p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" alt="lerp, qlerp, and slerp being compared with a 145 degree rotation" src="/images/entry/citra-progress-report-2017-june/lerp-qlerp-slerp.gif" />
-<br />
-Notice how the plain lerp (magenta line) and the qlerp (red line) lag behind the slerp (blue line), and then speed up to the other side.
-<br />
-Whereas the slerp remains at a constant speed through the entire rotation.
-</p>
-
-[yuriks](https://github.com/yuriks) researched and implemented slerp on Citra, and after a long while of work, it turns out that the 3DS uses lerp as well! The bug in Citra was caused by Citra normalizing the quaternions after interpolating them, when the 3DS normalizes them before, which greatly affected the results since interpolation is not commutative. This particular issue sent them down a very deep rabbit hole, only to lead to a red herring. But, at least it was (eventually) fixed!
-
-## [Remove built-in disassembler and related code](https://github.com/citra-emu/citra/pull/2689) by [yuriks](https://github.com/yuriks)
-
-The Citra disassembler and debugger was planned to be a fully-featured debugger for 3DS programs, as how Dolphin, No$GBA, or other emulators have done. Unfortunately, they were never given the care that was needed to get them up to speed, and so it was extremely buggy, disassembling code to complete nonsense at times. Not to mention that it was missing a lot of essential features, such as setting breakpoints. All of these things, combined with the fact that we already have added 3DS support to `gdb`, it just made sense to get rid of this one and focus on the other.
-
-## [Display QMessageBox Dialogs For Errors](https://github.com/citra-emu/citra/pull/2611) by [TheKoopaKingdom](https://github.com/TheKoopaKingdom)
-
-A lot of the questions we see on our Discord server all generally have the same answers; [missing system or font files](https://citra-emu.org/wiki/dumping-system-archives-and-the-shared-fonts-from-a-3ds-console/), [missing config file](https://citra-emu.org/wiki/dumping-config-savegame-from-a-3ds-console/), an incorrectly dumped [game](https://citra-emu.org/wiki/dumping-installed-titles/) or [cartridge](https://citra-emu.org/wiki/dumping-game-cartridges/), or simply not having [modern enough hardware](https://citra-emu.org/wiki/faq/#what-kind-of-specification-do-i-need-to-run-citra) to run Citra. Because of this, [TheKoopaKingdom](https://github.com/TheKoopaKingdom) has written a patch to auto-detect these problems, report them to the user, and link them to a guide that will help them fix it, all without human intervention!
 
 ## Contributors of June 2017
 
