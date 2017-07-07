@@ -28,6 +28,10 @@ Look at that beautiful sea foam. ❤︎
 Much better, guess the lighting got an acne treatment.
 </p>
 
+## Implement [Various](https://github.com/citra-emu/citra/pull/2727) [Fragment](https://github.com/citra-emu/citra/pull/2762) [Lighting](https://github.com/citra-emu/citra/pull/2776) Features by [wwylele](https://github.com/wwylele)
+
+
+
 ## [OpenGL: Improve accuracy of quaternion interpolation](https://github.com/citra-emu/citra/pull/2729) by [yuriks](https://github.com/yuriks)
 
 To calculate lighting on any given object, the 3DS' GPU interpolates the light quaternion (the quotient of two vectors) with the surface quaternion of that object. There are three main methods to doing so, the **l**inear int**erp**olation (**lerp**), the **q**uadratic **l**inear int**erp**olation (**qlerp**), and the **s**pherical **l**inear int**erp**olation (**slerp**). All this time Citra used a lerp, which, although the fastest, can lead to a lot of distortion at certain rotation angles.
@@ -59,9 +63,6 @@ Although this progress report was a bit bare than most, the majority of it was c
 
 #### START CANDIDATE PULL REQUESTS ####
 
-## [Fragment lighting: implement spot light](https://github.com/citra-emu/citra/pull/2727) by [wwylele](https://github.com/wwylele)
-## [Fragment lighting: implement lut input 5 (CP) and tangent mapping](https://github.com/citra-emu/citra/pull/2762) by [wwylele](https://github.com/wwylele)
-## [Fragment lighting: implement geometric factor](https://github.com/citra-emu/citra/pull/2776) by [wwylele](https://github.com/wwylele)
 ## [ir: implement circle pad pro](https://github.com/citra-emu/citra/pull/2606) by [wwlele](https://github.com/wwylele)
 ## [ir: implement new 3ds HID via ir:rst](https://github.com/citra-emu/citra/pull/2676) by [wwylele](https://github.com/wwylele)
 ## [citra-qt: game list search function](https://github.com/citra-emu/citra/pull/2673) by [nicoboss](https://github.com/nicoboss)
