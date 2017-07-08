@@ -26,9 +26,7 @@ To calculate lighting on any given object, the 3DS' GPU interpolates the light q
 <p style="text-align: center; font-size: small; padding: 1%">
 <img style="padding: 0% 0% 1% 0%" alt="lerp, qlerp, and slerp being compared with a 145 degree rotation" src="/images/entry/citra-progress-report-2017-june/lerp-qlerp-slerp.gif" />
 <br />
-Notice how the plain lerp (magenta line) and the qlerp (red line) lag behind the slerp (blue line), and then speed up to the other side.
-<br />
-Whereas the slerp remains at a constant speed through the entire rotation.
+Notice how the plain lerp (magenta line) and the qlerp (red line) lag behind the slerp (blue line), and then speed up to the other side, whereas the slerp remains at a constant speed through the entire rotation.
 </p>
 
 [yuriks](https://github.com/yuriks) researched and implemented slerp on Citra, and after a long while of work, it turns out that the 3DS uses lerp as well! The bug in Citra was caused by Citra normalizing the quaternions after interpolating them, when the 3DS normalizes them before, which greatly affected the results since interpolation is not commutative. This particular issue sent them down a very deep rabbit hole, only to lead to a red herring. But, at least it was (eventually) fixed!
@@ -39,7 +37,7 @@ For fragment lighting, the 3DS has a hardcoded **L**ook-**u**p **T**able of valu
 
 In Citra, to be more efficient, we give the LUT (look-up table) to OpenGL and tell it to filter it, much like how games on PC filter their textures to smooth out jagged edges, and thus doesn't need to compute any differences at all anymore. Unfortunately, because we're treating a table as essentially a 1-dimensional texture (since that's the only concept OpenGL understands), we also need to deal with very big problem that the 3DS' GPU and OpenGL both have different coordinate systems. Coordinate 0 on the 3DS refers the zeroth (i.e. the first, since it starts on 0) entry on the table, but in OpenGL, it means the left corner of the first pixel, which would instead be slightly less than the actual value of the first entry on the table because of the filtering.
 
-As a workaround, some offsets were set on the table in OpenGL so that it would pick the correct entries. But, the LUT on the 3DS also has a mode called "two's complement" in which the table each half of the table is "wrapped" virtually across past the beginning and end of the table, but not across the middle of the table. This completely messes up the table in OpenGL, leading to completely different results near the middle of the table, causing things like dark spots in highlighted areas.
+As a workaround, some offsets were set on the table in OpenGL so that it would pick the correct entries. But, the LUT on the 3DS also has a mode called "two's complement" in which each half of the table is "wrapped" virtually across past the beginning and end of the table, but not across the middle of the table. This completely messes up the table in OpenGL, leading to completely different results near the middle of the table, causing things like dark spots in highlighted areas.
 
 <p style="text-align: center; font-size: small; padding: 1%">
 <img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Kyogre in Pok&eacute;mon Alpha Sapphire before the fix." src="/images/entry/citra-progress-report-2017-june/lut-fix-before.png" />
@@ -67,7 +65,7 @@ The Circle Pad Pro was an accessory that added a secondary circle pad and ZL/ZR 
 
 A lot of the questions we see on our Discord server all generally have the same answers; [missing system or font files](https://citra-emu.org/wiki/dumping-system-archives-and-the-shared-fonts-from-a-3ds-console/), [missing config file](https://citra-emu.org/wiki/dumping-config-savegame-from-a-3ds-console/), an incorrectly dumped [game](https://citra-emu.org/wiki/dumping-installed-titles/) or [cartridge](https://citra-emu.org/wiki/dumping-game-cartridges/), or simply not having [modern enough hardware](https://citra-emu.org/wiki/faq/#what-kind-of-specification-do-i-need-to-run-citra) to run Citra. Because of this, [TheKoopaKingdom](https://github.com/TheKoopaKingdom) has written a patch to auto-detect these problems, report them to the user, and link them to a guide that will help them fix it, all without human intervention!
 
-## Implement [Various](https://github.com/citra-emu/citra/pull/2727) [Fragment](https://github.com/citra-emu/citra/pull/2762) [Lighting](https://github.com/citra-emu/citra/pull/2776) Features by [wwylele](https://github.com/wwylele)
+## Implement Various Fragment Lighting Features ([this](https://github.com/citra-emu/citra/pull/2727), [here](ttps://github.com/citra-emu/citra/pull/2762), and [there](https://github.com/citra-emu/citra/pull/2776)) by [wwylele](https://github.com/wwylele)
 
 These new features are all just features that were not known or not researched enough when the original lighting implementation was written. A few small fixes leads to big changes, such as the fact that Super Smash Bros. for 3DS now has proper lighting, instead of colours looking washed out and very bright.
 
