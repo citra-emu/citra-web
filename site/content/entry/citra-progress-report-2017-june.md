@@ -78,7 +78,7 @@ A before and after of these additions shows the improvement plainly.
 
 ## [Frontend: Prevent FileSystemWatcher from blocking UI thread](https://github.com/citra-emu/citra/pull/2669) by [jroweboy](https://github.com/jroweboy)
 
-
+Recently [jroweboy](https://github.com/jroweboy) silently added a feature that allowed Citra to automatically refresh the game list when the game folder changes, so that restarting Citra was not necessary in order to see newly added games. The way this works is by creating a `FileSystemWatcher` for the configured game folder, and for every folder within it. This also means that if you were to set the games folder to something like, say, your home folder, Citra would become completely unresponsive while it created watchers for every single folder inside it. This little change adds a seperate thread that runs alongside the UI renderer, that searches the file tree, and when it's done, it hands off the list of folders to the UI thread, which adds them all to a single watcher. Although this does still cause a tiny bit of unresponsiveness when adding all the folders to the watcher, it's significantly less than it was before.
 
 ## Contributors of June 2017
 
