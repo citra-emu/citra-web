@@ -4,7 +4,7 @@
 	<table class="table table-striped table-bordered">
 		<tbody>
 		{{ range .Site.Data.compatibility }}
-        <tr>
+		<tr>
 			<td style="width: 120px;"><div class="square-icon" style="background-color: {{ .color }}"></div> {{ .name }}</td>
 			<td class="row-compat-desc">{{ .description }}</td>
 		</tr>
@@ -93,25 +93,25 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 <script type="text/javascript">
-    var options = {
-        valueNames: ['listing-metadata', 'icon', 'title', 'type', 'compatibility', 'date-tested'],
-        pagination: true,
-        indexAsync: true,
+	var options = {
+		valueNames: ['listing-metadata', 'icon', 'title', 'type', 'compatibility', 'date-tested'],
+		pagination: true,
+		indexAsync: true,
 		page: 50
-    };
+	};
 
-    var list = new List('game-listing', options);
+	var list = new List('game-listing', options);
 
 	function filterTable(_) {
 		var rating = this.name;
 
-        $("#search-box").val(rating);
-        list.search(rating, ['compatibility']);
+		$("#search-box").val(rating);
+		list.search(rating, ['compatibility']);
 	}
 
 	function clearSearch() {
-        $("#search-box").val("");
-        list.fuzzySearch();
+		$("#search-box").val("");
+		list.fuzzySearch();
 	}
 
 	Highcharts.chart('highchart-container', {
