@@ -43,10 +43,10 @@
 			<thead>
 				<tr>
 					<th></th>
-					<th>Title</th>
-					<th>Type</th>
-					<th>Compatibility</th>
-					<th>Date Tested</th>
+					<th class="sort" data-sort="title">Title</th>
+					<th class="sort" data-sort="type">Type</th>
+					<th class="sort" data-sort="compatibility">Compatibility</th>
+					<th class="sort" data-sort="date-tested">Date Tested</th>
 				</tr>
 			</thead>
 			<tbody class="list">
@@ -64,19 +64,19 @@
 						<td class="hidden listing-metadata">
 							{{ .Params.title }} {{ $type.name }} {{ $rating.name }} {{ dateFormat "January 2, 2006" .Params.testcase_date }}
 						</td>
-						<td class="col-md-1">
+						<td class="col-md-1 icon">
 							<img src="/images/game/icons/{{ .File.BaseFileName }}.png" />
 						</td>
-						<td class="col-md-6">
+						<td class="col-md-6 title">
 							<a href="{{ .Permalink }}">{{ .Params.title }}</a>
 						</td>
-						<td class="col-md-1">
+						<td class="col-md-1 type">
 							<img src="/images/game/types/{{ $type.key }}.png" title="{{ $type.name }}" />
 						</td>
-						<td class="col-md-1">
+						<td class="col-md-1 compatibility">
 							<div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}
 						</td>
-						<td class="col-md-3">
+						<td class="col-md-3 date-tested">
 							{{ dateFormat "January 2, 2006" .Params.testcase_date }}
 						</td>
 					</tr>
@@ -94,7 +94,7 @@
 
 <script type="text/javascript">
     var options = {
-        valueNames: ['listing-metadata'],
+        valueNames: ['listing-metadata', 'icon', 'title', 'type', 'compatibility', 'date-tested'],
         pagination: true,
         indexAsync: true,
 		page: 50
