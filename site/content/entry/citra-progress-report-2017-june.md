@@ -16,6 +16,10 @@ There is a rarely used feature in the 3DS' GPU called procedural textures, "proc
 <p style="text-align: center; font-size: small; padding: 1%">
 <img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Mario &amp; Luigi: Paper Jam's intro cutscene, showing Peach's castle, and the sea behind it" src="/images/entry/citra-progress-report-2017-june/paper-jam-foam.png" />
 <br />
+<!--
+title_id = 0004000000132700
+commit_hash = c017065570f9bad90a8cd3dadac9b63d810793a6
+-->
 Look at that beautiful sea foam. ❤︎
 </p>
 
@@ -42,6 +46,10 @@ As a workaround, some offsets were set on the table in OpenGL so that it would p
 <p style="text-align: center; font-size: small; padding: 1%">
 <img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Kyogre in Pok&eacute;mon Alpha Sapphire before the fix." src="/images/entry/citra-progress-report-2017-june/lut-fix-before.png" />
 <br />
+<!--
+title_id = 000400000011c500
+commit_hash = 2f746e9946f78a2e283dfdcbeda9cf332e44d099 cherry-pick 6ca816e011c03f90f9ef6800c747c030df54c0cf 24e0b1ed8d4a24c814496e1b36236687fc0d442f
+-->
 Kyogre seems to have a bit of a skin blemish.
 </p>
 
@@ -50,6 +58,10 @@ Although the OpenGL hack provided a slight increase in efficiency, in the end [w
 <p style="text-align: center; font-size: small; padding: 1%">
 <img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Kyogre in Pok&eacute;mon Alpha Sapphire after the fix." src="/images/entry/citra-progress-report-2017-june/lut-fix-after.png" />
 <br />
+<!--
+title_id = 000400000011c500
+commit_hash = c017065570f9bad90a8cd3dadac9b63d810793a6
+-->
 Much better, guess the lighting got an acne treatment.
 </p>
 
