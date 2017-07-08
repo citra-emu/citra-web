@@ -106,7 +106,7 @@
 		var rating = this.name;
 
         $("#search-box").val(rating);
-        list.fuzzySearch(rating);
+        list.search(rating, ['compatibility']);
 	}
 
 	function clearSearch() {
