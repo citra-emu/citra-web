@@ -53,9 +53,10 @@
 			{{ range .Data.Pages.GroupByParam "section_id" }}
 
 				{{ range .Pages }}
+					{{- $key := substr .Params.title 0 1 }}
 				  {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
 					{{- $type := index .Site.Data.gameTypes (.Params.game_type | default "3ds") }}
-					<tr data-key="{{ .Key }}">
+					<tr data-key="{{ $key }}">
 						<td class="hidden listing-metadata">
 							{{ .Params.title }} {{ $type.name }} {{ $rating.name }} {{ dateFormat "January 2, 2006" .Params.testcase_date }}
 						</td>
