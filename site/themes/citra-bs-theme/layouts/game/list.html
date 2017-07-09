@@ -102,6 +102,11 @@
 
 	var list = new List('game-listing', options);
 
+	$('#search-box').keyup(function() {
+		var searchString = $(this).val();
+		list.fuzzySearch(searchString, ['listing-metadata']);
+	});
+
 	function filterTable(_) {
 		var rating = this.name;
 
