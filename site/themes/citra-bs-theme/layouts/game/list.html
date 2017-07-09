@@ -4,7 +4,7 @@
 	<table class="table table-striped table-bordered">
 		<tbody>
 		{{ range .Site.Data.compatibility }}
-        <tr>
+		<tr>
 			<td style="width: 120px;"><div class="square-icon" style="background-color: {{ .color }}"></div> {{ .name }}</td>
 			<td class="row-compat-desc">{{ .description }}</td>
 		</tr>
@@ -43,40 +43,35 @@
 			<thead>
 				<tr>
 					<th></th>
-					<th>Title</th>
-					<th>Type</th>
-					<th>Compatibility</th>
-					<th>Date Tested</th>
+					<th class="sort" data-sort="title">Title</th>
+					<th class="sort" data-sort="type">Type</th>
+					<th class="sort" data-sort="compatibility">Compatibility</th>
+					<th class="sort" data-sort="date-tested">Date Tested</th>
 				</tr>
 			</thead>
 			<tbody class="list">
 			{{ range .Data.Pages.GroupByParam "section_id" }}
-				<tr>
-					<td id="game-section-header">
-						<h3 id="{{ .Key }}">{{ .Key }}</h3>
-					</td>
-				</tr>
 
 				{{ range .Pages }}
 				  {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
 					{{- $type := index .Site.Data.gameTypes (.Params.game_type | default "3ds") }}
-					<tr data-compatibility="{{ $rating.name }}">
+					<tr data-key="{{ .Key }}">
 						<td class="hidden listing-metadata">
 							{{ .Params.title }} {{ $type.name }} {{ $rating.name }} {{ dateFormat "January 2, 2006" .Params.testcase_date }}
 						</td>
-						<td class="col-md-1">
+						<td class="col-md-1 icon">
 							<img src="/images/game/icons/{{ .File.BaseFileName }}.png" />
 						</td>
-						<td class="col-md-6">
+						<td class="col-md-6 title">
 							<a href="{{ .Permalink }}">{{ .Params.title }}</a>
 						</td>
-						<td class="col-md-1">
+						<td class="col-md-1 type">
 							<img src="/images/game/types/{{ $type.key }}.png" title="{{ $type.name }}" />
 						</td>
-						<td class="col-md-1">
+						<td class="col-md-1 compatibility">
 							<div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}
 						</td>
-						<td class="col-md-3">
+						<td class="col-md-3 date-tested">
 							{{ dateFormat "January 2, 2006" .Params.testcase_date }}
 						</td>
 					</tr>
@@ -93,25 +88,44 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 <script type="text/javascript">
-    var options = {
-        valueNames: ['listing-metadata'],
-        pagination: true,
-        indexAsync: true,
+	var options = {
+		valueNames: ['listing-metadata', 'icon', 'title', 'type', 'compatibility', 'date-tested'],
+		pagination: true,
+		indexAsync: true,
 		page: 50
-    };
+	};
 
-    var list = new List('game-listing', options);
+	var list = new List('game-listing', options);
+
+	list.sort("title", {order: "asc"});
+
+	$('#search-box').keyup(function() {
+		var searchString = $(this).val();
+		list.fuzzySearch(searchString, ['listing-metadata']);
+	});
+
+	list.on("updated", function(){
+		$("#compatibility-list tbody tr.key").removeClass("key");
+		if ($("#compatibility-list thead").find("th.asc[data-sort='title'], th.desc[data-sort='title']").length){
+			$("#compatibility-list tbody tr[data-key]").each(function(){
+				var key = $(this).attr("data-key")
+				if ($("tr[data-key='" + key + "']:first").is($(this))){
+					$(this).addClass("key");
+				}
+			})
+		}
+	})
 
 	function filterTable(_) {
 		var rating = this.name;
 
-        $("#search-box").val(rating);
-        list.fuzzySearch(rating);
+		$("#search-box").val(rating);
+		list.search(rating, ['compatibility']);
 	}
 
 	function clearSearch() {
-        $("#search-box").val("");
-        list.fuzzySearch();
+		$("#search-box").val("");
+		list.fuzzySearch();
 	}
 
 	Highcharts.chart('highchart-container', {
