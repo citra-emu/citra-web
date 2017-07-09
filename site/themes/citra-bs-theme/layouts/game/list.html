@@ -61,6 +61,9 @@
 				  {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
 					{{- $type := index .Site.Data.gameTypes (.Params.game_type | default "3ds") }}
 					<tr>
+						<td class="hidden listing-metadata">
+							{{ .Params.title }} {{ $type.name }} {{ $rating.name }} {{ dateFormat "January 2, 2006" .Params.testcase_date }}
+						</td>
 						<td class="col-md-1 icon">
 							<img src="/images/game/icons/{{ .File.BaseFileName }}.png" />
 						</td>
