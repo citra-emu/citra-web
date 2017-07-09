@@ -348,3 +348,13 @@ a:hover, a:focus {
 .search-box {
   margin: 0 20px;
 }
+
+tr.key:after {
+  content: attr(data-key);
+  position: absolute;
+  left: -10px;
+  font-family: Dosis,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #888;
+  margin: 15px 0;
+  font-size: 24px;
+}
