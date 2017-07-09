@@ -51,11 +51,6 @@
 			</thead>
 			<tbody class="list">
 			{{ range .Data.Pages.GroupByParam "section_id" }}
-				<tr>
-					<td id="game-section-header">
-						<h3 id="{{ .Key }}">{{ .Key }}</h3>
-					</td>
-				</tr>
 
 				{{ range .Pages }}
 				  {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
