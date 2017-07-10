@@ -81,6 +81,14 @@ A lot of the questions we see on our Discord server all generally have the same 
 
 For people with a lot of games, this new feature allows users to search through the entire list instead of having to browse. It works by checking to see if any games have any words the user typed in the search box. It's a bit na&iuml;ve as of this point, but at least there is something to improve now. Maybe you could help improve this?
 
+## [Kernel: Map special regions according to ExHeader](https://github.com/citra-emu/citra/pull/2687) by [yuriks](https://github.com/yuriks)
+
+3DS binaries all have an extended header (or ExHeader) that specifies certains things about the application such as what permissions it has to access system services, and what hardware memory can it access. Basically all titles only accessed and mapped memory in almost the same way; read-only access to video memory, and read+write access to two specific sections of the sound hardware.
+
+Because of this, Citra used to simply ignore the ExHeader, give it the same map as every other title, and give it access to everything. But now, it will actually parse the ExHeader and map memory regions as specified. This is why ROMs created with braindump don't work anymore, since braindump leaves the map empty, and Citra assumes that the title simply doesn't need access to anything, making them crash or behave very strangely.
+
+As a side-effect, [yuriks](https://github.com/yuriks) also had to implement the entire memory map of the audio hardware, and took the opportunity to implement the New 3DS' extended memory, which New 3DS exclusives like Xenoblade Chronicles 3D require. Although this doesn't affect much in terms of game compatibility, Citra now emulates the kernel more accurately, and is now more prepared to handle exotic memory maps, like the ones used in system modules.
+
 ## Implement Various Fragment Lighting Features ([this](https://github.com/citra-emu/citra/pull/2727), [here](ttps://github.com/citra-emu/citra/pull/2762), and [there](https://github.com/citra-emu/citra/pull/2776)) by [wwylele](https://github.com/wwylele)
 
 These new features are all just features that were not known or not researched enough when the original lighting implementation was written. A few small fixes lead to big changes, such as the fact that Super Smash Bros. for 3DS now has proper lighting, instead of colours looking washed out and very bright.
