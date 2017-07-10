@@ -79,7 +79,7 @@ A lot of the questions we see on our Discord server all generally have the same 
 
 ## [citra-qt: game list search function](https://github.com/citra-emu/citra/pull/2673) by [nicoboss](https://github.com/nicoboss)
 
-For people with a lot of games, this new feature allows users to search through the entire list instead of having to browse. It works by checking to see if any games have any words the user typed in the search box. It's a bit na&iuml;ve as of this point, but at least there is something to improve now. Maybe you could?
+For people with a lot of games, this new feature allows users to search through the entire list instead of having to browse. It works by checking to see if any games have any words the user typed in the search box. It's a bit na&iuml;ve as of this point, but at least there is something to improve now. Maybe you could help improve this?
 
 ## Implement Various Fragment Lighting Features ([this](https://github.com/citra-emu/citra/pull/2727), [here](ttps://github.com/citra-emu/citra/pull/2762), and [there](https://github.com/citra-emu/citra/pull/2776)) by [wwylele](https://github.com/wwylele)
 
