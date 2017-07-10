@@ -1,9 +1,9 @@
 +++
-date = "2017-07-09T21:46:00-04:00"
+date = "2017-07-10T12:38:00-04:00"
 title = "Citra Progress Report - 2017 June"
 tags = [ "progress-report" ]
 author = "anodium"
-forum = 0000
+forum = 2408
 +++
 
 The summer of 2017 has just rolled in, and although we don't have a [summer of code](https://developers.google.com/open-source/gsoc/), the patches continue rolling in regardless. We've got a ton of fixes this month in the renderer, so this report is going to be very screenshot heavy. With that out of the way, let's get right to it.
@@ -112,4 +112,4 @@ It has been absolutely amazing to see so much work be put in by people from all 
 
 Although this progress report was a bit bare than most, the majority of it was cut due to lots of changes being either internal or only a fraction of something much bigger. Nevertheless, stay tuned on our [blog](https://citra-emu.org/), our [forums](https://community.citra-emu.org/), our [Twitter](https://twitter.com/citraemu), and our [Discord server](https://discord.gg/fZwvKPu) for the next few months, as we have some very big™ things planned.
 
- As always, thank [you all](https://github.com/citra-emu/citra/graphs/contributors?from=2017-04-16&amp;to=2017-07-09&amp;type=c) very much for taking the time to work on Citra, and helping it become what is has, and will be.
+ As always, thank [you all](https://github.com/citra-emu/citra/graphs/contributors?from=2017-04-16&amp;to=2017-07-10n&amp;type=c) very much for taking the time to work on Citra, and helping it become what is has, and will be.
