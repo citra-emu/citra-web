@@ -83,7 +83,7 @@ Because of this, Citra used to simply ignore the ExHeader, give it the same map 
 
 As a side-effect, [yuriks](https://github.com/yuriks) also had to implement the entire memory map of the audio hardware, and took the opportunity to implement the New 3DS' extended memory, which New 3DS exclusives like Xenoblade Chronicles 3D require. Although this doesn't affect much in terms of game compatibility, Citra now emulates the kernel more accurately, and is now more prepared to handle exotic memory maps, like the ones used in system modules.
 
-## Implement Various Fragment Lighting Features ([this](https://github.com/citra-emu/citra/pull/2727), [here](ttps://github.com/citra-emu/citra/pull/2762), and [there](https://github.com/citra-emu/citra/pull/2776)) by [wwylele](https://github.com/wwylele)
+## Implement Various Fragment Lighting Features ([this](https://github.com/citra-emu/citra/pull/2727), [here](https://github.com/citra-emu/citra/pull/2762), and [there](https://github.com/citra-emu/citra/pull/2776)) by [wwylele](https://github.com/wwylele)
 
 These new features are all just features that were not known or not researched enough when the original lighting implementation was written. A few small fixes lead to big changes, such as the fact that Super Smash Bros. for 3DS now has proper lighting, instead of colours looking washed out and very bright.
 
