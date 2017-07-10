@@ -1,5 +1,5 @@
 +++
-date = "2017-06-27T16:49:00-04:00"
+date = "2017-07-09T21:46:00-04:00"
 title = "Citra Progress Report - 2017 June"
 tags = [ "progress-report" ]
 author = "anodium"
@@ -102,4 +102,4 @@ It has been absolutely amazing to see so much work be put in by people from all 
 
 Although this progress report was a bit bare than most, the majority of it was cut due to lots of changes being either internal or only a fraction of something much bigger. Nevertheless, stay tuned on our [blog](https://citra-emu.org/), our [forums](https://community.citra-emu.org/), our [Twitter](https://twitter.com/citraemu), and our [Discord server](https://discord.gg/fZwvKPu) for the next few months, as we have some very big™ things planned.
 
- As always, thank [you all](https://github.com/citra-emu/citra/graphs/contributors?from=2017-04-16&amp;to=2017-06-27&amp;type=c) very much for taking the time to work on Citra, and helping it become what is has, and will be.
+ As always, thank [you all](https://github.com/citra-emu/citra/graphs/contributors?from=2017-04-16&amp;to=2017-07-09&amp;type=c) very much for taking the time to work on Citra, and helping it become what is has, and will be.
