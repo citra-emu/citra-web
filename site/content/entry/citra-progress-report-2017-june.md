@@ -77,6 +77,10 @@ The Circle Pad Pro was an accessory that added a secondary circle pad and ZL/ZR 
 
 A lot of the questions we see on our Discord server all generally have the same answers; [missing system or font files](https://citra-emu.org/wiki/dumping-system-archives-and-the-shared-fonts-from-a-3ds-console/), [missing config file](https://citra-emu.org/wiki/dumping-config-savegame-from-a-3ds-console/), an incorrectly dumped [game](https://citra-emu.org/wiki/dumping-installed-titles/) or [cartridge](https://citra-emu.org/wiki/dumping-game-cartridges/), or simply not having [modern enough hardware](https://citra-emu.org/wiki/faq/#what-kind-of-specification-do-i-need-to-run-citra) to run Citra. Because of this, [TheKoopaKingdom](https://github.com/TheKoopaKingdom) has written a patch to auto-detect these problems, report them to the user, and link them to a guide that will help them fix it, all without human intervention!
 
+## [citra-qt: game list search function](https://github.com/citra-emu/citra/pull/2673) by [nicoboss](https://github.com/nicoboss)
+
+For people with a lot of games, this new feature allows users to search through the entire list instead of having to browse. It works by checking to see if any games have any words the user typed in the search box. It's a bit na&iuml;ve as of this point, but at least there is something to improve now. Maybe you could?
+
 ## Implement Various Fragment Lighting Features ([this](https://github.com/citra-emu/citra/pull/2727), [here](ttps://github.com/citra-emu/citra/pull/2762), and [there](https://github.com/citra-emu/citra/pull/2776)) by [wwylele](https://github.com/wwylele)
 
 These new features are all just features that were not known or not researched enough when the original lighting implementation was written. A few small fixes lead to big changes, such as the fact that Super Smash Bros. for 3DS now has proper lighting, instead of colours looking washed out and very bright.
@@ -103,7 +107,6 @@ Although this progress report was a bit bare than most, the majority of it was c
 
 #### START CANDIDATE PULL REQUESTS ####
 
-## [citra-qt: game list search function](https://github.com/citra-emu/citra/pull/2673) by [nicoboss](https://github.com/nicoboss)
 ## [Kernel: Map special regions according to ExHeader](https://github.com/citra-emu/citra/pull/2687) by [yuriks](https://github.com/yuriks)
 
 #### END CANDIDATE PULL REQUESTS ####
