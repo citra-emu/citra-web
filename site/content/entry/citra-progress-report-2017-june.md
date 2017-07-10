@@ -86,18 +86,18 @@ For people with a lot of games, this new feature allows users to search through 
 These new features are all just features that were not known or not researched enough when the original lighting implementation was written. A few small fixes lead to big changes, such as the fact that Super Smash Bros. for 3DS now has proper lighting, instead of colours looking washed out and very bright.
 
 <p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Super Smash Bros. for 3DS before the new lighting features" src="/images/entry/citra-progress-report-2017-june/smash-bright-before.png" />
+<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Super Smash Bros. for 3DS before the new lighting features" src="/images/entry/citra-progress-report-2017-june/frag-light-before.png" />
 <!--
 title_id = 00040000000edf00
 commit_hash = bae3799bd5208d08bb52546ad0723103c94cada3
 -->
-<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Super Smash Bros. for 3DS after the new lighting features" src="/images/entry/citra-progress-report-2017-june/smash-bright-after.png" />
+<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Super Smash Bros. for 3DS after the new lighting features" src="/images/entry/citra-progress-report-2017-june/frag-light-after.png" />
 <!--
 title_id = 00040000000edf00
 commit_hash = c017065570f9bad90a8cd3dadac9b63d810793a6
 -->
 <br />
-A before and after of these additions shows the improvement plainly.
+Finally someone turned down the lights.
 </p>
 
 ## [Frontend: Prevent FileSystemWatcher from blocking UI thread](https://github.com/citra-emu/citra/pull/2669) by [jroweboy](https://github.com/jroweboy)
