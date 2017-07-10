@@ -87,7 +87,15 @@ These new features are all just features that were not known or not researched e
 
 <p style="text-align: center; font-size: small; padding: 1%">
 <img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Super Smash Bros. for 3DS before the new lighting features" src="/images/entry/citra-progress-report-2017-june/smash-bright-before.png" />
+<!--
+title_id = 00040000000edf00
+commit_hash = bae3799bd5208d08bb52546ad0723103c94cada3
+-->
 <img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Super Smash Bros. for 3DS after the new lighting features" src="/images/entry/citra-progress-report-2017-june/smash-bright-after.png" />
+<!--
+title_id = 00040000000edf00
+commit_hash = c017065570f9bad90a8cd3dadac9b63d810793a6
+-->
 <br />
 A before and after of these additions shows the improvement plainly.
 </p>
