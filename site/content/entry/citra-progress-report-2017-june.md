@@ -27,12 +27,6 @@ Look at that beautiful sea foam. ❤︎
 
 To calculate lighting on any given object, the 3DS' GPU interpolates the light quaternion with the surface quaternion of that object. There are three main methods to doing so, the **l**inear int**erp**olation (**lerp**), the **q**uadratic **l**inear int**erp**olation (**qlerp**), and the **s**pherical **l**inear int**erp**olation (**slerp**). All this time Citra used a lerp, which, although the fastest, can lead to a lot of distortion when interpolating across a large rotation angle.
 
-<p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" alt="lerp, qlerp, and slerp being compared with a 145 degree rotation" src="/images/entry/citra-progress-report-2017-june/lerp-qlerp-slerp.gif" />
-<br />
-Notice how the plain lerp (magenta line) and the qlerp (red line) lag behind the slerp (blue line), and then speed up to the other side, whereas the slerp remains at a constant speed through the entire rotation.
-</p>
-
 [yuriks](https://github.com/yuriks) researched and implemented slerp on Citra, and after a long while of work, it turns out that the 3DS uses lerp as well! The bug in Citra was caused by  not normalizing the quaternions before interpolating them, which greatly affected the results. This particular issue sent them down a very deep rabbit hole, only to lead to a red herring. But, at least it was (eventually) fixed!
 
 ## [Remove built-in disassembler and related code](https://github.com/citra-emu/citra/pull/2689) by [yuriks](https://github.com/yuriks)
