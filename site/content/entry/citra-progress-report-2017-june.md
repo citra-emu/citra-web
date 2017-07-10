@@ -35,6 +35,14 @@ Notice how the plain lerp (magenta line) and the qlerp (red line) lag behind the
 
 [yuriks](https://github.com/yuriks) researched and implemented slerp on Citra, and after a long while of work, it turns out that the 3DS uses lerp as well! The bug in Citra was caused by  not normalizing the quaternions before interpolating them, which greatly affected the results. This particular issue sent them down a very deep rabbit hole, only to lead to a red herring. But, at least it was (eventually) fixed!
 
+## [Remove built-in disassembler and related code](https://github.com/citra-emu/citra/pull/2689) by [yuriks](https://github.com/yuriks)
+
+The Citra disassembler and debugger was planned to be a fully-featured debugger for 3DS programs, as how Dolphin, No$GBA, or other emulators have done. Unfortunately, they were never given the care that was needed to get them up to speed, and so it was extremely buggy, disassembling code to complete nonsense at times. Not to mention that it was missing a lot of essential features, such as setting breakpoints. All of these things, combined with the fact that we already have added 3DS support to `gdb`, it just made sense to get rid of this one and focus on the other.
+
+## Implement the [Circle Pad Pro](https://github.com/citra-emu/citra/pull/2606) and the [New 3DS C-Stick](https://github.com/citra-emu/citra/pull/2676) by [wwylele](https://github.com/wwylele)
+
+The Circle Pad Pro was an accessory that added a secondary circle pad and ZL/ZR buttons to the old 3DS, years before the New 3DS was even annouced. It communicated with the 3DS via infrared, which allowed dropping the console into it directly without having to plug in any wires or modify the console. The New 3DS' C-stick exposes itself to the system via a new, simpler (and incompatible) API, but for backwards compatibility, still exposes it via the infrared API, this allows games that were made years before the New 3DS to work perfectly well with the C-stick. These two additions give C-stick support to Citra, one through the C-stick API, and one through the infrared API.
+
 ## [gl_rasterizer: fix lighting LUT interpolation](https://github.com/citra-emu/citra/pull/2792) by [wwylele](https://github.com/wwylele)
 
 For fragment lighting, the 3DS has a hardcoded **L**ook-**u**p **T**able of values to calculate things more quickly, but is relatively small, only 256 entries big. Because of this, for every time a lookup falls between two values, the game has a table, usually in the ROM, but it can be computed on the fly, that has the differences between the closest two values, called the delta table.
@@ -64,14 +72,6 @@ commit_hash = c017065570f9bad90a8cd3dadac9b63d810793a6
 -->
 Much better, guess the lighting got an acne treatment.
 </p>
-
-## [Remove built-in disassembler and related code](https://github.com/citra-emu/citra/pull/2689) by [yuriks](https://github.com/yuriks)
-
-The Citra disassembler and debugger was planned to be a fully-featured debugger for 3DS programs, as how Dolphin, No$GBA, or other emulators have done. Unfortunately, they were never given the care that was needed to get them up to speed, and so it was extremely buggy, disassembling code to complete nonsense at times. Not to mention that it was missing a lot of essential features, such as setting breakpoints. All of these things, combined with the fact that we already have added 3DS support to `gdb`, it just made sense to get rid of this one and focus on the other.
-
-## Implement the [Circle Pad Pro](https://github.com/citra-emu/citra/pull/2606) and the [New 3DS C-Stick](https://github.com/citra-emu/citra/pull/2676) by [wwylele](https://github.com/wwylele)
-
-The Circle Pad Pro was an accessory that added a secondary circle pad and ZL/ZR buttons to the old 3DS, years before the New 3DS was even annouced. It communicated with the 3DS via infrared, which allowed dropping the console into it directly without having to plug in any wires or modify the console. The New 3DS' C-stick exposes itself to the system via a new, simpler (and incompatible) API, but for backwards compatibility, still exposes it via the infrared API, this allows games that were made years before the New 3DS to work perfectly well with the C-stick. These two additions give C-stick support to Citra, one through the C-stick API, and one through the infrared API.
 
 ## [Display QMessageBox Dialogs For Errors](https://github.com/citra-emu/citra/pull/2611) by [TheKoopaKingdom](https://github.com/TheKoopaKingdom)
 
