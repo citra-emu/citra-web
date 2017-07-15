@@ -5,10 +5,10 @@ This repository contains the source for the [Citra Emulator](https://github.com/
 ## Quick Start
 
 ### Required Tools
-- [Node.js](https://nodejs.org)
-- [Gulp.js](http://gulpjs.com) (Install this using the command `npm install -g gulp`, with root / admin permissions.)
-- [ImageMagick](https://www.imagemagick.org)
-- [GraphicsMagick](http://www.graphicsmagick.org/)
+- [Node.js](https://nodejs.org) `sudo apt-get install nodejs nodejs-legacy`
+- [Gulp.js](http://gulpjs.com) `sudo npm install -g gulp`
+- [ImageMagick](https://www.imagemagick.org) `sudo apt-get install graphicsmagick`
+- [GraphicsMagick](http://www.graphicsmagick.org/) (Should be installed through graphicsmagick)
 
 ### Instructions
 1. Open up a terminal or command prompt in the `citra-web` directory.
