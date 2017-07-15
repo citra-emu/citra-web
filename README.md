@@ -4,9 +4,10 @@ This repository contains the source for the [Citra Emulator](https://github.com/
 
 ## Quick Start
 
-### Required Tools
+### Required Dependencies
 - [Node.js](https://nodejs.org) `sudo apt-get install nodejs nodejs-legacy`
 - [Gulp.js](http://gulpjs.com) `sudo npm install -g gulp`
+- [Hugo](https://gohugo.io/) `sudo npm install -g hugo-bin`
 - [ImageMagick](https://www.imagemagick.org) `sudo apt-get install graphicsmagick`
 - [GraphicsMagick](http://www.graphicsmagick.org/) (Should be installed through graphicsmagick)
 
