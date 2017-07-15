@@ -43,7 +43,7 @@ gulp.task('setup', function(cb) {
 
 // PHASE 2 - Building
 gulp.task('hugo', function (cb) {
-  exec('$(npm bin)/hugo -s ./site/ -d ../public/ -v', function (err, stdout, stderr) {
+  exec('hugo -s ./site/ -d ../public/ -v', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);

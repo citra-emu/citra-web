@@ -32,6 +32,8 @@ before_script:
   - sudo apt-get install graphicsmagick
   - convert -help
   - yarn global add @alrra/travis-scripts
+  - yarn global add hugo-bin
+  - hugo version
   - yarn global add gulp
 
   - echo '========== Configuring Github Pages =========='
