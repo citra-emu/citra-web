@@ -107,17 +107,31 @@
 
 	list.sort("title", {order: "asc"});
 
-	list.on("updated", function(){
-		$("#compatibility-list tbody tr.key").removeClass("key");
-		if ($("#compatibility-list thead").find("th.asc[data-sort='title'], th.desc[data-sort='title']").length){
-			$("#compatibility-list tbody tr[data-key]").each(function(){
+	list.on("updated", function(list){
+		var $list = $(list.list);
+		var $items = $list.children();
+		$items.removeClass("key");
+		if ('title' == getLastSorted(list)){
+			$items.each(function(){
 				var key = $(this).attr("data-key")
-				if ($("tr[data-key='" + key + "']:first").is($(this))){
+				if (
+					$list
+					.children("[data-key='" + key + "']")
+					.first()
+					.is( $(this) )
+				){
 					$(this).addClass("key");
 				}
 			})
 		}
 	})
+
+	function getLastSorted(list){
+		var currentSorted = $(list.listContainer).find(".asc, .desc").attr("data-sort");
+		if ('undefined' !== typeof currentSorted)
+			list.lastSorted = currentSorted;
+		return list.lastSorted;
+	}
 
 	function filterTable(_) {
 		var rating = this.name;
