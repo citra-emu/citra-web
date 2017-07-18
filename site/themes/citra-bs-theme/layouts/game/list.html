@@ -63,16 +63,16 @@
 						<td class="col-md-1 icon">
 							<img src="/images/game/icons/{{ .File.BaseFileName }}.png" />
 						</td>
-						<td class="col-md-6 title">
+						<td class="col-md-6 title" data-title="{{ .Params.title }}">
 							<a href="{{ .Permalink }}">{{ .Params.title }}</a>
 						</td>
-						<td class="col-md-1 type">
+						<td class="col-md-1 type" data-type="{{ $type.name }}">
 							<img src="/images/game/types/{{ $type.key }}.png" title="{{ $type.name }}" />
 						</td>
-						<td class="col-md-1 compatibility">
+						<td class="col-md-1 compatibility" data-compatibility="{{ $rating.key }}">
 							<div class="square-icon" style="background-color: {{ $rating.color }}"></div> <span>{{ $rating.name }}</span>
 						</td>
-						<td class="col-md-3 date-tested">
+						<td class="col-md-3 date-tested" data-timestamp="{{ .Params.testcase_date }}">
 							<span>{{ dateFormat "January 2, 2006" .Params.testcase_date }}</span>
 						</td>
 					</tr>
@@ -90,7 +90,13 @@
 
 <script type="text/javascript">
 	var options = {
-		valueNames: ['listing-metadata', 'icon', 'title', 'type', 'compatibility', 'date-tested'],
+		valueNames: [
+			'listing-metadata',
+			{ name: 'title', attr: 'data-title' },
+			{ name: 'type', attr: 'data-type' },
+			{ name: 'compatibility', attr: 'data-compatibility' },
+			{ name: 'date-tested', attr: 'data-timestamp' }
+		],
 		searchColumns: [ 'listing-metadata' ],
 		pagination: true,
 		indexAsync: true,
@@ -115,9 +121,10 @@
 
 	function filterTable(_) {
 		var rating = this.name;
+		var index = this.index;
 
 		$("#search-box").val(rating);
-		list.search(rating, ['compatibility']);
+		list.search(index, ['compatibility']);
 	}
 
 	function clearSearch() {
