@@ -91,6 +91,7 @@
 <script type="text/javascript">
 	var options = {
 		valueNames: ['listing-metadata', 'icon', 'title', 'type', 'compatibility', 'date-tested'],
+		searchColumns: [ 'listing-metadata' ],
 		pagination: true,
 		indexAsync: true,
 		page: 50
@@ -99,11 +100,6 @@
 	var list = new List('game-listing', options);
 
 	list.sort("title", {order: "asc"});
-
-	$('#search-box').keyup(function() {
-		var searchString = $(this).val();
-		list.fuzzySearch(searchString, ['listing-metadata']);
-	});
 
 	list.on("updated", function(){
 		$("#compatibility-list tbody tr.key").removeClass("key");
