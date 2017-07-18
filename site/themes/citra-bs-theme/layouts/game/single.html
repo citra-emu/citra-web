@@ -3,17 +3,6 @@
   {{ $gameName := .File.BaseFileName }}
   {{- $type := index .Site.Data.gameTypes (.Params.game_type | default "3ds") }}
 
-  <div class="alert alert-info">
-    <div class="row">
-      <div class="col-md-2">
-        <strong>Reminder!</strong>
-      </div>
-      <div class="col-md-10">
-        <p>Citra is currently in very early stages of development. Games usually run less than full-speed even on the best computers. Expect bugs and glitches to appear in most games. Many features found in more mature emulators are still in the works.</p>
-      </div>
-    </div>
-  </div>
-
   <div class="alert alert-warning">
     <div class="row">
       <div class="col-md-2">
@@ -21,10 +10,31 @@
       </div>
       <div class="col-md-10">
         The below game article is based on user submitted content.<br>
-        See a mistake? Want to contribute? <a href="https://github.com/citra-emu/citra-games-wiki/wiki/{{ .File.BaseFileName }}/_edit/">Edit this game article on Github</a>
+        See a mistake? Want to contribute?
+        <a href="https://github.com/citra-emu/citra-games-wiki/wiki/{{ .File.BaseFileName }}/_edit/">Edit this game article on Github</a>
       </div>
     </div>
   </div>
+
+  {{- if eq .Params.incomplete true }}
+    <div class="alert alert-danger">
+      <div class="row">
+        <div class="col-md-2">
+          <strong>Notice</strong>
+        </div>
+        <div class="col-md-10">
+          <p>This page is considered <u>INCOMPLETE</u> due to any one of the following reasons:</p>
+          <ul>
+            <li>Missing screenshots</li>
+            <li>Missing/insufficient wiki article</li>
+            <li>Unverified game compatibility rating</li>
+          </ul>
+          <p>The information below may not accurately represent your experience with Citra.</p>
+          <p>Pages that are left incomplete may be subject for removal.</p>
+        </div>
+      </div>
+    </div>
+  {{ end }}
 
 	<h1>{{ .Title }}</h1>
   <div class="row">
