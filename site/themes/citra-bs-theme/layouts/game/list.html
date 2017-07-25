@@ -24,7 +24,7 @@
 						<tr>
 							<td>
 								<div class="input-group search-box">
-									<input type="text" class="form-control fuzzy-search" id="search-box" placeholder="Search...">
+									<input type="text" class="form-control search" id="search-box" placeholder="Search...">
 									<span onclick="clearSearch()" class="clear-search input-group-addon">X</span>
 								</div>
 							</td>
@@ -143,7 +143,7 @@
 
 	function clearSearch() {
 		$("#search-box").val("");
-		list.fuzzySearch();
+		list.search();
 	}
 
 	Highcharts.chart('highchart-container', {
