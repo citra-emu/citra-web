@@ -72,6 +72,7 @@ gitPull(fsPathWiki, 'https://github.com/citra-emu/citra-games-wiki.wiki.git');
 
 // Fetch all issues from Github.
 var githubIssues = null;
+var wikiEntries = {};
 
 getGithubIssues()
 .then(function(issues) {
@@ -88,6 +89,14 @@ getGithubIssues()
   });
 })
 .then(function() {
+  // Transform wiki entries to lowercase
+  const files = fs.readdirSync(fsPathWiki);
+
+  logger.info(`Generating wiki database...`);
+  files.forEach((file) => {
+      wikiEntries[file.toLowerCase()] = file;
+  });
+
   // Loop through each game and process it.
   getDirectories(fsPathCode).forEach(function(game) {
     processGame(game);
@@ -220,7 +229,7 @@ function processGame(game) {
 
     // WIKI BLOCK
     var wikiText = "";
-    let fsPathWikiGame = `${fsPathWiki}/${game}.md`;
+    let fsPathWikiGame = `${fsPathWiki}/${wikiEntries[game.toLowerCase() + ".md"]}`;
     if (fs.existsSync(fsPathWikiGame)) {
       wikiText = fs.readFileSync(fsPathWikiGame, 'utf8');
 
