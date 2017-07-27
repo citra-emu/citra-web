@@ -28,6 +28,11 @@ before_script:
   - node app.js
   - cd $TRAVIS_BUILD_DIR
 
+  - echo '========== Preparing download repository builder dependencies =========='
+  - cd ./scripts/downloads/
+  - yarn install
+  - cd $TRAVIS_BUILD_DIR
+
   - echo '========== Installing gulp & dependencies =========='
   - sudo apt-get install graphicsmagick
   - convert -help

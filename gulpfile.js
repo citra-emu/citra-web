@@ -77,8 +77,23 @@ gulp.task('images', ['hugo'], () => (
       .pipe(gulp.dest(`${distPath}/images/screenshots/thumbs`))
 ));
 
+gulp.task('repogen', ['hugo'], function (cb) {
+    exec('node app.js', {
+        cwd: "scripts/downloads"
+    }, function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+    });
+});
+
+gulp.task('repo', ['repogen'], () => (
+    gulp.src(`scripts/downloads/build/**`)
+        .pipe(gulp.dest(`${distPath}/repository`))
+));
+
 // This task ensures all phases up to PHASE 2 are completed.
-gulp.task('build', ['hugo', 'css', 'images'], function (done) {
+gulp.task('build', ['hugo', 'css', 'images', 'repo'], function (done) {
     browsersync.reload();
     done();
 });
