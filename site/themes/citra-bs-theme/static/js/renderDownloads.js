@@ -35,6 +35,7 @@ $(document).ready(function() {
 
                 release.assets.forEach(function(asset) {
                     if (asset.name.includes('nupkg')) return;
+                    if (asset.name.includes('.7z')) return;
                     if (asset.name.includes('RELEASES')) return;
 
                     let env_icon = './images/icons/file.png';
