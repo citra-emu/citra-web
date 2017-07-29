@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The Citra Official Website",
   "author": "",
-  "license": "GPLv3",
+  "license": "AGPLv3",
   "dependencies": {
     "browser-sync": "^2.18.12",
     "gulp": "^3.9.1",
