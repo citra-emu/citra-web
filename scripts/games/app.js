@@ -14,7 +14,7 @@ const blackfriday = require('./blackfriday.js');
 const del = require('delete');
 const exec = require('sync-exec');
 
-const fsPathCode = './citra-games-wiki';
+const fsPathCode = './citra-games-wiki/games';
 const fsPathWiki = './citra-games-wiki.wiki';
 const fsPathHugoContent = '../../site/content/game';
 const fsPathHugoBoxart = '../../site/static/images/game/boxart';
@@ -42,8 +42,8 @@ function getDirectories (srcpath) {
 async function getGithubIssues() {
   var results = [];
 
-  // Force the while loop out after 10 calls.
-  for (var page = 0; page <= 3; page++) {
+  // Only loop through the first x pages to prevent API limiting.
+  for (var page = 0; page <= 15; page++) {
     let options = {
       url: `https://api.github.com/repos/citra-emu/citra/issues?per_page=99&page=${page}`,
       headers: { 'User-Agent': 'citrabot' }
@@ -65,10 +65,10 @@ async function getGithubIssues() {
 }
 
 // Fetch game information stored in Github repository.
-gitPull(fsPathCode, 'https://github.com/citra-emu/citra-games-wiki.git');
+gitPull('./citra-games-wiki', 'https://github.com/citra-emu/citra-games-wiki.git');
 
 // Fetch game articles stored in Github wiki.
-gitPull(fsPathWiki, 'https://github.com/citra-emu/citra-games-wiki.wiki.git');
+gitPull('./citra-games-wiki.wiki', 'https://github.com/citra-emu/citra-games-wiki.wiki.git');
 
 // Fetch all issues from Github.
 var githubIssues = null;
@@ -188,7 +188,7 @@ function processGame(game) {
     // GITHUB ISSUES BLOCK
     model.issues = [];
     model.closed_issues = [];
-    
+
     if (model.github_issues != null && model.github_issues.length > 0) {
       model.github_issues.forEach(function(number) {
         let issue = githubIssues.find(x => x.number == number);
