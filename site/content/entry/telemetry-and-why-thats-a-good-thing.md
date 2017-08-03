@@ -38,6 +38,4 @@ Then, head into the Services tab.
 And finally, untick the box titled "Report Telemetry Data".
 </p>
 
-<!-- TODO: Fifth paragraph
-Analytics helps for x y z
--->
+Telemetry is an extremely useful developer tool, as they allow the developer to be more aware of the users' needs and priorities, rather than be forced to guess, usually incorrectly. But it is only as useful as the data obtained, which is why we urge users to not opt-out, so the data can be as accurate and correct as possible. Who knows what could happen if our telemetry data doesn't represent our users accurately...](<!-- Link to that article Microsoft published on how they got Windows 8 so wrong because the analytics didn't represent their users accurately. -->)
