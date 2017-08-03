@@ -29,10 +29,7 @@ The telemetry framework will collect the following information:
  * Your CPU clock speed
  * What operating system is Citra running on, and the version
 
-<!-- TODO: Third paragraph
-Also collects IP addresses, but those are hashed and truncated (SHA1, 8 bytes).
-Explain how difficult it is to break hashes
--->
+Telemetry will also collect your IP address. *But*, before we send the IP address to the server, we hash it using the SHA1 algorithm, and then remove everything past the 8th character in the checksum. Your IP address is sent only in this form, which makes it impossible to recover, even if someone had the computational resources because we don't have the entire hash, only the first 8 characters. Additionally, IP addresses are usually dynamically assigned nowadays, which means that rather than having a fixed address for the entire duration of the contract with your ISP, your modem is assigned an address from a constantly changing pool of addresses the ISP has, every time the modem reconnects to them. So, over the span of a year, that one IP address you are assigned now, it's very likely it may be assigned to hundreds of other customers later on.
 
 <!-- TODO: Fourth paragraph
 Opt-out is possible and easy. outline steps.
