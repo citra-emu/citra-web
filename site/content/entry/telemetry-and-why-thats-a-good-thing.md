@@ -10,14 +10,13 @@ Citra has some [issues](https://github.com/citra-emu/citra/issues), we've always
 
 Because of this, we found that the best choice would simply be to collect anonymous information about our users, and use that data to find things like where users crash most often, what are the most popular games and hardware configurations, and so on. We had considered including this in last month's progress report, but we decided that it would be best to publish this on its own, so it gets the attention it deserves. We're very aware that privacy is important to many of our users, and so from the earliest planning stage we knew we must be as transparent and open about this as possible.
 
-The telemetry framework will collect the following information:
+The telemetry framework will collect information such as:
 
- * The version of Citra you're using
+ * Information about the version of Citra you are using
  * Performance data for the games you play
  * Your Citra configuration settings
- * Your CPU model
- * Your GPU model
- * What operating system is Citra running on, and the version
+ * Information about your computer hardware (e.g. GPU, CPU, and OS type)
+ * Emulation errors and crash information
 
 Telemetry will also collect your IP address. *But*, before we send the IP address to the server, we hash it using the SHA1 algorithm, and then remove everything past the 8th character in the checksum. Your IP address is sent only in this form, which makes it impossible to recover, even if someone had the computational resources because we don't have the entire hash, only the first 8 characters. Additionally, IP addresses are usually dynamically assigned nowadays, which means that rather than having a fixed address for the entire duration of the contract with your ISP, your modem is assigned an address from a constantly changing pool of addresses the ISP has, every time the modem reconnects to them. So, over the span of a year, that one IP address you are assigned now, it's very likely it may be assigned to hundreds of other customers later on.
 
