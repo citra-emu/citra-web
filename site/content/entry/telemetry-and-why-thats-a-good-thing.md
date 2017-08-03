@@ -14,14 +14,15 @@ The telemetry framework will collect the following information:
 
  * The version of Citra you're using
  * If you're using the official build or not
- * If you've changed any of the code before building (if the working tree is ["dirty"](https://git-scm.com/docs/git-describe#git-describe---dirtyltmarkgt) or not)
- * What configuration settings you have in Citra, such as:
-  * the [internal resolution](/entry/texture-forwarding-brings-hd-output-to-citra/)
-  * if you use [audio stretching](/entry/hle-audio-comes-to-citra/#time-stretching)
+ * If you've changed any of the code before building (if the working directory is ["dirty"](https://git-scm.com/docs/git-describe#git-describe---dirtyltmarkgt) or not)
+ * These configuration settings for Citra:
+  * the internal resolution
+  * if you use audio stretching
   * if you use hardware rendering
   * if you use the CPU JIT recompiler
   * if you use the shader JIT recompiler
   * if you use VSync
+  * if you enabled New 3DS mode
   * what region you configured
  * Your CPU model
  * Your GPU model
