@@ -13,21 +13,10 @@ Because of this, we found that the best choice would simply be to collect anonym
 The telemetry framework will collect the following information:
 
  * The version of Citra you're using
- * Your average frame rates for the games you play
- * If you're using the official build or not
- * If you've changed any of the code before building (if the working directory is ["dirty"](https://git-scm.com/docs/git-describe#git-describe---dirtyltmarkgt) or not)
- * These configuration settings for Citra:
-  * the internal resolution
-  * if you use audio stretching
-  * if you use hardware rendering
-  * if you use the CPU JIT recompiler
-  * if you use the shader JIT recompiler
-  * if you use VSync
-  * if you enabled New 3DS mode
-  * what region you configured
+ * Performance data for the games you play
+ * Your Citra configuration settings
  * Your CPU model
  * Your GPU model
- * Your CPU clock speed
  * What operating system is Citra running on, and the version
 
 Telemetry will also collect your IP address. *But*, before we send the IP address to the server, we hash it using the SHA1 algorithm, and then remove everything past the 8th character in the checksum. Your IP address is sent only in this form, which makes it impossible to recover, even if someone had the computational resources because we don't have the entire hash, only the first 8 characters. Additionally, IP addresses are usually dynamically assigned nowadays, which means that rather than having a fixed address for the entire duration of the contract with your ISP, your modem is assigned an address from a constantly changing pool of addresses the ISP has, every time the modem reconnects to them. So, over the span of a year, that one IP address you are assigned now, it's very likely it may be assigned to hundreds of other customers later on.
