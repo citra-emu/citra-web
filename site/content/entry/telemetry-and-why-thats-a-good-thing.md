@@ -13,6 +13,7 @@ Because of this, we found that the best choice would simply be to collect anonym
 The telemetry framework will collect the following information:
 
  * The version of Citra you're using
+ * Your average frame rates for the games you play
  * If you're using the official build or not
  * If you've changed any of the code before building (if the working directory is ["dirty"](https://git-scm.com/docs/git-describe#git-describe---dirtyltmarkgt) or not)
  * These configuration settings for Citra:
