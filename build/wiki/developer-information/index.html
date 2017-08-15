@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <meta name="theme-color" content="#FF8E03">
+    <meta property="og:title" content="Developer Information &middot; Citra" />
+    <meta property="og:site_name" content="Citra" />
+    <meta property="og:url" content="http://localhost:3000/wiki/developer-information/" />
+    <meta property="og:description" content="A very incomplete overview of useful information to get started with 3DS development. Please add anything that&rsquo;s missing :)
+3DS Hardware/Software  3DBrew is probably the best resource for the 3DS hardware/software internals ARM11 MPCore Reference Manual ARM946E-S ™ Reference Manual  Homebrew A list of a variety of homebrew applications and demos can be found on 3DBrew at Homebrew Applications. They can be used for testing Citra if you have no means of dumping and decrypting commercial games." />
+<meta name="description" content="A very incomplete overview of useful information to get started with 3DS development. Please add anything that&rsquo;s missing :)
+3DS Hardware/Software  3DBrew is probably the best resource for the 3DS hardware/software internals ARM11 MPCore Reference Manual ARM946E-S ™ Reference Manual  Homebrew A list of a variety of homebrew applications and demos can be found on 3DBrew at Homebrew Applications. They can be used for testing Citra if you have no means of dumping and decrypting commercial games." />
+<meta property="og:type" content="website" />
+
+
+    <meta name="generator" content="Hugo 0.26" />
+
+    <link rel="icon" href="http://localhost:3000/favicon.ico" />
+    <link rel="shortcut icon" href="http://localhost:3000/favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="http://localhost:3000/wiki/developer-information/">
+
+    
+
+    <title>Developer Information | Citra | Nintendo 3DS Emulator</title>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost:3000/css/style.css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+
+    
+      <meta name="robots" content="noindex,nofollow"/>
+    
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-wrapper navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">&nbsp;</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="index-1 first"><a href="/" title="" class="">Blog</a></li>
+                <li class="index-2"><a href="/download/" title="" class="">Download</a></li>
+                <li class="index-3"><a href="/wiki/home/" title="" class="">Wiki</a></li>
+                <li class="index-4"><a href="/wiki/faq/" title="" class="">FAQ</a></li>
+                <li class="index-5"><a href="/game/" title="" class="">Games</a></li>
+                <li class="index-6 dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Social <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/rules/" title="" class="">Rules</a></li>
+                        <li class="index-2"><a href="https://community.citra-emu.org/" title="" class="">Community Forums</a></li>
+                        <li class="index-3 last"><a href="/discord/" title="" class="">Discord Chat</a></li>
+                    </ul>
+                </li>
+                <li class="index-7 dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Media <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/screenshots/" title="" class="">Screenshots</a></li>
+                        <li class="index-2 last"><a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q" title="" class="">Videos</a></li>
+                    </ul>
+                </li>
+                <li class="index-8 last"><a href="/donate/" title="" class="">Donate</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div id="mainContainer" class="container" >
+      <div class="row">
+        
+      </div>
+
+      <div class="row row-fluid">
+        <div id="content" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right">
+          
+  <div class="alert alert-warning">
+    <div class="row">
+      <div class="col-md-2">
+        <strong>Read First!</strong>
+      </div>
+      <div class="col-md-10">
+        <p>The below wiki article is based on user submitted content.<br>
+        Please verify <strong>all</strong> hyperlinks and terminal commands below!</p>
+        See a mistake? Want to contribute? <a href="https://github.com/citra-emu/citra/wiki/developer-information/_edit/">Edit this article on Github</a>
+      </div>
+    </div>
+  </div>
+
+	<h1>Developer Information</h1>
+	
+
+<p>A very incomplete overview of useful information to get started with 3DS development. Please add anything that&rsquo;s missing :)</p>
+
+<h3 id="3ds-hardware-software">3DS Hardware/Software</h3>
+
+<ul>
+<li><a href="http://3dbrew.org/wiki/Main_Page">3DBrew</a> is probably the best resource for the 3DS hardware/software internals</li>
+<li><a href="http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0360f/index.html">ARM11 MPCore Reference Manual</a></li>
+<li><a href="http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0201d/index.html">ARM946E-S ™ Reference Manual</a></li>
+</ul>
+
+<h3 id="homebrew">Homebrew</h3>
+
+<p>A list of a variety of homebrew applications and demos can be found on 3DBrew at <a href="http://3dbrew.org/wiki/Homebrew_Applications">Homebrew Applications</a>. They can be used for testing Citra if you have no means of dumping and decrypting commercial games. Smea&rsquo;s <a href="http://smealum.github.io/ninjhax2/starter.zip">Ninjhax Starter Kit</a> contains pre-compiled binaries of some of these applications.</p>
+
+<p>Here are some tools useful for homebrew development:</p>
+
+<ul>
+<li><a href="http://devkitpro.org/wiki/Getting_Started/devkitARM">devkitARM</a> - Toolchain geared toward compiling homebrew</li>
+<li><a href="https://github.com/smealum/ctrulib">CTR User Library (ctrulib)</a> - Library for writing usermode arm11 code for the 3DS</li>
+<li><a href="https://github.com/fincs/picasso">picasso</a> and <a href="https://github.com/neobrain/nihstro">nihstro</a> - Assemblers for shader code for the PICA200 GPU used in the 3DS. nihsro also includes a disassembler.</li>
+<li><a href="https://github.com/smealum/aemstro">Aemstro</a> - Older shader (dis)assembler. Nowadays picasso or nihstro should be preferred.</li>
+<li><a href="https://gist.github.com/yuriks/715d3478168eb69a28fa">Error codes</a> - This python script will (hopefully) decode any error codes you might encounter.</li>
+<li><a href="http://www.3dsdb.com/">3DS Game Database</a> - Contains data on all 3DS games, their title IDs, update versions, etc.</li>
+<li><a href="http://3dbrew.org/wiki/Homebrew_Libraries_and_Tools">Homebrew Libraries and Tools</a> - 3DBrew page with more tools and libraries useful for development.</li>
+</ul>
+
+
+        </div>
+        <div id="sidebar" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-left">
+          <div id="advertisement" class = "ad">
+  <h3>Advertisement</h3>
+  <ins class="ad adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4126545610079023"
+       data-ad-slot="4223809695"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="tagcloud hidden-sm hidden-xs">
+  <h3>News Tag Cloud</h3>
+  <ul>
+    
+      <li><a class="taxonomy-citra-release" href="/tags/citra-release">citra-release</a></li>
+    
+      <li><a class="taxonomy-feature-update" href="/tags/feature-update">feature-update</a></li>
+    
+      <li><a class="taxonomy-progress-report" href="/tags/progress-report">progress-report</a></li>
+    
+  </ul>
+</div>
+
+<div id="twitter" class="hidden-sm hidden-xs">
+  <h3>Twitter Feed</h3>
+  
+    
+      <blockquote>
+        <p>Citra nightlies are back up and better than ever! Sorry for the delay and Happy New Year!</p>
+        <footer>
+          <a href="https://twitter.com/citraemu/status/817201197065109505/" class="author">citraemu - 01/05/2017</a>
+        </footer>
+    </blockquote>
+    
+      <blockquote>
+        <p>After much anticipation, Citra now has a JIT! Props again to @MerryMage for another massive contribution to the project!!</p>
+        <footer>
+          <a href="https://twitter.com/citraemu/status/776626520110399488/" class="author">citraemu - 09/15/2016</a>
+        </footer>
+    </blockquote>
+    
+      <blockquote>
+        <p>Props to @MerryMage for a fantastic job on Citra&#39;s audio support https://t.co/Z23AWxcDkf</p>
+        <footer>
+          <a href="https://twitter.com/citraemu/status/733831257398747137/" class="author">citraemu - 05/20/2016</a>
+        </footer>
+    </blockquote>
+    
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+		<div id="footer" class="container">
+		    <div class="row">
+
+		        <div class="col-md-2">
+		            <h1>Citra</h1>
+		            <a href="/">Blog</a>
+		            <a href="/download/">Downloads</a>
+		            <a href="/screenshots/">Screenshots</a>
+		            <a href="/donate/">Donate</a>
+		        </div>
+
+		        <div class="col-md-2">
+		            <h1>Documentation</h1>
+		            <a href="/game/">Games</a>
+		            <a href="/wiki/home/">Wiki</a>
+		            <a href="/wiki/faq/">FAQ</a>
+		        </div>
+
+		        <div class="col-md-2">
+		            <h1>Blog</h1>
+		            <a href="/">News &amp; Articles</a>
+		            <a href="http://localhost:3000/index.xml">RSS 2.0</a>
+		        </div>
+
+		        <div class="col-md-2">
+		            <h1>Social</h1>
+		            <a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q">YouTube</a>
+		            <a href="https://www.facebook.com/citra.emu">Facebook</a>
+		            <a href="https://twitter.com/citraemu">Twitter</a>
+		            <a href="https://community.citra-emu.org/">Forums</a>
+		            <a href="/discord">Discord</a>
+		            <a href="/chat">IRC</a>
+		            </ul>
+		        </div>
+
+		        <div class="col-md-2">
+		            <h1>Get Involved</h1>
+		            <a href="https://github.com/citra-emu/citra">GitHub / Source</a>
+		            <a href="https://github.com/citra-emu/citra/issues">Issues</a>
+		            <a href="https://github.com/citra-emu/citra/pulls">Pull Requests</a>
+		        </div>
+
+		    </div>
+		    <div id="footer-bottom">
+		        <div id="footer-brand"></div>
+		        <div id="footer-legal">Copyright © 2017 Citra Emulator Project</div>
+		    </div>
+		</div>
+
+    
+  </body>
+
+  </html>

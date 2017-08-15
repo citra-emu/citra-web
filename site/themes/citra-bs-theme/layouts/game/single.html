@@ -40,7 +40,7 @@
   <div class="row">
     <div class="col-md-5">
       <div class="boxart">
-        <img src="{{ .Site.BaseURL }}images/game/boxart/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
+        <img src="{{ .Site.BaseURL }}/images/game/boxart/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
       </div>
     </div>
     <div class="col-md-7">
@@ -55,7 +55,7 @@
           <tr>
             <td>Type</td>
             <td>
-              <img src="{{ .Site.BaseURL }}images/game/types/{{ $type.key }}.png" title="{{ $type.name }}" />
+              <img src="{{ .Site.BaseURL }}/images/theme/game/types/{{ $type.key }}.png" title="{{ $type.name }}" />
               {{- if eq $type.key "3ds" }}
               {{- else if eq $type.key "vc" }}
                 {{- $vcSystem := index .Site.Data.vcSystems .Params.vc_system }}
@@ -67,7 +67,7 @@
           </tr>
           <tr>
             <td>Game Icon</td>
-            <td><img class="img-responsive" src="{{ .Site.BaseURL }}images/game/icons/{{ .File.BaseFileName }}.png" /></td>
+            <td><img class="img-responsive" src="{{ .Site.BaseURL }}/images/game/icons/{{ .File.BaseFileName }}.png" /></td>
           </tr>
           <tr>
             <td>Title IDs</td>
