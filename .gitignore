@@ -5,6 +5,7 @@ site/hugo
 site/hugo.exe
 
 # Hugo generated static website files.
+build/
 public/
 site/public/
 .publish/
