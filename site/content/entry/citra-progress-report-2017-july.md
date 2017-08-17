@@ -3,6 +3,7 @@ date = "2017-08-16T14:31:00-04:00"
 title = "Citra Progress Report - 2017 July"
 tags = [ "progress-report" ]
 author = "saphiresurf"
+coauthor = "anodium"
 forum = 0000
 +++
 
