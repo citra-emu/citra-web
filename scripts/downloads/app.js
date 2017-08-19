@@ -34,7 +34,7 @@ function getTopResultFor(jsonData, platform) {
                     "published_at": release.published_at.substr(0, 10),
                     "name": asset.name,
                     "size": asset.size,
-                    "hash": release.target_commitish
+                    "hash": release.tag_name
                 }
             }
         }
@@ -62,12 +62,12 @@ let targets = [
         ],
     },
     {
-        "Name":        "org.citra.bleeding.%platform%",
-        "DisplayName": "Citra Bleeding Edge",
+        "Name":        "org.citra.canary.%platform%",
+        "DisplayName": "Citra Canary",
         "Description": "An in-development version of Citra that uses changes that are relatively untested.\n" +
                        "(%platform%, commit: %commithash%, release date: %releasedate%)",
-        "Repo":        "citra-emu/citra-bleeding-edge",
-        "ScriptName":  "bleeding",
+        "Repo":        "citra-emu/citra-canary",
+        "ScriptName":  "canary",
         "Default":     "script",
         "Licenses": [
             {"License": [{ _attr: { file: 'license.txt', name: "GNU General Public License v2.0" }}]}
@@ -141,7 +141,7 @@ async function execute() {
 
             target.push({"ReleaseDate": release_data.published_at});
             target.push({"Description": target_source.Description.replace("%platform%", platform)
-                .replace("%commithash%", release_data.hash.substr(0,7))
+                .replace("%commithash%", release_data.hash)
                 .replace("%releasedate%", release_data.published_at)});
             target.push({"Default": target_source.Default});
             target.push({"Licenses": target_source.Licenses});
