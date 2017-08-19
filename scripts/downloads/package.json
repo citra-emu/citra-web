@@ -9,6 +9,7 @@
     "7zip-bin": "^2.1.0",
     "execa": "^0.7.0",
     "fs-extra": "^4.0.0",
+    "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "sha1-file": "^1.0.0",
     "xml": "^1.0.1"
