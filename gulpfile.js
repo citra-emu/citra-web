@@ -1,15 +1,19 @@
 const gulp = require('gulp');
+const fs = require('fs');
 const util = require('gulp-util');
 const merge = require('merge-stream');
 const runSequence = require('run-sequence');
 const exec = require('child_process').exec;
 const sass = require('gulp-sass');
-const cleanCSS = require('gulp-clean-css');
+const postcss = require('gulp-postcss');
+const cssnano = require('cssnano');
 const browserSync = require('browser-sync').create();
-
+const ghPages = require('gulp-gh-pages');
+const concat = require('gulp-concat');
+const minify = require('gulp-minify');
 const imageResize = require('gulp-image-resize');
 
-const publishLocation = '/home/chris/www/';
+const cname = 'citra-emu.org';
 var finalCommand = null;
 
 // Gulp Run Tasks
@@ -18,16 +22,12 @@ gulp.task('default', ['start:setup'], function(callback) {
 });
 
 gulp.task('all', ['start:setup'], function(callback) {
-  runSequence(['scripts:downloads', 'scripts:games', 'scripts:twitter', 'scripts:wiki'],
-              ['assets:fonts', 'assets:css'],
+  runSequence(['scripts:games', 'scripts:twitter', 'scripts:wiki'],
+              ['assets:js', 'assets:fonts', 'assets:scss'],
               'hugo',
               'assets:images',
               finalCommand,
               callback);
-});
-
-gulp.task('downloads', ['start:setup'], function(callback) {
-  runSequence('scripts:downloads', 'hugo', finalCommand, callback);
 });
 
 gulp.task('games', ['start:setup'], function(callback) {
@@ -43,7 +43,7 @@ gulp.task('wiki', ['start:setup'], function(callback) {
 });
 
 gulp.task('assets', ['start:setup'], function(callback) {
-  runSequence(['assets:fonts', 'assets:css'], 'hugo', 'assets:images', finalCommand, callback);
+  runSequence(['assets:js', 'assets:fonts', 'assets:scss'], 'hugo', 'assets:images', finalCommand, callback);
 });
 
 // Gulp Pipeline
@@ -60,14 +60,6 @@ gulp.task('start:setup', function() {
 
     util.log(`process.env.HUGO_ENV = '${process.env.HUGO_ENV}'`);
     util.log(`process.env.HUGO_BASEURL = '${process.env.HUGO_BASEURL}'`);
-});
-
-gulp.task('scripts:downloads', function (callback) {
-  exec(`cd ./scripts/downloads/ && npm install && node app.js`, function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    callback(err);
-  });
 });
 
 gulp.task('scripts:games', function (callback) {
@@ -115,15 +107,22 @@ gulp.task('assets:images', ['hugo'], function() {
   return merge(baseImages, jumbotronImages, bannerImages, boxartImages, iconImages, screenshotImages);
 });
 
+gulp.task('assets:js', function() {
+  return gulp.src(['src/js/*/**.js'])
+    .pipe(concat('script.js'))
+    .pipe(gulp.dest('build/js'));
+});
+
 gulp.task('assets:fonts', function(){
   return gulp.src('./node_modules/bootstrap-sass/assets/fonts/*/**')
     .pipe(gulp.dest('build/fonts/'))
 });
 
-gulp.task('assets:css', function () {
-  return gulp.src('assets/css/style.scss')
+gulp.task('assets:scss', function () {
+  var postCssOptions = [ cssnano ];
+  return gulp.src('src/scss/style.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(cleanCSS())
+    .pipe(postcss(postCssOptions))
     .pipe(gulp.dest('build/css'))
     .pipe(browserSync.stream());
 });
@@ -136,7 +135,7 @@ gulp.task('hugo', function (cb) {
   });
 });
 
-function FileChange(x) {
+function fileChange(x) {
   console.log(`[FileChange] File changed: ${x.path}`);
   browserSync.reload(x);
 }
@@ -149,19 +148,18 @@ gulp.task('final:serve', function() {
         }
     });
 
-    gulp.watch('assets/js/**/*', ['assets:js']);
-    gulp.watch('assets/css/**/*', ['assets:css']);
-    gulp.watch('site/**/*.html', ['deploy-hugo']);
+    gulp.watch('src/js/**/*', ['assets:js']);
+    gulp.watch('src/scss/**/*', ['assets:scss']);
+    gulp.watch('site/**/*.html', ['hugo']);
 
-    gulp.watch('build/**/*').on('change', FileChange);
+    gulp.watch('build/**/*').on('change', fileChange);
 });
 
 gulp.task('final:publish', function(){
-  // Because hugo generates all files again regardless of if they've changed
-  // or not, we need to compare the dist directory's sha1 hash
-  // to see if we really need to copy the file.
-
-  // This allows nginx / etags to work the way they were intended.
-  return gulp.src('build/**/*')
-    .pipe(gulp.dest(publishLocation))
+  fs.writeFileSync(`${buildPath}/CNAME`, `${cname}`);
+  fs.writeFileSync(`${buildPath}/robots.txt`, `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
+  return gulp.src(`${buildPath}/**/*`).pipe(ghPages({
+    remoteUrl: "git@github.com:CitraBotWeb/CitraBotWeb.github.io.git",
+    branch: "master"
+  }));
 });
