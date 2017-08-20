@@ -1,5 +1,5 @@
 +++
-date = "2017-08-16T14:31:00-04:00"
+date = "2017-08-20T02:05:00-04:00"
 title = "Citra Progress Report - 2017 July"
 tags = [ "progress-report" ]
 author = "saphiresurf"
@@ -13,22 +13,22 @@ With June bringing in many huge improvements to GPU functionality, July has come
 
 The 3DS GPU has a data transfer mode called `TextureCopy`, which as the name says, is for copying textures but with a configurable gap in case the texture is going to be copied into a smaller resolution area. This mode is enabled by setting the 3rd flag in the GPU and causes it to ignore every other flag except the 2nd, which is used to tell it whether or not to crop the texture. 
 
-This is nice because it can be used as a quick and easy way for 3DS developers to duplicate textures, and can be used in situations such as the one pictured running on hardware in Pokemon Super Mystery Dungeon below. This is really nice for those creating games, but when it came to running something that took advantage of this feature in Citra it didn't always work the same as it would on console. This provided us with an accuracy issue that needed to be solved.
+This is nice because it can be used as a quick and easy way for 3DS developers to duplicate textures, and can be used in situations such as the one pictured running on hardware in Pokémon Super Mystery Dungeon below. This is really nice for those creating games, but when it came to running something that took advantage of this feature in Citra it didn't always work the same as it would on console. This provided us with an accuracy issue that needed to be solved.
 
 <p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Pokemon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off (IN S P A C E)" src="/images/entry/citra-progress-report-2017-july/texturecopy-before.png" />
+<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Pokémon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off (IN S P A C E)" src="/images/entry/citra-progress-report-2017-july/texturecopy-before.png" />
 <br />
 <!--
 title_id = 0004000000174600
 commit_hash = a40e60c4bc7ab9c559ad6e3f1769b1128d68c8d5
 -->
-*How jagged*
+How jagged
 </p>
 
 Fortunately (and to much rejoice) wwylele stepped into the ring to wrestle with this issue. They prepared a [test program](https://github.com/wwylele/ctrhwtest/tree/master/texture-copy-test) to help gain an understanding of how hardware handles the TextureCopy operation in comparison to Citra.
 
 <p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Pokemon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off (IN S P A C E)" src="/images/entry/citra-progress-report-2017-july/texturecopy-after.png" />
+<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Pokémon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off (IN S P A C E)" src="/images/entry/citra-progress-report-2017-july/texturecopy-after.png" />
 <br />
 <!--
 title_id = 0004000000174600
@@ -59,4 +59,4 @@ This in itself isn't an extremely visible or perceivable change from a user pers
 
 ## To Contributors
 
-Thank you to [everyone who's contributed](https://github.com/citra-emu/citra/graphs/contributors?from=2017-07-10&to=2017-08-16&type=c) for months before, beyond, and during July for all of the work that you've put into Citra. Without all of you, the project would not have shown the progress that it has in the past year, and with all those who have contributed, I don't think it's showing any sign of slowing down!
+Thank you to [everyone who's contributed](https://github.com/citra-emu/citra/graphs/contributors?from=2017-07-10&to=2017-08-20&type=c) for months before, beyond, and during July for all of the work that you've put into Citra. Without all of you, the project would not have shown the progress that it has in the past year, and with all those who have contributed, I don't think it's showing any sign of slowing down!
