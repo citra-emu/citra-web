@@ -55,7 +55,7 @@
           <tr>
             <td>Type</td>
             <td>
-              <img src="{{ .Site.BaseURL }}/images/theme/game/types/{{ $type.key }}.png" title="{{ $type.name }}" />
+              <img src="{{ .Site.BaseURL }}/images/game/types/{{ $type.key }}.png" title="{{ $type.name }}" />
               {{- if eq $type.key "3ds" }}
               {{- else if eq $type.key "vc" }}
                 {{- $vcSystem := index .Site.Data.vcSystems .Params.vc_system }}

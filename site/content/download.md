@@ -47,4 +47,3 @@ The Bleeding Edge build of Citra is the same as our nightly builds, with additio
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
-<script src="/js/renderDownloads.js"></script>
