@@ -34,22 +34,22 @@ The telemetry framework will collect information such as:
 
 Not everyone is comfortable sharing information about their system, so we've made it easy to opt-out:
 
-<p style="text-align: left; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="IMAGE DESCRIPTION HERE" src="IMAGE LINK HERE" />
+<p style="text-align: center; padding: 1%;">
+<img style="padding: 0% 0% 1% 0%;" height="75%" width="75%" alt="IMAGE DESCRIPTION HERE" src="/images/entry/telemetry-and-why-thats-a-good-thing/optout1.png" />
 <br />
-First, head to Citra settings.
+First, head to the Citra "Emulation" → "Configure..." menu.
 </p>
 
-<p style="text-align: left; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="IMAGE DESCRIPTION HERE" src="IMAGE LINK HERE" />
+<p style="text-align: center; padding: 1%;">
+<img style="padding: 0% 0% 1% 0%;" height="75%" width="75%" alt="IMAGE DESCRIPTION HERE" src="/images/entry/telemetry-and-why-thats-a-good-thing/optout2.png" />
 <br />
-Then, head into the Services tab.
+Then, head into the "Web" tab.
 </p>
 
-<p style="text-align: left; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="IMAGE DESCRIPTION HERE" src="IMAGE LINK HERE" />
+<p style="text-align: center; padding: 1%;">
+<img style="padding: 0% 0% 1% 0%;" height="75%" width="75%" alt="IMAGE DESCRIPTION HERE" src="/images/entry/telemetry-and-why-thats-a-good-thing/optout3.png" />
 <br />
-And finally, untick the box titled "Report Telemetry Data".
+And finally, untick the box titled "Share anonymous usage data with the Citra team".
 </p>
 
 Telemetry is an extremely useful developer tool, as they allow the developer to
