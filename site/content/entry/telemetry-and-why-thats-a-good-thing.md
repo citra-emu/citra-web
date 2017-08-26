@@ -51,6 +51,13 @@ Then, head into the "Web" tab.
 And finally, untick the box titled "Share anonymous usage data with the Citra team".
 </p>
 
+You may have also noticed the field titled "Telemetry ID" in the screenshots, this
+is an identifier generated randomly on install which is used instead of your IP
+address. This makes data collection entirely anonymous, unless you choose to log in.
+You can also reset your telemetry ID if you'd like by clicking "Regenerate". The
+new ID will also be completely random, and so it would be treated as a wholly new
+identity.
+
 Telemetry is an extremely useful developer tool, as they allow the developer to
 be more aware of the users' needs and priorities accurately, rather than guessing.
 But it is only as useful as the data obtained, which is why we urge users to not
