@@ -1,9 +1,9 @@
 +++
-date = "2017-08-02T21:02:00-04:00"
+date = "2017-08-26T21:04:00-04:00"
 title = "Telemetry (And Why That's A Good Thing)"
 tags = [ "citra-release" ]
 author = "anodium"
-forum = 0000
+forum = 3095
 +++
 
 Citra has some [issues](https://github.com/citra-emu/citra/issues), and by its
