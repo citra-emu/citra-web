@@ -21,6 +21,10 @@
   max-width: 100%;
   height: auto;
 }
+#content a, #carousel-description a, #twitter a {
+  border-bottom: 1px solid #E7EDF3;
+  text-decoration: none;
+}
 #footer {
   font-size: 14px;
   padding-top: 1%;
@@ -53,6 +57,10 @@
   background-size: 100% auto;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 /* Bootstrap NavBar */
 .dropdown-menu > li > a {
   font-size: 18px;
@@ -77,6 +85,11 @@
   height: 64px;
 }
 .navbar .container { padding-top: 5px; }
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: #FF8E03;
+  text-decoration: none;
+}
 #navbar a:hover {color: #FF8E03;}
 
 /* Navbar in mobile view, when active, change to @brand-primary */
