@@ -1,5 +1,9 @@
 # Build status located at https://travis-ci.org/citra-emu/citra-web
 
+# set-up-ssh is provided by travis-scripts.
+# Setting up the SSH key for Github is described here.
+# https://github.com/alrra/travis-scripts/blob/master/doc/github-deploy-keys.md
+
 language: node_js
 
 node_js: "node"
@@ -29,7 +33,3 @@ before_script:
 notifications:
   email:
     - mods@citra-emu.org
-
-# set-up-ssh is provided by travis-scripts.
-# Setting up the SSH key for Github is described here.
-# https://github.com/alrra/travis-scripts/blob/master/doc/github-deploy-keys.md

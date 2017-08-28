@@ -86,7 +86,7 @@ gulp.task('scripts:wiki', function (callback) {
   });
 });
 
-gulp.task('assets:images', ['hugo'], function() {
+gulp.task('assets:images', function() {
   var baseImages = gulp.src(`build/images/*`, {base: './'})
       .pipe(gulp.dest('./'));
   var jumbotronImages = gulp.src(`build/images/jumbotron/*`, {base: './'})
@@ -108,13 +108,13 @@ gulp.task('assets:images', ['hugo'], function() {
 });
 
 gulp.task('assets:js', function() {
-  return gulp.src(['src/js/*/**.js'])
+  return gulp.src(['src/js/**/*.js'])
     .pipe(concat('script.js'))
     .pipe(gulp.dest('build/js'));
 });
 
 gulp.task('assets:fonts', function(){
-  return gulp.src('./node_modules/bootstrap-sass/assets/fonts/*/**')
+  return gulp.src('./node_modules/bootstrap-sass/assets/fonts/**/*')
     .pipe(gulp.dest('build/fonts/'))
 });
 
@@ -156,9 +156,9 @@ gulp.task('final:serve', function() {
 });
 
 gulp.task('final:publish', function(){
-  fs.writeFileSync(`${buildPath}/CNAME`, `${cname}`);
-  fs.writeFileSync(`${buildPath}/robots.txt`, `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
-  return gulp.src(`${buildPath}/**/*`).pipe(ghPages({
+  fs.writeFileSync(`build/CNAME`, `${cname}`);
+  fs.writeFileSync(`build/robots.txt`, `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
+  return gulp.src(`build/**/*`).pipe(ghPages({
     remoteUrl: "git@github.com:CitraBotWeb/CitraBotWeb.github.io.git",
     branch: "master"
   }));

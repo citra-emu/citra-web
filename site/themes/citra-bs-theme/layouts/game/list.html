@@ -88,43 +88,6 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 <script type="text/javascript">
-	var options = {
-		valueNames: [
-			'listing-metadata',
-			{ name: 'title', attr: 'data-title' },
-			{ name: 'type', attr: 'data-type' },
-			{ name: 'compatibility', attr: 'data-compatibility' },
-			{ name: 'date-tested', attr: 'data-timestamp' }
-		],
-		searchColumns: [ 'listing-metadata' ],
-		pagination: true,
-		indexAsync: true,
-		page: 50
-	};
-
-	var list = new List('game-listing', options);
-
-	list.sort("title", {order: "asc"});
-
-	list.on("updated", function(list){
-		var $list = $(list.list);
-		var $items = $list.children();
-		$items.removeClass("key");
-		if ('title' == getLastSorted(list)){
-			$items.each(function(){
-				var key = $(this).attr("data-key")
-				if (
-					$list
-					.children("[data-key='" + key + "']")
-					.first()
-					.is( $(this) )
-				){
-					$(this).addClass("key");
-				}
-			})
-		}
-	})
-
 	function getLastSorted(list){
 		var currentSorted = $(list.listContainer).find(".asc, .desc").attr("data-sort");
 		if ('undefined' !== typeof currentSorted)
@@ -145,29 +108,68 @@
 		list.search();
 	}
 
-	Highcharts.chart('highchart-container', {
-		chart: { type: 'bar' },
-		colors: [{{ range .Site.Data.compatibility }}"{{ .color }}", {{- end }}],
-		credits: { enabled: false },
-			exporting: { enabled: false },
-		title: { text: '' },
-		xAxis: { categories: [''] },
-		yAxis: { min: 0, max: {{ len .Data.Pages }}, title: { text: '' } },
-		legend: { enabled: false },
-		plotOptions: { series: {
-			stacking: 'normal',
-			cursor: 'pointer',
-			events: {
-				click: filterTable
+	$(function() {
+		var options = {
+			valueNames: [
+				'listing-metadata',
+				{ name: 'title', attr: 'data-title' },
+				{ name: 'type', attr: 'data-type' },
+				{ name: 'compatibility', attr: 'data-compatibility' },
+				{ name: 'date-tested', attr: 'data-timestamp' }
+			],
+			searchColumns: [ 'listing-metadata' ],
+			pagination: true,
+			indexAsync: true,
+			page: 50
+		};
+
+		var list = new List('game-listing', options);
+
+		list.sort("title", {order: "asc"});
+
+		list.on("updated", function(list){
+			var $list = $(list.list);
+			var $items = $list.children();
+			$items.removeClass("key");
+			if ('title' == getLastSorted(list)){
+				$items.each(function(){
+					var key = $(this).attr("data-key")
+					if (
+						$list
+						.children("[data-key='" + key + "']")
+						.first()
+						.is( $(this) )
+					){
+						$(this).addClass("key");
+					}
+				})
 			}
-		} },
-		series: [
-				{{- $dataPages := .Data.Pages }}
-				{{- range .Site.Data.compatibility }}
-				{{- $dataPagesFiltered := where $dataPages ".Params.compatibility" .key }}
-				{ "name": "{{ .name }}", "data": [ {{ len $dataPagesFiltered }} ] },
-				{{- end }}
-			]
+		});
+
+		Highcharts.chart('highchart-container', {
+			chart: { type: 'bar' },
+			colors: [{{ range .Site.Data.compatibility }}"{{ .color }}", {{- end }}],
+			credits: { enabled: false },
+				exporting: { enabled: false },
+			title: { text: '' },
+			xAxis: { categories: [''] },
+			yAxis: { min: 0, max: {{ len .Data.Pages }}, title: { text: '' } },
+			legend: { enabled: false },
+			plotOptions: { series: {
+				stacking: 'normal',
+				cursor: 'pointer',
+				events: {
+					click: filterTable
+				}
+			} },
+			series: [
+					{{- $dataPages := .Data.Pages }}
+					{{- range .Site.Data.compatibility }}
+					{{- $dataPagesFiltered := where $dataPages ".Params.compatibility" .key }}
+					{ "name": "{{ .name }}", "data": [ {{ len $dataPagesFiltered }} ] },
+					{{- end }}
+				]
+		});
 	});
 </script>
 {{ end }}
