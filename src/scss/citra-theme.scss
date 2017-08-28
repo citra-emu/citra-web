@@ -21,17 +21,6 @@
   max-width: 100%;
   height: auto;
 }
-#content a, #carousel-description a, #twitter a {
-  color: #FF8E03;
-  border-bottom: 1px solid #E7EDF3;
-  text-decoration: none;
-}
-#content a:hover, #content a:focus, #carousel-description a:hover, #carousel-description a:focus, #twitter a:hover, #twitter a:focus {
-  color: #ffb050;
-}
-a:hover, a:focus {
-  text-decoration: none;
-}
 #footer {
   font-size: 14px;
   padding-top: 1%;
@@ -297,8 +286,6 @@ a:hover, a:focus {
 .square-icon { float: left; margin-top: 2px; margin-right: 4px; width: 16px; height: 16px; background-color: black; }
 
 /* Games Module */
-.game-icon-list { }
-
 #game-sections {
   display: table;
   margin: 0 auto;
@@ -322,14 +309,4 @@ a:hover, a:focus {
 
 .search-box {
   margin: 0 20px;
-}
-
-tr.key:after {
-  content: attr(data-key);
-  position: absolute;
-  left: -10px;
-  font-family: Dosis,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  color: #888;
-  margin: 15px 0;
-  font-size: 24px;
 }
