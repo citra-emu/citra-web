@@ -53,8 +53,8 @@ The Bleeding Edge build of Citra is the same as our nightly builds, with additio
     getRelease('bleeding-edge');
     
     function getRelease(v, count = 5) {
-        $.getJSON('https://api.github.com/repos/citra-emu/citra-' + v + '/releases', function(releases) {
-            $("#last-updated-" + v).text(moment(releases[0].published_at).fromNow());
+        $.getJSON(`https://api.github.com/repos/citra-emu/citra-${v}/releases`, function(releases) {
+            $(`#last-updated-${v}`).text(moment(releases[0].published_at).fromNow());
 
             for (var i = 0; i < releases.length; ++i) {
                 var release = releases[i];
@@ -64,7 +64,7 @@ The Bleeding Edge build of Citra is the same as our nightly builds, with additio
                 let release_commit_url = null;
                 if (v == 'nightly') {
                     release_commit = release.assets[0].name.split('-').pop().trim().split('.')[0];
-                    release_commit_url = 'https://github.com/citra-emu/citra-' + v + '/commit/' + release_commit;
+                    release_commit_url = `https://github.com/citra-emu/citra-${v}/commit/${release_commit}`;
                 }
 
                 let release_title = '';
@@ -94,19 +94,19 @@ The Bleeding Edge build of Citra is the same as our nightly builds, with additio
                     else if (asset.name.includes('osx')) env_icon = '/images/icons/apple.png';
                     else if (asset.name.includes('linux')) env_icon = '/images/icons/linux.png';
 
-                    let download_url = 'https://github.com/citra-emu/citra-' + v + '/releases/download/' + release.tag_name + '/' + asset.name;
-                    download_span += '<a class="dl-icon" href="' + download_url + '"><img src="' + env_icon + '"></i></a>';
+                    let download_url = `https://github.com/citra-emu/citra-${v}/releases/download/${release.tag_name}/${asset.name}`;
+                    download_span += `<a class="dl-icon" href="${download_url}"><img src="${env_icon}"></i></a>`;
                 });
 
                 /* Generate the link to the Github release. */
-                download_span += '<a class="dl-icon" href="' + release.html_url + '"><img src="/images/icons/github.png"></i></a>';
+                download_span += `<a class="dl-icon" href="${release.html_url}"><img src="/images/icons/github.png"></i></a>`;
 
                 if (release_commit_url != null) {
-                    $('#downloads-' + v).append('<tr class="' + table_style + '"><td>' + release_date + '</td>' +
-                        '<td><a href="' + release_commit_url + '/">' + release_title + '</a></td><td>' + download_span + '</td></tr>');
+                    $(`#downloads-${v}`).append(`<tr class="${table_style}"><td>${release_date}</td>` +
+                        `<td><a href="${release_commit_url}">${release_title}</a></td><td>${download_span}</td></tr>`);
                 } else {
-                    $('#downloads-' + v).append('<tr class="' + table_style + '"><td>' + release_date + '</td>' +
-                        '<td>' + release_title + '</td><td>' + download_span + '</td></tr>');
+                    $(`#downloads-${v}`).append(`<tr class="${table_style}"><td>${release_date}</td>` +
+                        `<td>${release_title}</td><td>${download_span}</td></tr>`);
                 }
                 if (i + 1 >= count) { break; }
             };
