@@ -14,6 +14,28 @@ lots of changes once more. I am extremely excited for this month (and what might
 be of the next month or two) but we're getting ahead of ourselves! On this
 progress report, let's check out the big fish in the July + August pond of patches!
 
+# START CANDIDATE PRS
+
+## [Travis: Use Docker to build for Linux](https://github.com/citra-emu/citra/pull/2869) by [j-selby](https://github.com/j-selby)
+## [Refactor MotionEmu into a InputDevice](https://github.com/citra-emu/citra/pull/2861) by [wwylele](https://github.com/wwylele)
+## [Handle invalid filenames when renaming files/directories](https://github.com/citra-emu/citra/pull/2850) by [j-selby](https://github.com/j-selby)
+## [Implement fragment lighting in the sw renderer.](https://github.com/citra-emu/citra/pull/2766) by [Subv](https://github.com/Subv)
+## [Implement fragment lighting in the sw renderer (take 2)](https://github.com/citra-emu/citra/pull/2822) by [wwylele](https://github.com/wwylele)
+## [SwRasterizer/Lighting: implement spot light](https://github.com/citra-emu/citra/pull/2871) by [wwylele](https://github.com/wwylele)
+## [SwRasterizer/Lighting: implement geometric factor](https://github.com/citra-emu/citra/pull/2872) by [wwylele](https://github.com/wwylele)
+## [SwRasterizer/Lighting: implement bump mapping](https://github.com/citra-emu/citra/pull/2891) by [wwylele](https://github.com/wwylele)
+
+```
+HW -> SW PR Mappings
+
+#1264 -> #2766 #2822
+#2727 -> #2871
+#2762 -> #2891
+#2776 -> #2872
+```
+
+# END CANDIDATE PRS
+
 ## [GPU: Fix Edge Cases for TextureCopy](https://github.com/citra-emu/citra/pull/2809) by [wwylele](https://github.com/wwylele)
 
 The 3DS GPU has a data transfer mode called `TextureCopy`, which as the name says,
