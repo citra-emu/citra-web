@@ -1,34 +1,5 @@
-body {
-  font-family: "Ubuntu","Helvetica Neue",Helvetica,Arial,sans-serif;
-  color: #333333;
-  background-color: #e5e5e5;
-}
+.h1, h1 { color: $brand-primary }
 
-/* latin */
-@font-face {
-  font-family: 'Dosis';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Dosis Regular'), local('Dosis-Regular'), url(https://fonts.gstatic.com/s/dosis/v6/4hYyXH_8WmbBLamf6WjLwg.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
-}
-@font-face {
-  font-family: 'Ubuntu';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Ubuntu'), url(https://fonts.gstatic.com/s/ubuntu/v9/2Q-AW1e_taO6pHwMXcXW5w.ttf) format('truetype');
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Dosis","Helvetica Neue",Helvetica,Arial,sans-serif;
-  color: #888888;
-  margin: 10px 0;
-  padding-top: 3%;
-}
-h1 {
-  padding-top: 0;
-  color: #FF8E03;
-}
 #jumbotron {
   height: 630px;
   margin-top: -16px;
@@ -51,14 +22,7 @@ h1 {
   height: auto;
 }
 #content a, #carousel-description a, #twitter a {
-  color: #FF8E03;
   border-bottom: 1px solid #E7EDF3;
-  text-decoration: none;
-}
-#content a:hover, #content a:focus, #carousel-description a:hover, #carousel-description a:focus, #twitter a:hover, #twitter a:focus {
-  color: #ffb050;
-}
-a:hover, a:focus {
   text-decoration: none;
 }
 #footer {
@@ -93,7 +57,14 @@ a:hover, a:focus {
   background-size: 100% auto;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 /* Bootstrap NavBar */
+.dropdown-menu > li > a {
+  font-size: 18px;
+}
 .navbar, #navbar.in, #navbar.collapsing {
   background-color: #fff;
   background-image: none;
@@ -103,6 +74,7 @@ a:hover, a:focus {
   margin-right: 10px;
   padding-right: 56px;
   padding-left: 25px;
+  width: 84px;
   background: url('../images/name.png') no-repeat 50% 50%;
   background-size: 64px;
 }
@@ -113,6 +85,11 @@ a:hover, a:focus {
   height: 64px;
 }
 .navbar .container { padding-top: 5px; }
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: #FF8E03;
+  text-decoration: none;
+}
 #navbar a:hover {color: #FF8E03;}
 
 /* Navbar in mobile view, when active, change to @brand-primary */
@@ -322,8 +299,6 @@ a:hover, a:focus {
 .square-icon { float: left; margin-top: 2px; margin-right: 4px; width: 16px; height: 16px; background-color: black; }
 
 /* Games Module */
-.game-icon-list { }
-
 #game-sections {
   display: table;
   margin: 0 auto;
@@ -347,14 +322,4 @@ a:hover, a:focus {
 
 .search-box {
   margin: 0 20px;
-}
-
-tr.key:after {
-  content: attr(data-key);
-  position: absolute;
-  left: -10px;
-  font-family: Dosis,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  color: #888;
-  margin: 15px 0;
-  font-size: 24px;
 }

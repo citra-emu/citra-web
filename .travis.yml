@@ -1,5 +1,9 @@
 # Build status located at https://travis-ci.org/citra-emu/citra-web
 
+# set-up-ssh is provided by travis-scripts.
+# Setting up the SSH key for Github is described here.
+# https://github.com/alrra/travis-scripts/blob/master/doc/github-deploy-keys.md
+
 language: node_js
 
 node_js: "node"
@@ -10,29 +14,6 @@ cache:
     - node_modules
 
 before_script:
-  - echo '========== Importing wiki articles into hugo =========='
-  - cd ./scripts/wiki/
-  - yarn install
-  - node app.js
-  - cd $TRAVIS_BUILD_DIR
-
-  - echo '========== Importing games wiki articles into hugo =========='
-  - cd ./scripts/games/
-  - yarn install
-  - node app.js
-  - cd $TRAVIS_BUILD_DIR
-
-  - echo '========== Importing twitter tweets into hugo =========='
-  - cd ./scripts/twitter/
-  - yarn install
-  - node app.js
-  - cd $TRAVIS_BUILD_DIR
-
-  - echo '========== Preparing download repository builder dependencies =========='
-  - cd ./scripts/downloads/
-  - yarn install
-  - cd $TRAVIS_BUILD_DIR
-
   - echo '========== Installing gulp & dependencies =========='
   - sudo apt-get install graphicsmagick
   - convert -help
@@ -47,16 +28,8 @@ before_script:
   - set-up-ssh --key "$encrypted_c7ee54b5843f_key" --iv "$encrypted_c7ee54b5843f_iv" --path-encrypted-key "bf215181b5140522137b3d4f6b73544a.enc"
 
   - echo '========== Starting gulp deploy task =========='
-  - gulp deploy --production
-  - cd $TRAVIS_BUILD_DIR
-
-env:
-  - HUGO_ENV=PRD
+  - gulp deploy all --production
 
 notifications:
   email:
     - mods@citra-emu.org
-
-# set-up-ssh is provided by travis-scripts.
-# Setting up the SSH key for Github is described here.
-# https://github.com/alrra/travis-scripts/blob/master/doc/github-deploy-keys.md

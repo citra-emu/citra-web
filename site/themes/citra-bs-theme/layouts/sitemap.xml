@@ -8,11 +8,11 @@
 
     {{ if (eq .Section "entry") }}
     <image:image>
-      <image:loc>{{ .Site.BaseURL }}images/banners/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}</image:loc>
+      <image:loc>{{ .Site.BaseURL }}/images/banners/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}</image:loc>
     </image:image>
     {{ else if (eq .Section "game") }}
     <image:image>
-      <image:loc>{{ .Site.BaseURL }}images/game/icons/{{ .File.BaseFileName }}.png</image:loc>
+      <image:loc>{{ .Site.BaseURL }}/images/game/icons/{{ .File.BaseFileName }}.png</image:loc>
     </image:image>
     {{ end }}
 
