@@ -1,9 +1,8 @@
 +++
-date = "2017-08-20T02:05:00-04:00"
-title = "Citra Progress Report - 2017 July"
+date = "2017-08-30T17:58:00-04:00"
+title = "Citra Progress Report - 2017 August"
 tags = [ "progress-report" ]
-author = "saphiresurf"
-coauthor = "anodium"
+author = "anodium"
 forum = 0000
 +++
 
@@ -16,7 +15,7 @@ The 3DS GPU has a data transfer mode called `TextureCopy`, which as the name say
 This is nice because it can be used as a quick and easy way for 3DS developers to duplicate textures, and can be used in situations such as the one pictured running on hardware in Pokémon Super Mystery Dungeon below. This is really nice for those creating games, but when it came to running something that took advantage of this feature in Citra it didn't always work the same as it would on console. This provided us with an accuracy issue that needed to be solved.
 
 <p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Pokémon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off (IN S P A C E)" src="/images/entry/citra-progress-report-2017-july/texturecopy-before.png" />
+<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Pokémon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off (IN S P A C E)" src="/images/entry/citra-progress-report-2017-august/texturecopy-before.png" />
 <br />
 <!--
 title_id = 0004000000174600
@@ -28,7 +27,7 @@ How jagged
 Fortunately (and to much rejoice) wwylele stepped into the ring to wrestle with this issue. They prepared a [test program](https://github.com/wwylele/ctrhwtest/tree/master/texture-copy-test) to help gain an understanding of how hardware handles the TextureCopy operation in comparison to Citra.
 
 <p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Pokémon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off (IN S P A C E)" src="/images/entry/citra-progress-report-2017-july/texturecopy-after.png" />
+<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Pokémon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off (IN S P A C E)" src="/images/entry/citra-progress-report-2017-august/texturecopy-after.png" />
 <br />
 <!--
 title_id = 0004000000174600
@@ -43,7 +42,7 @@ Deoxys is having a bit of a hard time, no?
 [Kloen](https://github.com/kloen) has put the time and work into Citra's Qt frontend to make it themeable! Now users can enjoy a dark mode and other custom coloring schemes!
 
 <p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Comparison of Dark Theme and Light Theme" src="/images/entry/citra-progress-report-2017-july/theme-comparison.png" />
+<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Comparison of Dark Theme and Light Theme" src="/images/entry/citra-progress-report-2017-august/theme-comparison.png" />
 <br />
 <!--
 commit_hash = 081304eca57913cd2cc67f35b9b49a87a6f0b2c2
@@ -59,4 +58,4 @@ This in itself isn't an extremely visible or perceivable change from a user pers
 
 ## To Contributors
 
-Thank you to [everyone who's contributed](https://github.com/citra-emu/citra/graphs/contributors?from=2017-07-10&to=2017-08-20&type=c) for months before, beyond, and during July for all of the work that you've put into Citra. Without all of you, the project would not have shown the progress that it has in the past year, and with all those who have contributed, I don't think it's showing any sign of slowing down!
+Thank you to [everyone who's contributed](https://github.com/citra-emu/citra/graphs/contributors?from=2017-07-10&to=2017-08-30&type=c) for months before, beyond, and during July for all of the work that you've put into Citra. Without all of you, the project would not have shown the progress that it has in the past year, and with all those who have contributed, I don't think it's showing any sign of slowing down!
