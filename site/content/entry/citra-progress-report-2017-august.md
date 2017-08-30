@@ -6,11 +6,13 @@ author = "anodium"
 forum = 0000
 +++
 
-With June bringing in many huge improvements to GPU functionality, July has come
-in to sweep up and improve accuracy in a few distinct areas of Citra. Changes and
-fixes ranging from texture handling all the way to aesthetic changes that help
-improve the visual appeal and customizability of Citra's Qt interface. Now, let's
-get into what's changed!
+2017 has been an amazing year, with more work having been put into the project
+than ever before, but it's not over yet! Last we met was
+[June](/entry/citra-progress-report-2017-june/), and just two months later the
+[Citra issue tracker](https://github.com/citra-emu/citra/pulls) is brimming with
+lots of changes once more. I am extremely excited for this month (and what might
+be of the next month or two) but we're getting ahead of ourselves! On this
+progress report, let's check out the big fish in the July + August pond of patches!
 
 ## [GPU: Fix Edge Cases for TextureCopy](https://github.com/citra-emu/citra/pull/2809) by [wwylele](https://github.com/wwylele)
 
@@ -81,10 +83,10 @@ it was dumped before, for compatibility's sake. `3dsutil` has been updated to be
 able to dump everything as a system archive, so that Citra may be able to work
 with it in a way that's more accurate to the actual hardware!
 
-## To Contributors
+## And Everyone Else
 
-Thank you to [everyone who's contributed](https://github.com/citra-emu/citra/graphs/contributors?from=2017-07-10&to=2017-08-30&type=c)
-for months before, beyond, and during July for all of the work that you've put
-into Citra. Without all of you, the project would not have shown the progress that
-it has in the past year, and with all those who have contributed, I don't think
-it's showing any sign of slowing down!
+Just because your work wasn't written on here doesn't mean it's not as important!
+Every little bit counts, every pull request inches the project one step closer
+down the long road of accurately emulating the Nintendo 3DS. So I would like to
+give my thanks to [everyone who's contributed](https://github.com/citra-emu/citra/graphs/contributors?from=2017-07-10&to=2017-08-30&type=c)
+these past two months, for giving us those extra metres down this road.
