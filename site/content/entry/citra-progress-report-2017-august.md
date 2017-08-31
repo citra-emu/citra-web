@@ -17,7 +17,6 @@ progress report, let's check out the big fish in the July + August pond of patch
 # START CANDIDATE PRS
 
 ## [Travis: Use Docker to build for Linux](https://github.com/citra-emu/citra/pull/2869) by [j-selby](https://github.com/j-selby)
-## [Refactor MotionEmu into a InputDevice](https://github.com/citra-emu/citra/pull/2861) by [wwylele](https://github.com/wwylele)
 ## [Handle invalid filenames when renaming files/directories](https://github.com/citra-emu/citra/pull/2850) by [j-selby](https://github.com/j-selby)
 ## [Implement fragment lighting in the sw renderer.](https://github.com/citra-emu/citra/pull/2766) by [Subv](https://github.com/Subv)
 ## [Implement fragment lighting in the sw renderer (take 2)](https://github.com/citra-emu/citra/pull/2822) by [wwylele](https://github.com/wwylele)
