@@ -15,13 +15,6 @@ lots of changes once more. I am extremely excited for this month (and what might
 be of the next month or two) but we're getting ahead of ourselves! On this
 progress report, let's check out the big fish in the July and August pond of patches!
 
-# START CANDIDATE PRS
-
-## [Use Docker For Linux Builds](https://github.com/citra-emu/citra/pull/2869) by [j-selby](https://github.com/j-selby)
-## [Handle Invalid Filenames When Renaming](https://github.com/citra-emu/citra/pull/2850) by [j-selby](https://github.com/j-selby)
-
-# END CANDIDATE PRS
-
 ## Updating The Software Renderer ([This](https://github.com/citra-emu/citra/pull/2766), [that](https://github.com/citra-emu/citra/pull/2822), [here](https://github.com/citra-emu/citra/pull/2871), [there](https://github.com/citra-emu/citra/pull/2872), and [those](https://github.com/citra-emu/citra/pull/2891)) by [wwylele](https://github.com/wwylele) and [Subv](https://github.com/Subv)
 
 Citra has two main rendering backends, software and OpenGL, but until very
@@ -46,6 +39,10 @@ Although most users won't benefit much from this in the present, it is important
 to have a complete software implementation of the 3DS' GPU so that Citra can be
 used as a stable, working, and complete reference implementation in the future,
 when obtaining a working real console may be much more difficult.
+
+## [Handle Invalid Filenames When Renaming](https://github.com/citra-emu/citra/pull/2850) by [j-selby](https://github.com/j-selby)
+
+Lorem ipsum dolorum...
 
 ## [Fix Edge Cases for TextureCopy](https://github.com/citra-emu/citra/pull/2809) by [wwylele](https://github.com/wwylele)
 
@@ -87,6 +84,9 @@ commit_hash = 57438cf51f3bdae71a694d2ebe96ad563968781c
 Deoxys is having a bit of a hard time, no?
 </p>
 
+## [Use Docker For Linux Builds](https://github.com/citra-emu/citra/pull/2869) by [j-selby](https://github.com/j-selby)
+
+Lorem ipsum dolorum...
 
 ## [UI Themes](https://github.com/citra-emu/citra/pull/2804) by [Kloen](https://github.com/kloen)
 
