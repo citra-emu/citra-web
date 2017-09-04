@@ -17,8 +17,8 @@ progress report, let's check out the big fish in the July and August pond of pat
 
 # START CANDIDATE PRS
 
-## [Travis: Use Docker to build for Linux](https://github.com/citra-emu/citra/pull/2869) by [j-selby](https://github.com/j-selby)
-## [Handle invalid filenames when renaming files/directories](https://github.com/citra-emu/citra/pull/2850) by [j-selby](https://github.com/j-selby)
+## [Use Docker For Linux Builds](https://github.com/citra-emu/citra/pull/2869) by [j-selby](https://github.com/j-selby)
+## [Handle Invalid Filenames When Renaming](https://github.com/citra-emu/citra/pull/2850) by [j-selby](https://github.com/j-selby)
 
 # END CANDIDATE PRS
 
@@ -30,7 +30,7 @@ made better use of the GPU, and allowed things such as texture forwarding for
 higher resolution rendering. But there is one thing on which the OpenGL backend
 falls flat on its face; accuracy.
 
-Fortunately, [wwylele](https://github.com/wwylele) revived the software renderer
+But, [wwylele](https://github.com/wwylele) has just revived the software renderer
 (inspired by an attempt by [Subv](https://github.com/Subv) made prior), adding
 all of the features the hardware renderer had recieved over the years. In fact,
 every addition to the hardware renderer has been given an equivalent in software:
@@ -47,7 +47,7 @@ to have a complete software implementation of the 3DS' GPU so that Citra can be
 used as a stable, working, and complete reference implementation in the future,
 when obtaining a working real console may be much more difficult.
 
-## [GPU: Fix Edge Cases for TextureCopy](https://github.com/citra-emu/citra/pull/2809) by [wwylele](https://github.com/wwylele)
+## [Fix Edge Cases for TextureCopy](https://github.com/citra-emu/citra/pull/2809) by [wwylele](https://github.com/wwylele)
 
 The 3DS GPU has a data transfer mode called `TextureCopy`, which as the name says,
 is for copying textures but with a configurable gap in case the texture is going
@@ -88,7 +88,7 @@ Deoxys is having a bit of a hard time, no?
 </p>
 
 
-## [Citra-QT: UI Themes](https://github.com/citra-emu/citra/pull/2804) by [Kloen](https://github.com/kloen)
+## [UI Themes](https://github.com/citra-emu/citra/pull/2804) by [Kloen](https://github.com/kloen)
 
 [Kloen](https://github.com/kloen) has put the time and work into Citra's Qt
 frontend to make it themeable! Now users can enjoy a dark mode and other custom
