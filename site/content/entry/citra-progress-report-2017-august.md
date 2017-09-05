@@ -42,7 +42,44 @@ when obtaining a working real console may be much more difficult.
 
 ## [Handle Invalid Filenames When Renaming](https://github.com/citra-emu/citra/pull/2850) by [j-selby](https://github.com/j-selby)
 
-Lorem ipsum dolorum...
+Citra emulates the 3DS system services at a high level of emulation, or HLE for
+short. What this means is that every time a 3DS application or game running in
+Citra makes a request to the 3DS System Software, Citra captures the request and
+tries to translate it into its PC equivalent, rather then running the 3DS System
+Software directly.
+
+For example, if a game makes a call to [`FS:OpenFile`](https://www.3dbrew.org/wiki/FS:OpenFile),
+Citra in turn calls the operating system's file opening function
+([`CreateFile()`](https://msdn.microsoft.com/en-us/library/windows/desktop/aa363858(v=vs.85).aspx) on Windows,
+[`FileHandle()`](https://developer.apple.com/documentation/foundation/filehandle) on macOS,
+or [`open()`](https://linux.die.net/man/2/open) on Linux),
+with [the path to the virtual SD card](/wiki/user-directory/) added to the beginning.
+
+Now, on top of the usual names for files and folders, there's two special folders
+inside every single folder on your computer, `.` and `..`. These aren't actual
+folders in the sense that you can place files and other folders inside of them.
+Instead, they each symbolize the current folder, and the folder one level above
+it, respectively. For example, `C:/Windows/System32/..` actually means `C:/Windows/`.
+
+The reason I mention this, is because a few Citra developers believed a game could
+in theory chain multiple `..`s together to get to a file they weren't supposed
+to know even existed, like `/../../../../Documents/IMPORTANT.docx`, because Citra
+would then ask the operating system to open the file
+`%AppData%/Citra/sdmc/../../../../Documents/IMPORTANT.docx`, which *actually*
+means that it should open `C:/Users/Anodium/Documents/IMPORTANT.docx`!
+
+This was already handled for most file functions in Citra, opening, reading,
+writing, etc. except for a few things, like renaming a file! In this case, the
+malicious game could just ask Citra to change `/../../../../Documents/IMPORTANT.docx`'s
+name to `/delicious_secrets.docx`, effectively moving `IMPORTANT.docx` into Citra's
+virtual SD card! And from there, the game could just ask Citra to open
+`/delicious_secrets.docx` to read the file it was originally forbidden from accessing.
+
+This patch now fixes this, such that if any 3DS game or application tries to do
+this from inside Citra, rather than doing what it asks, Citra simply crashes
+itself, as it doing that could mean the game had intentions to do something evil.
+So far, we haven't found any real 3DS software that tries to do this, but at
+least now future attempts to do so are blocked.
 
 ## [Fix Edge Cases for TextureCopy](https://github.com/citra-emu/citra/pull/2809) by [wwylele](https://github.com/wwylele)
 
