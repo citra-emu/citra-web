@@ -25,8 +25,9 @@ falls flat on its face; accuracy.
 
 But, [wwylele](https://github.com/wwylele) has just revived the software renderer
 (inspired by an attempt by [Subv](https://github.com/Subv) made prior), adding
-all of the features the hardware renderer had recieved over the years. In fact,
-every addition to the hardware renderer has been given an equivalent in software:
+almost all of the features the hardware renderer had recieved over the years.
+In fact, every addition to the hardware renderer has been given an equivalent
+in software:
 
 |      Feature      |                        Hardware                       |                                                   Software                                                   |
 |:-----------------:|:-----------------------------------------------------:|:------------------------------------------------------------------------------------------------------------:|
