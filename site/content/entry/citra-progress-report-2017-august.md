@@ -124,9 +124,17 @@ Deoxys is having a bit of a hard time, no?
 
 ## [Use Docker For Linux Builds](https://github.com/citra-emu/citra/pull/2869) by [j-selby](https://github.com/j-selby)
 
-Ubuntu Linux 14.04 is the de-facto standard desktop Linux distribution. It's also [old](https://wiki.ubuntu.com/TrustyTahr/ReleaseSchedule#line-37), *very* old. <span style="font-size:7pt; vertical-align:super;">(It's the Windows XP of Linux, really. :P)</span> So old, in fact, that the standard library it ships with can't compile Citra. And our buildbot, [Travis CI](https://travis-ci.org/), that automatically compiles and builds Citra from source, just so happens to use Ubuntu 14.04 VMs. *`:(`*
+Ubuntu Linux 14.04 is the de-facto standard desktop Linux distribution. It's also
+[old](https://wiki.ubuntu.com/TrustyTahr/ReleaseSchedule#line-37), *very* old.
+<span style="font-size:7pt; vertical-align:super;">
+(It's the Windows XP of Linux, really. :P)</span> So old, in fact, that the
+standard library it ships with can't compile Citra. And our buildbot,
+[Travis CI](https://travis-ci.org/), that automatically compiles and builds Citra
+from source, just so happens to use Ubuntu 14.04 VMs. *`:(`*
 
-Now, rather than building Citra directly inside Travis, a [Docker container](https://www.docker.com/) is started that's running Ubuntu 16.04 instead, which is much more well supported (and yes, it can compile Citra!).
+Now, rather than building Citra directly inside Travis, a
+[Docker container](https://www.docker.com/) is started that's running Ubuntu 16.04
+instead, which is much more well supported (and yes, it can compile Citra!).
 
 ## [UI Themes](https://github.com/citra-emu/citra/pull/2804) by [Kloen](https://github.com/kloen)
 
