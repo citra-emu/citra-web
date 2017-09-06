@@ -8,7 +8,6 @@ const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const cssnano = require('cssnano');
 const browserSync = require('browser-sync').create();
-const ghPages = require('gulp-gh-pages');
 const concat = require('gulp-concat');
 const minify = require('gulp-minify');
 const imageResize = require('gulp-image-resize');
@@ -158,8 +157,4 @@ gulp.task('final:serve', function() {
 gulp.task('final:publish', function(){
   fs.writeFileSync(`build/CNAME`, `${cname}`);
   fs.writeFileSync(`build/robots.txt`, `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
-  return gulp.src(`build/**/*`).pipe(ghPages({
-    remoteUrl: "git@github.com:CitraBotWeb/CitraBotWeb.github.io.git",
-    branch: "master"
-  }));
 });

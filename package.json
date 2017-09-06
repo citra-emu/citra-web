@@ -12,7 +12,6 @@
     "gulp-changed": "^3.1.0",
     "gulp-clean-css": "^3.7.0",
     "gulp-concat": "^2.6.1",
-    "gulp-gh-pages": "^0.5.4",
     "gulp-htmlmin": "^3.0.0",
     "gulp-image-resize": "^0.12.0",
     "gulp-md5-plus": "^1.0.3",
