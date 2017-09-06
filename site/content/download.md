@@ -88,6 +88,9 @@ The Bleeding Edge build of Citra is the same as our nightly builds, with additio
                     if (asset.name.includes('.7z')) return;
                     if (asset.name.includes('RELEASES')) return;
 
+                    /* We only want to provide mingw builds on the downloads page. */
+                    if (asset.name.includes('-msvc-')) return;
+
                     let env_icon = './images/icons/file.png';
                     if (asset.name.includes('windows')) env_icon = '/images/icons/windows.png';
                     else if (asset.name.includes('exe')) env_icon = '/images/icons/windows.png';
