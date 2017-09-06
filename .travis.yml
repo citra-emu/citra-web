@@ -6,9 +6,7 @@
 
 language: node_js
 
-node_js:
-  - "node"
-  - "8"
+node_js: "node"
 
 before_script:
   - echo '========== Installing gulp & dependencies =========='
