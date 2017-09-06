@@ -6,12 +6,11 @@
 
 language: node_js
 
-node_js: "node"
+node_js:
+  - "node"
+  - "8"
 
-cache:
-  yarn: true
-  directories:
-    - node_modules
+cache: yarn
 
 before_script:
   - echo '========== Installing gulp & dependencies =========='
