@@ -299,6 +299,15 @@ a:hover {
   padding-top: 16px;
 }
 
+.entry-content figure {
+  padding: 20px 120px;
+  text-align: center;
+}
+
+.entry-content iframe {
+  padding: 20px 0;
+}
+
 /* Used for square boxes color coded */
 .square-icon { float: left; margin-top: 2px; margin-right: 4px; width: 16px; height: 16px; background-color: black; }
 
