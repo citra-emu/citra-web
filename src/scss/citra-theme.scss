@@ -152,7 +152,7 @@ a:hover {
 
   z-index: 1010; // 10 more then slick
 
-  background: rgba(0, 0, 0, 0.5);
+  text-shadow: -2px 2px 3px rgba(0,0,0,1), -2px -2px 3px rgba(0,0,0,1), 2px -2px 3px rgba(0,0,0,1), 2px 2px 3px rgba(0,0,0,1);
   display: inline-block;
 
   max-width: 300px;
