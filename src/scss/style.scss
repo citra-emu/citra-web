@@ -10,5 +10,6 @@ $headings-font-family:    "Dosis";
 $headings-color:          #888;
 
 @import "./node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
+@import "vendor/slick.scss";
 @import "citra-theme.scss";
 @import "citra-theme-media.scss";
