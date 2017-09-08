@@ -23,7 +23,7 @@
     <link href="{{ .Site.BaseURL }}/index.xml" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
     {{ end }}
 
-    <title>{{- if .IsHome }}Homepage{{- else }}{{ .Title }}{{- end }} | {{ .Site.Title }} | Nintendo 3DS Emulator</title>
+    <title>{{- if not .IsHome }}{{ .Title }} - {{- end }}{{ .Site.Title }} - Nintendo 3DS Emulator</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis" rel="stylesheet">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/style.css"/>
 
