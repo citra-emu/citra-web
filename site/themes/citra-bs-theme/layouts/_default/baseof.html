@@ -23,15 +23,12 @@
     <link href="{{ .Site.BaseURL }}/index.xml" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
     {{ end }}
 
-    <title>{{- if not .IsHome }}{{ .Title }} - {{- end }}{{ .Site.Title }} - Nintendo 3DS Emulator</title>
+    <title>{{- if not .IsHome }}{{ .Title }} - {{ .Site.Title }}{{- else }}{{ .Site.Title }} - Nintendo 3DS Emulator{{- end }}</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis" rel="stylesheet">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/style.css"/>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
               integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-
-    <!--<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>-->
 
     {{ if eq (getenv "HUGO_ENV") "PRD" }}
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
