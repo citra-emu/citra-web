@@ -20,10 +20,7 @@ Citra's video code has grown organically from the start; not much was known abou
 
 The entire architecture of the 3DS was largely unknown, so development was done in small seperate bits at a time, and then trying to piece it all together into one cohesive piece of software. But, over time, as new pieces of information were found, the assumptions that were made previously broke. Some assumptions were very large, obvious, and easy to overcome, but a more subtle error that these assumptions created were not even in the design of the GPU, but rather the architecture and organization of the code itself.
 
-<p style="text-align: center;">
-<img alt="" src="/images/entry/citra-progress-report-2017-p1/acnl-bridge.png" />
-Shouldn't there be a bridge here?
-</p>
+{{< figure src="/images/entry/citra-progress-report-2017-p1/acnl-bridge.png" title="Shouldn't there be a bridge here?" alt="Animal Crossing bridge" >}}
 
 The video code was very interconnected using this interface, so despite people being aware of this, it was also extremely difficult to move code around and reorganize it, as it could very easily affect unrelated bits of code that depended on it. This was only compounded by the hardware renderer, as it was written much like earlier, slowly adding hardware support bit-by-bit to separate parts of the video code, simply falling back into the software renderer when disabled or not supported.
 

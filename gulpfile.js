@@ -150,6 +150,7 @@ gulp.task('final:serve', function() {
     gulp.watch('src/js/**/*', ['assets:js']);
     gulp.watch('src/scss/**/*', ['assets:scss']);
     gulp.watch('site/**/*.html', ['hugo']);
+    gulp.watch('site/**/*.md', ['hugo']);
 
     gulp.watch('build/**/*').on('change', fileChange);
 });

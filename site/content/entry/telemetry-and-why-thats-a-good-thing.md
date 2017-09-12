@@ -33,23 +33,18 @@ The telemetry framework will collect information such as:
 
 Not everyone is comfortable sharing information about their system, so we've made it easy to opt-out:
 
-<p style="text-align: center; padding: 1%;">
-<img style="padding: 0% 0% 1% 0%;" height="75%" width="75%" alt="Alt, E, C" src="/images/entry/telemetry-and-why-thats-a-good-thing/optout1.png" />
-<br />
-First, head to the Citra "Emulation" → "Configure..." menu.
-</p>
 
-<p style="text-align: center; padding: 1%;">
-<img style="padding: 0% 0% 1% 0%;" height="75%" width="75%" alt="Right arrow, Right arrow, Right arrow, Right arrow, Right arrow, Right arrow, Right arrow" src="/images/entry/telemetry-and-why-thats-a-good-thing/optout2.png" />
-<br />
-Then, head into the "Web" tab.
-</p>
+{{< figure src="/images/entry/telemetry-and-why-thats-a-good-thing/optout1.png" 
+    alt="Alt, E, C"
+    title="First, head to the Citra \"Emulation\" → \"Configure...\" menu." >}}
 
-<p style="text-align: center; padding: 1%;">
-<img style="padding: 0% 0% 1% 0%;" height="75%" width="75%" alt="Tab, Tab, Tab, Tab, Tab, Space" src="/images/entry/telemetry-and-why-thats-a-good-thing/optout3.png" />
-<br />
-And finally, untick the box titled "Share anonymous usage data with the Citra team".
-</p>
+{{< figure src="/images/entry/telemetry-and-why-thats-a-good-thing/optout2.png" 
+    alt="Right arrow, Right arrow, Right arrow, Right arrow, Right arrow, Right arrow, Right arrow"
+    title="Then, head into the \"Web\" tab." >}}
+
+{{< figure src="/images/entry/telemetry-and-why-thats-a-good-thing/optout3.png" 
+    alt="Tab, Tab, Tab, Tab, Tab, Space"
+    title="And finally, untick the box titled \"Share anonymous usage data with the Citra team\"." >}}
 
 You may have also noticed the field titled "Telemetry ID" in the screenshots, this
 is an identifier generated randomly on install which is used instead of your IP

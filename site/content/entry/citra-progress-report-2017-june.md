@@ -13,15 +13,13 @@ The summer of 2017 has just rolled in, and although we don't have a [summer of c
 
 There is a rarely used feature in the 3DS' GPU called procedural textures, "proctex" for short. It allows games to generate new textures on the fly by just plugging in a few parameters. Mario & Luigi: Paper Jam, and Kirby: Planet Robobot both use it to generate realistic sea surfaces. The formula behind proctex had to be reverse-engineered in order to be implemented, which fortunately [fincs](https://github.com/fincs) did [and documented](https://gist.github.com/fincs/543f7e1375815f495f10020a053f14e9). Using this documentation, [wwylele](https://github.com/wwylele) simply translated it into code, and dropped it into Citra, fixing both those games.
 
-<p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Mario &amp; Luigi: Paper Jam's intro cutscene, showing Peach's castle, and the sea behind it" src="/images/entry/citra-progress-report-2017-june/paper-jam-foam.png" />
-<br />
+{{< figure src="/images/entry/citra-progress-report-2017-june/paper-jam-foam.png" title="Look at that beautiful sea foam. ❤" 
+    alt="Mario &amp; Luigi: Paper Jam's intro cutscene, showing Peach's castle, and the sea behind it" >}}
+
 <!--
 title_id = 0004000000132700
 commit_hash = c017065570f9bad90a8cd3dadac9b63d810793a6
 -->
-Look at that beautiful sea foam. ❤︎
-</p>
 
 ## [OpenGL: Improve accuracy of quaternion interpolation](https://github.com/citra-emu/citra/pull/2729) by [yuriks](https://github.com/yuriks)
 
@@ -45,27 +43,23 @@ In Citra, to be more efficient, we give the LUT (look-up table) to OpenGL and te
 
 As a workaround, some offsets were set on the table in OpenGL so that it would pick the correct entries. But, the LUT on the 3DS also has a mode called "two's complement" in which each half of the table is "wrapped" virtually across past the beginning and end of the table, but not across the middle of the table. This completely messes up the table in OpenGL, leading to completely different results near the middle of the table, causing things like dark spots in highlighted areas.
 
-<p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Kyogre in Pok&eacute;mon Alpha Sapphire before the fix." src="/images/entry/citra-progress-report-2017-june/lut-fix-before.png" />
-<br />
+{{< figure src="/images/entry/citra-progress-report-2017-june/lut-fix-before.png" title="Kyogre seems to have a bit of a skin blemish." 
+    alt="Kyogre in Pok&eacute;mon Alpha Sapphire before the fix." >}}
+
 <!--
 title_id = 000400000011c500
 commit_hash = 2f746e9946f78a2e283dfdcbeda9cf332e44d099 cherry-pick 6ca816e011c03f90f9ef6800c747c030df54c0cf 24e0b1ed8d4a24c814496e1b36236687fc0d442f
 -->
-Kyogre seems to have a bit of a skin blemish.
-</p>
 
 Although the OpenGL hack provided a slight increase in efficiency, in the end [wwylele](https://github.com/wwylele) replaced it all with simply mimicking what the 3DS does, fixing the entire issue, and making lighting calculations significantly more accurate. Sometimes the simplest solution is the best solution.
 
-<p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Kyogre in Pok&eacute;mon Alpha Sapphire after the fix." src="/images/entry/citra-progress-report-2017-june/lut-fix-after.png" />
-<br />
+{{< figure src="/images/entry/citra-progress-report-2017-june/lut-fix-after.png" title="Much better, guess the lighting got an acne treatment." 
+    alt="Kyogre in Pok&eacute;mon Alpha Sapphire after the fix." >}}
+
 <!--
 title_id = 000400000011c500
 commit_hash = c017065570f9bad90a8cd3dadac9b63d810793a6
 -->
-Much better, guess the lighting got an acne treatment.
-</p>
 
 ## [Display QMessageBox Dialogs For Errors](https://github.com/citra-emu/citra/pull/2611) by [TheKoopaKingdom](https://github.com/TheKoopaKingdom)
 
@@ -87,20 +81,23 @@ As a side-effect, [yuriks](https://github.com/yuriks) also had to implement the 
 
 These new features are all just features that were not known or not researched enough when the original lighting implementation was written. A few small fixes lead to big changes, such as the fact that Super Smash Bros. for 3DS now has proper lighting, instead of colours looking washed out and very bright.
 
-<p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Super Smash Bros. for 3DS before the new lighting features" src="/images/entry/citra-progress-report-2017-june/frag-light-before.png" />
+
+{{< figure src="/images/entry/citra-progress-report-2017-june/frag-light-before.png" 
+    alt="Super Smash Bros. for 3DS before the new lighting features" >}}
+
 <!--
 title_id = 00040000000edf00
 commit_hash = bae3799bd5208d08bb52546ad0723103c94cada3
 -->
-<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Super Smash Bros. for 3DS after the new lighting features" src="/images/entry/citra-progress-report-2017-june/frag-light-after.png" />
+
+{{< figure src="/images/entry/citra-progress-report-2017-june/frag-light-after.png" 
+    alt="Super Smash Bros. for 3DS after the new lighting features" 
+    title="Finally someone turned down the lights." >}}
+
 <!--
 title_id = 00040000000edf00
 commit_hash = c017065570f9bad90a8cd3dadac9b63d810793a6
 -->
-<br />
-Finally someone turned down the lights.
-</p>
 
 ## [Frontend: Prevent FileSystemWatcher from blocking UI thread](https://github.com/citra-emu/citra/pull/2669) by [jroweboy](https://github.com/jroweboy)
 
