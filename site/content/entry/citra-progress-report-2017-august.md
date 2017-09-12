@@ -29,12 +29,14 @@ almost all of the features the hardware renderer had recieved over the years.
 In fact, every addition to the hardware renderer has been given an equivalent
 in software:
 
+{{% table %}}
 |      Feature      |                        Hardware                       |                                                   Software                                                   |
 |:-----------------:|:-----------------------------------------------------:|:------------------------------------------------------------------------------------------------------------:|
 | Fragment Lighting | [#1264](https://github.com/citra-emu/citra/pull/1264) |  [#2766](https://github.com/citra-emu/citra/pull/2766) [#2822](https://github.com/citra-emu/citra/pull/2822) |
 |   Spot Lighting   | [#2727](https://github.com/citra-emu/citra/pull/2727) |                             [#2871](https://github.com/citra-emu/citra/pull/2871)                            |
 |  Geometric Factor | [#2776](https://github.com/citra-emu/citra/pull/2776) |                             [#2872](https://github.com/citra-emu/citra/pull/2872)                            |
 |    Bump Mapping   | [#2762](https://github.com/citra-emu/citra/pull/2762) |                             [#2891](https://github.com/citra-emu/citra/pull/2891)                            |
+{{% /table %}}
 
 Although most users won't benefit much from this in the present, it is important
 to have a complete software implementation of the 3DS' GPU so that Citra can be
