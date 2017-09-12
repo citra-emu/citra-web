@@ -99,30 +99,16 @@ creating games, but when it came to running something that took advantage of thi
 feature in Citra it didn't always work the same as it would on console. This
 provided us with an accuracy issue that needed to be solved.
 
-<p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Pokémon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off I N   S P A C E" src="/images/entry/citra-progress-report-2017-august/texturecopy-before.png" />
-<br />
-<!--
-title_id = 0004000000174600
-commit_hash = a40e60c4bc7ab9c559ad6e3f1769b1128d68c8d5
--->
-<em>How jagged</em>
-</p>
+{{< figure src="/images/entry/citra-progress-report-2017-august/texturecopy-before.png" 
+    title="How jagged" alt="Pokémon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off   I N   S P A C E" >}}
 
 Fortunately (and to much rejoice) wwylele stepped into the ring to wrestle with
 this issue. They prepared a [test program](https://github.com/wwylele/ctrhwtest/tree/master/texture-copy-test)
 to help gain an understanding of how hardware handles the TextureCopy operation
 in comparison to Citra.
 
-<p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="50%" width="50%" alt="Pokémon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off (IN S P A C E)" src="/images/entry/citra-progress-report-2017-august/texturecopy-after.png" />
-<br />
-<!--
-title_id = 0004000000174600
-commit_hash = 57438cf51f3bdae71a694d2ebe96ad563968781c
--->
-Deoxys is having a bit of a hard time, no?
-</p>
+{{< figure src="/images/entry/citra-progress-report-2017-august/texturecopy-after.png" 
+    title="Deoxys is having a bit of a hard time, no?" alt="Pokémon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off   I N   S P A C E" >}}
 
 ## [Use Docker For Linux Builds](https://github.com/citra-emu/citra/pull/2869) by [j-selby](https://github.com/j-selby)
 
@@ -144,15 +130,8 @@ instead, which is much more well supported (and yes, it can compile Citra!).
 frontend to make it themeable! Now users can enjoy a dark mode and other custom
 coloring schemes!
 
-<p style="text-align: center; font-size: small; padding: 1%">
-<img style="padding: 0% 0% 1% 0%" height="75%" width="75%" alt="Comparison of Dark Theme and Light Theme" src="/images/entry/citra-progress-report-2017-august/theme-comparison.png" />
-<br />
-<!--
-title_id = ffffffffffffffff
-commit_hash = 081304eca57913cd2cc67f35b9b49a87a6f0b2c2
--->
-CHOOSE YOUR CHARACTER
-</p>
+{{< figure src="/images/entry/citra-progress-report-2017-august/theme-comparison.png" 
+    title="CHOOSE YOUR CHARACTER" alt="Comparison of Dark Theme and Light Theme" >}}
 
 ## [Load Shared Font From System Archive](https://github.com/citra-emu/citra/pull/2784) by [wwylele](https://github.com/wwylele)
 
