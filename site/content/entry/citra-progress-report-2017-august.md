@@ -25,7 +25,7 @@ falls flat on its face; accuracy.
 
 But, [wwylele](https://github.com/wwylele) has just revived the software renderer
 (inspired by an attempt by [Subv](https://github.com/Subv) made prior), adding
-almost all of the features the hardware renderer had recieved over the years.
+almost all of the features the hardware renderer had received over the years.
 In fact, every addition to the hardware renderer has been given an equivalent
 in software:
 
@@ -53,9 +53,8 @@ Software directly.
 
 For example, if a game makes a call to [`FS:OpenFile`](https://www.3dbrew.org/wiki/FS:OpenFile),
 Citra in turn calls the operating system's file opening function
-([`CreateFile()`](https://msdn.microsoft.com/en-us/library/windows/desktop/aa363858(v=vs.85).aspx) on Windows,
-[`FileHandle()`](https://developer.apple.com/documentation/foundation/filehandle) on macOS,
-or [`open()`](https://linux.die.net/man/2/open) on Linux),
+([`_wfopen_s()`](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/fopen-s-wfopen-s) on Windows,
+or [`open()`](http://pubs.opengroup.org/onlinepubs/9699919799/functions/open.html) on macOS and Linux),
 with [the path to the virtual SD card](/wiki/user-directory/) added to the beginning.
 
 Now, on top of the usual names for files and folders, there's two special folders
@@ -79,10 +78,9 @@ virtual SD card! And from there, the game could just ask Citra to open
 `/delicious_secrets.docx` to read the file it was originally forbidden from accessing.
 
 This patch now fixes this, such that if any 3DS game or application tries to do
-this from inside Citra, rather than doing what it asks, Citra simply crashes
-itself, as it doing that could mean the game had intentions to do something evil.
-So far, we haven't found any real 3DS software that tries to do this, but at
-least now future attempts to do so are blocked.
+this from inside Citra, rather than doing what it asks, Citra gives them `ERROR_INVALID_PATH`,
+which most games interpret as a crash. So far, we haven't found any real 3DS
+software that tries to do this, but at least now future attempts to do so are blocked.
 
 ## [Fix Edge Cases for TextureCopy](https://github.com/citra-emu/citra/pull/2809) by [wwylele](https://github.com/wwylele)
 
@@ -113,9 +111,8 @@ in comparison to Citra.
 ## [Use Docker For Linux Builds](https://github.com/citra-emu/citra/pull/2869) by [j-selby](https://github.com/j-selby)
 
 Ubuntu Linux 14.04 is the de-facto standard desktop Linux distribution. It's also
-[old](https://wiki.ubuntu.com/TrustyTahr/ReleaseSchedule#line-37), *very* old.
-<span style="font-size:7pt; vertical-align:super;">
-(It's the Windows XP of Linux, really. :P)</span> So old, in fact, that the
+old, [*very* old](https://wiki.ubuntu.com/TrustyTahr/ReleaseSchedule#line-37).
+<sup>(It's the Windows XP of Linux, really. :P)</sup> So old, in fact, that the
 standard library it ships with can't compile Citra. And our buildbot,
 [Travis CI](https://travis-ci.org/), that automatically compiles and builds Citra
 from source, just so happens to use Ubuntu 14.04 VMs. *`:(`*
@@ -135,7 +132,7 @@ coloring schemes!
 
 ## [Load Shared Font From System Archive](https://github.com/citra-emu/citra/pull/2784) by [wwylele](https://github.com/wwylele)
 
-**This does not elimate the need for dumping a shared font from a legitimate system.**
+**This does not eliminate the need for dumping a shared font from a legitimate system.**
 
 This in itself isn't an extremely visible or perceivable change from a user
 perspective, but it is something that helps us take another stride towards
