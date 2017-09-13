@@ -113,13 +113,20 @@ in comparison to Citra.
 Ubuntu Linux 14.04 is the de-facto standard desktop Linux distribution. It's also
 old, [*very* old](https://wiki.ubuntu.com/TrustyTahr/ReleaseSchedule#line-37).
 <sup>(It's the Windows XP of Linux, really. :P)</sup> So old, in fact, that the
-standard library it ships with can't compile Citra. And our buildbot,
-[Travis CI](https://travis-ci.org/), that automatically compiles and builds Citra
-from source, just so happens to use Ubuntu 14.04 VMs. *`:(`*
+compiler it ships with can't compile Citra. And our buildbot, [Travis CI](https://travis-ci.org/),
+that automatically compiles and builds Citra from source, just so happens to use
+Ubuntu 14.04 VMs. *`:(`*
+
+Formerly, we would update the compiler from a third-party repository before compiling
+Citra itself. This also had the side-effect of updating the standard library that
+comes with the compiler, as each compiler version is inextricably tied to the same
+version of library by design. Unfortunately though, a recent update to the library
+was incompatible with a large majority of systems because it's too new to have had
+support built into it, and thus why building broke once again.
 
 Now, rather than building Citra directly inside Travis, a
 [Docker container](https://www.docker.com/) is started that's running Ubuntu 16.04
-instead, which is much more well supported (and yes, it can compile Citra!).
+instead, which is much more well supported (and yes, it can compile Citra out of the box!).
 
 ## [UI Themes](https://github.com/citra-emu/citra/pull/2804) by [Kloen](https://github.com/kloen)
 
