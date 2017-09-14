@@ -11,14 +11,14 @@ forum = 0000
 than ever before, but it's not over yet! Last we met was
 [June](/entry/citra-progress-report-2017-june/), and just two months later the
 [Citra issue tracker](https://github.com/citra-emu/citra/pulls) is brimming with
-lots of changes once more. I am extremely excited for this month (and what might
-be of the next month or two) but we're getting ahead of ourselves! On this
-progress report, let's check out the big fish in the July and August pond of patches!
+lots of changes once more. I am extremely excited for this month (and what's coming
+up the next few months) but we're getting ahead of ourselves! On this progress
+report, let's check out the big fish in the July and August pond of patches!
 
 ## Updating The Software Renderer ([This](https://github.com/citra-emu/citra/pull/2766), [that](https://github.com/citra-emu/citra/pull/2822), [here](https://github.com/citra-emu/citra/pull/2871), [there](https://github.com/citra-emu/citra/pull/2872), and [those](https://github.com/citra-emu/citra/pull/2891)) by [wwylele](https://github.com/wwylele) and [Subv](https://github.com/Subv)
 
 Citra has two main rendering backends, software and OpenGL, but until very
-recently, no one gave any attention to the software backend, as OpenGL was faster,
+recently, no one gave much attention to the software backend, as OpenGL was faster,
 made better use of the GPU, and allowed things such as texture forwarding for
 higher resolution rendering. But there is one thing on which the OpenGL backend
 falls flat on its face; accuracy.
@@ -38,10 +38,10 @@ in software:
 |    Bump Mapping   | [#2762](https://github.com/citra-emu/citra/pull/2762) |                             [#2891](https://github.com/citra-emu/citra/pull/2891)                            |
 {{% /table %}}
 
-Although most users won't benefit much from this in the present, it is important
-to have a complete software implementation of the 3DS' GPU so that Citra can be
-used as a stable, working, and complete reference implementation in the future,
-when obtaining a working real console may be much more difficult.
+Despite the software backend being incredible slow, it is important to have a
+complete software implementation of the 3DS' GPU so that Citra can be used as a
+stable, working, and complete reference implementation in the future, when
+obtaining a working real console may be much more difficult.
 
 ## [Handle Invalid Filenames When Renaming](https://github.com/citra-emu/citra/pull/2850) by [j-selby](https://github.com/j-selby)
 
@@ -81,6 +81,20 @@ This patch now fixes this, such that if any 3DS game or application tries to do
 this from inside Citra, rather than doing what it asks, Citra gives them `ERROR_INVALID_PATH`,
 which most games interpret as a crash. So far, we haven't found any real 3DS
 software that tries to do this, but at least now future attempts to do so are blocked.
+
+Do note though, that most of us are not security experts, and even for those who are,
+harderning the software is much more difficult and much less worthwhile than actually
+having an accurate 3DS emulation. The surface area of an emulation project is huge,
+and so writing malicious code intending to exploit one is not too difficult in any case.
+
+But at the same time, malware authors generally target either the largest populations,
+or the most lucrative populations, and emulation is neither. And for the effort
+required to do so, most will only toy with the idea in their head, or maybe write
+a proof-of-concept for fun, rather genuine malicious intent.
+
+Regardless, this demonstrates the second reason we are against piracy and unofficial
+Citra builds. That with enough effort, it is very possible to spread malware through
+either. (The first is that it's simply a blatant violation of copyright laws.)
 
 ## [Fix Edge Cases for TextureCopy](https://github.com/citra-emu/citra/pull/2809) by [wwylele](https://github.com/wwylele)
 
