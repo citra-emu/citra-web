@@ -21,7 +21,7 @@ Citra has two main rendering backends, software and OpenGL, but until very
 recently, no one gave much attention to the software backend. The OpenGL backend
 is faster, made better use of the GPU, and allows things such as texture forwarding
 for higher resolution rendering. But there is one thing on which the OpenGL backend
-falls flat on its face --- accuracy.
+falls flat on its face---accuracy.
 
 However, [wwylele](https://github.com/wwylele) has just revived the software
 renderer (inspired by an attempt by [Subv](https://github.com/Subv) made prior),
