@@ -31,8 +31,8 @@ in software:
 
 {{% table %}}
 |      Feature      |                        Hardware                       |                                                   Software                                                   |
-|:-----------------:|:-----------------------------------------------------:|:------------------------------------------------------------------------------------------------------------:|
-| Fragment Lighting | [#1264](https://github.com/citra-emu/citra/pull/1264) |  [#2766](https://github.com/citra-emu/citra/pull/2766) [#2822](https://github.com/citra-emu/citra/pull/2822) |
+| ----------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Fragment Lighting | [#1264](https://github.com/citra-emu/citra/pull/1264) |  [#2766](https://github.com/citra-emu/citra/pull/2766), [#2822](https://github.com/citra-emu/citra/pull/2822) |
 |   Spot Lighting   | [#2727](https://github.com/citra-emu/citra/pull/2727) |                             [#2871](https://github.com/citra-emu/citra/pull/2871)                            |
 |  Geometric Factor | [#2776](https://github.com/citra-emu/citra/pull/2776) |                             [#2872](https://github.com/citra-emu/citra/pull/2872)                            |
 |    Bump Mapping   | [#2762](https://github.com/citra-emu/citra/pull/2762) |                             [#2891](https://github.com/citra-emu/citra/pull/2891)                            |
