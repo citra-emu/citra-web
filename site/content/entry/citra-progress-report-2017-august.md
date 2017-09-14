@@ -38,7 +38,7 @@ in software:
 |    Bump Mapping   | [#2762](https://github.com/citra-emu/citra/pull/2762) |                             [#2891](https://github.com/citra-emu/citra/pull/2891)                            |
 {{% /table %}}
 
-Despite the software backend being incredible slow, it is important to have a
+Despite the software backend being incredibly slow, it is important to have a
 complete software implementation of the 3DS' GPU so that Citra can be used as a
 stable, working, and complete reference implementation in the future, when
 obtaining a working real console may be much more difficult.
@@ -94,11 +94,7 @@ and so writing malicious code intending to exploit one is not too difficult in a
 But at the same time, malware authors generally target either the largest populations,
 or the most lucrative populations, and emulation is neither. And for the effort
 required to do so, most will only toy with the idea in their head, or maybe write
-a proof-of-concept for fun, rather genuine malicious intent.
-
-Regardless, this demonstrates the second reason we are against piracy and unofficial
-Citra builds. That with enough effort, it is very possible to spread malware through
-either. (The first is that it's simply a blatant violation of copyright laws.)
+a proof-of-concept for fun, rather than genuine malicious intent.
 
 ## [Fix Edge Cases for TextureCopy](https://github.com/citra-emu/citra/pull/2809) by [wwylele](https://github.com/wwylele)
 
