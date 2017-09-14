@@ -231,6 +231,10 @@ a:hover {
   image-rendering: pixelated;
 }
 
+tbody td {
+  text-align: left;
+}
+
 /* User Profiles - Flarum Integration */
 .profile-avatar {
   border-radius: 24px;
