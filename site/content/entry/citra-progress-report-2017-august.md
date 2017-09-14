@@ -18,14 +18,14 @@ report, let's check out the big fish in the July and August pond of patches!
 ## Updating The Software Renderer ([This](https://github.com/citra-emu/citra/pull/2766), [that](https://github.com/citra-emu/citra/pull/2822), [here](https://github.com/citra-emu/citra/pull/2871), [there](https://github.com/citra-emu/citra/pull/2872), and [those](https://github.com/citra-emu/citra/pull/2891)) by [wwylele](https://github.com/wwylele) and [Subv](https://github.com/Subv)
 
 Citra has two main rendering backends, software and OpenGL, but until very
-recently, no one gave much attention to the software backend, as OpenGL was faster,
-made better use of the GPU, and allowed things such as texture forwarding for
-higher resolution rendering. But there is one thing on which the OpenGL backend
-falls flat on its face; accuracy.
+recently, no one gave much attention to the software backend. The OpenGL backend
+is faster, made better use of the GPU, and allows things such as texture forwarding
+for higher resolution rendering. But there is one thing on which the OpenGL backend
+falls flat on its face --- accuracy.
 
-But, [wwylele](https://github.com/wwylele) has just revived the software renderer
-(inspired by an attempt by [Subv](https://github.com/Subv) made prior), adding
-almost all of the features the hardware renderer had received over the years.
+However, [wwylele](https://github.com/wwylele) has just revived the software
+renderer (inspired by an attempt by [Subv](https://github.com/Subv) made prior),
+adding almost all of the features the hardware renderer had received over the years.
 In fact, every addition to the hardware renderer has been given an equivalent
 in software:
 
@@ -63,24 +63,28 @@ folders in the sense that you can place files and other folders inside of them.
 Instead, they each symbolize the current folder, and the folder one level above
 it, respectively. For example, `C:/Windows/System32/..` actually means `C:/Windows/`.
 
-The reason I mention this, is because a few Citra developers believed a game could
-in theory chain multiple `..`s together to get to a file they weren't supposed
-to know even existed, like `/../../../../Documents/IMPORTANT.docx`, because Citra
-would then ask the operating system to open the file
-`%AppData%/Citra/sdmc/../../../../Documents/IMPORTANT.docx`, which *actually*
-means that it should open `C:/Users/Anodium/Documents/IMPORTANT.docx`!
+With this in mind, a few Citra developers believed a game could, in theory, chain
+multiple `..`s together to get to a file they weren't supposed to know even existed,
+like `/../../../../Documents/IMPORTANT.docx`. Citra would then ask the operating
+system to open the file `%AppData%/Citra/sdmc/../../../../Documents/IMPORTANT.docx`,
+which *actually* means that it would open `C:/Users/Anodium/Documents/IMPORTANT.docx`!
+
+Before you suggest that Citra simply ignore `..`, a game can use it for legitimate
+purposes. And if it were to use it, it would most likely crash, as the resulting
+file path wouldn't exist.
 
 This was already handled for most file functions in Citra, opening, reading,
-writing, etc. except for a few things, like renaming a file! In this case, the
+writing, etc. except for a few things, like renaming a file. In this case, the
 malicious game could just ask Citra to change `/../../../../Documents/IMPORTANT.docx`'s
 name to `/delicious_secrets.docx`, effectively moving `IMPORTANT.docx` into Citra's
-virtual SD card! And from there, the game could just ask Citra to open
+virtual SD card! From there, the game could just ask Citra to open
 `/delicious_secrets.docx` to read the file it was originally forbidden from accessing.
 
 This patch now fixes this, such that if any 3DS game or application tries to do
-this from inside Citra, rather than doing what it asks, Citra gives them `ERROR_INVALID_PATH`,
-which most games interpret as a crash. So far, we haven't found any real 3DS
-software that tries to do this, but at least now future attempts to do so are blocked.
+exploit the rename file function from inside Citra, rather than doing what it asks,
+Citra gives them `ERROR_INVALID_PATH`, which most games interpret by crashing. So
+far, we haven't found any real 3DS software that tries to do this, but at least
+now future attempts to do so are blocked.
 
 Do note though, that most of us are not security experts, and even for those who are,
 harderning the software is much more difficult and much less worthwhile than actually
@@ -106,18 +110,18 @@ is used to tell it whether or not to crop the texture.
 
 This is nice because it can be used as a quick and easy way for 3DS developers to
 duplicate textures, and can be used in situations such as the one pictured running
-on hardware in Pokémon Super Mystery Dungeon below. This is really nice for those
-creating games, but when it came to running something that took advantage of this
-feature in Citra it didn't always work the same as it would on console. This
-provided us with an accuracy issue that needed to be solved.
+on hardware in Pokémon Super Mystery Dungeon below. But when it came to running
+something that took advantage of this feature in Citra, it didn't always work the
+same as it would on console.
 
 {{< figure src="/images/entry/citra-progress-report-2017-august/texturecopy-before.png" 
     title="How jagged" alt="Pokémon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off   I N   S P A C E" >}}
 
-Fortunately (and to much rejoice) wwylele stepped into the ring to wrestle with
+Fortunately (and to much rejoicing!) wwylele stepped into the ring to wrestle with
 this issue. They prepared a [test program](https://github.com/wwylele/ctrhwtest/tree/master/texture-copy-test)
-to help gain an understanding of how hardware handles the TextureCopy operation
-in comparison to Citra.
+to help gain an understanding of how the hardware handles the TextureCopy operation
+in comparison to Citra. After the hard work of doing the research was out of the
+way, wwylele implemented it in Citra.
 
 {{< figure src="/images/entry/citra-progress-report-2017-august/texturecopy-after.png" 
     title="Deoxys is having a bit of a hard time, no?" alt="Pokémon Super Mystery Dungeon During Deoxy's and Rayquaza's Face Off   I N   S P A C E" >}}
@@ -125,18 +129,17 @@ in comparison to Citra.
 ## [Use Docker For Linux Builds](https://github.com/citra-emu/citra/pull/2869) by [j-selby](https://github.com/j-selby)
 
 Ubuntu Linux 14.04 is the de-facto standard desktop Linux distribution. It's also
-old, [*very* old](https://wiki.ubuntu.com/TrustyTahr/ReleaseSchedule#line-37).
-<sup>(It's the Windows XP of Linux, really. :P)</sup> So old, in fact, that the
-compiler it ships with can't compile Citra. And our buildbot, [Travis CI](https://travis-ci.org/),
-that automatically compiles and builds Citra from source, just so happens to use
-Ubuntu 14.04 VMs. *`:(`*
+old. [*Very* old](https://wiki.ubuntu.com/TrustyTahr/ReleaseSchedule#line-37).
+So old, in fact, that the compiler it ships with can't compile Citra. And our
+buildbot, [Travis CI](https://travis-ci.org/), that automatically compiles and
+builds Citra from source, just so happens to use Ubuntu 14.04 VMs. *`:(`*
 
 Formerly, we would update the compiler from a third-party repository before compiling
 Citra itself. This also had the side-effect of updating the standard library that
 comes with the compiler, as each compiler version is inextricably tied to the same
-version of library by design. Unfortunately though, a recent update to the library
-was incompatible with a large majority of systems because it's too new to have had
-support built into it, and thus why building broke once again.
+version of library by design. Unfortunately, a recent update to the library was
+incompatible with a large majority of systems because it's too new for Ubuntu 14.04,
+breaking the Linux build once again.
 
 Now, rather than building Citra directly inside Travis, a
 [Docker container](https://www.docker.com/) is started that's running Ubuntu 16.04
@@ -145,8 +148,8 @@ instead, which is much more well supported (and yes, it can compile Citra out of
 ## [UI Themes](https://github.com/citra-emu/citra/pull/2804) by [Kloen](https://github.com/kloen)
 
 [Kloen](https://github.com/kloen) has put the time and work into Citra's Qt
-frontend to make it themeable! Now users can enjoy a dark mode and other custom
-coloring schemes!
+frontend to make it themeable. Now users can enjoy a dark mode and other custom
+colour schemes, just by editing a CSS stylesheet!
 
 {{< figure src="/images/entry/citra-progress-report-2017-august/theme-comparison.png" 
     title="CHOOSE YOUR CHARACTER" alt="Comparison of Dark Theme and Light Theme" >}}
