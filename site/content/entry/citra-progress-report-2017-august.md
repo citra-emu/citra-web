@@ -1,10 +1,10 @@
 +++
-date = "2017-09-04T15:07:00-04:00"
+date = "2017-09-16T00:28:00-04:00"
 title = "Citra Progress Report - 2017 August"
 tags = [ "progress-report" ]
 author = "anodium"
 coauthor = "saphiresurf"
-forum = 0000
+forum = 3566
 +++
 
 2017 has been an amazing year, with more work having been put into the project
