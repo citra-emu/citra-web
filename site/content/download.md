@@ -25,8 +25,8 @@ The Bleeding Edge build of Citra is the same as our nightly builds, with additio
 </table>
 <div style="text-align: center; padding: 0px; margin: 0px;"><a href = "https://github.com/citra-emu/citra-nightly/releases">Click here to view previous versions...</a></div>
 
-<h3>Bleeding Edge Build <span style='font-size: smaller; margin-left: 6px;'> Last release was  <span id='last-updated-bleeding-edge'></span></span></h3>
-<table id="downloads-bleeding-edge" class="table">
+<h3>Canary Build <span style='font-size: smaller; margin-left: 6px;'> Last release was  <span id='last-updated-canary'></span></span></h3>
+<table id="downloads-canary" class="table">
     <thead>
         <tr>
             <th>Build Date</th>
@@ -37,7 +37,7 @@ The Bleeding Edge build of Citra is the same as our nightly builds, with additio
     <tbody>
     </tbody>
 </table>
-<div style="text-align: center; padding: 0px; margin: 0px;"><a href = "https://github.com/citra-emu/citra-bleeding-edge/releases">Click here to view previous versions...</a></div>
+<div style="text-align: center; padding: 0px; margin: 0px;"><a href = "https://github.com/citra-emu/citra-canary/releases">Click here to view previous versions...</a></div>
 
 <style>
     .table-first { background-color: #fcf8e3; }
@@ -50,7 +50,7 @@ The Bleeding Edge build of Citra is the same as our nightly builds, with additio
 <script type='text/javascript'>
   $(function() {
     getRelease('nightly');
-    getRelease('bleeding-edge');
+    getRelease('canary');
     
     function getRelease(v, count = 5) {
         $.getJSON(`https://api.github.com/repos/citra-emu/citra-${v}/releases`, function(releases) {
@@ -70,8 +70,8 @@ The Bleeding Edge build of Citra is the same as our nightly builds, with additio
                 let release_title = '';
                 if (v == 'nightly') {
                     release_title = 'Nightly Build';
-                } else if (v == 'bleeding-edge') {
-                    release_title = 'Bleeding Edge Build';
+                } else if (v == 'canary') {
+                    release_title = 'Canary Build';
                 }
 
                 if (release_commit) {
