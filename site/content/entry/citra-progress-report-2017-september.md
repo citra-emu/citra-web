@@ -8,7 +8,8 @@ forum = 0
 
 ### BEGIN CANDIDATE PRS
 
-#2842 Unique page table to each process (slowdown with the JIT)
+# [Kernel/Memory: Give each process its own page table and allow switching the current page table upon reschedule](https://github.com/citra-emu/citra/pull/2842) by [Subv](https://github.com/Subv)
+
 #2858 Perform interpolation of audio buffers on a frame-by-frame basis.
 #2865 Geometry shaders
 #2900 PICA: implement custom clip plane
@@ -25,5 +26,7 @@ forum = 0
 #2921 Fixes GPU batching errors
 
 #2958 Audio: Use std::deque instead of std::vector for the audio buffer type (StereoBuffer16)
+
+[]() by []()
 
 ### END CANDIDATE PRS
