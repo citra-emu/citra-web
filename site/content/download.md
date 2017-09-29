@@ -7,6 +7,17 @@ The nightly build of Citra contains already reviewed and tested features. If you
 
 The Canary build of Citra is the same as our nightly builds, with additional features that are still waiting on review before making it into the official Citra builds. We will not provide support for issues found only in this version. If you believe you've found a bug, please retest on our nightly builds. This version is still in development, so expect crashes and bugs.
 
+<hr />
+
+Canary is the next iteration of our "Bleeding Edge" builds.
+
+
+Update functionality will return soon, supporting automatic updates for both our Nightly and Canary releases.
+
+<hr />
+
+
+
 <div class="visible-xs">
   <h3>Citra currently does not support Android or iOS.</h3>
 </div>
