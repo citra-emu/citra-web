@@ -25,7 +25,7 @@
 							<td>
 								<div class="input-group search-box">
 									<input type="text" class="form-control search" id="search-box" placeholder="Search...">
-									<span onclick="clearSearch()" class="clear-search input-group-addon">X</span>
+									<span class="clear-search input-group-addon">X</span>
 								</div>
 							</td>
 							<td>
@@ -88,27 +88,27 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 <script type="text/javascript">
-	function getLastSorted(list){
-		var currentSorted = $(list.listContainer).find(".asc, .desc").attr("data-sort");
-		if ('undefined' !== typeof currentSorted)
-			list.lastSorted = currentSorted;
-		return list.lastSorted;
-	}
-
-	function filterTable(_) {
-		var rating = this.name;
-		var index = this.index;
-
-		$("#search-box").val(rating);
-		list.search(index, ['compatibility']);
-	}
-
-	function clearSearch() {
-		$("#search-box").val("");
-		list.search();
-	}
-
 	$(function() {
+		function getLastSorted(list){
+			var currentSorted = $(list.listContainer).find(".asc, .desc").attr("data-sort");
+			if ('undefined' !== typeof currentSorted)
+				list.lastSorted = currentSorted;
+			return list.lastSorted;
+		}
+
+		function filterTable(_) {
+			var rating = this.name;
+			var index = this.index;
+
+			$("#search-box").val(rating);
+			list.search(index, ['compatibility']);
+		}
+
+		function clearSearch() {
+			$("#search-box").val("");
+			list.search();
+		}
+
 		var options = {
 			valueNames: [
 				'listing-metadata',
@@ -145,6 +145,8 @@
 				})
 			}
 		});
+
+		$('#game-listing .clear-search').click(clearSearch);
 
 		Highcharts.chart('highchart-container', {
 			chart: { type: 'bar' },
