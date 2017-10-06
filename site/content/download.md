@@ -170,9 +170,9 @@ links to get you started however:<br />
     var os = undefined;
     if (userAgent.indexOf("windows") !== -1) {
         os = "Windows";
-    } else if (userAgent.indexOf("mac") !== -1) {
+    } else if (userAgent.indexOf("mac") !== -1 && userAgent.indexOf("mobile") === -1 && userAgent.indexOf("phone") === -1) {
         os = "Mac";
-    } else if (userAgent.indexOf("linux") !== -1) {
+    } else if (userAgent.indexOf("linux") !== -1 && userAgent.indexOf("android") === -1) {
         os = "Linux";
     }
     
