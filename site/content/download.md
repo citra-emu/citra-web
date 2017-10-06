@@ -16,7 +16,7 @@ The Canary build of Citra is the same as our nightly builds, with additional fea
 
 <div id="updater-view">
 The Citra updater provides a easy interface to install, update and manage Citra. Unless you know what you are doing,
- this is likely what you are looking for.
+ this is likely what you are looking for. <b>Citra currently does not support Android or iOS, only desktop x64 systems.</b>
 <br />
 <br />
 
@@ -28,11 +28,8 @@ The Citra updater provides a easy interface to install, update and manage Citra.
     If you are running one of these, choose one of the options below.
 </div>
 <button class="btn btn-lg btn-primary dl-updater-button" id="dl-windows-x64">Download for Windows x64</button>
-<br />
 <button class="btn btn-lg btn-primary dl-updater-button" id="dl-mac-x64">Download for Mac x64</button>
-<br />
 <button class="btn btn-lg btn-primary dl-updater-button" id="dl-linux-x64">Download for Linux x64</button>
-<br />
 
 <br />
 <span id="other-container"><a href="#" id="other-platforms-link">Other platforms</a> | </span>
@@ -45,6 +42,8 @@ The Citra updater provides a easy interface to install, update and manage Citra.
   <h3>Citra currently does not support Android or iOS.</h3>
 </div>
     
+<a href="?" class="btn">Back</a>
+
 <h3>Nightly Build <span style='font-size: smaller; margin-left: 6px;'> Last release was  <span id='last-updated-nightly'></span></span></h3>
 <table id="downloads-nightly" class="table">
     <thead>
@@ -82,7 +81,7 @@ The Citra updater provides a easy interface to install, update and manage Citra.
 </div>
 
 <div id="no-js-view">
-Hi! We see that you have JavaScript disabled. Unfortunately, this means that we cannot automatically show
+Hi! We see that you have JavaScript disabled. Unfortunately, this means that we cannot automatically
 prepare a updater for you, nor are we able to show you the latest archives of Citra either. Here are a few
 links to get you started however:<br />
 <br />
@@ -178,7 +177,7 @@ links to get you started however:<br />
     }
     
     if (os !== undefined) {
-        $("#dl-" + os.toLowerCase() + "-x64").css("display", "inline");
+        $("#dl-" + os.toLowerCase() + "-x64").css("display", "block");
         
         var autodetect = $("#dl-autodetect");
         autodetect.text("Autodetected platform: " + os);
@@ -193,15 +192,7 @@ links to get you started however:<br />
     $("#other-platforms-link").click(function() {
         for (var i = 0; i < allPlatforms.length; i++) {
             var platform = allPlatforms[i];
-            $("#dl-" + platform + "-x64").css("display", "inline");
-            $("#other-container").css("display", "none");
-        }
-    });
-    
-    $("#other-platforms-link").click(function() {
-        for (var i = 0; i < allPlatforms.length; i++) {
-            var platform = allPlatforms[i];
-            $("#dl-" + platform + "-x64").css("display", "inline");
+            $("#dl-" + platform + "-x64").css("display", "block");
             $("#other-container").css("display", "none");
         }
     });
