@@ -101,18 +101,14 @@ links to get you started however:<br />
                 var release = releases[i];
                 let release_date = moment(release.published_at).fromNow();
 
-                let release_commit = null;
-                let release_commit_url = null;
-                if (v == 'nightly') {
-                    release_commit = release.assets[0].name.split('-').pop().trim().split('.')[0];
-                    release_commit_url = `https://github.com/citra-emu/citra-${v}/commit/${release_commit}`;
-                }
+                let release_commit = release.assets[0].name.split('-').pop().trim().split('.')[0];
+                let release_commit_url = `https://github.com/citra-emu/citra-${v}/commit/${release_commit}`;
 
                 let release_title = '';
                 if (v == 'nightly') {
                     release_title = 'Nightly Build';
-                } else if (v == 'bleeding-edge') {
-                    release_title = 'Bleeding Edge Build';
+                } else if (v == 'canary') {
+                    release_title = 'Canary Build';
                 }
 
                 if (release_commit) {
