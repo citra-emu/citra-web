@@ -21,7 +21,6 @@ forum = 0
 
 ## [Switchable Page Tables](https://github.com/citra-emu/citra/pull/2952) by [MerryMage](https://github.com/MerryMage)
 ## [Optimized Morton](https://github.com/citra-emu/citra/pull/2951) by [huwpascoe](https://github.com/huwpascoe)
-## [Improved performance of FromAttributeBuffer](https://github.com/citra-emu/citra/pull/2933) by [huwpascoe](https://github.com/huwpascoe)
 
 ## [Audio: Use std::deque instead of std::vector for the audio buffer type (StereoBuffer16)](https://github.com/citra-emu/citra/pull/2958) by [Subv](https://github.com/Subv)
 
