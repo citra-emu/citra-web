@@ -1,10 +1,19 @@
 +++
-date = "2017-09-27T12:38:00-04:00"
+date = "2017-10-09T18:47:00-04:00"
 title = "Citra Progress Report - 2017 September"
 tags = [ "progress-report" ]
 author = "anodium"
 forum = 0
 +++
+
+Fall arrives once more, and like I mentioned in [last month's progress report](/entry/citra-progress-report-2017-august),
+I am extremely excited for what's in store. In fact, many of the really big goodies
+I've decided to seperate to their own articles, which should be coming up in the
+next few weeks.
+
+There's also been many changes this month that improve the speed of emulation across
+the board, on top of the usual improvements in accuracy and features. And because
+of that, I've dubbed this month #Speedtember. Let's dive right in.
 
 ### BEGIN CANDIDATE PRS
 
