@@ -34,3 +34,15 @@ of that, I've dubbed this month #Speedtember. Let's dive right in.
 ## [Audio: Use std::deque instead of std::vector for the audio buffer type (StereoBuffer16)](https://github.com/citra-emu/citra/pull/2958) by [Subv](https://github.com/Subv)
 
 ### END CANDIDATE PRS
+
+## Et. al.
+
+This month has been a little different for us. Very *very* big things are coming
+to Citra soon, and only giving them a handful of paragraphs here would be a
+disservice to the community. I won't name names nor specifics here, but stay tuned,
+because time rewards patience. In the meantime, I hope this progress report whet
+your collective apetite.
+
+And of course, big thanks to [everyone who's contributed](https://github.com/citra-emu/citra/graphs/contributors?from=2017-08-31&to=2017-09-30&type=c)
+this September, because Citra as a whole would not be the same without everyone
+involved having placed their pieces, big or small.
