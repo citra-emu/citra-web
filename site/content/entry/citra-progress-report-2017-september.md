@@ -15,6 +15,10 @@ There's also been many changes this month that improve the speed of emulation ac
 the board, on top of the usual improvements in accuracy and features. And because
 of that, I've dubbed this month #Speedtember. Let's dive right in.
 
+## [Switchable Page Tables](https://github.com/citra-emu/citra/pull/2952) by [MerryMage](https://github.com/MerryMage)
+
+
+
 ## [Optimized Morton](https://github.com/citra-emu/citra/pull/2951) by [huwpascoe](https://github.com/huwpascoe)
 
 <!--
@@ -58,6 +62,13 @@ led to various effects and music in games to sound strange or inaccurate in some
 
 One example of this is Deku Link's footsteps in *The Legend of Zelda: Majora's Mask 3D*.
 
+<!--
+NOTE: This GitHub issue has a save file for reproducing Deku Link footstep sound:
+
+Majora's Mask - Deku Scrub - Very Loud Walking Sound · Issue #2517 · citra-emu/citra
+https://github.com/citra-emu/citra/issues/2517
+-->
+
 Here's the output of a real 3DS console, for reference:
 
 <!-- TODO: Add hardware output of Deku Link footsteps. -->
@@ -89,7 +100,7 @@ this September, because Citra as a whole would not be the same without everyone
 involved having placed their pieces, big or small.
 
 <!--
-TODO: CANDIDATE PRS
+FIXME: Write these PRs:
 
 ## [Kernel/Memory: Give each process its own page table and allow switching the current page table upon reschedule](https://github.com/citra-emu/citra/pull/2842) by [Subv](https://github.com/Subv)
 
@@ -100,7 +111,6 @@ TODO: CANDIDATE PRS
 ## [GPU: Add draw for immediate and batch modes](https://github.com/citra-emu/citra/pull/2921) by [jroweboy](https://github.com/jroweboy)
 ## [Loader/NCCH: Add support for loading application updates](https://github.com/citra-emu/citra/pull/2927) by [shinyquagsire23](https://github.com/shinyquagsire23)
 
-## [Switchable Page Tables](https://github.com/citra-emu/citra/pull/2952) by [MerryMage](https://github.com/MerryMage)
 
 ## [Audio: Use std::deque instead of std::vector for the audio buffer type (StereoBuffer16)](https://github.com/citra-emu/citra/pull/2958) by [Subv](https://github.com/Subv)
 
