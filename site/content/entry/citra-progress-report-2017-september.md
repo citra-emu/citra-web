@@ -1,5 +1,5 @@
 +++
-date = "2017-10-09T18:47:00-04:00"
+date = "2017-10-10T09:41:00-04:00"
 title = "Citra Progress Report - 2017 September"
 tags = [ "progress-report" ]
 author = "anodium"
@@ -35,7 +35,8 @@ of times a second"), this change although small, made very big changes in CPU pe
 When a 3DS game needs some sort of audio processing, they can access the 3DS' DSP,
 or __D__igital __S__ound __P__rocessor. It's another processor, alongside the ARM9
 and ARM11, that is given a firmware to run, which in turn is given a bunch of audio
-samples and parameters by the game.
+samples and parameters by the game. The DSP then plays back the buffer in chunks
+of about 5 milliseconds. Each one of these chunks is called an audio frame.
 
 As of today, we don't know how the DSP exactly works, and we don't know how any
 of the firmwares exactly work. (Did I forget to mention earlier there's multiple
@@ -43,7 +44,37 @@ versions of the firmware?) But we do know how to use it, and from there we can
 reimplement its behaviour directly in Citra. Which is exactly what [MerryMage](https://github.com/MerryMage)
 did, which in turn brought audio support for the first time in Citra.
 
-This approach, although having the advantage of being
+This approach, although having the advantages of being easier to implement, easier
+to understand in code, and has a higher potential of being faster, it has the
+disadvantage that accuracy suffers significantly, especially when shortcuts are
+taken for the sake of speed. One of these shortcuts was in the audio interpolation,
+which is a way of inferring more audio samples from relatively very few existing
+samples.
+
+On a real 3DS, games are allowed to interpolate different audio frames with
+different functions, even in they're in the same buffer. On the other hand, Citra
+interpolated the entire buffer with one function as soon as it was loaded. This
+led to various effects and music in games to sound strange or inaccurate in some way.
+
+One example of this is Deku Link's footsteps in *The Legend of Zelda: Majora's Mask 3D*.
+
+Here's the output of a real 3DS console, for reference:
+
+<!-- TODO: Add hardware output of Deku Link footsteps. -->
+
+And here's the output of Citra, before this was fixed:
+
+<!-- TODO: Add pre-merge output of Deku Link footsteps. -->
+
+Now that it's been fixed, his footsteps sound a lot better:
+
+<!-- TODO: Add post-merge output of Deku Link footsteps. -->
+
+Audio emulation in Citra is still woefully inaccurate for now, though
+[MerryMage](https://github.com/MerryMage) is gradually working on fixing and
+improving it. Perhaps some day we may even be able to emulate the DSP firmware
+directly, which will be orders of magnitude more accurate than merely emulating
+its behaviour.
 
 ## Et. al.
 
