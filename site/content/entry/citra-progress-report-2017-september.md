@@ -30,6 +30,21 @@ but it only needed to perform less than a third of the math. Because this functi
 is called so often during emulation (a rough estimate from them is about "millions
 of times a second"), this change although small, made very big changes in CPU performance.
 
+## [Interpolate on a frame-by-frame basis](https://github.com/citra-emu/citra/pull/2858) by [MerryMage](https://github.com/MerryMage)
+
+When a 3DS game needs some sort of audio processing, they can access the 3DS' DSP,
+or __D__igital __S__ound __P__rocessor. It's another processor, alongside the ARM9
+and ARM11, that is given a firmware to run, which in turn is given a bunch of audio
+samples and parameters by the game.
+
+As of today, we don't know how the DSP exactly works, and we don't know how any
+of the firmwares exactly work. (Did I forget to mention earlier there's multiple
+versions of the firmware?) But we do know how to use it, and from there we can
+reimplement its behaviour directly in Citra. Which is exactly what [MerryMage](https://github.com/MerryMage)
+did, which in turn brought audio support for the first time in Citra.
+
+This approach, although having the advantage of being
+
 ## Et. al.
 
 This month has been a little different for us. Very *very* big things are coming
@@ -47,7 +62,6 @@ TODO: CANDIDATE PRS
 
 ## [Kernel/Memory: Give each process its own page table and allow switching the current page table upon reschedule](https://github.com/citra-emu/citra/pull/2842) by [Subv](https://github.com/Subv)
 
-## [interpolate: Interpolate on a frame-by-frame basis](https://github.com/citra-emu/citra/pull/2858) by [MerryMage](https://github.com/MerryMage)
 ## [PICA: implemented geometry shader](https://github.com/citra-emu/citra/pull/2865) by [wwylele](https://github.com/wwylele)
 ## [PICA: implement custom clip plane](https://github.com/citra-emu/citra/pull/2900) by [wwylele](https://github.com/wwylele)
 ## [APT: load different shared font depending on the region](https://github.com/citra-emu/citra/pull/2915) by [wwylele](https://github.com/wwylele)
