@@ -15,6 +15,20 @@ There's also been many changes this month that improve the speed of emulation ac
 the board, on top of the usual improvements in accuracy and features. And because
 of that, I've dubbed this month #Speedtember. Let's dive right in.
 
+## [Optimized Morton](https://github.com/citra-emu/citra/pull/2951) by [huwpascoe](https://github.com/huwpascoe)
+
+<!--
+TODO: Explain Morton
+TODO: Figure out in-line images, both layout and markup.
+NOTE: Maybe pic of Morton Koopa with caption "Wrong type of Morton"?
+-->
+
+In the function that Morton is implemented, there was a lookup table on Morton
+codes in the comments, and [huwpascoe](https://github.com/huwpascoe) thought it'd
+be best if we just use the lookup table directly. It worked just as well as before,
+but it only needed to perform less than a third of the math. Because this function
+is called so often during emulation (a rough estimate from them is about "millions
+of times a second"), this change although small, made very big changes in CPU performance.
 
 ## Et. al.
 
@@ -28,7 +42,8 @@ And of course, big thanks to [everyone who's contributed](https://github.com/cit
 this September, because Citra as a whole would not be the same without everyone
 involved having placed their pieces, big or small.
 
-### BEGIN CANDIDATE PRS
+<!--
+TODO: CANDIDATE PRS
 
 ## [Kernel/Memory: Give each process its own page table and allow switching the current page table upon reschedule](https://github.com/citra-emu/citra/pull/2842) by [Subv](https://github.com/Subv)
 
@@ -36,14 +51,12 @@ involved having placed their pieces, big or small.
 ## [PICA: implemented geometry shader](https://github.com/citra-emu/citra/pull/2865) by [wwylele](https://github.com/wwylele)
 ## [PICA: implement custom clip plane](https://github.com/citra-emu/citra/pull/2900) by [wwylele](https://github.com/wwylele)
 ## [APT: load different shared font depending on the region](https://github.com/citra-emu/citra/pull/2915) by [wwylele](https://github.com/wwylele)
-## [Improved performance of FromAttributeBuffer](https://github.com/citra-emu/citra/pull/2933) by [huwpascoe](https://github.com/huwpascoe)
 
 ## [GPU: Add draw for immediate and batch modes](https://github.com/citra-emu/citra/pull/2921) by [jroweboy](https://github.com/jroweboy)
 ## [Loader/NCCH: Add support for loading application updates](https://github.com/citra-emu/citra/pull/2927) by [shinyquagsire23](https://github.com/shinyquagsire23)
 
 ## [Switchable Page Tables](https://github.com/citra-emu/citra/pull/2952) by [MerryMage](https://github.com/MerryMage)
-## [Optimized Morton](https://github.com/citra-emu/citra/pull/2951) by [huwpascoe](https://github.com/huwpascoe)
 
 ## [Audio: Use std::deque instead of std::vector for the audio buffer type (StereoBuffer16)](https://github.com/citra-emu/citra/pull/2958) by [Subv](https://github.com/Subv)
 
-### END CANDIDATE PRS
+-->
