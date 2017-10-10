@@ -15,6 +15,10 @@ There's also been many changes this month that improve the speed of emulation ac
 the board, on top of the usual improvements in accuracy and features. And because
 of that, I've dubbed this month #Speedtember. Let's dive right in.
 
+## [Kernel/Memory: Give each process its own page table and allow switching the current page table upon reschedule](https://github.com/citra-emu/citra/pull/2842) by [Subv](https://github.com/Subv)
+
+<!-- FIXME: Write this. -->
+
 ## [Switchable Page Tables](https://github.com/citra-emu/citra/pull/2952) by [MerryMage](https://github.com/MerryMage)
 
 Citra has a component called [dynarmic](https://github.com/MerryMage/dynarmic),
@@ -100,6 +104,10 @@ improving it. Perhaps some day we may even be able to emulate the DSP firmware
 directly, which will be orders of magnitude more accurate than merely emulating
 its behaviour.
 
+## [Audio: Use std::deque instead of std::vector for the audio buffer type (StereoBuffer16)](https://github.com/citra-emu/citra/pull/2958) by [Subv](https://github.com/Subv)
+
+<!-- FIXME: Write this. -->
+
 ## Et. al.
 
 This month has been a little different for us. Very *very* big things are coming
@@ -115,16 +123,11 @@ involved having placed their pieces, big or small.
 <!--
 FIXME: Write these PRs:
 
-## [Kernel/Memory: Give each process its own page table and allow switching the current page table upon reschedule](https://github.com/citra-emu/citra/pull/2842) by [Subv](https://github.com/Subv)
-
 ## [PICA: implemented geometry shader](https://github.com/citra-emu/citra/pull/2865) by [wwylele](https://github.com/wwylele)
 ## [PICA: implement custom clip plane](https://github.com/citra-emu/citra/pull/2900) by [wwylele](https://github.com/wwylele)
 ## [APT: load different shared font depending on the region](https://github.com/citra-emu/citra/pull/2915) by [wwylele](https://github.com/wwylele)
 
 ## [GPU: Add draw for immediate and batch modes](https://github.com/citra-emu/citra/pull/2921) by [jroweboy](https://github.com/jroweboy)
 ## [Loader/NCCH: Add support for loading application updates](https://github.com/citra-emu/citra/pull/2927) by [shinyquagsire23](https://github.com/shinyquagsire23)
-
-
-## [Audio: Use std::deque instead of std::vector for the audio buffer type (StereoBuffer16)](https://github.com/citra-emu/citra/pull/2958) by [Subv](https://github.com/Subv)
 
 -->
