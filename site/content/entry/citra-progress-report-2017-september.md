@@ -17,7 +17,20 @@ of that, I've dubbed this month #Speedtember. Let's dive right in.
 
 ## [Switchable Page Tables](https://github.com/citra-emu/citra/pull/2952) by [MerryMage](https://github.com/MerryMage)
 
+Citra has a component called [dynarmic](https://github.com/MerryMage/dynarmic),
+which recompiles ARM11 code to x86-64 code at run time, and then executes that
+generated code, rather than interpreting the ARM11 instructions directly.
 
+One of the things any computer does the most is read and write to memory, and
+there's a few ways dynarmic could potentially optimize memory read/writes.
+
+<!--
+TODO: Ask for elaboration on why page-faulting should be handled with fallback.
+TODO: Ask how Memory::Read32 works precisely.
+TODO: Ask why single indirect addressing can't be used in every case. (Maybe RAM waste?)
+
+TODO: Make diagrams for better elaborating, addressing modes can be hard to understand at first glance.
+-->
 
 ## [Optimized Morton](https://github.com/citra-emu/citra/pull/2951) by [huwpascoe](https://github.com/huwpascoe)
 
