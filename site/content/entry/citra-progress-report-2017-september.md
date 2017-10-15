@@ -1,5 +1,5 @@
 +++
-date = "2017-10-10T09:41:00-04:00"
+date = "2017-10-15T01:46:00-04:00"
 title = "Citra Progress Report - 2017 September"
 tags = [ "progress-report" ]
 author = "anodium"
@@ -25,8 +25,20 @@ Citra has a component called [dynarmic](https://github.com/MerryMage/dynarmic),
 which recompiles ARM11 code to x86-64 code at run time, and then executes that
 generated code, rather than interpreting the ARM11 instructions directly.
 
-One of the things any computer does the most is read and write to memory, and
-there's a few ways dynarmic could potentially optimize memory read/writes.
+Because the 3DS' memory is layed out very differently than on a standard PC,
+dynarmic needs to translate memory addresses from one layout to the other every
+time a game needs to read or write to memory.
+
+<!--
+NOTE: Paragraph I dropped earlier.
+
+This is further complicated by the 3DS' use of memory-mapped IO (which maps external devices and peripherals to a memory address), by features that Citra adds to the experience such as texture forwarding, and above all, that reading and writing to memory needs to be **fast**.
+
+-->
+
+Because the 3DS has a 32 bit address bus, it can address 2^32 unique memory locations. And, because the 3DS can address data down to a byte, it can address up to 2^32 unique bytes, or about 4 gigabytes of memory. When considering that no 3DS has ever been released with more than <!-- FIXME: Find out New 3DS amount of RAM. --> *mega*bytes of memory, this sounds absurd! And it is... unless you consider that a 3DS uses chunks of that huge address space to address peripherals, among other things. This is called memory-mapped input/output (MMIO), and is a great use of millions of addresses that would otherwise have been ignored, plus it also allows handling IO the exact same way memory is handled, so the design can be a bit simpler because it doesn't need special circuitry to handle IO.
+
+Herein lies our problem. Because that code is being run on a PC, those MMIO devices don't actually exist anymore, so Citra needs to handle those reads and writes itself. There's a few ways to go about it, but the simplest and most na&iumlaut<!-- FIXME: What HTML entity is used for LATIN SMALL LETTER I WITH UMLAUT? -->;ve is to simply recompile every memory read or write to a function that checks if that address is mapped to memory or IO.
 
 <!--
 TODO: Ask for elaboration on why page-faulting should be handled with fallback.
