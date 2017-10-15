@@ -43,10 +43,6 @@ is mapped to memory or IO. Unfortunately, this is extremely slow, and we can't
 afford to have extremely slow address translation when games can access memory
 upwards of a few hundred thousand times per second.
 
-<!--
-TODO: Make diagrams for better elaborating, addressing modes can be hard to understand at first glance.
--->
-
 In #2952, [MerryMage](https://github.com/MerryMage) has changed this behaviour so
 that rather than replacing a read/write with a function, it instead translates the
 address using a page table, and then tries to access that address directly. On the
@@ -64,8 +60,7 @@ This makes the usual case (memory access) extremely fast, and the less usual cas
 slow, but only the first time it happens. Subsequent IO accesses use the recompiled
 functions which are faster.
 
-<!-- TODO: Find fastmem article on Dolphin blog. -->
-This technique is called fastmem, and is not new at all. In fact, [Dolphin]() uses
+This technique is called fastmem, and is not new at all. In fact, Dolphin uses
 it extensively in its JIT recompiler to speed up memory access as well. And thanks
 to [MerryMage](https://github.com/MerryMage)'s hard work, this same technique is
 now used extensively by Citra.
