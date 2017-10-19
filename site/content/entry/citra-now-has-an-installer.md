@@ -26,13 +26,15 @@ The [new installer](https://github.com/citra-emu/citra/pull/2966) is an applicat
 separate from Citra itself, that utilizes the [QT Installer Framework](https://doc.qt.io/qtinstallerframework/index.html)
 (Also known as QTIFW.) to download the latest version of either Citra
 Nightly or Citra Canary from our website's repository and extract it to your system's
-program directory. Additionally, depending on what build(s) you chose, the installer
-will also create desktop icons for easy access. You can get the installer from the
-[downloads page](https://citra-emu.org/download/), which will try to automatically
-select the correct version for your OS.
+program directory.
 
 {{< figure src="/images/entry/citra-now-has-an-installer/installer-options.png"
     title="CHOOSE YOUR WEAPON" alt="Installer options." >}}
+
+Additionally, depending on what build(s) you chose, the installer
+will also create desktop icons for easy access. You can get the installer from the
+[downloads page](https://citra-emu.org/download/), which will try to automatically
+select the correct version for your OS.
 
 ## Updater
 In addition to installing, QTIFW also provides functionality for updating via the
