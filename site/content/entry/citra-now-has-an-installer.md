@@ -23,29 +23,28 @@ Report**.
 
 ## Installer
 The [new installer](https://github.com/citra-emu/citra/pull/2966) is an application
-separate from Citra itself, that utilizes the [QT Installer Framework](https://doc.qt.io/qtinstallerframework/index.html)
-(Also known as QTIFW.) to download the latest version of either Citra
+separate from Citra itself, that utilizes the [Qt Installer Framework](https://doc.qt.io/qtinstallerframework/index.html)
+(Also known as QtIFW.) to download the latest version of either Citra
 Nightly or Citra Canary from our website's repository and extract it to your system's
 program directory.
 
 {{< figure src="/images/entry/citra-now-has-an-installer/installer-options.png"
     title="CHOOSE YOUR WEAPON" alt="Installer options." >}}
 
-Additionally, depending on what build(s) you chose, the installer
+Additionally, depending on which build(s) you chose, the installer
 will also create desktop icons for easy access. You can get the installer from the
 [downloads page](https://citra-emu.org/download/), which will try to automatically
 select the correct version for your OS.
 
 ## Updater
-In addition to installing, QTIFW also provides functionality for updating via the
-`maintenancetool` utility. For convienience, this is [integrated into the Qt frontend](https://github.com/citra-emu/citra/pull/2997)
-(The main GUI interface that you probably use.) in the form of scheduled automatic
-updates. You can either check for updates on startup, check
-for updates on shutdown, check for updates on startup and shutdown, or never check
-for updates. By default, Citra will check for updates on startup.
+In addition to installing, QtIFW also provides functionality for updating via the
+`maintenancetool` utility. For convenience, this is [integrated into the Qt frontend](https://github.com/citra-emu/citra/pull/2997)
+(The main GUI that you probably use.) in the form of scheduled automatic
+updates. You can optionally check for updates on startup, and/or check for updates
+on shutdown.
 
 {{< figure src="/images/entry/citra-now-has-an-installer/configuration.png"
-    title="Note the two checkboxes under `Updates`." alt="Configuration window." >}}
+    title="Note the two checkboxes in the updates section." alt="Configuration window." >}}
 
 If an update is found at startup, you will be asked if you want to run the updater
 or not.
@@ -60,6 +59,8 @@ You can also manually update your Citra installation at any time, by going to th
 `Help` menu, and then `Check for Updates`.
 
 ## Uninstallation & Install Modification
-QTIFW's `maintenancetool` can also be used to uninstall Citra, and install a different
+QtIFW's `maintenancetool` can also be used to uninstall Citra, and install a different
 type of build. Like the updater, this is also integrated into the Qt frontend, and
-can be accessed by going to the `Help` menu, and then `Modify Citra Install`.
+can be accessed by going to the `Help` menu, and then `Modify Citra Install`. Integrating
+with an already well-established framework like QtIFW allows us to streamline the
+task of installation maintenence.
