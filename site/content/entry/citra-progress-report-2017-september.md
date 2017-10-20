@@ -1,5 +1,5 @@
 +++
-date = "2017-10-20T01:57:00-04:00"
+date = "2017-10-20T18:52:00-04:00"
 title = "Citra Progress Report - 2017 September"
 tags = [ "progress-report" ]
 author = "anodium"
@@ -76,17 +76,22 @@ to provide other features such as the digital instruction manual, the Download P
 child application, or in the case of game cartridges, system updates.
 
 Both types of NCCH start with a header, and then followed by either an ExeFS
-image, a RomFS image, or both.
+image, a RomFS image, or both. The entire structure of an NCCH header may be best
+explained by a diagram:
 
-[ExeFS images](https://www.3dbrew.org/wiki/ExeFS) are filesystems that contain
-executable code, along with the Home Menu banner and icon, and licensing information
-in a deceptively-named `logo` file. [RomFS images](https://www.3dbrew.org/wiki/RomFS),
-on the other side, are filesystems that do not contain executable code, but rather
-usually contain resources such as models, textures, music, and other things that
-a game might need to run. In CFAs, RomFS images are used to contain the manual,
-system updates, or even the CIA that is installed on Download Play guests.
+{{< figure src="/images/entry/citra-progress-report-2017-september/ncch.png" 
+    title="Solid lines are required sections, dashed lines cannot be used in some cases, and dotted lines are optional sections." >}}
 
-<!-- NOTE: Describing this was confusing even for me, I smell need of a diagram? -->
+Now, games and applications need updates from time to time, and 3DSes handle these
+by installing the update as a seperate title from the base game. From that point
+on, whenever the user tries to launch the game, instead of loading the
+extended header (or [ExHeader](https://www.3dbrew.org/wiki/ExHeader) for short)
+and ExeFS image from the base game's NCCH, it replaces them with the update's
+ExHeader and ExeFS on launch. As for RomFS, the 3DS System Software will actually
+load both the base game's and the update's RomFS image, rather than replacing one
+with the other. Games are left to their own devices on how to handle these, and
+so the methods used per game can vary, though they usually just replace changed
+files, picking files from the base game RomFS if they haven't been modified.
 
 <!-- TODO: Explain how all of this ties back into Citra and the PR. -->
 
