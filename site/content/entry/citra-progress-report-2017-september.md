@@ -1,5 +1,5 @@
 +++
-date = "2017-10-19T09:37:00-04:00"
+date = "2017-10-20T01:57:00-04:00"
 title = "Citra Progress Report - 2017 September"
 tags = [ "progress-report" ]
 author = "anodium"
@@ -64,6 +64,31 @@ This technique is called fastmem, and is not new at all. In fact, Dolphin uses
 it extensively in its JIT recompiler to speed up memory access as well. And thanks
 to [MerryMage](https://github.com/MerryMage)'s hard work, this same technique is
 now used extensively by Citra.
+
+## [Loader/NCCH: Add support for loading application updates](https://github.com/citra-emu/citra/pull/2927) by [shinyquagsire23](https://github.com/shinyquagsire23)
+
+Nintendo 3DS titles are contained within `*.app` files on the SD card or on the
+game cartridge, in the [NCCH container format](https://www.3dbrew.org/wiki/NCCH).
+This format is further divided into two formats, CXI and CFA, which stand for
+__C__TR e__X__ecutable __I__mage and __C__TR __F__ile __A__rchive, respectively.
+CXIs contain executable code, whereas CFAs cannot. CFAs usually accompany a CXI
+to provide other features such as the digital instruction manual, the Download Play
+child application, or in the case of game cartridges, system updates.
+
+Both types of NCCH start with a header, and then followed by either an ExeFS
+image, a RomFS image, or both.
+
+[ExeFS images](https://www.3dbrew.org/wiki/ExeFS) are filesystems that contain
+executable code, along with the Home Menu banner and icon, and licensing information
+in a deceptively-named `logo` file. [RomFS images](https://www.3dbrew.org/wiki/RomFS),
+on the other side, are filesystems that do not contain executable code, but rather
+usually contain resources such as models, textures, music, and other things that
+a game might need to run. In CFAs, RomFS images are used to contain the manual,
+system updates, or even the CIA that is installed on Download Play guests.
+
+<!-- NOTE: Describing this was confusing even for me, I smell need of a diagram? -->
+
+<!-- TODO: Explain how all of this ties back into Citra and the PR. -->
 
 ## [Optimized Morton](https://github.com/citra-emu/citra/pull/2951) by [huwpascoe](https://github.com/huwpascoe)
 
@@ -158,6 +183,5 @@ FIXME: Write these PRs:
 
 ## [GPU: Add draw for immediate and batch modes](https://github.com/citra-emu/citra/pull/2921) by [jroweboy](https://github.com/jroweboy)
 ## [Build: Add mingw64 compile support to appveyor](https://github.com/citra-emu/citra/pull/2912) by [jroweboy](https://github.com/jroweboy)
-## [Loader/NCCH: Add support for loading application updates](https://github.com/citra-emu/citra/pull/2927) by [shinyquagsire23](https://github.com/shinyquagsire23)
 
 -->
