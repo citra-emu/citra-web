@@ -1,6 +1,6 @@
 +++
 date = "2017-10-01T00:00:00-05:00"
-title = "Citra now has an installer!"
+title = "Introducing Automatic Updates"
 tags = [ "feature-update" ]
 author = "thekoopakingdom"
 forum = 0000
@@ -28,7 +28,7 @@ separate from Citra itself, that utilizes the [Qt Installer Framework](https://d
 Nightly or Citra Canary from our website's repository and extract it to your system's
 program directory.
 
-{{< figure src="/images/entry/citra-now-has-an-installer/installer-options.png"
+{{< figure src="/images/entry/introducing-automatic-updates/installer-options.png"
     title="CHOOSE YOUR WEAPON" alt="Installer options." >}}
 
 Additionally, depending on which build(s) you chose, the installer
@@ -43,13 +43,13 @@ In addition to installing, QtIFW also provides functionality for updating via th
 updates. You can optionally check for updates on startup, and/or check for updates
 on shutdown.
 
-{{< figure src="/images/entry/citra-now-has-an-installer/configuration.png"
+{{< figure src="/images/entry/introducing-automatic-updates/configuration.png"
     title="Note the two checkboxes in the updates section." alt="Configuration window." >}}
 
 If an update is found at startup, you will be asked if you want to run the updater
 or not.
 
-{{< figure src="/images/entry/citra-now-has-an-installer/update-prompt.png"
+{{< figure src="/images/entry/introducing-automatic-updates/update-prompt.png"
     title="Gotta keep your Citrus fresh!" alt="Message box prompting for installation." >}}
 
 If an update is found at shutdown, Citra will silently update without prompting,
