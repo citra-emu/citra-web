@@ -115,6 +115,58 @@ needed to handle other features such as DLC support or even using real 3DS SD ca
 Though, do note that we don't have any estimates on either those or any other
 features, as no one is actively working on either.
 
+## [Implement geometry shader](https://github.com/citra-emu/citra/pull/2865) by [wwylele](https://github.com/wwylele)
+
+The PICA200 GPU has a pipeline similar to [OpenGL's pipeline]() for rendering 3D <!-- TODO: Link to Khronos Group wiki. -->
+objects into a 2D display. I won't go through them all here, only the optional
+geometry shader step. Just after the vertex shader step, if enabled, all the vertices
+are processed by a shader kernel (which is a small program that runs directly on
+a GPU), taking as many vertices as the kernel wants as input, and outputting as
+many vertices as the kernel wants.
+
+Because the kernel in the geometry shader is allowed as many inputs and outputs
+as it wants, it is significantly more powerful and flexible than the vertex shader,
+whose kernel is restricted to only one vertex at a time, both for input and output.
+But for that same reason, geometry shaders are much more complex to program, and
+so many games simply disable it. The games that do not disable it though, tend to
+use it very extensively, to the point of completely breaking graphics if it's not
+implemented.
+
+Multiple uses have been found in the wild for geometry shaders, including but absolutely
+not limited to:
+
+ - Taking one vertex as input, and outputting a rectangle of vertices which can
+ be textured with a sprite. Pok&eacute;mon uses this extensively to render particles
+ whenever a move is used. Monster Hunter takes it a step further and renders
+ *all of its HUD and GUI* with this kernel.
+
+ <!-- NOTE: Would be neat as hell if I had a little diagram here that showed every rendering step of a frame in a Pokémon Battle.
+ Maybe leave for a more in-depth standalone article? -->
+
+ - Taking a handful of vertices as input, and outputting even more verticles which
+ are interpolations between the inputs, thus making the resulting mesh look smoother
+ and less jagged when rendered.
+
+At first glance, geometry shaders looked like an easy problem, since it used the
+same instruction set and format as vertex shaders, so a lot of the same code could
+be reused. At *second* glance, it turned out that configuring inputs and outputs
+for geometry shaders is much more complex than it is for vertex shaders.
+
+There were actually three attempts to implement geometry shaders in Citra. The first
+was written by [ds84182](https://github.com/ds84182) about two years ago, only to
+be abandoned due to not knowing how the configuration of them was done. The second
+attempt was written by [JayFoxRox](https://github.com/JayFoxRox), but was also
+abandoned for the same reason.
+
+But, after extensive research on geometry shaders was made by [fincs](https://github.com/fincs),
+the API was implemented in [ctrulib]() and [ctro3d](), and examples were written <!-- TODO: Links to these projects. -->
+to demonstrate how to use it. Now that the community knew exactly how they worked,
+[wwylele](https://github.com/wwylele) picked up where [JayFoxRox](https://github.com/JayFoxRox)
+left off, cleaned up the code they wrote, and added the missing pieces.
+
+After almost three years, and three different attempts to make it work, Citra now
+has a full, complete, and correct implementation of geometry shaders!
+
 ## [Optimized Morton](https://github.com/citra-emu/citra/pull/2951) by [huwpascoe](https://github.com/huwpascoe)
 
 Morton code is a function that interleaves multi-dimensional numbers into a one-dimensional
@@ -251,7 +303,6 @@ involved having placed their pieces, big or small.
 <!--
 FIXME: Write these PRs:
 
-## [Implement geometry shader](https://github.com/citra-emu/citra/pull/2865) by [wwylele](https://github.com/wwylele)
 ## [Implement custom clip plane](https://github.com/citra-emu/citra/pull/2900) by [wwylele](https://github.com/wwylele)
 
 ## [Add draw for immediate and batch modes](https://github.com/citra-emu/citra/pull/2921) by [jroweboy](https://github.com/jroweboy)
