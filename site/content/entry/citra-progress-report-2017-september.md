@@ -167,6 +167,22 @@ left off, cleaned up the code they wrote, and added the missing pieces.
 After almost three years, and three different attempts to make it work, Citra now
 has a full, complete, and correct implementation of geometry shaders!
 
+## [Implement custom clip plane](https://github.com/citra-emu/citra/pull/2900) by [wwylele](https://github.com/wwylele)
+
+After the geometry shader (or the vertex shader, if it wasn't enabled), the vertices
+are "assembled" into a collection of triangles. After *that*, to make rendering
+more efficient, the triangles are then compared to 6 planes that make up the cube
+in which objects are actually visible by the camera. Any triangles outside of that
+cube are deleted, and any triangles that are partially inside the cube are split
+by the sides of the cube, and the resulting triangle outside of the cube is also
+deleted.
+
+But the 3DS allows games to add a 7th plane whose position is fully customizable.
+Although no games are known to use this feature right now, because it is indeed
+a feature of the 3DS' GPU, and because implementing it was fairly straightforward,
+[wwylele](https://github.com/wwylele) decided to just go ahead and do it, just in
+case someone decided to use it for some reason.
+
 ## [Optimized Morton](https://github.com/citra-emu/citra/pull/2951) by [huwpascoe](https://github.com/huwpascoe)
 
 Morton code is a function that interleaves multi-dimensional numbers into a one-dimensional
@@ -302,8 +318,6 @@ involved having placed their pieces, big or small.
 
 <!--
 FIXME: Write these PRs:
-
-## [Implement custom clip plane](https://github.com/citra-emu/citra/pull/2900) by [wwylele](https://github.com/wwylele)
 
 ## [Add draw for immediate and batch modes](https://github.com/citra-emu/citra/pull/2921) by [jroweboy](https://github.com/jroweboy)
 ## [Add mingw64 compile support to appveyor](https://github.com/citra-emu/citra/pull/2912) by [jroweboy](https://github.com/jroweboy)
