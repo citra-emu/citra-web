@@ -98,7 +98,7 @@ mixed into one big piece that fit in with everything else. With this patch,
 [shinyquagsire23](https://github.com/shinyquagsire23) has seperated the loader
 from the NCCH reader, allowing the loader to read multiple NCCHs at once. Additionally,
 whenever a game is loaded, the loader would also check if there is an update title
-installed on Citra's [virtual SD card](). If there is, it would replace the update
+installed on Citra's [virtual SD card]() <!-- TODO: Add link to Citra wiki. -->. If there is, it would replace the update
 ExHeader and ExeFS, and load the update RomFS as well. Just like a real console!
 
 Most games worked out of the box with updates, and because they wrote the code
@@ -109,11 +109,25 @@ features, as no one is actively working on either.
 
 ## [Optimized Morton](https://github.com/citra-emu/citra/pull/2951) by [huwpascoe](https://github.com/huwpascoe)
 
-<!--
-TODO: Explain Morton
-TODO: Figure out in-line images, both layout and markup.
-NOTE: Maybe pic of Morton Koopa with caption "Wrong type of Morton"?
--->
+Morton code is a function that interleaves multi-dimensional numbers into a one-dimensional
+number. Although it may seem like a very esoteric function, it's actually extremely
+useful in fields like linear algebra, databases, and what the 3DS uses it for:
+texture mapping. <!-- NOTE: Probably? Should confirm this. -->
+
+Computers have an intermediate chunk of memory between RAM and the CPU called a
+cache. Caches are seperated into lines, each of which can hold one data item. GPUs
+also have a cache, also seperated into lines. Because they are seperated like this,
+if a texture is loaded into the cache, it would have to span multiple cache lines,
+or even not fit into the cache completely, thus making transformations on it slow,
+as it would have to load and store pieces of it from RAM multiple times.
+
+To avoid this, GPUs can Morton encode textures so that two-dimensional manipulations
+are more likely to only need data already in the cache. Textures that have been
+Morton coded are usually referred to as swizzled or twiddled textures.
+
+{{< figure src="/images/entry/citra-progress-report-2017-september/morton.png" 
+    title="Not this Morton!" >}}
+<!-- TODO: Right-align image and have text flow down the left. -->
 
 In the function that Morton is implemented, there was a lookup table on Morton
 codes in the comments, and [huwpascoe](https://github.com/huwpascoe) thought it'd
