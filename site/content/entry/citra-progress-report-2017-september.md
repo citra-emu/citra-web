@@ -1,5 +1,5 @@
 +++
-date = "2017-10-20T18:52:00-04:00"
+date = "2017-10-22T05:55:00-04:00"
 title = "Citra Progress Report - 2017 September"
 tags = [ "progress-report" ]
 author = "anodium"
@@ -93,7 +93,19 @@ with the other. Games are left to their own devices on how to handle these, and
 so the methods used per game can vary, though they usually just replace changed
 files, picking files from the base game RomFS if they haven't been modified.
 
-<!-- TODO: Explain how all of this ties back into Citra and the PR. -->
+Citra, before this PR, had the code for loading games and reading NCCH files all
+mixed into one big piece that fit in with everything else. With this patch,
+[shinyquagsire23](https://github.com/shinyquagsire23) has seperated the loader
+from the NCCH reader, allowing the loader to read multiple NCCHs at once. Additionally,
+whenever a game is loaded, the loader would also check if there is an update title
+installed on Citra's [virtual SD card](). If there is, it would replace the update
+ExHeader and ExeFS, and load the update RomFS as well. Just like a real console!
+
+Most games worked out of the box with updates, and because they wrote the code
+with accuracy in mind, this very same PR has also laid part of the foundation
+needed to handle other features such as DLC support or even using real 3DS SD cards!
+Though, do note that we don't have any estimates on either those or any other
+features, as no one is actively working on either.
 
 ## [Optimized Morton](https://github.com/citra-emu/citra/pull/2951) by [huwpascoe](https://github.com/huwpascoe)
 
