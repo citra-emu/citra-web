@@ -199,7 +199,22 @@ its behaviour.
 
 ## [Audio: Use std::deque instead of std::vector for the audio buffer type (StereoBuffer16)](https://github.com/citra-emu/citra/pull/2958) by [Subv](https://github.com/Subv)
 
-<!-- FIXME: Write this. -->
+Whenever the DSP consumes some frames from the audio buffer, Citra deletes them
+from it. This normally wouldn't pose any problems, but because the buffer was
+being stored as a vector, this led to some uneccessary operations. Namely, the
+C++ standard requires that all the data of a standard vector be in one contiguous
+block of memory. Because deleting frames from the buffer breaks this rule, Citra
+would automatically (1) allocate a new block of memory, (2) copy the entire buffer
+into that new block of memory, and (3) deallocate the old block of memory, thus
+deleting the old buffer.
+
+These steps are huge waste of time, as Citra doesn't need to guarantee that the
+audio buffer is in one contiguous block. So [Subv](https://github.com/Subv) changed
+the type of the buffer from a vector to a deque, which is essentially a queue that
+you can remove data from both the beginning and end of it. Because the contiguity
+requirement doesn't exist in deques, Citra doesn't do the uneccessary copying,
+leading to huge speed boosts in audio bound titles like Super Mario 3D Land, and
+even the Home Menu. Both now run at 60 FPS without any issues!
 
 ## Et. al.
 
