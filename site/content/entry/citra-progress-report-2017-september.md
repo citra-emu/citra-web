@@ -61,7 +61,7 @@ it extensively in its JIT recompiler to speed up memory access as well. And than
 to [MerryMage](https://github.com/MerryMage)'s hard work, this same technique is
 now used extensively by Citra.
 
-## [Kernel/Memory: Give each process its own page table and allow switching the current page table upon reschedule](https://github.com/citra-emu/citra/pull/2842) by [Subv](https://github.com/Subv)
+## [Give each process its own page table](https://github.com/citra-emu/citra/pull/2842) by [Subv](https://github.com/Subv)
 
 In order to support running multiple processes at the same time, like your computer,
 Citra implements virtual memory, in which each process has its own page table.
@@ -73,7 +73,7 @@ support running multiple processes at once, such as a game and the software keyb
 applet. Now, thanks to [Subv](https://github.com/Subv), Citra has an important
 building block in place. <!-- NOTE: My gods this wording is atrocious. Rewrite? -->
 
-## [Loader/NCCH: Add support for loading application updates](https://github.com/citra-emu/citra/pull/2927) by [shinyquagsire23](https://github.com/shinyquagsire23)
+## [Add support for loading application updates](https://github.com/citra-emu/citra/pull/2927) by [shinyquagsire23](https://github.com/shinyquagsire23)
 
 Nintendo 3DS titles are contained within `*.app` files on the SD card or on the
 game cartridge, in the [NCCH container format](https://www.3dbrew.org/wiki/NCCH).
@@ -197,7 +197,7 @@ improving it. Perhaps some day we may even be able to emulate the DSP firmware
 directly, which will be orders of magnitude more accurate than merely emulating
 its behaviour.
 
-## [Audio: Use std::deque instead of std::vector for the audio buffer type (StereoBuffer16)](https://github.com/citra-emu/citra/pull/2958) by [Subv](https://github.com/Subv)
+## [Use deque instead of vector for the audio buffer](https://github.com/citra-emu/citra/pull/2958) by [Subv](https://github.com/Subv)
 
 Whenever the DSP consumes some frames from the audio buffer, Citra deletes them
 from it. This normally wouldn't pose any problems, but because the buffer was
@@ -231,11 +231,11 @@ involved having placed their pieces, big or small.
 <!--
 FIXME: Write these PRs:
 
-## [PICA: implemented geometry shader](https://github.com/citra-emu/citra/pull/2865) by [wwylele](https://github.com/wwylele)
-## [PICA: implement custom clip plane](https://github.com/citra-emu/citra/pull/2900) by [wwylele](https://github.com/wwylele)
-## [APT: load different shared font depending on the region](https://github.com/citra-emu/citra/pull/2915) by [wwylele](https://github.com/wwylele)
+## [Implement geometry shader](https://github.com/citra-emu/citra/pull/2865) by [wwylele](https://github.com/wwylele)
+## [Implement custom clip plane](https://github.com/citra-emu/citra/pull/2900) by [wwylele](https://github.com/wwylele)
+## [Load different shared font depending on the region](https://github.com/citra-emu/citra/pull/2915) by [wwylele](https://github.com/wwylele)
 
-## [GPU: Add draw for immediate and batch modes](https://github.com/citra-emu/citra/pull/2921) by [jroweboy](https://github.com/jroweboy)
-## [Build: Add mingw64 compile support to appveyor](https://github.com/citra-emu/citra/pull/2912) by [jroweboy](https://github.com/jroweboy)
+## [Add draw for immediate and batch modes](https://github.com/citra-emu/citra/pull/2921) by [jroweboy](https://github.com/jroweboy)
+## [Add mingw64 compile support to appveyor](https://github.com/citra-emu/citra/pull/2912) by [jroweboy](https://github.com/jroweboy)
 
 -->
