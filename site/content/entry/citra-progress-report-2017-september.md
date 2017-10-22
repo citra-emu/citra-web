@@ -284,6 +284,71 @@ requirement doesn't exist in deques, Citra doesn't do the uneccessary copying,
 leading to huge speed boosts in audio bound titles like Super Mario 3D Land, and
 even the Home Menu. Both now run at 60 FPS without any issues!
 
+## [Add mingw64 compile support to appveyor](https://github.com/citra-emu/citra/pull/2912) by [jroweboy](https://github.com/jroweboy)
+
+When a program is written in a high-level programming language, such as C++, Rust,
+or Go, before the program can be run on a machine, it must be translated or "compiled"
+to machine code. Although it is possible to do this translation by hand, it is
+usually extremely difficult to do so and very time consuming. So instead, we have
+a program called a compiler than can automatically do this translation for us.
+
+This is also why a program compiled for an ARM machine cannot be run directly on
+an x86 machine, even when the source can work on either machine without issues.
+Instead this program must be translated, interpreted, or recompiled from source
+to x86. (In fact, this translation is exactly what [dynarmic](https://github.com/MerryMage/dynarmic)
+does to run code from a 3DS.)
+
+Every statement in a program must have an exact, unambiguous definition of what
+it does (its semantics). But, in the same way that a statement that means one
+thing can be written many different ways, a different compilers can translate the
+same statement many different ways.
+
+Take this small snippet as an example:
+```c++
+uint8_t x = 0;
+x++;
+x = x * 4;
+```
+
+What this does, line-by-line, is (1) define an 8-bit whole number called `x`,
+(2) increment `x`'s value by one, (3) multiply `x` by 4.
+
+A compiler for x86 might generate machine code like this (This machine code has
+been disassembled into assembly, which replaces raw binary with some mnemonics to
+help understand it):
+```asm
+mov al, x
+inc al
+mov x, al
+
+mov al, x
+mov bl, 4h
+mul bl
+mov x, ax
+```
+
+But a more intelligent compiler might try to do some shortcuts, like this:
+```asm
+mov al, x
+inc al
+
+shl al, 2
+mov x, al
+```
+
+<!--
+NOTE: Let's see how many people understand the last paragraph. (>_<; )
+TODO: Change explanation, it's unnecessarily complex, maybe make asm non-standard to help readability? Or maybe just cut it all out.
+-->
+
+On Windows, there's two popular C++ compilers available as of today: MSVC++, which
+is the compiler Microsoft has written for Windows, and MINGW GCC, which is actually
+a port of the Linux `gcc` compiler to Windows. For better or worse, MINGW GCC
+compiles to a much more efficient binary than MSVC++, and so [jroweboy](https://github.com/jroweboy)
+has changed the Citra AppVeyor build script to use MINGW GCC instead of MSVC++.
+This change also has closed the gap in performance the new Nightly builds had
+compared to the old Bleeding Edge builds.
+
 ## [Load different shared font depending on the region](https://github.com/citra-emu/citra/pull/2915) by [wwylele](https://github.com/wwylele)
 
 Remember that last month [wwylele](https://github.com/wwylele) changed Citra so
@@ -320,6 +385,5 @@ involved having placed their pieces, big or small.
 FIXME: Write these PRs:
 
 ## [Add draw for immediate and batch modes](https://github.com/citra-emu/citra/pull/2921) by [jroweboy](https://github.com/jroweboy)
-## [Add mingw64 compile support to appveyor](https://github.com/citra-emu/citra/pull/2912) by [jroweboy](https://github.com/jroweboy)
 
 -->
