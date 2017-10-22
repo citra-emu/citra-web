@@ -1,5 +1,5 @@
 +++
-date = "2017-10-22T05:55:00-04:00"
+date = "2017-10-22T08:13:00-04:00"
 title = "Citra Progress Report - 2017 September"
 tags = [ "progress-report" ]
 author = "anodium"
@@ -216,6 +216,26 @@ requirement doesn't exist in deques, Citra doesn't do the uneccessary copying,
 leading to huge speed boosts in audio bound titles like Super Mario 3D Land, and
 even the Home Menu. Both now run at 60 FPS without any issues!
 
+## [Load different shared font depending on the region](https://github.com/citra-emu/citra/pull/2915) by [wwylele](https://github.com/wwylele)
+
+Remember that last month [wwylele](https://github.com/wwylele) changed Citra so
+that instead of loading the shared font from a seperate file, it would
+[load it from the system archive]()? <!-- TODO: Link to article section. --> This
+builds on top of that behaviour. You see, a 3DS doesn't have a shared font, it has
+*four*. One contains glyps for Latin script (for English, Spanish, Italian, French,
+etc.) and Japanese scripts, another contains glyps for Traditional Chinese, the
+third font contains the ones for Simplified Chinese, and the last font contains
+the ones for Korean.
+
+Before this PR, Citra would simply load the first shared font regardless of game
+or region. This made non-Latin or non-Japanese script games display completely
+incorrect characters at best, or crash at worst. Now Citra will load the appropriate
+shared font from the system archive depending on the region selected, just like
+a real console! Though, this will not work on machines that only have the
+`shared_font.bin` file, because it only contains the first of the four shared
+fonts. If you want to use this feature, you must dump the system archive using
+the latest version of `3dsutil`.
+
 ## Et. al.
 
 This month has been a little different for us. Very *very* big things are coming
@@ -233,7 +253,6 @@ FIXME: Write these PRs:
 
 ## [Implement geometry shader](https://github.com/citra-emu/citra/pull/2865) by [wwylele](https://github.com/wwylele)
 ## [Implement custom clip plane](https://github.com/citra-emu/citra/pull/2900) by [wwylele](https://github.com/wwylele)
-## [Load different shared font depending on the region](https://github.com/citra-emu/citra/pull/2915) by [wwylele](https://github.com/wwylele)
 
 ## [Add draw for immediate and batch modes](https://github.com/citra-emu/citra/pull/2921) by [jroweboy](https://github.com/jroweboy)
 ## [Add mingw64 compile support to appveyor](https://github.com/citra-emu/citra/pull/2912) by [jroweboy](https://github.com/jroweboy)
