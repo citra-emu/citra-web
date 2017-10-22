@@ -15,10 +15,6 @@ There's also been many changes this month that improve the speed of emulation ac
 the board, on top of the usual improvements in accuracy and features. And because
 of that, I've dubbed this month #Speedtember. Let's dive right in.
 
-## [Kernel/Memory: Give each process its own page table and allow switching the current page table upon reschedule](https://github.com/citra-emu/citra/pull/2842) by [Subv](https://github.com/Subv)
-
-<!-- FIXME: Write this. -->
-
 ## [Switchable Page Tables](https://github.com/citra-emu/citra/pull/2952) by [MerryMage](https://github.com/MerryMage)
 
 Citra has a component called [dynarmic](https://github.com/MerryMage/dynarmic),
@@ -64,6 +60,18 @@ This technique is called fastmem, and is not new at all. In fact, Dolphin uses
 it extensively in its JIT recompiler to speed up memory access as well. And thanks
 to [MerryMage](https://github.com/MerryMage)'s hard work, this same technique is
 now used extensively by Citra.
+
+## [Kernel/Memory: Give each process its own page table and allow switching the current page table upon reschedule](https://github.com/citra-emu/citra/pull/2842) by [Subv](https://github.com/Subv)
+
+In order to support running multiple processes at the same time, like your computer,
+Citra implements virtual memory, in which each process has its own page table.
+The page table represents a translation from the process' virtual addresses, to
+the 3DS' physical (or "real") addresses.
+
+Before this, because Citra did not support multiple page tables, it also didn't
+support running multiple processes at once, such as a game and the software keyboard
+applet. Now, thanks to [Subv](https://github.com/Subv), Citra has an important
+building block in place. <!-- NOTE: My gods this wording is atrocious. Rewrite? -->
 
 ## [Loader/NCCH: Add support for loading application updates](https://github.com/citra-emu/citra/pull/2927) by [shinyquagsire23](https://github.com/shinyquagsire23)
 
