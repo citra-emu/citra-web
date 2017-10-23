@@ -1,9 +1,9 @@
 +++
-date = "2017-10-01T00:00:00-05:00"
+date = "2017-10-22T22:47:14-05:00"
 title = "Introducing Automatic Updates"
 tags = [ "feature-update" ]
 author = "thekoopakingdom"
-forum = 0000
+forum = 4428
 +++
 
 Emulators grow quickly. Last month alone, there were [39 pull requests](https://github.com/citra-emu/citra/pulls?utf8=%E2%9C%93&q=is%3Amerged%20merged%3A2017-09-01..2017-09-30%20)
