@@ -3,24 +3,46 @@ title = "Download Citra"
 advertisement = true
 +++
 
-The nightly build of Citra contains already reviewed and tested features. If you require support with the installation or use of Citra, or you want to report bugs you should use this version. This version is still in development, so expect crashes and bugs.
+The nightly build of Citra contains already reviewed and tested features. If you require support with the installation 
+ or use of Citra, or you want to report bugs you should use this version. This version is still in development, so 
+ expect crashes and bugs.
 
-The Canary build of Citra is the same as our nightly builds, with additional features that are still waiting on review before making it into the official Citra builds. We will not provide support for issues found only in this version. If you believe you've found a bug, please retest on our nightly builds. This version is still in development, so expect crashes and bugs.
+The Canary build of Citra is the same as our nightly builds, with additional features that are still waiting on review 
+ before making it into the official Citra builds. We will not provide support for issues found only in this version. If 
+ you believe you've found a bug, please retest on our nightly builds. This version is still in development, so expect 
+ crashes and bugs.
+     
+---
 
-<hr />
+<div id="updater-view">
+The Citra updater provides a easy interface to install, update and manage Citra. Unless you know what you are doing,
+ this is likely what you are looking for. <b>Citra currently does not support Android or iOS, only desktop x64 systems.</b>
+<br />
+<br />
 
-Canary is the next iteration of our "Bleeding Edge" builds.
+<div class="text-center">
+<i id="dl-autodetect">Autodetected platform: XYZ</i>
+<br />
+<div id="dl-unknown">
+    Unknown platform - Citra is <b>only supported</b> on 64-bit versions of Windows, macOS, and Linux.
+    If you are running one of these, choose one of the options below.
+</div>
+<a href="https://repo.citra-emu.org/citra-setup-windows.exe" class="btn btn-lg btn-primary dl-updater-button" id="dl-windows-x64">Download for Windows x64</a>
+<a href="https://repo.citra-emu.org/citra-setup-mac.dmg" class="btn btn-lg btn-primary dl-updater-button" id="dl-mac-x64">Download for Mac x64</a>
+<a href="https://repo.citra-emu.org/citra-setup-linux" class="btn btn-lg btn-primary dl-updater-button" id="dl-linux-x64">Download for Linux x64</a>
 
+<br />
+<span id="other-container"><a href="#" id="other-platforms-link">Other platforms</a> | </span>
+<a href="#" id="manual-link">Manual download</a>
+</div>
+</div>
 
-Update functionality will return soon, supporting automatic updates for both our Nightly and Canary releases.
-
-<hr />
-
-
-
+<div id="manual-view">
 <div class="visible-xs">
   <h3>Citra currently does not support Android or iOS.</h3>
 </div>
+    
+<a href="?" class="btn">Back</a>
 
 <h3>Nightly Build <span style='font-size: smaller; margin-left: 6px;'> Last release was  <span id='last-updated-nightly'></span></span></h3>
 <table id="downloads-nightly" class="table">
@@ -56,13 +78,23 @@ Update functionality will return soon, supporting automatic updates for both our
     .dl-icon img { width: 32px; height: 32px; padding: 4px; }
     .dl-icon img:hover { cursor: pointer; }
 </style>
+</div>
+
+<div id="no-js-view">
+Hi! We see that you have JavaScript disabled. Unfortunately, this means that we cannot automatically
+prepare a updater for you, nor are we able to show you the latest archives of Citra either. Here are a few
+links to get you started however:<br />
+<br />
+<a href="https://repo.citra-emu.org/citra-setup-windows.exe">Windows x64 Installer</a><br />
+<a href="https://repo.citra-emu.org/citra-setup-mac.dmg">Mac x64 Installer</a><br />
+<a href="https://repo.citra-emu.org/citra-setup-linux">Linux x64 Installer</a><br /> 
+<a href="https://github.com/citra-emu/citra-nightly/releases">Nightly Builds</a><br />
+<a href="https://github.com/citra-emu/citra-canary/releases">Canary Builds</a> <br />
+</div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
-<script type='text/javascript'>
-  $(function() {
-    getRelease('nightly');
-    getRelease('canary');
-    
+<script type="text/javascript">
     function getRelease(v, count = 5) {
         $.getJSON(`https://api.github.com/repos/citra-emu/citra-${v}/releases`, function(releases) {
             $(`#last-updated-${v}`).text(moment(releases[0].published_at).fromNow());
@@ -71,12 +103,8 @@ Update functionality will return soon, supporting automatic updates for both our
                 var release = releases[i];
                 let release_date = moment(release.published_at).fromNow();
 
-                let release_commit = null;
-                let release_commit_url = null;
-                if (v == 'nightly') {
-                    release_commit = release.assets[0].name.split('-').pop().trim().split('.')[0];
-                    release_commit_url = `https://github.com/citra-emu/citra-${v}/commit/${release_commit}`;
-                }
+                let release_commit = release.assets[0].name.split('-').pop().trim().split('.')[0];
+                let release_commit_url = `https://github.com/citra-emu/citra-${v}/commit/${release_commit}`;
 
                 let release_title = '';
                 if (v == 'nightly') {
@@ -126,5 +154,50 @@ Update functionality will return soon, supporting automatic updates for both our
             };
         });
     }
-  });
+    
+    function fetchReleases() {
+        getRelease('nightly');
+        getRelease('canary');
+    }
+    
+    // Attempt autodetection of their operating system
+    var userAgent = navigator.userAgent.toLowerCase();
+    
+    var allPlatforms = ["windows", "mac", "linux"];
+    
+    var os = undefined;
+    if (userAgent.indexOf("windows") !== -1) {
+        os = "Windows";
+    } else if (userAgent.indexOf("mac") !== -1 && userAgent.indexOf("mobile") === -1 && userAgent.indexOf("phone") === -1) {
+        os = "Mac";
+    } else if (userAgent.indexOf("linux") !== -1 && userAgent.indexOf("android") === -1) {
+        os = "Linux";
+    }
+    
+    if (os !== undefined) {
+        $("#dl-" + os.toLowerCase() + "-x64").css("display", "block");
+        
+        var autodetect = $("#dl-autodetect");
+        autodetect.text("Autodetected platform: " + os);
+        autodetect.css("display", "inline");
+    } else {
+        $("#dl-unknown").css("display", "block");
+    }
+    
+    $("#no-js-view").css("display", "none");
+    $("#updater-view").css("display", "block");
+    
+    $("#other-platforms-link").click(function() {
+        for (var i = 0; i < allPlatforms.length; i++) {
+            var platform = allPlatforms[i];
+            $("#dl-" + platform + "-x64").css("display", "block");
+            $("#other-container").css("display", "none");
+        }
+    });
+    
+    $("#manual-link").click(function() {
+        $("#updater-view").css("display", "none");
+        $("#manual-view").css("display", "block");
+        fetchReleases();
+    });
 </script>

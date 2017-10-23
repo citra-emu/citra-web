@@ -340,3 +340,13 @@ tbody td {
 .search-box {
   margin: 0 20px;
 }
+
+/* Downloads */
+#updater-view, #manual-view, .dl-updater-button, #dl-unknown, #dl-autodetect {
+  display: none;
+}
+
+.dl-updater-button {
+  margin: 10px auto;
+  width: 300px;
+}
