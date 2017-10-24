@@ -37,7 +37,7 @@
 			</form>
 		</div>
 
-		<ul class="pagination pull-left"></ul>
+		<ul class="pagination paginationTop pull-left"></ul>
 
 		<table id="compatibility-list" class="table table-responsive">
 			<thead>
@@ -80,6 +80,7 @@
 			{{ end }}
 			</tbody>
 		</table>
+		<ul class="pagination paginationBottom pull-left"></ul>
 	</div>
 {{ end }}
 
@@ -118,7 +119,10 @@
 				{ name: 'date-tested', attr: 'data-timestamp' }
 			],
 			searchColumns: [ 'listing-metadata' ],
-			pagination: true,
+			pagination: [
+				{ paginationClass: "paginationTop" },
+				{ paginationClass: "paginationBottom" }
+			],
 			indexAsync: true,
 			page: 50
 		};
