@@ -63,7 +63,7 @@
 						<td class="col-md-1 icon">
 							<img src="/images/game/icons/{{ .File.BaseFileName }}.png" />
 						</td>
-						<td class="col-md-6 title" data-title="{{ .Params.title }}">
+						<td class="col-md-6 title" data-title="{{ strings.TrimPrefix "The " .Params.title }}">
 							<a href="{{ .Permalink }}">{{ .Params.title }}</a>
 						</td>
 						<td class="col-md-1 type" data-type="{{ $type.name }}">
