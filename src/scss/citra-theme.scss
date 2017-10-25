@@ -341,6 +341,18 @@ tbody td {
   margin: 0 20px;
 }
 
+/* Used for showing section id at the start of each game section */
+.key:after {		
+  content: attr(data-key);
+  position: absolute;
+  left: -10px;
+  font-family: Dosis,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-transform: lowercase;
+  color: #888;
+  margin: 15px 0;
+  font-size: 24px;
+}
+
 /* Downloads */
 #updater-view, #manual-view, .dl-updater-button, #dl-unknown, #dl-autodetect {
   display: none;
