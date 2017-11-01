@@ -214,6 +214,23 @@ but it only needed to perform less than a third of the math. Because this functi
 is called so often during emulation (a rough estimate from them is about "millions
 of times a second"), this change although small, made very big changes in CPU performance.
 
+## [Add draw for immediate and batch modes](https://github.com/citra-emu/citra/pull/2921) by [jroweboy](https://github.com/jroweboy)
+
+The 3DS' GPU has two main modes for drawing to the screen, immediate and batch
+mode. In the former, the GPU takes and immediately draws every vertex as it is
+handed to it. In the latter, the GPU accepts vertices given to it, but doesn't
+actually bother drawing them until absolutely necessary, saving a bit of time
+from not having to go through the drawing procedure for every individual vertex.
+Although most games don't use immediate mode at all due to it being extremely
+slow, a handful do use it for a handful of visual effects, like Super Mario Bros. 2.
+
+About a year ago when the GPU code on Citra was rewritten, a handful of calls to
+the drawing routine were removed, as it was believed they were unnecessary. Turns
+out, one of the calls was actually needed for some effects in games, as it handled
+immediate mode drawing. This wasn't noticed for a very long time, as most games
+appeared to carry on with no side-effects at all from the rewrite, but was eventually
+found after some research courtesy of [ds84182](https://github.com/ds84182).
+
 ## [Interpolate on a frame-by-frame basis](https://github.com/citra-emu/citra/pull/2858) by [MerryMage](https://github.com/MerryMage)
 
 When a 3DS game needs some sort of audio processing, they can access the 3DS' DSP,
@@ -382,10 +399,3 @@ your collective apetite.
 And of course, big thanks to [everyone who's contributed](https://github.com/citra-emu/citra/graphs/contributors?from=2017-08-31&to=2017-09-30&type=c)
 this September, because Citra as a whole would not be the same without everyone
 involved having placed their pieces, big or small.
-
-<!--
-FIXME: Write these PRs:
-
-## [Add draw for immediate and batch modes](https://github.com/citra-emu/citra/pull/2921) by [jroweboy](https://github.com/jroweboy)
-
--->
