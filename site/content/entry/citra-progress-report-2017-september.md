@@ -1,5 +1,5 @@
 +++
-date = "2017-10-22T08:13:00-04:00"
+date = "2017-11-01T17:40:00-04:00"
 title = "Citra Progress Report - 2017 September"
 tags = [ "progress-report" ]
 author = "anodium"
@@ -106,8 +106,9 @@ mixed into one big piece that fit in with everything else. With this patch,
 [shinyquagsire23](https://github.com/shinyquagsire23) has seperated the loader
 from the NCCH reader, allowing the loader to read multiple NCCHs at once. Additionally,
 whenever a game is loaded, the loader would also check if there is an update title
-installed on Citra's [virtual SD card]() <!-- TODO: Add link to Citra wiki. -->. If there is, it would replace the update
-ExHeader and ExeFS, and load the update RomFS as well. Just like a real console!
+installed on Citra's [virtual SD card](/wiki/user-directory/). If there is, it
+would replace the update ExHeader and ExeFS, and load the update RomFS as well.
+Just like a real console!
 
 Most games worked out of the box with updates, and because they wrote the code
 with accuracy in mind, this very same PR has also laid part of the foundation
@@ -117,12 +118,12 @@ features, as no one is actively working on either.
 
 ## [Implement geometry shader](https://github.com/citra-emu/citra/pull/2865) by [wwylele](https://github.com/wwylele)
 
-The PICA200 GPU has a pipeline similar to [OpenGL's pipeline]() for rendering 3D <!-- TODO: Link to Khronos Group wiki. -->
-objects into a 2D display. I won't go through them all here, only the optional
-geometry shader step. Just after the vertex shader step, if enabled, all the vertices
-are processed by a shader kernel (which is a small program that runs directly on
-a GPU), taking as many vertices as the kernel wants as input, and outputting as
-many vertices as the kernel wants.
+The PICA200 GPU has a pipeline similar to [OpenGL's pipeline](https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview)
+for rendering 3D objects into a 2D display. I won't go through them all here,
+only the optional geometry shader step. Just after the vertex shader step, if
+enabled, all the vertices are processed by a shader kernel (which is a small
+program that runs directly on a GPU), taking as many vertices as the kernel
+wants as input, and outputting as many vertices as the kernel wants.
 
 Because the kernel in the geometry shader is allowed as many inputs and outputs
 as it wants, it is significantly more powerful and flexible than the vertex shader,
@@ -159,10 +160,11 @@ attempt was written by [JayFoxRox](https://github.com/JayFoxRox), but was also
 abandoned for the same reason.
 
 But, after extensive research on geometry shaders was made by [fincs](https://github.com/fincs),
-the API was implemented in [ctrulib]() and [ctro3d](), and examples were written <!-- TODO: Links to these projects. -->
-to demonstrate how to use it. Now that the community knew exactly how they worked,
-[wwylele](https://github.com/wwylele) picked up where [JayFoxRox](https://github.com/JayFoxRox)
-left off, cleaned up the code they wrote, and added the missing pieces.
+the API was implemented in [ctrulib](https://github.com/smealum/ctrulib) and
+[citro3d](https://github.com/fincs/citro3d), and examples were written to demonstrate
+how to use it. Now that the community knew exactly how they worked, [wwylele](https://github.com/wwylele)
+picked up where [JayFoxRox](https://github.com/JayFoxRox) left off, cleaned up
+the code they wrote, and added the missing pieces.
 
 After almost three years, and three different attempts to make it work, Citra now
 has a full, complete, and correct implementation of geometry shaders!
@@ -353,11 +355,11 @@ compared to the old Bleeding Edge builds.
 
 Remember that last month [wwylele](https://github.com/wwylele) changed Citra so
 that instead of loading the shared font from a seperate file, it would
-[load it from the system archive]()? <!-- TODO: Link to article section. --> This
-builds on top of that behaviour. You see, a 3DS doesn't have a shared font, it has
-*four*. One contains glyps for Latin script (for English, Spanish, Italian, French,
-etc.) and Japanese scripts, another contains glyps for Traditional Chinese, the
-third font contains the ones for Simplified Chinese, and the last font contains
+[load it from the system archive](https://citra-emu.org/entry/citra-progress-report-2017-august/)?
+This builds on top of that behaviour. You see, a 3DS doesn't have a shared font,
+it has *four*. One contains glyps for Latin script (for English, Spanish, Italian,
+French, etc.) and Japanese scripts, another contains glyps for Traditional Chinese,
+the third font contains the ones for Simplified Chinese, and the last font contains
 the ones for Korean.
 
 Before this PR, Citra would simply load the first shared font regardless of game
