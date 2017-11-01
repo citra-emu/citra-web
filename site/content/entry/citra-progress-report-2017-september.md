@@ -71,7 +71,7 @@ the 3DS' physical (or "real") addresses.
 Before this, because Citra did not support multiple page tables, it also didn't
 support running multiple processes at once, such as a game and the software keyboard
 applet. Now, thanks to [Subv](https://github.com/Subv), Citra has an important
-building block in place. <!-- NOTE: My gods this wording is atrocious. Rewrite? -->
+building block in place.
 
 ## [Add support for loading application updates](https://github.com/citra-emu/citra/pull/2927) by [shinyquagsire23](https://github.com/shinyquagsire23)
 
@@ -141,9 +141,6 @@ not limited to:
  whenever a move is used. Monster Hunter takes it a step further and renders
  *all of its HUD and GUI* with this kernel.
 
- <!-- NOTE: Would be neat as hell if I had a little diagram here that showed every rendering step of a frame in a Pokémon Battle.
- Maybe leave for a more in-depth standalone article? -->
-
  - Taking a handful of vertices as input, and outputting even more verticles which
  are interpolations between the inputs, thus making the resulting mesh look smoother
  and less jagged when rendered.
@@ -190,7 +187,7 @@ case someone decided to use it for some reason.
 Morton code is a function that interleaves multi-dimensional numbers into a one-dimensional
 number. Although it may seem like a very esoteric function, it's actually extremely
 useful in fields like linear algebra, databases, and what the 3DS uses it for:
-texture mapping. <!-- NOTE: Probably? Should confirm this. -->
+texture mapping.
 
 Computers have an intermediate chunk of memory between RAM and the CPU called a
 cache. Caches are seperated into lines, each of which can hold one data item. GPUs
@@ -321,44 +318,6 @@ Every statement in a program must have an exact, unambiguous definition of what
 it does (its semantics). But, in the same way that a statement that means one
 thing can be written many different ways, a different compilers can translate the
 same statement many different ways.
-
-Take this small snippet as an example:
-```c++
-uint8_t x = 0;
-x++;
-x = x * 4;
-```
-
-What this does, line-by-line, is (1) define an 8-bit whole number called `x`,
-(2) increment `x`'s value by one, (3) multiply `x` by 4.
-
-A compiler for x86 might generate machine code like this (This machine code has
-been disassembled into assembly, which replaces raw binary with some mnemonics to
-help understand it):
-```asm
-mov al, x
-inc al
-mov x, al
-
-mov al, x
-mov bl, 4h
-mul bl
-mov x, ax
-```
-
-But a more intelligent compiler might try to do some shortcuts, like this:
-```asm
-mov al, x
-inc al
-
-shl al, 2
-mov x, al
-```
-
-<!--
-NOTE: Let's see how many people understand the last paragraph. (>_<; )
-TODO: Change explanation, it's unnecessarily complex, maybe make asm non-standard to help readability? Or maybe just cut it all out.
--->
 
 On Windows, there's two popular C++ compilers available as of today: MSVC++, which
 is the compiler Microsoft has written for Windows, and MINGW GCC, which is actually
