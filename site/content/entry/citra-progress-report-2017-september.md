@@ -6,7 +6,7 @@ author = "anodium"
 forum = 0
 +++
 
-Fall arrives once more, and like I mentioned in [last month's progress report](/entry/citra-progress-report-2017-august),
+Fall arrives once more, and like I mentioned in [August's progress report](/entry/citra-progress-report-2017-august),
 I am extremely excited for what's in store. In fact, many of the really big goodies
 I've decided to seperate to their own articles, which should be coming up in the
 next few weeks.
@@ -39,7 +39,7 @@ is mapped to memory or IO. Unfortunately, this is extremely slow, and we can't
 afford to have extremely slow address translation when games can access memory
 upwards of a few hundred thousand times per second.
 
-In #2952, [MerryMage](https://github.com/MerryMage) has changed this behaviour so
+With this, [MerryMage](https://github.com/MerryMage) has changed this behaviour so
 that rather than replacing a read/write with a function, it instead translates the
 address using a page table, and then tries to access that address directly. On the
 page table, all addresses that map to memory simply have a memory address written down.
@@ -141,7 +141,7 @@ not limited to:
  whenever a move is used. Monster Hunter takes it a step further and renders
  *all of its HUD and GUI* with this kernel.
 
- - Taking a handful of vertices as input, and outputting even more verticles which
+ - Taking a handful of vertices as input, and outputting even more vertices which
  are interpolations between the inputs, thus making the resulting mesh look smoother
  and less jagged when rendered.
 
@@ -228,7 +228,7 @@ immediate mode drawing. This wasn't noticed for a very long time, as most games
 appeared to carry on with no side-effects at all from the rewrite, but was eventually
 found after some research courtesy of [ds84182](https://github.com/ds84182).
 
-## [Interpolate on a frame-by-frame basis](https://github.com/citra-emu/citra/pull/2858) by [MerryMage](https://github.com/MerryMage)
+## [Interpolate audio samples on a frame-by-frame basis](https://github.com/citra-emu/citra/pull/2858) by [MerryMage](https://github.com/MerryMage)
 
 When a 3DS game needs some sort of audio processing, they can access the 3DS' DSP,
 or __D__igital __S__ound __P__rocessor. It's another processor, alongside the ARM9
