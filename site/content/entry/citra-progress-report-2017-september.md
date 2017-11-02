@@ -343,9 +343,10 @@ or region. This made non-Latin or non-Japanese script games display completely
 incorrect characters at best, or crash at worst. Now Citra will load the appropriate
 shared font from the system archive depending on the region selected, just like
 a real console! Though, this will not work on machines that only have the
-`shared_font.bin` file, because it only contains the first of the four shared
-fonts. If you want to use this feature, you must dump the system archive using
-the latest version of `3dsutil`.
+`shared_font.bin` file, because it only contains the shared font for the region
+of the console it was dumped from. (e.g.: If you dump a Korean console, it'll
+only contain the Korean font.) If you want to use this feature, you must dump
+the system archive using the latest version of [`3dsutil`](https://github.com/citra-emu/3dsutils).
 
 ## Et. al.
 
