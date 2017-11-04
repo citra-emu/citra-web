@@ -219,7 +219,8 @@ handed to it. In the latter, the GPU accepts vertices given to it, but doesn't
 actually bother drawing them until absolutely necessary, saving a bit of time
 from not having to go through the drawing procedure for every individual vertex.
 Although most games don't use immediate mode at all due to it being extremely
-slow, a handful do use it for a handful of visual effects, like Super Mario Bros. 2.
+slow, a handful do use it for a handful of visual effects, like New Super Mario
+Bros. 2.
 
 About a year ago when the GPU code on Citra was rewritten, a handful of calls to
 the drawing routine were removed, as it was believed they were unnecessary. Turns
@@ -346,7 +347,7 @@ a real console! Though, this will not work on machines that only have the
 `shared_font.bin` file, because it only contains the shared font for the region
 of the console it was dumped from. (e.g.: If you dump a Korean console, it'll
 only contain the Korean font.) If you want to use this feature, you must dump
-the system archive using the latest version of [`3dsutil`](https://github.com/citra-emu/3dsutils).
+the system archive using the latest version of [`3dsutils`](https://github.com/citra-emu/3dsutils).
 
 ## Et. al.
 
