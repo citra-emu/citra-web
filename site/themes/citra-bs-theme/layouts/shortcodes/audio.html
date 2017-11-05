@@ -1,3 +1,4 @@
-<audio src="{{ index .Params 0 }}" preload="metadata" controls>
-    <p>Your browser doesn't support this audio format. :(</p>
+<audio preload="auto" controls>
+    <source src="{{ index .Params 0 }}" type="audio/ogg">
+    Your browser doesn't support Ogg Vorbis audio. :(
 </audio>
