@@ -257,24 +257,17 @@ led to various effects and music in games to sound strange or inaccurate in some
 
 One example of this is Deku Link's footsteps in *The Legend of Zelda: Majora's Mask 3D*.
 
-<!--
-NOTE: This GitHub issue has a save file for reproducing Deku Link footstep sound:
-
-Majora's Mask - Deku Scrub - Very Loud Walking Sound · Issue #2517 · citra-emu/citra
-https://github.com/citra-emu/citra/issues/2517
--->
-
 Here's the output of a real 3DS console, for reference:
 
-<!-- TODO: Add hardware output of Deku Link footsteps. -->
+{{< audio /images/entry/citra-progress-report-2017-september/deku-hardware.ogg >}}
 
 And here's the output of Citra, before this was fixed:
 
-<!-- TODO: Add pre-merge output of Deku Link footsteps. -->
+{{< audio /images/entry/citra-progress-report-2017-september/deku-pre2858.ogg >}}
 
 Now that it's been fixed, his footsteps sound a lot better:
 
-<!-- TODO: Add post-merge output of Deku Link footsteps. -->
+{{< audio /images/entry/citra-progress-report-2017-september/deku-post2858.ogg >}}
 
 Audio emulation in Citra is still woefully inaccurate for now, though
 [MerryMage](https://github.com/MerryMage) is gradually working on fixing and
