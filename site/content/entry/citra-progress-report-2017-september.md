@@ -200,9 +200,8 @@ To avoid this, GPUs can Morton encode textures so that two-dimensional manipulat
 are more likely to only need data already in the cache. Textures that have been
 Morton coded are usually referred to as swizzled or twiddled textures.
 
-{{< figure src="/images/entry/citra-progress-report-2017-september/morton-koopa.png" 
+{{< figure src="/images/entry/citra-progress-report-2017-september/morton-koopa.png#floatright" 
     title="Not this Morton!" >}}
-<!-- TODO: Right-align image and have text flow down the left. -->
 
 In the function that Morton is implemented, there was a lookup table on Morton
 codes in the comments, and [huwpascoe](https://github.com/huwpascoe) thought it'd
