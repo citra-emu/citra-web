@@ -1,4 +1,4 @@
 <video preload="auto" controls>
-    <source src="{{ index .Params 0 }}" type="video/ogg">
+    <source src="{{.Get "src"}}" type="video/ogg">
     Your browser doesn't support Ogg Theora video. :(
 </video>
