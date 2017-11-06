@@ -346,12 +346,13 @@ the system archive using the latest version of [`3dsutils`](https://github.com/c
 
 ## Et. al.
 
-This month has been a little different for us. Very *very* big things are coming
-to Citra soon, and only giving them a handful of paragraphs here would be a
-disservice to the community. I won't name names nor specifics here, but stay tuned,
-because time rewards patience. In the meantime, I hope this progress report whet
-your collective appetite.
-
 And of course, big thanks to [everyone who's contributed](https://github.com/citra-emu/citra/graphs/contributors?from=2017-08-31&to=2017-09-30&type=c)
 this September, because Citra as a whole would not be the same without everyone
 involved having placed their pieces, big or small.
+
+Hello everyone! We're all terribly sorry for the delay in getting this progress
+report out the door, but our main technical writer [anodium](https://github.com/anodium),
+was just a bit busy surviving both Hurricane Irma and Maria. Although she's a
+trooper and claims it's not an excuse for the delay, we find that her personal
+safety is a tad more important. We're all glad that she's safe and sound, and in
+a state where she can keep pumping out quality articles for Citra!
