@@ -258,15 +258,15 @@ One example of this is Deku Link's footsteps in *The Legend of Zelda: Majora's M
 
 Here's the output of a real 3DS console, for reference:
 
-{{< audio /images/entry/citra-progress-report-2017-september/deku-hardware.ogg >}}
+{{< audio src="/images/entry/citra-progress-report-2017-september/deku-hardware.ogg" >}}
 
 And here's the output of Citra, before this was fixed:
 
-{{< audio /images/entry/citra-progress-report-2017-september/deku-pre2858.ogg >}}
+{{< audio src="/images/entry/citra-progress-report-2017-september/deku-pre2858.ogg" >}}
 
 Now that it's been fixed, his footsteps sound a lot better:
 
-{{< audio /images/entry/citra-progress-report-2017-september/deku-post2858.ogg >}}
+{{< audio src="/images/entry/citra-progress-report-2017-september/deku-post2858.ogg" >}}
 
 Audio emulation in Citra is still woefully inaccurate for now, though
 [MerryMage](https://github.com/MerryMage) is gradually working on fixing and
