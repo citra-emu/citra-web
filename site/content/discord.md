@@ -14,7 +14,7 @@ Review the following before joining our servers:
 
 * **Want a quick answer?** Check our [most common questions](https://citra-emu.org/wiki/faq/).
 
-* **Does Citra support network connectivity or online play?** No, Network has not yet been implemented in Citra therefore any online function does not work.
+* **Does Citra support network connectivity or online play?** Yes, Citra supports networked local WiFi, but does not support connecting to Nintendo's servers.
 
 * **Are you planning to make an Android version?** No, not at the moment.
 
