@@ -206,9 +206,9 @@ Morton coded are usually referred to as swizzled or twiddled textures.
 In the function that Morton is implemented, there was a lookup table on Morton
 codes in the comments, and [huwpascoe](https://github.com/huwpascoe) thought it'd
 be best if we just use the lookup table directly. It worked just as well as before,
-but it only needed to perform less than a third of the math. Because this function
-is called so often during emulation (a rough estimate from them is about "millions
-of times a second"), this change although small, made very big changes in CPU performance.
+but required less than a third of the math. Because this function is called so
+often during emulation (a rough estimate from them is about "millions of times a
+second"), this change although small, made very big changes in CPU performance.
 
 ## [Add draw for immediate and batch modes](https://github.com/citra-emu/citra/pull/2921) by [jroweboy](https://github.com/jroweboy)
 
@@ -291,7 +291,7 @@ the type of the buffer from a vector to a deque, which is essentially a queue th
 you can remove data from both the beginning and end of it. Because the contiguity
 requirement doesn't exist in deques, Citra doesn't do the uneccessary copying,
 leading to huge speed boosts in audio bound titles like Super Mario 3D Land, and
-even the Home Menu. Both now run at 60 FPS without any issues!
+even the Home Menu. Now, both run significantly faster!
 
 ## [Add mingw64 compile support to appveyor](https://github.com/citra-emu/citra/pull/2912) by [jroweboy](https://github.com/jroweboy)
 
@@ -309,16 +309,19 @@ does to run code from a 3DS.)
 
 Every statement in a program must have an exact, unambiguous definition of what
 it does (its semantics). But, in the same way that a statement that means one
-thing can be written many different ways, a different compilers can translate the
+thing can be written many different ways, and different compilers can translate the
 same statement many different ways.
 
 On Windows, there's two popular C++ compilers available as of today: MSVC++, which
 is the compiler Microsoft has written for Windows, and MINGW GCC, which is actually
 a port of the Linux `gcc` compiler to Windows. For better or worse, MINGW GCC
 compiles to a much more efficient binary than MSVC++, and so [jroweboy](https://github.com/jroweboy)
-has changed the Citra AppVeyor build script to use MINGW GCC instead of MSVC++.
-This change also has closed the gap in performance the new Nightly builds had
-compared to the old Bleeding Edge builds.
+has changed the Citra AppVeyor build script to add support for MINGW GCC as well
+as MSVC++. Do note that the MSVC++ builds are only available through GitHub, since
+they're only useful for debugging, and MINGW GCC builds are faster in most, if
+not all, cases, which is why the installer will only install those. This change
+also has closed the gap in performance the new Nightly builds had compared to
+the old Bleeding Edge builds.
 
 ## [Load different shared font depending on the region](https://github.com/citra-emu/citra/pull/2915) by [wwylele](https://github.com/wwylele)
 
@@ -326,9 +329,9 @@ Remember that last month [wwylele](https://github.com/wwylele) changed Citra so
 that instead of loading the shared font from a seperate file, it would
 [load it from the system archive](https://citra-emu.org/entry/citra-progress-report-2017-august/)?
 This builds on top of that behaviour. You see, a 3DS doesn't have a shared font,
-it has *four*. One contains glyps for Latin script (for English, Spanish, Italian,
-French, etc.) and Japanese scripts, another contains glyps for Traditional Chinese,
-the third font contains the ones for Simplified Chinese, and the last font contains
+it has *four*. One contains glyphs for Latin script (for English, Spanish, Italian,
+French, etc.) and Japanese scripts, another contains glyphs for Traditional Chinese,
+the third font contains those for Simplified Chinese, and the last font contains
 the ones for Korean.
 
 Before this PR, Citra would simply load the first shared font regardless of game
@@ -347,7 +350,7 @@ This month has been a little different for us. Very *very* big things are coming
 to Citra soon, and only giving them a handful of paragraphs here would be a
 disservice to the community. I won't name names nor specifics here, but stay tuned,
 because time rewards patience. In the meantime, I hope this progress report whet
-your collective apetite.
+your collective appetite.
 
 And of course, big thanks to [everyone who's contributed](https://github.com/citra-emu/citra/graphs/contributors?from=2017-08-31&to=2017-09-30&type=c)
 this September, because Citra as a whole would not be the same without everyone
