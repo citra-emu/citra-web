@@ -6,7 +6,7 @@ author = "anodium"
 forum = 0
 +++
 
-Fall arrives once more, and like I mentioned in [August's progress report](/entry/citra-progress-report-2017-august),
+Winter arrives once more, and like I mentioned in [August's progress report](/entry/citra-progress-report-2017-august),
 I am extremely excited for what's in store. In fact, many of the really big goodies
 I've decided to seperate to their own articles, which should be coming up in the
 next few weeks.
@@ -154,7 +154,7 @@ not limited to:
  are interpolations between the inputs, thus making the resulting mesh look smoother
  and less jagged when rendered.
 
-At first glance, geometry shaders looked like an easy problem, since it used the
+At first glance, geometry shaders looked like an easy problem, since they use the
 same instruction set and format as vertex shaders, so a lot of the same code could
 be reused. At *second* glance, it turned out that configuring inputs and outputs
 for geometry shaders is much more complex than it is for vertex shaders.
@@ -170,7 +170,7 @@ the API was implemented in [ctrulib](https://github.com/smealum/ctrulib) and
 [citro3d](https://github.com/fincs/citro3d), and examples were written to demonstrate
 how to use it. Now that the community knew exactly how they worked, [wwylele](https://github.com/wwylele)
 picked up where [JayFoxRox](https://github.com/JayFoxRox) left off, cleaned up
-the code they wrote, and added the missing pieces.
+the code he wrote, and added the missing pieces.
 
 After almost three years, and three different attempts to make it work, Citra now
 has a full, complete, and correct implementation of geometry shaders!
@@ -186,10 +186,10 @@ by the sides of the cube, and the resulting triangle outside of the cube is also
 deleted.
 
 But the 3DS allows games to add a 7th plane whose position is fully customizable.
-Although no games are known to use this feature right now, because it is indeed
-a feature of the 3DS' GPU, and because implementing it was fairly straightforward,
-[wwylele](https://github.com/wwylele) decided to just go ahead and do it, just in
-case someone decided to use it for some reason.
+Although no games are known to use this feature right now, it is indeed a feature
+of the 3DS' GPU. Because implementing it was fairly straightforward,
+[wwylele](https://github.com/wwylele) decided to just go ahead and implement it,
+in case someone decided to use it in the future.
 
 ## [Optimized Morton](https://github.com/citra-emu/citra/pull/2951) by [huwpascoe](https://github.com/huwpascoe)
 
@@ -249,7 +249,8 @@ As of today, we don't know how the DSP exactly works, and we don't know how any
 of the firmwares exactly work. (Did I forget to mention earlier there's multiple
 versions of the firmware?) But we do know how to use it, and from there we can
 reimplement its behaviour directly in Citra. Which is exactly what [MerryMage](https://github.com/MerryMage)
-did, which in turn brought audio support for the first time in Citra.
+did back in June of 2016, which in turn brought [audio support for the first time](/entry/hle-audio-comes-to-citra/)
+in Citra.
 
 This approach, although having the advantages of being easier to implement, easier
 to understand in code, and has a higher potential of being faster, it has the
@@ -259,9 +260,10 @@ which is a way of inferring more audio samples from relatively very few existing
 samples.
 
 On a real 3DS, games are allowed to interpolate different audio frames with
-different functions, even in they're in the same buffer. On the other hand, Citra
-interpolated the entire buffer with one function as soon as it was loaded. This
-led to various effects and music in games to sound strange or inaccurate in some way.
+different functions, even when in they're in the same buffer. On the other hand,
+Citra interpolated the entire buffer with one function as soon as it was loaded.
+This led to various effects and music in games to sound strange or inaccurate in
+some way.
 
 One example of this is Deku Link's footsteps in *The Legend of Zelda: Majora's Mask 3D*.
 
@@ -277,11 +279,10 @@ Now that it's been fixed, his footsteps sound a lot better:
 
 {{< audio src="/images/entry/citra-progress-report-2017-september/deku-post2858.ogg" >}}
 
-Audio emulation in Citra is still woefully inaccurate for now, though
+Audio emulation in Citra is still somewhat inaccurate for now, though
 [MerryMage](https://github.com/MerryMage) is gradually working on fixing and
 improving it. Perhaps some day we may even be able to emulate the DSP firmware
-directly, which will be orders of magnitude more accurate than merely emulating
-its behaviour.
+directly, which will be much more accurate than merely emulating its behaviour.
 
 ## [Use deque instead of vector for the audio buffer](https://github.com/citra-emu/citra/pull/2958) by [Subv](https://github.com/Subv)
 
@@ -324,7 +325,7 @@ same statement many different ways.
 On Windows, there's two popular C++ compilers available as of today: MSVC++, which
 is the compiler Microsoft has written for Windows, and MINGW GCC, which is actually
 a port of the Linux `gcc` compiler to Windows. For better or worse, MINGW GCC
-compiles to a much more efficient binary than MSVC++, and so [jroweboy](https://github.com/jroweboy)
+optimizes Citra a little better than MSVC++, and so [jroweboy](https://github.com/jroweboy)
 has changed the Citra AppVeyor build script to add support for MINGW GCC as well
 as MSVC++. Do note that the MSVC++ builds are only available through GitHub, since
 they're only useful for debugging, and MINGW GCC builds are faster in most, if
