@@ -27,9 +27,9 @@ The Citra updater provides a easy interface to install, update and manage Citra.
     Unknown platform - Citra is <b>only supported</b> on 64-bit versions of Windows, macOS, and Linux.
     If you are running one of these, choose one of the options below.
 </div>
-<a href="https://repo.citra-emu.org/citra-setup-windows.exe" class="btn btn-lg btn-primary dl-updater-button" id="dl-windows-x64">Download for Windows x64</a>
-<a href="https://repo.citra-emu.org/citra-setup-mac.dmg" class="btn btn-lg btn-primary dl-updater-button" id="dl-mac-x64">Download for Mac x64</a>
-<a href="https://repo.citra-emu.org/citra-setup-linux" class="btn btn-lg btn-primary dl-updater-button" id="dl-linux-x64">Download for Linux x64</a>
+<a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe" class="btn btn-lg btn-primary dl-updater-button" id="dl-windows-x64">Download for Windows x64</a>
+<a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-mac.dmg" class="btn btn-lg btn-primary dl-updater-button" id="dl-mac-x64">Download for Mac x64</a>
+<a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-linux" class="btn btn-lg btn-primary dl-updater-button" id="dl-linux-x64">Download for Linux x64</a>
 
 <br />
 <span id="other-container"><a href="#" id="other-platforms-link">Other platforms</a> | </span>
