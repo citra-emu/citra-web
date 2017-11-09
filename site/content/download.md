@@ -85,9 +85,9 @@ Hi! We see that you have JavaScript disabled. Unfortunately, this means that we 
 prepare a updater for you, nor are we able to show you the latest archives of Citra either. Here are a few
 links to get you started however:<br />
 <br />
-<a href="https://repo.citra-emu.org/citra-setup-windows.exe">Windows x64 Installer</a><br />
-<a href="https://repo.citra-emu.org/citra-setup-mac.dmg">Mac x64 Installer</a><br />
-<a href="https://repo.citra-emu.org/citra-setup-linux">Linux x64 Installer</a><br /> 
+<a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe">Windows x64 Installer</a><br />
+<a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-mac.dmg">Mac x64 Installer</a><br />
+<a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-linux">Linux x64 Installer</a><br /> 
 <a href="https://github.com/citra-emu/citra-nightly/releases">Nightly Builds</a><br />
 <a href="https://github.com/citra-emu/citra-canary/releases">Canary Builds</a> <br />
 </div>
