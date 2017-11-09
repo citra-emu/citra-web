@@ -1,9 +1,9 @@
 +++
-date = "2017-11-01T17:40:00-04:00"
+date = "2017-11-09T09:46:00-04:00"
 title = "Citra Progress Report - 2017 September"
 tags = [ "progress-report" ]
 author = "anodium"
-forum = 0
+forum = 5005
 +++
 
 Winter arrives once more, and like I mentioned in [August's progress report](/entry/citra-progress-report-2017-august),
