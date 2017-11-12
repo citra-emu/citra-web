@@ -121,6 +121,9 @@ function processGame(game) {
     var model = toml.parse(fs.readFileSync(`${fsPathCode}/${game}/game.dat`, 'utf8'));
     let currentDate = new Date();
     model.date = `${currentDate.toISOString()}`;
+    
+    // Reverse the order of the testcases array, so that the newest ones are displayed first
+    model.testcases = model.testcases.reverse();
 
     // SHORTCUTS BLOCK
     // Parse testcase information out of the dat to reinject as shortcut values.
