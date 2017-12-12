@@ -29,7 +29,6 @@ October:
 November:
 ## [citra-qt: fix broken About box](https://github.com/citra-emu/citra/pull/3081) by [wwylele](https://github.com/wwylele)
 ## [SDL CIA Installation](https://github.com/citra-emu/citra/pull/3113) by [shinyquagsire23](https://github.com/shinyquagsire23)
-## [Appveyor: on mingw set cmake version to 3.9.6](https://github.com/citra-emu/citra/pull/3141) by [B3n30](https://github.com/B3n30)
 ## [CoreTiming: Reworked CoreTiming](https://github.com/citra-emu/citra/pull/3119) by [B3n30](https://github.com/B3n30)
 ## [QT CIA installation](https://github.com/citra-emu/citra/pull/3144) by [BreadFish64](https://github.com/BreadFish64)
 -->
