@@ -1,9 +1,5 @@
 # Build status located at https://travis-ci.org/citra-emu/citra-web
 
-# set-up-ssh is provided by travis-scripts.
-# Setting up the SSH key for Github is described here.
-# https://github.com/alrra/travis-scripts/blob/master/doc/github-deploy-keys.md
-
 language: node_js
 node_js: node
 cache: yarn
@@ -11,14 +7,14 @@ cache: yarn
 script:
   - echo '========== Installing gulp & dependencies =========='
   - sudo apt-get install graphicsmagick
-  - yarn global add hugo-bin
+  - wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.31.1/hugo_0.31.1_Linux-64bit.deb
+  - sudo dpkg -i hugo.deb
   - yarn global add gulp
   - yarn install
 
   - echo '========== Starting gulp deploy task =========='
   - hugo version
   - gulp all --production
-
 deploy:
  provider: pages
  skip_cleanup: true
@@ -29,7 +25,6 @@ deploy:
  fqdn: citra-emu.org
  on:
    branch: master
-
 notifications:
   email:
     - mods@citra-emu.org
