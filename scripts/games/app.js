@@ -64,6 +64,29 @@ async function getGithubIssues() {
   return results;
 }
 
+async function getTestcases() {
+  let options = {
+    url: 'https://api.citra-emu.org/telemetry/testcase/',
+    headers: { 'User-Agent': 'citrabot' },
+  };
+
+  var body = await request.get(options);
+  return JSON.parse(body).map(x => {
+    return {
+      title: x.title,
+      compatibility: x.compatibility.toString(),
+      date: x.date,
+      version: x.version,
+      buildName: x.buildName,
+      buildDate: x.buildDate,
+      cpu: x.cpu,
+      gpu: x.gpu,
+      os: x.os,
+      author: x.author
+    }
+  });
+}
+
 // Fetch game information stored in Github repository.
 gitPull('./citra-games-wiki', 'https://github.com/citra-emu/citra-games-wiki.git');
 
@@ -71,15 +94,19 @@ gitPull('./citra-games-wiki', 'https://github.com/citra-emu/citra-games-wiki.git
 gitPull('./citra-games-wiki.wiki', 'https://github.com/citra-emu/citra-games-wiki.wiki.git');
 
 // Fetch all issues from Github.
-var githubIssues = null;
+var githubIssues = [];
 var wikiEntries = {};
+var testcases = [];
 
-getGithubIssues()
-.then(function(issues) {
-  logger.info(`Imported ${issues.length} issues from Github.`);
-  githubIssues = issues;
-})
-.then(function() {
+async function setup() {
+  //githubIssues = await getGithubIssues();
+  //logger.info(`Imported ${githubIssues.length} issues from Github.`);
+  
+  testcases = await getTestcases();
+  logger.info(`Obtained ${testcases.length} testcases from Telemetry API.`);
+};
+
+setup().then(function() {
   // Make sure the output directories in Hugo exist.
   [fsPathHugoContent, fsPathHugoBoxart, fsPathHugoIcon, fsPathHugoSavefiles, fsPathHugoScreenshots].forEach(function (path) {
     if (fs.existsSync(path) == false) {
@@ -121,9 +148,23 @@ function processGame(game) {
     var model = toml.parse(fs.readFileSync(`${fsPathCode}/${game}/game.dat`, 'utf8'));
     let currentDate = new Date();
     model.date = `${currentDate.toISOString()}`;
-    
-    // Reverse the order of the testcases array, so that the newest ones are displayed first
-    model.testcases = model.testcases.reverse();
+
+    // Look up all testcases associated with the Title IDs.
+    let releases = model.releases.map(y => y.title);
+    let foundTestcases = testcases.filter(x => {
+      return releases.includes(x.title);
+    });
+
+    logger.info(`Found ${foundTestcases.length} testcases from telemetry, found ${model.testcases.length} in toml file.`);
+
+    model.testcases = model.testcases.concat(foundTestcases);
+
+    // Sort the testcases from most recent to least recent.
+    model.testcases.sort(function(a, b){
+      // Turn your strings into dates, and then subtract them
+      // to get a value that is either negative, positive, or zero.
+      return new Date(b.date) - new Date(a.date);
+    });
 
     // SHORTCUTS BLOCK
     // Parse testcase information out of the dat to reinject as shortcut values.
