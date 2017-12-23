@@ -99,8 +99,8 @@ var wikiEntries = {};
 var testcases = [];
 
 async function setup() {
-  //githubIssues = await getGithubIssues();
-  //logger.info(`Imported ${githubIssues.length} issues from Github.`);
+  githubIssues = await getGithubIssues();
+  logger.info(`Imported ${githubIssues.length} issues from Github.`);
   
   testcases = await getTestcases();
   logger.info(`Obtained ${testcases.length} testcases from Telemetry API.`);
