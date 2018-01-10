@@ -73,11 +73,17 @@ applications from its virtual SD card. He and [BreadFish64](https://github.com/B
 also went a step further and added support for installing CIAs via the SDL and Qt
 frontends directly, removing the need to use FBI.
 
+## [Qtifw build installer](https://github.com/citra-emu/citra/pull/2966) by [j-selby](https://github.com/j-selby)
+
+Citra now has a fancy new installer and updater, thanks to [j-selby](https://github.com/j-selby)
+and [jroweboy](https://github.com/jroweboy)'s efforts! If you haven't already, we
+strongly recommend you download and install Citra through it, since it will make
+updating as easy as re-running the installer. You can check it out over [here](/download/),
+
 <!--
 TODO: Write
 
 October:
-## [Qtifw build installer](https://github.com/citra-emu/citra/pull/2966) by [jroweboy](https://github.com/jroweboy)
 ## [Implement About Button Functionality](https://github.com/citra-emu/citra/pull/3005) by [BreadFish64](https://github.com/BreadFish64)
 ## [macOS: Build x86_64h slice](https://github.com/citra-emu/citra/pull/2982) by [MerryMage](https://github.com/MerryMage)
 
