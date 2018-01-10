@@ -26,22 +26,63 @@ has finally delivered!
 Simply go into `View → Fullscreen`, or just strike the Alt + Return keycombo, and
 enjoy Citra to its fullest on your largest monitor.
 
+## Rewrite AM Service and Add CIA Installation ([Here](https://github.com/citra-emu/citra/pull/2993), [here](https://github.com/citra-emu/citra/pull/3048), [here](https://github.com/citra-emu/citra/pull/2975), [there](https://github.com/citra-emu/citra/pull/3029), [this](https://github.com/citra-emu/citra/pull/3113), and [that](https://github.com/citra-emu/citra/pull/3144)) by [shinyquagsire23](https://github.com/shinyquagsire23) and [BreadFish64](https://github.com/BreadFish64)
+
+The `am` service on a Nintendo 3DS handles the installation, tracking, and removal
+of applications and games installed on the console and SD card(s) via a centralized
+database in the NAND, with some parts of the database for SD card-installed titles
+on the SD card itself. It has a handful of nice features such as installing packages
+as they're streamed in, along with DLC support being cleanly implemented as a
+side-effect of the CIA format's design. CIAs themselves are also designed to be
+streamed in, which is used extensively across 3DS apps, such as the eShop streaming
+downloads directly into `am` so that it installs at the same time, or `dlp` using
+it to stream Download Play CIAs from one 3DS to another directly.
+
+The CIA format starts off with a header that describes where each component of
+itself starts within the stream and a bitfield. This is then followed by a
+certificate signed by Nintendo, the CIA's ticket, and the title metadata (or TMD
+for short). The TMD then contains a list of every CXI file the CIA could possibly
+have, along with their name, size, etc.
+
+{{< figure src="/images/entry/citra-progress-report-2017-october-november/oot3dcia.png" 
+    title="A diagram of *The Legend
+of Zelda: Ocarina of Time 3D*'s CIA" >}}
+
+The astute reader might've noticed I said that the TMD contains a list of every
+*possible* CXI. This is because a CIA might not contain every CXI for the game,
+such as in the case of DLC. The bitfield I mentioned in the header is used to list
+off which of the entries in the TMD actually exists within that CIA. This is
+(ab)used in some cases, such as the Home Menu Themes, in that every single theme
+that exists is actually a different CXI within the same CIA. Just tick the themes
+the user owns in the bitfield and then attach those CXIs at the end of it. Dead
+simple way for it to work perfectly with both streaming of the file, and making
+personalized CIAs for each eShop user.
+
+{{< figure src="/images/entry/citra-progress-report-2017-october-november/menucia.png" 
+    title="A tiny portion of the Home Menu Themes CIA" >}}
+
+For the `am` side of streaming installations, the way it handles a request to
+install an application is by creating and then giving the requester a handle to
+a virtual file. This leaves most of the busy work to `am`, while the app only needs
+to worry about writing the CIA file into that handle.
+
+[shinyquagsire23](https://github.com/shinyquagsire23) reimplemented the entirety
+of how Citra handles NCCH files, which quickly paved the way to implementing `am`
+in Citra. This allowed users to use FBI and the Home Menu to install and run
+applications from its virtual SD card. He and [BreadFish64](https://github.com/BreadFish64)
+also went a step further and added support for installing CIAs via the SDL and Qt
+frontends directly, removing the need to use FBI.
+
 <!--
 TODO: Write
 
 October:
 ## [Qtifw build installer](https://github.com/citra-emu/citra/pull/2966) by [jroweboy](https://github.com/jroweboy)
-## [AM Service and NCCH Archive Rework](https://github.com/citra-emu/citra/pull/2993) by [shinyquagsire23](https://github.com/shinyquagsire23)
-## [Services/AM: Implement GetPatchTitleInfos, Misc Cleanup](https://github.com/citra-emu/citra/pull/3048) by [shinyquagsire23](https://github.com/shinyquagsire23)
-## [file_sys/archive_ncch: use NCCHs/.apps instead of .romfs files, NCCH section override](https://github.com/citra-emu/citra/pull/2975) by [shinyquagsire23](https://github.com/shinyquagsire23)
-## [Services/AM: Add CIA title installation support.](https://github.com/citra-emu/citra/pull/3029) by [shinyquagsire23](https://github.com/shinyquagsire23)
 ## [Implement About Button Functionality](https://github.com/citra-emu/citra/pull/3005) by [BreadFish64](https://github.com/BreadFish64)
 ## [macOS: Build x86_64h slice](https://github.com/citra-emu/citra/pull/2982) by [MerryMage](https://github.com/MerryMage)
 
 November:
 ## [citra-qt: fix broken About box](https://github.com/citra-emu/citra/pull/3081) by [wwylele](https://github.com/wwylele)
-## [QT CIA installation](https://github.com/citra-emu/citra/pull/3144) by [BreadFish64](https://github.com/BreadFish64)
 ## [CoreTiming: Reworked CoreTiming](https://github.com/citra-emu/citra/pull/3119) by [B3n30](https://github.com/B3n30)
-## [SDL CIA Installation](https://github.com/citra-emu/citra/pull/3113) by [shinyquagsire23](https://github.com/shinyquagsire23)
 
 -->
