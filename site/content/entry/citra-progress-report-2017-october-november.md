@@ -93,13 +93,7 @@ Enabling it made a fat binary that contained both pre-Haswell and post-Haswell c
 allowing Citra to take advantage of the newer CPU's instructions, without dropping
 support for older ones.
 
-<!--
-TODO: Write
+## Conclusion
 
-October:
-## [Implement About Button Functionality](https://github.com/citra-emu/citra/pull/3005) by [BreadFish64](https://github.com/BreadFish64)
-
-November:
-## [citra-qt: fix broken About box](https://github.com/citra-emu/citra/pull/3081) by [wwylele](https://github.com/wwylele)
-
--->
+Although these two months were a bit light, [everyone who's contributed](https://github.com/citra-emu/citra/graphs/contributors?from=2017-10-01&to=2017-11-30&type=c) still made a sizeable amount of contributions. This was the prelude for
+what would come in December. Thank you everyone for the hard work you've poured in.
