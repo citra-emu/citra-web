@@ -80,12 +80,22 @@ and [jroweboy](https://github.com/jroweboy)'s efforts! If you haven't already, w
 strongly recommend you download and install Citra through it, since it will make
 updating as easy as re-running the installer. You can check it out over [here](/download/),
 
+## [macOS: Build x86_64h slice](https://github.com/citra-emu/citra/pull/2982) by [MerryMage](https://github.com/MerryMage)
+
+A little known feature in macOS is fat binaries, the ability to have the same executable
+contain binaries for multiple architectures. This was used extensively around 2007
+to support Mac OS X's transition from PowerPC to x86_64, allowing developers to
+have one binary work on all Macs effortlessly. After poking around Apple's LLVM
+fork, [MerryMage](https://github.com/MerryMage) found that they had a specific flag
+to build binaries for Intel Haswell and later. Enabling it made a fat binary that
+contained both pre-Haswell and post-Haswell code, allowing Citra to take advantage
+of the newer CPU's instructions, without dropping support for older ones.
+
 <!--
 TODO: Write
 
 October:
 ## [Implement About Button Functionality](https://github.com/citra-emu/citra/pull/3005) by [BreadFish64](https://github.com/BreadFish64)
-## [macOS: Build x86_64h slice](https://github.com/citra-emu/citra/pull/2982) by [MerryMage](https://github.com/MerryMage)
 
 November:
 ## [citra-qt: fix broken About box](https://github.com/citra-emu/citra/pull/3081) by [wwylele](https://github.com/wwylele)
