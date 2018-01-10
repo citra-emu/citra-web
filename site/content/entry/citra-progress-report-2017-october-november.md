@@ -14,30 +14,22 @@ new goodies that have come to Citra these past 60 days.
 But, enough faffing about! Let's get right into it:
 
 <!--
-TODO: Research
+TODO: Write
 
 October:
-## [Qtifw build installer](https://github.com/citra-emu/citra/pull/2966) by [jroweboy](https://github.com/jroweboy)
 ## [citra-qt : Adding fullscreen mode](https://github.com/citra-emu/citra/pull/3001) by [Styleoshin](https://github.com/Styleoshin)
+## [Qtifw build installer](https://github.com/citra-emu/citra/pull/2966) by [jroweboy](https://github.com/jroweboy)
 ## [AM Service and NCCH Archive Rework](https://github.com/citra-emu/citra/pull/2993) by [shinyquagsire23](https://github.com/shinyquagsire23)
 ## [Services/AM: Implement GetPatchTitleInfos, Misc Cleanup](https://github.com/citra-emu/citra/pull/3048) by [shinyquagsire23](https://github.com/shinyquagsire23)
 ## [file_sys/archive_ncch: use NCCHs/.apps instead of .romfs files, NCCH section override](https://github.com/citra-emu/citra/pull/2975) by [shinyquagsire23](https://github.com/shinyquagsire23)
 ## [Services/AM: Add CIA title installation support.](https://github.com/citra-emu/citra/pull/3029) by [shinyquagsire23](https://github.com/shinyquagsire23)
-
-November:
-## [citra-qt: fix broken About box](https://github.com/citra-emu/citra/pull/3081) by [wwylele](https://github.com/wwylele)
-## [SDL CIA Installation](https://github.com/citra-emu/citra/pull/3113) by [shinyquagsire23](https://github.com/shinyquagsire23)
--->
-
-<!--
-TODO: Write
-
-October:
 ## [Implement About Button Functionality](https://github.com/citra-emu/citra/pull/3005) by [BreadFish64](https://github.com/BreadFish64)
 ## [macOS: Build x86_64h slice](https://github.com/citra-emu/citra/pull/2982) by [MerryMage](https://github.com/MerryMage)
 
 November:
+## [citra-qt: fix broken About box](https://github.com/citra-emu/citra/pull/3081) by [wwylele](https://github.com/wwylele)
 ## [QT CIA installation](https://github.com/citra-emu/citra/pull/3144) by [BreadFish64](https://github.com/BreadFish64)
 ## [CoreTiming: Reworked CoreTiming](https://github.com/citra-emu/citra/pull/3119) by [B3n30](https://github.com/B3n30)
+## [SDL CIA Installation](https://github.com/citra-emu/citra/pull/3113) by [shinyquagsire23](https://github.com/shinyquagsire23)
 
 -->
