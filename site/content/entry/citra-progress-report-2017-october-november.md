@@ -1,5 +1,5 @@
 +++
-date = "2018-01-10T03:34:00-04:00"
+date = "2018-01-10T13:11:00-04:00"
 title = "Citra Progress Report - 2017 October and November"
 tags = [ "progress-report" ]
 author = "anodium"
@@ -85,11 +85,13 @@ updating as easy as re-running the installer. You can check it out over [here](/
 A little known feature in macOS is fat binaries, the ability to have the same executable
 contain binaries for multiple architectures. This was used extensively around 2007
 to support Mac OS X's transition from PowerPC to x86_64, allowing developers to
-have one binary work on all Macs effortlessly. After poking around Apple's LLVM
-fork, [MerryMage](https://github.com/MerryMage) found that they had a specific flag
-to build binaries for Intel Haswell and later. Enabling it made a fat binary that
-contained both pre-Haswell and post-Haswell code, allowing Citra to take advantage
-of the newer CPU's instructions, without dropping support for older ones.
+have one binary work on all Macs effortlessly.
+
+After poking around Apple's LLVM fork, [MerryMage](https://github.com/MerryMage)
+found that they had a specific flag to build binaries for Intel Haswell and later.
+Enabling it made a fat binary that contained both pre-Haswell and post-Haswell code,
+allowing Citra to take advantage of the newer CPU's instructions, without dropping
+support for older ones.
 
 <!--
 TODO: Write
@@ -99,6 +101,5 @@ October:
 
 November:
 ## [citra-qt: fix broken About box](https://github.com/citra-emu/citra/pull/3081) by [wwylele](https://github.com/wwylele)
-## [CoreTiming: Reworked CoreTiming](https://github.com/citra-emu/citra/pull/3119) by [B3n30](https://github.com/B3n30)
 
 -->
