@@ -68,10 +68,12 @@ to worry about writing the CIA file into that handle.
 
 [shinyquagsire23](https://github.com/shinyquagsire23) reimplemented the entirety
 of how Citra handles NCCH files, which quickly paved the way to implementing `am`
-in Citra. This allowed users to use FBI and the Home Menu to install and run
-applications from its virtual SD card. He and [BreadFish64](https://github.com/BreadFish64)
-also went a step further and added support for installing CIAs via the SDL and Qt
-frontends directly, removing the need to use FBI.
+in Citra. This allowed users to use FBI to install  applications from its virtual
+SD card. He and [BreadFish64](https://github.com/BreadFish64) also went a step
+further and added support for installing CIAs via the SDL and Qt frontends
+directly, removing the need to use FBI. Do note that you cannot yet run installed
+applications and games directly, but CXI executables can access the virtual SD
+card for DLC, updates, etc.
 
 ## [Qtifw build installer](https://github.com/citra-emu/citra/pull/2966) by [j-selby](https://github.com/j-selby)
 
