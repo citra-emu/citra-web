@@ -7,9 +7,9 @@ forum = 0
 +++
 
 Past the red leaves and into the icy tundra in the midst of winter comes the present.
-This time we'll be covering not one, but two months of progress! With a great many
+This time we'll be covering not one, but two months of progress! With many great
 changes all around, this article is going to be packed to the brim with all the
-new goodies that have come to Citra those crimson months.
+new goodies that have come to Citra during those crimson months.
 
 But, enough faffing about! Let's get right into it:
 
