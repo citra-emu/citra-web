@@ -102,6 +102,7 @@
       <table class="table table-responsive table-striped">
         <thead>
           <tr>
+            <th class="advanced-view">ID</th>
             <th>Date</th>
             <th>Tested By</th>
             <th>Hardware</th>
@@ -114,6 +115,7 @@
           {{ range .Params.testcases }}
             {{- $rating := index $siteCompatibility .compatibility }}
                     <tr>
+                      <td class="advanced-view">{{ if isset . "id" }} {{ .id }} {{ end }}</td>
                       <td>{{ dateFormat "01/02/2006" .date }}</td>
                       <td><a href="https://community.citra-emu.org/u/{{ .author }}/summary">{{ .author }}</a></td>
                       <td>{{ .cpu }}<br />{{ .gpu }}<br />{{ .os }}</td>

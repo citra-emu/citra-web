@@ -73,6 +73,7 @@ async function getTestcases() {
   var body = await request.get(options);
   return JSON.parse(body).map(x => {
     return {
+      id: x.id,
       title: x.title,
       compatibility: x.compatibility.toString(),
       date: x.date,
