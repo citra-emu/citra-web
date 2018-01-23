@@ -1,16 +1,16 @@
 +++
-date = "2018-01-21T11:24:00-04:00"
+date = "2018-01-23T15:50:00-04:00"
 title = "Citra Progress Report - 2017 Q4"
 tags = [ "progress-report" ]
 author = "anodium"
 forum = 0
 +++
 
-As the year draws to a close, work on Citra absolutely doesn't! A lot of technical
-changes under the hood, from applets to IPC, have made Citra even more accurate
-and laid a foundation for even more goodies the next year. With many great
-changes all around, this article is going to be packed to the brim with all the
-new goodies that have come to Citra during those crimson months.
+New year, new changes in Citra. Specifically, lots of technical changes under
+the hood, from applets to IPC, have made Citra even more accurate and laid a
+foundation for even more goodies the next year. With many great changes all
+around, this article is going to be packed to the brim with all the new goodies
+that have come to Citra during those crimson months.
 
 But, enough faffing about! Let's get right into it:
 
@@ -100,7 +100,6 @@ support for older ones.
 
 TODO: Research
 
-## [core/arm: Improve timing accuracy before service calls in JIT](https://github.com/citra-emu/citra/pull/3184) by [MerryMage](https://github.com/MerryMage)
 ## [Kernel/IPC: Add a small delay after each SyncRequest to prevent thread starvation.](https://github.com/citra-emu/citra/pull/3091) by [Subv](https://github.com/Subv)
 ## [Allow input configuration with SDL joysticks](https://github.com/citra-emu/citra/pull/3116) by [muemart](https://github.com/muemart)
 ## [citra-qt : Fix a bug in our fullscreen implementation](https://github.com/citra-emu/citra/pull/3159) by [FearlessTobi](https://github.com/FearlessTobi)
@@ -109,6 +108,7 @@ TODO: Research
 
 TODO: Write
 
+## [core/arm: Improve timing accuracy before service calls in JIT](https://github.com/citra-emu/citra/pull/3184) by [MerryMage](https://github.com/MerryMage)
 
 -->
 
