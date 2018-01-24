@@ -17,7 +17,7 @@ RUN apt-get update && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.listapt-get update && \
     apt-get update && \
     apt-get install --yes yarn && \
-    yarn global add gulp && \
+    yarn add gulp && \
     yarn install
 
 EXPOSE 3000
