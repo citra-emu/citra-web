@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 # Install app dependencies
 RUN apk update
 RUN apk add graphicsmagick
-RUN npm install -g hugo-bin@0.31.1
+RUN apk add hugo=0.31.1
 RUN npm install -g gulp
 
 # Bootstrap website
