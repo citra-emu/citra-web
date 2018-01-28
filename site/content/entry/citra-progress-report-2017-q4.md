@@ -1,5 +1,5 @@
 +++
-date = "2018-01-23T15:50:00-04:00"
+date = "2018-01-28T17:15:00-04:00"
 title = "Citra Progress Report - 2017 Q4"
 tags = [ "progress-report" ]
 author = "anodium"
@@ -100,14 +100,13 @@ support for older ones.
 
 TODO: Research
 
-## [Kernel/IPC: Add a small delay after each SyncRequest to prevent thread starvation.](https://github.com/citra-emu/citra/pull/3091) by [Subv](https://github.com/Subv)
 ## [Allow input configuration with SDL joysticks](https://github.com/citra-emu/citra/pull/3116) by [muemart](https://github.com/muemart)
 ## [citra-qt : Fix a bug in our fullscreen implementation](https://github.com/citra-emu/citra/pull/3159) by [FearlessTobi](https://github.com/FearlessTobi)
 ## [shader_jit_x64_compiler: Remove ABI overhead of LG2 and EX2](https://github.com/citra-emu/citra/pull/3145) by [MerryMage](https://github.com/MerryMage)
-## [SDL: add multiplayer options](https://github.com/citra-emu/citra/pull/3072) by [B3n30](https://github.com/B3n30)
 
 TODO: Write
 
+## [Kernel/IPC: Add a small delay after each SyncRequest to prevent thread starvation.](https://github.com/citra-emu/citra/pull/3091) by [Subv](https://github.com/Subv)
 ## [core/arm: Improve timing accuracy before service calls in JIT](https://github.com/citra-emu/citra/pull/3184) by [MerryMage](https://github.com/MerryMage)
 
 -->
