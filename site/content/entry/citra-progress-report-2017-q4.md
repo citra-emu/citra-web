@@ -1,5 +1,5 @@
 +++
-date = "2018-01-28T17:15:00-04:00"
+date = "2018-01-30T19:07:00-04:00"
 title = "Citra Progress Report - 2017 Q4"
 tags = [ "progress-report" ]
 author = "anodium"
@@ -21,7 +21,7 @@ has been enlarging the window to cover the entirety of the screen. After almost
 a year of requests on both the Citra Discourse and Discord servers, [Styleoshin](https://github.com/Styleoshin)
 has finally delivered!
 
-{{< figure src="/images/entry/citra-progress-report-2017-october-november/fullscreen.png" 
+{{< figure src="/images/entry/citra-progress-report-2017-q4/fullscreen.png" 
     title="No more pesky window décor!" >}}
 
 Simply go into `View → Fullscreen`, or just strike the Alt + Return keycombo, and
@@ -45,7 +45,7 @@ certificate signed by Nintendo, the CIA's ticket, and the title metadata (or TMD
 for short). The TMD then contains a list of every CXI file the CIA could possibly
 have, along with their name, size, etc.
 
-{{< figure src="/images/entry/citra-progress-report-2017-october-november/oot3dcia.png" 
+{{< figure src="/images/entry/citra-progress-report-2017-q4/oot3dcia.png" 
     title="A diagram of *The Legend
 of Zelda: Ocarina of Time 3D*'s CIA" >}}
 
@@ -59,7 +59,7 @@ the user owns in the bitfield and then attach those CXIs at the end of it. Dead
 simple way for it to work perfectly with both streaming of the file, and making
 personalized CIAs for each eShop user.
 
-{{< figure src="/images/entry/citra-progress-report-2017-october-november/menucia.png" 
+{{< figure src="/images/entry/citra-progress-report-2017-q4/menucia.png" 
     title="A tiny portion of the Home Menu Themes CIA" >}}
 
 For the `am` side of streaming installations, the way it handles a request to
@@ -96,6 +96,33 @@ Enabling it made a fat binary that contained both pre-Haswell and post-Haswell c
 allowing Citra to take advantage of the newer CPU's instructions, without dropping
 support for older ones.
 
+## [Kernel/IPC: Add a small delay after each SyncRequest to prevent thread starvation.](https://github.com/citra-emu/citra/pull/3091) by [Subv](https://github.com/Subv)
+
+When communicating with services, titles on a real Nintendo 3DS expect to wait some
+amount of time before the service replies or responds. Until now, Citra didn't implement
+this, it responded without incrementing the virtual clock. From the emulated system's
+perspective, it appeared as though services replied and reponded literally instantly
+because of this, leading to strange side-effects.
+
+For example, some buildings in *Animal Crossing: New Leaf* fail to render and
+cannot be interacted with. Or worse, some games such as *Star Fox 3D* can't even
+reach the title screen because of this.
+
+{{< figure src="/images/entry/citra-progress-report-2017-q4/fsUSER-race.png" 
+    title="A demonstration of how instant service replies can break a title" >}}
+
+The example in this figure is taken directly from *Star Fox 3D*. When the game boots,
+it checks if any save data exists on the console's NAND, and tries to recreate it
+if it doesn't. It does this by sending a request to the service responsible for
+file access, and then waiting for a reply. Because Citra replies instantly, and
+the game needs some time to actually start listening for the reply, the game never
+actually recieves the reply, and waits for it forever.
+
+After [B3n30](https://github.com/B3n30) did some testing with homebrew on a real
+Nintendo 3DS, an average delay for every type of service reply was found. Then,
+[Subv](https://github.com/Subv) made Citra's virtual clock increment by this amount
+before fulfilling any service request, solving many of the issues this brought.
+
 <!--
 
 TODO: Research
@@ -106,7 +133,6 @@ TODO: Write
 
 ## [Allow input configuration with SDL joysticks](https://github.com/citra-emu/citra/pull/3116) by [muemart](https://github.com/muemart)
 ## [shader_jit_x64_compiler: Remove ABI overhead of LG2 and EX2](https://github.com/citra-emu/citra/pull/3145) by [MerryMage](https://github.com/MerryMage)
-## [Kernel/IPC: Add a small delay after each SyncRequest to prevent thread starvation.](https://github.com/citra-emu/citra/pull/3091) by [Subv](https://github.com/Subv)
 ## [core/arm: Improve timing accuracy before service calls in JIT](https://github.com/citra-emu/citra/pull/3184) by [MerryMage](https://github.com/MerryMage)
 
 -->
