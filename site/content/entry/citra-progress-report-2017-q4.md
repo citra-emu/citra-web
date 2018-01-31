@@ -108,20 +108,31 @@ For example, some buildings in *Animal Crossing: New Leaf* fail to render and
 cannot be interacted with. Or worse, some games such as *Star Fox 3D* can't even
 reach the title screen because of this.
 
-{{< figure src="/images/entry/citra-progress-report-2017-q4/fsUSER-race.png" 
+{{< figure src="/images/entry/citra-progress-report-2017-q4/fsUSER-threads.png" 
     title="A demonstration of how instant service replies can break a title" >}}
 
 The example in this figure is taken directly from *Star Fox 3D*. When the game boots,
 it checks if any save data exists on the console's NAND, and tries to recreate it
 if it doesn't. It does this by sending a request to the service responsible for
-file access, and then waiting for a reply. Because Citra replies instantly, and
-the game needs some time to actually start listening for the reply, the game never
-actually recieves the reply, and waits for it forever.
+file access, and then waiting for a reply. Because the request is synchronous,
+the thread that made the request is put to sleep and its priority lowered. The
+game actually uses this time that would otherwise be spent waiting by having other
+threads run while the original thread was still asleep, so that by the time it
+woke up with the response, it would have other resources it needed ready to go.
 
-After [B3n30](https://github.com/B3n30) did some testing with homebrew on a real
-Nintendo 3DS, an average delay for every type of service reply was found. Then,
-[Subv](https://github.com/Subv) made Citra's virtual clock increment by this amount
-before fulfilling any service request, solving many of the issues this brought.
+Because Citra's responses are instantaneous from the point-of-view of the game,
+the secondary thread doesn't have nearly enough time to finish its job. Because
+the first thread's priority comes back up above the secondary's once it wakes up,
+this leads to the first thread waiting on the secondary thread to finish, but it
+never gets a chance to, because of its now much lower priority. Essentially, the
+first thread waits on the secondary forever, because the secondary never gets a
+chance to actually finish what it was doing.
+
+After [B3n30](https://github.com/B3n30) did some testing with homebrew written by
+[ds84182](https://github.com/ds84182) on a real Nintendo 3DS, an average delay
+for every type of service reply was found. Then, [Subv](https://github.com/Subv)
+made Citra's virtual clock increment by this amount before fulfilling any service
+request, solving many of the issues this brought.
 
 ## [core/arm: Improve timing accuracy before service calls in JIT](https://github.com/citra-emu/citra/pull/3184) by [MerryMage](https://github.com/MerryMage)
 
