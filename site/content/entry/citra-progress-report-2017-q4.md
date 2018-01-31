@@ -166,13 +166,22 @@ took it upon themselves to finally add support for configuring gamepads within t
 configuration menu. Now, it's as simple as clicking a button, and pressing the
 corresponsing button on your controller, to set it up.
 
-<!--
-
-TODO: Write
-
 ## [shader_jit_x64_compiler: Remove ABI overhead of LG2 and EX2](https://github.com/citra-emu/citra/pull/3145) by [MerryMage](https://github.com/MerryMage)
 
--->
+The shader JIT is a subsystem in dynarmic (Citra's ARM to x86 recompiler) is the
+one responsible for recompiling GPU shaders for the 3DS to x86 code, so that they
+can be run on the user's CPU directly.
+
+Shader intructions like LG2 (calculate binary logarithm) and EX2 (calculate binary
+exponential) can be run potentially thousands of times per second in a typical
+Nintendo 3DS title, so it's usually very worthwhile to try to optimize these as
+best as possible.
+
+In doing so, [MerryMage](https://github.com/MerryMage) actually rewrote these two
+instructions to pure x86 assembly, and runs them inline with the rest of the instructions.
+A faster algorithm, combined with not having to deal with the overhead of calling
+an external library for math functions, led to this change almost halving the
+amount of time it takes to calculate these!
 
 ## Conclusion
 
