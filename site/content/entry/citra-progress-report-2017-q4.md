@@ -1,5 +1,5 @@
 +++
-date = "2018-01-30T19:07:00-04:00"
+date = "2018-01-31T14:58:00-04:00"
 title = "Citra Progress Report - 2017 Q4"
 tags = [ "progress-report" ]
 author = "anodium"
@@ -140,11 +140,19 @@ time it takes for the service that scheduled it would run.
 Although this doesn't fix any reported bugs, it does make the timing emulation
 of Citra much more accurate.
 
-<!--
-
-TODO: Research
-
 ## [citra-qt : Fix a bug in our fullscreen implementation](https://github.com/citra-emu/citra/pull/3159) by [FearlessTobi](https://github.com/FearlessTobi)
+
+In Citra's GUI, a strange bug exists, where if you have fullscreen enabled, and
+you start a game while the window is maximized, the window instead unmaximizes
+before starting the game. This was due to Citra not keeping track of the window's
+state (be it normal, maximized, minimized, or fullscreen), and instead simply
+defaulting to normal. [FearlessTobi](https://github.com/FearlessTobi) found,
+[reported](https://github.com/citra-emu/citra/pull/3001#issuecomment-338401048),
+and fixed the bug. Citra now keeps track of the window's state, position, and
+size, every time it goes fullscreen and restores them every time it leaves
+fullscreen.
+
+<!--
 
 TODO: Write
 
