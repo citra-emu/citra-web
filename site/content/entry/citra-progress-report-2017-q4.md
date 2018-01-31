@@ -123,6 +123,23 @@ Nintendo 3DS, an average delay for every type of service reply was found. Then,
 [Subv](https://github.com/Subv) made Citra's virtual clock increment by this amount
 before fulfilling any service request, solving many of the issues this brought.
 
+## [core/arm: Improve timing accuracy before service calls in JIT](https://github.com/citra-emu/citra/pull/3184) by [MerryMage](https://github.com/MerryMage)
+
+As our previous section demonstrates, Citra's virtual clock should be
+incremented before any time code that was supposed to be on a real
+Nintendo 3DS runs within Citra, including services. This change by [MerryMage](https://github.com/MerryMage)
+makes services increment the clock *before* they are called, instead of after.
+
+<!-- NOTE: Possibly hard to understand/too verbose? Reword if so. -->
+One of the reasons this is important is because services can schedule calls to
+other services to run in the future. If the current time in the virtual clock is
+incorrect when the service schedule an event, it would run too early because
+the time for the scheduled event would effectively be shifted back by the virtual
+time it takes for the service that scheduled it would run.
+
+Although this doesn't fix any reported bugs, it does make the timing emulation
+of Citra much more accurate.
+
 <!--
 
 TODO: Research
@@ -133,7 +150,6 @@ TODO: Write
 
 ## [Allow input configuration with SDL joysticks](https://github.com/citra-emu/citra/pull/3116) by [muemart](https://github.com/muemart)
 ## [shader_jit_x64_compiler: Remove ABI overhead of LG2 and EX2](https://github.com/citra-emu/citra/pull/3145) by [MerryMage](https://github.com/MerryMage)
-## [core/arm: Improve timing accuracy before service calls in JIT](https://github.com/citra-emu/citra/pull/3184) by [MerryMage](https://github.com/MerryMage)
 
 -->
 
