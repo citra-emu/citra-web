@@ -152,11 +152,24 @@ and fixed the bug. Citra now keeps track of the window's state, position, and
 size, every time it goes fullscreen and restores them every time it leaves
 fullscreen.
 
+## [Allow input configuration with SDL joysticks](https://github.com/citra-emu/citra/pull/3116) by [muemart](https://github.com/muemart)
+
+In the input configuration menu, there has been the ability to change the key
+bindings on the keyboard for years now. Unfortunately, this menu allowed rebinding
+to keyboard keys only, not gamepads or any other input device one could use. This
+led to guides such as [this one](https://community.citra-emu.org/t/temporary-controller-configurations-for-citra/1061)
+being written, to help users manually change the configuration files if they
+wanted to use gamepads with Citra.
+
+This was extremely inconvenient and user-unfriendly to most, and so [muemart](https://github.com/muemart)
+took it upon themselves to finally add support for configuring gamepads within the
+configuration menu. Now, it's as simple as clicking a button, and pressing the
+corresponsing button on your controller, to set it up.
+
 <!--
 
 TODO: Write
 
-## [Allow input configuration with SDL joysticks](https://github.com/citra-emu/citra/pull/3116) by [muemart](https://github.com/muemart)
 ## [shader_jit_x64_compiler: Remove ABI overhead of LG2 and EX2](https://github.com/citra-emu/citra/pull/3145) by [MerryMage](https://github.com/MerryMage)
 
 -->
