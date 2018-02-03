@@ -112,7 +112,7 @@ reach the title screen.
     title="A demonstration of how instant service replies can break a title" >}}
 
 The example in this figure is taken directly from *Star Fox 3D*. When the game boots,
-it checks if any save data exists on the console's NAND, and tries to recreate it
+it checks if any save data exists on the console's SD card, and tries to recreate it
 if it doesn't. It does this by sending a request to the service responsible for
 file access, and then waiting for a reply. Because the request is synchronous,
 the thread that made the request is put to sleep and its priority lowered. The
