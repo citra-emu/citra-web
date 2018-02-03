@@ -16,9 +16,9 @@ But, enough faffing about! Let's get right into it:
 
 ## [citra-qt : Adding fullscreen mode](https://github.com/citra-emu/citra/pull/3001) by [Styleoshin](https://github.com/Styleoshin)
 
-One of the most requested features for Citra, second only to controller support,
-has been enlarging the window to cover the entirety of the screen. After almost
-a year of requests on both the Citra Discourse and Discord servers, [Styleoshin](https://github.com/Styleoshin)
+One of the most requested features for Citra has been enlarging the window to
+cover the entirety of the screen. After almost a year of requests on both the
+Citra Discourse and Discord servers, [Styleoshin](https://github.com/Styleoshin)
 has finally delivered!
 
 {{< figure src="/images/entry/citra-progress-report-2017-q4/fullscreen.png" 
@@ -106,7 +106,7 @@ because of this, leading to strange side-effects.
 
 For example, some buildings in *Animal Crossing: New Leaf* fail to render and
 cannot be interacted with. Or worse, some games such as *Star Fox 3D* can't even
-reach the title screen because of this.
+reach the title screen.
 
 {{< figure src="/images/entry/citra-progress-report-2017-q4/fsUSER-threads.png" 
     title="A demonstration of how instant service replies can break a title" >}}
@@ -120,17 +120,18 @@ game actually uses this time that would otherwise be spent waiting by having oth
 threads run while the original thread was still asleep, so that by the time it
 woke up with the response, it would have other resources it needed ready to go.
 
-Because Citra's responses are instantaneous from the point-of-view of the game,
-the secondary thread doesn't have nearly enough time to finish its job. Because
-the first thread's priority comes back up above the secondary's once it wakes up,
+As Citra's responses are instantaneous from the point-of-view of the game,
+the secondary thread doesn't have nearly enough time to finish its job. And, the
+first thread's priority comes back up above the secondary's once it wakes up,
 this leads to the first thread waiting on the secondary thread to finish, but it
-never gets a chance to, because of its now much lower priority. Essentially, the
+never gets a chance to, due to its now much lower priority. Essentially, the
 first thread waits on the secondary forever, because the secondary never gets a
 chance to actually finish what it was doing.
 
-After [B3n30](https://github.com/B3n30) did some testing with homebrew written by
-[ds84182](https://github.com/ds84182) on a real Nintendo 3DS, an average delay
-for every type of service reply was found. Then, [Subv](https://github.com/Subv)
+[ds84182](https://github.com/ds84182) and [Subv](https://github.com/Subv) each
+wrote homebrew software which found and measured the issue, respectively, which
+[B3n30](https://github.com/B3n30) ran on a real Nintendo 3DS. With which, an
+average delay for every type of service reply was found. Then, [Subv](https://github.com/Subv)
 made Citra's virtual clock increment by this amount before fulfilling any service
 request, solving many of the issues this brought.
 
@@ -142,9 +143,9 @@ Nintendo 3DS runs within Citra, including services. This change by [MerryMage](h
 makes services increment the clock *before* they are called, instead of after.
 
 <!-- NOTE: Possibly hard to understand/too verbose? Reword if so. -->
-One of the reasons this is important is because services can schedule calls to
+One of the reasons this is important is that services can schedule calls to
 other services to run in the future. If the current time in the virtual clock is
-incorrect when the service schedule an event, it would run too early because
+incorrect when the service schedule an event, it would run too early since
 the time for the scheduled event would effectively be shifted back by the virtual
 time it takes for the service that scheduled it would run.
 
