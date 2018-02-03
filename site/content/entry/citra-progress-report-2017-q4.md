@@ -105,7 +105,12 @@ perspective, it appeared as though services replied and reponded literally insta
 because of this, leading to strange side-effects.
 
 For example, some buildings in *Animal Crossing: New Leaf* fail to render and
-cannot be interacted with. Or worse, some games such as *Star Fox 3D* can't even
+cannot be interacted with.
+
+{{< figure src="/images/entry/citra-progress-report-2017-q4/acnl-before.png" 
+    title="Animal Crossing: New Leaf's acting up" >}}
+
+Or worse, some games such as *Star Fox 3D* can't even
 reach the title screen.
 
 {{< figure src="/images/entry/citra-progress-report-2017-q4/fsUSER-threads.png" 
@@ -119,6 +124,9 @@ the thread that made the request is put to sleep and its priority lowered. The
 game actually uses this time that would otherwise be spent waiting by having other
 threads run while the original thread was still asleep, so that by the time it
 woke up with the response, it would have other resources it needed ready to go.
+
+{{< figure src="/images/entry/citra-progress-report-2017-q4/acnl-after.png" 
+    title="Animal Crossing: New Leaf, among other games, are now working perfectly with this change!" >}}
 
 As Citra's responses are instantaneous from the point-of-view of the game,
 the secondary thread doesn't have nearly enough time to finish its job. And, the
@@ -178,6 +186,9 @@ took it upon themselves to finally add support for configuring gamepads within t
 configuration menu. Now, it's as simple as clicking a button, and pressing the
 corresponsing button on your controller, to set it up.
 
+{{< figure src="/images/entry/citra-progress-report-2017-q4/controller.png" 
+    title="Citra's input configuration menu" >}}
+
 ## [shader_jit_x64_compiler: Remove ABI overhead of LG2 and EX2](https://github.com/citra-emu/citra/pull/3145) by [MerryMage](https://github.com/MerryMage)
 
 The shader JIT in Citra is a component of the video core responsible for
@@ -195,9 +206,15 @@ A faster algorithm, combined with not having to deal with the overhead of callin
 an external library for math functions, led to this change almost halving the
 amount of time it takes to calculate these!
 
+{{< figure src="/images/entry/citra-progress-report-2017-q4/shaderjit.png" 
+    title="Graph comparing times before and after this change" >}}
+
 ## Conclusion
 
 As always, [changes big or small](https://github.com/citra-emu/citra/graphs/contributors?from=2017-10-01&to=2017-12-31&type=c)
 are vital to the project. Brick by brick, Citra will eventually be an accurate enough
 emulation of the Nintendo 3DS for most, if not all, uses. Thank you everyone for
 the hard work you've poured in.
+
+{{< figure src="/images/entry/citra-progress-report-2017-q4/promo.png" 
+    title="And more to come." >}}
