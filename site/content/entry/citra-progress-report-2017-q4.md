@@ -1,5 +1,5 @@
 +++
-date = "2018-02-04T08:59:00-04:00"
+date = "2018-02-04T16:17:00-04:00"
 title = "Citra Progress Report - 2017 Q4"
 tags = [ "progress-report" ]
 author = "anodium"
@@ -46,8 +46,7 @@ for short). The TMD then contains a list of every CXI file the CIA could possibl
 have, along with their name, size, etc.
 
 {{< figure src="/images/entry/citra-progress-report-2017-q4/oot3dcia.png" 
-    title="A diagram of *The Legend
-of Zelda: Ocarina of Time 3D*'s CIA" >}}
+    title="A diagram of *The Legend of Zelda: Ocarina of Time 3D*'s CIA" >}}
 
 The astute reader might've noticed I said that the TMD contains a list of every
 *possible* CXI. This is because a CIA might not contain every CXI for the game,
