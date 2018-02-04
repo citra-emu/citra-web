@@ -1,5 +1,5 @@
 +++
-date = "2018-02-04T16:17:00-04:00"
+date = "2018-02-04T17:00:00-04:00"
 title = "Citra Progress Report - 2017 Q4"
 tags = [ "progress-report" ]
 author = "anodium"
