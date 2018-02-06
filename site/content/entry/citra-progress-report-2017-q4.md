@@ -100,7 +100,7 @@ support for older ones.
 When communicating with services, titles on a real Nintendo 3DS expect to wait some
 amount of time before the service replies or responds. Until now, Citra didn't implement
 this, it responded without incrementing the virtual clock. From the emulated system's
-perspective, it appeared as though services replied and reponded literally instantly
+perspective, it appeared as though services replied and responded literally instantly
 because of this, leading to strange side-effects.
 
 For example, some buildings in *Animal Crossing: New Leaf* fail to render and
@@ -183,7 +183,7 @@ wanted to use gamepads with Citra.
 This was extremely inconvenient and user-unfriendly to most, and so [muemart](https://github.com/muemart)
 took it upon themselves to finally add support for configuring gamepads within the
 configuration menu. Now, it's as simple as clicking a button, and pressing the
-corresponsing button on your controller, to set it up.
+corresponding button on your controller, to set it up.
 
 {{< figure src="/images/entry/citra-progress-report-2017-q4/controller.png" 
     title="Citra's input configuration menu" >}}
@@ -194,7 +194,7 @@ The shader JIT in Citra is a component of the video core responsible for
 recompiling GPU shaders for the 3DS to x86 code, so that they can be run on the
 user's CPU directly.
 
-Shader intructions like LG2 (calculate binary logarithm) and EX2 (calculate binary
+Shader instructions like LG2 (calculate binary logarithm) and EX2 (calculate binary
 exponential) can be run potentially thousands of times per second in a typical
 Nintendo 3DS title, so it's usually very worthwhile to try to optimize these as
 best as possible.
