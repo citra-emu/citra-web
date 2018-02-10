@@ -155,6 +155,11 @@ function processGame(game) {
     let foundTestcases = testcases.filter(x => {
       return releases.includes(x.title);
     });
+    
+    // If no testcases exist in the toml file, create a blank array.
+    if (!model.testcases) {
+      model.testcases = [];
+    }
 
     logger.info(`Found ${foundTestcases.length} testcases from telemetry, found ${model.testcases.length} in toml file.`);
 
