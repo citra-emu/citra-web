@@ -62,7 +62,7 @@ gulp.task('start:setup', function() {
 });
 
 gulp.task('scripts:games', function (callback) {
-  exec(`cd ./scripts/games/ && npm install && node app.js`, function (err, stdout, stderr) {
+  exec(`cd ./scripts/games/ && yarn install && node app.js`, function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     callback(err);
@@ -70,7 +70,7 @@ gulp.task('scripts:games', function (callback) {
 });
 
 gulp.task('scripts:twitter', function (callback) {
-  exec(`cd ./scripts/twitter/ && npm install && node app.js`, function (err, stdout, stderr) {
+  exec(`cd ./scripts/twitter/ && yarn install && node app.js`, function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     callback(err);
@@ -78,7 +78,7 @@ gulp.task('scripts:twitter', function (callback) {
 });
 
 gulp.task('scripts:wiki', function (callback) {
-  exec(`cd ./scripts/wiki/ && npm install && node app.js`, function (err, stdout, stderr) {
+  exec(`cd ./scripts/wiki/ && yarn install && node app.js`, function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     callback(err);
