@@ -18,14 +18,6 @@ Review the following before joining our servers:
 
 * **Are you planning to make an Android version?** No, not at the moment.
 
-<div id='discordLink' style='margin-top: 5%; display: none;'>
-  <a href='https://discord.gg/9jgD2y4'>Click here to join our Discord channel.</a>
+<div style='margin-top: 5%;'>
+  <a href='https://discord.gg/FAXfZV9'>Click here to join our Discord channel.</a>
 </div>
-
-<script type='text/javascript'>
-  $(function() {
-    setTimeout(function(){
-       $('#discordLink').show();
-    }, 5000);
-  });
-</script>
