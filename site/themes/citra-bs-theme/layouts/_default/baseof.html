@@ -115,6 +115,11 @@
 
     <script src="{{ .Site.BaseURL }}/js/script.js"></script>
     {{ block "scripts" . }}{{ end }}
+
+    {{ if in .Params.js "juxtapose" }}
+      <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+    {{ end }}
   </body>
 
   </html>
