@@ -15,7 +15,7 @@ forum = 9999
 >}}
 
 <h4 style="text-align: center;">Realtime performance comparison with framelimit off</h4>
-
+<!--more-->
 Very fast. Test results across various computers show that it **averages out to be a 2x speed boost.**
 With the new update, Citra will use much more of your GPU, removing some of the dependence on a CPU with high single-core performance.
 (As always, the actual difference will vary by game and by your specific hardware configuration!)
@@ -104,6 +104,7 @@ Moving the rest of the PICA200 emulation to the GPU was always a sort of "white 
 We knew it would make things fast, but the sheer amount of effort required to make this happen scared off all those who dared attempt it.
 But before we get into why this was so challenging, let's see some real performance numbers!
 
+#### All testing was done with the following settings: 4x Internal Resolution, Accurate Shaders On, Framelimit Off
 Average performance increase
 graph: performance of dedicated cards vs integrated
 
