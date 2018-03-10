@@ -29,8 +29,8 @@ In a momentous occasion, Citra displayed 3D graphics from a commercial game, Leg
 
 {{< figure type="youtube" id="sYukdJam6gk" title="It took a year from when citra started to get to this point" >}}
 
-This engineering feat was thanks to the hardwork of many contibutors in both the emulator scene and the 3ds hacking scene, who worked tirelessly to reverse engineer the 3DS GPU, a chip called the PICA200.
-But not even a few months later, Citra was able to play the game at fullspeed! 
+This engineering feat was thanks to the hard work of many contributors in both the emulator scene and the 3ds hacking scene, who worked tirelessly to reverse engineer the 3DS GPU, a chip called the PICA200.
+But not even a few months later, Citra was able to play the game at full speed! 
 
 {{< figure type="youtube" id="Hj8sPsB5qXQ" title="Good thing that shield flashing bug still isn't around" >}}
 
@@ -59,7 +59,7 @@ This leads to cases where sometimes we just have to [live with minor inaccuracie
 {{< figure src="/images/entry/improvements-to-hardware-renderer/outline_bug.png" title="The infamous Pokémon outlines bug was one such example of something that OpenGL just doesn't handle well" >}}
 
 OpenGL is also great for emulator developers because it's a cross-platform standard for graphics, with support for all major desktop platforms.
-But because OpenGL is just a specification, every vendor is left up to their own to make their drivers support the specification for every individual platorm.
+But because OpenGL is just a specification, every vendor is left up to their own to make their drivers support the specification for every individual platform.
 This means performance and features can vary widely between operating systems, graphics driver, and the physical graphics card.
 As you might have guessed, this leads to some [OS specific bugs that are very hard to track down](https://github.com/citra-emu/citra/issues/2416).
 In the linked issue, only on Mac OSX, Citra would leak memory from the hardware renderer.
@@ -96,7 +96,7 @@ We are happy to announce that it's now merged into the master branch, so please 
 
 ## The Big News You've Been Waiting For
 
-A few paragrahs ago, we mentioned that Citra's hardware renderer did most of the emulation on the CPU, and only some of it on the GPU.
+A few paragraphs ago, we mentioned that Citra's hardware renderer did most of the emulation on the CPU, and only some of it on the GPU.
 The big news today is Citra now does the **entire GPU emulation on the host GPU**.
 
 {{< figure src="/images/entry/improvements-to-hardware-renderer/gpu_pipeline_after.png" title="Just look at all that green for each pipeline stage!" >}}
@@ -107,20 +107,16 @@ We knew it would make things fast, but the sheer amount of effort required to ma
 But before we get into why this was so challenging, let's see some real performance numbers!
 
 #### All testing was done with the following settings: 4x Internal Resolution, Accurate Hardware Shaders On, Framelimit Off
-Average performance increase
-graph: performance of dedicated cards vs integrated
 
-According to telemetry data, Pokémon is the most played game on Citra
-graph: performance of sun/moon oras
+{{< figure size="large" src="/images/entry/improvements-to-hardware-renderer/gpu_vendor_graph.png" title="Dedicated GPUs saw the biggest improvement" >}}
 
-But Monster Hunter is catching up
-graph: performance of mh 3/4/gen
+{{< figure size="large" src="/images/entry/improvements-to-hardware-renderer/midend_gpu_graph.png" title="Mid-High end GPUs tend to be fast" >}}
 
-High end GPUs benefit the most
-graph: performance of several high end GPUs
+{{< figure size="large" src="/images/entry/improvements-to-hardware-renderer/lowend_gpu_graph.png" title="Low-Mid end GPUs are just a bit fast" >}}
 
-Low end and integrated improved but just a little less
-graph: performance of low end gpus
+{{< figure size="large" src="/images/entry/improvements-to-hardware-renderer/pokemon_beforeafter_graph.png" title="According to telemetry data, Pokémon is the most played game on Citra" >}}
+
+{{< figure size="large" src="/images/entry/improvements-to-hardware-renderer/mh_beforeafter_graph.png" title="But Monster Hunter is catching up in playtime" >}}
 
 ## Obstacles to Emulating the PICA200 on a GPU
 
@@ -131,11 +127,11 @@ While the developers probably wrote in a high level shader language that support
 The PICA200 supports barebones `CALL`, `IF`, and `LOOP` operations, but also supports an arbitrary `JMP` that can go to any address.
 Translating PICA200 shaders into GLSL (OpenGL Shader Language) means that you'll have to be prepared to rewrite every arbitrary `JMP` without using a `goto` as GLSL doesn't support them.
 
-[phantom](https://github.com/phanto-m/) assumed the worst when they originally translated PICA200 shaders into GLSL and wrote a monsterous switch statement that would have a case for every jump target and act as a PICA200 shader interpreter.
+[phantom](https://github.com/phanto-m/) assumed the worst when they originally translated PICA200 shaders into GLSL and wrote a monstrous switch statement that would have a case for every jump target and act as a PICA200 shader interpreter.
 This worked, but proved to be slower than the software renderer!
 Now that [phantom](https://github.com/phanto-m/) knew it was possible, and they had some data about how the average PICA200 shader looked, they took to rewrite it with the goal to make it fast.
 While the shaders could theoretically be very unruly and hard to convert, almost all the shaders were well behaved, presumably because they are compiled from a higher level language.
-This time around, [phantom](https://github.com/phanto-m/) generated native GLSL functions wherever possible by analyizing the control flow of the instructions, and the results are much prettier and faster.
+This time around, [phantom](https://github.com/phanto-m/) generated native GLSL functions wherever possible by analyzing the control flow of the instructions, and the results are much prettier and faster.
 Armed with the new knowledge, [phantom](https://github.com/phanto-m/) rewrote the conversion a third time, and optimized the generated shaders even further.
 What started off slower than the software renderer ended up being the massive performance boost we have today!
 
@@ -171,7 +167,7 @@ No one had yet tested to see if it worked on AMD GPUs.
 We called for our good friend [JMC47](https://dolphin-emu.org/blog/authors/JMC47/) to break out the AMD card he uses for testing Dolphin, and Citra crashed the driver! Oh no!
 
 From [JMC47](https://dolphin-emu.org/blog/authors/JMC47/)'s time in Dolphin, he's made a few friends here and there, and he found someone willing to investigate.
-After a few grueling weeks, [JonnyH](https://github.com/JonnyH) was able to narrow down what the problem is, and luckily it's not a bug in the AMD drivers.
+After a few gruelling weeks, [JonnyH](https://github.com/JonnyH) was able to narrow down what the problem is, and luckily it's not a bug in the AMD drivers.
 It turns out that it's a bug in the GL specification, or more precisely, the exact issue is ambiguous wording.
 [glDrawRangeElementsBaseVertex](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glDrawRangeElementsBaseVertex.xhtml) states that the indices should be a pointer, but doesn't say whether the pointer should be to CPU memory or GPU memory.
 Citra passed a pointer to CPU memory without a second thought, as both Nvidia and Intel drivers seemed fine with it, but AMD drivers are strict.

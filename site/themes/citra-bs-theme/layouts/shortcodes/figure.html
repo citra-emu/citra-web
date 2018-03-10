@@ -1,6 +1,6 @@
 {{ $type := index .Params "type" }}
 
-<figure>
+<figure {{ if eq (.Get "size") "large" }}style="padding: 20px 0px;"{{ end }}>
     {{ if eq $type "youtube"  }}
         {{/* copy pasted from hugo source code */}}
         <div {{ if .Get "class" }}class="{{ .Get "class" }}"{{ else }}style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;"{{ end }}>
