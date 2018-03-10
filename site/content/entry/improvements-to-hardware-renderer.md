@@ -1,5 +1,5 @@
 +++
-date = "2018-02-28T17:00:00-04:00"
+date = "2018-03-10T17:00:00-04:00"
 title = "Hardware Renderer Updates"
 tags = [ "feature-update" ]
 author = "jroweboy"
