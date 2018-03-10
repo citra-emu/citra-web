@@ -4,7 +4,7 @@ title = "Hardware Renderer Updates"
 tags = [ "feature-update" ]
 author = "jroweboy"
 banner = "hardware-shaders.png"
-forum = 9999
+forum = 11831
 +++
 
 ## Cut to the chase, how fast is this?
