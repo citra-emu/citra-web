@@ -179,7 +179,19 @@ function processGame(game) {
       model.testcase_date = "2000-01-01";
     } else {
       let recent = model.testcases[0];
-      model.compatibility = recent.compatibility;
+      // The displayed compatibility rating is an weighted arithmetic mean of the submitted ratings.
+      let numerator = 0;
+      let denominator = 0;
+      model.testcases.forEach(testcase => {
+        // Build date is a better metric but testcases from the TOML files only have a submission date.
+        let weigh_date = new Date(testcase.buildDate == undefined ? testcase.date : testcase.buildDate);
+        // The test case is weighted on an exponential decay curve such that a test case is half as relevant as each month (30 days) passes.
+        // The exponent is obtained by dividing the time in millisecond between the current date and date of testing by the number of milliseconds in 30 days (but negative because it's a decay).
+        let weight = Math.pow(.5, (currentDate - weigh_date) / -(30 * 1000 * 3600 * 24));
+        numerator += testcase.compatibility * weight;
+        denominator += weight;
+      });
+      model.compatibility = Math.round(numerator / denominator).toString();
       model.testcase_date = recent.date;
     }
 
