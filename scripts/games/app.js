@@ -22,6 +22,12 @@ const fsPathHugoIcon = '../../site/static/images/game/icons';
 const fsPathHugoScreenshots = '../../site/static/images/screenshots0';
 const fsPathHugoSavefiles = '../../site/static/savefiles/';
 
+process.on('unhandledRejection', err => {
+  logger.error('Unhandled rejection on process.');
+  logger.error(err);
+  process.exit(1);
+});
+
 function gitPull(directory, repository) {
   if (fs.existsSync(directory)) {
       logger.info(`Fetching latest from Github : ${directory}`);
@@ -115,8 +121,7 @@ setup().then(function() {
         fs.mkdirSync(path);
     }
   });
-})
-.then(function() {
+}).then(function() {
   // Transform wiki entries to lowercase
   const files = fs.readdirSync(fsPathWiki);
 
@@ -129,9 +134,9 @@ setup().then(function() {
   getDirectories(fsPathCode).forEach(function(game) {
     processGame(game);
   });
-})
-.catch(function(err) {
+}).catch(function(err) {
   logger.error(err);
+  process.exit(1);
 });
 
 function processGame(game) {
