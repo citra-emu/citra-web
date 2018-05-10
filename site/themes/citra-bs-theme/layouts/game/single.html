@@ -73,7 +73,7 @@
             <td>Title IDs</td>
             <td>
               {{ range .Params.releases }}
-                <div><img src="{{ $BaseURL }}/images/regions/{{ .region }}.png" /> {{ .title }}</div>
+                <div><img src="{{ $BaseURL }}/images/regions/{{ .region }}.png" /> {{ .id }}</div>
               {{ end }}
             </td>
           </tr>
@@ -145,7 +145,7 @@
         <tbody>
           {{- range .Params.issues }}
           <tr>
-            <td><a href="https://github.com/citra-emu/citra/issues/{{ .number }}">{{ .title }}</a></td>
+            <td><a href="https://github.com/citra-emu/citra/issues/{{ .id }}">{{ .title }}</a></td>
             <td>{{ dateFormat "January 2, 2006" .created_at }}</td>
             <td>{{ dateFormat "January 2, 2006" .updated_at }}</td>
           </tr>
