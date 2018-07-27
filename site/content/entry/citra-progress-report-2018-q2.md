@@ -25,9 +25,23 @@ This allow you to keep titles across different folders, and if you have any
 launchable titles installed into Citra's virtual SD card or NAND, they'll also
 show up in their own section so you can boot them from the game list.
 
-<!-- TODO: Write PRs -->
-
 ## [Add support for stereoscopic 3D](https://github.com/citra-emu/citra/pull/3632) by [N00byKing](https://github.com/N00byKing)
+
+If you are one of the lucky few with a 3D TV or monitor attached to your
+computer, stereoscopic 3D support has just been added to Citra! You can enable
+it by heading to <kbd><samp>Emulation</samp> &rarrow; <samp>Configure...</samp> &rarrow; <samp>Graphics</samp> &rarrow; <samp>Layout</samp></kbd>,
+ticking the <samp>Enable Stereoscopic 3D</samp> checkbox, and changing the
+screen layout to <samp>Side by Side</samp>.
+
+{{< figure src="/images/entry/citra-progress-report-2018-q2/3d-sxs.png" 
+    title="Although you can't see this in 3D, try crossing your eyes or using a mirror!" >}}
+
+If you want to take a look at the results, I've also prepared a rendering in
+the 3DS' native 3D image format. Download this file and drop it into your SD
+card, or navigate to this link on your 3DS to take a look:
+[](/images/entry/citra-progress-report-2018-q2/3d-sxs.mpo)
+
+<!-- TODO: Write PRs -->
 
 ## [Implement shadow map](https://github.com/citra-emu/citra/pull/3778) by [wwylele](https://github.com/wwylele)
 
