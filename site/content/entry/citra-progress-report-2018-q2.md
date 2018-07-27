@@ -86,8 +86,17 @@ with OpenGL 4.2 is guaranteed to work correctly. **Citra only requires a minimum
 compliance to OpenGL 3.3, but OpenGL 4.2 compliance may lead to more accurate
 rendering.**
 
-<!-- TODO: Write PRs -->
-
 ## [Implement cubeb audio backend](https://github.com/citra-emu/citra/pull/3776) by [darkf](https://github.com/darkf)
+
+[`cubeb`](https://github.com/kinetiknz/cubeb/) is an audio library written by
+the Mozilla Foundation that's cross-platform, and *fast*. Reports from [Dolphin's
+blog](https://dolphin-emu.org/blog/2017/06/03/dolphin-progress-report-may-2017/#50-3937-add-cubeb-audio-backend-by-ligfx)
+showed that it had a *third* of the latency of their OpenAL backend. And now,
+thanks to [darkf](https://github.com/darkf), with help from [MerryMage](https://github.com/MerryMage)
+Citra can now benefit from that same low latency audio that Dolphin and Mozilla
+Firefox have. This will lead to significantly less distortion and stuttering in
+your games. Just remember to enable it in the configuration menu!
+
+## Et. al.
 
 <!-- TODO: Write outtro paragraph -->
