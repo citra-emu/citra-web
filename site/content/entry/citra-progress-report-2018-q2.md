@@ -1,14 +1,17 @@
 +++
-date = "2018-07-19T12:08:00-05:00"
+date = "2018-07-27T12:21:53-05:00"
 title = "Citra Progress Report - 2018 Q2"
 tags = [ "progress-report" ]
 author = "anodium"
 forum = 0
 +++
 
-<!-- TODO: Write intro paragraph -->
+Hello everyone to the summer (or winter, for those on the southern half of this
+Earth) edition of Citra's progess reports. Although not very many changes have
+happened, most have been focused on accuracy improvements and sorely needed user
+experience improvements. Now, enough appetizing, have your entr&eacute;e:
 
-<!-- TODO: Research PRs -->
+<!-- TODO: Write PRs -->
 
 ## [Add continue, pause, speed limit hotkeys](https://github.com/citra-emu/citra/pull/3594) by [valentinvanelslande](https://github.com/valentinvanelslande)
 ## [Add support for multiple game directories](https://github.com/citra-emu/citra/pull/3617) by [BreadFish64](https://github.com/BreadFish64)
@@ -21,7 +24,5 @@ forum = 0
 ## gl_rasterizer improvements ([#3724](https://github.com/citra-emu/citra/pull/3724) and [#3789](https://github.com/citra-emu/citra/pull/3789)) by [Markus Wick](https://github.com/degasus)
 
 ## [Implement cubeb audio backend](https://github.com/citra-emu/citra/pull/3776) by [darkf](https://github.com/darkf)
-
-<!-- TODO: Write PRs -->
 
 <!-- TODO: Write outtro paragraph -->
