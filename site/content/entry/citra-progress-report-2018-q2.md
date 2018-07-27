@@ -18,9 +18,15 @@ pausing, unpausing, and toggling speed limiting. By default, you can pause with
 <kbd>F4</kbd> and toggle speed limiting with <kbd><kbd>ctrl</kbd>+<kbd>Z</kbd></kbd>.
 But, of course, you can bind these actions to other keys in the Settings.
 
+## [Add support for multiple game directories](https://github.com/citra-emu/citra/pull/3617) by [BreadFish64](https://github.com/BreadFish64)
+
+You can now configure Citra to search multiple directories for games and apps!
+This allow you to keep titles across different folders, and if you have any
+launchable titles installed into Citra's virtual SD card or NAND, they'll also
+show up in their own section so you can boot them from the game list.
+
 <!-- TODO: Write PRs -->
 
-## [Add support for multiple game directories](https://github.com/citra-emu/citra/pull/3617) by [BreadFish64](https://github.com/BreadFish64)
 ## [Add support for stereoscopic 3D](https://github.com/citra-emu/citra/pull/3632) by [N00byKing](https://github.com/N00byKing)
 
 ## [Implement shadow map](https://github.com/citra-emu/citra/pull/3778) by [wwylele](https://github.com/wwylele)
