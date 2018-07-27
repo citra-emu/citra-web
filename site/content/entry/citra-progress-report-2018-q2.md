@@ -41,13 +41,52 @@ the 3DS' native 3D image format. Download this file and drop it into your SD
 card, or navigate to this link on your 3DS to take a look:
 [](/images/entry/citra-progress-report-2018-q2/CTRA0001.MPO)
 
-<!-- TODO: Write PRs -->
-
 ## [Implement shadow map](https://github.com/citra-emu/citra/pull/3778) by [wwylele](https://github.com/wwylele)
 
-## Shader JIT improvements ([#3787](https://github.com/citra-emu/citra/pull/3787) and [#3788](https://github.com/citra-emu/citra/pull/3788)) by [wwylele](https://github.com/wwylele)
+Shadow mapping is a way to quickly apply shadows to 3D scenes. It first renders
+the scene without any lighting, texture, or colour information, with a virtual
+camera from where the light source begins. Then, from that rendering the depth
+map is extracted. That is then applied as a texture to the darkened scene, making
+areas of it directly visible from the light source appear more brightly lit.
 
-## gl_rasterizer improvements ([#3724](https://github.com/citra-emu/citra/pull/3724) and [#3789](https://github.com/citra-emu/citra/pull/3789)) by [Markus Wick](https://github.com/degasus)
+The PICA200 and OpenGL both implement this in different ways, particularly in
+two important areas:
+
+ * The first is that PICA200 supports a variant called "soft shadows", where the
+depth map is blurred before being applied to the scene. This results in shadows
+that seem less jagged and sharp, making the light source feel more diffuse and
+evenly spread out throughout the scene. OpenGL doesn't support this at all.
+
+ * The second is that the PICA200 stores depth maps intended for shadow mapping as
+plain textures in the RGBA8 format. A lot of games exploit this in order to quickly
+convert other types of textures from an internal format to RGBA8. But, OpenGL
+stores these maps in a format internal to that graphics card, like any other map.
+
+The first point isn't as significant, since the softness can be ignored on OpenGL,
+resulting in a very fast (but inaccurate) shadow mapping. Because games rarely
+use soft shadows, this can be ignored realtively safely.
+
+The second point though, because games use it very often, it has to be implemented
+accurately. The naïve way would be to simply convert internal textures to RGBA8
+manually, but this would slow rendering down to a crawl. The smart way would be
+to try and trick the graphics card driver into performing a similar conversion,
+but this exposed a lot of bugs in it, leading to instability.
+
+After some very hard work by [wwylele](https://github.com/wwylele), both problems
+were solved by one stone. OpenGL supports an extension called Image Load/Store,
+which allows shaders to read and write to any texture directly. Using this, he
+created a shader that could accurately implement both soft shadows, and convert
+the depth map from its internal format to RGBA8 very quickly.
+
+Unfortunately, because Image Load/Store is an optional extension, not every
+OpenGL 3.3 graphics card will support it. In these cases, Citra will simply ignore
+shadow maps, making the rendering inaccurate but usable. Image Load/Store became
+a mandatory part of OpenGl in version 4.2, so every graphics card that complies
+with OpenGL 4.2 is guaranteed to work correctly. **Citra only requires a minimum
+compliance to OpenGL 3.3, but OpenGL 4.2 compliance may lead to more accurate
+rendering.**
+
+<!-- TODO: Write PRs -->
 
 ## [Implement cubeb audio backend](https://github.com/citra-emu/citra/pull/3776) by [darkf](https://github.com/darkf)
 
