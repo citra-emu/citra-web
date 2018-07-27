@@ -91,7 +91,7 @@ rendering.**
 [`cubeb`](https://github.com/kinetiknz/cubeb/) is an audio library written by
 the Mozilla Foundation that's cross-platform, and *fast*. Reports from [Dolphin's
 blog](https://dolphin-emu.org/blog/2017/06/03/dolphin-progress-report-may-2017/#50-3937-add-cubeb-audio-backend-by-ligfx)
-showed that it had a *third* of the latency of their OpenAL backend. And now,
+showed that it ran at a *third* of the latency of their OpenAL backend. And now,
 thanks to [darkf](https://github.com/darkf), with help from [MerryMage](https://github.com/MerryMage)
 Citra can now benefit from that same low latency audio that Dolphin and Mozilla
 Firefox have. This will lead to significantly less distortion and stuttering in
@@ -99,4 +99,6 @@ your games. Just remember to enable it in the configuration menu!
 
 ## Et. al.
 
-<!-- TODO: Write outtro paragraph -->
+Thank you to [everyone](https://github.com/citra-emu/citra/graphs/contributors?from=2018-05-20&to=2018-07-31&type=c)
+for pouring your blood and sweat into this project. Citra needs contributors
+like you to stay alive and become the best it can be.
