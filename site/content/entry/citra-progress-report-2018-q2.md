@@ -39,7 +39,7 @@ screen layout to <samp>Side by Side</samp>.
 If you want to take a look at the results, I've also prepared a rendering in
 the 3DS' native 3D image format. Download this file and drop it into your SD
 card, or navigate to this link on your 3DS to take a look:
-[](/images/entry/citra-progress-report-2018-q2/3d-sxs.mpo)
+[](/images/entry/citra-progress-report-2018-q2/CTRA0001.MPO)
 
 <!-- TODO: Write PRs -->
 
