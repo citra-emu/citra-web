@@ -11,9 +11,15 @@ Earth) edition of Citra's progess reports. Although not very many changes have
 happened, most have been focused on accuracy improvements and sorely needed user
 experience improvements. Now, enough appetizing, have your entr&eacute;e:
 
+## [Add pause, speed limit hotkeys](https://github.com/citra-emu/citra/pull/3594) by [valentinvanelslande](https://github.com/valentinvanelslande)
+
+Let's start with a simple but sweet one &emdash; you can now assign hotkeys to
+pausing, unpausing, and toggling speed limiting. By default, you can pause with
+<kbd>F4</kbd> and toggle speed limiting with <kbd><kbd>ctrl</kbd>+<kbd>Z</kbd></kbd>.
+But, of course, you can bind these actions to other keys in the Settings.
+
 <!-- TODO: Write PRs -->
 
-## [Add continue, pause, speed limit hotkeys](https://github.com/citra-emu/citra/pull/3594) by [valentinvanelslande](https://github.com/valentinvanelslande)
 ## [Add support for multiple game directories](https://github.com/citra-emu/citra/pull/3617) by [BreadFish64](https://github.com/BreadFish64)
 ## [Add support for stereoscopic 3D](https://github.com/citra-emu/citra/pull/3632) by [N00byKing](https://github.com/N00byKing)
 
