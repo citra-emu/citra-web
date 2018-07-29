@@ -64,7 +64,7 @@ async function run() {
 
       // Reverse the testcases so the most recent ones show up top.
       x.testcases = x.testcases.reverse()
-      x.issues = x.issues || []
+      x.issues = x.issues.filter(x => x.state === 'open') || []
 
       // Copy the boxart for the game.
       fs.copySync(`${fsPathCode}/${x.id}/boxart.png`, `${fsPathHugoBoxart}/${x.id}.png`);
