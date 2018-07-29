@@ -60,10 +60,9 @@ async function run() {
       // In Hugo, data keys need to be strings.
       x.compatibility = x.compatibility.toString()
 
+      // Hugo requires compatibility to be a string to link to data JSON.
       x.testcases.forEach(x => x.compatibility = x.compatibility.toString())
-
-      // Reverse the testcases so the most recent ones show up top.
-      x.testcases = x.testcases.reverse()
+      
       x.issues = x.issues.filter(x => x.state === 'open') || []
 
       // Copy the boxart for the game.
