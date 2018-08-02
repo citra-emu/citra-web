@@ -64,7 +64,7 @@ stores these maps in a format internal to that graphics card, like any other map
 
 The first point isn't as significant, since the softness can be ignored on OpenGL,
 resulting in a very fast (but inaccurate) shadow mapping. Because games rarely
-use soft shadows, this can be ignored realtively safely.
+use soft shadows, this can be ignored relatively safely.
 
 The second point though, because games use it very often, it has to be implemented
 accurately. The naïve way would be to simply convert internal textures to RGBA8
