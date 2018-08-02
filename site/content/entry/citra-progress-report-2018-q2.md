@@ -16,7 +16,9 @@ experience improvements. Now, enough appetizing, have your entr&eacute;e:
 Let's start with a simple but sweet one &emdash; you can now assign hotkeys to
 pausing, unpausing, and toggling speed limiting. By default, you can pause with
 <kbd>F4</kbd> and toggle speed limiting with <kbd><kbd>ctrl</kbd>+<kbd>Z</kbd></kbd>.
-But, of course, you can bind these actions to other keys in the Settings.
+But, of course, you can bind these actions to other keys in Citra's `qt-config.ini`.
+The property for pausing is `Shortcuts\Main%20Window\Continue\Pause\KeySeq` and
+for speed toggling it is `Shortcuts\Main%20Window\Toggle%20Speed%20Limit\KeySeq`.
 
 ## [Add support for multiple game directories](https://github.com/citra-emu/citra/pull/3617) by [BreadFish64](https://github.com/BreadFish64)
 
