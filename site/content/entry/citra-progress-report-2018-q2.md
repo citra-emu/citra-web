@@ -57,6 +57,20 @@ it now has fully functional software keyboard emulation!
 Whenever a game requests it, Citra will pause the game and pull up a text box that
 you can fill in like any other.
 
+## Open Source System Archives ([#3977](https://github.com/citra-emu/citra/pull/3977), [#3881](https://github.com/citra-emu/citra/pull/3881)) by [B3n30](https://github.com/B3n30)
+
+Many Nintendo 3DS games require the use of system archives, that contain things
+like fonts, a bad word list, and assets for Miis. Because these are copyrighted,
+Citra could not include them, and users had to dump a copy from their consoles,
+which was a generally tedious and error-prone process.
+
+Now, [B3n30](https://github.com/B3n30) has created open source alternative fonts
+and a bad word list that can be used in games instead of the official archives.
+And, because these are open source, they are now included with Citra. If a game
+requires either archive, and you haven't dumped them yet, it'll automatically give
+the game the alternative archives, further decreasing Citra's dependency on
+copyrighted material.
+
 ## [Implement shadow map](https://github.com/citra-emu/citra/pull/3778) by [wwylele](https://github.com/wwylele)
 
 Shadow mapping is a way to quickly apply shadows to 3D scenes. It first renders
