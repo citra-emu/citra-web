@@ -108,6 +108,12 @@ which allows shaders to read and write to any texture directly. Using this, he
 created a shader that could accurately implement both soft shadows, and convert
 the depth map from its internal format to RGBA8 very quickly.
 
+{{< figure src="/images/entry/citra-progress-report-2018-q2/shadowmap-before.png" 
+    title="Before Shadow Mapping" >}}
+
+{{< figure src="/images/entry/citra-progress-report-2018-q2/shadowmap-after.png" 
+    title="After Shadow Mapping" >}}
+
 Unfortunately, because Image Load/Store is an optional extension, not every
 OpenGL 3.3 graphics card will support it. In these cases, Citra will simply ignore
 shadow maps, making the rendering inaccurate but usable. Image Load/Store became
