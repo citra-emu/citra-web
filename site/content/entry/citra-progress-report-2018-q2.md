@@ -43,6 +43,20 @@ the 3DS' native 3D image format. Download this file and drop it into your SD
 card, or navigate to this link on your 3DS to take a look:
 [](/images/entry/citra-progress-report-2018-q2/CTRA0001.MPO)
 
+## [Software Keyboard Implementation](https://github.com/citra-emu/citra/pull/3850) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
+
+For the longest time, many games were unplayable or needed workarounds on Citra
+due to them needing the software keyboard applet. The reason being that whenever
+they would try to call it, Citra didn't have it implemented and so would crash.
+But now, thanks to [zhaowenlan1779](https://github.com/zhaowenlan1779) and [jroweboy](https://github.com/jroweboy),
+it now has fully functional software keyboard emulation!
+
+{{< figure src="/images/entry/citra-progress-report-2018-q2/swkbd.png" 
+    title="Now the professor will finally stop calling you CITRA!" >}}
+
+Whenever a game requests it, Citra will pause the game and pull up a text box that
+you can fill in like any other.
+
 ## [Implement shadow map](https://github.com/citra-emu/citra/pull/3778) by [wwylele](https://github.com/wwylele)
 
 Shadow mapping is a way to quickly apply shadows to 3D scenes. It first renders
