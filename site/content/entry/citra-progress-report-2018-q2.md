@@ -47,12 +47,13 @@ card, or navigate to this link on your 3DS to take a look:
 
 For the longest time, many games were unplayable or needed workarounds on Citra
 due to them needing the software keyboard applet. The reason being that whenever
-they would try to call it, Citra didn't have it implemented and so would crash.
+they would try to call it, Citra didn't implement it, and so would simply tell
+the game that the user entered "Citra" and tapped OK, without actually prompting.
 But now, thanks to [zhaowenlan1779](https://github.com/zhaowenlan1779) and [jroweboy](https://github.com/jroweboy),
 it now has fully functional software keyboard emulation!
 
 {{< figure src="/images/entry/citra-progress-report-2018-q2/swkbd.png" 
-    title="Now the professor will finally stop calling you CITRA!" >}}
+    title="Now the professor will finally stop calling you Citra!" >}}
 
 Whenever a game requests it, Citra will pause the game and pull up a text box that
 you can fill in like any other.
