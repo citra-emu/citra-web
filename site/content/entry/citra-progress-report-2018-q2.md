@@ -124,8 +124,8 @@ soft shadows, and convert the depth map from its internal format to RGBA8 very
 quickly.
 
 {{< sidebyside "image" "/images/entry/citra-progress-report-2018-q2/"
-    "shadow_map_before.png=Before Shadow Mapping"
-    "shadow_map_after.png=After Shadow Mapping" >}}
+    "shadowmap-before.png=Before Shadow Mapping"
+    "shadowmap-after.png=After Shadow Mapping" >}}
 
 Unfortunately, because Image Load/Store is an optional extension, not every
 OpenGL 3.3 graphics card will support it. In these cases, Citra will simply ignore
@@ -154,7 +154,7 @@ You can now configure the volume level of Citra directly from the configuration
 window. This allows you to set an individual volume level for Citra without
 having to manually set it in your operating system settings.
 
-{{< figure src="/images/entry/citra-progress-report-2018-q2/volume_slider.png"
+{{< figure src="/images/entry/citra-progress-report-2018-q2/volume-slider.png"
     title="Volume Slider" >}}
 
 ## [Discord Rich Presence](https://github.com/citra-emu/citra/pull/3883) by [CaptV0rt3x](https://github.com/CaptV0rt3x)
