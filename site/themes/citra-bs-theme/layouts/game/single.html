@@ -116,10 +116,10 @@
             {{- $rating := index $siteCompatibility .compatibility }}
                     <tr>
                       <td class="advanced-view">{{ if isset . "id" }} {{ .id }} {{ end }}</td>
-                      <td>{{ dateFormat "01/02/2006" .date }}</td>
-                      <td><a href="https://community.citra-emu.org/u/{{ .author }}/summary">{{ .author }}</a></td>
+                      <td>{{ if isset . "buildDate" }} {{ dateFormat "01/2/2006" .buildDate }} {{ end }}</td>
+                      <td><a href="https://community.citra-emu.org/u/{{ .author }}/summary">{{ .author }}</a> <small>on {{ dateFormat "01/02/2006" .date }}</small></td>
                       <td>{{ .cpu }}<br />{{ .gpu }}<br />{{ .os }}</td>
-                      <td>{{ if isset . "buildName" }}{{ .buildName }} Build<br />{{ end }}{{ .version }}<br />{{ if isset . "buildDate" }} {{ dateFormat "01/2/2006" .buildDate }} {{ end }}</td>
+                      <td>{{ if isset . "buildName" }}{{ .buildName }} Build<br />{{ end }}{{ .version }}</td>
                       <td><b><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</b></td>
                     </tr>
           {{ end }}
