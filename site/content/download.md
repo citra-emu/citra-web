@@ -29,7 +29,7 @@ The Citra updater provides a easy interface to install, update and manage Citra.
 </div>
 <a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe" class="btn btn-lg btn-primary dl-updater-button" id="dl-windows-x64">Download for Windows x64</a>
 <a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-mac.dmg" class="btn btn-lg btn-primary dl-updater-button" id="dl-mac-x64">Download for Mac x64</a>
-<a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-linux" class="btn btn-lg btn-primary dl-updater-button" id="dl-linux-x64">Download for Linux x64</a>
+<a href="https://flatpak.citra-emu.org/" class="btn btn-lg btn-primary dl-updater-button" id="dl-linux-x64">Download for Linux x64 (Flatpak)</a>
 
 <br />
 <span id="other-container"><a href="#" id="other-platforms-link">Other platforms</a> | </span>
@@ -87,7 +87,7 @@ links to get you started however:<br />
 <br />
 <a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe">Windows x64 Installer</a><br />
 <a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-mac.dmg">Mac x64 Installer</a><br />
-<a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-linux">Linux x64 Installer</a><br /> 
+<a href="https://flatpak.citra-emu.org/">Download for Linux x64 (Flatpak)</a><br /> 
 <a href="https://github.com/citra-emu/citra-nightly/releases">Nightly Builds</a><br />
 <a href="https://github.com/citra-emu/citra-canary/releases">Canary Builds</a> <br />
 </div>
