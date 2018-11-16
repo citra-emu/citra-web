@@ -168,15 +168,13 @@
           <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Uploaded By</th>
           </tr>
         </thead>
         <tbody>
           {{ range .Params.savefiles }}
             <tr>
-              <td><a href="/savefiles/{{ $gameName }}/{{ .filename }}">{{ .title }}</a></td>
+              <td><a href="/savefiles/{{ $gameName }}/{{ .basename }}.zip">{{ .title }}</a></td>
               <td>{{ .description }}</td>
-              <td><a href="https://community.citra-emu.org/u/{{ .author }}/summary">{{ .author }}</a></td>
             </tr>
           {{ end }}
         </tbody>
