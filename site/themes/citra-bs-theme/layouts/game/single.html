@@ -169,7 +169,6 @@
             <th>Name</th>
             <th>Description</th>
             <th>Uploaded By</th>
-            <th>Date</th>
           </tr>
         </thead>
         <tbody>
@@ -178,7 +177,6 @@
               <td><a href="/savefiles/{{ $gameName }}/{{ .filename }}">{{ .title }}</a></td>
               <td>{{ .description }}</td>
               <td><a href="https://community.citra-emu.org/u/{{ .author }}/summary">{{ .author }}</a></td>
-              <td>{{ dateFormat "January 2, 2006" .date }}</td>
             </tr>
           {{ end }}
         </tbody>
