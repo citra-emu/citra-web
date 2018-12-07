@@ -149,7 +149,7 @@ It's daunting to know that you'll gain a deep understanding of the architecture 
 ## Wait, How Long Until This Starts Playing Sound?
 
 Several months after starting, the interpreter was coming along nicely, and it was time to start hooking things together.
-As a quick explaination about what interpreter is, the interpreter is responsible for running the actual machine code of the audio code, and emulate each of the instructions on the computer that its running on.
+As a quick explaination about what interpreter is, the interpreter is responsible for running the actual machine code of the audio code, and emulating each of the instructions on the computer that it's running on.
 This marked another very exciting yet very scary point in time; it's been about 5 months of work on audio emulation, and all of it in complete silence!
 To understand why, first one must understand that audio hardware is rather complicated, and it's more than just the running machine code.
 Anything beyond simple audio output is typically generated through specialized hardware known as a [Digital Signal Processor](https://en.wikipedia.org/wiki/Digital_signal_processor), or DSP for short.
