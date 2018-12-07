@@ -1,13 +1,11 @@
 +++
-date = "2018-12-07T17:00:00-04:00"
-title = "Accurate Audio Emulation has Arrived"
+date = "2018-12-07T08:00:00-08:00"
+title = "Accurate Audio Emulation Has Arrived"
 tags = [ "feature-update" ]
 author = "jroweboy"
 banner = "accurate-audio-emulation.png"
 forum = 0
 +++
-
-Thanks to the hard work of one of our very talented developers, some of Citra's longest standing issues are finally fixed! Special thanks to all those who are supporting these efforts on [Patreon](https://www.patreon.com/citraemu). These donations are given directly to support the hard working developers such as [wwylele](https://github.com/wwylele/) who spent almost an entire year of his spare time on the feature in this blog post! We love working on this project, and have a whole lot more to talk about in the coming weeks! Now back to the action!
 
 ## Pokémon X / Y and Many More Games Are Finally Working!
 
@@ -19,7 +17,9 @@ You've been asking for it for years now, and we've been listening, we promise!
 
 <!--more-->
 
-It's been a long time in development, but we are finally pleased to announce that some of the longest standing bugs in Citra are now fixed thanks to the tireless efforts of [wwylele](https://github.com/wwylele/).
+Thanks to the hard work of one of our very talented developers, some of Citra's longest standing issues are finally fixed! Special thanks to all those who are supporting these efforts on [Patreon](https://www.patreon.com/citraemu). These donations are given directly to support the hard working developers such as [wwylele](https://github.com/wwylele/) who spent almost an entire year of his spare time on the feature in this blog post! We love working on this project, and have a whole lot more to talk about in the coming weeks!
+
+It's been a long time in development, but we are finally pleased to announce that many of the oldest bugs in Citra are now fixed thanks to the tireless efforts of [wwylele](https://github.com/wwylele/).
 Among the titles that had issues with Citra's HLE audio emulation, one stands out as the number one most requested game of all time: Pokémon X and Y.
 Before we get too much into the long story behind this great achievement, we should set expectations for what this means for the users of the emulator.
 
@@ -87,7 +87,7 @@ The game would transition from state to state, and mysteriously whenever the gam
 As cool as it is to what causes the softlock, it doesn't answer the big question of *why* the game doesn't transition to the next state like it should.
 After spending more time than anyone could have asked, eventually he burned out and moved on to develop other amazing features for Citra such as multiplayer network support, leaving us without any more clues to why the game freezes.
 
-{{< figure src="/images/entry/accurate-audio-emulation/dp.png" 
+{{< figure src="/images/entry/accurate-audio-emulation/kirby.png"
     title="Kirby Battle Royale's missing sounds have been found!"
 >}}
 
@@ -186,7 +186,7 @@ The fear of failure after spending so much time and effort on this project reall
 By the middle of September, [wwylele](https://github.com/wwylele) had just had enough, and decided to work on something else in the mean time.
 
 {{< figure src="/images/entry/accurate-audio-emulation/conversation.png" 
-    title="It turns out developers are still just regular human beings." 
+    title="It turns out developers are still just regular human beings. Thankfully everything turned out okay!" 
 >}}
 
 ## Success... Finally!
@@ -215,7 +215,7 @@ Finally, on Dec 6th, this is what happened after we hooked it into Citra's audio
 {{< audio src="/resources/entry/accurate-audio-emulation/pokemonx.ogg" >}}
 
 {{< figure src="/images/entry/accurate-audio-emulation/mhgen_najarala_armor_4K.png"
-    title="Even minor issues such as the audio is too loud after changing armor in Monster Hunter Generations is fixed"
+    title="The audio used to be too loud after changing armor in Monster Hunter Generations, but this bug is no more!"
 >}}
 
 ## The Future of Audio in Citra
