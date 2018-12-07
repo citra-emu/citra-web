@@ -31,7 +31,7 @@ We've been able to test a few of the fan favorites such as Pokémon X / Y, Fire 
 
 * How can I test it out?
 
-In the Audio tab of the Configuration menu, there is a new option for Emulation. Selecting "LLE - Accurate" will use the new feature, while the default value "HLE - Fast" will continue to use the original audio code.
+In the Audio tab of the Configuration menu, there is a new option for Emulation. Selecting "LLE (Accurate)" will use the new feature, while the default value "HLE (Fast)" will continue to use the original audio code.
 
 {{< figure src="/images/entry/accurate-audio-emulation/configuration.png" 
     title="You can find the dropdown here. Keep in mind you cannot switch between Fast and Accurate while a game is running"
@@ -86,7 +86,7 @@ As everyone knows, they still didn't work!
 We kept feeding more and more time into features that made the emulation so much better, yet this one very popular, and very stubborn game would not work.
 [Subv](https://github.com/Subv/) spent many long hours reverse engineering the game, and found that at the core of the game lay a state machine that drives the game engine.
 The game would transition from state to state, and mysteriously whenever the game softlocked, it simply wasn't moving onto the next state.
-As cool as it is to what causes the softlock, it doesn't answer the big question of *why* the game doesn't transition to the next state like it should.
+As cool as it is to learn what causes the softlock, it doesn't answer the big question of *why* the game doesn't transition to the next state like it should.
 After spending more time than anyone could have asked, eventually he burned out and moved on to develop other amazing features for Citra such as multiplayer network support, leaving us without any more clues to why the game freezes.
 
 {{< figure src="/images/entry/accurate-audio-emulation/kirby.png"
@@ -220,7 +220,7 @@ Finally, on Dec 6th, this is what happened after we hooked it into Citra's audio
 {{< audio src="/resources/entry/accurate-audio-emulation/pokemonx.ogg" >}}
 
 {{< figure src="/images/entry/accurate-audio-emulation/mhgen_najarala_armor_4K.png"
-    title="The audio used to be too loud after changing armor in Monster Hunter Generations, but this bug is no more!"
+    title="The audio used to be too loud after changing to certain armor in Monster Hunter Generations, but this bug is no more!"
 >}}
 
 ## The Future of Audio in Citra
