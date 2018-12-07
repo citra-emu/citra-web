@@ -4,7 +4,7 @@ title = "Accurate Audio Emulation Has Arrived"
 tags = [ "feature-update" ]
 author = "jroweboy"
 banner = "accurate-audio-emulation.png"
-forum = 0
+forum = 67781
 +++
 
 ## Pokémon X / Y and Many More Games Are Finally Working!
