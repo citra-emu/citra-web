@@ -64,7 +64,8 @@ Written by the very talented [MerryMage](https://github.com/MerryMage/), High Le
 So for emulation, where the goal of many developers is not only to make the emulation accurate, but also to make it *fast*, HLE audio is a great middle ground as you get to have high accuracy while also taking almost no processing effort.
 But as usual, there is one thing that's particularly hard to get right with HLE audio.
 In order to write an effective HLE audio engine, one must first reverse engineer the audio code that the game uses, and truly understand what it does.
-merry spent a long time writing tools to help break down exactly what the game was doing, and also decipher what the audio code is doing *semantically*.
+
+[merry](https://github.com/MerryMage/) spent a long time writing tools to help break down exactly what the game was doing, and also decipher what the audio code is doing *semantically*.
 This turns out to be pretty tricky in practice.
 It's much simpler to look at disassembly and see what the code is doing than it is to really understand why it's doing something, which is a requirement when recreating the audio code.
 Simply put, writing HLE audio support means diving deep into how the code for the game's audio works, and recreating its functionality in Citra, without ever running any actual audio code from the game.
@@ -81,6 +82,7 @@ Looking at the [Citra YouTube channel](https://www.youtube.com/channel/UC_dcdgzu
 At the time, we were just as excited as everyone else to see how well the games were advancing, but at some point, they stopped getting better.
 After CRO support landed to get the games running (thanks to both [Subv](https://github.com/Subv/) and [wwylele](https://github.com/wwylele/)), several fixes to the 3DS GPU emulation, followed by geometry shader support (thanks to the hard work of [neobrain](https://github.com/neobrain/), [JayFoxRox](https://github.com/JayFoxRox/), [ds84182](https://github.com/ds84182), and once again [wwylele](https://github.com/wwylele/)), we really hoped that the games would finally start working!
 As everyone knows, they still didn't work!
+
 We kept feeding more and more time into features that made the emulation so much better, yet this one very popular, and very stubborn game would not work.
 [Subv](https://github.com/Subv/) spent many long hours reverse engineering the game, and found that at the core of the game lay a state machine that drives the game engine.
 The game would transition from state to state, and mysteriously whenever the game softlocked, it simply wasn't moving onto the next state.
@@ -97,6 +99,7 @@ Well-informed users have pointed out for years that the specific sounds that are
 AAC (or [Advanced Audio Coding](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)) is a standard audio format that typically has better sounding audio than mp3 at the same bitrate.
 While we appreciate the detective work, there was one glaring problem with deciding that we just needed to add AAC audio support.
 How *does* one add AAC audio support to Citra's HLE audio?
+
 The answer was talked about earlier, in order to add a new feature in HLE audio, one needs to reverse engineer the audio code that the games use, and then find out exactly how the audio code processes AAC audio; where the data is passed through, where each decoding option is stored, and all the way down what every bit of data written to the audio pipe semantically means.
 To make matters worse, there's no guarentee that this will fix any other games with similar symptoms.
 After all, a game can upload any code it wants to the audio chip, meaning even if they both used AAC audio, they could potentially use different decoding options, causing the HLE AAC decoder to work for one game and not the other.
@@ -120,6 +123,7 @@ Either take a good amount of time to research, reverse engineer, and recreate th
 Both of the options have advantages and disadvantages.
 HLE means it'll be faster overall to get working, but also will likely take a lot more time and effort to fix bugs in other games with slightly different audio code; whereas LLE means that potentially every audio code in every game will *just work*, but also will take a lot longer to write, involve even more detailed technical research, and scariest of all, will probably end up running much slower.
 Weighing the risks and rewards, [wwylele](https://github.com/wwylele) ended up choosing to build out a full LLE audio emulator, what's now known as Teakra.
+
 The first commit on Teakra started in late January 2018, but design and research phase started before this.
 This same audio chip, the TeakLite, was a part of the DSi system as well, albeit only used by a very small number of DSiWare.
 In spite of its limited use on the DSi, [GBATek](http://problemkaputt.de/gbatek.htm#dsixpertteakdsp) is loaded with valuable information about the processor, put together by the reverse engineering efforts of Martin Korth and many other contributors.
@@ -150,6 +154,7 @@ This marked another very exciting yet very scary point in time; it's been about 
 To understand why, first one must understand that audio hardware is rather complicated, and it's more than just the running machine code.
 Anything beyond simple audio output is typically generated through specialized hardware known as a [Digital Signal Processor](https://en.wikipedia.org/wiki/Digital_signal_processor), or DSP for short.
 This custom built hardware is very efficient at transforming and processing audio samples while using less power, enabling the game developers to produce high quality audio without severely impacting battery life.
+
 In order to start seeing results, [wwylele](https://github.com/wwylele) needed to emulate the ways that the 3DS communicates with the DSP chip, such as [Memory Mapped IO](https://en.wikipedia.org/wiki/Memory-mapped_I/O), [hardware interrupts](https://en.wikipedia.org/wiki/Interrupt), and [Direct Memory Access](https://en.wikipedia.org/wiki/Direct_memory_access).
 The first two are a piece of cake to recreate when compared to DMA.
 There are straightfoward test cases one can write and run on a real 3DS to verify how the 3DS and TeakLite DSP respond and recreate this in Teakra, and after a month of work, [wwylele](https://github.com/wwylele) got them both functional.
