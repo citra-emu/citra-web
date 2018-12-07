@@ -19,7 +19,7 @@ You've been asking for it for years now, and we've been listening, we promise!
 
 Thanks to the hard work of one of our very talented developers, some of Citra's longest standing issues are finally fixed! Special thanks to all those who are supporting these efforts on [Patreon](https://www.patreon.com/citraemu). These donations are given directly to support the hard working developers such as [wwylele](https://github.com/wwylele/) who spent almost an entire year of his spare time on the feature in this blog post! We love working on this project, and have a whole lot more to talk about in the coming weeks!
 
-It's been a long time in development, but we are finally pleased to announce that many of the oldest bugs in Citra are now fixed thanks to the tireless efforts of [wwylele](https://github.com/wwylele/).
+It's been a long time in development, but we are finally pleased to announce that many of the oldest bugs in Citra are now fixed in the latest Canary build thanks to the tireless efforts of [wwylele](https://github.com/wwylele/).
 Among the titles that had issues with Citra's HLE audio emulation, one stands out as the number one most requested game of all time: Pokémon X and Y.
 Before we get too much into the long story behind this great achievement, we should set expectations for what this means for the users of the emulator.
 
