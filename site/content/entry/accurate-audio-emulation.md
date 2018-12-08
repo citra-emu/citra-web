@@ -37,7 +37,9 @@ In the Audio tab of the Configuration menu, there is a new option for Emulation.
     title="You can find the dropdown here. Keep in mind you cannot switch between Fast and Accurate while a game is running"
 >}}
 
-* Why is it so slow?
+* Why is it so slow on every game?
+
+**We still recommend using HLE (Fast) Audio emulation until further speed improvements are added to LLE (Accurate) emulation! Today we are pleased to announce that many bugs are fixed, but also we are aware that LLE (Accurate) audio makes every game run at around 5FPS or less!**
 
 As you'll see in the rest of the article, this feature has been in development by a single developer for almost a whole year now. During this time, the focus was on accurate emulation, but now that it's released, we can and will put effort into optimizing it.
 
