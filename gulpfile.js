@@ -2,64 +2,13 @@ const gulp = require('gulp');
 const fs = require('fs');
 const util = require('gulp-util');
 const merge = require('merge-stream');
-const runSequence = require('run-sequence');
 const exec = require('child_process').exec;
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const cssnano = require('cssnano');
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
-const minify = require('gulp-minify');
 const imageResize = require('gulp-image-resize');
-
-const cname = 'citra-emu.org';
-var finalCommand = null;
-
-// Gulp Run Tasks
-gulp.task('default', ['start:setup'], function(callback) {
-  runSequence('hugo', finalCommand, callback);
-});
-
-gulp.task('all', ['start:setup'], function(callback) {
-  runSequence(['scripts:games', 'scripts:twitter', 'scripts:wiki'],
-              ['assets:js', 'assets:fonts', 'assets:scss'],
-              'hugo',
-              'assets:images',
-              finalCommand,
-              callback);
-});
-
-gulp.task('games', ['start:setup'], function(callback) {
-  runSequence('scripts:games', 'hugo', finalCommand, callback);
-});
-
-gulp.task('twitter', ['start:setup'], function(callback) {
-  runSequence('scripts:twitter', 'hugo', finalCommand, callback);
-});
-
-gulp.task('wiki', ['start:setup'], function(callback) {
-  runSequence('scripts:wiki', 'hugo', finalCommand, callback);
-});
-
-gulp.task('assets', ['start:setup'], function(callback) {
-  runSequence(['assets:js', 'assets:fonts', 'assets:scss'], 'hugo', 'assets:images', finalCommand, callback);
-});
-
-// Gulp Pipeline
-gulp.task('start:setup', function() {
-    if (util.env.production) {
-      process.env.HUGO_ENV = 'PRD';
-      process.env.HUGO_BASEURL = 'https://citra-emu.org';
-      finalCommand = 'final:publish';
-    } else {
-      process.env.HUGO_ENV = 'DEV';
-      process.env.HUGO_BASEURL = 'http://localhost:3000';
-      finalCommand = 'final:serve';
-    }
-
-    util.log(`process.env.HUGO_ENV = '${process.env.HUGO_ENV}'`);
-    util.log(`process.env.HUGO_BASEURL = '${process.env.HUGO_BASEURL}'`);
-});
 
 gulp.task('scripts:games', function (callback) {
   exec(`cd ./scripts/games/ && yarn install && node app.js`, function (err, stdout, stderr) {
@@ -134,11 +83,6 @@ gulp.task('hugo', function (cb) {
   });
 });
 
-function fileChange(x) {
-  console.log(`[FileChange] File changed: ${x.path}`);
-  browserSync.reload(x);
-}
-
 gulp.task('final:serve', function() {
     browserSync.init({
         open: false,
@@ -147,15 +91,37 @@ gulp.task('final:serve', function() {
         }
     });
 
-    gulp.watch('src/js/**/*', ['assets:js']);
-    gulp.watch('src/scss/**/*', ['assets:scss']);
-    gulp.watch('site/**/*.html', ['hugo']);
-    gulp.watch('site/**/*.md', ['hugo']);
+    gulp.watch('src/js/**/*', gulp.series('assets:js'));
+    gulp.watch('src/scss/**/*', gulp.series('assets:scss'));
+    gulp.watch('site/**/*.html', gulp.series('hugo'));
+    gulp.watch('site/**/*.md', gulp.series('hugo'));
 
-    gulp.watch('build/**/*').on('change', fileChange);
+    gulp.watch('build/**/*').on('change', function() {
+      browserSync.reload(x);
+    });
 });
 
 gulp.task('final:publish', function(){
   fs.writeFileSync(`build/CNAME`, `${cname}`);
   fs.writeFileSync(`build/robots.txt`, `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
 });
+
+const cname = 'citra-emu.org';
+var finalCommand = null;
+
+if (util.env.production) {
+  process.env.HUGO_ENV = 'PRD';
+  process.env.HUGO_BASEURL = `https://${cname}`
+  finalCommand = 'final:publish';
+} else {
+  process.env.HUGO_ENV = 'DEV';
+  process.env.HUGO_BASEURL = 'http://localhost:3000';
+  finalCommand = 'final:serve';
+}
+
+util.log(`process.env.HUGO_ENV = '${process.env.HUGO_ENV}'`);
+util.log(`process.env.HUGO_BASEURL = '${process.env.HUGO_BASEURL}'`);
+
+gulp.task('default', gulp.series(gulp.parallel('assets:js', 'assets:fonts', 'assets:scss'), 'hugo', 'assets:images', finalCommand))
+gulp.task('all', gulp.series(gulp.parallel('scripts:games', 'scripts:twitter', 'scripts:wiki'), gulp.parallel('assets:js', 'assets:fonts', 'assets:scss'), 'hugo', 'assets:images', finalCommand))
+gulp.task('content', gulp.series('hugo', finalCommand));

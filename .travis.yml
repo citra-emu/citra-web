@@ -8,14 +8,13 @@ cache: yarn
 script:
   - echo '========== Installing gulp & dependencies =========='
   - sudo apt-get install graphicsmagick
-  - wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.31.1/hugo_0.31.1_Linux-64bit.deb
+  - wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_0.52_Linux-64bit.deb
   - sudo dpkg -i hugo.deb
-  - yarn global add gulp
   - yarn install
 
   - echo '========== Starting gulp deploy task =========='
   - hugo version
-  - gulp all --production
+  - yarn run gulp all --production
 deploy:
  provider: pages
  skip_cleanup: true
