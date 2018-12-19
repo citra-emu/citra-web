@@ -52,6 +52,7 @@ gulp.task('assets:images', function() {
   var screenshotImages = gulp.src(`build/images/screenshots/*`)
       .pipe(imageResize({ width: 400, height: 240, crop: false }))
       .pipe(gulp.dest(`build/images/screenshots/thumbs`));
+  
   return merge(baseImages, jumbotronImages, bannerImages, boxartImages, iconImages, screenshotImages);
 });
 
@@ -83,7 +84,7 @@ gulp.task('hugo', function (cb) {
   });
 });
 
-gulp.task('final:serve', function() {
+gulp.task('final:serve', function(done) {
     browserSync.init({
         open: false,
         server: {
@@ -99,11 +100,14 @@ gulp.task('final:serve', function() {
     gulp.watch('build/**/*').on('change', function() {
       browserSync.reload(x);
     });
+
+    done()
 });
 
-gulp.task('final:publish', function(){
+gulp.task('final:publish', function(done) {
   fs.writeFileSync(`build/CNAME`, `${cname}`);
   fs.writeFileSync(`build/robots.txt`, `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
+  done()
 });
 
 const cname = 'citra-emu.org';
