@@ -97,7 +97,7 @@ gulp.task('final:serve', function(done) {
     gulp.watch('site/**/*.html', gulp.series('hugo'));
     gulp.watch('site/**/*.md', gulp.series('hugo'));
 
-    gulp.watch('build/**/*').on('change', function() {
+    gulp.watch('build/**/*').on('change', function(x) {
       browserSync.reload(x);
     });
 
