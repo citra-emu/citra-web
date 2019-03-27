@@ -33,7 +33,7 @@ This is an English only forum, please do not post in any other language. If you 
 
 ## Repercussions
 
-First and foremost, breaking a rule related to piracy will result in an immediate suspension of your account, and likely the deletion of the infringing post.
+First and foremost, breaking a rule related to piracy will result in a warning from the moderators, and likely the deletion of the infringing post if it has links to copyrighted material.
 
 The moderation staff will discuss prolonged or permanent suspension beforehand on every case, with the only exceptions being SPAM, or anything imminently harmful such as harassment.
 

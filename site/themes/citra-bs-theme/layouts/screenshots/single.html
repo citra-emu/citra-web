@@ -8,7 +8,7 @@
     {{ $fileTitle := (index (split $fileTitle ".") 0) }}
     <div class="popup-gallery col-lg-3 col-md-4 col-xs-6 thumb">
       <a class="thumbnail" href="/images/screenshots/{{ .Name }}" title="{{ $fileTitle }}">
-        <img class="img-responsive nearest-neighbor" src="/images/screenshots/{{ .Name }}">
+        <img class="img-responsive nearest-neighbor" src="/images/screenshots/thumbs/{{ .Name }}">
       </a>
     </div>
   {{ end }}

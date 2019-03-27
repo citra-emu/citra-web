@@ -1,20 +1,19 @@
 {
-  "name": "citra-wiki",
+  "name": "citra-games",
   "version": "1.0.0",
-  "description": "Used in Citra Hugo to import Wiki articles.",
+  "description": "Used by Citra to generate markdown articles for GameDb.",
   "homepage": "https://citra-emu.org/",
   "author": "Flame Sage <chris062689@gmail.com>",
   "main": "app.js",
   "dependencies": {
-    "delete": "^0.3.2",
     "fs-extra": "^3.0.1",
-    "rimraf": "^2.6.1",
-    "sanitize-html": "^1.14.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
     "sync-exec": "^0.6.2",
-    "toml": "^2.3.2",
+    "tomlify-j0.4": "^2.0.0",
     "winston": "^2.2.0"
   },
   "preferGlobal": false,
   "private": true,
-  "license": "GPLv3"
+  "license": "AGPL-3.0-or-later"
 }

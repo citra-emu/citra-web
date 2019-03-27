@@ -1,29 +1,35 @@
 <div id="jumbotron">
 
   <div class="width: 300px; margin: auto;">
-    <div class="site-logo hidden-xs hidden-sm" style="position: absolute; left: 0; top: 48px; background-size: 172px 172px; z-index: 10">&nbsp;</div>
+    <div class="site-logo hidden-xs hidden-sm" style="position: absolute; left: 0; top: 48px; background-size: 172px 172px; z-index: 2">&nbsp;</div>
   </div>
 
   <div id="carousel" class="carousel slide" data-ride="carousel">
 
       <!-- Wrapper for slides -->
-      <div class="carousel-inner">
+      <div id="carousel-inner" class="carousel-inner">
       {{ $jumbotronFiles := readDir "/static/images/jumbotron/" }}
       {{ range $index, $element := $jumbotronFiles }}
           {{ $fileTitle := (index (split .Name "-") 1) }}
           {{ $fileTitle := (index (split $fileTitle ".") 0) }}
-          <div class="item {{if eq $index 0}}active{{end}}">
-            <img class="article-image img-responsive center-block" src="/images/jumbotron{{ $element.Name | relURL }}" alt="...">
+          <div>
+              <img class="article-image img-responsive center-block"
+                 {{if eq $index 0}}
+                    src="/images/jumbotron{{ $element.Name | relURL }}"
+                 {{else}}
+                    data-lazy="/images/jumbotron{{ $element.Name | relURL }}"
+                 {{end}}
+                 alt="{{ $fileTitle }}">
             <div class="carousel-caption">{{ $fileTitle }}</div>
           </div>
       {{ end }}
       </div>
 
       <!-- Controls -->
-      <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+      <a class="left carousel-control" href="#carousel" role="button" id="slider-prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
-      <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+      <a class="right carousel-control" href="#carousel" role="button" id="slider-next">
         <span class="glyphicon glyphicon-chevron-right"></span>
       </a>
 

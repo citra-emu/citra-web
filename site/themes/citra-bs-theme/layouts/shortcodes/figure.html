@@ -1,0 +1,20 @@
+{{ $type := index .Params "type" }}
+
+<figure {{ if eq (.Get "size") "large" }}style="padding: 20px 0px;"{{ end }}>
+    {{ if eq $type "youtube"  }}
+        {{/* copy pasted from hugo source code */}}
+        <div {{ if .Get "class" }}class="{{ .Get "class" }}"{{ else }}style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;"{{ end }}>
+            <iframe src="//www.youtube.com/embed/{{ .Get "id" }}?{{ with .Get "autoplay" }}{{ if eq . "true" }}autoplay=1{{ end }}{{ end }}"
+            {{ if not (.Get "class") }}style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" {{ end }}allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+        </div>
+    {{ else }}
+        <img src="{{.Get "src"}}" {{ with .Get "alt" }}alt="{{ . }}"{{ end }} />
+    {{ end }}
+    {{ with .Get "title" }}
+    <figcaption>
+        <h4>
+            {{ . }}
+        </h4>
+    </figcaption>
+    {{ end }}
+</figure>

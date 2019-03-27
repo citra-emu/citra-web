@@ -1,0 +1,13 @@
+<figure>
+    <video preload="auto" autoplay="autoplay" muted="muted" loop="loop" webkit-playsinline="">
+        <source src="{{ .Get "src" }}" type="video/mp4">
+        Your browser doesn't support mp4 video. :(
+    </video>
+    {{ with .Get "title" }}
+    <figcaption>
+        <h4>
+            {{ . }}
+        </h4>
+    </figcaption>
+    {{ end }}
+</figure>

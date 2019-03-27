@@ -3,38 +3,84 @@
 	<p>The Citra Emulator compatibility list contains all the games we tested, sorted by how well they work on the emulator.</p>
 	<table class="table table-striped table-bordered">
 		<tbody>
-      {{ range .Site.Data.compatibility }}
-        <tr>
-  				<td style="width: 128px;"><div class="square-icon" style="background-color: {{ .color }}"></div> {{ .name }}</td>
-  				<td>{{ .description }}</td>
-  			</tr>
-      {{ end }}
+		{{ range .Site.Data.compatibility }}
+		<tr>
+			<td style="width: 120px;"><div class="square-icon" style="background-color: {{ .color }}"></div> {{ .name }}</td>
+			<td class="row-compat-desc">{{ .description }}</td>
+		</tr>
+		{{ end }}
 		</tbody>
 	</table>
 
 	<div id="highchart-container" style="height: 100px; margin: 0 auto"></div>
 
-  <table class="table table-responsive">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Title</th>
-        <th>Compatibility</th>
-        <th>Date Tested</th>
-      </tr>
-    </thead>
-    <tbody>
-			{{ range .Data.Pages }}
-				{{- $rating := index .Site.Data.compatibility ( string .Params.compatibility | default "99" ) }}
-	      <tr>
-	        <td style="width: 55px;"><img class="img-responsive game-icon-list" src="{{ .Site.BaseURL }}images/game/icons/{{ default (print .File.BaseFileName ".png") }}" /></td>
-	        <td><a href="{{ .Permalink }}">{{ .Params.title }}</a></td>
-					<td class="compatibility-row"><div class="square-icon compatibility-{{ replace ($rating.name | urlize) "/" "" }}" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</td>
-	        <td>{{ dateFormat "January 2, 2006" .Params.testcase_date }}</td>
-	      </tr>
+	<hr />
+
+	<div id="game-listing">
+		<div>
+			<form class="pull-right">
+				<div class="form-group">
+					<table>
+						<tr>
+							<td>
+								<div class="input-group search-box">
+									<input type="text" class="form-control search" id="search-box" placeholder="Search...">
+									<span class="clear-search input-group-addon">X</span>
+								</div>
+							</td>
+							<td>
+								<a href="https://compatdb.citra-emu.org/" class="btn btn-default">Add Game</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+		</div>
+
+		<ul class="pagination paginationTop pull-left"></ul>
+
+		<table id="compatibility-list" class="table table-responsive">
+			<thead>
+				<tr>
+					<th></th>
+					<th class="sort" data-sort="title">Title</th>
+					<th class="sort" data-sort="type">Type</th>
+					<th class="sort" data-sort="compatibility">Compatibility</th>
+					<th class="sort" data-sort="date-tested">Date Tested</th>
+				</tr>
+			</thead>
+			<tbody class="list">
+			{{ range .Data.Pages.GroupByParam "section_id" }}
+
+				{{ range .Pages }}
+					{{- $rating := index .Site.Data.compatibility .Params.compatibility }}
+					{{- $type := index .Site.Data.gameTypes (.Params.game_type | default "3ds") }}
+					<tr data-key="{{ .Params.section_id }}">
+						<td class="hidden listing-metadata">
+							<span>{{ .Params.title }} {{ $type.name }} {{ $rating.name }} {{ dateFormat "January 2, 2006" .Params.testcase_date }}</span>
+						</td>
+						<td class="col-md-1 icon">
+							<img src="/images/game/icons/{{ .File.BaseFileName }}.png" />
+						</td>
+						<td class="col-md-6 title" data-title="{{ strings.TrimPrefix "The " .Params.title }}">
+							<a href="{{ .Permalink }}">{{ .Params.title }}</a>
+						</td>
+						<td class="col-md-1 type" data-type="{{ $type.name }}">
+							<img src="/images/game/types/{{ $type.key }}.png" title="{{ $type.name }}" />
+						</td>
+						<td class="col-md-1 compatibility" data-compatibility="{{ $rating.key }}">
+							<div class="square-icon" style="background-color: {{ $rating.color }}"></div> <span>{{ $rating.name }}</span>
+						</td>
+						<td class="col-md-3 date-tested" data-timestamp="{{ .Params.testcase_date }}">
+							<span>{{ dateFormat "January 2, 2006" .Params.testcase_date }}</span>
+						</td>
+					</tr>
+				{{ end }}
 			{{ end }}
-    </tbody>
-  </table>
+			</tbody>
+		</table>
+		<ul class="pagination paginationBottom pull-left"></ul>
+	</div>
 {{ end }}
 
 {{ define "scripts" }}
@@ -42,21 +88,93 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 <script type="text/javascript">
-Highcharts.chart('highchart-container', {
-    chart: { type: 'bar' },
-    colors: [{{ range .Site.Data.compatibility }}"{{ .color }}", {{- end }}],
-    credits: { enabled: false },
-		exporting: { enabled: false },
-    title: { text: '' },
-    xAxis: { categories: [''] },
-    yAxis: { min: 0, max: $(".compatibility-row").length, title: { text: '' } },
-    legend: { enabled: false },
-    plotOptions: { series: { stacking: 'normal' } },
-    series: [
-			{{ range .Site.Data.compatibility }}
-			{ "name": "{{ .name }}", "data": [$(".compatibility-{{ replace (.name | urlize) "/" "" }}").length] },
-			{{ end }}
-		]
-});
+	$(function() {
+		function getLastSorted(list){
+			var currentSorted = $(list.listContainer).find(".asc, .desc").attr("data-sort");
+			if ('undefined' !== typeof currentSorted)
+				list.lastSorted = currentSorted;
+			return list.lastSorted;
+		}
+
+		function filterTable(_) {
+			var rating = this.name;
+			var index = this.index;
+
+			$("#search-box").val(rating);
+			list.search(index, ['compatibility']);
+		}
+
+		function clearSearch() {
+			$("#search-box").val("");
+			list.search();
+		}
+
+		var options = {
+			valueNames: [
+				'listing-metadata',
+				{ name: 'title', attr: 'data-title' },
+				{ name: 'type', attr: 'data-type' },
+				{ name: 'compatibility', attr: 'data-compatibility' },
+				{ name: 'date-tested', attr: 'data-timestamp' }
+			],
+			searchColumns: [ 'listing-metadata' ],
+			pagination: [
+				{ paginationClass: "paginationTop" },
+				{ paginationClass: "paginationBottom" }
+			],
+			indexAsync: true,
+			page: 50
+		};
+
+		var list = new List('game-listing', options);
+
+		list.sort("title", {order: "asc"});
+
+		list.on("updated", function(list){
+			var $list = $(list.list);
+			var $items = $list.children();
+			$items.removeClass("key");
+			if ('title' == getLastSorted(list)){
+				$items.each(function(){
+					var key = $(this).attr("data-key")
+					if (
+						$list
+						.children("[data-key='" + key + "']")
+						.first()
+						.is( $(this) )
+					){
+						$(this).addClass("key");
+					}
+				})
+			}
+		});
+
+		$('#game-listing .clear-search').click(clearSearch);
+
+		Highcharts.chart('highchart-container', {
+			chart: { type: 'bar' },
+			colors: [{{ range .Site.Data.compatibility }}"{{ .color }}", {{- end }}],
+			credits: { enabled: false },
+				exporting: { enabled: false },
+			title: { text: '' },
+			xAxis: { categories: [''] },
+			yAxis: { min: 0, max: {{ len .Data.Pages }}, title: { text: '' } },
+			legend: { enabled: false },
+			plotOptions: { series: {
+				stacking: 'normal',
+				cursor: 'pointer',
+				events: {
+					click: filterTable
+				}
+			} },
+			series: [
+					{{- $dataPages := .Data.Pages }}
+					{{- range .Site.Data.compatibility }}
+					{{- $dataPagesFiltered := where $dataPages ".Params.compatibility" .key }}
+					{ "name": "{{ .name }}", "data": [ {{ len $dataPagesFiltered }} ] },
+					{{- end }}
+				]
+		});
+	});
 </script>
 {{ end }}

@@ -1,11 +1,11 @@
 {
-  {{- $lenGames := sub (len .Data.Pages) 1 }}
-  {{- range $index, $element := .Data.Pages }}
-    {{- $game := . }}
-    {{- $gameIndex := $index }}
-    {{- $lenRegions := sub (len .Params.releases) 1 }}
-    {{- range $regionIndex, $element := .Params.releases }}
-        "{{ $element.title }}": { "region": "{{ .region }}", "gameID": "{{ $game.File.BaseFileName }}", "gameName": "{{ $game.Title | plainify }}" }{{- if and (eq $gameIndex $lenGames) (eq $regionIndex $lenRegions) }}{{ else }},{{ end }}
-    {{- end }}
+{{- $lenGames := sub (len .Data.Pages) 1 }}
+{{- range $index, $element := .Data.Pages }}
+  {{- $game := . }}
+  {{- $gameIndex := $index }}
+  {{- $lenRegions := sub (len .Params.releases) 1 }}
+  {{- range $regionIndex, $element := .Params.releases }}
+  "{{ $element.title }}": { "region": "{{ .region }}", "gameID": "{{ $game.File.BaseFileName }}", "compatibility": "{{ $game.Params.compatibility }}" }{{- if and (eq $gameIndex $lenGames) (eq $regionIndex $lenRegions) }}{{ else }},{{ end }}
   {{- end }}
+{{- end }}
 }

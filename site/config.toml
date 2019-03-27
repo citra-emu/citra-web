@@ -1,5 +1,7 @@
 baseurl = "https://citra-emu.org/"
 languageCode = "en-us"
+
+DefaultContentLanguage = "en"
 theme = "citra-bs-theme"
 
 # Define how many objects appear per pagination.

@@ -1,79 +1,131 @@
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var exec = require('child_process').exec;
-var rimraf = require('rimraf');
+const gulp = require('gulp');
+const fs = require('fs');
+const util = require('gulp-util');
+const merge = require('merge-stream');
+const exec = require('child_process').exec;
+const sass = require('gulp-sass');
+const postcss = require('gulp-postcss');
+const cssnano = require('cssnano');
+const browserSync = require('browser-sync').create();
+const concat = require('gulp-concat');
+const imageResize = require('gulp-image-resize');
 
-var postcss = require('gulp-postcss');
-var cssImport = require('postcss-import');
-var cssnext = require('postcss-cssnext');
-
-var md5 = require("gulp-md5-plus");
-
-var ghPages = require('gulp-gh-pages');
-
-var uncss = require('gulp-uncss');
-var cleanCSS = require('gulp-clean-css');
-var image = require('gulp-image');
-var jimp = require("gulp-jimp-resize");
-
-var htmlmin = require('gulp-htmlmin');
-
-const distPath = './site/public';
-const cname = 'citra-emu.org';
-const deployOptions = {
-  remoteUrl: "git@github.com:CitraBotWeb/CitraBotWeb.github.io.git",
-  branch: "master"
-};
-
-gulp.task("default", ['html']);
-
-gulp.task('setup', function(cb) {
-    process.env.HUGO_ENV = 'PRD';
-    process.env.GULP = 'true';
-    rimraf(`${distPath}`, cb);
+gulp.task('scripts:games', function (callback) {
+  exec(`cd ./scripts/games/ && yarn install && node app.js`, function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    callback(err);
+  });
 });
 
-gulp.task('hugo', ['setup'], function (cb) {
-  exec('hugo -s ./site/ -v', function (err, stdout, stderr) {
+gulp.task('scripts:twitter', function (callback) {
+  exec(`cd ./scripts/twitter/ && yarn install && node app.js`, function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    callback(err);
+  });
+});
+
+gulp.task('scripts:wiki', function (callback) {
+  exec(`cd ./scripts/wiki/ && yarn install && node app.js`, function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    callback(err);
+  });
+});
+
+gulp.task('assets:images', function() {
+  var baseImages = gulp.src(`build/images/*`, {base: './'})
+      .pipe(gulp.dest('./'));
+  var jumbotronImages = gulp.src(`build/images/jumbotron/*`, {base: './'})
+      .pipe(imageResize({ width: 786, height: 471, crop: true }))
+      .pipe(gulp.dest('./'));
+  var bannerImages = gulp.src(`build/images/banners/*`, {base: './'})
+      .pipe(imageResize({ width: 824, height: 306, crop: false }))
+      .pipe(gulp.dest('./'));
+  var boxartImages = gulp.src(`build/images/game/boxart/*`, {base: './'})
+      .pipe(imageResize({ width: 328, height: 300, crop: true }))
+      .pipe(gulp.dest('./'));
+  var iconImages = gulp.src(`build/images/game/icons/*`, {base: './'})
+      .pipe(imageResize({ width: 48, height: 48, crop: true }))
+      .pipe(gulp.dest('./'));
+  var screenshotImages = gulp.src(`build/images/screenshots/*`)
+      .pipe(imageResize({ width: 400, height: 240, crop: false }))
+      .pipe(gulp.dest(`build/images/screenshots/thumbs`));
+  
+  return merge(baseImages, jumbotronImages, bannerImages, boxartImages, iconImages, screenshotImages);
+});
+
+gulp.task('assets:js', function() {
+  return gulp.src(['src/js/**/*.js'])
+    .pipe(concat('script.js'))
+    .pipe(gulp.dest('build/js'));
+});
+
+gulp.task('assets:fonts', function(){
+  return gulp.src('./node_modules/bootstrap-sass/assets/fonts/**/*')
+    .pipe(gulp.dest('build/fonts/'))
+});
+
+gulp.task('assets:scss', function () {
+  var postCssOptions = [ cssnano ];
+  return gulp.src('src/scss/style.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss(postCssOptions))
+    .pipe(gulp.dest('build/css'))
+    .pipe(browserSync.stream());
+});
+
+gulp.task('hugo', function (cb) {
+  exec('hugo -s ./site/ -d ../build/ -v', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
   });
 });
 
-gulp.task("css", ['hugo'], () => (
-  gulp.src(`${distPath}/css/**/*.css`, {base: './'})
-    .pipe(postcss([cssnext(), cssImport({from: `${distPath}/css/main.css`})]))
-    .pipe(cleanCSS())
-    .pipe(md5(10, `${distPath}/**/*.html`))
-    .pipe(gulp.dest('./'))
-));
+gulp.task('final:serve', function(done) {
+    browserSync.init({
+        open: false,
+        server: {
+            baseDir: 'build'
+        }
+    });
 
-gulp.task('images', ['hugo'], () => (
-  gulp.src(`${distPath}/images/*`, {base: './'})
-      .pipe(gulp.dest('./')),
-  gulp.src(`${distPath}/images/jumbotron/*`, {base: './'})
-      .pipe(jimp({ sizes: [{"width": 786, "height": 471 }] }))
-      .pipe(gulp.dest('./')),
-  gulp.src(`${distPath}/images/banners/*`, {base: './'})
-      .pipe(jimp({ sizes: [{"width": 824, "height": 306 }] }))
-      .pipe(gulp.dest('./')),
-  gulp.src(`${distPath}/images/game/boxart/*`, {base: './'})
-      .pipe(jimp({ sizes: [{"width": 328, "height": 300 }] }))
-      .pipe(gulp.dest('./')),
-  gulp.src(`${distPath}/images/game/icons/*`, {base: './'})
-      .pipe(jimp({ sizes: [{"width": 48, "height": 48 }] }))
-      .pipe(gulp.dest('./'))
-));
+    gulp.watch('src/js/**/*', gulp.series('assets:js'));
+    gulp.watch('src/scss/**/*', gulp.series('assets:scss'));
+    gulp.watch('site/**/*.html', gulp.series('hugo'));
+    gulp.watch('site/**/*.md', gulp.series('hugo'));
 
-gulp.task('html', ['hugo', 'css', 'images'], () => (
-  gulp.src(`${distPath}/**/*.html`, {base: './'})
-    .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('./'))
-));
+    gulp.watch('build/**/*').on('change', function(x) {
+      browserSync.reload(x);
+    });
 
-gulp.task('deploy', ['hugo', 'css', 'images', 'html'], () => {
-  require('fs').writeFileSync(`${distPath}/CNAME`, `${cname}`);
-  require('fs').writeFileSync(`${distPath}/robots.txt`, `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
-  return gulp.src(`${distPath}/**/*`).pipe(ghPages(deployOptions));
+    done()
 });
+
+gulp.task('final:publish', function(done) {
+  fs.writeFileSync(`build/CNAME`, `${cname}`);
+  fs.writeFileSync(`build/robots.txt`, `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
+  done()
+});
+
+const cname = 'citra-emu.org';
+var finalCommand = null;
+
+if (util.env.production) {
+  process.env.HUGO_ENV = 'PRD';
+  process.env.HUGO_BASEURL = `https://${cname}`
+  finalCommand = 'final:publish';
+} else {
+  process.env.HUGO_ENV = 'DEV';
+  process.env.HUGO_BASEURL = 'http://localhost:3000';
+  finalCommand = 'final:serve';
+}
+
+util.log(`process.env.HUGO_ENV = '${process.env.HUGO_ENV}'`);
+util.log(`process.env.HUGO_BASEURL = '${process.env.HUGO_BASEURL}'`);
+
+gulp.task('default', gulp.series(gulp.parallel('assets:js', 'assets:fonts', 'assets:scss'), 'hugo', 'assets:images', finalCommand))
+gulp.task('all', gulp.series(gulp.parallel('scripts:games', 'scripts:twitter', 'scripts:wiki'), gulp.parallel('assets:js', 'assets:fonts', 'assets:scss'), 'hugo', 'assets:images', finalCommand))
+gulp.task('content', gulp.series('hugo', finalCommand));

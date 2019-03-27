@@ -14,5 +14,5 @@
   },
   "preferGlobal": false,
   "private": true,
-  "license": "GPLv3"
+  "license": "AGPL-3.0-or-later"
 }

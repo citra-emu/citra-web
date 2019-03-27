@@ -1,9 +1,9 @@
 {
-  "0": { "name": "Perfect", "color": "#5c93ed", "description": "Game functions flawless with no audio or graphical glitches, all tested functionality works as intended without any workarounds needed." },
-  "1": { "name": "Great", "color": "#47d35c", "description": "Game functions with minor graphical or audio glitches and is playable from start to finish. May require some workarounds." },
-  "2": { "name": "Okay", "color": "#94b242", "description": "Game functions with major graphical or audio glitches, but game is playable from start to finish with workarounds." },
-  "3": { "name": "Bad", "color": "#f2d624", "description": "Game functions, but with major graphical or audio glitches. Unable to progress in specific areas due to glitches even with workarounds." },
-  "4": { "name": "Intro/Menu", "color": "red", "description": "Game is completely unplayable due to major graphical or audio glitches. Unable to progress past the Start Screen." },
-  "5": { "name": "Won't Boot", "color": "#828282", "description": "The game crashes when attempting to startup." },
-  "99": { "name": "Not Tested", "color": "black", "description": "This game has not yet been tested." }
+  "0": { "key": "0", "name": "Perfect", "color": "#5c93ed", "description": "Game functions flawless with no audio or graphical glitches, all tested functionality works as intended without any workarounds needed." },
+  "1": { "key": "1", "name": "Great", "color": "#47d35c", "description": "Game functions with minor graphical or audio glitches and is playable from start to finish. May require some workarounds." },
+  "2": { "key": "2", "name": "Okay", "color": "#94b242", "description": "Game functions with major graphical or audio glitches, but game is playable from start to finish with workarounds." },
+  "3": { "key": "3", "name": "Bad", "color": "#f2d624", "description": "Game functions, but with major graphical or audio glitches. Unable to progress in specific areas due to glitches even with workarounds." },
+  "4": { "key": "4", "name": "Intro/Menu", "color": "red", "description": "Game is completely unplayable due to major graphical or audio glitches. Unable to progress past the Start Screen." },
+  "5": { "key": "5", "name": "Won't Boot", "color": "#828282", "description": "The game crashes when attempting to startup." },
+  "99": { "key": "99", "name": "Not Tested", "color": "black", "description": "The game has not yet been tested." }
 }

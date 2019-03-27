@@ -1,17 +1,7 @@
 {{ define "main" }}
   {{ $BaseURL := .Site.BaseURL }}
   {{ $gameName := .File.BaseFileName }}
-
-  <div class="alert alert-info">
-    <div class="row">
-      <div class="col-md-2">
-        <strong>Reminder!</strong>
-      </div>
-      <div class="col-md-10">
-        <p>Citra is currently in very early stages of development. Games usually run less than full-speed even on the best computers. Expect bugs and glitches to appear in most games. Many features found in more mature emulators are still in the works.</p>
-      </div>
-    </div>
-  </div>
+  {{- $type := index .Site.Data.gameTypes (.Params.game_type | default "3ds") }}
 
   <div class="alert alert-warning">
     <div class="row">
@@ -20,34 +10,70 @@
       </div>
       <div class="col-md-10">
         The below game article is based on user submitted content.<br>
-        See a mistake? Want to contribute? <a href="https://github.com/citra-emu/citra-games-wiki/wiki/{{ .File.BaseFileName }}/_edit/">Edit this game article on Github</a>
+        See a mistake? Want to contribute?
+        <a href="https://github.com/citra-emu/citra-games-wiki/wiki/{{ .File.BaseFileName }}/_edit/">Edit this game article on Github</a>
       </div>
     </div>
   </div>
 
+  {{- if eq .Params.incomplete true }}
+    <div class="alert alert-danger">
+      <div class="row">
+        <div class="col-md-2">
+          <strong>Notice</strong>
+        </div>
+        <div class="col-md-10">
+          <p>This page is considered <b>INCOMPLETE</b> due to any one of the following reasons:</p>
+          <ul>
+            <li>Missing screenshots</li>
+            <li>Missing/insufficient wiki article</li>
+            <li>Unverified game compatibility rating</li>
+          </ul>
+          <p>The information below may not accurately represent your experience with Citra.</p>
+          <p>Pages that are left incomplete may be subject for removal.</p>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+
 	<h1>{{ .Title }}</h1>
-  <div class="row" style="padding-bottom: 16px;">
+  <div class="row">
     <div class="col-md-5">
-      <img class="center-block img-responsive compatibility-boxart" style="padding-top: 6px;" src="{{ .Site.BaseURL }}images/game/boxart/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
+      <div class="boxart">
+        <img src="{{ .Site.BaseURL }}/images/game/boxart/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
+      </div>
     </div>
     <div class="col-md-7">
       <!-- Metadata information -->
       <table class="table table-responsive table-striped table-bordered">
         <tbody>
           <tr>
-            {{- $rating := index .Site.Data.compatibility ( string .Params.compatibility | default "99" ) }}
-            <td style="width: 100px;">Status</td>
+            {{- $rating := index .Site.Data.compatibility .Params.compatibility }}
+            <td style="width: 120px;">Rating</td>
             <td><b><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</b><br />{{ $rating.description }}</td>
           </tr>
           <tr>
+            <td>Type</td>
+            <td>
+              <img src="{{ .Site.BaseURL }}/images/game/types/{{ $type.key }}.png" title="{{ $type.name }}" />
+              {{- if eq $type.key "3ds" }}
+              {{- else if eq $type.key "vc" }}
+                {{- $vcSystem := index .Site.Data.vcSystems .Params.vc_system }}
+                {{ $vcSystem.name }}
+              {{- else }}
+                {{ $type.name }}
+              {{ end }}
+            </td>
+          </tr>
+          <tr>
             <td>Game Icon</td>
-            <td><img class="img-responsive" src="{{ .Site.BaseURL }}images/game/icons/{{ .File.BaseFileName }}.png" /></td>
+            <td><img class="img-responsive" src="{{ .Site.BaseURL }}/images/game/icons/{{ .File.BaseFileName }}.png" /></td>
           </tr>
           <tr>
             <td>Title IDs</td>
             <td>
               {{ range .Params.releases }}
-                <div><img src="{{ $BaseURL }}images/regions/{{ .region }}.png" /> {{ .title }}</div>
+                <div><img src="{{ $BaseURL }}/images/regions/{{ .region }}.png" /> {{ .id }}</div>
               {{ end }}
             </td>
           </tr>
@@ -70,68 +96,99 @@
 
   <!-- Compatibility -->
   {{ if isset .Params "testcases" }}
-    {{ $siteCompatibility := .Site.Data.compatibility }}
-    {{ range .Params.testcases }}
-      {{ $testcase := . }}
-      {{ $rating := index $siteCompatibility ( string $testcase.compatibility | default "0" ) }}
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Compatibility</h2>
-          <table class="table table-responsive table-striped">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Tested By</th>
-                <th>Citra Version</th>
-                <th>Rating</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{ dateFormat "January 2, 2006" $testcase.date }}</td>
-                <td><a href="https://community.citra-emu.org/u/{{ $testcase.owner }}/summary">{{ $testcase.author }}</a></td>
-                <td>{{ $testcase.version }}</td>
-                <td><b><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</b></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    {{ end }}
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Compatibility</h2>
+      <table class="table table-responsive table-striped">
+        <thead>
+          <tr>
+            <th class="advanced-view">ID</th>
+            <th>Build Date</th>
+            <th>Tested By</th>
+            <th>Hardware</th>
+            <th>Citra Version</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ $siteCompatibility := .Site.Data.compatibility }}
+          {{ range .Params.testcases }}
+            {{- $rating := index $siteCompatibility .compatibility }}
+                    <tr>
+                      <td class="advanced-view">{{ if isset . "id" }} {{ .id }} {{ end }}</td>
+                      <td>{{ if isset . "buildDate" }} {{ dateFormat "01/2/2006" .buildDate }} {{ end }}</td>
+                      <td><a href="https://community.citra-emu.org/u/{{ .author }}/summary">{{ .author }}</a> <small>on {{ dateFormat "01/02/2006" .date }}</small></td>
+                      <td>{{ .cpu }}<br />{{ .gpu }}<br />{{ .os }}</td>
+                      <td>{{ if isset . "buildName" }}{{ .buildName }} Build<br />{{ end }}{{ .version }}</td>
+                      <td><b><div class="square-icon" style="background-color: {{ $rating.color }}"></div> {{ $rating.name }}</b></td>
+                    </tr>
+          {{ end }}
+    </tbody>
+  </table>
+  </div>
+  </div>
   {{ end }}
 
-  {{ if (where (readDir "/static/savefiles") "Name" .File.BaseFileName) }}
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Savefiles</h2>
-        <table class="table table-responsive table-striped">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Uploaded By</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{ range .Params.savefiles }}
-              <tr>
-                <td><a href="/savefiles/{{ $gameName }}/{{ .filename }}">{{ .title }}</a></td>
-                <td>{{ .description }}</td>
-                <td><a href="https://community.citra-emu.org/u/{{ .author }}/summary">{{ .author }}</a></td>
-                <td>{{ dateFormat "January 2, 2006" .date }}</td>
-              </tr>
-            {{ end }}
-          </tbody>
-        </table>
-      </div>
+  <!-- Github Issues -->
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Known Issues</h2>
+      {{- if gt (len .Params.issues) 0 }}
+      <table class="table table-responsive table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Created</th>
+            <th>Last Updated</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{- range .Params.issues }}
+          <tr>
+            <td><a href="https://github.com/citra-emu/citra/issues/{{ .id }}">{{ .title }}</a></td>
+            <td>{{ dateFormat "January 2, 2006" .created_at }}</td>
+            <td>{{ dateFormat "January 2, 2006" .updated_at }}</td>
+          </tr>
+          {{- end }}
+        </tbody>
+      </table>
+      {{- else }}
+        <p>No issues have been reported for this game.</p>
+      {{- end }}
     </div>
-  {{ end }}
+  </div>
 
-  {{ if (where (readDir "/static/images/screenshots0") "Name" .File.BaseFileName) }}
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Screenshots</h2>
+  <!-- Savefiles -->
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Savefiles</h2>
+      {{ if (where (readDir "/static/savefiles") "Name" .File.BaseFileName) }}
+      <table class="table table-responsive table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range .Params.savefiles }}
+            <tr>
+              <td><a href="/savefiles/{{ $gameName }}/{{ .basename }}.zip">{{ .title }}</a></td>
+              <td>{{ .description }}</td>
+            </tr>
+          {{ end }}
+        </tbody>
+      </table>
+      {{ else }}
+      <p>No savefiles have been uploaded for this game.</p>
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Screenshots</h2>
+      {{ if (where (readDir "/static/images/screenshots0") "Name" .File.BaseFileName) }}
         {{ $files := readDir (printf "/static/images/screenshots0/%s/" .File.BaseFileName) }}
         {{ range $index, $element := $files }}
           <div class="popup-gallery col-lg-3 col-md-4 col-xs-6 thumb">
@@ -140,10 +197,11 @@
             </a>
           </div>
         {{ end }}
-      </div>
+      {{ else }}
+        <p>No screenshots have been uploaded for this game.</p>
+      {{ end }}
     </div>
-  {{ end }}
-
+  </div>
 {{ end }}
 
 {{ define "scripts" }}

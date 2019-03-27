@@ -14,6 +14,13 @@
 
 {{ define "scripts" }}
 <script type="text/javascript">
-    $('#carousel').carousel({ interval: 4000 });
+    $('#carousel-inner').slick({
+        autoplay: true,
+        autoplaySpeed: 4000,
+        lazyLoaded: true,
+        prevArrow: "#slider-prev",
+        nextArrow: "#slider-next",
+        lazyLoad: "progressive"
+    });
 </script>
 {{ end }}
