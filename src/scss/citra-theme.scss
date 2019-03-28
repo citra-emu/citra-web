@@ -235,6 +235,12 @@ a:hover {
   image-rendering: pixelated;
 }
 
+.divider{
+    width: auto;
+    height: auto;
+    display: inline-block;
+}
+
 tbody td {
   text-align: left;
 }
