@@ -50,14 +50,12 @@
 				</tr>
 			</thead>
 			<tbody class="list">
-			{{ range .Data.Pages.GroupByParam "section_id" }}
-
 				{{ range .Pages }}
 					{{- $rating := index .Site.Data.compatibility .Params.compatibility }}
 					{{- $type := index .Site.Data.gameTypes (.Params.game_type | default "3ds") }}
 					<tr data-key="{{ .Params.section_id }}">
 						<td class="hidden listing-metadata">
-							<span>{{ .Params.title }} {{ $type.name }} {{ $rating.name }} {{ dateFormat "January 2, 2006" .Params.testcase_date }}</span>
+							<span>{{ .Params.title }} {{ $type.name }} {{ $rating.name }}</span>
 						</td>
 						<td class="col-md-1 icon">
 							<img src="/images/game/icons/{{ .File.BaseFileName }}.png" />
@@ -72,11 +70,14 @@
 							<div class="square-icon" style="background-color: {{ $rating.color }}"></div> <span>{{ $rating.name }}</span>
 						</td>
 						<td class="col-md-3 date-tested" data-timestamp="{{ .Params.testcase_date }}">
-							<span>{{ dateFormat "January 2, 2006" .Params.testcase_date }}</span>
+							{{ if .Params.testcase_date }}
+								<span>{{ dateFormat "January 2, 2006" .Params.testcase_date }}</span>
+							{{ else }}
+								<span></span>
+							{{ end }}
 						</td>
 					</tr>
 				{{ end }}
-			{{ end }}
 			</tbody>
 		</table>
 		<ul class="pagination paginationBottom pull-left"></ul>
