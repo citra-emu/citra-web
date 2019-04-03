@@ -288,7 +288,7 @@ While the current capabilities of scripting are limited to reading and writing m
 
 ### Status of Official Android App ([#4324](https://github.com/citra-emu/citra/pull/4324), [#4450](https://github.com/citra-emu/citra/pull/4450), [#4575](https://github.com/citra-emu/citra/pull/4575))
 
-When developer [SachinVin](https://github.com/SachinVin) unofficially ported Citra to Android, our own team members [BreadFish64](https://github.com/BreadFish64) and [jroweboy](https://github.com/jroweboy) were secretly working on an official port.
+When developer SachinVin unofficially ported Citra to Android, our own team members [BreadFish64](https://github.com/BreadFish64) and [jroweboy](https://github.com/jroweboy) were secretly working on an official port.
 Since the app was based on Citra code a few months old, it was missing many features, fixes, and performance improvements that were present in the latest Citra code.
 This unoffical port also heavily borrowed UI from Dolphin's Android app, which didn't fully meet the requirements of Citra.
 
