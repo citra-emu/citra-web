@@ -13,7 +13,7 @@ New features, bug fixes, performance improvements, improved game compatibility, 
 So buckle up and enjoy the ride!
 <!--more-->
 ****
-To start off: back in August, we asked our patrons to vote on what they'd like to see us work on the most, and now it's time to review how much progress we've made on everything since then.
+To start off, back in August, we asked our patrons to vote on what they'd like to see us work on the most, and now it's time to review how much progress we've made on everything since then.
 
 {{< figure src="/images/entry/citra-progress-report-2019-q1/patreon.png"
     title="Patreon Poll Results" >}}
