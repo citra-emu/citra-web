@@ -292,7 +292,7 @@ When developer SachinVin unofficially ported Citra to Android, our own team memb
 Since the app was based on Citra code a few months old, it was missing many features, fixes, and performance improvements that were present in the latest Citra code.
 This unoffical port also heavily borrowed UI from Dolphin's Android app, which didn't fully meet the requirements of Citra.
 
-However, since then, [BreadFish64](https://github.com/BreadFish64) has been working along with [jroweboy](https://github.com/jroweboy) and [liushuyu](https://github.com/liushuyu) tirelessly to officially port Citra to Android.
+However, since then, [BreadFish64](https://github.com/BreadFish64) has been working along with [jroweboy](https://github.com/jroweboy) and [liushuyu](https://github.com/liushuyu) tirelessly to officially port Citra to Android, with a brand-new UI that's not based on Dolphin's code.
 Although the app isn't ready for public usage, the work is progressing slowly but surely.
 Here is a small sneak-peek of the work-in-progress app.
 
