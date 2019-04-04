@@ -121,7 +121,7 @@ By reviewing the differences in the two code, jroweboy found that he mixed up bi
 Following this breakthrough, jroweboy took the chance to clean everything up and added support for mic switching while a game is running, and set the stage for future microphones such as for android support.
 Microphone support is now available in both Nightly and Canary builds of Citra.
 
-<video width="500" height="480" style="display:block; margin: 0 auto; background-color: black;" controls preload="metadata" src="/resources/entry/citra-progress-report-2019-q1/Microphone.mp4"></video>
+{{< youtube jaO9Y-pVa2Q >}}
 
 ## #8 Background images for the UI
 
@@ -292,7 +292,7 @@ However, since then, [BreadFish64](https://github.com/BreadFish64) has been work
 Although the app isn't ready for public usage, the work is progressing slowly but surely.
 Here is a small sneak-peek of the work-in-progress app.
 
-<video width="360" height="512" style="display:block; margin: 0 auto; background-color: grey;" controls preload="metadata" src="/resources/entry/citra-progress-report-2019-q1/Android.mp4"></video>
+{{< youtube AAQ-JXURP28 >}}
 
 ### [Flatpak Support](https://github.com/citra-emu/citra/pull/4383) by [bscubed](https://github.com/bscubed)
 
