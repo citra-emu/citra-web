@@ -2,7 +2,7 @@
 
 language: node_js
 node_js:
-  - "node"
+  - "11"
 cache: yarn
 
 script:
@@ -27,4 +27,4 @@ deploy:
    branch: master
 notifications:
   email:
-    - mods@citra-emu.org
+    - citra@citra-emu.org
