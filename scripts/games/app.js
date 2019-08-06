@@ -1,3 +1,5 @@
+require('checkenv').check();
+
 const fs = require('fs-extra');
 const path = require('path');
 const util = require('util');
@@ -6,13 +8,15 @@ const request = require('request-promise');
 const tomlify = require('tomlify-j0.4');
 const exec = require('sync-exec');
 
-const fsPathCode = './citra-games-wiki/games'
-const fsPathWiki = './citra-games-wiki.wiki'
-const fsPathHugoContent = '../../site/content/game'
-const fsPathHugoBoxart = '../../site/static/images/game/boxart'
-const fsPathHugoIcon = '../../site/static/images/game/icons'
-const fsPathHugoScreenshots = '../../site/static/images/screenshots0'
-const fsPathHugoSavefiles = '../../site/static/savefiles/'
+const tenant = 'citra'
+
+const fsPathCode = `./${tenant}-games-wiki/games`
+const fsPathHugo = '../../../site'
+const fsPathHugoContent = `${fsPathHugo}/content/game`
+const fsPathHugoBoxart = `${fsPathHugo}/static/images/game/boxart`
+const fsPathHugoIcon = `${fsPathHugo}/static/images/game/icons`
+const fsPathHugoScreenshots = `${fsPathHugo}/static/images/screenshots0`
+const fsPathHugoSavefiles = `${fsPathHugo}/static/savefiles/`
 
 process.on('unhandledRejection', err => {
   logger.error('Unhandled rejection on process.');
@@ -32,10 +36,6 @@ function gitPull(directory, repository) {
   }
 }
 
-async function getDirectories(x) {
-  return fs.readdir(x).filter(file => fs.lstatSync(path.join(x, file)).isDirectory())
-}
-
 async function run() {
   // Make sure the output directories in Hugo exist.
   [fsPathHugoContent, fsPathHugoBoxart, fsPathHugoIcon, fsPathHugoSavefiles, fsPathHugoScreenshots].forEach(function (path) {
@@ -46,10 +46,10 @@ async function run() {
   });
 
   // Fetch game files stored in games-wiki repository.
-  gitPull('./citra-games-wiki', 'https://github.com/citra-emu/citra-games-wiki.git');
+  gitPull(`./${tenant}-games-wiki`, `https://github.com/${tenant}-emu/${tenant}-games-wiki.git`);
 
   // Loop through each game and process it.
-  let games = await request.get({ uri: 'https://api.citra-emu.org/gamedb/websiteFeed/', json: true })
+  let games = await request.get({ uri: `https://api.${tenant}-emu.org/gamedb/websiteFeed/`, json: true })
   await Promise.all(games.map(async (x) => {
     try {
       logger.info(`Processing game: ${x.id}`);
@@ -57,19 +57,26 @@ async function run() {
       // Set metadata.
       x.date = `${new Date().toISOString()}`
 
-      // In Hugo, data keys need to be strings.
-      x.compatibility = x.compatibility.toString()
-
       // Hugo requires compatibility to be a string to link to data JSON.
+      x.compatibility = x.compatibility.toString()
       x.testcases.forEach(x => x.compatibility = x.compatibility.toString())
-      
-      x.issues = x.issues.filter(x => x.state === 'open') || []
+
+      x.issues = x.issues || []
 
       // Copy the boxart for the game.
-      fs.copySync(`${fsPathCode}/${x.id}/boxart.png`, `${fsPathHugoBoxart}/${x.id}.png`);
+      if (fs.existsSync(`${fsPathCode}/${x.id}/boxart.png`)) {
+        fs.copySync(`${fsPathCode}/${x.id}/boxart.png`, `${fsPathHugoBoxart}/${x.id}.png`);
+      } else if (fs.existsSync(`${fsPathCode}/${x.id}/icon.png`)) {
+        fs.copySync(`${fsPathCode}/${x.id}/icon.png`, `${fsPathHugoBoxart}/${x.id}.png`);
+      }
 
       // Copy the icon for the game.
-      fs.copySync(`${fsPathCode}/${x.id}/icon.png`, `${fsPathHugoIcon}/${x.id}.png`);
+      // If the icon does not exist, use the boxart in place of the icon.
+      if (fs.existsSync(`${fsPathCode}/${x.id}/icon.png`)) {
+        fs.copySync(`${fsPathCode}/${x.id}/icon.png`, `${fsPathHugoIcon}/${x.id}.png`);
+      } else if (fs.existsSync(`${fsPathCode}/${x.id}/boxart.png`)) {
+        fs.copySync(`${fsPathCode}/${x.id}/boxart.png`, `${fsPathHugoIcon}/${x.id}.png`);
+      }
 
       // SAVEFILE BLOCK
       var fsPathCodeSavefilesGame = `${fsPathCode}/${x.id}/savefiles/`;
@@ -108,11 +115,11 @@ async function run() {
       }
 
       // Clear out the wiki markdown so it won't be stored with the metadata.
-      let wikiText = x.wiki_markdown
+      let wikiText = x.wiki_markdown || ''
       x.wiki_markdown = null
 
-      let meta = tomlify(x, null, 2);
-      let contentOutput = `+++\r\n${meta}\r\n+++\r\n\r\n${wikiText}\r\n`;
+      let meta = tomlify.toToml(x, {space: 2})
+      let contentOutput = `+++\r\nleft_sidebar = true\r\n${meta}\r\n+++\r\n\r\n${wikiText}\r\n`;
 
       await fs.writeFile(`${fsPathHugoContent}/${x.id}.md`, contentOutput);
 
