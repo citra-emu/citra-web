@@ -9,7 +9,7 @@ const exec = require('sync-exec');
 const tenant = 'citra'
 
 const fsPathCode = `./${tenant}-games-wiki/games`
-const fsPathHugo = '../../../site'
+const fsPathHugo = '../../site'
 const fsPathHugoContent = `${fsPathHugo}/content/game`
 const fsPathHugoBoxart = `${fsPathHugo}/static/images/game/boxart`
 const fsPathHugoIcon = `${fsPathHugo}/static/images/game/icons`
