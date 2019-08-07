@@ -55,7 +55,9 @@
 							<span>{{ .Params.title }} {{ $type.name }} {{ $rating.name }}</span>
 						</td>
 						<td class="col-md-1 icon">
-							<img src="/images/game/icons/{{ .File.BaseFileName }}.png" />
+							{{ if (fileExists (print "static/images/game/icons/" .File.BaseFileName ".png")) }}
+								<img src="/images/game/icons/{{ .File.BaseFileName }}.png" />
+							{{ end }}
 						</td>
 						<td class="col-md-6 title" data-title="{{ strings.TrimPrefix "The " .Params.title }}">
 							<a href="{{ .Permalink }}">{{ .Params.title }}</a>

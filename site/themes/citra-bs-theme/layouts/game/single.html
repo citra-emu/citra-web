@@ -39,9 +39,11 @@
 	<h1>{{ .Title }}</h1>
   <div class="row">
     <div class="col-md-5">
-      <div class="boxart">
-        <img src="{{ .Site.BaseURL }}/images/game/boxart/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}" />
-      </div>
+        {{ if (fileExists (print "static/images/game/boxart/" .File.BaseFileName ".png")) }}
+          <div class="boxart">
+              <img src="/images/game/boxart/{{ .File.BaseFileName }}.png" />
+          </div>  
+        {{ end }}
     </div>
     <div class="col-md-7">
       <!-- Metadata information -->
@@ -67,7 +69,11 @@
           </tr>
           <tr>
             <td>Game Icon</td>
-            <td><img class="img-responsive" src="{{ .Site.BaseURL }}/images/game/icons/{{ .File.BaseFileName }}.png" /></td>
+            <td>
+                {{ if (fileExists (print "static/images/game/icons/" .File.BaseFileName ".png")) }}
+                  <img src="/images/game/icons/{{ .File.BaseFileName }}.png" />
+                {{ end }}
+            </td>
           </tr>
           <tr>
             <td>Title IDs</td>
