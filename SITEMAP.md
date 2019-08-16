@@ -1,116 +1,104 @@
 # Sitemap
-This file will give an overview of what each folder and file in this repository does. There are 2 parts to this document:
+This file gives an overview of the important parts of this repository.
 - [Info](#info)
 - [Structure](#structure)
 
 ## Info
+This section gives background information that will be referred to later.
 
-This section gives some background information that will be referred to in the [Structure](#structure) part of this document.
+### Front Matter
+The [front matter](https://gohugo.io/content/front-matter/) in this repo is written with [TOML](https://github.com/toml-lang/toml). Default variables that are used in this repo are listed, but not described, as their descriptions can be found in Hugo's documentation.
 
 ### Keys
-Some of the JSONs in this repository use a field named `key`. The value of this should be the same as the name of the parent object. This should be lowercase, with no spaces.
+The [JSON](http://www.json.org/) files in `/site/data/` use a `key` name. The value of this should be the same as the name of the parent object. This should be lowercase, with no spaces.
 
 ### Names
-JSONs that have a `key` field (See: [Keys](#keys)) also have a `name` field. The value of this doesn't have to be the same as the value of `key` or the name of the parent object, and can have capitalization and spaces.
+JSONs that have a `key` name (See: [Keys](#keys)) also have a `name` name. The value of this can be unique, and can have capitalization and spaces.
 
 ## Structure
-This section will describe the layout of this repository, and what each file and folder does.
+This section describes the important files used in this repository.
 
-### Site (`/site/`)
-The `site` folder is the root folder of the site.
+### Site Content
 
-#### Content (`/site/content/`)
-The `content` folder contains the [front matter](https://gohugo.io/content/front-matter/).
+### HTML Templates (`/site/themes/citra-bs-theme/layout/*.html`)
+These HTML files are the templates that will be filled with the page content. Documentation for these files can be found [here](https://gohugo.io/templates/list).
 
-##### Main Pages Front Matter (`/site/content/*.md`)
-The `*.md` files are the front matter of the site. Documentation for the front matter can be found [here](https://gohugo.io/content/front-matter/). The [TOML](https://github.com/toml-lang/toml) fields used here are:
+#### Main Page Content (`/site/content/*.md`)
+These Markdown files are the main page content. The [Front Matter](#front-matter) variables used here are:
 - `title`
 - `advertisement`: Whether advertisements are displayed or not.
 
-##### Blog Entries (`/site/content/entry/`)
-The `entry` folder contains the front matter for the blog.
-
-###### Blog Entries Front Matter (`/site/content/entry/*.md`)
-The `*.md` files here are the front matter for the blog. Documentation for the front matter can be found [here](https://gohugo.io/content/front-matter/). The [TOML](https://github.com/toml-lang/toml) fields used here are:
-- `date`: The date that the article was written on, following [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), preferably down to the second. An example for Feburary 23, 2016, at 11:30 PM EST is `2016-02-23T23:30:00-05:00`.
+#### Blog Entry Content (`/site/content/entry/**/*.md`)
+These Markdown files are the blog content. The [Front Matter](#front-matter) variables used here are:
 - `title`
-- `tags`
-- `author`: The name(s) of the person/people that wrote the article, in `/site/data/authors.json`.
-- `forum`: The ID of the forum topic for discussing the article.
+- `description`
+- `date`
+- `author` (String): The name of the person that wrote the article, in `/site/data/authors.json`.
+- `coauthor` (String): The name of the person that cowrote the article, in `/site/data/authors.json`.
+- `forum` (Integer): The ID of the forum topic for discussing the article.
 
-#### Data (`/site/data/`)
-The `data` folder contains [JSON](http://www.json.org/) files with data.
+#### Help Page Content (`/site/content/help/**/*.md`)
+These Markdown files are the help page content. The [Front Matter](#front-matter) variables used here are:
+- `title`
+- `description`
 
-##### Authors (`/site/data/authors.json`)
-The `authors.json` file has info about each of the blog authors. The [JSON](http://www.json.org/) fields used are:
+### Site Assets
+
+#### Translations (`/site/i18n/*.toml`)
+These TOML files are translations of the [site content](#site-content).
+
+#### Images (`/site/static/images/**/*.png`)
+These PNG files are the images referenced by the [site content](#site-content).
+
+#### Resources (`/site/static/resources/**/*`)
+These files are other assets referenced by the [site content](#site-content).
+
+### Site Source Code
+
+#### Style Sheets (`/src/scss/*.scss`)
+These [Sass CSS](https://sass-lang.com/) files are style sheets to be compiled to CSS stylesheets to be applied while loading the page.
+
+#### Client-Side Scripts (`/src/js/*.js`)
+These JavaScript files are scripts to be run while loading the page.
+
+### Site Data
+
+#### Configuration (`/site/config.toml`)
+This TOML file is metadata for the whole site. Documentation for this file can be found [here](https://gohugo.io/overview/configuration/).
+
+#### Authors (`/site/data/authors.json`)
+This JSON file has info about each of the blog authors. The JSON fields used are:
 - User (Object): The data for a user.
  - `key` (String): The name of the user (See: [Keys](#keys)).
  - `name` (String): The name of the user (See: [Names](#names)).
  - `avatar` (String): The link to the user's avatar on the forums.
 
-##### Compatability (`/site/data/compatibility.json`)
-The `compatibility.json` file has info about each of the compataibility ranks in the [Game Compatibility List](https://citra-emu.org/game/). The [JSON](http://www.json.org/) fields used here are:
+#### Compatability (`/site/data/compatibility.json`)
+This JSON file has info about each of the compataibility ranks in the [Game Compatibility List](https://citra-emu.org/game/). The JSON fields used here are:
 - Rating (Object): The data for a rating.
  - `key` (String): The number representing the rating (See: [Keys](#keys)).
  - `name` (String): The name of the rating.
  - `color` (String): The HTML color code for the rating, including the `#`.
  - `description` (String): A description of the rating.
 
-##### Virtual Console Systems (`/site/data/vcSystems.json`)
-The `vcSystems.json` file has info about each of the 3DS's Virtual Consoles, used in the [Game Compatibility List](https://citra-emu.org/game/). The [JSON](http://www.json.org/) fields used here are:
+#### Virtual Console Systems (`/site/data/vcSystems.json`)
+This JSON file has info about each of the 3DS's Virtual Consoles, used in the [Game Compatibility List](https://citra-emu.org/game/). The JSON fields used here are:
 - Console (Object): The data for a rating.
  - `key` (String): The short name of a console (See: [Keys](#keys)).
  - `name` (String): The full name of the console (See: [Names](#names)).
 
-##### Game Types (`/site/data/gameTypes.json`)
-The `gameTypes.json` file has info about each of the 3DS game types, used in the [Game Compatibility List](https://citra-emu.org/game/). The [JSON](http://www.json.org/) fields used here are:
+#### Game Types (`/site/data/gameTypes.json`)
+This JSON file has info about each of the 3DS game types, used in the [Game Compatibility List](https://citra-emu.org/game/). The JSON fields used here are:
  - Game Type (Object): The data for a game type.
  - `name` (String): The full name of the console (See: [Names](#names)).
 
-#### Translations (`/site/i18n/`)
-The `i18n` folder is a placeholder for if the site is translated.
+### Site Build Tools
 
-#### Images (`/site/static/images/`)
-The `images` folder, and its subfolders have PNG images used throughout the site.
+#### NPM `package.json` (`/package.json`)
+This JSON file is metadata about the site as a Node.js package. Documentation for this file can be found [here](https://docs.npmjs.com/files/package.json).
 
-#### Bootstrap Theme (`/site/themes/citra-bs-theme`)
-The `citra-bs-theme` folder describes what the final pages should look like.
+#### Gulpfile (`/gulpfile.js`)
+This JavaScript file is a script to build the site. Documentation for this file can be found [here](https://gulpjs.com/docs/en/getting-started/javascript-and-gulpfiles).
 
-##### Theme Layout (`/site/themes/citra-bs-theme/layout/`)
-The `layout` folder has the structure for the root directory of the final site that users will see.
-
-###### HTML Templates (`/site/themes/citra-bs-theme/layout/*.html`)
-The `*.html` files has the HTML templates for the final page. Documentation for these files can be found [here](https://gohugo.io/templates/list).
-
-###### RSS File (`/site/themes/citra-bs-theme/layout/rss.xml`)
-The `rss.xml` file has info for 3rd party RSS readers.
-
-###### Sitemap (`/site/themes/citra-bs-theme/layout/sitemap.xml`)
-The `sitemap.xml` has a sitemap for search engines to index.
-
-##### Theme Static Data (`/site/themes/citra-bs-theme/static/`)
-The `static` folder has resources that will be copied over to the final page.
-
-###### Style Sheets (`/site/themes/citra-bs-theme/static/css/*.css`)
-The `css` folder has stylesheets that describe the aesthetics of the page.
-
-###### Fonts (`/site/themes/citra-bs-theme/static/fonts/*`)
-The `fonts` folder has fonts. Wow.
-
-###### Images (`/site/themes/citra-bs-theme/static/images/*`)
-The `images` folder has images for the main page, mostly branding. Other images like screenshots go in `/site/static/images/`.
-
-###### Scripts (`/site/themes/citra-bs-theme/static/scripts/*.js`)
-The `scripts` folder has Javascript scripts responsible for loading special parts of the page.
-
-###### Favorite Icon (`/site/themes/citra-bs-theme/static/favicon.ico`)
-The icon for the site.
-
-##### Theme Metadata (`/site/themes/citra-bs-theme/theme.toml`)
-The `theme.toml` file has metadata about the Citra Bootstrap theme. Documentation for this file can be found [here](https://gohugo.io/overview/configuration/).
-
-#### Configuration (`/site/config.toml`)
-The `config.toml` file contains metadata for the whole site. Documentation for this file can be found [here](https://gohugo.io/overview/configuration/).
-
-### Scripts
-These are Node.JS apps used for specific purposes like fetching tweets from Twitter.
+#### Build Scripts (`/scripts/**/*.js`)
+These JavaScript files are scripts to be run while building the page.
