@@ -82,13 +82,13 @@ This JSON file has info about each of the compataibility ranks in the [Game Comp
  - `description` (String): A description of the rating.
 
 #### Virtual Console Systems (`/site/data/vcSystems.json`)
-This JSON file has info about each of the 3DS's Virtual Consoles, used in the [Game Compatibility List](https://citra-emu.org/game/). The JSON fields used here are:
+This JSON file has info about each of the 3DS's Virtual Consoles, used in the Game Compatibility List. The JSON fields used here are:
 - Console (Object): The data for a rating.
  - `key` (String): The short name of a console (See: [Keys](#keys)).
  - `name` (String): The full name of the console (See: [Names](#names)).
 
 #### Game Types (`/site/data/gameTypes.json`)
-This JSON file has info about each of the 3DS game types, used in the [Game Compatibility List](https://citra-emu.org/game/). The JSON fields used here are:
+This JSON file has info about each of the 3DS game types, used in the Game Compatibility List. The JSON fields used here are:
  - Game Type (Object): The data for a game type.
  - `name` (String): The full name of the console (See: [Names](#names)).
 
