@@ -20,7 +20,7 @@ This section describes the important files used in this repository.
 
 ### Site Content
 
-### HTML Templates (`/site/themes/citra-bs-theme/layout/*.html`)
+#### HTML Templates (`/site/themes/citra-bs-theme/layout/*.html`)
 These HTML files are the templates that will be filled with the page content. Documentation for these files can be found [here](https://gohugo.io/templates/list).
 
 #### Main Page Content (`/site/content/*.md`)
