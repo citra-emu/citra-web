@@ -5,11 +5,11 @@ This repository contains the source for the [Citra Emulator](https://github.com/
 ## Quick Start
 
 ### Required Dependencies
-- [Node.js](https://nodejs.org): See the website for instructions for your OS.
 - [Yarn](https://yarnpkg.com/): See the website for instructions for your OS, or install with NPM by running `npm install -g yarn` with elevated privleges.
-- [Hugo](https://gohugo.io/): See the website for instructions for your OS, or install with NPM by running `npm install -g hugo-bin` with elevated privleges.
+- [Node.js](https://nodejs.org): See the website for instructions for your OS.
 - [GraphicsMagick](http://www.graphicsmagick.org/): See the website for instructions for your OS.
 - [ImageMagick](https://www.imagemagick.org): See the website for instructions for your OS.
+- [Hugo](https://gohugo.io/): See the website for instructions for your OS, or install with NPM by running `npm install -g hugo-bin` with elevated privleges.
 
 ### Optional Dependencies
 - [gulp.js](http://gulpjs.com): See the website for instructions for your OS, or install with NPM by running `npm install -g gulp-cli` with elevated privleges. Recommended to be installed for convenience when building.
