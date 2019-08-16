@@ -1,4 +1,7 @@
 {{ define "main" }}
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+
     {{ $paginator := .Paginate .Data.Pages }}
 
     {{ range $paginator.Pages }}
