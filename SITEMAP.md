@@ -8,7 +8,7 @@ This file will give an overview of what each folder and file in this repository 
 This section gives some background information that will be referred to in the [Structure](#structure) part of this document.
 
 ### Keys
-Some of the JSONs in this repositor use a field named `key`. The value of this should be the same as the name of the parent object. This should be lowercase, with no spaces.
+Some of the JSONs in this repository use a field named `key`. The value of this should be the same as the name of the parent object. This should be lowercase, with no spaces.
 
 ### Names
 JSONs that have a `key` field (See: [Keys](#keys)) also have a `name` field. The value of this doesn't have to be the same as the value of `key` or the name of the parent object, and can have capitalization and spaces.
