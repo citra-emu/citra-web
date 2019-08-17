@@ -15,14 +15,14 @@ There's also been many changes this month that improve the speed of emulation ac
 the board, on top of the usual improvements in accuracy and features. And because
 of that, I've dubbed this month #Speedtember. Let's dive right in.
 
-{{% callout %}}
+{{% alert info %}}
 Hello everyone! We're all terribly sorry for the delay in getting this progress
 report out the door, but our main technical writer [anodium](https://github.com/anodium),
 was just a bit busy surviving both Hurricane Irma and Maria. Although she's a
 trooper and claims it's not an excuse for the delay, we find that her personal
 safety is a tad more important. We're all glad that she's safe and sound, and in
 a state where she can keep pumping out quality articles for Citra!
-{{% /callout %}}
+{{% /alert %}}
 
 ## [Switchable Page Tables](https://github.com/citra-emu/citra/pull/2952) by [MerryMage](https://github.com/MerryMage)
 
