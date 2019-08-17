@@ -2,6 +2,6 @@
 title = "Help"
 +++
 
-User documentation on how to use Citra and frequently asked questions can be found here. 
+User documentation on how to use Citra and frequently asked questions can be found here. Information for developers can be found on the [developer wiki](https://citra-emu.org/wiki/faq/).
 
-If you would like more information on a subject, please contact our moderation team on Discord.
+If you would like more information on a subject, or you're having trouble, support is offered in our [Discord server](https://citra-emu.org/discord/).
