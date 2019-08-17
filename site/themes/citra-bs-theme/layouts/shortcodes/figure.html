@@ -13,7 +13,7 @@
     {{ with .Get "title" }}
     <figcaption>
         <h4>
-            {{ . }}
+            {{ . | markdownify }}
         </h4>
     </figcaption>
     {{ end }}

@@ -9,6 +9,7 @@
     {{ range $figure := $figures }}
         {{ $.Scratch.Set "src" (index (split $figure "=") 0) }}
         {{ $.Scratch.Set "title" (index (split $figure "=") 1) }}
+        {{ $.Scratch.Set "link" (index (split $figure "=") 2) }}
         <div class="theme-table-image col-sm-{{ $.Scratch.Get "size" }}">
             <figure style="padding: 0px;">
                 {{ if eq $type "gifv" }}
@@ -20,10 +21,14 @@
                     </div>
                 {{ else if eq $type "image" }}
                     <img src="{{ printf "%s%s" $path ($.Scratch.Get "src") }}" alt="{{ $.Scratch.Get "title" }}" />
+                {{ else if eq $type "imagelink" }}
+                    <a href="{{ $.Scratch.Get "link" }}" style="border-bottom-style: none;" >
+                        <img src="{{ printf "%s%s" $path ($.Scratch.Get "src") }}" alt="{{ $.Scratch.Get "title" }}" />
+                    </a>
                 {{ end }}
                 <figcaption>
                     <h4>
-                        {{ $.Scratch.Get "title" }}
+                        {{ $.Scratch.Get "title" | markdownify }}
                     </h4>
                 </figcaption>
             </figure>
