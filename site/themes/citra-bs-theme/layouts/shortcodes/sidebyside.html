@@ -23,7 +23,7 @@
                 {{ end }}
                 <figcaption>
                     <h4>
-                        {{ $.Scratch.Get "title" }}
+                        {{ $.Scratch.Get "title" | markdownify }}
                     </h4>
                 </figcaption>
             </figure>
