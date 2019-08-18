@@ -2,7 +2,7 @@
 date = "2017-10-22T22:47:14-05:00"
 title = "Introducing Automatic Updates"
 tags = [ "feature-update" ]
-author = "thekoopakingdom"
+author = "codingkoopa"
 forum = 4428
 +++
 

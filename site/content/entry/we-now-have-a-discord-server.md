@@ -1,7 +1,7 @@
 +++
 date = "2016-09-02T15:05:00-05:00"
 title = "We now have a Discord server!"
-author = "thekoopakingdom"
+author = "codingkoopa"
 forum = 39
 +++
 
