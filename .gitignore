@@ -1,3 +1,4 @@
+# Node packages.
 node_modules/
 
 # Binaries
@@ -23,3 +24,6 @@ site/data/twitter.json
 # Filesystem stuff.
 .directory
 .DS_Store
+
+# IDE stuff.
+.vscode
