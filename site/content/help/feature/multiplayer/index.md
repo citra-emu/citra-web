@@ -43,7 +43,6 @@ sudo docker run -d \
   --preferred-game-id "<INSERT TITLE ID HERE>" \
   --port 5000 \
   --max_members 4 \
-  --username "<INSERT CITRA ACCOUNT USERNAME HERE>" \
   --token "<INSERT CITRA ACCOUNT TOKEN HERE>" \
   --enable-citra-mods \
   --web-api-url https://api.citra-emu.org/
@@ -94,8 +93,7 @@ By default, rooms will be hosted Public. If you'd like to host a private one ins
 |`--preferred-game-id`|No|The Title ID of the preferred game of your room, in hex. You can find the `Title ID` with the game list of Citra.
 |`--port`|Yes|Port number to host your room on (0-65535). You should use a port that is not already used by other applications (typically a high enough port will work). Though unrecommended due to bandwidth reasons, it is possible to host multiple rooms on a single server provided the ports are distinct. **Remember to configure `Port Forwarding` for the ports!**
 |`--max-members`|Yes|Maximum number of members for your room (2-16). *Note that rooms that are too large may result in slowdowns or even disconnections in certain games.*
-|`--username`|Public Rooms|Your *Citra* Community user name which will be displayed as the `Host` of the room.
-|`--token`|Public Rooms|Your *Citra* Community user token. Do not know your token yet? Get it [here](https://citra-emu.org/wiki/citra-web-service/).
+|`--token`|Public Rooms|Your *Citra* Community user token. Do not know your token yet? Get it [here](https://citra-emu.org/wiki/citra-web-service/). **Please note, the token format has changed as of 11/1/2019 and there is now no need for a `--username` field.**
 |`--web-api-url`|Public Rooms|URL to the *Citra* Web API. You should not change this.
 |`--ban-list-file`|No|This is a file which Citra will store ban records in. Banning would still work even if you do not specify this, but the bans will be lost once you shut down the room.
 
