@@ -69,7 +69,6 @@ citra-room ^
   --preferred-game-id "<INSERT TITLE ID HERE>" ^
   --port 5000 ^
   --max_members 4 ^
-  --username "<INSERT CITRA ACCOUNT USERNAME HERE>" ^
   --token "<INSERT CITRA ACCOUNT TOKEN HERE>" ^
   --enable-citra-mods ^
   --web-api-url https://api.citra-emu.org/ ^
