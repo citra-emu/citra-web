@@ -18,14 +18,6 @@ gulp.task('scripts:games', function (callback) {
   });
 });
 
-gulp.task('scripts:twitter', function (callback) {
-  exec(`cd ./scripts/twitter/ && yarn install && node app.js`, function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    callback(err);
-  });
-});
-
 gulp.task('scripts:wiki', function (callback) {
   exec(`cd ./scripts/wiki/ && yarn install && node app.js`, function (err, stdout, stderr) {
     console.log(stdout);
@@ -127,5 +119,5 @@ util.log(`process.env.HUGO_ENV = '${process.env.HUGO_ENV}'`);
 util.log(`process.env.HUGO_BASEURL = '${process.env.HUGO_BASEURL}'`);
 
 gulp.task('default', gulp.series(gulp.parallel('assets:js', 'assets:fonts', 'assets:scss'), 'hugo', 'assets:images', finalCommand))
-gulp.task('all', gulp.series(gulp.parallel('scripts:games', 'scripts:twitter', 'scripts:wiki'), gulp.parallel('assets:js', 'assets:fonts', 'assets:scss'), 'hugo', 'assets:images', finalCommand))
+gulp.task('all', gulp.series(gulp.parallel('scripts:games', 'scripts:wiki'), gulp.parallel('assets:js', 'assets:fonts', 'assets:scss'), 'hugo', 'assets:images', finalCommand))
 gulp.task('content', gulp.series('hugo', finalCommand));
