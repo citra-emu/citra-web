@@ -123,16 +123,17 @@ links to get you started however:<br />
                 if (i == 0) { table_style = 'table-first'; }
 
                 release.assets.forEach(function(asset) {
+                    var is_windows = asset.name.includes('windows') || asset.name.includes('exe');
                     if (asset.name.includes('nupkg')) return;
-                    if (asset.name.includes('.7z')) return;
+                    if (!is_windows && asset.name.includes('.7z')) return;
+                    if (is_windows && asset.name.includes('.tar.gz')) return;
                     if (asset.name.includes('RELEASES')) return;
 
                     /* We only want to provide mingw builds on the downloads page. */
                     if (asset.name.includes('-msvc-')) return;
 
                     let env_icon = './images/icons/file.png';
-                    if (asset.name.includes('windows')) env_icon = '/images/icons/windows.png';
-                    else if (asset.name.includes('exe')) env_icon = '/images/icons/windows.png';
+                    if (is_windows) env_icon = '/images/icons/windows.png';
                     else if (asset.name.includes('osx')) env_icon = '/images/icons/apple.png';
                     else if (asset.name.includes('linux')) env_icon = '/images/icons/linux.png';
 
