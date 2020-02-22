@@ -3,10 +3,7 @@ title = "Custom Textures"
 description = "Custom texture features for displaying custom graphics packs."
 +++
 
-**Note: This feature is currently still WIP (Work-in-progress)!**
-
-Texture dumping and replacement have been implemented for Citra, by [**Khang06**](https://github.com/khang06). <br>
-For more details, see [**PR #4868**](https://github.com/citra-emu/citra/pull/4868).
+Citra has the ability to dump game textures and load custom texture packs. Currently, only **`.PNG`** files are supported, but it is expected that more formats will come in the future.
 
 ## Instructions for dumping textures
 
