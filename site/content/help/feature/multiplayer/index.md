@@ -16,7 +16,8 @@ If you just want to play with your friends, **you do not need to create your own
 If you just want to temporarily host a room for you and your friends to play, the easiest way is to host a room from the UI (`Multiplayer > Host Room`). The room will be deleted once the host exits Citra. You will still need to configure `Port forwarding` if you and your friends are not on the same network.
 
 However, if you really want to host your own dedicated room, there are a few points you should keep in mind:
-* As a room is actually a server, the computer hosting it has to be running 24/7. Therefore, it is usually not feasible to use your home or work PC to host a room.
+
+* As a room is actually a server, the computer hosting it has to be running 24x7. Therefore, it is usually not feasible to use your home or work PC to host a room.
 * To ensure the best experience while playing, rooms should have a good Internet connection as well as a high bandwidth. *This is especially important if you are hosting a public room - no one would want random disconnections while playing!*
 * Citra rooms can be quite costy in terms of data transfer. It has been reported that some popular public rooms transfer over 1TB of data in a single month.
 
@@ -55,12 +56,14 @@ You can also save this command (with arguments filled in) as a script for easier
 If you are on Windows, it is also possible to host rooms using a standalone executable. As you may already know, every *Citra* release comes with three executables - `citra` (The command line emulator frontend), `citra-qt` (The GUI emulator frontend) and `citra-room`, the dedicated room server which we'll use.
 
 Steps:
+
 1. If you do not have a *Citra* installation yet, install it with the installer from our [official website](https://citra-emu.org).
 1. Navigate to the folder you installed *Citra* to, and go into `nightly-mingw` or `canary-mingw`.
     * If you cannot recall the installation folder, right clicking on a shortcut and clicking `Open File Location` will directly bring you into the `nightly-mingw` or `canary-mingw` folder.
     * Make sure the folder you are in contains the `citra-room` executable.
 1. Create a new text file and copy the following script inside, **fill in the arguments** (they will be explained later) and then use `File > Save As...` to save it to `host.bat`. You can delete the original text file after that.
 1. You can now double click on the batch script named `host` to start hosting.
+
 ```
 citra-room ^
   --room-name "<INSERT ROOM NAME HERE>" ^
@@ -104,6 +107,7 @@ As you may already know, *Citra* multiplayer rooms can authenticate users and gr
 Note that this feature requires interacting with the *Citra* Web API, and therefore is only enabled for *public rooms in the Public Room Browser*. Directly connecting to the rooms (with `Direct Connect`) will leave you unauthenticated.
 
 Currently, *Citra* rooms grant the following members moderation privileges by default:
+
 * Room host (i.e. members authenticated with the same user name used when hosting the room)
 * *Citra* Community Moderators, when rooms are hosted with the `--enable-citra-mods` flag.
 
