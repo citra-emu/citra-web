@@ -21,7 +21,7 @@ Note that everything demonstrated above is optional. It is possible that a mod o
 #### ExeFS
 The ExeFS dir contains replacements or patches for the game's executable.
 These types of mods typically alter game behavior or logic.
-Currently you can put a replacement file, or apply two types of patches: `IPS` and `BFS`.
+Currently you can put a replacement file, or apply two types of patches: `IPS` and `BPS`.
 
 To use a replacement file for the game code, put a file named `code.bin` in the ExeFS dir.
 
