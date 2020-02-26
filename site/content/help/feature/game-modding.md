@@ -67,20 +67,20 @@ It is okay to omit one (or more) of them if the mod does not need to replace tho
 ### Using Mods Intended for Luma3DS
 Citra's game modding framework has all the functionality offered in Luma3DS's game patching feature. Therefore, mods intended for Luma3DS should be usable with Citra.
 
-Mods for Luma3DS usually come in a single folder. You need to copy the files to the correct folders for use in Citra. For example, a Luma3DS mod may look like:
+Mods for Luma3DS usually look like:
 ```
 luma/titles/<Title ID>
-    - other folders
-    - other files
+    - romfs
+      - other files and folders
     - code.bin / code.ips
     - exheader.bin
 ```
 Note that everything demonstrated above is optional. It is possible that a mod contains only some of these files.
 
-You need to copy `code.bin` or `code.ips` to the `exefs` folder, the `exheader.bin` directly to the mods folder, and everything else to the `romfs` folder. If a said folder does not exist, create it.
+You need to copy the files to Citra's mod folder for the corresponding title. Then, you should make an `exefs` folder and move `code.bin` or `code.ips` inside.
 ```
-It is important to note that you need to copy the files to their correct subfolders!
-Directly putting a Luma3DS mod will not result in it being applied.
+It is important to note that you need to move the code replacements/patches to the `exefs` subfolder!
+Directly putting a Luma3DS mod will likely not result in it being applied.
 ```
 
 ### Conclusion
