@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The Citra Official Website",
   "author": "",
-  "license": "AGPLv3",
+  "license": "AGPL-3.0-only",
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
     "browser-sync": "^2.18.13",
