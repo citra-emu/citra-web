@@ -31,6 +31,8 @@ More details on the `IPS` format can be found on [ZeroSoft](https://zerosoft.zop
 To use a `BPS` patch, put a file named `code.bps` in the ExeFS directory.
 More details on the `BPS` format can be found on [byuu](https://byuu.org/projects/beat#bps).
 
+*Note: For compatiblity with Luma3DS, you can also put these ExeFS replacements/patches directly in the mods folder instead of the `exefs` subfolder.*
+
 #### RomFS
 The RomFS directory contains replacements for the game's assets and general files.
 These types of mods typically alter a game's textures, text, fonts, sounds, or other graphical assets.
@@ -65,23 +67,17 @@ Within this folder, there are `exefs`, `romfs`, and `romfs_ext` directories and 
 It is okay to omit one (or more) of them if the mod does not need to replace those files. Additionally, if a folder is empty Citra will ignore it.
 
 ### Using Mods Intended for Luma3DS
-Citra's game modding framework has all the functionality offered in Luma3DS's game patching feature. Therefore, mods intended for Luma3DS should be usable with Citra.
+Citra's game modding framework offers drop-in compatibility with Luma3DS mods.
 
-Mods for Luma3DS usually look like:
+Just put a Luma3DS mod (usually structured like the following example) into Citra's mod folder for the title, and it should directly work.
 ```
 luma/titles/<Title ID>
-    - romfs
-      - other files and folders
-    - code.bin / code.ips
-    - exheader.bin
+  - romfs
+    - other files and folders
+  - code.bin / code.ips
+  - exheader.bin
 ```
 Note that everything demonstrated above is optional. It is possible that a mod contains only some of these files.
-
-You need to copy the files to Citra's mod folder for the corresponding title. Then, you should make an `exefs` folder and move `code.bin` or `code.ips` inside.
-```
-It is important to note that you need to move the code replacements/patches to the `exefs` subfolder!
-Directly putting a Luma3DS mod will likely not result in it being applied.
-```
 
 ### Conclusion
 If you are a modder looking to distribute mods for Citra and have further questions or doubts, feel free to ask in our Discord.
