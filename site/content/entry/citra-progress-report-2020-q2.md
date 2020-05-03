@@ -447,7 +447,8 @@ Camera support had been there for over two years, but some of the more naughty g
 
 After performing HW tests, he properly implemented these events, and now camera is working in almost every game.
 
-(Picture of AR Photo in Fashion Forward) No more solid black 'fashionable' photos
+{{< figure src="/images/entry/citra-progress-report-2020-q2/camera.png"
+    title="No more solid black fashionable photos" >}}
 
 ### Update file size on write ([#5120](https://github.com/citra-emu/citra/pull/5120)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
@@ -478,7 +479,8 @@ These two functions are used by games to query the state of the SD card and NAND
 
 A simple stub was enough to get these games to create Extra Data properly and go in-game.
 
-(Pictures)
+{{< figure src="/images/entry/citra-progress-report-2020-q2/ridge_racer_3d.png"
+    title="It is finally happy with the emulated SD Card" >}}
 
 ### Make GetFreeBytes return a more accurate value ([#5282](https://github.com/citra-emu/citra/pull/5282)) by [FearlessTobi](https://github.com/FearlessTobi) and others
 
@@ -498,7 +500,8 @@ This keyboard boasts a lot of features that almost no games use, such as a custo
 
 This fixed a few games such as Puzzles and Dragons Z.
 
-(Pic of working games)
+{{< figure src="/images/entry/citra-progress-report-2020-q2/swkbd_callback.png"
+    title="The game can finally hear your name" >}}
 
 ### Remove text mem clearing ([#5016](https://github.com/citra-emu/citra/pull/5016)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
