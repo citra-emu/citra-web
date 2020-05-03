@@ -502,7 +502,7 @@ This keyboard boasts a lot of features that almost no games use, such as a custo
 This fixed a few games such as Puzzles and Dragons Z.
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/swkbd_callback.png"
-    title="The game can finally hear your name" >}}
+    title="The game can finally hear your name instead of asking again and again" >}}
 
 ### Remove text mem clearing ([#5016](https://github.com/citra-emu/citra/pull/5016)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
@@ -538,15 +538,16 @@ When installing CIA files in Citra, a CIA file contains much more than just the 
 
 Steveice10 added a simple check to the game list to see if the files installed are game files or other things, and now Citra hides anything that isn't a game.
 
-(Game list before the change)
-Citra can't even load these files anyway, so why show them?
+{{< figure src="/images/entry/citra-progress-report-2020-q2/game_list_before.png"
+    title="Citra can't even load these files anyway, so why show them?" >}}
 
 ## amiibo drag drop support ([#4948](https://github.com/citra-emu/citra/pull/4948)) by [vvanelslande](https://github.com/vvanelslande)
 
 Have a need to load the Amiibos as effortlessly as possible?
 Thanks to [vvanelslande](https://github.com/vvanelslande), you can simply drag and drop them on the Citra window and have them load!
 
-(Screenshot) Every UX improvement counts!
+{{< figure src="/images/entry/citra-progress-report-2020-q2/amiibo_drag_and_drop.png"
+    title="Every UX improvement counts!" >}}
 
 ## Runtime load MF dll ([#5020](https://github.com/citra-emu/citra/pull/5020)) by [jroweboy](https://github.com/jroweboy)
 
