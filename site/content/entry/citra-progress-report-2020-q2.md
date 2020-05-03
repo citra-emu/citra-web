@@ -15,12 +15,12 @@ Since it's been such a long time since the last one, you may already be very fam
 
 # Contents
 
-1. New Features
-1. Emulation Accuracy
-1. Frontend Improvements
-1. Related to Citra
-1. What about Android?
-1. Conclusion
+1. [New Features]({{< relref "#new-features" >}})
+1. [Emulation Accuracy]({{< relref "#emulation-accuracy" >}})
+1. [Frontend Improvements]({{< relref "#frontend-improvements" >}})
+1. [Related to Citra]({{< relref "#related-to-citra" >}})
+1. [What about Android?]({{< relref "#what-about-android" >}})
+1. [Conclusion]({{< relref "#conclusion" >}})
 
 # New Features
 
