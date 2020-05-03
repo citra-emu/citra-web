@@ -217,7 +217,7 @@ This was due to the Mii Selector, an applet on the 3DS, being unimplemented. On 
 
 ## CPU Slider ([#5025](https://github.com/citra-emu/citra/pull/5025)) by [jroweboy](https://github.com/jroweboy)
 
-As mentioned earlier in the progress report, Citra decides how much time the game has run on the CPU by counting up the number of instructions the CPU runs.
+Citra decides how much time the game has run on the CPU by counting up the number of instructions the CPU runs.
 Some games take advantage of this extra time and do extra work each frame, and extra work means that Citra can't keep up and the speed can drop below 100%.
 As a workaround for this, some games that experience a similar slow down on 3DS hardware will include built-in frameskipping code, letting them do less in a frame if they aren't going to get full speed.
 
@@ -252,6 +252,14 @@ Where would 3DS emulation be without supporting 3D?
 Try it out in Configure -> Graphics -> Stereo (Interlaced)
 
 (Picture of interlaced stereo)
+
+## Frametime logging ([#4636](https://github.com/citra-emu/citra/pull/4636), [#4882](https://github.com/citra-emu/citra/pull/4882)) by [jroweboy](https://github.com/jroweboy) and [BreadFish64](https://github.com/BreadFish64)
+
+When developing an emulator, it is important to keep track of performance improvements and regressions. Without proper recording mechanics in place, however, the developers could only 'feel' the performance. Thanks to [BreadFish64](https://github.com/BreadFish64) and [jroweboy](https://github.com/jroweboy), this is no longer the case. Developers can now get a log of frametimes (the time used to render each frame) from which they can generate beautiful graphs for analysis. What's more, the mean frametime of the play session will now get sent via telemetry, so we can gather even more performance data.
+
+Note: This feature is not in the UI, to avoid boasting it with too many menu actions.
+
+(Picture of the fancy graphs) Tracking performance has got easier
 
 ## Better Debugging Experience
 
@@ -354,6 +362,18 @@ Hamish found that as a temporary work around, Citra can make some scenes look ok
 
 (Comparison - wrong | correct) Calem has finally got his terrifying cheeks cured
 
+### Remove Accurate Geometry Shader setting ([#4879](https://github.com/citra-emu/citra/pull/4879), [#4894](https://github.com/citra-emu/citra/pull/4894)) by [tywald](https://github.com/tywald) and [wwylele](https://github.com/wwylele)
+
+When Hardware Shaders was first added, we had two `Accurate` options. `Accurate Multiplication` was relatively well-tested, and we knew it would harm performance quite a bit. However, the other one - `Accurate Geometry Shaders`, didn't receive as much attention, partially due to the fact that it was on by default.
+
+Geometry Shaders (GS) are shaders processing what are called *primitives*, which are basically points, lines and triangles passed to your GPU. The PICA had support for programmable GS. Therefore, when we added the PICA->GLSL shader convertor, it was natural to try to support GS as well. However, due to PICA's weird behaviour of preserving states across shader invocations, it was hard to make an accurate implementation. [wwylele](https://github.com/wwylele) put it behind an option, hoping that the rather inaccurate Hardware GS would help increase performance for weaker PCs.
+
+When [tywald](https://github.com/tywald) was playing with this setting in MH4U, he discovered that this option actually did the opposite of what it claimed - using Hardware GS (i.e. turing accurate GS off) would *decrease* performance! With the new performance logging framework put together by [jroweboy](https://github.com/jroweboy), the team did further tests and confirmed his observation. Since the Hardware GS was not only less accurate but also slower, we decided that there was no point in keeping it there at all. [tywald](https://github.com/tywald) removed this setting from the UI, and [wwylele](https://github.com/wwylele) removed the actual code.
+
+[BreadFish64](https://github.com/BreadFish64) is now [attempting](https://github.com/citra-emu/citra/pull/5216) to remove the other setting (`Accurate Multiplication`). He rewrote the function we were using to mimic PICA's multiplication behaviour. As a result, not only was the performance penalty brought down from ~10% to almost negligible, but it fixed Intel GPUs (which were previously having problems with this option on) as well! Hopefully, we will be able to have a clean configuration dialog soon.
+
+(Picture) Isn't it just cleaner and more beautiful
+
 ### Correct register length ([#5023](https://github.com/citra-emu/citra/pull/5023)) by [jroweboy](https://github.com/jroweboy)
 
 Luigi's Mansion Dark Moon is a problem child for performance on Citra.
@@ -369,7 +389,21 @@ The fix is one small line, change the number of bits Citra reads to cut out thos
 (Picture of LM2 ghost)
 You no longer scare me, oh ghost-of-crashing-citra past
 
-### video_core/renderer_opengl/gl_rasterizer_cache: Create Format Reinterpretation Framework ([#5170](https://github.com/citra-emu/citra/pull/5170)) by [BreadFish64](https://github.com/BreadFish64)
+### Create Format Reinterpretation Framework ([#5170](https://github.com/citra-emu/citra/pull/5170)) by [BreadFish64](https://github.com/BreadFish64)
+
+Emulating the 3DS's GPU is hard, partially thanks to dumb games. On newer consoles like the Switch, games would usually use established graphics API such as OpenGL, so their behaviour is mostly reasonable. On the 3DS, however, it seems that games are really trying their best to make use of all kinds of strange features and exploit all edge cases.
+
+On the 3DS, games have the ability to access cached surfaces with different formats than what it was originally uploaded as - and they *love* to abuse it. On Citra, however, due to limitations of modern APIs, we simply cannot do this in the same way as the 3DS. Without a format convertor, we would have to reupload the surface from CPU memory to the GPU - and this was *really* slow. For instance, the after match screen in Smash 4 got affected horribly.
+
+[jroweboy](https://github.com/jroweboy) made a hack ([#4089](https://github.com/citra-emu/citra/pull/4089)) to ignore these reinterpretations to improve performance. It turned out that this worked fine for most games, but broke Paper Mario and about all VC games. Since this was a hack anyway and he knew that a proper implementation would be possible, he eventually decided to close it.
+
+(Picture of broken Paper Mario)
+
+So what was the proper implementation? Using shaders on the host GPU to actually convert the surfaces. In fact, we had already done this for a specific case (`RGBA8 -> D24S8`) but there were many other convertors missing. [B3n30](https://github.com/B3n30) created the original Format Conversion PR ([#4902](https://github.com/citra-emu/citra/pull/4902)) based on [jroweboy](https://github.com/jroweboy)'s work. That PR did not add any new convertors, but laid the framework for them, and he also added a log so that we can collect information regarding which convertors were necessary.
+
+As it turned out - most of the conversions the games are trying to do didn't even make sense. For many of the them, the pixel sizes of the formats didn't match - which meant that the surface would take up different amounts of memory before and after conversion. They were basically impossible to implement and practically useless as well. After further analysis, we decided that they were simply games reusing memory, and ignoring the reinterpretation for these would be fine.
+
+The VC games did have a valid use case though (`RGBA4 -> RGB5A1`), and [BreadFish64](https://github.com/BreadFish64) implemented this convertor. With this, we were finally able to get proper Format Reinterpretation that improved speed while not breaking any games.
 
 ## Services
 
