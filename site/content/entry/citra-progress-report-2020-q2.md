@@ -186,11 +186,11 @@ However, when the dumper was initially added, there wasn't a proper configuratio
 
 ## Custom Post-Processing Shaders, Anaglyph 3D and Nearest Neighbour Filter ([#4578](https://github.com/citra-emu/citra/pull/4578)) by [xperia64](https://github.com/xperia64)
 
-You read it right. [xperia64](https://github.com/xperia64), developer of the [Drastic](https://www.drastic-ds.com) emulator, managed to deliver three features in a single PR. For those who don't know already, post-processing shaders are basically an additional effect added to the final image rendered.
+You read it right. [xperia64](https://github.com/xperia64), a developer of the [Drastic](https://www.drastic-ds.com) emulator, managed to deliver three features in a single PR. For those who don't know already, post-processing shaders are basically an additional effect added to the final image rendered.
 
 It all started when [xperia64](https://github.com/xperia64) set out to implement anaglyph 3D for Citra. However, since Citra did not have post-processing shader support, he had to implement it first. For drop-in compatibility with many [Dolphin](https://dolphin-emu.org) shaders, he even added some of the Dolphin aliases and bindings.
 
-On top of post-processing shaders, he added a builtin red-cyan `dubois` shader which implemented anaglyph 3D, making 3D effects accessible to more users who don't really have a 3D screen. While he was at it, in order to fix some of the shaders, he added an option to toggle `Linear Filtering`. This was previously on by default, and turning that option off would get Citra to use Nearest Neighbour Filter mode. It fixed some issues with certain shaders and also worked better for some textures, such as texts.
+On top of post-processing shaders, he added a builtin red-cyan `dubois` shader which implemented anaglyph 3D, making 3D effects accessible to more users who don't really have a 3D screen. While he was at it, in order to fix some of the shaders, he added an option to toggle `Linear Filtering`. This was previously on by default, and turning that option off would get Citra to use Nearest Neighbour Filter mode. It fixed some issues with certain shaders and also worked better for some textures, such as game text.
 
 You can drop in your own shaders in the `shaders` folder in the Citra User Directory. New flavors of anaglyph 3D can also be added in the `shaders/anaglyph` folder.
 
@@ -333,13 +333,6 @@ Based on observations of game behavior, [vvanelslande](https://github.com/vvanel
 When decoding AAC audio, the decoders use a different audio format than the 3DS so Citra needs to convert to the 3DS format.
 This caused audio popping in games that used AAC if the conversion wasn't accurate enough, but thanks to liushuyu, the popping is no more.
 
-### Add sample rate field to AAC decoder ([#5195](https://github.com/citra-emu/citra/pull/5195)) by [xperia64](https://github.com/xperia64)
-
-When AAC was added to HLE, it was entirely RE'd from how Pokemon X used it.
-However, while the HLE code worked fine for Pokemon, Rhythm Heaven Megamix sounds much faster than normal. It turned out that it used AAC audio with a different sample rate than Pokemon. By comparing HLE and LLE outputs, xperia64 found out that one of the 'unknown' fields in our response seemed to be the sample rate enum.
-
-He then did careful tests and calculations to figure out which sample rate each enum value stood for. With this, Rhythm Heaven Megamix now sounds correct even in HLE. (However, the game still has desync issues and is not really playable right now.)
-
 ### Prevent out of memory errors when the game passes in an improper length value ([#5024](https://github.com/citra-emu/citra/pull/5024)) by [jroweboy](https://github.com/jroweboy)
 
 In Luigi's Mansion Dark Moon, when using HLE Audio, the game mysteriously passes in an extremely large value for length, which, without any checks, caused Citra to try to allocate an extremely large buffer.
@@ -347,6 +340,13 @@ In Luigi's Mansion Dark Moon, when using HLE Audio, the game mysteriously passes
 [jroweboy](https://github.com/jroweboy) took the time to investigate this, and concluded that there were some other bugs in our HLE implementation. The game seemingly reads a value from the DSP and subtracts to get a length, without checking for underflow first. He researched the issue fairly extensively, but couldn't find a fix.
 
 Since an actual fix would likely be rather hard, he made a temporary HACK to prevent out of memory errors. After all, no matter what we do, we shouldn't freeze people's PCs by allocating much bigger memory than they could possibly have.
+
+### Add sample rate field to AAC decoder ([#5195](https://github.com/citra-emu/citra/pull/5195)) by [xperia64](https://github.com/xperia64)
+
+When AAC was added to HLE, it was entirely RE'd from how Pokemon X used it.
+However, while the HLE code worked fine for Pokemon, Rhythm Heaven Megamix sounds much faster than normal. It turned out that it used AAC audio with a different sample rate than Pokemon. By comparing HLE and LLE outputs, xperia64 found out that one of the 'unknown' fields in our response seemed to be the sample rate enum.
+
+He then did careful tests and calculations to figure out which sample rate each enum value stood for. With this, Rhythm Heaven Megamix now sounds correct even in HLE. (However, the game still has desync issues and is not really playable right now.)
 
 ## Graphics
 
