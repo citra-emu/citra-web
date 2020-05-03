@@ -408,7 +408,8 @@ On the 3DS, games have the ability to access cached surfaces with different form
 
 [jroweboy](https://github.com/jroweboy) made a hack ([#4089](https://github.com/citra-emu/citra/pull/4089)) to ignore these reinterpretations to improve performance. It turned out that this worked fine for most games, but broke Paper Mario and about all VC games. Since this was a hack anyway and he knew that a proper implementation would be possible, he eventually decided to close it.
 
-(Picture of broken Paper Mario)
+{{< figure src="/images/entry/citra-progress-report-2020-q2/broken_paper_mario.png"
+    title="The stickers mysteriously disappeared from the bottom screen" >}}
 
 So what was the proper implementation? Using shaders on the host GPU to actually convert the surfaces. In fact, we had already done this for a specific case (`RGBA8 -> D24S8`) but there were many other convertors missing. [B3n30](https://github.com/B3n30) created the original Format Conversion PR ([#4902](https://github.com/citra-emu/citra/pull/4902)) based on [jroweboy](https://github.com/jroweboy)'s work. That PR did not add any new convertors, but laid the framework for them, and he also added a log so that we can collect information regarding which convertors were necessary.
 
@@ -480,7 +481,7 @@ These two functions are used by games to query the state of the SD card and NAND
 A simple stub was enough to get these games to create Extra Data properly and go in-game.
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/ridge_racer_3d.png"
-    title="It is finally happy with the emulated SD Card" >}}
+    title="It is now happy with the emulated SD Card" >}}
 
 ### Make GetFreeBytes return a more accurate value ([#5282](https://github.com/citra-emu/citra/pull/5282)) by [FearlessTobi](https://github.com/FearlessTobi) and others
 
