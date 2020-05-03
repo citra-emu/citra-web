@@ -66,11 +66,11 @@ On the New 3DS, things got even worse. There are 4 cores to be emulated, and our
 
 It required quite a bit of work to get the cores in sync while not ruining performance. Developer [B3n30](https://github.com/B3n30) researched the scheduler and stepped up to implement what we call "Core timing 2.0". He added a timer for each core, and basically rewrote how our timing worked, thus creating a more accurate scheduler. After this change, not only was a big step done towards compatibility with New 3DS games, but it also fixed all the games that were broken with the priority boost hack removed, for instance, [Game].
 
-While Core timing 2.0 inproved timing accuracy, it also came with performance hits due to the JIT executing smaller slices, such as the infamous stutter when entering battles in Pokemon games. After getting reports, B3n30 is now working to strike a proper balance between accuracy and performance. Some of his changes are already in Canary, so be sure to check them out!
+While Core timing 2.0 inproved timing accuracy, it also came with performance hits, such as the infamous stutter when entering battles in Pokemon games. One reason for such regressions was that, since there are more cores to take care of, cache invalidation would happen more often and  on more cores. [MerryMage](https://github.com/MerryMage), author of [dynarmic](https://github.com/MerryMage/dynarmic), the ARM JIT we are using, fixed the Pokemon stutters by reducing overhead of such invalidations. However, some other games still had problems. [B3n30](https://github.com/B3n30) found that this was due to the JIT executing smaller slices, and he is now working to strike a proper balance between accuracy and performance. Some of his changes are already in Canary, so be sure to check them out!
 
 ### core: Add support for N3DS memory mappings ([#5103](https://github.com/citra-emu/citra/pull/5103)) by [FearlessTobi](https://github.com/FearlessTobi)
 
-3DS games use "memory modes" to tell the kernel how much memory they would use, and how many memory is left for the Home Menu, applets and services. As mentioned above, the New 3DS has about double the amount of RAM, so there are also more memory modes we need to support. With the help of other team members, [FearlessTobi](https://github.com/FearlessTobi) managed to make an accurate implementation, making it possible for New 3DS games to map the extra RAM as they like.
+3DS games use "memory modes" to tell the kernel how much memory they would use, and how much memory is left for the Home Menu, applets and services. As mentioned above, the New 3DS has about double the amount of RAM, so there are also more memory modes we need to support. With the help of other team members, [FearlessTobi](https://github.com/FearlessTobi) managed to make an accurate implementation, making it possible for New 3DS games to map the extra RAM as they like.
 
 ### CFG: Let GetSystemModel report model based on Settings:is_new_3ds ([#5104](https://github.com/citra-emu/citra/pull/5104)) by [B3n30](https://github.com/B3n30)
 
@@ -80,7 +80,7 @@ One of these was the CFG service. Games are able to get from this service lots o
 
 ### citra_qt/system: Add N3DS mode checkbox and enable it by default ([#5117](https://github.com/citra-emu/citra/pull/5117)) by [FearlessTobi](https://github.com/FearlessTobi)
 
-UI changes are always the last piece of the puzzle for any major features. [FearlessTobi](https://github.com/FearlessTobi) added a shiny new checkbox to the System tab of the configuration dialog.
+UI changes are always the last piece of the puzzle for any major feature. [FearlessTobi](https://github.com/FearlessTobi) added a shiny new checkbox to the System tab of the configuration dialog.
 
 With this, New 3DS mode is now turned on by default for both new and old users of Citra. 
 
