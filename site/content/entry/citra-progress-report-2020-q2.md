@@ -122,7 +122,7 @@ Try it out and see how it looks.
 
 While original games are great, they often come with imperfections. That is when mod makers can step in to enhance the experience and sometimes add more content.
 
-Thanks to [zhaowenlan1779](https://github.com/zhaowenlan1779) and [leoetlino](https://github.com/leoetlino), Citra now has official mod support - just right click on the game in the game list and select `Open Mods Location`, and put your mod there! Refer to [this help page](https://citra-emu.org/help/features/game-modding) regarding how the mod files should be structured.
+Thanks to [zhaowenlan1779](https://github.com/zhaowenlan1779) and [leoetlino](https://github.com/leoetlino), Citra now has official mod support - just right click on the game in the game list and select `Open Mods Location`, and put your mod there! Refer to [this help page](https://citra-emu.org/help/feature/game-modding) regarding how the mod files should be structured.
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/open_mods_location.png"
     title="As an added bonus you can now Dump RomFS as well" >}}
