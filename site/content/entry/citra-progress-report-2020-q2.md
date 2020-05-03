@@ -53,7 +53,8 @@ New 3DS support is another highly requested feature for Citra. The New 3DS is a 
 
 With the combined efforts of [B3n30](https://github.com/B3n30), [FearlessTobi](https://github.com/FearlessTobi), and many other developers, we were finally able to deliver proper New 3DS support. We saw almost all major New 3DS exclusive games booting and running in a playable state. Although not all of them run at fullspeed yet, we hope you will be able to enjoy exploring the huge worlds of Xenoblade Chronicles 3D or fight some zombies in the (very pixelated) 3DS port of Minecraft.
 
-(Picture New Citra XL running Minecraft lol) Liked the New Citra XL?
+{{< figure src="/images/entry/citra-progress-report-2020-q2/new_citra_xl.jpg"
+    title="Liked the New Citra XL? The functionality was real!" >}}
 
 ### Core timing 2.0 ([#4913](https://github.com/citra-emu/citra/pulls/4913)) by [B3n30](https://github.com/B3n30)
 
@@ -83,7 +84,8 @@ UI changes are always the last piece of the puzzle for any major features. [Fear
 
 With this, New 3DS mode is now turned on by default for both new and old users of Citra. 
 
-(Picture) Lots of work behind this tiny checkbox!
+{{< figure src="/images/entry/citra-progress-report-2020-q2/n3ds_mode.png"
+    title="Lots of work behind this tiny checkbox!" >}}
 
 ## Custom Textures ([#4868](https://github.com/citra-emu/citra/pull/4868)) by [khang06](https://github.com/khang06)
 
