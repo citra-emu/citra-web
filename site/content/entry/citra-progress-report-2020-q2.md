@@ -122,7 +122,8 @@ While original games are great, they often come with imperfections. That is when
 
 Thanks to [zhaowenlan1779](https://github.com/zhaowenlan1779) and [leoetlino](https://github.com/leoetlino), Citra now has official mod support - just right click on the game in the game list and select `Open Mods Location`, and put your mod there! Refer to [this help page](https://citra-emu.org/help/features/game-modding) regarding how the mod files should be structured.
 
-(Picture of the menu action)
+{{< figure src="/images/entry/citra-progress-report-2020-q2/open_mods_location.png"
+    title="As an added bonus you can now Dump RomFS as well" >}}
 
 ### Exheader replacement ([#4813](https://github.com/citra-emu/citra/pull/4813)), Fix IPS Patching ([#4817](https://github.com/citra-emu/citra/pull/4817)), and BPS Patching ([#5036](https://github.com/citra-emu/citra/pull/5036)) by [leoetlino](https://github.com/leoetlino)
 
@@ -178,11 +179,12 @@ However, when the dumper was initially added, there wasn't a proper configuratio
 
 [jroweboy](https://github.com/jroweboy) listed some of the [issues](https://github.com/citra-emu/citra/issues/5057) with the original video dumper implementation. Later, [zhaowenlan1779](https://github.com/zhaowenlan1779) decided to fix them. In addition to various general improvements, he also added a new 'Dump Video' dialog that will be shown when starting dumping. From there, users can select any format and encoder, and even configure specific options to pass to FFmpeg. This made it possible to use hardware accelerated encoders like NVENC.
 
-(Picture of dialog) Those large DLLs are finally put to greater use
+{{< figure src="/images/entry/citra-progress-report-2020-q2/dump_video.png"
+    title="Those large DLLs are finally put to greater use" >}}
 
 ## Custom Post-Processing Shaders, Anaglyph 3D and Nearest Neighbour Filter ([#4578](https://github.com/citra-emu/citra/pull/4578)) by [xperia64](https://github.com/xperia64)
 
-You looked it right. [xperia64](https://github.com/xperia64), developer of the [Drastic](https://www.drastic-ds.com) emulator, managed to deliver three features in a single PR. For those who don't know already, post-processing shaders are basically an additional effect added to the final image rendered.
+You read it right. [xperia64](https://github.com/xperia64), developer of the [Drastic](https://www.drastic-ds.com) emulator, managed to deliver three features in a single PR. For those who don't know already, post-processing shaders are basically an additional effect added to the final image rendered.
 
 It all started when [xperia64](https://github.com/xperia64) set out to implement anaglyph 3D for Citra. However, since Citra did not have post-processing shader support, he had to implement it first. For drop-in compatibility with many [Dolphin](https://dolphin-emu.org) shaders, he even added some of the Dolphin aliases and bindings.
 
@@ -190,7 +192,8 @@ On top of post-processing shaders, he added a builtin red-cyan `dubois` shader w
 
 You can drop in your own shaders in the `shaders` folder in the Citra User Directory. New flavors of anaglyph 3D can also be added in the `shaders/anaglyph` folder.
 
-(Picture of Anaglyph 3D)
+{{< figure src="/images/entry/citra-progress-report-2020-q2/anaglyph_stereo.png"
+    title="View it with red-cyan 3D glasses!" >}}
 
 ## Vsync Support ([#4940](https://github.com/citra-emu/citra/pull/4940)) by [jroweboy](https://github.com/jroweboy)
 
@@ -213,14 +216,14 @@ This was due to the Mii Selector, an applet on the 3DS, being unimplemented. On 
 
 [vvanelslande](https://github.com/vvanelslande) (using their old account) made a fix, but closed it. [FearlessTobi](https://github.com/FearlessTobi) took and improved his code, and finally got this feature merged. No Mii faces are rendered yet, but I think we will agree that it's a big improvement even if you can only see the names.
 
-(Picture of Mii Selector) For those who liked the default Mii it is still there
+{{< figure src="/images/entry/citra-progress-report-2020-q2/mii_selector.png"
+    title="For those who liked the default Mii it is still there" >}}
 
 ## CPU Slider ([#5025](https://github.com/citra-emu/citra/pull/5025)) by [jroweboy](https://github.com/jroweboy)
 
 Citra decides how much time the game has run on the CPU by counting up the number of instructions the CPU runs.
 Some games take advantage of this extra time and do extra work each frame, and extra work means that Citra can't keep up and the speed can drop below 100%.
 As a workaround for this, some games that experience a similar slow down on 3DS hardware will include built-in frameskipping code, letting them do less in a frame if they aren't going to get full speed.
-
 
 The CPU frequency slider added here allows a user to overclock or underclock the emulated CPU clock speed.
 By underclocking the emulated clock, this can cause games to think that they need to do less work in order to keep full speed gameplay, which means Citra also gets to keep full speed as well.
@@ -251,15 +254,17 @@ Where would 3DS emulation be without supporting 3D?
 [iwubcode](https://github.com/iwubcode) added another way for you to experience the 3DS on a 3D display with stereo interlaced 3D mode.
 Try it out in Configure -> Graphics -> Stereo (Interlaced)
 
-(Picture of interlaced stereo)
+{{< figure src="/images/entry/citra-progress-report-2020-q2/interlaced_stereo.jpg"
+    title="No, this is not you getting drunk" >}}
 
 ## Frametime logging ([#4636](https://github.com/citra-emu/citra/pull/4636), [#4882](https://github.com/citra-emu/citra/pull/4882)) by [jroweboy](https://github.com/jroweboy) and [BreadFish64](https://github.com/BreadFish64)
 
-When developing an emulator, it is important to keep track of performance improvements and regressions. Without proper recording mechanics in place, however, the developers could only 'feel' the performance. Thanks to [BreadFish64](https://github.com/BreadFish64) and [jroweboy](https://github.com/jroweboy), this is no longer the case. Developers can now get a log of frametimes (the time used to render each frame) from which they can generate beautiful graphs for analysis. What's more, the mean frametime of the play session will now get sent via telemetry, so we can gather even more performance data.
+When developing an emulator, it is important to keep track of performance improvements and regressions. Without proper recording mechanics in place, however, the developers could only 'feel' the difference. Thanks to [BreadFish64](https://github.com/BreadFish64) and [jroweboy](https://github.com/jroweboy), this is no longer the case. Developers can now get a log of frametimes (the time used to render each frame) from which they can generate beautiful graphs for analysis. What's more, the mean frametime of the play session will now get sent via telemetry, so we can gather even more performance data.
 
 Note: This feature is not in the UI, to avoid boasting it with too many menu actions.
 
-(Picture of the fancy graphs) Tracking performance has got easier
+{{< figure src="/images/entry/citra-progress-report-2020-q2/frametime_recording.png"
+    title="Tracking performance has got easier" >}}
 
 ## Better Debugging Experience
 
@@ -271,7 +276,8 @@ IPC (or Inter Process Communication) is how games communicate with the 3DS opera
 Citra emulates the 3DS operating system at a high level, meaning we recoded the entirety of the operating system from scratch.
 With the IPC recorder, now developers can track every call that the games make to Citra, which has proved really useful for developers trying to figure out why games break.
 
-(Picture of IPC recorder) This may not seem interesting to you, but it is what led to many of the fixes!
+{{< figure src="/images/entry/citra-progress-report-2020-q2/ipc_recorder.png"
+    title="This may not seem interesting to you, but it is what led to many of the fixes!" >}}
 
 ### Various gdbstub fixes ([#4603](https://github.com/citra-emu/citra/pull/4603), [#4651](https://github.com/citra-emu/citra/pull/4651), [#5106](https://github.com/citra-emu/citra/pull/5106), [#5185](https://github.com/citra-emu/citra/pull/5185)) by [DimitriPilot3](https://github.com/DimitriPilot3), [GovanifY](https://github.com/GovanifY) and [MerryMage](https://github.com/MerryMage)
 
@@ -360,7 +366,9 @@ This means proper support for this 3DS "feature" would require determining the p
 
 Hamish found that as a temporary work around, Citra can make some scenes look okayish by simply using a clear texture when the game doesn't choose a texture to render with.
 
-(Comparison - wrong | correct) Calem has finally got his terrifying cheeks cured
+{{< sidebyside "image" "/images/entry/citra-progress-report-2020-q2/"
+    "xy_before.png=Calem seems to be having some problems"
+    "xy_after.png=Calem has finally got his terrifying cheeks cured" >}}
 
 ### Remove Accurate Geometry Shader setting ([#4879](https://github.com/citra-emu/citra/pull/4879), [#4894](https://github.com/citra-emu/citra/pull/4894)) by [tywald](https://github.com/tywald) and [wwylele](https://github.com/wwylele)
 
@@ -372,7 +380,8 @@ When [tywald](https://github.com/tywald) was playing with this setting in MH4U, 
 
 [BreadFish64](https://github.com/BreadFish64) is now [attempting](https://github.com/citra-emu/citra/pull/5216) to remove the other setting (`Accurate Multiplication`). He rewrote the function we were using to mimic PICA's multiplication behaviour. As a result, not only was the performance penalty brought down from ~10% to almost negligible, but it fixed Intel GPUs (which were previously having problems with this option on) as well! Hopefully, we will be able to have a clean configuration dialog soon.
 
-(Picture) Isn't it just cleaner and more beautiful
+{{< figure src="/images/entry/citra-progress-report-2020-q2/new_graphics_config.png"
+    title="Isn't it just cleaner and more beautiful" >}}
 
 ### Correct register length ([#5023](https://github.com/citra-emu/citra/pull/5023)) by [jroweboy](https://github.com/jroweboy)
 
@@ -446,7 +455,8 @@ When comparing save files from Citra and a real 3DS, [zhaowenlan1779](https://gi
 
 This simple change turned out to fix several games with saving issues, including Angry birds trilogy, Sudoku by Nikoli, WWE All Stars and others.
 
-(Picture) You no longer need to be Angry that you lost your progress
+{{< figure src="/images/entry/citra-progress-report-2020-q2/angry_birds.png"
+    title="You no longer need to be Angry you lost your progress" >}}
 
 ### service/ldr_ro: Fix CRO loading when the buffer contained multiple VM areas ([#5125](https://github.com/citra-emu/citra/pulls/5125)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
@@ -546,7 +556,8 @@ As a fix, we now detect if MediaFoundation exists when loading a game, and if it
 Disk shader cache loading times can get to be really long if you start to have too many shaders.
 [jroweboy](https://github.com/jroweboy) made a custom loading screen so that you can rest assured Citra didn't crash.
 
-(Picture) Adorable, isn't it?
+{{< figure src="/images/entry/citra-progress-report-2020-q2/loading_screen.png"
+    title="Adorable, isn't it?" >}}
 
 ## Show an error if CIA content is encrypted ([#5130](https://github.com/citra-emu/citra/pull/5130)) by [B3n30](https://github.com/B3n30)
 
@@ -556,7 +567,8 @@ Since we are getting more and more such reports, [B3n30](https://github.com/B3n3
 
 Note that, Citra do support encrypted CIAs and encrypted games, but you will need to provide the AES keys.
 
-(Picture of the error) Sometimes, errors can be desirable!
+{{< figure src="/images/entry/citra-progress-report-2020-q2/encrypted.png"
+    title="Sometimes, errors can be desirable!" >}}
 
 ## Ports from [yuzu](https://yuzu-emu.org) by [FearlessTobi](https://github.com/FearlessTobi)
 
@@ -591,7 +603,8 @@ Note that, you still need to use older methods to dump cartridges and cartridge 
 
 This new tool has been added to the wiki pages. Try it out now!
 
-(Screenshot) Dumping has never been so easy!
+{{< figure src="/images/entry/citra-progress-report-2020-q2/threeSD.png"
+    title="Dumping has never been so easy!" >}}
 
 # What about Android?
 
