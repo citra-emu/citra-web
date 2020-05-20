@@ -1,5 +1,5 @@
 +++
-date = "2020-05-03T00:00:00+08:00"
+date = "2020-05-20T00:00:00+08:00"
 title = "Citra Mega Progress Report 2019 Q1~2020 Q2"
 tags = [ "progress-report" ]
 author = "zhaowenlan1779"
@@ -8,10 +8,14 @@ coauthor2 = "flTobi"
 forum = 96286
 +++
 
+<!-- Note: forum should be updated -->
+
 It’s been more than a year since the last progress report, not for lack of progress, but for lack of writers.
 To fill in the gap, developers [jroweboy](https://github.com/jroweboy) and [FearlessTobi](https://github.com/FearlessTobi) independently wrote drafts for a new progress report, and another developer [zhaowenlan1779](https://github.com/zhaowenlan1779) merged their works and added more content. Together, we are able to present you with a quick update on all the changes we've had since 2019 Q1.
 
 Since it's been such a long time since the last one, you may already be very familiar with several of these features, but there are also a few here that we haven't announced until now!
+
+Also, if you don't know already, Citra Android has already been released! Read this blog post (todo: link) if you are interested.
 
 # Contents
 
@@ -19,7 +23,6 @@ Since it's been such a long time since the last one, you may already be very fam
 1. [Emulation Accuracy]({{< relref "#emulation-accuracy" >}})
 1. [Frontend Improvements]({{< relref "#frontend-improvements" >}})
 1. [Related to Citra]({{< relref "#related-to-citra" >}})
-1. [What about Android?]({{< relref "#what-about-android" >}})
 1. [Conclusion]({{< relref "#conclusion" >}})
 
 # New Features
@@ -105,6 +108,47 @@ If you are looking for some custom texture packs, check out the `#mods-and-textu
 
 (Juxtapose of custom texture MH)
 
+## Download Play (LLE) support by Subv and B3N30
+
+This is the unannounced new feature!
+
+Download Play is yet another gimmick Nintendo added to the DS, and then passed on to the 3DS family. Download Play allows players to send and receive short demo games. Not only that, some games like Mario Kart 7 uses it for local multiplayer as well. In order to get multiplayer support for MK7, we had to take the time to look at this feature.
+
+On the 3DS, there is a system module dedicated to Download Play - appropriately named `dlp` - which games send commands to to communicate over the DLP protocol. This system module is relatively unknown, with almost no documented functions on 3DBrew. Despite this, we know that internally, the `dlp` module uses another service to send data over local wireless network - `nwm::UDS`, which is the same service games use for regular local multiplayer. `nwm::UDS`, on the other hand, is well-researched, and Citra has had support for it for years.
+
+We decided that the easiest course of action to get Download Play would be running the `dlp` module in LLE (Low-Level Emulation) and let it handle commands and call the UDS functions (which Citra emulates in HLE) itself, instead of fully reserve-engineering and reimplementing its code.
+
+Back in October 2018, [Subv](https://github.com/Subv) set out to work on DLP LLE. At that time, Citra already had support for LLE-ing system modules. However, considering the fact that Citra was originally intended to be an HLE emulator, it was not surprising that we had some kernel inaccuracies here and there. These issues only surfaced when there were multiple processes running at the same time, and therefore they weren't discovered until we actually started to run the system modules. [Subv](https://github.com/Subv) fixed some of them and managed to get Download Play working partially. He published a small patch in the internal channels, so that other developers could test it.
+
+{{< figure src="/images/entry/citra-progress-report-2020-q2/dlp_old.png"
+    title="The good old times" >}}
+
+Later, [B3N30](https://github.com/B3N30) and [jroweboy](https://github.com/jroweboy) followed [Subv](https://github.com/Subv)'s instructions, only to get a 'Connection Failed' message. They tried multiple times over the period of nearly two years, but still couldn't make it work. In the meantime, [Subv](https://github.com/Subv) was facing some difficulties in real life, and had to take a break from Citra development. That was why we eventually missed this good chance to get Download Play support.
+
+A few months ago, however, a turn of events came. [Subv](https://github.com/Subv) returned from his long hiatus and started helping with Citra again! [B3N30](https://github.com/B3N30) decided to once again pick up DLP LLE, and this time, with the help from [Subv](https://github.com/Subv), he was able to get it fully working!
+
+(Mario Kart 7 race)
+
+(Cover the PRs)
+
+### Instructions on Using DLP LLE
+
+Since this is LLE, keep in mind that you need to dump quite a few system files for it to work. In the past, this would mean manually looking through GodMode9 trying to find a bunch of different files. However, thanks to threeSD, a new dumping tool which we will cover later, the hassle is no more!
+
+Follow these steps to dump the necessary system files and enable DLP LLE:
+
+1. Follow threeSD Quickstart Guide. Remember to **manually select `System Data > Config savegame`** in the contents list!
+1. Open Citra and click on `View > Debugging > Toggle LLE Service Modules` in the menu.
+1. In the widget that appeared, find and check `DLP`.
+
+{{< sidebyside "image" "/images/entry/citra-progress-report-2020-q2/"
+    "dlp_threeSD.png=Dumping system files - remember to select this!"
+    "dlp_citra.png=Enabling DLP LLE in Citra" >}}
+
+### Paths forward
+
+Citra is an HLE emulator. Even though we chose the easier path of implementing DLP as LLE this time, we likely won't stop here. With proper reverse-engineering, it may one day become possible for us to provide DLP HLE support without the need of any system files, in the future.
+
 ## Texture Filters ([#5017](https://github.com/citra-emu/citra/pull/5017), [#5166](https://github.com/citra-emu/citra/pull/5166), [#5210](https://github.com/citra-emu/citra/pull/5210), [#5270](https://github.com/citra-emu/citra/pull/5270)) by [BreadFish64](https://github.com/BreadFish64)
 
 Tired of waiting for someone to make a custom texture pack for your favorite 3ds game?
@@ -116,7 +160,7 @@ Along with the change, Breadfish64 has brought in several high quality upscaling
 Seeing that some of these shaders don't work that well with Citra, he even wrote one himself, and [it works really great](https://www.youtube.com/watch?v=8epkdJ4OhQ0)!
 Try it out and see how it looks.
 
-(Juxtapose of texture filtering)
+(Juxtapose of texture filtering - BreadFish already got one)
 
 ## Mod Support by [zhaowenlan1779](https://github.com/zhaowenlan1779) and [leoetlino](https://github.com/leoetlino)
 
@@ -612,12 +656,6 @@ This new tool has been added to the wiki pages. Try it out now!
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/threeSD.png"
     title="Dumping has never been so easy!" >}}
-
-# What about Android?
-
-(remove?)
-
-We are glad to announce that the Android release will come shortly! A separate progress report will be out soon after its release.
 
 # Conclusion
 
