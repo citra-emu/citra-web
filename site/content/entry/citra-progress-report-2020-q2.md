@@ -641,7 +641,7 @@ In a word - the dark theme now looks better. Also, have you noticed that the the
 
 ### citra_qt: config: Move audio to its own tab. ([#5079](https://github.com/citra-emu/citra/pull/5079)) originally by [bunnei](https://github.com/bunnei)
 
-We have some important Audio settings, make them more discoverable. But do we? Nonetheless, it's nice to keep the UI of the sister projects as consistent as possible.
+`We have some important Audio settings, make them more discoverable.` But do we? Nonetheless, it's nice to keep the UI of the sister projects as consistent as possible.
 
 # Related to Citra
 
