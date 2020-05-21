@@ -13,7 +13,7 @@
             <iframe src="https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid={{ .Get "id" }}"
             {{ if not (.Get "class") }}style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" {{ end }}frameborder="0"></iframe>
         </div>
-        {{ $title := printf "Click [here](https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid=%s) to view in fullscreen" (.Get "id") }}
+        {{ $title = printf "Click [here](https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid=%s) to view in fullscreen" (.Get "id") }}
     {{ else }}
         <img src="{{.Get "src"}}" {{ with .Get "alt" }}alt="{{ . }}"{{ end }} />
     {{ end }}
