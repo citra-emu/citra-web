@@ -1,0 +1,4 @@
+<div {{ if .Get "class" }}class="{{ .Get "class" }}"{{ else }}style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;"{{ end }}>
+    <iframe src="https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid={{ .Get "id" }}"
+    {{ if not (.Get "class") }}style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" {{ end }}frameborder="0"></iframe>
+</div>

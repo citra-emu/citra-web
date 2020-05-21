@@ -90,27 +90,9 @@ With this, New 3DS mode is now turned on by default for both new and old users o
 {{< figure src="/images/entry/citra-progress-report-2020-q2/n3ds_mode.png"
     title="Lots of work behind this tiny checkbox!" >}}
 
-## Custom Textures ([#4868](https://github.com/citra-emu/citra/pull/4868)) by [khang06](https://github.com/khang06)
+## Download Play (LLE) Support by Subv and B3N30
 
-Custom textures allow a modder to completely redo the textures of a game, and really let the games shine in full HD.
-Due to the low resolution of the 3DS, games often used low-quality, compressed images for the models, so when Citra renders at upscaled resolutions, it's still just not quite perfect.
-
-With custom textures, the power to breathe new life into these classic games is now yours, and we can't wait to see what you do with it!
-To make a new texture pack, simply turn on the "Dump Textures" option, and play through the game.
-As new textures are loaded, they will go into the Texture Dump Location (right click on the game in the game list to open it).
-Simply replace the contents of the dumped images while keeping the name the same.
-
-When you are finished, combine all of the new custom textures into a new folder with the GAME_ID as the name, and distribute this folder.
-To use a custom texture pack, right click on the game in the game list and select Open Custom Textures Location. Place the folder with all the textures inside.
-Then, turn on the Use Custom Texture option in Graphics -> Enhancements and you are set to go.
-
-If you are looking for some custom texture packs, check out the `#mods-and-texture-packs` channel on the Citra Discord server.
-
-(Juxtapose of custom texture MH)
-
-## Download Play (LLE) support by Subv and B3N30
-
-This is the unannounced new feature!
+This is the unannounced new feature, now available for testing in the latest Citra Canary builds!
 
 Download Play is yet another gimmick Nintendo added to the DS, and then passed on to the 3DS family. Download Play allows players to send and receive short demo games. Not only that, some games like Mario Kart 7 uses it for local multiplayer as well. In order to get multiplayer support for MK7, we had to take the time to look at this feature.
 
@@ -149,6 +131,24 @@ Follow these steps to dump the necessary system files and enable DLP LLE:
 
 Citra is an HLE emulator. Even though we chose the easier path of implementing DLP as LLE this time, we likely won't stop here. With proper reverse-engineering, it may one day become possible for us to provide DLP HLE support without the need of any system files, in the future.
 
+## Custom Textures ([#4868](https://github.com/citra-emu/citra/pull/4868)) by [khang06](https://github.com/khang06)
+
+Custom textures allow a modder to completely redo the textures of a game, and really let the games shine in full HD.
+Due to the low resolution of the 3DS, games often used low-quality, compressed images for the models, so when Citra renders at upscaled resolutions, it's still just not quite perfect.
+
+With custom textures, the power to breathe new life into these classic games is now yours, and we can't wait to see what you do with it!
+To make a new texture pack, simply turn on the "Dump Textures" option, and play through the game.
+As new textures are loaded, they will go into the Texture Dump Location (right click on the game in the game list to open it).
+Simply replace the contents of the dumped images while keeping the name the same.
+
+When you are finished, combine all of the new custom textures into a new folder with the GAME_ID as the name, and distribute this folder.
+To use a custom texture pack, right click on the game in the game list and select Open Custom Textures Location. Place the folder with all the textures inside.
+Then, turn on the Use Custom Texture option in Graphics -> Enhancements and you are set to go.
+
+If you are looking for some custom texture packs, check out the `#mods-and-texture-packs` channel on the Citra Discord server.
+
+(Juxtapose of custom texture MH)
+
 ## Texture Filters ([#5017](https://github.com/citra-emu/citra/pull/5017), [#5166](https://github.com/citra-emu/citra/pull/5166), [#5210](https://github.com/citra-emu/citra/pull/5210), [#5270](https://github.com/citra-emu/citra/pull/5270)) by [BreadFish64](https://github.com/BreadFish64)
 
 Tired of waiting for someone to make a custom texture pack for your favorite 3ds game?
@@ -160,7 +160,7 @@ Along with the change, Breadfish64 has brought in several high quality upscaling
 Seeing that some of these shaders don't work that well with Citra, he even wrote one himself, and [it works really great](https://www.youtube.com/watch?v=8epkdJ4OhQ0)!
 Try it out and see how it looks.
 
-(Juxtapose of texture filtering - BreadFish already got one)
+{{< juxtapose 5435de18-8d65-11ea-a879-0edaf8f81e27 >}}
 
 ## Mod Support by [zhaowenlan1779](https://github.com/zhaowenlan1779) and [leoetlino](https://github.com/leoetlino)
 
