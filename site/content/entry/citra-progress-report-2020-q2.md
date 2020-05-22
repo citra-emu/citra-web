@@ -160,7 +160,9 @@ Along with the change, Breadfish64 has brought in several high quality upscaling
 Seeing that some of these shaders don't work that well with Citra, he even wrote one himself, and [it works really great](https://www.youtube.com/watch?v=8epkdJ4OhQ0)!
 Try it out and see how it looks.
 
-{{< figure type="juxtapose" id="5435de18-8d65-11ea-a879-0edaf8f81e27" >}}
+{{< juxtapose "5435de18-8d65-11ea-a879-0edaf8f81e27" >}}
+
+Click [here](https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid=5435de18-8d65-11ea-a879-0edaf8f81e27) to see a larger version of the above juxtapose.
 
 ## Mod Support by [zhaowenlan1779](https://github.com/zhaowenlan1779) and [leoetlino](https://github.com/leoetlino)
 
