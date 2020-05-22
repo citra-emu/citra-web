@@ -16,7 +16,7 @@ The Canary build of Citra is the same as our nightly builds, with additional fea
 
 <div id="updater-view">
 The Citra updater provides a easy interface to install, update and manage Citra. Unless you know what you are doing,
- this is likely what you are looking for. <b>Citra currently does not support Android or iOS, only desktop x64 systems.</b>
+ this is likely what you are looking for.
 <br />
 <br />
 
@@ -24,12 +24,13 @@ The Citra updater provides a easy interface to install, update and manage Citra.
 <i id="dl-autodetect">Autodetected platform: XYZ</i>
 <br />
 <div id="dl-unknown">
-    Unknown platform - Citra is <b>only supported</b> on 64-bit versions of Windows, macOS, and Linux.
+    Unknown platform - Citra is <b>only supported</b> on 64-bit versions of Windows, macOS, Linux, and Android 8 (Oreo) or above.
     If you are running one of these, choose one of the options below.
 </div>
 <a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe" class="btn btn-lg btn-primary dl-updater-button" id="dl-windows-x64">Download for Windows x64</a>
 <a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-mac.dmg" class="btn btn-lg btn-primary dl-updater-button" id="dl-mac-x64">Download for Mac x64</a>
 <a href="https://flatpak.citra-emu.org/" class="btn btn-lg btn-primary dl-updater-button" id="dl-linux-x64">Download for Linux x64</a>
+<a href='https://play.google.com/store/apps/details?id=org.citra.citra_emu' class="dl-updater-button" id="dl-android-x64"><img style="width:275px" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
 
 <br />
 <span id="other-container"><a href="#" id="other-platforms-link">Other platforms</a> | </span>
@@ -39,7 +40,7 @@ The Citra updater provides a easy interface to install, update and manage Citra.
 
 <div id="manual-view">
 <div class="visible-xs">
-  <h3>Citra currently does not support Android or iOS.</h3>
+  <h3>Citra currently does not support iOS.</h3>
 </div>
     
 <a href="?" class="btn">Back</a>
@@ -88,6 +89,7 @@ links to get you started however:<br />
 <a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe">Windows x64 Installer</a><br />
 <a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-mac.dmg">Mac x64 Installer</a><br />
 <a href="https://flatpak.citra-emu.org/">Download for Linux x64</a><br /> 
+<a href="https://play.google.com/store/apps/details?id=org.citra.citra_emu">Download for Android</a><br />
 <a href="https://github.com/citra-emu/citra-nightly/releases">Nightly Builds</a><br />
 <a href="https://github.com/citra-emu/citra-canary/releases">Canary Builds</a> <br />
 </div>
@@ -164,7 +166,7 @@ links to get you started however:<br />
     // Attempt autodetection of their operating system
     var userAgent = navigator.userAgent.toLowerCase();
     
-    var allPlatforms = ["windows", "mac", "linux"];
+    var allPlatforms = ["windows", "mac", "linux", "android"];
     
     var os = undefined;
     if (userAgent.indexOf("windows") !== -1) {
@@ -173,6 +175,8 @@ links to get you started however:<br />
         os = "Mac";
     } else if (userAgent.indexOf("linux") !== -1 && userAgent.indexOf("android") === -1) {
         os = "Linux";
+    } else if (userAgent.indexOf("android") !== -1) {
+        os = "Android";
     }
     
     if (os !== undefined) {
