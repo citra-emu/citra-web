@@ -23,7 +23,7 @@ During the glory days of Citra development, users would ask almost daily if we h
 This had become such a frequent occurence that we had to add it to our [Discord server](https://Discord.com/invite/FAXfZV9) FAQ. 
 `Do you plan on making an Android app? No, not at this moment.`
 
-{{< figure src="/images/entry/announcing-citra-android/Discord.png"
+{{< figure src="/images/entry/announcing-citra-android/discord.png"
     title="Discord FAQ (Old vs. New)" >}}
 	
 From the users' perspective, it seemed as if the devs disliked the idea of an Android app.
