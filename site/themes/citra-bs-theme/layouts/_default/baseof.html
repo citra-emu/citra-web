@@ -116,6 +116,15 @@
         </div>
 
         <script src="{{ .Site.BaseURL }}/js/script.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" type="text/css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			window.addEventListener("DOMContentLoaded", function() {
+			baguetteBox.run('.is-img-preview');
+			});
+		</script>
+
         {{ block "scripts" . }}{{ end }}
 
         {{ if in .Params.js "juxtapose" }}
