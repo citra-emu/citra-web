@@ -6,6 +6,7 @@
 
 <div class="container" style="width: 100%;">
     {{ $.Scratch.Set "size" (div 12 (len $figures)) }}
+    <div class="is-img-preview">
     {{ range $figure := $figures }}
         {{ $.Scratch.Set "src" (index (split $figure "=") 0) }}
         {{ $.Scratch.Set "title" (index (split $figure "=") 1) }}
@@ -20,7 +21,9 @@
                         </video>
                     </div>
                 {{ else if eq $type "image" }}
-                    <img src="{{ printf "%s%s" $path ($.Scratch.Get "src") }}" alt="{{ $.Scratch.Get "title" }}" />
+                    <a href="{{ printf "%s%s" $path ($.Scratch.Get "src") }}" title="{{ $.Scratch.Get "title" }}">
+                        <img src="{{ printf "%s%s" $path ($.Scratch.Get "src") }}" alt="{{ $.Scratch.Get "title" }}" />
+                    </a>
                 {{ else if eq $type "imagelink" }}
                     <a href="{{ $.Scratch.Get "link" }}" style="border-bottom-style: none;" >
                         <img src="{{ printf "%s%s" $path ($.Scratch.Get "src") }}" alt="{{ $.Scratch.Get "title" }}" />
@@ -34,4 +37,5 @@
             </figure>
         </div>
     {{ end }}
+    </div>
 </div>
