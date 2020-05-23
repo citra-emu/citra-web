@@ -170,6 +170,7 @@ We'd like to thank all the developers who made this possible:
 * [bunnei](https://github.com/bunnei) for leading the project
 * The developers of the [Dolphin emulator](https://dolphin-emu.org) for the frontend (UI) that we heavily borrowed from and the `Aarch64 machine code emitter`.
 * [BreadFish64](https://github.com/BreadFish64) for OpenGL ES improvements, Motion Control support, and Texture Filtering.
+* [jroweboy](https://github.com/jroweboy) for lots of optimizations, the initial port of Asynchronous GPU, and helping to lead the Citra Android effort.
 * [liushuyu](https://github.com/liushuyu) for OpenGL ES bug fixes.
 * [SachinVin](https://github.com/SachinVin) for originally repurposing the Dolphin UI, adding initial OpenGL ES support, and implementing most of the Aarch64 [dynarmic](https://github.com/MerryMage/dynarmic) backend.
 * [Tobi](https://github.com/FearlessTobi) for Amiibo support, Mic support, translations, bug fixes, porting frontend changes from Dolphin upstream, and more.
