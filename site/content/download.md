@@ -73,6 +73,20 @@ The Citra updater provides a easy interface to install, update and manage Citra.
 </table>
 <div style="text-align: center; padding: 0px; margin: 0px;"><a href = "https://github.com/citra-emu/citra-canary/releases">Click here to view previous versions...</a></div>
 
+<h3>Android Build <span style='font-size: smaller; margin-left: 6px;'> Last release was  <span id='last-updated-android'></span></span></h3>
+<table id="downloads-android" class="table">
+    <thead>
+        <tr>
+            <th>Build Date</th>
+            <th>Commit Information</th>
+            <th>Download</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<div style="text-align: center; padding: 0px; margin: 0px;"><a href = "https://github.com/citra-emu/citra-android/releases">Click here to view previous versions...</a></div>
+
 <style>
     .table-first { background-color: #fcf8e3; }
     .dl-icon { display: inline-block; border-bottom: 0px !important; }
@@ -113,6 +127,8 @@ links to get you started however:<br />
                     release_title = 'Nightly Build';
                 } else if (v == 'canary') {
                     release_title = 'Canary Build';
+                } else if (v == 'android') {
+                    release_title = 'Android Build';
                 }
 
                 if (release_commit) {
@@ -127,6 +143,7 @@ links to get you started however:<br />
                 release.assets.forEach(function(asset) {
                     var is_windows = asset.name.includes('windows') || asset.name.includes('exe');
                     if (asset.name.includes('nupkg')) return;
+                    if (asset.name.includes('.aab')) return;
                     if (!is_windows && asset.name.includes('.7z')) return;
                     if (is_windows && asset.name.includes('.tar.gz')) return;
                     if (asset.name.includes('RELEASES')) return;
@@ -134,10 +151,11 @@ links to get you started however:<br />
                     /* We only want to provide mingw builds on the downloads page. */
                     if (asset.name.includes('-msvc-')) return;
 
-                    let env_icon = './images/icons/file.png';
+                    let env_icon = '/images/icons/file.png';
                     if (is_windows) env_icon = '/images/icons/windows.png';
                     else if (asset.name.includes('osx')) env_icon = '/images/icons/apple.png';
                     else if (asset.name.includes('linux')) env_icon = '/images/icons/linux.png';
+                    else if (asset.name.includes('.apk')) env_icon = '/images/icons/android.png';
 
                     let download_url = `https://github.com/citra-emu/citra-${v}/releases/download/${release.tag_name}/${asset.name}`;
                     download_span += `<a class="dl-icon" href="${download_url}"><img src="${env_icon}"></i></a>`;
@@ -161,6 +179,7 @@ links to get you started however:<br />
     function fetchReleases() {
         getRelease('nightly');
         getRelease('canary');
+        getRelease('android');
     }
     
     // Attempt autodetection of their operating system
