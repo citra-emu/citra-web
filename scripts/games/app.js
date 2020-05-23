@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const util = require('util');
-const logger = require('winston');
+const winston = require('winston');
 const request = require('request-promise');
 const tomlify = require('tomlify-j0.4');
 const exec = require('sync-exec');
@@ -15,6 +15,14 @@ const fsPathHugoBoxart = `${fsPathHugo}/static/images/game/boxart`
 const fsPathHugoIcon = `${fsPathHugo}/static/images/game/icons`
 const fsPathHugoScreenshots = `${fsPathHugo}/static/images/screenshots0`
 const fsPathHugoSavefiles = `${fsPathHugo}/static/savefiles/`
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.simple(),
+  transports: [
+    new winston.transports.Console()
+  ]
+});
 
 process.on('unhandledRejection', err => {
   logger.error('Unhandled rejection on process.');
@@ -47,19 +55,19 @@ async function run() {
   gitPull(`./${tenant}-games-wiki`, `https://github.com/${tenant}-emu/${tenant}-games-wiki.git`);
 
   // Loop through each game and process it.
-  let games = await request.get({ uri: `https://api.${tenant}-emu.org/gamedb/websiteFeed/`, json: true })
+  let games = await request.get({ uri: `https://api.${tenant}-emu.org/gamedb/websiteFeed/`, json: true });
   await Promise.all(games.map(async (x) => {
     try {
       logger.info(`Processing game: ${x.id}`);
 
       // Set metadata.
-      x.date = `${new Date().toISOString()}`
+      x.date = `${new Date().toISOString()}`;
 
       // Hugo requires compatibility to be a string to link to data JSON.
-      x.compatibility = x.compatibility.toString()
-      x.testcases.forEach(x => x.compatibility = x.compatibility.toString())
+      x.compatibility = x.compatibility.toString();
+      x.testcases.forEach(x => x.compatibility = x.compatibility.toString());
 
-      x.issues = x.issues || []
+      x.issues = x.issues || [];
 
       // Copy the boxart for the game.
       if (fs.existsSync(`${fsPathCode}/${x.id}/boxart.png`)) {
@@ -113,8 +121,8 @@ async function run() {
       }
 
       // Clear out the wiki markdown so it won't be stored with the metadata.
-      let wikiText = x.wiki_markdown || ''
-      x.wiki_markdown = null
+      let wikiText = x.wiki_markdown || '';
+      x.wiki_markdown = null;
 
       let meta = tomlify.toToml(x, {space: 2})
       let contentOutput = `+++\r\nleft_sidebar = true\r\n${meta}\r\n+++\r\n\r\n${wikiText}\r\n`;
@@ -125,10 +133,10 @@ async function run() {
     } catch (ex) {
       logger.warn(`${x.id} ${x.title} failed to generate: ${ex}`);
       logger.error(ex);
-      throw ex
+      throw ex;
     }
   }))
 }
 
 // Script start
-run()
+run();

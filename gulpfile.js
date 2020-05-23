@@ -56,7 +56,7 @@ gulp.task('assets:js', function() {
 
 gulp.task('assets:fonts', function(){
   return gulp.src('./node_modules/bootstrap-sass/assets/fonts/**/*')
-    .pipe(gulp.dest('build/fonts/'))
+    .pipe(gulp.dest('build/fonts/'));
 });
 
 gulp.task('assets:scss', function () {
@@ -93,13 +93,13 @@ gulp.task('final:serve', function(done) {
       browserSync.reload(x);
     });
 
-    done()
+    done();
 });
 
 gulp.task('final:publish', function(done) {
   fs.writeFileSync(`build/CNAME`, `${cname}`);
   fs.writeFileSync(`build/robots.txt`, `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
-  done()
+  done();
 });
 
 const cname = 'citra-emu.org';
@@ -107,7 +107,7 @@ var finalCommand = null;
 
 if (util.env.production) {
   process.env.HUGO_ENV = 'PRD';
-  process.env.HUGO_BASEURL = `https://${cname}`
+  process.env.HUGO_BASEURL = `https://${cname}`;
   finalCommand = 'final:publish';
 } else {
   process.env.HUGO_ENV = 'DEV';
@@ -118,6 +118,6 @@ if (util.env.production) {
 util.log(`process.env.HUGO_ENV = '${process.env.HUGO_ENV}'`);
 util.log(`process.env.HUGO_BASEURL = '${process.env.HUGO_BASEURL}'`);
 
-gulp.task('default', gulp.series(gulp.parallel('assets:js', 'assets:fonts', 'assets:scss'), 'hugo', 'assets:images', finalCommand))
-gulp.task('all', gulp.series(gulp.parallel('scripts:games', 'scripts:wiki'), gulp.parallel('assets:js', 'assets:fonts', 'assets:scss'), 'hugo', 'assets:images', finalCommand))
+gulp.task('default', gulp.series(gulp.parallel('assets:js', 'assets:fonts', 'assets:scss'), 'hugo', 'assets:images', finalCommand));
+gulp.task('all', gulp.series(gulp.parallel('scripts:games', 'scripts:wiki'), gulp.parallel('assets:js', 'assets:fonts', 'assets:scss'), 'hugo', 'assets:images', finalCommand));
 gulp.task('content', gulp.series('hugo', finalCommand));
