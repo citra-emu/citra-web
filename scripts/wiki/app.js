@@ -1,6 +1,6 @@
 var fs = require('fs');
 var util = require('util');
-var logger = require('winston');
+var winston = require('winston');
 
 var sanitizeHtml = require('sanitize-html');
 
@@ -9,6 +9,14 @@ var exec = require('sync-exec');
 
 var inputDirectory = './citra.wiki/';
 var outputDirectory = '../../site/content/wiki/';
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.simple(),
+  transports: [
+    new winston.transports.Console()
+  ]
+});
 
 // The URL
 function url(title) {
@@ -20,6 +28,7 @@ if (fs.existsSync(inputDirectory)) {
     del.sync(inputDirectory, {force: true});
 }
 
+logger.info('Cloning citra.wiki repository');
 exec('git clone https://github.com/citra-emu/citra.wiki.git');
 
 if (fs.existsSync(outputDirectory) == false) {

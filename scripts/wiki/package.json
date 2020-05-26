@@ -6,11 +6,11 @@
   "author": "Flame Sage <chris062689@gmail.com>",
   "main": "app.js",
   "dependencies": {
-    "delete": "^0.3.2",
-    "rimraf": "^2.6.1",
-    "sanitize-html": "^1.14.1",
+    "delete": "^1.1.0",
+    "rimraf": "^3.0.2",
+    "sanitize-html": "^1.24.0",
     "sync-exec": "^0.6.2",
-    "winston": "^2.2.0"
+    "winston": "^3.2.1"
   },
   "preferGlobal": false,
   "private": true,

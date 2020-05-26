@@ -2,10 +2,12 @@
 
 language: node_js
 node_js:
-  - "11"
+  - "lts/erbium"
 cache: yarn
 
 script:
+  - echo '========== Updating Yarn ==========================='
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
   - echo '========== Installing gulp & dependencies =========='
   - sudo apt-get install graphicsmagick
   - wget -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_0.52_Linux-64bit.deb
