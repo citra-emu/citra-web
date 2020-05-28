@@ -16,7 +16,7 @@ Review the following before joining our servers:
 
 * **Does Citra support network connectivity or online play?** Yes, Citra supports networked local WiFi, but does not support connecting to Nintendo's servers.
 
-* **Are you planning to make an Android version?** No, not at the moment.
+* **Are you planning to make an Android version?** Yes, and it's available now!
 
 <div style='margin-top: 5%;'>
   <a href='https://discord.gg/FAXfZV9'>Click here to join our Discord channel.</a>
