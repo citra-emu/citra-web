@@ -90,9 +90,9 @@ With this, New 3DS mode is now turned on by default for both new and old users o
 {{< figure src="/images/entry/citra-progress-report-2020-q2/n3ds_mode.png"
     title="Lots of work behind this tiny checkbox!" >}}
 
-## Download Play (LLE) Support by Subv and B3N30
+## Download Play (LLE) Support by [Subv](https://github.com/Subv) and [B3N30](https://github.com/B3N30)
 
-This is the unannounced new feature, now available for testing in the latest Citra Canary builds!
+This is the unannounced new feature, now available for testing in the latest [Citra Canary builds](https://citra-emu.org/download)!
 
 Download Play is yet another gimmick Nintendo added to the DS, and then passed on to the 3DS family. Download Play allows players to send and receive short demo games. Not only that, some games like Mario Kart 7 uses it for local multiplayer as well. In order to get multiplayer support for MK7, we had to take the time to look at this feature.
 
@@ -100,7 +100,7 @@ On the 3DS, there is a system module dedicated to Download Play - appropriately 
 
 We decided that the easiest course of action to get Download Play would be running the `dlp` module in LLE (Low-Level Emulation) and let it handle commands and call the UDS functions (which Citra emulates in HLE) itself, instead of fully reserve-engineering and reimplementing its code.
 
-Back in October 2018, [Subv](https://github.com/Subv) set out to work on DLP LLE. At that time, Citra already had support for LLE-ing system modules. However, considering the fact that Citra was originally intended to be an HLE emulator, it was not surprising that we had some kernel inaccuracies here and there. These issues only surfaced when there were multiple processes running at the same time, and therefore they weren't discovered until we actually started to run the system modules. [Subv](https://github.com/Subv) fixed some of them and managed to get Download Play working partially. He published a small patch in the internal channels, so that other developers could test it.
+Back in October 2018, [Subv](https://github.com/Subv) set out to work on DLP LLE. At that time, Citra already had support for LLE-ing system modules. However, considering the fact that Citra was originally intended to be an HLE emulator, it was not surprising that we had some kernel inaccuracies here and there. These issues only surfaced when there were multiple processes running at the same time, and therefore they weren't discovered until we actually started to run the system modules. We also needed a bunch of extra service functions to be implemented, so that the `dlp` module can be happy and doesn't error out. [Subv](https://github.com/Subv) fixed some of them and managed to get Download Play working partially. He published a small patch in the internal channels, so that other developers could test it.
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/dlp_old.png"
     title="The good old times" >}}
@@ -111,15 +111,13 @@ A few months ago, however, a turn of events came. [Subv](https://github.com/Subv
 
 (Mario Kart 7 race)
 
-(Cover the PRs)
-
 ### Instructions on Using DLP LLE
 
 Since this is LLE, keep in mind that you need to dump quite a few system files for it to work. In the past, this would mean manually looking through GodMode9 trying to find a bunch of different files. However, thanks to threeSD, a new dumping tool which we will cover later, the hassle is no more!
 
 Follow these steps to dump the necessary system files and enable DLP LLE:
 
-1. Follow threeSD Quickstart Guide. Remember to **manually select `System Data > Config savegame`** in the contents list!
+1. Follow [threeSD Quickstart Guide](https://github.com/zhaowenlan1779/threeSD/wiki/Quickstart-Guide). Remember to **manually select `System Data > Config savegame`** in the contents list!
 1. Open Citra and click on `View > Debugging > Toggle LLE Service Modules` in the menu.
 1. In the widget that appeared, find and check `DLP`.
 
@@ -129,7 +127,7 @@ Follow these steps to dump the necessary system files and enable DLP LLE:
 
 ### Paths forward
 
-Citra is an HLE emulator. Even though we chose the easier path of implementing DLP as LLE this time, we likely won't stop here. With proper reverse-engineering, it may one day become possible for us to provide DLP HLE support without the need of any system files, in the future.
+Citra is an HLE emulator. Even though we took the easier path of implementing DLP as LLE this time, we likely won't stop here. With proper reverse-engineering, it may one day become possible for us to provide DLP HLE support without the need of any system files, in the future.
 
 ## Custom Textures ([#4868](https://github.com/citra-emu/citra/pull/4868)) by [khang06](https://github.com/khang06)
 
@@ -145,9 +143,15 @@ When you are finished, combine all of the new custom textures into a new folder 
 To use a custom texture pack, right click on the game in the game list and select Open Custom Textures Location. Place the folder with all the textures inside.
 Then, turn on the Use Custom Texture option in Graphics -> Enhancements and you are set to go.
 
-If you are looking for some custom texture packs, check out the `#mods-and-texture-packs` channel on the Citra Discord server.
+The following are previews of some awesome texture pack projects by the community. They aren't finished yet, but stay tuned! You can also check out the `#mods-and-texture-packs` channel on the Citra Discord server.
 
 (Juxtapose of custom texture MH)
+
+Click here to see a larger version of the above juxtapose.
+
+{{< juxtapose "ec2bf8ba-a025-11ea-a7cb-0edaf8f81e27" >}}
+
+Click [here](https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid=ec2bf8ba-a025-11ea-a7cb-0edaf8f81e27) to see a larger version of the above juxtapose.
 
 ## Texture Filters ([#5017](https://github.com/citra-emu/citra/pull/5017), [#5166](https://github.com/citra-emu/citra/pull/5166), [#5210](https://github.com/citra-emu/citra/pull/5210), [#5270](https://github.com/citra-emu/citra/pull/5270)) by [BreadFish64](https://github.com/BreadFish64)
 
@@ -198,7 +202,6 @@ More modern consoles often have high-level FS APIs, which means that the game re
 [Luma3DS](https://github.com/AuroraWright/Luma3DS)'s LayeredFS works by hooking the SDK code the games include to parse the RomFS, but [zhaowenlan1779](https://github.com/zhaowenlan1779) decided to take a harder and more robust approach. With help from 3dbrew documents, he wrote code to rebuild the RomFS metadata and assign fake data offsets to files. From the game's perspective, it would seem as if the RomFS has been completely rebuilt, but we are not actually doing that much work.
 
 (Picture of a game with fancy mods)
-(Or probably simply a Eevee with a Pikachu sprite) What a cute nice Eevee!
 
 ## Disk Shader Cache ([#4923](https://github.com/citra-emu/citra/pull/4923)) by [jroweboy](https://github.com/jroweboy)
 
@@ -281,12 +284,21 @@ Either way, both of these should be considered fun for experiments only, and any
 If you have a crash when under/overclocking, don't bother reporting it, just change the setting back to 100% and continue playing.
 
 (pic of LM2)
-Luigi's Mansion: Dark Moon can go much faster if underclocked, making it even more playable.
+Luigi's Mansion: Dark Moon can go much faster if underclocked, making it more playable.
+
+## Touchscreen Mappings ([#5163](https://github.com/citra-emu/citra/pull/5163)) by [z87](https://github.com/z87)
+
+Being a dual-screen console, the 3DS has a second, smaller touchscreen in addition to the main 3D screen. Usually, games put less important information and buttons there. Owing to the relative low number of physical buttons, however, there are actually a number of games that use the touchscreen for rather frequently used buttons, one notable example being the `I` and `II` item register buttons in OoT 3D. This brought lots of inconvenience when playing on the 3DS itself, and even more so when you are using the keyboard or a controller.
+
+Previously, you would have to rely on third-party solutions which can require complicated configuration. But, this is such a useful feature that [z87](https://github.com/z87) decided to work on implementing this. Later, they also made a beautifully crafted visual editor so that you do not have to look up the coordinates manually, making this feature accessible to even more. Currently, you can only bind single buttons (e.g. you cannot bind `ZR+A` to a point), but this will likely be improved in the future.
+
+{{< figure src="/images/entry/citra-progress-report-2020-q2/touchscreen_mappings.jpg"
+    title="Get rid of complex external tools with this new, intuitive mapping dialog" >}}
 
 ## Book Layout ([#5043](https://github.com/citra-emu/citra/pull/5043)) by [vitor-k](https://github.com/vitor-k)
 
 As a portable console with multiple screens, the 3DS boasts new and innovative game play styles, such as holding the console on its side.
-It's something Citra didn't support for years, simply because there were no major games around doning this when the emulator was first written. To be honest, this play scheme was also pretty impractical as you can only access a subset of your buttons.
+It's something Citra didn't support for years, simply because there were no major games around doing this when the emulator was first written. To be honest, this play scheme was also pretty impractical as you can only access a subset of your buttons.
 
 This changed over time as some first party games started to make use of this feature. One example is Mario and Luigi: Dream Team, where "giant combat" requires you to use the touchscreen sideways to fight giant versions of Bowser and his Minions.
 
@@ -540,12 +552,12 @@ While it turned out to be a simple fix, the investigation took quite a bit of ti
 
 ## Software Keyboard
 
-### Add swkbd callback support ([#4700](https://github.com/citra-emu/citra/pull/4700)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
+### Add swkbd callback support ([#4700](https://github.com/citra-emu/citra/pull/4700), [#5294](https://github.com/citra-emu/citra/pull/5294)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
 The 3DS has a standard keyboard that games can elect to use if they choose not to make their own.
-This keyboard boasts a lot of features that almost no games use, such as a custom dictionary for word suggestions, and as in this fix, a custom callback for validating input. Some games use this to check whether the name contains bad or forbidden words, and they will softlock if they don't receive the call. Using [ctrulib](https://github.com/smealum/ctrulib) code as a reference, [zhaowenlan1779](https://github.com/zhaowenlan1779) implemented this feature.
+This keyboard boasts a lot of features that almost no games use, such as a custom dictionary for word suggestions, and as in this fix, a custom callback for validating input. Some games use this to check whether the name contains bad or forbidden words, and they will softlock if they don't receive the call. Using [ctrulib](https://github.com/smealum/ctrulib) code as a reference, [zhaowenlan1779](https://github.com/zhaowenlan1779) implemented this feature. This fixed a few games such as Puzzles and Dragons Z.
 
-This fixed a few games such as Puzzles and Dragons Z.
+Later, [zhaowenlan1779](https://github.com/zhaowenlan1779) fixed a regression in the initial implementation, which somehow went undiscovered for a rather long time.
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/swkbd_callback.png"
     title="The game can finally hear your name instead of asking again and again" >}}
@@ -565,6 +577,15 @@ That's a lovely gamer tag
 All good things come in threes. Probably that was the reason why [zhaowenlan1779](https://github.com/zhaowenlan1779) made another small fix to the software keyboard. When the keyboard was first implemented, there was a misunderstanding regarding one of the filters (the `DIGIT` filter) the games can use. We thought that this filter prevented all digits, but it actually only limited the use of digits to a certain number (specified by the game).
 
 Fixed the issue where you can't type any digits in Monster Hunter 3 Ultimate.
+
+### swkbd: Fix button order received from button_text ([#5362](https://github.com/citra-emu/citra/pull/5362)) by [SutandoTsukai181](https://github.com/SutandoTsukai181)
+
+Ever since Software Keyboard support was first added, we have been receiving reports that some of the button texts don't show up. However, since no one provided a reliable way to reproduce the issue, we eventually lost track of it.
+
+With the Android release, however, this issue has become more severe. Not only were the button texts missing, but the buttons themselves disappeared as well! This led to [SutandoTsukai181](https://github.com/SutandoTsukai181)'s coming around and researching the issue. With help from [wwylele](https://github.com/wwylele), they were able to fix this long-standing issue.
+
+{{< figure src="/images/entry/citra-progress-report-2020-q2/swkbd_button_text.jpg"
+    title="Where is the `OK`?" >}}
 
 # Frontend Improvements
 
@@ -622,6 +643,13 @@ Note that, Citra do support encrypted CIAs and encrypted games, but you will nee
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/encrypted.png"
     title="Sometimes, errors can be desirable!" >}}
+
+## Option to hide mouse on inactivity ([#5094](https://github.com/citra-emu/citra/pull/5094), [#5280](https://github.com/citra-emu/citra/pull/5280)) by [vitor-k](https://github.com/vitor-k)
+
+It is annoying to have a mouse cursor on your screen, especially if you are playing in fullscreen mode and with a game that doesn't use the touchscreen at all. To save your hassle, [vitor-k](https://github.com/vitor-k) added this simple checkbox that hides the cursor after 3 seconds' inactivity.
+
+{{< figure src="/images/entry/citra-progress-report-2020-q2/hide_mouse_on_inactivity.png"
+    title="Say goodbye to the annoying cursor with this new option!" >}}
 
 ## Ports from [yuzu](https://yuzu-emu.org) by [FearlessTobi](https://github.com/FearlessTobi)
 
