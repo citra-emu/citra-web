@@ -292,7 +292,7 @@ Being a dual-screen console, the 3DS has a second, smaller touchscreen in additi
 
 Previously, you would have to rely on third-party solutions which can require complicated configuration. But, this is such a useful feature that [z87](https://github.com/z87) decided to work on implementing this. Later, they also made a beautifully crafted visual editor so that you do not have to look up the coordinates manually, making this feature accessible to even more. Currently, you can only bind single buttons (e.g. you cannot bind `ZR+A` to a point), but this will likely be improved in the future.
 
-{{< figure src="/images/entry/citra-progress-report-2020-q2/touchscreen_mappings.jpg"
+{{< figure src="/images/entry/citra-progress-report-2020-q2/touchscreen_mappings.png"
     title="Get rid of complex external tools with this new, intuitive mapping dialog" >}}
 
 ## Book Layout ([#5043](https://github.com/citra-emu/citra/pull/5043)) by [vitor-k](https://github.com/vitor-k)
