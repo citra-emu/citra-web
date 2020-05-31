@@ -288,12 +288,14 @@ Luigi's Mansion: Dark Moon can go much faster if underclocked, making it more pl
 
 ## Touchscreen Mappings ([#5163](https://github.com/citra-emu/citra/pull/5163)) by [z87](https://github.com/z87)
 
-Being a dual-screen console, the 3DS has a second, smaller touchscreen in addition to the main 3D screen. Usually, games put less important information and buttons there. Owing to the relative low number of physical buttons, however, there are actually a number of games that use the touchscreen for rather frequently used buttons, one notable example being the `I` and `II` item register buttons in OoT 3D. This brought lots of inconvenience when playing on the 3DS itself, and even more so when you are using the keyboard or a controller.
+Being a dual-screen console, the 3DS has a second, smaller touchscreen in addition to the main 3D screen. Usually, games put less important information and buttons there. Owing to the relative low number of physical buttons, however, there are actually a number of games that use the touchscreen for rather frequently used buttons, one notable example being the `Ⅰ` and `Ⅱ` item register buttons in OoT 3D. This brought lots of inconvenience when playing on the 3DS itself, and even more when you are hooking Citra to a single-screen monitor or TV, and using a keyboard or a controller.
 
 Previously, you would have to rely on third-party solutions which can require complicated configuration. But, this is such a useful feature that [z87](https://github.com/z87) decided to work on implementing this. Later, they also made a beautifully crafted visual editor so that you do not have to look up the coordinates manually, making this feature accessible to even more. Currently, you can only bind single buttons (e.g. you cannot bind `ZR+A` to a point), but this will likely be improved in the future.
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/touchscreen_mappings.png"
     title="Get rid of complex external tools with this new, intuitive mapping dialog" >}}
+
+<!-- TODO: replace this image, it looks too big -->
 
 ## Book Layout ([#5043](https://github.com/citra-emu/citra/pull/5043)) by [vitor-k](https://github.com/vitor-k)
 
