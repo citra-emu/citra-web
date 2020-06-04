@@ -4,6 +4,10 @@
   "description": "The Citra Official Website",
   "author": "",
   "license": "AGPL-3.0-only",
+  "scripts": {
+    "build": "gulp all --production",
+    "serve": "gulp all"
+  },
   "dependencies": {
     "bootstrap-sass": "^3.4.1",
     "browser-sync": "^2.26.7",
