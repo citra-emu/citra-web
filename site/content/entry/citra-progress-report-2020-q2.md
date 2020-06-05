@@ -321,7 +321,7 @@ Try it out in Configure -> Graphics -> Stereo (Interlaced)
 
 ## Frametime logging ([#4636](https://github.com/citra-emu/citra/pull/4636), [#4882](https://github.com/citra-emu/citra/pull/4882)) by [jroweboy](https://github.com/jroweboy) and [BreadFish64](https://github.com/BreadFish64)
 
-When developing an emulator, it is important to keep track of performance improvements and regressions. Without proper recording mechanics in place, however, the developers could only 'feel' the difference. Thanks to [BreadFish64](https://github.com/BreadFish64) and [jroweboy](https://github.com/jroweboy), this is no longer the case. Developers can now get a log of frametimes (the time used to render each frame) from which they can generate beautiful graphs for analysis. What's more, the mean frametime of the play session will now get sent via telemetry, so we can gather even more performance data.
+When developing an emulator, it is important to keep track of performance improvements and regressions. Without proper recording mechanics in place, however, the developers could only 'feel' the difference. Thanks to [BreadFish64](https://github.com/BreadFish64) and [jroweboy](https://github.com/jroweboy), this is no longer the case. Developers can now get a log of frame times (the time used to render each frame) from which they can generate beautiful graphs for analysis. What's more, the mean frame time of the play session will now get sent via telemetry, so we can gather even more performance data.
 
 Note: This feature is not in the UI, to avoid boasting it with too many menu actions.
 
