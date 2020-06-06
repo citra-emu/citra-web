@@ -69,7 +69,7 @@ On the New 3DS, things got even worse. There are 4 cores to be emulated, and our
 
 It required quite a bit of work to get the cores in sync while not ruining performance. Developer [B3n30](https://github.com/B3n30) researched the scheduler and stepped up to implement what we call "Core timing 2.0". He added a timer for each core, and basically rewrote how our timing worked, thus creating a more accurate scheduler. After this change, not only was a big step done towards compatibility with New 3DS games, but it also fixed all the games that were broken with the priority boost hack removed, for instance, [Game].
 
-While Core timing 2.0 inproved timing accuracy, it also came with performance hits, such as the infamous stutter when entering battles in Pokemon games. One reason for such regressions was that, since there are more cores to take care of, cache invalidation would happen more often and  on more cores. [MerryMage](https://github.com/MerryMage), author of [dynarmic](https://github.com/MerryMage/dynarmic), the ARM JIT we are using, fixed the Pokemon stutters by reducing overhead of such invalidations. However, some other games still had problems. [B3n30](https://github.com/B3n30) found that this was due to the JIT executing smaller slices, and he is now working to strike a proper balance between accuracy and performance. Some of his changes are already in Canary, so be sure to check them out!
+While Core timing 2.0 improved timing accuracy, it also came with performance hits, such as the infamous stutter when entering battles in Pokemon games. One reason for such regressions was that, since there are more cores to take care of, cache invalidation would happen more often and  on more cores. [MerryMage](https://github.com/MerryMage), author of [dynarmic](https://github.com/MerryMage/dynarmic), the ARM JIT we are using, fixed the Pokemon stutters by reducing overhead of such invalidations. However, some other games still had problems. [B3n30](https://github.com/B3n30) noticed that this was due to the JIT executing smaller slices, and he's now working to strike a proper balance between accuracy and performance. Some of his changes are already in Canary, so be sure to check them out!
 
 ### core: Add support for N3DS memory mappings ([#5103](https://github.com/citra-emu/citra/pull/5103)) by [FearlessTobi](https://github.com/FearlessTobi)
 
@@ -77,7 +77,7 @@ While Core timing 2.0 inproved timing accuracy, it also came with performance hi
 
 ### CFG: Let GetSystemModel report model based on Settings:is_new_3ds ([#5104](https://github.com/citra-emu/citra/pull/5104)) by [B3n30](https://github.com/B3n30)
 
-After those two changes were thoroughly tested and eventually merged, all we had to do was to inform the games they were running in New 3DS mode. For the most part this had already been done even before we actually implemented New 3DS support, but there were still some edge cases left unhandled.
+After those two changes were thoroughly tested and eventually merged, all we had to do was to inform the games that they were running in New 3DS mode. For the most part this had already been done even before we actually implemented New 3DS support, but there were still some edge cases left unhandled.
 
 One of these was the CFG service. Games are able to get from this service lots of information about the console they are running on. As one'd expect, this information also included the model of the system. [B3n30](https://github.com/B3n30) updated the function `GetSystemModel` so that it would change the return value to New 3DS if Citra is set to New 3DS mode.
 
@@ -94,7 +94,7 @@ With this, New 3DS mode is now turned on by default for both new and old users o
 
 This is the unannounced new feature, now available for testing in the latest [Citra Canary builds](https://citra-emu.org/download)!
 
-Download Play is yet another gimmick Nintendo added to the DS, and then passed on to the 3DS family. Download Play allows players to send and receive short demo games. Not only that, some games like Mario Kart 7 uses it for local multiplayer as well. In order to get multiplayer support for MK7, we had to take the time to look at this feature.
+Download Play is yet another gimmick Nintendo added to the DS, and then passed on to the 3DS family. Download Play allows players to send and receive short demo games. Not only that, some games like Mario Kart 7 use this for local multiplayer as well. In order to get multiplayer support for MK7, we had to take the time to look at this feature.
 
 On the 3DS, there is a system module dedicated to Download Play - appropriately named `dlp` - which games send commands to to communicate over the DLP protocol. This system module is relatively unknown, with almost no documented functions on 3DBrew. Despite this, we know that internally, the `dlp` module uses another service to send data over local wireless network - `nwm::UDS`, which is the same service games use for regular local multiplayer. `nwm::UDS`, on the other hand, is well-researched, and Citra has had support for it for years.
 
@@ -127,7 +127,7 @@ Follow these steps to dump the necessary system files and enable DLP LLE:
 
 ### Paths forward
 
-Citra is an HLE emulator. Even though we took the easier path of implementing DLP as LLE this time, we likely won't stop here. With proper reverse-engineering, it may one day become possible for us to provide DLP HLE support without the need of any system files, in the future.
+Citra is an HLE emulator. Even though we took the easier path of implementing DLP as LLE this time, we likely won't stop here. With proper reverse-engineering, it may become possible for us to provide DLP HLE support without the need of any system files in the future.
 
 ## Custom Textures ([#4868](https://github.com/citra-emu/citra/pull/4868)) by [khang06](https://github.com/khang06)
 
@@ -179,7 +179,7 @@ Thanks to [zhaowenlan1779](https://github.com/zhaowenlan1779) and [leoetlino](ht
 
 ### Exheader replacement ([#4813](https://github.com/citra-emu/citra/pull/4813)), Fix IPS Patching ([#4817](https://github.com/citra-emu/citra/pull/4817)), and BPS Patching ([#5036](https://github.com/citra-emu/citra/pull/5036)) by [leoetlino](https://github.com/leoetlino)
 
-[leoetlino](https://github.com/leoetlino), a well respected member of both the emulation and the modding community, was working on a great new mod when he decided to add the missing modding features to Citra.
+[leoetlino](https://github.com/leoetlino), a well-respected member of both the emulation and the modding community, was working on a great new mod when he decided to add the missing modding features to Citra.
 
 Firstly, he added support for ExHeader replacement, which allowed modders to use more memory and add more code. He then moved on to fix our implementation of IPS patches (originally written by [zaksabeast](https://github.com/zaksabeast)). Not stopping on his mission, he then added support for another type of patches: `BPS`. The `BPS` format allows distributing patches that are smaller and that do not contain copyrighted content if data is relocated.
 
@@ -193,7 +193,7 @@ A classic game worth another playthrough with these improvements
 
 ### LayeredFS support ([#5088](https://github.com/citra-emu/citra/pull/5088)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
-LayeredFS is a technique used by mod makers to replace files in the RomFS (Read-only File System, where game assets and occasionally code are stored). With LayeredFS, you can replace the game graphics, music, etc without having to rebuild the entire RomFS which can be huge.
+LayeredFS is a technique used by mod makers to replace files in the RomFS (Read-only File System, where game assets and occasionally code are stored). With LayeredFS, you can replace the game graphics, music, etc. without having to rebuild the entire RomFS, which can be huge.
 
 Since [Luma3DS](https://github.com/AuroraWright/Luma3DS) has had LayeredFS for years, there were many requests for Citra to add it as well. That was why [zhaowenlan1779](https://github.com/zhaowenlan1779) decided to take on this task.
 
@@ -205,7 +205,7 @@ More modern consoles often have high-level FS APIs, which means that the game re
 
 ## Disk Shader Cache ([#4923](https://github.com/citra-emu/citra/pull/4923)) by [jroweboy](https://github.com/jroweboy)
 
-Do you like it if you game just hanges for a few seconds repeatedly? No? Then this feature is something for you.
+Do you like it when your game just hangs for a few seconds repeatedly? No? Then this feature is something for you.
 
 Stuttery gameplay is a real issue in some games on Citra like Luigi's Mansion: Dark Moon.
 This game is developed with a very modern approach to GPU hardware and makes extensive use of the 3DS GPU for all of its effects.
@@ -214,7 +214,7 @@ A shader is a small program that runs on your GPU.
 Whenever the game tells Citra to run a new shader, Citra translates this shader, so that your GPU can understand it. Then, it gets uploaded to your GPU.
 This entire process can take a bit of time, so Citra has to pause emulation until the shader is ready, causing stutter whenever the game is drawing something for the first time.
 
-With this change, Citra will now instead preload all of the shaders you've encountered during gameplay, allowing you to play through those same spots again without any stutter.
+With this change, Citra will now instead preload all the shaders you've encountered during gameplay, allowing you to play through those same spots again without any stutter.
 
 (Gif of loading stutter)
 (Gif of same place after cached)
@@ -239,9 +239,9 @@ You read it right. [xperia64](https://github.com/xperia64), a developer of the [
 
 It all started when [xperia64](https://github.com/xperia64) set out to implement anaglyph 3D for Citra. However, since Citra did not have post-processing shader support, he had to implement it first. For drop-in compatibility with many [Dolphin](https://dolphin-emu.org) shaders, he even added some of the Dolphin aliases and bindings.
 
-On top of post-processing shaders, he added a builtin red-cyan `dubois` shader which implemented anaglyph 3D, making 3D effects accessible to more users who don't really have a 3D screen. While he was at it, in order to fix some of the shaders, he added an option to toggle `Linear Filtering`. This was previously on by default, and turning that option off would get Citra to use Nearest Neighbour Filter mode. It fixed some issues with certain shaders and also worked better for some textures, such as game text.
+On top of post-processing shaders, he added a built-in red-cyan `dubois` shader which implemented anaglyph 3D, making 3D effects accessible to more users who don't really have a 3D screen. While he was at it, in order to fix some of the shaders, he added an option to toggle `Linear Filtering`. This was previously on by default, and turning it off would get Citra to use Nearest Neighbour Filter mode. It fixed some issues with certain shaders and worked better for some textures, such as game text.
 
-You can drop in your own shaders in the `shaders` folder in the Citra User Directory. New flavors of anaglyph 3D can also be added in the `shaders/anaglyph` folder.
+You can drop your own shaders in the `shaders` folder in the Citra User Directory. New flavors of anaglyph 3D can also be added in the `shaders/anaglyph` folder.
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/anaglyph_stereo.png"
     title="View it with red-cyan 3D glasses!" >}}
@@ -265,7 +265,7 @@ Most of you may have been familiar with Miis ever since the age of Wii, but on C
 
 This was due to the Mii Selector, an applet on the 3DS, being unimplemented. On the 3DS, games call this applet to prompt you to select a Mii, but on Citra, it got skipped, and the default Mii got sent back to the application.
 
-[vvanelslande](https://github.com/vvanelslande) (using their old account) made a fix, but closed it. [FearlessTobi](https://github.com/FearlessTobi) took and improved his code, and finally got this feature merged. No Mii faces are rendered yet, but I think we will agree that it's a big improvement even if you can only see the names.
+[vvanelslande](https://github.com/vvanelslande) (using their old account) made a fix but closed it. [FearlessTobi](https://github.com/FearlessTobi) took and improved his code, and finally got this feature merged. No Mii faces are rendered yet, but I think we will agree that it's a big improvement even if you can only see the names.
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/mii_selector.png"
     title="For those who liked the default Mii it is still there" >}}
@@ -274,7 +274,7 @@ This was due to the Mii Selector, an applet on the 3DS, being unimplemented. On 
 
 Citra decides how much time the game has run on the CPU by counting up the number of instructions the CPU runs.
 Some games take advantage of this extra time and do extra work each frame, and extra work means that Citra can't keep up and the speed can drop below 100%.
-As a workaround for this, some games that experience a similar slow down on 3DS hardware will include built-in frameskipping code, letting them do less in a frame if they aren't going to get full speed.
+As a workaround for this, some games that experience a similar slow down on 3DS hardware will include built-in frame skipping code, letting them do less in a frame if they aren't going to get full speed.
 
 The CPU frequency slider added here allows a user to overclock or underclock the emulated CPU clock speed.
 By underclocking the emulated clock, this can cause games to think that they need to do less work in order to keep full speed gameplay, which means Citra also gets to keep full speed as well.
@@ -346,7 +346,7 @@ With the IPC recorder, now developers can track every call that the games make t
 GDB Stub is a feature that lets you use GDB (a popular debugger) to debug applications running on Citra. It would be very useful for homebrew developers and Citra developers alike... if only it worked.
 
 Citra's gdbstub has a reputation for being broken. What we didn't expect was that, it was slowly getting more and more broken over time as no one was using it.
-Here, we listed some of the fixes to the gdbstub over the last year, but we know there are still many more issues. Honestly, The best path forward is probably to rewrite the stub completely.
+Here, we listed some of the fixes to the gdbstub over the last year, but we know there are still many more issues. Honestly, the best path forward is probably to rewrite the stub completely.
 
 ### Add program counter in unmapped memory access log messages ([#5149](https://github.com/citra-emu/citra/pull/5149)) by [badda71](https://github.com/badda71)
 
@@ -354,7 +354,7 @@ For homebrew developers, emulators have always been a useful tool for quick test
 
 ### Show the threads process names and ids in the WaitTree widget ([#5201](https://github.com/citra-emu/citra/pull/5201)) by [Subv](https://github.com/Subv)
 
-The Wait Tree is a debugger that tells why threads are hanging. Previously, the widget only showed the thread name, but not the process. This worked fine for most cases, but when it comes to LLE applets/services, there are multiple processes running. It's useful to be finally able to view which process each thread belongs to.
+The Wait Tree is a debugger that tells why threads are hanging. Previously, the widget only showed the thread name, but not the process. This worked fine for most cases, but when it comes to LLE applets/services, there are multiple processes running. It's useful to finally be able to view which process each thread belongs to.
 
 ## Code Cleanup ([Many PRs](https://github.com/citra-emu/citra/pulls?q=is%3Apr+is%3Aclosed+author%3Alioncash+merged%3A2019-02-01..2020-05-05)) by [lioncash](https://github.com/lioncash)
 
@@ -370,7 +370,7 @@ On a more seroius note, our C++ expert, [lioncash](https://github.com/lioncash) 
 
 When Amiibo support was added in the last progress report, there were a few known issues that still needed investigation which can cause intermittent Amiibo load errors.
 
-One of the issues was caused by missing fields in `GetAmiiboConfig`. For example, some games check for the `series` of the Amiibo, which, previously, was left uninitialized.
+One of these issues was caused by missing fields in `GetAmiiboConfig`. For example, some games check for the `series` of the Amiibo which, previously, was left uninitialized.
 After extensive HW tests, [FearlessTobi](https://github.com/FearlessTobi) improved implementation of the function and properly loaded the missing fields.
 
 This fixed Amiibos in Yoshi's Woolly World, Smash (partially) and probably other games too.
@@ -390,21 +390,21 @@ Based on observations of game behavior, [vvanelslande](https://github.com/vvanel
 
 ### Use better hle f32 to s16 algo ([#4763](https://github.com/citra-emu/citra/pull/4763)) by [liushuyu](https://github.com/liushuyu)
 
-When decoding AAC audio, the decoders use a different audio format than the 3DS so Citra needs to convert to the 3DS format.
-This caused audio popping in games that used AAC if the conversion wasn't accurate enough, but thanks to liushuyu, the popping is no more.
+When decoding AAC audio, the decoders use a different audio format than the 3DS, so Citra needs to convert to the 3DS format.
+This caused audio popping in games that used AAC if the conversion wasn't accurate enough, but thanks to [liushuyu](https://github.com/liushuyu) the popping is no more.
 
 ### Prevent out of memory errors when the game passes in an improper length value ([#5024](https://github.com/citra-emu/citra/pull/5024)) by [jroweboy](https://github.com/jroweboy)
 
 In Luigi's Mansion Dark Moon, when using HLE Audio, the game mysteriously passes in an extremely large value for length, which, without any checks, caused Citra to try to allocate an extremely large buffer.
 
-[jroweboy](https://github.com/jroweboy) took the time to investigate this, and concluded that there were some other bugs in our HLE implementation. The game seemingly reads a value from the DSP and subtracts to get a length, without checking for underflow first. He researched the issue fairly extensively, but couldn't find a fix.
+[jroweboy](https://github.com/jroweboy) took the time to investigate this and concluded that there were some other bugs in our HLE implementation. The game seemingly reads a value from the DSP and subtracts to get a length, without checking for underflow first. He researched the issue fairly extensively but couldn't find a fix.
 
 Since an actual fix would likely be rather hard, he made a temporary HACK to prevent out of memory errors. After all, no matter what we do, we shouldn't freeze people's PCs by allocating much bigger memory than they could possibly have.
 
 ### Add sample rate field to AAC decoder ([#5195](https://github.com/citra-emu/citra/pull/5195)) by [xperia64](https://github.com/xperia64)
 
 When AAC was added to HLE, it was entirely RE'd from how Pokemon X used it.
-However, while the HLE code worked fine for Pokemon, Rhythm Heaven Megamix sounds much faster than normal. It turned out that it used AAC audio with a different sample rate than Pokemon. By comparing HLE and LLE outputs, xperia64 found out that one of the 'unknown' fields in our response seemed to be the sample rate enum.
+However, while the HLE code worked fine for Pokemon, Rhythm Heaven Megamix sounds much faster than normal. It turned out that it used AAC audio with a different sample rate than Pokemon. By comparing HLE and LLE outputs, [xperia64](https://github.com/xperia64) found out that one of the 'unknown' fields in our response seemed to be the sample rate enum.
 
 He then did careful tests and calculations to figure out which sample rate each enum value stood for. With this, Rhythm Heaven Megamix now sounds correct even in HLE. (However, the game still has desync issues and is not really playable right now.)
 
@@ -434,7 +434,7 @@ Hamish found that as a temporary work around, Citra can make some scenes look ok
 
 ### Remove Accurate Geometry Shader setting ([#4879](https://github.com/citra-emu/citra/pull/4879), [#4894](https://github.com/citra-emu/citra/pull/4894)) by [tywald](https://github.com/tywald) and [wwylele](https://github.com/wwylele)
 
-When Hardware Shaders was first added, we had two `Accurate` options. `Accurate Multiplication` was relatively well-tested, and we knew it would harm performance quite a bit. However, the other one - `Accurate Geometry Shaders`, didn't receive as much attention, partially due to the fact that it was on by default.
+When Hardware Shaders was first added, we had two `Accurate` options. `Accurate Multiplication` was relatively well-tested, and we knew it would harm performance quite a bit. However, the other one - `Accurate Geometry Shaders` - didn't receive as much attention, partially due to the fact that it was on by default.
 
 Geometry Shaders (GS) are shaders processing what are called *primitives*, which are basically points, lines and triangles passed to your GPU. The PICA had support for programmable GS. Therefore, when we added the PICA->GLSL shader convertor, it was natural to try to support GS as well. However, due to PICA's weird behaviour of preserving states across shader invocations, it was hard to make an accurate implementation. [wwylele](https://github.com/wwylele) put it behind an option, hoping that the rather inaccurate Hardware GS would help increase performance for weaker PCs.
 
@@ -462,18 +462,18 @@ You no longer scare me, oh ghost-of-crashing-citra past
 
 ### Create Format Reinterpretation Framework ([#5170](https://github.com/citra-emu/citra/pull/5170)) by [BreadFish64](https://github.com/BreadFish64)
 
-Emulating the 3DS's GPU is hard, partially thanks to dumb games. On newer consoles like the Switch, games would usually use established graphics API such as OpenGL, so their behaviour is mostly reasonable. On the 3DS, however, it seems that games are really trying their best to make use of all kinds of strange features and exploit all edge cases.
+Emulating the 3DS's GPU is hard, partially thanks to dumb games. On newer consoles like the Switch, games would usually use established graphics API such as OpenGL, so their behavior is mostly reasonable. On the 3DS, however, it seems that games are really trying their best to make use of all kinds of strange features and exploit all edge cases.
 
-On the 3DS, games have the ability to access cached surfaces with different formats than what it was originally uploaded as - and they *love* to abuse it. On Citra, however, due to limitations of modern APIs, we simply cannot do this in the same way as the 3DS. Without a format convertor, we would have to reupload the surface from CPU memory to the GPU - and this was *really* slow. For instance, the after match screen in Smash 4 got affected horribly.
+On the 3DS, games have the ability to access cached surfaces with different formats than what it was originally uploaded as - and they *love* to abuse it. On Citra, however, due to limitations of modern APIs, we simply cannot do this in the same way as the 3DS. Without a format convertor, we would have to reupload the surface from CPU memory to the GPU - and this was *really* slow. For instance, the after-match screen in Smash 4 got affected horribly.
 
 [jroweboy](https://github.com/jroweboy) made a hack ([#4089](https://github.com/citra-emu/citra/pull/4089)) to ignore these reinterpretations to improve performance. It turned out that this worked fine for most games, but broke Paper Mario and about all VC games. Since this was a hack anyway and he knew that a proper implementation would be possible, he eventually decided to close it.
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/broken_paper_mario.png"
     title="The stickers mysteriously disappeared from the bottom screen" >}}
 
-So what was the proper implementation? Using shaders on the host GPU to actually convert the surfaces. In fact, we had already done this for a specific case (`RGBA8 -> D24S8`) but there were many other convertors missing. [B3n30](https://github.com/B3n30) created the original Format Conversion PR ([#4902](https://github.com/citra-emu/citra/pull/4902)) based on [jroweboy](https://github.com/jroweboy)'s work. That PR did not add any new convertors, but laid the framework for them, and he also added a log so that we can collect information regarding which convertors were necessary.
+So, what was the proper implementation? Using shaders on the host GPU to actually convert the surfaces. In fact, we had done this already for a specific case (`RGBA8 -> D24S8`) but there were many other convertors missing. [B3n30](https://github.com/B3n30) created the original Format Conversion PR ([#4902](https://github.com/citra-emu/citra/pull/4902)) based on [jroweboy](https://github.com/jroweboy)'s work. That PR did not add any new convertors, but laid the framework for them, and he also added a log so that we can collect information regarding which convertors were necessary.
 
-As it turned out - most of the conversions the games are trying to do didn't even make sense. For many of the them, the pixel sizes of the formats didn't match - which meant that the surface would take up different amounts of memory before and after conversion. They were basically impossible to implement and practically useless as well. After further analysis, we decided that they were simply games reusing memory, and ignoring the reinterpretation for these would be fine.
+As it turned out, most of the conversions the games are trying to do didn't even make sense. For many of them, the pixel sizes of the formats didn't match - which meant that the surface would take up different amounts of memory before and after conversion. They were basically impossible to implement and practically useless as well. After further analysis, we decided that they were simply games reusing memory, and ignoring the reinterpretation for these would be fine.
 
 The VC games did have a valid use case though (`RGBA4 -> RGB5A1`), and [BreadFish64](https://github.com/BreadFish64) implemented this convertor. With this, we were finally able to get proper Format Reinterpretation that improved speed while not breaking any games.
 
@@ -495,11 +495,11 @@ We then measured and added a delay of 39000ns to all IPC (Inter-Process Communic
 
 For local wireless play, games are expected to use the UDS system service on the 3DS, but there's actually two UDS services, an old version and a new version.
 
-When Citra added multiplayer support, we only added the new version which almost every game uses, but there are a few that use the old version still.
-wwylele cracked open the disassembler and took a look inside to see what Nintendo does differently between the old version and the new version...
+When Citra added multiplayer support, we only added the new version which almost every game uses, but there are a few that still use the old version.
+[wwylele](https://github.com/wwylele) cracked open the disassembler and looked inside to see what Nintendo does differently between the old version and the new version...
 ... and it turns out they are almost exactly the same!
 
-With a few tweaks, wwylele made the old version call the new version.
+With a few tweaks, [wwylele](https://github.com/wwylele) made the old version call the new version.
 This made several old version multiplayer games get further towards supported multiplayer, but sadly they still aren't playable yet.
 
 ### service/cam: Implement Vsync interrupt events ([#5116](https://github.com/citra-emu/citra/pull/5116)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
@@ -517,7 +517,7 @@ While most games saved correctly on Citra, there were a handful of games that al
 
 When comparing save files from Citra and a real 3DS, [zhaowenlan1779](https://github.com/zhaowenlan1779) discovered that their sizes didn't match. After debugging for several hours, he finally found the culprit. In the PR mentioned above, a variable was added to keep track of the file size. However, when games append to the file, that field wasn't updated. This meant that, if the game ever tried to append twice, previously written data would get overwritten! Updating the file size on write fixed this.
 
-This simple change turned out to fix several games with saving issues, including Angry birds trilogy, Sudoku by Nikoli, WWE All Stars and others.
+This simple change turned out to fix several games with saving issues, including Angry Birds trilogy, Sudoku by Nikoli, WWE All Stars and others.
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/angry_birds.png"
     title="You no longer need to be Angry you lost your progress" >}}
@@ -530,7 +530,7 @@ Since the country was on lockdown, [zhaowenlan1779](https://github.com/zhaowenla
 
 ### Implement APT functions ([#5194](https://github.com/citra-emu/citra/pull/5194), [#5196](https://github.com/citra-emu/citra/pull/5196), [#5203](https://github.com/citra-emu/citra/pull/5203)) by [Subv](https://github.com/Subv)
 
-We have always had the dream of getting Home Menu running on Citra - and Subv is now working to realize it! As the Home Menu needed many unimplemented APT functions, he decided to implement them first.
+We have always had the dream of getting Home Menu running on Citra - and [Subv](https://github.com/Subv) is now working to realize it! As the Home Menu needed many unimplemented APT functions, he decided to implement them first.
 
 Home Menu still doesn't work right now, but we are at least a few steps closer!
 
@@ -605,7 +605,7 @@ This quick patch tells Windows that while a game is running in Citra, it shouldn
 
 When installing CIA files in Citra, a CIA file contains much more than just the game. Usually they contain other things like the game manual, and the download play version of the game, and much more.
 
-Steveice10 added a simple check to the game list to see if the files installed are game files or other things, and now Citra hides anything that isn't a game.
+[Steveice10](https://github.com/Steveice10) added a simple check to the game list to see if the files installed are game files or other things, and now Citra hides anything that isn't a game.
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/game_list_before.png"
     title="Citra can't even load these files anyway, so why show them?" >}}
@@ -621,7 +621,7 @@ Thanks to [vvanelslande](https://github.com/vvanelslande), you can simply drag a
 ## Runtime load MF dll ([#5020](https://github.com/citra-emu/citra/pull/5020)) by [jroweboy](https://github.com/jroweboy)
 
 AAC audio decoding is a constant thorn in Citra's side, since we can't legally ship an AAC decoder without paying licensing fees, we had to get creative.
-Many operating systems already pay for AAC licensing, and offer APIs that developers can use to decode audio.
+Many operating systems already pay for AAC licensing and offer APIs that developers can use to decode audio.
 
 MediaFoundation is Microsoft Windows's media encoding/decoding framework, and Citra uses this on Windows for audio playback in a few titles, most notably Pokemon X.
 But it turns out not every edition of Windows 7 and Windows 10 ships with MediaFoundation, and Citra would simply crash when trying to run on these systems.
@@ -637,7 +637,7 @@ Disk shader cache loading times can get to be really long if you start to have t
 
 ## Show an error if CIA content is encrypted ([#5130](https://github.com/citra-emu/citra/pull/5130)) by [B3n30](https://github.com/B3n30)
 
-CIA files can be encrypted. Not only that, the *contents* of the CIA files can also be encrypted, and these two are separate layers of encryption. Previously, we only showed an error if the CIA file itself is encrypted, so for those with *decrypted* CIAs of *encrypted* contents, the behaviour would be pretty puzzling. Citra would report that the CIA was successfully installed, but nothing would show up in the game list as the installed contents are encrypted.
+CIA files can be encrypted. Not only that, the *contents* of the CIA files can also be encrypted, and these two are separate layers of encryption. Previously, we only showed an error if the CIA file itself is encrypted, so for those with *decrypted* CIAs of *encrypted* contents, the behavior would be pretty puzzling. Citra would report that the CIA was successfully installed, but nothing would show up in the game list as the installed contents are encrypted.
 
 Since we are getting more and more such reports, [B3n30](https://github.com/B3n30) decided to make a fix. Now Citra would error out if the contents installed are encrypted, making the experience less confusing.
 
@@ -692,7 +692,7 @@ This new tool has been added to the wiki pages. Try it out now!
 # Conclusion
 
 It’s been a great year for Citra, and we are very glad to be able to work with and learn from so many awesome contributors.
-There's always many more ways to improve, and contributions are always welcome.
+There are always many more ways to improve, and contributions are always welcome.
 
 If you'd like to contribute, hop in our [Discord](https://citra-emu.org/discord) or IRC (freenode #citra-dev). If you can't contribute code, consider subscribing on [Patreon](https://patreon.com/citraemu)!
 
