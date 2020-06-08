@@ -1,5 +1,5 @@
 +++
-date = "2020-05-20T00:00:00+08:00"
+date = "2020-06-10T00:00:00+08:00"
 title = "Citra Mega Progress Report 2019 Q1~2020 Q2"
 tags = [ "progress-report" ]
 author = "zhaowenlan1779"
@@ -10,10 +10,10 @@ forum = 96286
 
 <!-- Note: forum should be updated -->
 
-It’s been more than a year since the last progress report, not for lack of progress, but for lack of writers.
+It has been more than a year since the last progress report, not for lack of progress, but for lack of writers.
 To fill in the gap, developers [jroweboy](https://github.com/jroweboy) and [FearlessTobi](https://github.com/FearlessTobi) independently wrote drafts for a new progress report, and another developer [zhaowenlan1779](https://github.com/zhaowenlan1779) merged their works and added more content. Together, we are able to present you with a quick update on all the changes we've had since 2019 Q1.
 
-Since it's been such a long time since the last one, you may already be very familiar with several of these features, but there are also a few here that we haven't announced until now!
+Since it has been such a long time since the last one, you may already be very familiar with several of these features, but there are also a few here that we haven't announced until now!
 
 Also, if you don't know already, Citra Android has already been released! Read this blog post (todo: link) if you are interested.
 
@@ -73,13 +73,13 @@ While Core timing 2.0 improved timing accuracy, it also came with performance hi
 
 ### core: Add support for N3DS memory mappings ([#5103](https://github.com/citra-emu/citra/pull/5103)) by [FearlessTobi](https://github.com/FearlessTobi)
 
-3DS games use "memory modes" to tell the kernel how much memory they would use, and how much memory is left for the Home Menu, applets and services. As mentioned above, the New 3DS has about double the amount of RAM, so there are also more memory modes we need to support. With the help of other team members, [FearlessTobi](https://github.com/FearlessTobi) managed to make an accurate implementation, making it possible for New 3DS games to map the extra RAM as they like.
+3DS games use "memory modes" to tell the kernel how much memory they would use, and how much memory is left for the Home Menu, applets and services. As mentioned above, the New 3DS has about twice the amount of RAM, so there are also more memory modes we need to support. With the help of other team members, [FearlessTobi](https://github.com/FearlessTobi) managed to make an accurate implementation, making it possible for New 3DS games to map the extra RAM as they like.
 
 ### CFG: Let GetSystemModel report model based on Settings:is_new_3ds ([#5104](https://github.com/citra-emu/citra/pull/5104)) by [B3n30](https://github.com/B3n30)
 
 After those two changes were thoroughly tested and eventually merged, all we had to do was to inform the games that they were running in New 3DS mode. For the most part this had already been done even before we actually implemented New 3DS support, but there were still some edge cases left unhandled.
 
-One of these was the CFG service. Games are able to get from this service lots of information about the console they are running on. As one'd expect, this information also included the model of the system. [B3n30](https://github.com/B3n30) updated the function `GetSystemModel` so that it would change the return value to New 3DS if Citra is set to New 3DS mode.
+One of these was the CFG service. Games are able to get from this service lots of information about the console they are running on. As one would expect, this information also included the model of the system. [B3n30](https://github.com/B3n30) updated the function `GetSystemModel` so that it would change the return value to New 3DS if Citra is set to New 3DS mode.
 
 ### citra_qt/system: Add N3DS mode checkbox and enable it by default ([#5117](https://github.com/citra-emu/citra/pull/5117)) by [FearlessTobi](https://github.com/FearlessTobi)
 
@@ -222,7 +222,7 @@ Comparison of what shader stutter looks like before and after its cached.
 
 ## Video Dumper ([#4602](https://github.com/citra-emu/citra/pull/4602), [#5083](https://github.com/citra-emu/citra/pull/5083)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
-Some of you may be wondering - since it is so easy to use OBS to record gameplay, what is the point of a builtin video dumper? Well, while OBS is cool, there are people out there who wish to share their gameplay at consistent speeds without slowdowns and stutters. TAS communitys like [TASVideos](http://tasvideos.org/) also required complying emulators to provide a way to 'render' gameplay. That was why [zhaowenlan1779](https://github.com/zhaowenlan1779) implemented a video dumper into Citra around Aug 2019.
+Some of you may be wondering: since it is so easy to use OBS to record gameplay, what is the point of a built-in video dumper? Well, while OBS is cool, there are people out there who wish to share their gameplay at consistent speeds without slowdowns and stutters. TAS communitys like [TASVideos](http://tasvideos.org/) also required complying emulators to provide a way to 'render' gameplay. That was why [zhaowenlan1779](https://github.com/zhaowenlan1779) implemented a video dumper into Citra around Aug 2019.
 
 (Example Video)
 
@@ -246,15 +246,15 @@ You can drop your own shaders in the `shaders` folder in the Citra User Director
 {{< figure src="/images/entry/citra-progress-report-2020-q2/anaglyph_stereo.png"
     title="View it with red-cyan 3D glasses!" >}}
 
-## Vsync Support ([#4940](https://github.com/citra-emu/citra/pull/4940)) by [jroweboy](https://github.com/jroweboy)
+## VSync Support ([#4940](https://github.com/citra-emu/citra/pull/4940)) by [jroweboy](https://github.com/jroweboy)
 
-Vsync was first added to Citra in 2016, but it was always broken until this change.
+VSync was first added to Citra in 2016, but it was always broken until this change.
 
 Citra was originally designed to render the final frame on the same thread that the emulation runs on, so when VSync is enabled, it causes the emulation to pause until the GPU is done displaying the frame.
 This means that any time Citra was even a tad bit too slow, it would pause the emulation until the GPU was ready to draw again.
 At 60FPS, this could mean waiting a whole 16.6 milliseconds until then!
 
-With this change, Vsync is now on by default, and Citra will be able to continue emulation even while the GPU is drawing the frame.
+With this change, VSync is now on by default, and Citra will be able to continue emulation even while the GPU is drawing the frame.
 
 (Pic of random game)
 No more screen tearing, yay!
@@ -336,7 +336,7 @@ You may not be exactly excited about debuggers, but developers use them every da
 
 IPC (or Inter Process Communication) is how games communicate with the 3DS operating system.
 Citra emulates the 3DS operating system at a high level, meaning we recoded the entirety of the operating system from scratch.
-With the IPC recorder, now developers can track every call that the games make to Citra, which has proved really useful for developers trying to figure out why games break.
+With the IPC recorder, developers can now track every call games make to Citra, which has proved really useful for developers trying to figure out why games break.
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/ipc_recorder.png"
     title="This may not seem interesting to you, but it is what led to many of the fixes!" >}}
@@ -350,17 +350,17 @@ Here, we listed some of the fixes to the gdbstub over the last year, but we know
 
 ### Add program counter in unmapped memory access log messages ([#5149](https://github.com/citra-emu/citra/pull/5149)) by [badda71](https://github.com/badda71)
 
-For homebrew developers, emulators have always been a useful tool for quick testing. However, without a proper gdbstub, it can be hard to figure out *why* their applications are broken. One of the most common errors experienced are unmapped memory accesses, so [badda71](https://github.com/badda71) added `PC` (Program Counter) in the log there to help debugging these errors.
+For homebrew developers, emulators have always been a useful tool for quick testing. However, without a proper gdbstub, it can be hard to figure out *why* their applications are broken. Among the most common errors experienced are unmapped memory accesses, so [badda71](https://github.com/badda71) added `PC` (Program Counter) in the log there to help debugging these errors.
 
 ### Show the threads process names and ids in the WaitTree widget ([#5201](https://github.com/citra-emu/citra/pull/5201)) by [Subv](https://github.com/Subv)
 
 The Wait Tree is a debugger that tells why threads are hanging. Previously, the widget only showed the thread name, but not the process. This worked fine for most cases, but when it comes to LLE applets/services, there are multiple processes running. It's useful to finally be able to view which process each thread belongs to.
 
-## Code Cleanup ([Many PRs](https://github.com/citra-emu/citra/pulls?q=is%3Apr+is%3Aclosed+author%3Alioncash+merged%3A2019-02-01..2020-05-05)) by [lioncash](https://github.com/lioncash)
+## Code Cleanup ([Many PRs](https://github.com/citra-emu/citra/pulls?q=is%3Apr+is%3Aclosed+author%3Alioncash+merged%3A2019-02-01..2020-06-10)) by [lioncash](https://github.com/lioncash)
 
 General system stability improvements to enhance the user's experience...
 
-On a more seroius note, our C++ expert, [lioncash](https://github.com/lioncash) has been hard at work fixing up minor issues in our codebase. The code is not just cleaner, it should be ever so slightly faster as well! In hot code, every cycle counts.
+On a more serious note, our C++ expert, [lioncash](https://github.com/lioncash) has been working hard to fix up minor issues in our codebase. The code is not just cleaner, it should be ever so slightly faster as well! In hot code, every cycle counts.
 
 # Emulation Accuracy
 
@@ -413,7 +413,7 @@ He then did careful tests and calculations to figure out which sample rate each 
 ### Suppress mipmap for cube ([#4822](https://github.com/citra-emu/citra/pull/4822)) by [wwylele](https://github.com/wwylele)
 
 A small regression when mipmaps and cubemaps were added to Citra: the combination of these two were not supported.
-In very rare cases, games would use both of them and cause issues, so wwylele stepped in and changed it so they no longer conflict in Citra.
+In very rare cases, games would use both and cause issues, so [wwylele](https://github.com/wwylele) stepped in and made them work together properly in Citra.
 
 (Picture of fire emblem sky box)
 This change fixed an issue with Fire Emblems sky box not rendering correctly.
@@ -421,7 +421,7 @@ This change fixed an issue with Fire Emblems sky box not rendering correctly.
 ### Clear texture ([#4844](https://github.com/citra-emu/citra/pull/4844), [#5186](https://github.com/citra-emu/citra/pull/5186)) by [hamish-milne](https://github.com/hamish-mline)
 
 Pokemon X/Y are back again causing more problems.
-This time, the games exploit a flaw in 3DS GPU hardware when rendering, which is really really challenging to reproduce in an emulator.
+This time the games exploit a flaw in 3DS GPU hardware when rendering, which is really really challenging to reproduce in an emulator.
 
 When drawing certain scenes, the game forgets to configure a texture to draw from, which causes the 3DS GPU to do something weird and use the last drawn pixel color value instead.
 This means proper support for this 3DS "feature" would require determining the precise algorithm the 3DS GPU uses for rasterization to determine what the last drawn pixel is, and that's quite the challenge!
@@ -440,7 +440,7 @@ Geometry Shaders (GS) are shaders processing what are called *primitives*, which
 
 When [tywald](https://github.com/tywald) was playing with this setting in MH4U, he discovered that this option actually did the opposite of what it claimed - using Hardware GS (i.e. turing accurate GS off) would *decrease* performance! With the new performance logging framework put together by [jroweboy](https://github.com/jroweboy), the team did further tests and confirmed his observation. Since the Hardware GS was not only less accurate but also slower, we decided that there was no point in keeping it there at all. [tywald](https://github.com/tywald) removed this setting from the UI, and [wwylele](https://github.com/wwylele) removed the actual code.
 
-[BreadFish64](https://github.com/BreadFish64) is now [attempting](https://github.com/citra-emu/citra/pull/5216) to remove the other setting (`Accurate Multiplication`). He rewrote the function we were using to mimic PICA's multiplication behaviour. As a result, not only was the performance penalty brought down from ~10% to almost negligible, but it fixed Intel GPUs (which were previously having problems with this option on) as well! Hopefully, we will be able to have a clean configuration dialog soon.
+[BreadFish64](https://github.com/BreadFish64) is now [attempting](https://github.com/citra-emu/citra/pull/5216) to remove the other setting (`Accurate Multiplication`). He rewrote the function we were using to mimic PICA's multiplication behavior. As a result, not only was the performance penalty brought down from ~10% to almost negligible, but it fixed Intel GPUs (which were previously having problems with this option on) as well! Hopefully, we will be able to have a clean configuration dialog soon.
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/new_graphics_config.png"
     title="Isn't it just cleaner and more beautiful" >}}
@@ -504,7 +504,7 @@ This made several old version multiplayer games get further towards supported mu
 
 ### service/cam: Implement Vsync interrupt events ([#5116](https://github.com/citra-emu/citra/pull/5116)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
-Camera support had been there for over two years, but some of the more naughty games still refused to show the camera image. As the original author of the camera integration, [zhaowenlan1779](https://github.com/zhaowenlan1779) finally decided to look into this. Looking through the IPC calls, he discovered that the so-called 'Vsync interrupt events' were missing completely.
+Camera support had been there for over two years, but some of the naughtier games still refused to show the camera image. As the original author of the camera integration, [zhaowenlan1779](https://github.com/zhaowenlan1779) finally decided to look into this. Looking through the IPC calls, he discovered that the so-called 'Vsync interrupt events' were missing completely.
 
 After performing HW tests, he properly implemented these events, and now camera is working in almost every game.
 
@@ -536,7 +536,7 @@ Home Menu still doesn't work right now, but we are at least a few steps closer!
 
 ### Stubbed GetSdmcArchiveResource and GetNandArchiveResource ([#5213](https://github.com/citra-emu/citra/pull/5213)) by [Subv](https://github.com/Subv)
 
-These two functions are used by games to query the state of the SD card and NAND. Previously, they were unimplemented, and therefore some games thought that the SD card wasn't inserted, and refused to create Extra Data.
+These two functions are used by games to query the state of the SD card and NAND. Previously, they were unimplemented, leading to games thinking that the SD card wasn't inserted and refusing to create Extra Data.
 
 A simple stub was enough to get these games to create Extra Data properly and go in-game.
 
@@ -576,7 +576,7 @@ That's a lovely gamer tag
 
 ### swkbd: Fix digit filter ([#5086](https://github.com/citra-emu/citra/pull/5086)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
-All good things come in threes. Probably that was the reason why [zhaowenlan1779](https://github.com/zhaowenlan1779) made another small fix to the software keyboard. When the keyboard was first implemented, there was a misunderstanding regarding one of the filters (the `DIGIT` filter) the games can use. We thought that this filter prevented all digits, but it actually only limited the use of digits to a certain number (specified by the game).
+All good things come in threes. Probably that was the reason why [zhaowenlan1779](https://github.com/zhaowenlan1779) made another small fix to the software keyboard. When the keyboard was first implemented, there was a misunderstanding regarding one of the filters (the `DIGIT` filter) the games can use. In Citra this filter was preventing all the digits you type, but on a real 3DS it only limits the use of digits to a certain number (specified by the game).
 
 Fixed the issue where you can't type any digits in Monster Hunter 3 Ultimate.
 
@@ -593,7 +593,7 @@ With the Android release, however, this issue has become more severe. Not only w
 
 ## Fix stuck in fullscreen bug ([#4906](https://github.com/citra-emu/citra/pull/4906)) by [vvanelslande](https://github.com/vvanelslande)
 
-Some users reported that when closing citra while in fullscreen mode, on the next launch it would be stuck in fullscreen and couldn't be closed.
+Some users reported that when closing Citra while in fullscreen mode, on the next launch it would be stuck in fullscreen and couldn't be closed.
 A quick patch later, and all those stuck in fullscreen are now free to see the lovely Citra window as it was always meant to be.
 
 ## Fix windows sleep ([#4914](https://github.com/citra-emu/citra/pull/4914)) by [vitor-k](https://github.com/vitor-k)
