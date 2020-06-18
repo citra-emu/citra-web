@@ -1,5 +1,5 @@
 +++
-date = "2020-06-10T00:00:00+08:00"
+date = "2020-06-18T00:00:00+08:00"
 title = "Citra Mega Progress Report 2019 Q1~2020 Q2"
 tags = [ "progress-report" ]
 author = "zhaowenlan1779"
@@ -379,6 +379,33 @@ However, while the HLE code worked fine for Pokemon, Rhythm Heaven Megamix sound
 
 He then did careful tests and calculations to figure out which sample rate each enum value stood for. With this, Rhythm Heaven Megamix now sounds correct even in HLE. (However, the game still has desync issues and is not really playable right now.)
 
+### Audio synchronization fixes by [xperia64](https://github.com/xperia64) and [wwylele](https://github.com/wwylele)
+
+Citra's audio backends were created to be 'good enough' for most games, and weren't really tested for perfect timing accuracy against real hardware. This turned out to be a problem in rhythm games, which required a perfect match between the audio and the graphics to be playable. [xperia64](https://github.com/xperia64) discovered this issue when playing Project Mirai 2. It was rather worrying, as both HLE and LLE backends were off - but in a different way. The HLE backend would rush ahead, while the LLE backend would fall behind the gameplay.
+
+[xperia64](https://github.com/xperia64) looked into the bug, and he turned out to find many hidden inaccuracies in Citra's timing system!
+
+#### Adjust audio_frame_ticks ([#5266](https://github.com/citra-emu/citra/pull/5266)) by [xperia64](https://github.com/xperia64)
+
+In the HLE backend, there was a constant which tells how many CPU cycles an audio frame takes. Previously, we used a hardware-measured value, but apparently this measurement wasn't really as precise as we hoped it would be. [xperia64](https://github.com/xperia64) replaced it with a calculated, theoretical value. This new value reduced the desync in Project Mirai 2 in the HLE backend to about negligible. He later further checked the change with rough hardware tests, and it indeed matched the hardware behavior better.
+
+#### Update FPS to roughly match the actual 3DS rate ([#5273](https://github.com/citra-emu/citra/pull/5273)) by [xperia64](https://github.com/xperia64)
+
+While Project Mirai 2 was fixed, other games like Rhythm Heaven still had issues. [xperia64](https://github.com/xperia64) was looking around in the code when he came across this line, which had been present for more than 3 years:
+
+{{< figure src="/images/entry/citra-progress-report-2020-q2/audio_desync_fps_line.png"
+    title="... Wait, what?" >}}
+
+This meant that Citra's screen refresh rate was hardcoded to exactly 60Hz! This definitely isn't true on a real 3DS, where the LCD refresh rate is known to be somewhere around 59.83Hz. With help from profi200, [xperia64](https://github.com/xperia64) was able to take accurate measurements and fixed this long-standing mistake. This turned out to resolve most of the remaining audio timing issues in HLE.
+
+#### Update teakra, adjust TeakraSlice for new audio frame period ([#5402](https://github.com/citra-emu/citra/pull/5402)) by [wwylele](https://github.com/wwylele) and [xperia64](https://github.com/xperia64)
+
+Now that HLE was fixed, it was time to look into LLE as well. In fact, before the audio desync got attention, [wwylele](https://github.com/wwylele), author of [teakra](https://github.com/wwylele/teakra), had already found a problem in his code. A value called `transmit period` was previously wrongly assumed to be 4100, while it should have been 4096 instead. However, while this fix did correct the overall audio sync, it dropped frames from time to time, resulting in large discontinuities in the audio.
+
+It took a while for us to realize that this new issue wasn't caused by [teakra](https://github.com/wwylele/teakra), but rather by Citra itself. When Citra calls into [teakra](https://github.com/wwylele/teakra), we need to feed it with a `slice length` value. This is the count of cycles [teakra](https://github.com/wwylele/teakra) would run at a time. When chosen inappropriately, the slice could end while audio was still being processed, resulting in the cut-offs observed.
+
+Since this value is in fact sort of arbitrary and can't really be calculated, [xperia64](https://github.com/xperia64) had to figure out a proper value with trial and error. He found that multiples of the `transmit period` mentioned above appeared to prevent the drop outs, and eventually chose `16384`. This, combined with the `transmit period` update, resulted in a proper fix for audio synchronization in the LLE backend.
+
 ## Graphics
 
 ### Suppress mipmap for cube ([#4822](https://github.com/citra-emu/citra/pull/4822)) by [wwylele](https://github.com/wwylele)
@@ -522,6 +549,14 @@ When we first implemented this function, we thought that 'hey, bigger sizes are 
 The fix? returning a smaller value. [FearlessTobi](https://github.com/FearlessTobi) chose 32MB. According to [wwylele](https://github.com/wwylele), the biggest observed save size for 3DS is 1MB, so this new value should leave plenty of room, even if games use a bigger size.
 
 While it turned out to be a simple fix, the investigation took quite a bit of time. Thanks, [xperia64](https://github.com/xperia64), [Subv](https://github.com/Subv), [wwylele](https://github.com/wwylele), [Hamish](https://github.com/hamish-milne) and [B3n30](https://github.com/B3n30).
+
+### Interpolate circle pad motion ([#5350](https://github.com/citra-emu/citra/pull/5294)) by [xperia64](https://github.com/xperia64)
+
+On a real 3DS, the Circle Pad was rather stiff, and it is hard to move it *fast*. On Citra, however, you can map the Circle Pad to any controller you'd like to use. Most of the time the analog sticks on controllers are much more flexible; if you mapped the Circle Pad to your keyboard, you can even 'teleport' it with a single key press, achieving what is in fact impossible on a 3DS.
+
+While this is rather convenient, as usual some games didn't like it. This includes Theatrhythm: Curtain Call, where input can be missed if you use the keyboard or even a DualShock 4. The same bug can be observed with Luma3DS's Input Redirection support. For a long time, this rendered the rhythm game virtually unplayable.
+
+Annoyed with the issue, [xperia64](https://github.com/xperia64) decided to fix this. He did so by 'interpolating' the Circle Pad values. This means that the Circle Pad will no longer 'teleport' in a single frame, but will rather slowly move to the latest value within multiple frames. This can cause some minimal input latency, but this is what would happen on a physical 3DS as well (you can't move your Circle Pad that rapidly!).
 
 ## Software Keyboard
 
