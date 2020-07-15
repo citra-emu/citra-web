@@ -1,5 +1,5 @@
 +++
-date = "2020-06-18T00:00:00+08:00"
+date = "2020-07-15T22:11:00+08:00"
 title = "Citra Mega Progress Report 2019 Q1~2020 Q2"
 tags = [ "progress-report" ]
 author = "zhaowenlan1779"
@@ -44,9 +44,6 @@ In the best case scenario, the game crashes immediately so we get a good idea of
 And in the worst case scenario, the game doesn't use that object for seconds or even minutes, until when it finally does and out of nowhere, crash!
 
 Since this is so new, you can bet that there will be bugs and broken loads, so we ask for your help in reporting these issues when you find them.
-
-(Gif of save state loading in pokemon)
-That's not video looping, it's just me reloading a save state whenever my attack misses!
 
 ## New 3DS Support
 
@@ -109,8 +106,6 @@ Later, [B3N30](https://github.com/B3N30) and [jroweboy](https://github.com/jrowe
 
 A few months ago, however, a turn of events came. [Subv](https://github.com/Subv) returned from his long hiatus and started helping with Citra again! [B3N30](https://github.com/B3N30) decided to once again pick up DLP LLE, and this time, with the help from [Subv](https://github.com/Subv), he was able to get it fully working!
 
-(Mario Kart 7 race)
-
 ### Instructions on Using DLP LLE
 
 Since this is LLE, keep in mind that you need to dump quite a few system files for it to work. In the past, this would mean manually looking through GodMode9 trying to find a bunch of different files. However, thanks to threeSD, a new dumping tool which we will cover later, the hassle is no more!
@@ -144,10 +139,6 @@ To use a custom texture pack, right click on the game in the game list and selec
 Then, turn on the Use Custom Texture option in Graphics -> Enhancements and you are set to go.
 
 The following are previews of some awesome texture pack projects by the community. They aren't finished yet, but stay tuned! You can also check out the `#mods-and-texture-packs` channel on the Citra Discord server.
-
-(Juxtapose of custom texture MH)
-
-Click here to see a larger version of the above juxtapose.
 
 {{< juxtapose "ec2bf8ba-a025-11ea-a7cb-0edaf8f81e27" >}}
 
@@ -187,9 +178,6 @@ Based on [leoetlino](https://github.com/leoetlino)'s work, [zhaowenlan1779](http
 
 [leoetlino](https://github.com/leoetlino)'s changes make it easier for modders to add custom code to 3DS games, so be sure to check out [Project Restoration](https://github.com/leoetlino/project-restoration) sometime as a thanks for these contributions! For those who don't know, [Project Restoration](https://github.com/leoetlino/project-restoration) by [leoetlino](https://github.com/leoetlino) restores some of the more controversial changes made in the 3DS release of Majora's Mask back to how it worked in the N64 version, and adds several new improvements to the classic game.
 
-(Pic of Project restoration on Citra)
-A classic game worth another playthrough with these improvements
-
 ### LayeredFS support ([#5088](https://github.com/citra-emu/citra/pull/5088)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
 LayeredFS is a technique used by mod makers to replace files in the RomFS (Read-only File System), where game assets and occasionally code are stored. With LayeredFS, you can replace the game graphics, music, etc. without having to rebuild the entire RomFS, which can be huge.
@@ -199,8 +187,6 @@ Since [Luma3DS](https://github.com/AuroraWright/Luma3DS) has had LayeredFS for y
 More modern consoles often have high-level FS APIs, which means that the game requests the OS to read files. While this translates to more work for the initial FS implementation, there are also compensations. For these consoles, LayeredFS can be added with ease simply by replacing the data to be returned to the game. For the 3DS, however, things are different. The FS service only provides basic functions to read the RomFS as a huge binary chunk - and the games need to parse the filesystem themselves.
 
 [Luma3DS](https://github.com/AuroraWright/Luma3DS)'s LayeredFS works by hooking the SDK code the games include to parse the RomFS, but [zhaowenlan1779](https://github.com/zhaowenlan1779) decided to take a harder and more robust approach. With help from 3dbrew documents, he wrote code to rebuild the RomFS metadata and assign fake data offsets to files. From the game's perspective, it would seem as if the RomFS has been completely rebuilt, but we are not actually doing that much work.
-
-(Picture of a game with fancy mods)
 
 ## Disk Shader Cache ([#4923](https://github.com/citra-emu/citra/pull/4923)) by [jroweboy](https://github.com/jroweboy)
 
@@ -215,15 +201,9 @@ This entire process can take a bit of time, so Citra has to pause emulation unti
 
 With this change, Citra will now instead preload all the shaders you've encountered during gameplay, allowing you to play through those same spots again without any stutter.
 
-(Gif of loading stutter)
-(Gif of same place after cached)
-Comparison of what shader stutter looks like before and after its cached.
-
 ## Video Dumper ([#4602](https://github.com/citra-emu/citra/pull/4602), [#5083](https://github.com/citra-emu/citra/pull/5083)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
 Some of you may be wondering: since it is so easy to use OBS to record gameplay, what is the point of a built-in video dumper? Well, while OBS is cool, there are people out there who wish to share their gameplay at consistent speeds without slowdowns and stutters. TAS communitys like [TASVideos](http://tasvideos.org/) also required complying emulators to provide a way to 'render' gameplay. That was why [zhaowenlan1779](https://github.com/zhaowenlan1779) implemented a video dumper into Citra around Aug 2019.
-
-(Example Video)
 
 However, when the dumper was initially added, there wasn't a proper configuration dialog, and it would always use the VP9 encoder. As VP9 is a CPU encoder, the performance was bad when the resolution got high.
 
@@ -255,9 +235,6 @@ At 60FPS, this could mean waiting a whole 16.6 milliseconds until then!
 
 With this change, VSync is now on by default, and Citra will be able to continue emulation even while the GPU is drawing the frame.
 
-(Pic of random game)
-No more screen tearing, yay!
-
 ## Mii Selector ([#4635](https://github.com/citra-emu/citra/pull/4635)) by [FearlessTobi](https://github.com/FearlessTobi)
 
 Most of you may have been familiar with Miis ever since the age of Wii, but on Citra there were a few problems with Miis. For one, you were unable to select any Mii, and would have to live with a default one even if you added your own ones.
@@ -282,9 +259,6 @@ By overclocking, it's possible that the game will no longer need to skip frames,
 Either way, this slider should only be used for experiments or workarounds, and we won't provide support for any bugs caused by changing the slider from 100%.
 If you have a crash when under/overclocking, don't bother reporting it, just change the setting back to 100% and continue playing.
 
-(pic of LM2)
-Luigi's Mansion: Dark Moon can go much faster if underclocked, making it more playable.
-
 ## Touchscreen Mappings ([#5163](https://github.com/citra-emu/citra/pull/5163)) by [z87](https://github.com/z87)
 
 Being a dual-screen console, the 3DS has a second, smaller touchscreen in addition to the main 3D screen. Usually, games put less important information and buttons there. Owing to the relative low number of physical buttons, however, there are actually a number of games that use the touchscreen for rather frequently used buttons, one notable example being the `Ⅰ` and `Ⅱ` item register buttons in OoT 3D. This brought lots of inconvenience when playing on the 3DS itself, and even more when you are hooking Citra to a single-screen monitor or TV, and using a keyboard or a controller.
@@ -293,8 +267,6 @@ Previously, you would have to rely on third-party solutions which can require co
 
 {{< figure src="/images/entry/citra-progress-report-2020-q2/touchscreen_mappings.png"
     title="Get rid of complex external tools with this new, intuitive mapping dialog" >}}
-
-<!-- TODO: replace this image, it looks too big -->
 
 ## Book Layout ([#5043](https://github.com/citra-emu/citra/pull/5043)) by [vitor-k](https://github.com/vitor-k)
 
@@ -305,9 +277,6 @@ This changed over time as some first party games started to make use of this fea
 
 Seeing the feature request on our issue tracker, [vitor-k](https://github.com/vitor-k) came around and added the new layout to Citra.
 You can now use this rotated layout by choosing the Upright Book Style mode in the View -> Screen Layout settings.
-
-(Picture of mario bowsers story)
-Upright screen looks alright to me
 
 ## Interlaced Stereo 3D ([#5018](https://github.com/citra-emu/citra/pull/5018)) by [iwubcode](https://github.com/iwubcode)
 
@@ -413,9 +382,6 @@ Since this value is in fact sort of arbitrary and can't really be calculated, [x
 A small regression when mipmaps and cubemaps were added to Citra: the combination of these two were not supported.
 In very rare cases, games would use both and cause issues, so [wwylele](https://github.com/wwylele) stepped in and made them work together properly in Citra.
 
-(Picture of fire emblem sky box)
-This change fixed an issue with Fire Emblems sky box not rendering correctly.
-
 ### Fix clear textures ([#4844](https://github.com/citra-emu/citra/pull/4844), [#5186](https://github.com/citra-emu/citra/pull/5186)) by [hamish-milne](https://github.com/hamish-mline)
 
 Pokemon X/Y are back again causing more problems.
@@ -455,9 +421,6 @@ In this title, when drawing an effect for a certain ghost, the game would copy e
 In Citra, we accidentally read these extra bits, which caused Citra to read way out of bounds and crash.
 The fix is one small line, change the number of bits Citra reads to cut out those extra bits.
 
-(Picture of LM2 ghost)
-You no longer scare me, oh ghost-of-crashing-citra past
-
 ### Create Format Reinterpretation Framework ([#5170](https://github.com/citra-emu/citra/pull/5170)) by [BreadFish64](https://github.com/BreadFish64)
 
 Emulating the 3DS's GPU is hard, partially thanks to dumb games. On newer consoles like the Switch, games would usually use established graphics API such as OpenGL, so their behavior is mostly reasonable. On the 3DS, however, it seems that games are really trying their best to make use of all kinds of strange features and exploit all edge cases.
@@ -486,8 +449,6 @@ On a real 3DS, Super Mario Maker would take quite a while to create the huge Ext
 We then measured and added a delay of 39000ns to all IPC (Inter-Process Communication) calls - but as it turned out, this didn't fix the issue. The reason was quite obvious: I/O operations take much longer than your average IPC call.
 
 [FearlessTobi](https://github.com/FearlessTobi) wrote a few homebrews to measure file I/O delays for different file sizes. He then did a simple linear regression and put the formula in Citra - and it worked perfectly! While there are some other file types where the delay hasn't been measured yet, for the most part this should be sufficient.
-
-(Picture of Super Mario Maker creating Extra Data) The lovely pigeon finally gets some time to eat
 
 ### Add deprecated UDS ([#4690](https://github.com/citra-emu/citra/pull/4690)) by [wwylele](https://github.com/wwylele)
 
@@ -576,9 +537,6 @@ Determined to iron out every last bug in the implementation, [zhaowenlan1779](ht
 
 The reason? Originally Citra would clear out the memory used to communicate between the game and the software keyboard, but it turns out the real 3DS doesn't do this, and some games reused the data already in the memory region.
 Simply not clearing the memory was enough to fix Harvest Moon.
-
-(Pic of harvest moon with name input)
-That's a lovely gamer tag
 
 ### swkbd: Fix digit filter ([#5086](https://github.com/citra-emu/citra/pull/5086)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
@@ -696,14 +654,9 @@ Since Citra and [yuzu](https://yuzu-emu.org) share a similar frontend, it is imp
 A bug as old as the rest of the code base. No one seemed to notice that on certain Linux systems, the icon was missing.
 Simply pointing to the correct location for the Citra icon, fixed possibly Citra's oldest and most forgotten bug.
 
-(Picture of citra icon)
-Isn't the icon just lovely. Shoutouts if you've made it this far and are still reading
-
 ### GUI: fix minor issues with dark themes + rename and reorder themes ([#5077](https://github.com/citra-emu/citra/pull/5077)) originally by [Simek](https://github.com/Simek)
 
 In a word - the dark theme now looks better. Also, have you noticed that the themes have been renamed? They are now called 'Light', 'Light Colorful', 'Dark' and 'Dark Colorful'. More consistent, huh?
-
-(Picture of Dark theme before and after)
 
 ### citra_qt: config: Move audio to its own tab. ([#5079](https://github.com/citra-emu/citra/pull/5079)) originally by [bunnei](https://github.com/bunnei)
 
