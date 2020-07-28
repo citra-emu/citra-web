@@ -15,7 +15,7 @@ To fill in the gap, developers [jroweboy](https://github.com/jroweboy) and [Fear
 
 Since it has been such a long time since the last one, you may already be very familiar with several of these features, but there are also a few here that we haven't announced until now!
 
-Also, if you don't know already, Citra Android has already been released! Read this blog post (todo: link) if you are interested.
+Also, if you don't know already, Citra Android has already been released! Read [this blog post](https://citra-emu.org/entry/announcing-citra-android/) if you are interested.
 
 # Contents
 
