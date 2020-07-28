@@ -481,7 +481,7 @@ This simple change turned out to fix several games with saving issues, including
 {{< figure src="/images/entry/citra-progress-report-2020-q2/angry_birds.png"
     title="You no longer need to be Angry you lost your progress" >}}
 
-### service/ldr_ro: Fix CRO loading when the buffer contained multiple VM areas ([#5125](https://github.com/citra-emu/citra/pulls/5125)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
+### service/ldr_ro: Fix CRO loading when the buffer contained multiple VM areas ([#5125](https://github.com/citra-emu/citra/pull/5125)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
 The game "Mario Sports Superstars" didn't receive much media attention after its launch, mainly because of the release date being just a few days after the global release of the Nintendo Switch. On Citra, it had an interesting issue though: when you tried to load Golf or Tennis, the game would crash and throw you back to the Citra menu. 
 
