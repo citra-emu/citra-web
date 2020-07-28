@@ -56,7 +56,7 @@ With the combined efforts of [B3n30](https://github.com/B3n30), [FearlessTobi](h
 {{< figure src="/images/entry/citra-progress-report-2020-q2/new_citra_xl.jpg"
     title="Liked the New Citra XL? The functionality was real!" >}}
 
-### Core timing 2.0 ([#4913](https://github.com/citra-emu/citra/pulls/4913)) by [B3n30](https://github.com/B3n30)
+### Core timing 2.0 ([#4913](https://github.com/citra-emu/citra/pull/4913)) by [B3n30](https://github.com/B3n30)
 
 The biggest roadblock for New 3DS support was our scheduler. Since most Old 3DS games only used one of the two cores present, we emulated one core, and left the other one basically untouched.
 
