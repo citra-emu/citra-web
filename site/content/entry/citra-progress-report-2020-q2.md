@@ -8,8 +8,6 @@ coauthor2 = "flTobi"
 forum = 283914
 +++
 
-<!-- Note: forum should be updated -->
-
 It has been more than a year since the last progress report, not for lack of progress, but for lack of writers.
 To fill in the gap, developers [jroweboy](https://github.com/jroweboy) and [FearlessTobi](https://github.com/FearlessTobi) independently wrote drafts for a new progress report, and another developer [zhaowenlan1779](https://github.com/zhaowenlan1779) merged their works and added more content. Together, we are able to present you with an update on all the changes we've had since 2019 Q1.
 
@@ -56,7 +54,7 @@ With the combined efforts of [B3n30](https://github.com/B3n30), [FearlessTobi](h
 {{< figure src="/images/entry/citra-progress-report-2020-q2/new_citra_xl.jpg"
     title="Liked the New Citra XL? The functionality was real!" >}}
 
-### Core timing 2.0 ([#4913](https://github.com/citra-emu/citra/pulls/4913)) by [B3n30](https://github.com/B3n30)
+### Core timing 2.0 ([#4913](https://github.com/citra-emu/citra/pull/4913)) by [B3n30](https://github.com/B3n30)
 
 The biggest roadblock for New 3DS support was our scheduler. Since most Old 3DS games only used one of the two cores present, we emulated one core, and left the other one basically untouched.
 
@@ -64,7 +62,7 @@ This worked for most games, but broke some, even in Old 3DS mode. A long time ag
 
 On the New 3DS, things got even worse. There are 4 cores to be emulated, and our only emulating one of them proved to be even bigger of a problem. Many games required multiple cores to run correctly, and they just refused to boot at all in older versions of Citra.
 
-It required quite a bit of work to get the cores in sync while not ruining performance. Developer [B3n30](https://github.com/B3n30) researched the scheduler and stepped up to implement what we call "Core timing 2.0". He added a timer for each core, and basically rewrote how our timing worked, thus creating a more accurate scheduler. After this change, not only was a big step done towards compatibility with New 3DS games, but it also fixed all the games that were broken with the priority boost hack removed, for instance, [Game].
+It required quite a bit of work to get the cores in sync while not ruining performance. Developer [B3n30](https://github.com/B3n30) researched the scheduler and stepped up to implement what we call "Core timing 2.0". He added a timer for each core, and basically rewrote how our timing worked, thus creating a more accurate scheduler. After this change, not only was a big step done towards compatibility with New 3DS games, but it also fixed all the games that were broken with the priority boost hack removed, for instance, `Digimon World Re:Digitize Decode`.
 
 While Core timing 2.0 improved timing accuracy, it also came with performance hits, such as the infamous stutter when entering battles in Pokemon games. One reason for such regressions was that, since there are more cores to take care of, cache invalidation would happen more often and on more cores. [MerryMage](https://github.com/MerryMage), author of [dynarmic](https://github.com/MerryMage/dynarmic), the ARM JIT we are using, fixed the Pokemon stutters by reducing the overhead of such invalidations. However, some other games still had problems. [B3n30](https://github.com/B3n30) noticed that this was due to the JIT executing smaller slices, and he's now working to strike a proper balance between accuracy and performance. Some of his changes are already in Canary, so be sure to check them out!
 
@@ -296,7 +294,7 @@ Note: This feature is not in the UI, to avoid boasting it with too many menu act
 {{< figure src="/images/entry/citra-progress-report-2020-q2/frametime_recording.png"
     title="Tracking performance has got easier" >}}
 
-## Code Cleanup ([Many PRs](https://github.com/citra-emu/citra/pulls?q=is%3Apr+is%3Aclosed+author%3Alioncash+merged%3A2019-02-01..2020-06-10)) by [lioncash](https://github.com/lioncash)
+## Code Cleanup ([56 PRs](https://github.com/citra-emu/citra/pulls?q=is%3Apr+is%3Aclosed+author%3Alioncash+merged%3A2019-02-01..2020-07-29)) by [lioncash](https://github.com/lioncash)
 
 General system stability improvements to enhance the user's experience...
 
@@ -481,7 +479,7 @@ This simple change turned out to fix several games with saving issues, including
 {{< figure src="/images/entry/citra-progress-report-2020-q2/angry_birds.png"
     title="You no longer need to be Angry you lost your progress" >}}
 
-### service/ldr_ro: Fix CRO loading when the buffer contained multiple VM areas ([#5125](https://github.com/citra-emu/citra/pulls/5125)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
+### service/ldr_ro: Fix CRO loading when the buffer contained multiple VM areas ([#5125](https://github.com/citra-emu/citra/pull/5125)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
 The game "Mario Sports Superstars" didn't receive much media attention after its launch, mainly because of the release date being just a few days after the global release of the Nintendo Switch. On Citra, it had an interesting issue though: when you tried to load Golf or Tennis, the game would crash and throw you back to the Citra menu. 
 
