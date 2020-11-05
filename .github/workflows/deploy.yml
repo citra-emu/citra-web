@@ -2,9 +2,9 @@ name: Deploy Site
 
 on:
   push:
-    branches: [ master ]
+    branches: [ hugo ]
   pull_request:
-    branches: [ master ]
+    branches: [ hugo ]
 
 jobs:
   build:
@@ -33,11 +33,10 @@ jobs:
          echo '========== Starting gulp deploy task =========='
          yarn run build
     - name: Deploy
-      if: ${{ (! github.base_ref) && (github.repository == 'citra-emu/citra-web') }}
+      if: ${{ ! github.base_ref }}
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        REPOSITORY_NAME: CitraBotWeb/CitraBotWeb.github.io
         BRANCH: master
         FOLDER: build
         CLEAN: true

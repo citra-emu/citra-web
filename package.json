@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "bootstrap-sass": "^3.4.1",
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.26.13",
     "cssnano": "^4.1.10",
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.2",
@@ -19,10 +19,10 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-image-resize": "^0.13.1",
     "gulp-md5-plus": "^1.0.3",
-    "gulp-postcss": "^8.0.0",
+    "gulp-postcss": "^9.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-util": "^3.0.8",
     "merge-stream": "^2.0.0",
-    "yarn": "^1.22.4"
+    "yarn": "^1.22.10"
   }
 }
