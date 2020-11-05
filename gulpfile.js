@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const gulp = require('gulp');
 const fs = require('fs');
 const util = require('gulp-util');
@@ -11,69 +12,69 @@ const concat = require('gulp-concat');
 const imageResize = require('gulp-image-resize');
 
 gulp.task('scripts:games', function (callback) {
-  exec(`cd ./scripts/games/ && yarn install && node app.js`, function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    callback(err);
-  });
+    exec('yarn install && node app.js', { cwd: './scripts/games/' }, function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        callback(err);
+    });
 });
 
 gulp.task('scripts:wiki', function (callback) {
-  exec(`cd ./scripts/wiki/ && yarn install && node app.js`, function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    callback(err);
-  });
+    exec('yarn install && node app.js', { cwd: './scripts/wiki/' }, function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        callback(err);
+    });
 });
 
 gulp.task('assets:images', function() {
-  var baseImages = gulp.src(`build/images/*`, {base: './'})
-      .pipe(gulp.dest('./'));
-  var jumbotronImages = gulp.src(`build/images/jumbotron/*`, {base: './'})
-      .pipe(imageResize({ width: 786, height: 471, crop: true }))
-      .pipe(gulp.dest('./'));
-  var bannerImages = gulp.src(`build/images/banners/*`, {base: './'})
-      .pipe(imageResize({ width: 824, height: 306, crop: false }))
-      .pipe(gulp.dest('./'));
-  var boxartImages = gulp.src(`build/images/game/boxart/*`, {base: './'})
-      .pipe(imageResize({ width: 328, height: 300, crop: true }))
-      .pipe(gulp.dest('./'));
-  var iconImages = gulp.src(`build/images/game/icons/*`, {base: './'})
-      .pipe(imageResize({ width: 48, height: 48, crop: true }))
-      .pipe(gulp.dest('./'));
-  var screenshotImages = gulp.src(`build/images/screenshots/*`)
-      .pipe(imageResize({ width: 400, height: 240, crop: false }))
-      .pipe(gulp.dest(`build/images/screenshots/thumbs`));
+    var baseImages = gulp.src('build/images/*', {base: './'})
+        .pipe(gulp.dest('./'));
+    var jumbotronImages = gulp.src('build/images/jumbotron/*', {base: './'})
+        .pipe(imageResize({ width: 786, height: 471, crop: true }))
+        .pipe(gulp.dest('./'));
+    var bannerImages = gulp.src('build/images/banners/*', {base: './'})
+        .pipe(imageResize({ width: 824, height: 306, crop: false }))
+        .pipe(gulp.dest('./'));
+    var boxartImages = gulp.src('build/images/game/boxart/*', {base: './'})
+        .pipe(imageResize({ width: 328, height: 300, crop: true }))
+        .pipe(gulp.dest('./'));
+    var iconImages = gulp.src('build/images/game/icons/*', {base: './'})
+        .pipe(imageResize({ width: 48, height: 48, crop: true }))
+        .pipe(gulp.dest('./'));
+    var screenshotImages = gulp.src('build/images/screenshots/*')
+        .pipe(imageResize({ width: 400, height: 240, crop: false }))
+        .pipe(gulp.dest('build/images/screenshots/thumbs'));
   
-  return merge(baseImages, jumbotronImages, bannerImages, boxartImages, iconImages, screenshotImages);
+    return merge(baseImages, jumbotronImages, bannerImages, boxartImages, iconImages, screenshotImages);
 });
 
 gulp.task('assets:js', function() {
-  return gulp.src(['src/js/**/*.js'])
-    .pipe(concat('script.js'))
-    .pipe(gulp.dest('build/js'));
+    return gulp.src(['src/js/**/*.js'])
+        .pipe(concat('script.js'))
+        .pipe(gulp.dest('build/js'));
 });
 
 gulp.task('assets:fonts', function(){
-  return gulp.src('./node_modules/bootstrap-sass/assets/fonts/**/*')
-    .pipe(gulp.dest('build/fonts/'));
+    return gulp.src('./node_modules/bootstrap-sass/assets/fonts/**/*')
+        .pipe(gulp.dest('build/fonts/'));
 });
 
 gulp.task('assets:scss', function () {
-  var postCssOptions = [ cssnano ];
-  return gulp.src('src/scss/style.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(postcss(postCssOptions))
-    .pipe(gulp.dest('build/css'))
-    .pipe(browserSync.stream());
+    var postCssOptions = [ cssnano ];
+    return gulp.src('src/scss/style.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(postcss(postCssOptions))
+        .pipe(gulp.dest('build/css'))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('hugo', function (cb) {
-  exec('hugo -s ./site/ -d ../build/ -v', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    cb(err);
-  });
+    exec('hugo -s ./site/ -d ../build/ -v', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+    });
 });
 
 gulp.task('final:serve', function(done) {
@@ -90,29 +91,29 @@ gulp.task('final:serve', function(done) {
     gulp.watch('site/**/*.md', gulp.series('hugo'));
 
     gulp.watch('build/**/*').on('change', function(x) {
-      browserSync.reload(x);
+        browserSync.reload(x);
     });
 
     done();
 });
 
 gulp.task('final:publish', function(done) {
-  fs.writeFileSync(`build/CNAME`, `${cname}`);
-  fs.writeFileSync(`build/robots.txt`, `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
-  done();
+    fs.writeFileSync('build/CNAME', `${cname}`);
+    fs.writeFileSync('build/robots.txt', `Sitemap: https://${cname}/sitemap.xml\n\nUser-agent: *`);
+    done();
 });
 
 const cname = 'citra-emu.org';
 var finalCommand = null;
 
 if (util.env.production) {
-  process.env.HUGO_ENV = 'PRD';
-  process.env.HUGO_BASEURL = `https://${cname}`;
-  finalCommand = 'final:publish';
+    process.env.HUGO_ENV = 'PRD';
+    process.env.HUGO_BASEURL = `https://${cname}`;
+    finalCommand = 'final:publish';
 } else {
-  process.env.HUGO_ENV = 'DEV';
-  process.env.HUGO_BASEURL = 'http://localhost:3000';
-  finalCommand = 'final:serve';
+    process.env.HUGO_ENV = 'DEV';
+    process.env.HUGO_BASEURL = 'http://localhost:3000';
+    finalCommand = 'final:serve';
 }
 
 util.log(`process.env.HUGO_ENV = '${process.env.HUGO_ENV}'`);

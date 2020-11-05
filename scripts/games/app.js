@@ -38,7 +38,7 @@ function gitPull(directory, repository) {
   } else {
     logger.info(`Cloning repository from Github : ${directory}`);
     logger.info(`git clone ${repository}`);
-    exec(`git clone ${repository}`);
+    exec(`git clone --depth=1 ${repository}`);
   }
 }
 
