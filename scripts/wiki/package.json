@@ -8,9 +8,9 @@
   "dependencies": {
     "delete": "^1.1.0",
     "rimraf": "^3.0.2",
-    "sanitize-html": "^1.24.0",
+    "sanitize-html": "^2.3.2",
     "sync-exec": "^0.6.2",
-    "winston": "^3.2.1"
+    "winston": "^3.3.3"
   },
   "preferGlobal": false,
   "private": true,
