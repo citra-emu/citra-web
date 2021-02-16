@@ -12,6 +12,8 @@ Developing an emulator for a modern, complex system like the Nintendo 3DS requir
 
 Your generous donation will go directly toward providing these to our team. Previous donations have already been used to purchase several 3DS consoles, games, and host our current website! However, our costs will continue as our team grows, our website grows, and we strive to achieve high game compatibility with Citra.
 
+Support the project on our Patreon page: https://www.patreon.com/citraemu
+
 ### Donate your 3DS/games/etc.
 We will more than gladly accept used 3DS consoles and games! Please contact: [bunneidev@gmail.com](mailto:bunneidev@gmail.com)
 
