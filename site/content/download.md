@@ -29,7 +29,7 @@ The Citra updater provides a easy interface to install, update and manage Citra.
 </div>
 <a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe" class="btn btn-lg btn-primary dl-updater-button" id="dl-windows-x64">Download for Windows x64</a>
 <a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-mac.dmg" class="btn btn-lg btn-primary dl-updater-button" id="dl-mac-x64">Download for Mac x64</a>
-<a href="https://flatpak.citra-emu.org/" class="btn btn-lg btn-primary dl-updater-button" id="dl-linux-x64">Download for Linux x64</a>
+<a href="https://flathub.org/apps/details/org.citra_emu.citra" class="btn btn-lg btn-primary dl-updater-button" id="dl-linux-x64">Download for Linux x64</a>
 <a href='https://play.google.com/store/apps/details?id=org.citra.citra_emu' class="dl-updater-button" id="dl-android-x64"><img style="width:275px" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
 
 <br />
