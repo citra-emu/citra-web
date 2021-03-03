@@ -108,6 +108,11 @@
 			$("#search-box").val("");
 			list.search();
 		}
+		
+		document.getElementById('search-box').addEventListener('input', function(e) {
+			var searchBox = e.target;
+			searchBox.value = searchBox.value.replace(/pokemon/gi, 'pokémon').replace(/pokedex/gi, 'pokédex');
+		}, true);
 
 		var options = {
 			valueNames: [
