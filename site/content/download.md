@@ -102,7 +102,7 @@ links to get you started however:<br />
 <br />
 <a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe">Windows x64 Installer</a><br />
 <a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-mac.dmg">Mac x64 Installer</a><br />
-<a href="https://flatpak.citra-emu.org/">Download for Linux x64</a><br /> 
+<a href="https://flathub.org/apps/details/org.citra_emu.citra">Download for Linux x64</a><br /> 
 <a href="https://play.google.com/store/apps/details?id=org.citra.citra_emu">Download for Android</a><br />
 <a href="https://github.com/citra-emu/citra-nightly/releases">Nightly Builds</a><br />
 <a href="https://github.com/citra-emu/citra-canary/releases">Canary Builds</a> <br />
