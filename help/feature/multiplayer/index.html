@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <meta name="theme-color" content="#FF8E03">
+        <meta property="og:title" content="Multiplayer Rooms &middot; Citra" />
+        <meta property="og:site_name" content="Citra" />
+        <meta property="og:url" content="https://citra-emu.org/help/feature/multiplayer/" />
+            <meta property="og:description" content="Citra&#39;s multiplayer feature has the ability to emulate local wireless multiplayer over the Internet." />
+<meta name="description" content="Citra&#39;s multiplayer feature has the ability to emulate local wireless multiplayer over the Internet." />
+<meta property="og:type" content="website" />
+
+
+        <meta name="generator" content="Hugo 0.52" />
+
+        <link rel="icon" href="https://citra-emu.org/favicon.ico" />
+        <link rel="shortcut icon" href="https://citra-emu.org/favicon.ico" type="image/x-icon" />
+        <link rel="canonical" href="https://citra-emu.org/help/feature/multiplayer/">
+
+        
+
+        <title>Multiplayer Rooms - Citra</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis" rel="stylesheet">
+        <link rel="stylesheet" href="https://citra-emu.org/css/style.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-73966905-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+        
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-wrapper navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">&nbsp;</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="index-1 first"><a href="/" title="Blog Posts">Blog</a></li>
+                <li class="index-2"><a href="/download/" title="Download Citra">Download</a></li>
+                <li class="index-3"><a href="/help/" title="Help">Help</a></li>
+                <li class="index-4"><a href="/wiki/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li class="index-5"><a href="/game/" title="Game Compatibility">Compatibility</a></li>
+                <li class="index-6"><a href="/wiki/home/" title="Wiki Homepage">Dev Wiki</a></li>
+
+                <li class="index-7 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false">
+                        Social <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/rules/" title="">Rules</a></li>
+                        <li class="index-2"><a href="https://community.citra-emu.org/" title="Forums">Community Forums</a></li>
+                        <li class="index-3 last"><a href="/discord/" title="Discord Channel">Discord Chat</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-8 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                aria-haspopup="true" aria-expanded="false">
+                        Media <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/screenshots/" title="Screenshots">Screenshots</a></li>
+                        <li class="index-2 last"><a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q"
+                                                    title="Youtube Channel">Videos</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-9 last"><a href="https://www.patreon.com/citraemu" title="Patreon">Patreon</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+        <div id="mainContainer" class="container" >
+            <div class="row">
+                
+            </div>
+
+            <div class="row row-fluid">
+                <div id="content" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right">
+                    
+  <h1>
+    Multiplayer Rooms
+  </h1>
+
+  <div class="entry-content">
+    
+
+<h2 id="multiplayer-features">Multiplayer Features</h2>
+
+<p><em>Citra</em>&rsquo;s multiplayer feature has the ability to emulate <em>local wireless</em> multiplayer over the Internet. While on a real 3DS you’d be limited to the people in your immediate vicinity, <em>Citra</em> boasts a complex server/client infrastructure that forwards a game’s wireless communication across the internet.</p>
+
+<p>Unlike single console netplay used in most emulators, users won’t have to worry about desyncs, synchronizing saves, or any other issues typical of netplay. Each user is using their instance of <em>Citra</em> as a unique emulated 3DS that is communicating with everyone else through a <em>multiplayer room</em>, a server that can be hosted by anyone for connected clients to exchange data with each other.</p>
+
+<p>You can learn more about <em>Citra</em>&rsquo;s multiplayer features in <a href="https://citra-emu.org/entry/announcing-networking-support/">this article</a>.</p>
+
+<h2 id="hosting-rooms">Hosting Rooms</h2>
+
+<p>If you just want to play with your friends, <strong>you do not need to create your own room</strong>. You can just pick a room from our Public Room Browser, where plenty of public rooms hosted by us and the community are already available for use.</p>
+
+<p>If you just want to temporarily host a room for you and your friends to play, the easiest way is to host a room from the UI (<code>Multiplayer &gt; Host Room</code>). The room will be deleted once the host exits Citra. You will still need to configure <code>Port forwarding</code> if you and your friends are not on the same network.</p>
+
+<p>However, if you really want to host your own dedicated room, there are a few points you should keep in mind:</p>
+
+<ul>
+<li>As a room is actually a server, the computer hosting it has to be running 24x7. Therefore, it is usually not feasible to use your home or work PC to host a room.</li>
+<li>To ensure the best experience while playing, rooms should have a good Internet connection as well as a high bandwidth. <em>This is especially important if you are hosting a public room - no one would want random disconnections while playing!</em></li>
+<li>Citra rooms can be quite costy in terms of data transfer. It has been reported that some popular public rooms transfer over 1TB of data in a single month.</li>
+</ul>
+
+<p>Therefore, the best option to host a room is usually to use a VPS provider, such as <a href="https://linode.com">Linode</a> or <a href="https://www.digitalocean.com">DigitalOcean</a>, to name a few.</p>
+
+<h3 id="port-forwarding">Port Forwarding</h3>
+
+<p>Typically, routers have a unified public IP for all its network members, and by default external users cannot access any of the ports (as the router won&rsquo;t know which member to send it to!). Therefore, if you use a router for your Internet connection, you will need to configure <code>Port forwarding</code> for your router. Detailed configuration process varies by router brand and model. Obviously we cannot provide instructions for every model, and you can refer to your router&rsquo;s manual or website.</p>
+
+<p>For VPSes, a similar restriction (often called <code>Security Groups</code>) exists to help keep your server safe from attacks using certain ports. You may need to manually enable the ports you want to use in your VPS&rsquo;s dashboard.</p>
+
+<h2 id="hosting-on-linux-recommended">Hosting on Linux (Recommended)</h2>
+
+<p>If you are using a Linux VPS (which is the recommended option), the officially supported way of hosting dedicated rooms is using our <em>Docker</em> image.</p>
+
+<p>First of all, you should install <em>Docker</em> on your system. Refer to its <a href="https://docs.docker.com/#run-docker-anywhere">documents</a> regarding installation.</p>
+
+<p>Once you get a <em>Docker</em> installation ready, hosting dedicated rooms is as easy as <strong>filling in the arguments</strong> (they will be explained later) and running the following command in terminal:</p>
+
+<pre><code class="language-bash">sudo docker run -d \
+  --publish 5000:5000/udp \
+  citraemu/citra-multiplayer-dedicated \
+  --room-name &quot;&lt;INSERT ROOM NAME HERE&gt;&quot; \
+  --room-description &quot;&lt;INSERT ROOM NAME HERE&gt;&quot; \
+  --preferred-game &quot;&lt;INSERT GAME TITLE HERE&gt;&quot; \
+  --preferred-game-id &quot;&lt;INSERT TITLE ID HERE&gt;&quot; \
+  --port 5000 \
+  --max_members 4 \
+  --token &quot;&lt;INSERT CITRA ACCOUNT TOKEN HERE&gt;&quot; \
+  --enable-citra-mods \
+  --web-api-url https://api.citra-emu.org/
+</code></pre>
+
+<p>Make sure the ports specified in <code>--publish</code> matches the port specified in <code>--port</code>, so that <em>Docker</em> can correctly forward your server&rsquo;s ports to the container.</p>
+
+<p>You can also save this command (with arguments filled in) as a script for easier usage.</p>
+
+<h2 id="hosting-on-windows">Hosting on Windows</h2>
+
+<p>If you are on Windows, it is also possible to host rooms using a standalone executable. As you may already know, every <em>Citra</em> release comes with three executables - <code>citra</code> (The command line emulator frontend), <code>citra-qt</code> (The GUI emulator frontend) and <code>citra-room</code>, the dedicated room server which we&rsquo;ll use.</p>
+
+<p>Steps:</p>
+
+<ol>
+<li>If you do not have a <em>Citra</em> installation yet, install it with the installer from our <a href="https://citra-emu.org">official website</a>.</li>
+<li>Navigate to the folder you installed <em>Citra</em> to, and go into <code>nightly-mingw</code> or <code>canary-mingw</code>.
+
+<ul>
+<li>If you cannot recall the installation folder, right clicking on a shortcut and clicking <code>Open File Location</code> will directly bring you into the <code>nightly-mingw</code> or <code>canary-mingw</code> folder.</li>
+<li>Make sure the folder you are in contains the <code>citra-room</code> executable.</li>
+</ul></li>
+<li>Create a new text file and copy the following script inside, <strong>fill in the arguments</strong> (they will be explained later) and then use <code>File &gt; Save As...</code> to save it to <code>host.bat</code>. You can delete the original text file after that.</li>
+<li>You can now double click on the batch script named <code>host</code> to start hosting.</li>
+</ol>
+
+<pre><code>citra-room ^
+  --room-name &quot;&lt;INSERT ROOM NAME HERE&gt;&quot; ^
+  --room-description &quot;&lt;INSERT ROOM DESCRIPTION HERE&gt;&quot; ^
+  --preferred-game &quot;&lt;INSERT GAME TITLE HERE&gt;&quot; ^
+  --preferred-game-id &quot;&lt;INSERT TITLE ID HERE&gt;&quot; ^
+  --port 5000 ^
+  --max_members 4 ^
+  --token &quot;&lt;INSERT CITRA ACCOUNT TOKEN HERE&gt;&quot; ^
+  --enable-citra-mods ^
+  --web-api-url https://api.citra-emu.org/ ^
+  --ban-list-file &quot;&lt;INSERT BAN LIST FILE PATH HERE&gt;&quot;
+pause
+</code></pre>
+
+<p><img src="windows_hosting_1.png" alt="example" /></p>
+
+<h2 id="command-line-arguments">Command Line Arguments</h2>
+
+<p>Both the <em>Docker</em> image and the <code>citra-room</code> executable takes a number of command line arguments.
+Command line arguments should be specified in the format of <code>--&lt;name&gt; &lt;value&gt;</code>, for example <code>--port 5000</code>.</p>
+
+<p>By default, rooms will be hosted Public. If you&rsquo;d like to host a private one instead, just omit one of the fields required only for public rooms.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>--room-name</code></td>
+<td>Yes</td>
+<td>Name of your room.</td>
+</tr>
+
+<tr>
+<td><code>--room-description</code></td>
+<td>No</td>
+<td>An optional long description of your room.</td>
+</tr>
+
+<tr>
+<td><code>--preferred-game</code></td>
+<td>Yes</td>
+<td>The name of the preferred game of your room.</td>
+</tr>
+
+<tr>
+<td><code>--preferred-game-id</code></td>
+<td>No</td>
+<td>The Title ID of the preferred game of your room, in hex. You can find the <code>Title ID</code> with the game list of Citra.</td>
+</tr>
+
+<tr>
+<td><code>--port</code></td>
+<td>Yes</td>
+<td>Port number to host your room on (0-65535). You should use a port that is not already used by other applications (typically a high enough port will work). Though unrecommended due to bandwidth reasons, it is possible to host multiple rooms on a single server provided the ports are distinct. <strong>Remember to configure <code>Port Forwarding</code> for the ports!</strong></td>
+</tr>
+
+<tr>
+<td><code>--max-members</code></td>
+<td>Yes</td>
+<td>Maximum number of members for your room (2-16). <em>Note that rooms that are too large may result in slowdowns or even disconnections in certain games.</em></td>
+</tr>
+
+<tr>
+<td><code>--password</code></td>
+<td>No</td>
+<td>An optional password to limit access to your room.</td>
+</tr>
+
+<tr>
+<td><code>--token</code></td>
+<td>Public Rooms</td>
+<td>Your <em>Citra</em> Community user token. Do not know your token yet? Get it <a href="https://citra-emu.org/wiki/citra-web-service/">here</a>. <strong>Please note, the token format has changed as of 11/1/2019 and there is now no need for a <code>--username</code> field.</strong></td>
+</tr>
+
+<tr>
+<td><code>--web-api-url</code></td>
+<td>Public Rooms</td>
+<td>URL to the <em>Citra</em> Web API. You should not change this.</td>
+</tr>
+
+<tr>
+<td><code>--ban-list-file</code></td>
+<td>No</td>
+<td>This is a file which Citra will store ban records in. Banning would still work even if you do not specify this, but the bans will be lost once you shut down the room.</td>
+</tr>
+
+<tr>
+<td><code>--log-file</code></td>
+<td>No</td>
+<td>File path to store the logs.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Additionally, a flag <code>--enable-citra-mods</code> is available. By enabling this flag, you will grant <em>Citra</em> Community Moderators the power to moderate on your room. Do not worry, this is entirely optional and your room will still be listed even if you do not enable this.</p>
+
+<h2 id="authentication-and-moderation">Authentication and Moderation</h2>
+
+<p>As you may already know, <em>Citra</em> multiplayer rooms can authenticate users and grant certain users moderation privileges. Authenticated users get their <em>Citra</em> Community username and avatar shown in the member list, and others can right click on them to view their <em>Citra</em> Community profile.</p>
+
+<p>Note that this feature requires interacting with the <em>Citra</em> Web API, and therefore is only enabled for <em>public rooms in the Public Room Browser</em>. Directly connecting to the rooms (with <code>Direct Connect</code>) will leave you unauthenticated.</p>
+
+<p>Currently, <em>Citra</em> rooms grant the following members moderation privileges by default:</p>
+
+<ul>
+<li>Room host (i.e. members authenticated with the same user name used when hosting the room)</li>
+<li><em>Citra</em> Community Moderators, when rooms are hosted with the <code>--enable-citra-mods</code> flag.</li>
+</ul>
+
+<p>Due to complexity, it is not possible to grant other users moderation privileges.</p>
+
+<p>Users with moderation privileges will notice a <code>Moderation...</code> button on the right top of the Room dialog. With this you can view the current ban list and unban when needed. You can also right click on a member in the member list and click on <code>Kick</code> or <code>Ban</code> to impose moderation actions on them. Note that <code>Block Player</code> is different from a ban and is available to all users to block messages from certain members only locally.</p>
+
+  </div>
+
+                </div>
+                <div id="sidebar" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-left">
+                    <div id="advertisement" class = "ad">
+  <h3>Advertisement</h3>
+  <ins class="ad adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4126545610079023"
+       data-ad-slot="4223809695"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="tagcloud hidden-sm hidden-xs">
+  <h3>News Tag Cloud</h3>
+  <ul>
+    
+      <li><a class="taxonomy-citra-release" href="/tags/citra-release">citra-release</a></li>
+    
+      <li><a class="taxonomy-feature-update" href="/tags/feature-update">feature-update</a></li>
+    
+      <li><a class="taxonomy-progress-report" href="/tags/progress-report">progress-report</a></li>
+    
+  </ul>
+</div>
+
+<div id="twitter" class="hidden-sm hidden-xs">
+  <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/citraemu?ref_src=twsrc%5Etfw">Tweet Feed</a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="footer" class="container">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <h1>Citra</h1>
+                    <a href="/">Blog</a>
+                    <a href="/download/">Downloads</a>
+                    <a href="/screenshots/">Screenshots</a>
+                    <a href="https://www.patreon.com/citraemu">Patreon</a>
+                    <a href="/donate/">Donate</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Documentation</h1>
+                    <a href="/help/">Help Documents</a>
+                    <a href="/game/">Compatibility</a>
+                    <a href="/wiki/home/">Dev Wiki</a>
+                    <a href="/wiki/faq/">FAQ</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Blog</h1>
+                    <a href="/">News &amp; Articles</a>
+                    <a href="https://citra-emu.org/index.xml">RSS 2.0</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Social</h1>
+                    <a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q">YouTube</a>
+                    <a href="https://www.facebook.com/citra.emu">Facebook</a>
+                    <a href="https://twitter.com/citraemu">Twitter</a>
+                    <a href="https://community.citra-emu.org/">Forums</a>
+                    <a href="/discord">Discord</a>
+                    <a href="/chat">IRC</a>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Get Involved</h1>
+                    <a href="https://github.com/citra-emu/citra">GitHub / Source</a>
+                    <a href="https://github.com/citra-emu/citra/issues">Issues</a>
+                    <a href="https://github.com/citra-emu/citra/pulls">Pull Requests</a>
+                </div>
+
+            </div>
+            <div id="footer-bottom">
+                <div id="footer-brand"></div>
+                <div id="footer-legal">Copyright © 2021 Citra Emulator Project</div>
+            </div>
+        </div>
+
+        <script src="https://citra-emu.org/js/script.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" type="text/css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			window.addEventListener("DOMContentLoaded", function() {
+			baguetteBox.run('.is-img-preview');
+			});
+		</script>
+
+        
+
+        
+    </body>
+
+</html>

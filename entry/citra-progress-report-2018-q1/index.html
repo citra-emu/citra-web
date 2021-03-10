@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <meta name="theme-color" content="#FF8E03">
+        <meta property="og:title" content="Citra Progress Report 2018 Q1 &middot; Citra" />
+        <meta property="og:site_name" content="Citra" />
+        <meta property="og:url" content="https://citra-emu.org/entry/citra-progress-report-2018-q1/" />
+            <meta property="og:description" content="It&rsquo;s been a while folks - since the last report, we have had many new features come to Citra. Some notable ones include multiplayer improvements, hardware shader improvements (post GLvtx), a logging system rewrite, and the highly coveted camera support. Our continuous integration (CI) systems were optimized as well. Apart from these, we have had many more minor features, improvements, and bug fixes. So, without further ado let&rsquo;s get right into it:" />
+<meta name="description" content="It&rsquo;s been a while folks - since the last report, we have had many new features come to Citra. Some notable ones include multiplayer improvements, hardware shader improvements (post GLvtx), a logging system rewrite, and the highly coveted camera support. Our continuous integration (CI) systems were optimized as well. Apart from these, we have had many more minor features, improvements, and bug fixes. So, without further ado let&rsquo;s get right into it:" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://citra-emu.org/images/banners/citra-progress-report-2018-q1.png" />
+<meta property="og:article:published_time" content="2018-05-30T19:30:00&#43;05:30" />
+<meta property="og:article:tag" content="progress-report" />
+
+
+        <meta name="generator" content="Hugo 0.52" />
+
+        <link rel="icon" href="https://citra-emu.org/favicon.ico" />
+        <link rel="shortcut icon" href="https://citra-emu.org/favicon.ico" type="image/x-icon" />
+        <link rel="canonical" href="https://citra-emu.org/entry/citra-progress-report-2018-q1/">
+
+        
+
+        <title>Citra Progress Report 2018 Q1 - Citra</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis" rel="stylesheet">
+        <link rel="stylesheet" href="https://citra-emu.org/css/style.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-73966905-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+        
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-wrapper navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">&nbsp;</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="index-1 first"><a href="/" title="Blog Posts">Blog</a></li>
+                <li class="index-2"><a href="/download/" title="Download Citra">Download</a></li>
+                <li class="index-3"><a href="/help/" title="Help">Help</a></li>
+                <li class="index-4"><a href="/wiki/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li class="index-5"><a href="/game/" title="Game Compatibility">Compatibility</a></li>
+                <li class="index-6"><a href="/wiki/home/" title="Wiki Homepage">Dev Wiki</a></li>
+
+                <li class="index-7 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false">
+                        Social <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/rules/" title="">Rules</a></li>
+                        <li class="index-2"><a href="https://community.citra-emu.org/" title="Forums">Community Forums</a></li>
+                        <li class="index-3 last"><a href="/discord/" title="Discord Channel">Discord Chat</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-8 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                aria-haspopup="true" aria-expanded="false">
+                        Media <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/screenshots/" title="Screenshots">Screenshots</a></li>
+                        <li class="index-2 last"><a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q"
+                                                    title="Youtube Channel">Videos</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-9 last"><a href="https://www.patreon.com/citraemu" title="Patreon">Patreon</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+        <div id="mainContainer" class="container" >
+            <div class="row">
+                
+            </div>
+
+            <div class="row row-fluid">
+                <div id="content" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right">
+                    
+  <a href="https://citra-emu.org/entry/citra-progress-report-2018-q1/">
+  <div class="entry-embed-header">
+      <div class="entry-embed" style="background: url('https://citra-emu.org/images/banners/citra-progress-report-2018-q1.png')">
+          <header>
+              <h1>Citra Progress Report 2018 Q1</h1>
+          </header>
+      </div>
+
+      
+      <div class="entry-meta" style="position: absolute; top: 5px; right: 20px;">
+          May 30 2018
+      </div>
+
+      
+      <div class="entry-meta" style="position: absolute; top: 45px; right: 20px;">
+          progress-report
+      </div>
+      
+  </div>
+</a>
+
+
+  <div class="entry-content">
+    
+
+<p>It&rsquo;s been a while folks - since the last report, we have had many new features come to Citra. Some
+notable ones include multiplayer improvements, hardware shader improvements (post GLvtx), a logging
+system rewrite, and the highly coveted camera support. Our continuous integration (CI) systems were
+optimized as well. Apart from these, we have had many more minor features, improvements, and bug fixes.
+So, without further ado let&rsquo;s get right into it:</p>
+
+<h2 id="citra-qt-multiplayer-improvements-here-https-github-com-citra-emu-citra-pull-3444-there-https-github-com-citra-emu-citra-pull-3481-this-https-github-com-citra-emu-citra-pull-3489-and-that-https-github-com-citra-emu-citra-pull-3676-by-jroweboy-https-github-com-jroweboy-and-b3n30-https-github-com-b3n30">citra-qt: Multiplayer Improvements (<a href="https://github.com/citra-emu/citra/pull/3444">here</a>, <a href="https://github.com/citra-emu/citra/pull/3481">there</a>, <a href="https://github.com/citra-emu/citra/pull/3489">this</a>, and <a href="https://github.com/citra-emu/citra/pull/3676">that</a>) by <a href="https://github.com/jroweboy">jroweboy</a> and <a href="https://github.com/B3n30">B3n30</a></h2>
+
+<p>Citra has been able to run many games at playable speeds for a while now. However, it was always lacking
+something which the 3DS has: the ability to play with friends. In order to make it a reality, our developers <a href="https://github.com/jroweboy">jroweboy</a>, <a href="https://github.com/B3N30">B3n30</a>, <a href="https://github.com/subv">Subv</a>,
+and <a href="https://github.com/jayfoxrox">JayFoxRox</a> worked tirelessly for months to reverse engineer workings
+of the 3DS local wireless system. Thanks to their efforts, Citra now emulates <em>local wireless multiplayer</em>
+over the internet. This allows you to play your favorite games with your virtual friends across the world.
+Later <a href="https://github.com/jroweboy">jroweboy</a>, <a href="https://github.com/B3n30">B3n30</a>, and few others
+worked on various feature improvements and bug fixes.</p>
+
+<h3 id="features">Features</h3>
+
+<p>Currently, the multiplayer features include:</p>
+
+<ul>
+<li>We now have multiple servers, maintained by our very own <a href="https://community.citra-emu.org/u/flamesage/summary">FlameSage</a>
+and many other community members at various locations around the globe, so that you can meet others
+online.</li>
+<li>You can now create rooms which can hold up to 16 players and even secure them with a password.</li>
+<li>You can now set a preferred game for your room.</li>
+<li>You can also filter the servers to suit your needs.</li>
+</ul>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2018-q1/server-list.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Sooo many servers to choose from!
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<p>Since its initial release in Canary, developers have listened to the community and have been trying
+very hard to fix bugs causing games to be incompatible. They have also added other features to make
+the multiplayer experience richer.</p>
+
+<h3 id="compatible-titles">Compatible Titles</h3>
+
+<p>We are proud to announce that multiplayer currently works in the following list of titles:</p>
+
+<ul>
+<li>Dragon Quest Monsters: Joker 3 Professional</li>
+<li>Luigi&rsquo;s Mansion: Dark Moon</li>
+<li>Mario Party: The Top 100</li>
+<li>Monster Hunter 3G &amp; 3 Ultimate</li>
+<li>Monster Hunter 4, 4G &amp; 4 Ultimate</li>
+<li>Monster Hunter X</li>
+<li>Monster Hunter XX</li>
+<li>New Super Mario Bros. 2</li>
+<li>Pokémon Omega Ruby / Alpha Sapphire</li>
+<li>Pokémon Sun / Moon</li>
+<li>Pokémon Ultra Sun / Ultra Moon</li>
+<li>Pokémon Virtual Console</li>
+<li>Super Smash Bros.</li>
+<li>The Legend of Zelda: Tri Force Heroes</li>
+<li>And many more.</li>
+</ul>
+
+<h3 id="incompatible-titles">Incompatible Titles</h3>
+
+<p>For various reasons, the following games were tested and do not work:</p>
+
+<ul>
+<li>Asphalt Assault 3D</li>
+<li>Code of Princess (<em>a fix is in works</em>)</li>
+<li>Dragon Quest Monsters: Terry&rsquo;s Wonderland 3D</li>
+<li>F1 2011</li>
+<li>Kirby Fighters Deluxe</li>
+<li>Kirby Triple Deluxe</li>
+<li>Mario Party Island Tour</li>
+<li>Mario Party Star Rush</li>
+<li>Mario Kart 7</li>
+<li>Planet Crashers</li>
+<li>Resident Evil: The Mercenaries 3D</li>
+<li>Ridge Racer 3D</li>
+<li>Sonic Generations</li>
+<li>Street Fighter IV</li>
+<li>Tetris Ultimate</li>
+</ul>
+
+<p><strong><em>Note that this list isn&rsquo;t absolute, and multiplayer may or may not work in games not listed here.<br />
+Also note that Download Play and Spotpass titles do not work as they are beyond the scope of current
+local multiplayer</em></strong>.</p>
+
+<p>Although multiplayer is supported, some games might still experience issues with it. Since the servers
+are located in various locations, latency will play a major role in your gameplay experience, so always
+choose a server that is nearby (geographically). Please use our <a href="https://community.citra-emu.org/">support forums</a>,
+<a href="http://webchat.freenode.net/?channels=citra">IRC</a>, or <a href="https://citra-emu.org/discord/">Discord</a> for
+help regarding issues with multiplayer.</p>
+
+<p>Read more about the multiplayer feature update <a href="https://citra-emu.org/entry/announcing-networking-support/">here</a>.</p>
+
+<h2 id="citra-qt-hardware-shader-improvements-post-glvtx-by-wwylele-https-github-com-wwylele-and-degasus-https-github-com-degasus">citra-qt: Hardware Shader Improvements (post GLvtx) by <a href="https://github.com/wwylele">wwylele</a> and <a href="https://github.com/degasus">degasus</a></h2>
+
+<p>Citra has come a long way from just being able to render graphics in 2015, to being able to run games
+at a playable state. Still, Citra was only fast for users who had better hardware. Users with slower
+processors suffered from lag and stuttering during gameplay.</p>
+
+<p>Now, thanks to the combined efforts of <a href="https://github.com/phanto-m">phantom</a>, <a href="https://github.com/jroweboy">jroweboy</a>, <a href="https://github.com/wwylele">wwylele</a>, <a href="https://github.com/MerryMage">MerryMage</a>, and many more, we
+now have a near-complete hardware renderer with huge improvements. Citra now uses the host GPU to its
+fullest to render graphics. <a href="https://github.com/wwylele">wwylele</a> and <a href="https://github.com/MerryMage">MerryMage</a>
+took it upon themselves to simplify the humongous heap of code into smaller parts, fixing, and testing
+them.</p>
+
+<p>Thanks to <a href="https://github.com/degasus">degasus</a> from the Dolphin community, who imparted his valuable
+knowledge and understanding of GPUs and OpenGL, we were able to optimize the <em>streaming storage buffer</em>
+support added by <a href="https://github.com/phanto-m">phantom</a>. This was done entirely by <a href="https://github.com/degasus">degasus</a>
+himself (<a href="https://github.com/citra-emu/citra/pull/3504">here</a>, <a href="https://github.com/citra-emu/citra/pull/3666">there</a>,
+and <a href="https://github.com/citra-emu/citra/pull/3711">that</a>). The old way to upload the data (both vertex
+and constants) was a simple <code>glBufferData</code> call. Keep in mind, however, that the GPU has a huge execution
+latency, so you can&rsquo;t just copy the new content over the existing buffer. The driver has to choose
+between different ways to deal with this issue, with different drawbacks:</p>
+
+<ol>
+<li>Wait for the GPU to finish and copy to the destination buffer. Usually this method is the fastest
+for big uploads, fine on common gaming, but terrible for emulators.</li>
+<li>Allocate a new buffer and tell the GPU which new buffer shall be used now. You also need to care
+about freeing the old buffer once it isn&rsquo;t in use any more. This tends to have a huge CPU overhead and
+isn&rsquo;t available on partial buffer updates such as lighting LUTs.</li>
+<li>Copy the data to an internal staging buffer and ask the GPU to copy it again to the destination
+when it is ready. This uses twice the memory bandwidth, and switching between rendering and copying also
+takes a while for the GPU. This proves to be a significant bottleneck if done for every single draw call.</li>
+</ol>
+
+<p>In the end, all of these are bad in terms of performance. It is a simple upload call, but it either
+requires many copies and context switches, or the GPU is stalled (<em>More on that in <a href="https://de.slideshare.net/CassEveritt/approaching-zero-driver-overhead">here</a></em>). Instead, Citra
+allocates a big staging buffer, copies the data to the current position within the buffer,
+and tells the GPU to directly access the data from there. The driver has no scope of interpreting what
+we ask it to do.</p>
+
+<p><em>This has a downside as well</em>. The GPU now accesses the main memory over PCIe. So if we&rsquo;re going to
+reuse the same data in the next frame, it has to go through the PCIe bottleneck again. But, we never
+use the same data again and hence gain a big performance boost.</p>
+
+<p><a href="https://github.com/wwylele">wwylele</a> tweaked the configuration UI and renamed some parts of it.
+However, this caused some confusion about the configuration window and GPU features.</p>
+
+<h3 id="what-s-changed-in-the-ui">What&rsquo;s changed in the UI?</h3>
+
+<p>With the initial release of GLvtx, we added support for running shaders on the host GPU. So, we had
+a dropdown menu called <strong>Shader Emulation</strong> to select either CPU or GPU, to run the shaders. The
+option has now been renamed as <strong>Enable Hardware Shader</strong>. When enabled, it makes use of the host
+GPU, and when disabled, it uses the CPU alone.</p>
+
+<p>Due to many of the users having older hardware, we introduced an option called <strong>Accurate Hardware
+Shader</strong>. It was later renamed to <strong>Accurate Multiplication</strong>, because technically that&rsquo;s what it was
+doing. <strong><em>When enabled it would render games with more accuracy at the cost of slower performance</em></strong>.
+Same goes for <strong>Accurate Geometry Shader</strong>. Earlier this was configurable via the INI file, but now
+it can be configured in the UI.</p>
+
+<p>&nbsp;
+
+
+
+
+
+
+<div class="container" style="width: 100%;">
+    
+    <div class="is-img-preview">
+    
+        
+        
+        
+        <div class="theme-table-image col-sm-6">
+            <figure style="padding: 0px;">
+                
+                    <a href="/images/entry/citra-progress-report-2018-q1/renderer-settings.png" title="Old Graphics Tab">
+                        <img src="/images/entry/citra-progress-report-2018-q1/renderer-settings.png" alt="Old Graphics Tab" />
+                    </a>
+                
+                <figcaption>
+                    <h4>
+                        Old Graphics Tab
+                    </h4>
+                </figcaption>
+            </figure>
+        </div>
+    
+        
+        
+        
+        <div class="theme-table-image col-sm-6">
+            <figure style="padding: 0px;">
+                
+                    <a href="/images/entry/citra-progress-report-2018-q1/renderer-settings-new.png" title="New Graphics Tab">
+                        <img src="/images/entry/citra-progress-report-2018-q1/renderer-settings-new.png" alt="New Graphics Tab" />
+                    </a>
+                
+                <figcaption>
+                    <h4>
+                        New Graphics Tab
+                    </h4>
+                </figcaption>
+            </figure>
+        </div>
+    
+    </div>
+</div>
+</p>
+
+<p>During it&rsquo;s time in Canary, a lot of testing was done by our contributors. They tested many games,
+under varied hardware conditions and submitted valuable telemetry data, crash logs, etc., which helped
+us in fixing issues with the hardware shader support.</p>
+
+<p><strong>Note</strong>:
+Unfortunately, due to driver issues with AMD GPUs and inadequate OpenGL support on macOS, the hardware
+shader might not perform better than the software renderer under these conditions. However, worry not,
+as research is being done into possible fixes that might come around sooner than you think.</p>
+
+<p>Read more about hardware renderer improvements in detail <a href="https://citra-emu.org/entry/improvements-to-hardware-renderer/">here</a>.</p>
+
+<h2 id="continuous-integration-ci-improvements-here-https-github-com-citra-emu-citra-pull-3647-there-https-github-com-citra-emu-citra-pull-3649-this-https-github-com-citra-emu-citra-pull-3706-and-that-https-github-com-citra-emu-citra-pull-3744-by-liushuyu-https-github-com-liushuyu">Continuous Integration (CI) Improvements (<a href="https://github.com/citra-emu/citra/pull/3647">here</a>, <a href="https://github.com/citra-emu/citra/pull/3649">there</a>, <a href="https://github.com/citra-emu/citra/pull/3706">this</a>, and <a href="https://github.com/citra-emu/citra/pull/3744">that</a>) by <a href="https://github.com/liushuyu">liushuyu</a></h2>
+
+<p>One of the more time and resource consuming parts of the project were our build generating environments.
+We use Travis and Appveyor to release fully functional builds for download. However, the time it took
+for the builds to be created was too long and if it was stopped abruptly, it took even more time to
+create the builds again. Thanks to <a href="https://github.com/liushuyu">liushuyu</a>&rsquo;s contributions, we were
+able to optimize this whole process and make it very efficient to build and release latest changes to
+our site.</p>
+
+<h2 id="logging-system-rewrite-here-https-github-com-citra-emu-citra-pull-3449-there-https-github-com-citra-emu-citra-pull-3533-and-that-https-github-com-citra-emu-citra-pull-3568-by-jroweboy-https-github-com-jroweboy-and-daniellimws-https-github-com-daniellimws">Logging System Rewrite (<a href="https://github.com/citra-emu/citra/pull/3449">here</a>, <a href="https://github.com/citra-emu/citra/pull/3533">there</a> and <a href="https://github.com/citra-emu/citra/pull/3568">that</a>) by <a href="https://github.com/jroweboy">jroweboy</a> and <a href="https://github.com/daniellimws">daniellimws</a></h2>
+
+<p>Our old logging system had several drawbacks and was due to be updated. So, a newer and efficient
+logging system based on fmtlib was designed and implemented by <a href="https://github.com/jroweboy">jroweboy</a>
+and <a href="https://github.com/daniellimws">daniellimws</a>. This gets rid of the ugly console window and made
+many under the hood improvements to the logging system. This will make identifying and fixing issues
+a whole lot faster. After the implemetation was done, migrating our codebase to the new system was a
+huge endeavour shared by <a href="https://github.com/daniellimws">daniellimws</a>, and many others.</p>
+
+<h2 id="citra-qt-camera-support-https-github-com-citra-emu-citra-pull-3566-by-zhaowenlan1779-https-github-com-zhaowenlan1779"><a href="https://github.com/citra-emu/citra/pull/3566">citra-qt: Camera Support</a> by <a href="https://github.com/zhaowenlan1779">zhaowenlan1779</a></h2>
+
+<p>One of the highly requested features of Citra has been the support for using the system camera to
+scan QR codes and other kinds of images. <a href="https://github.com/zhaowenlan1779">zhaowenlan1779</a> took it
+upon himself to provide Citra with this feature. By making use of the available Qt libraries, he worked
+on the implementation for weeks and was finally able to finish the feature. Citra now boasts the ability
+to directly scan images and use the system camera in a manner similar to the 3DS camera.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2018-q1/camera.jpg"  />
+    
+    
+    <figcaption>
+        <h4>
+            System Camera Support
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<h2 id="citra-qt-translations-https-github-com-citra-emu-citra-pull-3297-by-wwylele-https-github-com-wwylele-and-the-citra-community-https-community-citra-emu-org"><a href="https://github.com/citra-emu/citra/pull/3297">citra-qt: Translations</a> by <a href="https://github.com/wwylele">wwylele</a> and <a href="https://community.citra-emu.org">The Citra Community</a></h2>
+
+<p>For a long while now, Citra’s UI had been in English and has had absolutely no support for other languages. <a href="https://github.com/wwylele">wwylele</a> discussed this at length with other contributors and finally
+brought UI translations to Citra. Citra can now be used in many other languages. Note that these
+translations are maintained by our own community members and the translations are hosted on
+<a href="https://www.transifex.com/citra/citra/">Transifex</a>. Now, you too can submit a translation for your
+language (if it doesn’t exist already), or review existing translations to make them accurate.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2018-q1/translation.jpeg"  />
+    
+    
+    <figcaption>
+        <h4>
+            Citra - Now available in your language
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<h2 id="sending-test-cases-via-telemetry-https-github-com-citra-emu-citra-pull-3325-by-breadfish64-https-github-com-breadfish64"><a href="https://github.com/citra-emu/citra/pull/3325">Sending Test Cases via Telemetry</a> by <a href="https://github.com/BreadFish64">BreadFish64</a></h2>
+
+<p>Over the years, Citra has improved by leaps and bounds. However, there has always been a lack of consistent
+information on game compatibility. We introduced the <a href="https://citra-emu.org/game/">game compatibility list</a>
+to fix that. Having a list was helpful, but maintaining it was proving to be a tedious task. After a
+lot of brainstorming, <a href="https://github.com/BreadFish64">BreadFish64</a> added the option in the UI to send
+test cases via telemetry. These results are submitted by the users themselves, and are in turn used to
+update the game compatibility list.</p>
+
+<h3 id="steps-to-submit-test-cases-via-telemetry">Steps to submit test cases via Telemetry</h3>
+
+<p>
+
+
+
+
+
+<div class="container" style="width: 100%;">
+    
+    <div class="is-img-preview">
+    
+        
+        
+        
+        <div class="theme-table-image col-sm-6">
+            <figure style="padding: 0px;">
+                
+                    <a href="/images/entry/citra-progress-report-2018-q1/compat-1.png" title="Step 1">
+                        <img src="/images/entry/citra-progress-report-2018-q1/compat-1.png" alt="Step 1" />
+                    </a>
+                
+                <figcaption>
+                    <h4>
+                        Step 1
+                    </h4>
+                </figcaption>
+            </figure>
+        </div>
+    
+        
+        
+        
+        <div class="theme-table-image col-sm-6">
+            <figure style="padding: 0px;">
+                
+                    <a href="/images/entry/citra-progress-report-2018-q1/compat-2.png" title="Step 2">
+                        <img src="/images/entry/citra-progress-report-2018-q1/compat-2.png" alt="Step 2" />
+                    </a>
+                
+                <figcaption>
+                    <h4>
+                        Step 2
+                    </h4>
+                </figcaption>
+            </figure>
+        </div>
+    
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="container" style="width: 100%;">
+    
+    <div class="is-img-preview">
+    
+        
+        
+        
+        <div class="theme-table-image col-sm-6">
+            <figure style="padding: 0px;">
+                
+                    <a href="/images/entry/citra-progress-report-2018-q1/compat-3.png" title="Step 3">
+                        <img src="/images/entry/citra-progress-report-2018-q1/compat-3.png" alt="Step 3" />
+                    </a>
+                
+                <figcaption>
+                    <h4>
+                        Step 3
+                    </h4>
+                </figcaption>
+            </figure>
+        </div>
+    
+        
+        
+        
+        <div class="theme-table-image col-sm-6">
+            <figure style="padding: 0px;">
+                
+                    <a href="/images/entry/citra-progress-report-2018-q1/compat-4.png" title="Step 4">
+                        <img src="/images/entry/citra-progress-report-2018-q1/compat-4.png" alt="Step 4" />
+                    </a>
+                
+                <figcaption>
+                    <h4>
+                        Step 4
+                    </h4>
+                </figcaption>
+            </figure>
+        </div>
+    
+    </div>
+</div>
+
+<strong>Note</strong>: To be able to report compatibility, you have to first login to the Citra Web Service, using
+your Username and Token.<br />
+(See Emulation -&gt; Configure -&gt; Web)
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2018-q1/web-verify.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Citra Web Service
+        </h4>
+    </figcaption>
+    
+</figure>
+</p>
+
+<h2 id="miscellaneous">Miscellaneous</h2>
+
+<p>Various other contributions to the external dependencies have been made by <a href="https://github.com/lioncash">Lioncash</a>, <a href="https://github.com/MerryMage">MerryMage</a>, and many others. Several services were converted to the new
+service framework (<a href="https://github.com/citra-emu/citra/issues/2531">here</a>). Many minor bug fixes and
+under-the-hood feature improvements were done by our <a href="https://github.com/citra-emu/citra/graphs/contributors?from=2018-01-01&amp;to=2018-05-19&amp;type=c">contributors</a>.
+We believe <strong><em>even the smallest contribution is valuable</em></strong>  and without these <a href="https://github.com/citra-emu/citra/graphs/contributors?from=2018-01-01&amp;to=2018-05-19&amp;type=c">contributors</a>,
+these new features wouldn’t have been possible.</p>
+
+<h3 align="center">
+<b><a href="https://github.com/citra-emu/citra/">Contributions are always welcome !</a></b>
+</h3>
+
+  </div>
+
+  
+  
+  
+
+  <div class="entry-written-by">
+    
+      <a href="https://community.citra-emu.org/users/CaptV0rt3x">
+          <img src="https://community.citra-emu.org/user_avatar/community.citra-emu.org/captv0rt3x/120/4767_1.png" class="avatar">
+      </a>
+    
+    
+    
+
+    
+      <p>Written by <a href="https://community.citra-emu.org/users/CaptV0rt3x">CaptV0rt3x</a> on Wednesday May 30, 2018</p>
+    
+  </div>
+
+  
+    <div class="entry-comments">
+      <div id="discourse-comments"></div>
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://community.citra-emu.org/', topicId: "23597" };
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+    </div>
+  
+
+
+                </div>
+                <div id="sidebar" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-left">
+                    <div id="advertisement" class = "ad">
+  <h3>Advertisement</h3>
+  <ins class="ad adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4126545610079023"
+       data-ad-slot="4223809695"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="tagcloud hidden-sm hidden-xs">
+  <h3>News Tag Cloud</h3>
+  <ul>
+    
+      <li><a class="taxonomy-citra-release" href="/tags/citra-release">citra-release</a></li>
+    
+      <li><a class="taxonomy-feature-update" href="/tags/feature-update">feature-update</a></li>
+    
+      <li><a class="taxonomy-progress-report" href="/tags/progress-report">progress-report</a></li>
+    
+  </ul>
+</div>
+
+<div id="twitter" class="hidden-sm hidden-xs">
+  <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/citraemu?ref_src=twsrc%5Etfw">Tweet Feed</a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="footer" class="container">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <h1>Citra</h1>
+                    <a href="/">Blog</a>
+                    <a href="/download/">Downloads</a>
+                    <a href="/screenshots/">Screenshots</a>
+                    <a href="https://www.patreon.com/citraemu">Patreon</a>
+                    <a href="/donate/">Donate</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Documentation</h1>
+                    <a href="/help/">Help Documents</a>
+                    <a href="/game/">Compatibility</a>
+                    <a href="/wiki/home/">Dev Wiki</a>
+                    <a href="/wiki/faq/">FAQ</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Blog</h1>
+                    <a href="/">News &amp; Articles</a>
+                    <a href="https://citra-emu.org/index.xml">RSS 2.0</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Social</h1>
+                    <a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q">YouTube</a>
+                    <a href="https://www.facebook.com/citra.emu">Facebook</a>
+                    <a href="https://twitter.com/citraemu">Twitter</a>
+                    <a href="https://community.citra-emu.org/">Forums</a>
+                    <a href="/discord">Discord</a>
+                    <a href="/chat">IRC</a>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Get Involved</h1>
+                    <a href="https://github.com/citra-emu/citra">GitHub / Source</a>
+                    <a href="https://github.com/citra-emu/citra/issues">Issues</a>
+                    <a href="https://github.com/citra-emu/citra/pulls">Pull Requests</a>
+                </div>
+
+            </div>
+            <div id="footer-bottom">
+                <div id="footer-brand"></div>
+                <div id="footer-legal">Copyright © 2021 Citra Emulator Project</div>
+            </div>
+        </div>
+
+        <script src="https://citra-emu.org/js/script.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" type="text/css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			window.addEventListener("DOMContentLoaded", function() {
+			baguetteBox.run('.is-img-preview');
+			});
+		</script>
+
+        
+
+        
+    </body>
+
+</html>

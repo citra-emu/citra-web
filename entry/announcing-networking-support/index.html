@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <meta name="theme-color" content="#FF8E03">
+        <meta property="og:title" content="Announcing Networking Support &middot; Citra" />
+        <meta property="og:site_name" content="Citra" />
+        <meta property="og:url" content="https://citra-emu.org/entry/announcing-networking-support/" />
+            <meta property="og:description" content="Networked Multiplayer is one of those features that was so surprising to see, that the lucky few chosen to test it were wondering if it was real. For the past year, several developers have banded together to bring this amazing implementation of online play to Citra.
+ The Nintendo 3DS heavily relies on wireless for its slew of multiplayer compatible titles. Considering that so many games feel empty without their multiplayer features, we&rsquo;re excited to announce that in select titles, you&rsquo;ll be able to play together with your friends across the world in the latest Canary builds of Citra!" />
+<meta name="description" content="Networked Multiplayer is one of those features that was so surprising to see, that the lucky few chosen to test it were wondering if it was real. For the past year, several developers have banded together to bring this amazing implementation of online play to Citra.
+ The Nintendo 3DS heavily relies on wireless for its slew of multiplayer compatible titles. Considering that so many games feel empty without their multiplayer features, we&rsquo;re excited to announce that in select titles, you&rsquo;ll be able to play together with your friends across the world in the latest Canary builds of Citra!" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://citra-emu.org/images/banners/announcing-networking-support.png" />
+<meta property="og:article:published_time" content="2017-11-04T07:17:00-04:00" />
+<meta property="og:article:tag" content="feature-update" />
+
+
+        <meta name="generator" content="Hugo 0.52" />
+
+        <link rel="icon" href="https://citra-emu.org/favicon.ico" />
+        <link rel="shortcut icon" href="https://citra-emu.org/favicon.ico" type="image/x-icon" />
+        <link rel="canonical" href="https://citra-emu.org/entry/announcing-networking-support/">
+
+        
+
+        <title>Announcing Networking Support - Citra</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis" rel="stylesheet">
+        <link rel="stylesheet" href="https://citra-emu.org/css/style.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-73966905-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+        
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-wrapper navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">&nbsp;</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="index-1 first"><a href="/" title="Blog Posts">Blog</a></li>
+                <li class="index-2"><a href="/download/" title="Download Citra">Download</a></li>
+                <li class="index-3"><a href="/help/" title="Help">Help</a></li>
+                <li class="index-4"><a href="/wiki/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li class="index-5"><a href="/game/" title="Game Compatibility">Compatibility</a></li>
+                <li class="index-6"><a href="/wiki/home/" title="Wiki Homepage">Dev Wiki</a></li>
+
+                <li class="index-7 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false">
+                        Social <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/rules/" title="">Rules</a></li>
+                        <li class="index-2"><a href="https://community.citra-emu.org/" title="Forums">Community Forums</a></li>
+                        <li class="index-3 last"><a href="/discord/" title="Discord Channel">Discord Chat</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-8 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                aria-haspopup="true" aria-expanded="false">
+                        Media <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/screenshots/" title="Screenshots">Screenshots</a></li>
+                        <li class="index-2 last"><a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q"
+                                                    title="Youtube Channel">Videos</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-9 last"><a href="https://www.patreon.com/citraemu" title="Patreon">Patreon</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+        <div id="mainContainer" class="container" >
+            <div class="row">
+                
+            </div>
+
+            <div class="row row-fluid">
+                <div id="content" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right">
+                    
+  <a href="https://citra-emu.org/entry/announcing-networking-support/">
+  <div class="entry-embed-header">
+      <div class="entry-embed" style="background: url('https://citra-emu.org/images/banners/announcing-networking-support.png')">
+          <header>
+              <h1>Announcing Networking Support</h1>
+          </header>
+      </div>
+
+      
+      <div class="entry-meta" style="position: absolute; top: 5px; right: 20px;">
+          November 04 2017
+      </div>
+
+      
+      <div class="entry-meta" style="position: absolute; top: 45px; right: 20px;">
+          feature-update
+      </div>
+      
+  </div>
+</a>
+
+
+  <div class="entry-content">
+    
+
+<p><em>Networked Multiplayer</em> is one of those features that was so surprising to see, that the lucky few chosen to test it were wondering if it was real.  For the past year, several developers have banded together to bring this amazing implementation of online play to Citra.</p>
+
+<div style="position:relative;height:0;padding-bottom:65%"><iframe src="https://www.youtube.com/embed/z_Nni6NZoy0?ecevr=2" style="position:absolute;width:100%;height:100%;left:0" width="641" height="360" frameborder="0" allowfullscreen></iframe></div>
+
+<p>The Nintendo 3DS heavily relies on wireless for its slew of multiplayer compatible titles.  Considering that so many games feel empty without their multiplayer features, we&rsquo;re excited to announce that in select titles, you&rsquo;ll be able to play together with your friends across the world in the latest Canary builds of Citra!</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/announcing-networking-support/LetsBattle.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Let&rsquo;s Battle!
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<h4 id="bringing-multiplayer-to-citra">Bringing Multiplayer to Citra</h4>
+
+<p>Emulating 3DS local wireless and bringing it to Citra was a huge endeavor shared by <a href="https://github.com/Subv">subv</a>, <a href="https://github.com/B3n30">B3N30</a>,  <a href="https://github.com/jroweboy">jroweboy</a>, and <a href="https://github.com/JayFoxRox">JayFoxRox</a>.  It went through several stages of development, from actually reverse-engineering how wireless worked in games, to implementing those features in Citra, and then implementing an infrastructure so that even casual users could easily take advantage of this feature.</p>
+
+<p>This emulates the 3DS&rsquo; ability to do <em>local wireless</em> multiplayer.  As such, it doesn&rsquo;t rely on Nintendo&rsquo;s server and does not require a Nintendo Network ID.  While on a real 3DS you&rsquo;d be limited to the people in your immediate vicinity, Citra boasts a complex server/client infrastructure that forwards a game&rsquo;s wireless communication across the internet.</p>
+
+<p>Unlike single console netplay used in most emulators, users won&rsquo;t have to worry about desyncs, synchronizing saves, or any other issues typical of netplay.  Each user is using their instance of Citra as a unique emulated 3DS that is communicating with everyone else through that particular server.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/announcing-networking-support/GameBrowser.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Join your friends!
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<p>Currently, servers created in Citra can hold up to 16 players.  High player counts should be avoided for now due to bandwidth issues.  In this initial release, each connected Citra instance sends raw packets to the host (or server) and the server then forwards those packets to every single client.  As such, with each player added, the bandwidth requirements increase greatly.</p>
+
+<p>While hundreds of games support wireless connectivity, compatibility is limited in the initial release.  Tons of titles were tested, but only a handful came up as working properly.  Note games may handle latency differently and your experience may vary.</p>
+
+<h3 id="the-server-browser">The Server Browser</h3>
+
+<p>In order to get together with other players, you&rsquo;re going to have to join the same room with Citra&rsquo;s server browser.  Creating and joining servers is extremely easy in Citra and can be done in just a few clicks.  If you&rsquo;re a verified user, you can create a public game through the traversal server for people to join.  These public games can be seen by <strong>anyone</strong> on the server browser, but you are also able to put a password on publicly listed games. <strong>Remember to port forward, otherwise your friends won&rsquo;t be able to connect!</strong></p>
+
+<p>Unverified users aren&rsquo;t left without options, though - they still have the ability to create unlisted games, direct connecting, and can join any hosted server.</p>
+
+<p>Do note that verified users <strong>will</strong> have their privileges revoked for violating any site policies while on the server chatroom.  Please respect the <em>recommended game</em> listed in publicly hosted games, as even unrelated games will add to the bandwidth load.</p>
+
+<h3 id="wireless-compatibility">Wireless Compatibility</h3>
+
+<h4 id="works-like-a-charm">Works Like a Charm</h4>
+
+<h5 id="super-smash-bros-for-3ds">Super Smash Bros. for 3DS</h5>
+
+<p><em>Super Smash Brother&rsquo;s</em> local wireless play works perfectly in Citra for up to four players.  Because the game expects all players to be running in lockstep, users will need to maintain similar framerates for a stable connection.  Some stages, such as the pictochat stage, can run full speed even on moderately powerful computers.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/announcing-networking-support/SmashLocal.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            1v1 me fox only no items final destination
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<h5 id="pokémon-x-y-pokémon-omega-ruby-alpha-sapphire-and-pokémon-sun-moon">Pokémon X/Y, Pokémon Omega Ruby/Alpha Sapphire, and Pokémon Sun/Moon</h5>
+
+<p>Almost everything works perfectly in the <em>Pokémon</em> games.  The only thing that fails is adding friends - so try to stay away from that.  Users can battle, trade, and watch passerbys as they show up or leave on the local wireless server.</p>
+
+<p>Because of compatibility issues in general with X and Y, using wireless support may be problematic for those two titles.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/announcing-networking-support/ChallengePok.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Challenge your friends in beautifully upscaled Pokémon battles!
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<h5 id="new-super-mario-bros-2">New Super Mario Bros. 2</h5>
+
+<p><em>New Super Mario Bros. 2</em> runs perfectly, and our testers were able to play together multiple worlds into the game flawlessly.  Users on the same server can search for partners and join up just fine.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/announcing-networking-support/NSMB2.jpg"  />
+    
+    
+    <figcaption>
+        <h4>
+            Your princess is in another castle? Save her together!
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<h4 id="functional-but-flawed">Functional But Flawed</h4>
+
+<h5 id="luigi-s-mansion-dark-moon">Luigi&rsquo;s Mansion: Dark Moon</h5>
+
+<p>This title has perfectly functional wireless support for trying to tackle the &ldquo;Scarescraper&rdquo;!  Unfortunately, the game is so demanding that getting a fun experience out of it is near impossible.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/announcing-networking-support/LuigisMansionLobby.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Happy Hallowe- oh, it&rsquo;s November. Whatever, Luigi doesn&rsquo;t care!
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<h5 id="monster-hunter-3u-and-4u">Monster Hunter 3U and 4U</h5>
+
+<p>The <em>Monster Hunter</em> games are extremely demanding in Citra, but wireless support <em>does</em> somewhat work.  A second player can join a game, share quests and trade guild cards.  But, the game supports up to four local players on console, and anything more than two causes disconnections in Citra.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/announcing-networking-support/image.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Go out and hunt with all your friends! &hellip; as long as that number is only 2.
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<h4 id="incompatible">Incompatible</h4>
+
+<p>For various reasons, the following games were tested and do not work.  Also note that Download Play and Spotpass titles do not work due to limitations in what Citra currently emulates.</p>
+
+<ul>
+<li>Mario Party Island Tour</li>
+<li>Mario Party Star Rush</li>
+<li>The Legend of Zelda: TriForce Heroes</li>
+<li>Mario Kart 7</li>
+<li>Tetris Ultimate</li>
+<li>Code of Princess</li>
+<li>Sonic Generations</li>
+<li>Asphalt Assault 3D</li>
+<li>Ridge Racer 3D</li>
+<li>Monster Hunter Generations</li>
+<li>Monster Hunter X</li>
+<li>Monster Hunter XX</li>
+<li>Street Fighter IV</li>
+<li>Kirby Triple Deluxe</li>
+<li>Dragon Quest Monsters: Terry&rsquo;s Wonderland 3D</li>
+<li>Resident Evil: The Mercenaries 3D</li>
+<li>Dragon Quest Monsters: Joker 3 Professional</li>
+<li>F1 2011</li>
+<li>Kirby Fighters Deluxe</li>
+<li>Planet Crashers</li>
+</ul>
+
+<h3 id="going-forward">Going Forward</h3>
+
+<p>After the months of work put into making <em>Networked Multiplayer</em> a reality, we&rsquo;re excited to see it finally brought into the public eye.  While only a handful of games work in this initial release, we&rsquo;re hoping to bring support to more titles in the future, as well as optimizing the netcode for lower bandwidth usage, and allowing for even bigger user hosted servers.</p>
+
+  </div>
+
+  
+  
+  
+
+  <div class="entry-written-by">
+    
+      <a href="https://community.citra-emu.org/users/jmc47">
+          <img src="https://community.citra-emu.org/user_avatar/community.citra-emu.org/jmc47/45/1487_1.png" class="avatar">
+      </a>
+    
+    
+    
+
+    
+      <p>Written by <a href="https://community.citra-emu.org/users/jmc47">JMC47</a> on Saturday November 04, 2017</p>
+    
+  </div>
+
+  
+    <div class="entry-comments">
+      <div id="discourse-comments"></div>
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://community.citra-emu.org/', topicId: "4744" };
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+    </div>
+  
+
+
+                </div>
+                <div id="sidebar" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-left">
+                    <div id="advertisement" class = "ad">
+  <h3>Advertisement</h3>
+  <ins class="ad adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4126545610079023"
+       data-ad-slot="4223809695"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="tagcloud hidden-sm hidden-xs">
+  <h3>News Tag Cloud</h3>
+  <ul>
+    
+      <li><a class="taxonomy-citra-release" href="/tags/citra-release">citra-release</a></li>
+    
+      <li><a class="taxonomy-feature-update" href="/tags/feature-update">feature-update</a></li>
+    
+      <li><a class="taxonomy-progress-report" href="/tags/progress-report">progress-report</a></li>
+    
+  </ul>
+</div>
+
+<div id="twitter" class="hidden-sm hidden-xs">
+  <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/citraemu?ref_src=twsrc%5Etfw">Tweet Feed</a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="footer" class="container">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <h1>Citra</h1>
+                    <a href="/">Blog</a>
+                    <a href="/download/">Downloads</a>
+                    <a href="/screenshots/">Screenshots</a>
+                    <a href="https://www.patreon.com/citraemu">Patreon</a>
+                    <a href="/donate/">Donate</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Documentation</h1>
+                    <a href="/help/">Help Documents</a>
+                    <a href="/game/">Compatibility</a>
+                    <a href="/wiki/home/">Dev Wiki</a>
+                    <a href="/wiki/faq/">FAQ</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Blog</h1>
+                    <a href="/">News &amp; Articles</a>
+                    <a href="https://citra-emu.org/index.xml">RSS 2.0</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Social</h1>
+                    <a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q">YouTube</a>
+                    <a href="https://www.facebook.com/citra.emu">Facebook</a>
+                    <a href="https://twitter.com/citraemu">Twitter</a>
+                    <a href="https://community.citra-emu.org/">Forums</a>
+                    <a href="/discord">Discord</a>
+                    <a href="/chat">IRC</a>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Get Involved</h1>
+                    <a href="https://github.com/citra-emu/citra">GitHub / Source</a>
+                    <a href="https://github.com/citra-emu/citra/issues">Issues</a>
+                    <a href="https://github.com/citra-emu/citra/pulls">Pull Requests</a>
+                </div>
+
+            </div>
+            <div id="footer-bottom">
+                <div id="footer-brand"></div>
+                <div id="footer-legal">Copyright © 2021 Citra Emulator Project</div>
+            </div>
+        </div>
+
+        <script src="https://citra-emu.org/js/script.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" type="text/css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			window.addEventListener("DOMContentLoaded", function() {
+			baguetteBox.run('.is-img-preview');
+			});
+		</script>
+
+        
+
+        
+    </body>
+
+</html>

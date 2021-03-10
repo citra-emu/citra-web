@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Citra Release on Citra</title>
+    <link>https://citra-emu.org/tags/citra-release/</link>
+    <description>Recent content in Citra Release on Citra</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 06 Jul 2018 22:45:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://citra-emu.org/tags/citra-release/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Citra Now Has a Patreon</title>
+      <link>https://citra-emu.org/entry/announcing-patreon/</link>
+      <pubDate>Fri, 06 Jul 2018 22:45:00 +0530</pubDate>
+      
+      <guid>https://citra-emu.org/entry/announcing-patreon/</guid>
+      <description>It&amp;rsquo;s finally happening folks: The Citra Team would like to announce that we now have a project-wide Patreon. This will be a way for you, our users, to donate directly to the Citra developers, in support of their efforts to continue to make Citra the best option available to enjoy 3DS games. Patreon will be yet another way for our biggest fans to contribute to the project.
+Become a Patron !</description>
+    </item>
+    
+    <item>
+      <title>Citra Now Has A Game Compatibility Wiki!</title>
+      <link>https://citra-emu.org/entry/compatibility-list-wiki-created/</link>
+      <pubDate>Sun, 04 Jun 2017 11:10:00 -0800</pubDate>
+      
+      <guid>https://citra-emu.org/entry/compatibility-list-wiki-created/</guid>
+      <description>As game compatibility has broadened and the popularity of Citra has risen there&amp;rsquo;s always been a lack of consistent information on what could be played in Citra and what couldn&amp;rsquo;t. Often times the best way to find out if a game was working properly in Citra was to jump in and test it for yourself, but if any issues were encountered you&amp;rsquo;d be left scouring through forums sifting through potentially out of date information for answers.</description>
+    </item>
+    
+    <item>
+      <title>The Nightly Builds are back!</title>
+      <link>https://citra-emu.org/entry/the-nightly-builds-are-back/</link>
+      <pubDate>Thu, 05 Jan 2017 00:00:00 -0500</pubDate>
+      
+      <guid>https://citra-emu.org/entry/the-nightly-builds-are-back/</guid>
+      <description>As you all know, the Nightly builds have been down for some time now due to the former maintainer not being around, but the issues have been resolved, and the Nightly builds are now available on our downloads page once again! With downloads available for Windows, macOS, and Linux, you&amp;rsquo;re no longer required to compile the build yourself.
+Likewise, we&amp;rsquo;d like to remind all users that any bugs found within Citra, or during emulation, be reported from the Nightly builds, and not the Bleeding Edge ones.</description>
+    </item>
+    
+    <item>
+      <title>Announcing Bleeding Edge Builds</title>
+      <link>https://citra-emu.org/entry/announcing-bleeding-edge-builds/</link>
+      <pubDate>Tue, 11 Oct 2016 14:49:00 -0500</pubDate>
+      
+      <guid>https://citra-emu.org/entry/announcing-bleeding-edge-builds/</guid>
+      <description>Sometimes it&amp;rsquo;s hard to wait. We&amp;rsquo;ve noticed that users are very excited about the future of Citra, which means wanting to try all of the changes all of the time. But, emulator development can be a slow, arduous process as new changes can bring big regressions and problems with the much wanted new features.
+In order to satiate the needs of our users, we&amp;rsquo;ll be adding new builds for download: bleeding edge builds!</description>
+    </item>
+    
+  </channel>
+</rss>

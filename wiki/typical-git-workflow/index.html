@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <meta name="theme-color" content="#FF8E03">
+        <meta property="og:title" content="Typical Git Workflow &middot; Citra" />
+        <meta property="og:site_name" content="Citra" />
+        <meta property="og:url" content="https://citra-emu.org/wiki/typical-git-workflow/" />
+            <meta property="og:description" content="This is a guide to a typical Git workflow with Citra. It covers forking from the main repository, creating a branch, keeping your branch up to date with the main repository, resolving conflicts, and merging back into the main repository. It&rsquo;s not meant to be a hard-and-fast set of rules. However, if you follow something along these lines, you&rsquo;ll be less likely to piss people off.
+It&rsquo;s appreciated if every single commit in a branch on its own compiles on all supported platforms (Windows, Linux, and macOS) and doesn&rsquo;t cause any regressions if the commits after it were left unmerged." />
+<meta name="description" content="This is a guide to a typical Git workflow with Citra. It covers forking from the main repository, creating a branch, keeping your branch up to date with the main repository, resolving conflicts, and merging back into the main repository. It&rsquo;s not meant to be a hard-and-fast set of rules. However, if you follow something along these lines, you&rsquo;ll be less likely to piss people off.
+It&rsquo;s appreciated if every single commit in a branch on its own compiles on all supported platforms (Windows, Linux, and macOS) and doesn&rsquo;t cause any regressions if the commits after it were left unmerged." />
+<meta property="og:type" content="website" />
+
+
+        <meta name="generator" content="Hugo 0.52" />
+
+        <link rel="icon" href="https://citra-emu.org/favicon.ico" />
+        <link rel="shortcut icon" href="https://citra-emu.org/favicon.ico" type="image/x-icon" />
+        <link rel="canonical" href="https://citra-emu.org/wiki/typical-git-workflow/">
+
+        
+
+        <title>Typical Git Workflow - Citra</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis" rel="stylesheet">
+        <link rel="stylesheet" href="https://citra-emu.org/css/style.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-73966905-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+        
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-wrapper navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">&nbsp;</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="index-1 first"><a href="/" title="Blog Posts">Blog</a></li>
+                <li class="index-2"><a href="/download/" title="Download Citra">Download</a></li>
+                <li class="index-3"><a href="/help/" title="Help">Help</a></li>
+                <li class="index-4"><a href="/wiki/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li class="index-5"><a href="/game/" title="Game Compatibility">Compatibility</a></li>
+                <li class="index-6"><a href="/wiki/home/" title="Wiki Homepage">Dev Wiki</a></li>
+
+                <li class="index-7 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false">
+                        Social <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/rules/" title="">Rules</a></li>
+                        <li class="index-2"><a href="https://community.citra-emu.org/" title="Forums">Community Forums</a></li>
+                        <li class="index-3 last"><a href="/discord/" title="Discord Channel">Discord Chat</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-8 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                aria-haspopup="true" aria-expanded="false">
+                        Media <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/screenshots/" title="Screenshots">Screenshots</a></li>
+                        <li class="index-2 last"><a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q"
+                                                    title="Youtube Channel">Videos</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-9 last"><a href="https://www.patreon.com/citraemu" title="Patreon">Patreon</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+        <div id="mainContainer" class="container" >
+            <div class="row">
+                
+            </div>
+
+            <div class="row row-fluid">
+                <div id="content" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right">
+                    
+  <div class="alert alert-warning">
+    <div class="row">
+      <div class="col-md-2">
+        <strong>Read First!</strong>
+      </div>
+      <div class="col-md-10">
+        <p>The below wiki article is based on user submitted content.<br>
+        Please verify <strong>all</strong> hyperlinks and terminal commands below!</p>
+        See a mistake? Want to contribute? <a href="https://github.com/citra-emu/citra/wiki/typical-git-workflow/_edit/">Edit this article on Github</a>
+      </div>
+    </div>
+  </div>
+
+	<h1>Typical Git Workflow</h1>
+	<p>This is a guide to a typical Git workflow with Citra. It covers forking from the main repository, creating a branch, keeping your branch up to date with the main repository, resolving conflicts, and merging back into the main repository. It&rsquo;s not meant to be a hard-and-fast set of rules. However, if you follow something along these lines, you&rsquo;ll be less likely to piss people off.</p>
+
+<p>It&rsquo;s appreciated if every single commit in a branch on its own compiles on all supported platforms (Windows, Linux, and macOS) and doesn&rsquo;t cause any regressions if the commits after it were left unmerged. We understand that with early development, sometimes it&rsquo;s easier to commit early-and-often, and sometimes you may unintentionally break things (and then later fix them in your branch). If this is part of your workflow, we expect appropriate use of Git rebase to squash broken commits and resolve merge conflicts. If you don&rsquo;t know how Git rebase works, please read <a href="http://git-scm.com/book/en/Git-Branching-Rebasing">this article</a> before developing for Citra.</p>
+
+<p><strong>Terminology</strong></p>
+
+<ul>
+<li><code>upstream</code>: Main project repository (<a href="https://github.com/citra-emu/citra">https://github.com/citra-emu/citra</a>)</li>
+<li><code>origin</code>: Your GitHub forked project repository (e.g. <a href="https://github.com/bunnei/citra">https://github.com/bunnei/citra</a>)</li>
+</ul>
+
+<p><strong>Before you begin</strong></p>
+
+<ul>
+<li>GitHub fork the project</li>
+
+<li><p>Clone your GitHub fork locally</p>
+
+<ul>
+<li><code>git clone https://github.com/your-username/citra.git</code></li>
+</ul></li>
+
+<li><p>Grab the submodules</p>
+
+<ul>
+<li><code>git submodule update --init --recursive</code></li>
+</ul></li>
+
+<li><p>Set your <code>upstream</code> to the main project repository</p>
+
+<ul>
+<li><code>git remote add upstream https://github.com/citra-emu/citra.git</code></li>
+</ul></li>
+
+<li><p>Set your Git identity configuration</p>
+
+<ul>
+<li><code>git config --global user.name &quot;your-username&quot;</code></li>
+<li><code>git config --global user.email your-email@example.com</code></li>
+</ul></li>
+</ul>
+
+<p><strong>Create a new branch</strong></p>
+
+<ul>
+<li><p>Create your branch from the latest <code>upstream/master</code> (Note: please format-branch-names-like-this)</p>
+
+<ul>
+<li><code>git fetch upstream &amp;amp;&amp;amp; git checkout -b new-branch-name upstream/master</code></li>
+</ul></li>
+
+<li><p>Push your new branch to <code>origin</code> (required later for a pull request)</p>
+
+<ul>
+<li><code>git push origin new-branch-name</code></li>
+</ul></li>
+</ul>
+
+<p><strong>Scenario A: You did some work in your branch&hellip; Then, someone committed something to <code>upstream/master</code> that you want!</strong></p>
+
+<ul>
+<li><p>Make sure you&rsquo;re on your branch</p>
+
+<ul>
+<li><code>git checkout new-branch-name</code></li>
+</ul></li>
+
+<li><p>Rebase <code>upstream/master</code> onto it. With the rebase, move all of your changes to the top, and put all of the new master changes immediately after where you branched from. The goal should be that the branch now appears as though you just created it from <code>upstream/master</code>, and then committed all of your new stuff.</p>
+
+<ul>
+<li><code>git rebase upstream/master</code></li>
+</ul></li>
+</ul>
+
+<p><strong>Scenario B: You did some more work in your branch&hellip; Then, someone committed something to <code>upstream/master</code> that will cause conflicts when trying to get the branch merged back to upstream/master!</strong></p>
+
+<ul>
+<li>From your branch, rebase <code>upstream/master</code>
+
+<ul>
+<li><code>git checkout new-branch-name</code></li>
+<li><code>git rebase -i upstream/master</code></li>
+</ul></li>
+</ul>
+
+<p><strong>Your branch is getting near completion, now you&rsquo;re ready for a pull request!</strong></p>
+
+<ul>
+<li><p>From your branch, rebase <code>upstream/master</code></p>
+
+<ul>
+<li><code>git checkout new-branch-name</code></li>
+<li><code>git rebase -i upstream/master</code></li>
+</ul></li>
+
+<li><p>Update <code>origin/new-branch-name</code></p>
+
+<ul>
+<li><code>git push origin new-branch-name --force</code></li>
+</ul></li>
+
+<li><p>Create the pull request on GitHub to merge <code>origin/new-branch-name</code> into <code>upstream/master</code></p></li>
+</ul>
+
+<p><strong>Gracefully receive feedback from the team</strong></p>
+
+<ul>
+<li>Address each comment with a commit as needed</li>
+</ul>
+
+<p><strong>Once your pull request is ready to be merged&hellip;</strong></p>
+
+<ul>
+<li><p>From your branch, interactive rebase to squash all of the new commits (as a result of the pull request feedback) into the commits that they were addressing</p>
+
+<ul>
+<li><code>git checkout new-branch-name</code></li>
+<li><code>git rebase -i upstream/master</code></li>
+<li>Now, you should see a file containing all the commits on this branch.</li>
+<li>For all commits that address feedback, replace <code>pick</code> with <code>fixup</code>. Re order if required (beware, you might get conflicts at this stage! Resolve them carefully, then use <code>git rebase --continue</code>)</li>
+<li>You can also change commit messages by replacing <code>pick</code> with <code>reword</code>.</li>
+<li>Then follow the steps as directed by Git (These are not specific to Citra, so you shouldn&rsquo;t have a problem if you use Git regularly.)</li>
+<li>Rebase complete!</li>
+</ul></li>
+
+<li><p>Update <code>origin/new-branch-name</code></p>
+
+<ul>
+<li><code>git push origin new-branch-name --force</code></li>
+</ul></li>
+
+<li><p>Merge your branch in</p>
+
+<ul>
+<li>Always merge using the &gt;merge&lt; button in the GitHub pull request</li>
+<li>If GitHub says the branch cannot be merged automatically, you&rsquo;ve likely done something incorrectly (e.g. you did not fully rebase changes from <code>upstream/master</code> into your branch). If things don&rsquo;t work for you, don&rsquo;t hesitate to ask us for help @ #citra on <a href="http://webchat.freenode.net/">freenode</a> or @ #citra-general on <a href="https://citra-emu.org/discord/">Discord</a>. Mastering Git is not as easy as it might sound, but we&rsquo;ll happily help you get started.</li>
+</ul></li>
+</ul>
+
+
+                </div>
+                <div id="sidebar" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-left">
+                    <div id="advertisement" class = "ad">
+  <h3>Advertisement</h3>
+  <ins class="ad adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4126545610079023"
+       data-ad-slot="4223809695"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="tagcloud hidden-sm hidden-xs">
+  <h3>News Tag Cloud</h3>
+  <ul>
+    
+      <li><a class="taxonomy-citra-release" href="/tags/citra-release">citra-release</a></li>
+    
+      <li><a class="taxonomy-feature-update" href="/tags/feature-update">feature-update</a></li>
+    
+      <li><a class="taxonomy-progress-report" href="/tags/progress-report">progress-report</a></li>
+    
+  </ul>
+</div>
+
+<div id="twitter" class="hidden-sm hidden-xs">
+  <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/citraemu?ref_src=twsrc%5Etfw">Tweet Feed</a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="footer" class="container">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <h1>Citra</h1>
+                    <a href="/">Blog</a>
+                    <a href="/download/">Downloads</a>
+                    <a href="/screenshots/">Screenshots</a>
+                    <a href="https://www.patreon.com/citraemu">Patreon</a>
+                    <a href="/donate/">Donate</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Documentation</h1>
+                    <a href="/help/">Help Documents</a>
+                    <a href="/game/">Compatibility</a>
+                    <a href="/wiki/home/">Dev Wiki</a>
+                    <a href="/wiki/faq/">FAQ</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Blog</h1>
+                    <a href="/">News &amp; Articles</a>
+                    <a href="https://citra-emu.org/index.xml">RSS 2.0</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Social</h1>
+                    <a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q">YouTube</a>
+                    <a href="https://www.facebook.com/citra.emu">Facebook</a>
+                    <a href="https://twitter.com/citraemu">Twitter</a>
+                    <a href="https://community.citra-emu.org/">Forums</a>
+                    <a href="/discord">Discord</a>
+                    <a href="/chat">IRC</a>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Get Involved</h1>
+                    <a href="https://github.com/citra-emu/citra">GitHub / Source</a>
+                    <a href="https://github.com/citra-emu/citra/issues">Issues</a>
+                    <a href="https://github.com/citra-emu/citra/pulls">Pull Requests</a>
+                </div>
+
+            </div>
+            <div id="footer-bottom">
+                <div id="footer-brand"></div>
+                <div id="footer-legal">Copyright © 2021 Citra Emulator Project</div>
+            </div>
+        </div>
+
+        <script src="https://citra-emu.org/js/script.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" type="text/css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			window.addEventListener("DOMContentLoaded", function() {
+			baguetteBox.run('.is-img-preview');
+			});
+		</script>
+
+        
+
+        
+    </body>
+
+</html>

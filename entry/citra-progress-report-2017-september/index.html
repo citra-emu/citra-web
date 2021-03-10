@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <meta name="theme-color" content="#FF8E03">
+        <meta property="og:title" content="Citra Progress Report - 2017 September &middot; Citra" />
+        <meta property="og:site_name" content="Citra" />
+        <meta property="og:url" content="https://citra-emu.org/entry/citra-progress-report-2017-september/" />
+            <meta property="og:description" content="Winter arrives once more, and like I mentioned in August&rsquo;s progress report, I am extremely excited for what&rsquo;s in store. In fact, many of the really big goodies I&rsquo;ve decided to seperate to their own articles, which should be coming up in the next few weeks.
+There&rsquo;s also been many changes this month that improve the speed of emulation across the board, on top of the usual improvements in accuracy and features." />
+<meta name="description" content="Winter arrives once more, and like I mentioned in August&rsquo;s progress report, I am extremely excited for what&rsquo;s in store. In fact, many of the really big goodies I&rsquo;ve decided to seperate to their own articles, which should be coming up in the next few weeks.
+There&rsquo;s also been many changes this month that improve the speed of emulation across the board, on top of the usual improvements in accuracy and features." />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://citra-emu.org/images/banners/citra-progress-report-2017-september.png" />
+<meta property="og:article:published_time" content="2017-11-09T09:46:00-04:00" />
+<meta property="og:article:tag" content="progress-report" />
+
+
+        <meta name="generator" content="Hugo 0.52" />
+
+        <link rel="icon" href="https://citra-emu.org/favicon.ico" />
+        <link rel="shortcut icon" href="https://citra-emu.org/favicon.ico" type="image/x-icon" />
+        <link rel="canonical" href="https://citra-emu.org/entry/citra-progress-report-2017-september/">
+
+        
+
+        <title>Citra Progress Report - 2017 September - Citra</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis" rel="stylesheet">
+        <link rel="stylesheet" href="https://citra-emu.org/css/style.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-73966905-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+        
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-wrapper navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">&nbsp;</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="index-1 first"><a href="/" title="Blog Posts">Blog</a></li>
+                <li class="index-2"><a href="/download/" title="Download Citra">Download</a></li>
+                <li class="index-3"><a href="/help/" title="Help">Help</a></li>
+                <li class="index-4"><a href="/wiki/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li class="index-5"><a href="/game/" title="Game Compatibility">Compatibility</a></li>
+                <li class="index-6"><a href="/wiki/home/" title="Wiki Homepage">Dev Wiki</a></li>
+
+                <li class="index-7 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false">
+                        Social <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/rules/" title="">Rules</a></li>
+                        <li class="index-2"><a href="https://community.citra-emu.org/" title="Forums">Community Forums</a></li>
+                        <li class="index-3 last"><a href="/discord/" title="Discord Channel">Discord Chat</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-8 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                aria-haspopup="true" aria-expanded="false">
+                        Media <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/screenshots/" title="Screenshots">Screenshots</a></li>
+                        <li class="index-2 last"><a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q"
+                                                    title="Youtube Channel">Videos</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-9 last"><a href="https://www.patreon.com/citraemu" title="Patreon">Patreon</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+        <div id="mainContainer" class="container" >
+            <div class="row">
+                
+            </div>
+
+            <div class="row row-fluid">
+                <div id="content" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right">
+                    
+  <a href="https://citra-emu.org/entry/citra-progress-report-2017-september/">
+  <div class="entry-embed-header">
+      <div class="entry-embed" style="background: url('https://citra-emu.org/images/banners/citra-progress-report-2017-september.png')">
+          <header>
+              <h1>Citra Progress Report - 2017 September</h1>
+          </header>
+      </div>
+
+      
+      <div class="entry-meta" style="position: absolute; top: 5px; right: 20px;">
+          November 09 2017
+      </div>
+
+      
+      <div class="entry-meta" style="position: absolute; top: 45px; right: 20px;">
+          progress-report
+      </div>
+      
+  </div>
+</a>
+
+
+  <div class="entry-content">
+    
+
+<p>Winter arrives once more, and like I mentioned in <a href="/entry/citra-progress-report-2017-august">August&rsquo;s progress report</a>,
+I am extremely excited for what&rsquo;s in store. In fact, many of the really big goodies
+I&rsquo;ve decided to seperate to their own articles, which should be coming up in the
+next few weeks.</p>
+
+<p>There&rsquo;s also been many changes this month that improve the speed of emulation across
+the board, on top of the usual improvements in accuracy and features. And because
+of that, I&rsquo;ve dubbed this month #Speedtember. Let&rsquo;s dive right in.</p>
+
+<div class="alert alert-info">
+  <p>Hello everyone! We&rsquo;re all terribly sorry for the delay in getting this progress
+report out the door, but our main technical writer <a href="https://github.com/anodium">anodium</a>,
+was just a bit busy surviving both Hurricane Irma and Maria. Although she&rsquo;s a
+trooper and claims it&rsquo;s not an excuse for the delay, we find that her personal
+safety is a tad more important. We&rsquo;re all glad that she&rsquo;s safe and sound, and in
+a state where she can keep pumping out quality articles for Citra!</p>
+
+</div>
+
+<h2 id="switchable-page-tables-https-github-com-citra-emu-citra-pull-2952-by-merrymage-https-github-com-merrymage"><a href="https://github.com/citra-emu/citra/pull/2952">Switchable Page Tables</a> by <a href="https://github.com/MerryMage">MerryMage</a></h2>
+
+<p>Citra has a component called <a href="https://github.com/MerryMage/dynarmic">dynarmic</a>,
+which recompiles ARM11 code to x86-64 code at run time, and then executes that
+generated code, rather than interpreting the ARM11 instructions directly.</p>
+
+<p>Because the 3DS has a 32 bit address bus, it can address 2^32 unique memory locations.
+And because the 3DS can address data down to a byte, it can address up to 2^32
+unique bytes, or about 4 gigabytes of memory. When considering that no 3DS has ever
+been released with more than 256 *mega*bytes of memory, this sounds absurd! And
+it is&hellip; unless you consider that a 3DS uses chunks of that huge address space to
+address peripherals, among other things. This is called memory-mapped input/output
+(MMIO), and is a great use of millions of addresses that would otherwise have
+been ignored, plus it also allows handling IO the exact same way memory is handled,
+so the design can be a bit simpler as it doesn&rsquo;t need special circuitry to handle IO.</p>
+
+<p>Herein lies our problem. Because that code is now being run on a PC, those MMIO
+devices don&rsquo;t actually exist anymore, so Citra needs to handle those reads and
+writes itself. There&rsquo;s a few ways to go about it, but the simplest and most na&iuml;ve
+is to replace every memory read or write with a function that checks if that address
+is mapped to memory or IO. Unfortunately, this is extremely slow, and we can&rsquo;t
+afford to have extremely slow address translation when games can access memory
+upwards of a few hundred thousand times per second.</p>
+
+<p>With this, <a href="https://github.com/MerryMage">MerryMage</a> has changed this behaviour so
+that rather than replacing a read/write with a function, it instead translates the
+address using a page table, and then tries to access that address directly. On the
+page table, all addresses that map to memory simply have a memory address written down.
+But on addresses that map to IO, it has address 0 written down. Trying to read or
+write to memory address 0 on x86 is illegal for every process except the
+operating system&hellip; and Citra tries to do it anyways!</p>
+
+<p>When an invalid memory address (or a memory address that that process doesn&rsquo;t have
+permission to access) is read from or written to, x86 CPUs throw a page fault exception.
+Citra takes advantage of this behaviour by also registering an exception handler
+for page faults. If a page fault is thrown, Citra knows the game tried to access IO,
+and thus recompiles the memory read/write to a direct call to Citra&rsquo;s IO functions.
+This makes the usual case (memory access) extremely fast, and the less usual case
+slow, but only the first time it happens. Subsequent IO accesses use the recompiled
+functions which are faster.</p>
+
+<p>This technique is called fastmem, and is not new at all. In fact, Dolphin uses
+it extensively in its JIT recompiler to speed up memory access as well. And thanks
+to <a href="https://github.com/MerryMage">MerryMage</a>&rsquo;s hard work, this same technique is
+now used extensively by Citra.</p>
+
+<h2 id="give-each-process-its-own-page-table-https-github-com-citra-emu-citra-pull-2842-by-subv-https-github-com-subv"><a href="https://github.com/citra-emu/citra/pull/2842">Give each process its own page table</a> by <a href="https://github.com/Subv">Subv</a></h2>
+
+<p>In order to support running multiple processes at the same time, like your computer,
+Citra implements virtual memory, in which each process has its own page table.
+The page table represents a translation from the process&rsquo; virtual addresses, to
+the 3DS&rsquo; physical (or &ldquo;real&rdquo;) addresses.</p>
+
+<p>Before this, because Citra did not support multiple page tables, it also didn&rsquo;t
+support running multiple processes at once, such as a game and the software keyboard
+applet. Now, thanks to <a href="https://github.com/Subv">Subv</a>, Citra has an important
+building block in place.</p>
+
+<h2 id="add-support-for-loading-application-updates-https-github-com-citra-emu-citra-pull-2927-by-shinyquagsire23-https-github-com-shinyquagsire23"><a href="https://github.com/citra-emu/citra/pull/2927">Add support for loading application updates</a> by <a href="https://github.com/shinyquagsire23">shinyquagsire23</a></h2>
+
+<p>Nintendo 3DS titles are contained within <code>*.app</code> files on the SD card or on the
+game cartridge, in the <a href="https://www.3dbrew.org/wiki/NCCH">NCCH container format</a>.
+This format is further divided into two formats, CXI and CFA, which stand for
+<strong>C</strong>TR e<strong>X</strong>ecutable <strong>I</strong>mage and <strong>C</strong>TR <strong>F</strong>ile <strong>A</strong>rchive, respectively.
+CXIs contain executable code, whereas CFAs cannot. CFAs usually accompany a CXI
+to provide other features such as the digital instruction manual, the Download Play
+child application, or in the case of game cartridges, system updates.</p>
+
+<p>Both types of NCCH start with a header, and then followed by either an ExeFS
+image, a RomFS image, or both. The entire structure of an NCCH header may be best
+explained by a diagram:</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2017-september/ncch.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Solid lines are required sections, dashed lines cannot be used in some cases, and dotted lines are optional sections.
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<p>Now, games and applications need updates from time to time, and 3DSes handle these
+by installing the update as a seperate title from the base game. From that point
+on, whenever the user tries to launch the game, instead of loading the
+extended header (or <a href="https://www.3dbrew.org/wiki/ExHeader">ExHeader</a> for short)
+and ExeFS image from the base game&rsquo;s NCCH, it replaces them with the update&rsquo;s
+ExHeader and ExeFS on launch. As for RomFS, the 3DS System Software will actually
+load both the base game&rsquo;s and the update&rsquo;s RomFS image, rather than replacing one
+with the other. Games are left to their own devices on how to handle these, and
+so the methods used per game can vary, though they usually just replace changed
+files, picking files from the base game RomFS if they haven&rsquo;t been modified.</p>
+
+<p>Citra, before this PR, had the code for loading games and reading NCCH files all
+mixed into one big piece that fit in with everything else. With this patch,
+<a href="https://github.com/shinyquagsire23">shinyquagsire23</a> has seperated the loader
+from the NCCH reader, allowing the loader to read multiple NCCHs at once. Additionally,
+whenever a game is loaded, the loader would also check if there is an update title
+installed on Citra&rsquo;s <a href="/wiki/user-directory/">virtual SD card</a>. If there is, it
+would replace the update ExHeader and ExeFS, and load the update RomFS as well.
+Just like a real console!</p>
+
+<p>Most games worked out of the box with updates, and because they wrote the code
+with accuracy in mind, this very same PR has also laid part of the foundation
+needed to handle other features such as DLC support or even using real 3DS SD cards!
+Though, do note that we don&rsquo;t have any estimates on either those or any other
+features, as no one is actively working on either.</p>
+
+<h2 id="implement-geometry-shader-https-github-com-citra-emu-citra-pull-2865-by-wwylele-https-github-com-wwylele"><a href="https://github.com/citra-emu/citra/pull/2865">Implement geometry shader</a> by <a href="https://github.com/wwylele">wwylele</a></h2>
+
+<p>The PICA200 GPU has a pipeline similar to <a href="https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview">OpenGL&rsquo;s pipeline</a>
+for rendering 3D objects into a 2D display. I won&rsquo;t go through them all here,
+only the optional geometry shader step. Just after the vertex shader step, if
+enabled, all the vertices are processed by a shader kernel (which is a small
+program that runs directly on a GPU), taking as many vertices as the kernel
+wants as input, and outputting as many vertices as the kernel wants.</p>
+
+<p>Because the kernel in the geometry shader is allowed as many inputs and outputs
+as it wants, it is significantly more powerful and flexible than the vertex shader,
+whose kernel is restricted to only one vertex at a time, both for input and output.
+But for that same reason, geometry shaders are much more complex to program, and
+so many games simply disable it. The games that do not disable it though, tend to
+use it very extensively, to the point of completely breaking graphics if it&rsquo;s not
+implemented.</p>
+
+<p>Multiple uses have been found in the wild for geometry shaders, including but absolutely
+not limited to:</p>
+
+<ul>
+<li><p>Taking one vertex as input, and outputting a rectangle of vertices which can
+be textured with a sprite. Pok&eacute;mon uses this extensively to render particles
+whenever a move is used. Monster Hunter takes it a step further and renders
+<em>all of its HUD and GUI</em> with this kernel.</p></li>
+
+<li><p>Taking a handful of vertices as input, and outputting even more vertices which
+are interpolations between the inputs, thus making the resulting mesh look smoother
+and less jagged when rendered.</p></li>
+</ul>
+
+<p>At first glance, geometry shaders looked like an easy problem, since they use the
+same instruction set and format as vertex shaders, so a lot of the same code could
+be reused. At <em>second</em> glance, it turned out that configuring inputs and outputs
+for geometry shaders is much more complex than it is for vertex shaders.</p>
+
+<p>There were actually three attempts to implement geometry shaders in Citra. The first
+was written by <a href="https://github.com/ds84182">ds84182</a> about two years ago, only to
+be abandoned due to not knowing how the configuration of them was done. The second
+attempt was written by <a href="https://github.com/JayFoxRox">JayFoxRox</a>, but was also
+abandoned for the same reason.</p>
+
+<p>But, after extensive research on geometry shaders was made by <a href="https://github.com/fincs">fincs</a>,
+the API was implemented in <a href="https://github.com/smealum/ctrulib">ctrulib</a> and
+<a href="https://github.com/fincs/citro3d">citro3d</a>, and examples were written to demonstrate
+how to use it. Now that the community knew exactly how they worked, <a href="https://github.com/wwylele">wwylele</a>
+picked up where <a href="https://github.com/JayFoxRox">JayFoxRox</a> left off, cleaned up
+the code he wrote, and added the missing pieces.</p>
+
+<p>After almost three years, and three different attempts to make it work, Citra now
+has a full, complete, and correct implementation of geometry shaders!</p>
+
+<h2 id="implement-custom-clip-plane-https-github-com-citra-emu-citra-pull-2900-by-wwylele-https-github-com-wwylele"><a href="https://github.com/citra-emu/citra/pull/2900">Implement custom clip plane</a> by <a href="https://github.com/wwylele">wwylele</a></h2>
+
+<p>After the geometry shader (or the vertex shader, if it wasn&rsquo;t enabled), the vertices
+are &ldquo;assembled&rdquo; into a collection of triangles. After <em>that</em>, to make rendering
+more efficient, the triangles are then compared to 6 planes that make up the cube
+in which objects are actually visible by the camera. Any triangles outside of that
+cube are deleted, and any triangles that are partially inside the cube are split
+by the sides of the cube, and the resulting triangle outside of the cube is also
+deleted.</p>
+
+<p>But the 3DS allows games to add a 7th plane whose position is fully customizable.
+Although no games are known to use this feature right now, it is indeed a feature
+of the 3DS&rsquo; GPU. Because implementing it was fairly straightforward,
+<a href="https://github.com/wwylele">wwylele</a> decided to just go ahead and implement it,
+in case someone decided to use it in the future.</p>
+
+<h2 id="optimized-morton-https-github-com-citra-emu-citra-pull-2951-by-huwpascoe-https-github-com-huwpascoe"><a href="https://github.com/citra-emu/citra/pull/2951">Optimized Morton</a> by <a href="https://github.com/huwpascoe">huwpascoe</a></h2>
+
+<p>Morton code is a function that interleaves multi-dimensional numbers into a one-dimensional
+number. Although it may seem like a very esoteric function, it&rsquo;s actually extremely
+useful in fields like linear algebra, databases, and what the 3DS uses it for:
+texture mapping.</p>
+
+<p>Computers have an intermediate chunk of memory between RAM and the CPU called a
+cache. Caches are seperated into lines, each of which can hold one data item. GPUs
+also have a cache, also seperated into lines. Because they are seperated like this,
+if a texture is loaded into the cache, it would have to span multiple cache lines,
+or even not fit into the cache completely, thus making transformations on it slow,
+as it would have to load and store pieces of it from RAM multiple times.</p>
+
+<p>To avoid this, GPUs can Morton encode textures so that two-dimensional manipulations
+are more likely to only need data already in the cache. Textures that have been
+Morton coded are usually referred to as swizzled or twiddled textures.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2017-september/morton-koopa.png#floatright"  />
+    
+    
+    <figcaption>
+        <h4>
+            Not this Morton!
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<p>In the function that Morton is implemented, there was a lookup table on Morton
+codes in the comments, and <a href="https://github.com/huwpascoe">huwpascoe</a> thought it&rsquo;d
+be best if we just use the lookup table directly. It worked just as well as before,
+but required less than a third of the math. Because this function is called so
+often during emulation (a rough estimate from them is about &ldquo;millions of times a
+second&rdquo;), this change although small, made very big changes in CPU performance.</p>
+
+<h2 id="add-draw-for-immediate-and-batch-modes-https-github-com-citra-emu-citra-pull-2921-by-jroweboy-https-github-com-jroweboy"><a href="https://github.com/citra-emu/citra/pull/2921">Add draw for immediate and batch modes</a> by <a href="https://github.com/jroweboy">jroweboy</a></h2>
+
+<p>The 3DS&rsquo; GPU has two main modes for drawing to the screen, immediate and batch
+mode. In the former, the GPU takes and immediately draws every vertex as it is
+handed to it. In the latter, the GPU accepts vertices given to it, but doesn&rsquo;t
+actually bother drawing them until absolutely necessary, saving a bit of time
+from not having to go through the drawing procedure for every individual vertex.
+Although most games don&rsquo;t use immediate mode at all due to it being extremely
+slow, a handful do use it for a handful of visual effects, like New Super Mario
+Bros. 2.</p>
+
+<p>About a year ago when the GPU code on Citra was rewritten, a handful of calls to
+the drawing routine were removed, as it was believed they were unnecessary. Turns
+out, one of the calls was actually needed for some effects in games, as it handled
+immediate mode drawing. This wasn&rsquo;t noticed for a very long time, as most games
+appeared to carry on with no side-effects at all from the rewrite, but was eventually
+found after some research courtesy of <a href="https://github.com/ds84182">ds84182</a>.</p>
+
+<h2 id="interpolate-audio-samples-on-a-frame-by-frame-basis-https-github-com-citra-emu-citra-pull-2858-by-merrymage-https-github-com-merrymage"><a href="https://github.com/citra-emu/citra/pull/2858">Interpolate audio samples on a frame-by-frame basis</a> by <a href="https://github.com/MerryMage">MerryMage</a></h2>
+
+<p>When a 3DS game needs some sort of audio processing, they can access the 3DS&rsquo; DSP,
+or <strong>D</strong>igital <strong>S</strong>ound <strong>P</strong>rocessor. It&rsquo;s another processor, alongside the ARM9
+and ARM11, that is given a firmware to run, which in turn is given a bunch of audio
+samples and parameters by the game. The DSP then plays back the buffer in chunks
+of about 5 milliseconds. Each one of these chunks is called an audio frame.</p>
+
+<p>As of today, we don&rsquo;t know how the DSP exactly works, and we don&rsquo;t know how any
+of the firmwares exactly work. (Did I forget to mention earlier there&rsquo;s multiple
+versions of the firmware?) But we do know how to use it, and from there we can
+reimplement its behaviour directly in Citra. Which is exactly what <a href="https://github.com/MerryMage">MerryMage</a>
+did back in June of 2016, which in turn brought <a href="/entry/hle-audio-comes-to-citra/">audio support for the first time</a>
+in Citra.</p>
+
+<p>This approach, although having the advantages of being easier to implement, easier
+to understand in code, and has a higher potential of being faster, it has the
+disadvantage that accuracy suffers significantly, especially when shortcuts are
+taken for the sake of speed. One of these shortcuts was in the audio interpolation,
+which is a way of inferring more audio samples from relatively very few existing
+samples.</p>
+
+<p>On a real 3DS, games are allowed to interpolate different audio frames with
+different functions, even when in they&rsquo;re in the same buffer. On the other hand,
+Citra interpolated the entire buffer with one function as soon as it was loaded.
+This led to various effects and music in games to sound strange or inaccurate in
+some way.</p>
+
+<p>One example of this is Deku Link&rsquo;s footsteps in <em>The Legend of Zelda: Majora&rsquo;s Mask 3D</em>.</p>
+
+<p>Here&rsquo;s the output of a real 3DS console, for reference:</p>
+
+<audio preload="auto" controls>
+    <source src="/images/entry/citra-progress-report-2017-september/deku-hardware.ogg" type="audio/ogg">
+    Your browser doesn't support Ogg Vorbis audio. :(
+    <a href="/images/entry/citra-progress-report-2017-september/deku-hardware.ogg">Download the audio instead</a>
+</audio>
+
+
+<p>And here&rsquo;s the output of Citra, before this was fixed:</p>
+
+<audio preload="auto" controls>
+    <source src="/images/entry/citra-progress-report-2017-september/deku-pre2858.ogg" type="audio/ogg">
+    Your browser doesn't support Ogg Vorbis audio. :(
+    <a href="/images/entry/citra-progress-report-2017-september/deku-pre2858.ogg">Download the audio instead</a>
+</audio>
+
+
+<p>Now that it&rsquo;s been fixed, his footsteps sound a lot better:</p>
+
+<audio preload="auto" controls>
+    <source src="/images/entry/citra-progress-report-2017-september/deku-post2858.ogg" type="audio/ogg">
+    Your browser doesn't support Ogg Vorbis audio. :(
+    <a href="/images/entry/citra-progress-report-2017-september/deku-post2858.ogg">Download the audio instead</a>
+</audio>
+
+
+<p>Audio emulation in Citra is still somewhat inaccurate for now, though
+<a href="https://github.com/MerryMage">MerryMage</a> is gradually working on fixing and
+improving it. Perhaps some day we may even be able to emulate the DSP firmware
+directly, which will be much more accurate than merely emulating its behaviour.</p>
+
+<h2 id="use-deque-instead-of-vector-for-the-audio-buffer-https-github-com-citra-emu-citra-pull-2958-by-subv-https-github-com-subv"><a href="https://github.com/citra-emu/citra/pull/2958">Use deque instead of vector for the audio buffer</a> by <a href="https://github.com/Subv">Subv</a></h2>
+
+<p>Whenever the DSP consumes some frames from the audio buffer, Citra deletes them
+from it. This normally wouldn&rsquo;t pose any problems, but because the buffer was
+being stored as a vector, this led to some uneccessary operations. Namely, the
+C++ standard requires that all the data of a standard vector be in one contiguous
+block of memory. Because deleting frames from the buffer breaks this rule, Citra
+would automatically (1) allocate a new block of memory, (2) copy the entire buffer
+into that new block of memory, and (3) deallocate the old block of memory, thus
+deleting the old buffer.</p>
+
+<p>These steps are huge waste of time, as Citra doesn&rsquo;t need to guarantee that the
+audio buffer is in one contiguous block. So <a href="https://github.com/Subv">Subv</a> changed
+the type of the buffer from a vector to a deque, which is essentially a queue that
+you can remove data from both the beginning and end of it. Because the contiguity
+requirement doesn&rsquo;t exist in deques, Citra doesn&rsquo;t do the uneccessary copying,
+leading to huge speed boosts in audio bound titles like Super Mario 3D Land, and
+even the Home Menu. Now, both run significantly faster!</p>
+
+<h2 id="add-mingw64-compile-support-to-appveyor-https-github-com-citra-emu-citra-pull-2912-by-jroweboy-https-github-com-jroweboy"><a href="https://github.com/citra-emu/citra/pull/2912">Add mingw64 compile support to appveyor</a> by <a href="https://github.com/jroweboy">jroweboy</a></h2>
+
+<p>When a program is written in a high-level programming language, such as C++, Rust,
+or Go, before the program can be run on a machine, it must be translated or &ldquo;compiled&rdquo;
+to machine code. Although it is possible to do this translation by hand, it is
+usually extremely difficult to do so and very time consuming. So instead, we have
+a program called a compiler than can automatically do this translation for us.</p>
+
+<p>This is also why a program compiled for an ARM machine cannot be run directly on
+an x86 machine, even when the source can work on either machine without issues.
+Instead this program must be translated, interpreted, or recompiled from source
+to x86. (In fact, this translation is exactly what <a href="https://github.com/MerryMage/dynarmic">dynarmic</a>
+does to run code from a 3DS.)</p>
+
+<p>Every statement in a program must have an exact, unambiguous definition of what
+it does (its semantics). But, in the same way that a statement that means one
+thing can be written many different ways, and different compilers can translate the
+same statement many different ways.</p>
+
+<p>On Windows, there&rsquo;s two popular C++ compilers available as of today: MSVC++, which
+is the compiler Microsoft has written for Windows, and MINGW GCC, which is actually
+a port of the Linux <code>gcc</code> compiler to Windows. For better or worse, MINGW GCC
+optimizes Citra a little better than MSVC++, and so <a href="https://github.com/jroweboy">jroweboy</a>
+has changed the Citra AppVeyor build script to add support for MINGW GCC as well
+as MSVC++. Do note that the MSVC++ builds are only available through GitHub, since
+they&rsquo;re only useful for debugging, and MINGW GCC builds are faster in most, if
+not all, cases, which is why the installer will only install those. This change
+also has closed the gap in performance the new Nightly builds had compared to
+the old Bleeding Edge builds.</p>
+
+<h2 id="load-different-shared-font-depending-on-the-region-https-github-com-citra-emu-citra-pull-2915-by-wwylele-https-github-com-wwylele"><a href="https://github.com/citra-emu/citra/pull/2915">Load different shared font depending on the region</a> by <a href="https://github.com/wwylele">wwylele</a></h2>
+
+<p>Remember that last month <a href="https://github.com/wwylele">wwylele</a> changed Citra so
+that instead of loading the shared font from a seperate file, it would
+<a href="https://citra-emu.org/entry/citra-progress-report-2017-august/">load it from the system archive</a>?
+This builds on top of that behaviour. You see, a 3DS doesn&rsquo;t have a shared font,
+it has <em>four</em>. One contains glyphs for Latin script (for English, Spanish, Italian,
+French, etc.) and Japanese scripts, another contains glyphs for Traditional Chinese,
+the third font contains those for Simplified Chinese, and the last font contains
+the ones for Korean.</p>
+
+<p>Before this PR, Citra would simply load the first shared font regardless of game
+or region. This made non-Latin or non-Japanese script games display completely
+incorrect characters at best, or crash at worst. Now Citra will load the appropriate
+shared font from the system archive depending on the region selected, just like
+a real console! Though, this will not work on machines that only have the
+<code>shared_font.bin</code> file, because it only contains the shared font for the region
+of the console it was dumped from. (e.g.: If you dump a Korean console, it&rsquo;ll
+only contain the Korean font.) If you want to use this feature, you must dump
+the system archive using the latest version of <a href="https://github.com/citra-emu/3dsutils"><code>3dsutils</code></a>.</p>
+
+<h2 id="et-al">Et. al.</h2>
+
+<p>And of course, big thanks to <a href="https://github.com/citra-emu/citra/graphs/contributors?from=2017-08-31&amp;to=2017-09-30&amp;type=c">everyone who&rsquo;s contributed</a>
+this September, because Citra as a whole would not be the same without everyone
+involved having placed their pieces, big or small.</p>
+
+  </div>
+
+  
+  
+  
+
+  <div class="entry-written-by">
+    
+      <a href="https://community.citra-emu.org/users/anodium">
+          <img src="https://community.citra-emu.org/user_avatar/community.citra-emu.org/anodium/120/485_1.png" class="avatar">
+      </a>
+    
+    
+    
+
+    
+      <p>Written by <a href="https://community.citra-emu.org/users/anodium">anodium</a> on Thursday November 09, 2017</p>
+    
+  </div>
+
+  
+    <div class="entry-comments">
+      <div id="discourse-comments"></div>
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://community.citra-emu.org/', topicId: "5005" };
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+    </div>
+  
+
+
+                </div>
+                <div id="sidebar" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-left">
+                    <div id="advertisement" class = "ad">
+  <h3>Advertisement</h3>
+  <ins class="ad adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4126545610079023"
+       data-ad-slot="4223809695"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="tagcloud hidden-sm hidden-xs">
+  <h3>News Tag Cloud</h3>
+  <ul>
+    
+      <li><a class="taxonomy-citra-release" href="/tags/citra-release">citra-release</a></li>
+    
+      <li><a class="taxonomy-feature-update" href="/tags/feature-update">feature-update</a></li>
+    
+      <li><a class="taxonomy-progress-report" href="/tags/progress-report">progress-report</a></li>
+    
+  </ul>
+</div>
+
+<div id="twitter" class="hidden-sm hidden-xs">
+  <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/citraemu?ref_src=twsrc%5Etfw">Tweet Feed</a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="footer" class="container">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <h1>Citra</h1>
+                    <a href="/">Blog</a>
+                    <a href="/download/">Downloads</a>
+                    <a href="/screenshots/">Screenshots</a>
+                    <a href="https://www.patreon.com/citraemu">Patreon</a>
+                    <a href="/donate/">Donate</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Documentation</h1>
+                    <a href="/help/">Help Documents</a>
+                    <a href="/game/">Compatibility</a>
+                    <a href="/wiki/home/">Dev Wiki</a>
+                    <a href="/wiki/faq/">FAQ</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Blog</h1>
+                    <a href="/">News &amp; Articles</a>
+                    <a href="https://citra-emu.org/index.xml">RSS 2.0</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Social</h1>
+                    <a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q">YouTube</a>
+                    <a href="https://www.facebook.com/citra.emu">Facebook</a>
+                    <a href="https://twitter.com/citraemu">Twitter</a>
+                    <a href="https://community.citra-emu.org/">Forums</a>
+                    <a href="/discord">Discord</a>
+                    <a href="/chat">IRC</a>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Get Involved</h1>
+                    <a href="https://github.com/citra-emu/citra">GitHub / Source</a>
+                    <a href="https://github.com/citra-emu/citra/issues">Issues</a>
+                    <a href="https://github.com/citra-emu/citra/pulls">Pull Requests</a>
+                </div>
+
+            </div>
+            <div id="footer-bottom">
+                <div id="footer-brand"></div>
+                <div id="footer-legal">Copyright © 2021 Citra Emulator Project</div>
+            </div>
+        </div>
+
+        <script src="https://citra-emu.org/js/script.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" type="text/css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			window.addEventListener("DOMContentLoaded", function() {
+			baguetteBox.run('.is-img-preview');
+			});
+		</script>
+
+        
+
+        
+    </body>
+
+</html>

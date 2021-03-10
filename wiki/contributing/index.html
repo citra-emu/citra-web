@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <meta name="theme-color" content="#FF8E03">
+        <meta property="og:title" content="Contributing &middot; Citra" />
+        <meta property="og:site_name" content="Citra" />
+        <meta property="og:url" content="https://citra-emu.org/wiki/contributing/" />
+            <meta property="og:description" content="Reporting Issues The issue tracker is not a support forum. Unless you can provide precise technical information regarding an issue, you should not post in it. If you need support, first read the FAQ and then either visit our IRC or Discord channel, our forum or ask in a general emulation forum such as /r/emulation. If you post support questions, generic messages to the developers or vague reports without technical details, they will be closed and locked." />
+<meta name="description" content="Reporting Issues The issue tracker is not a support forum. Unless you can provide precise technical information regarding an issue, you should not post in it. If you need support, first read the FAQ and then either visit our IRC or Discord channel, our forum or ask in a general emulation forum such as /r/emulation. If you post support questions, generic messages to the developers or vague reports without technical details, they will be closed and locked." />
+<meta property="og:type" content="website" />
+
+
+        <meta name="generator" content="Hugo 0.52" />
+
+        <link rel="icon" href="https://citra-emu.org/favicon.ico" />
+        <link rel="shortcut icon" href="https://citra-emu.org/favicon.ico" type="image/x-icon" />
+        <link rel="canonical" href="https://citra-emu.org/wiki/contributing/">
+
+        
+
+        <title>Contributing - Citra</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis" rel="stylesheet">
+        <link rel="stylesheet" href="https://citra-emu.org/css/style.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-73966905-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+        
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-wrapper navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">&nbsp;</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="index-1 first"><a href="/" title="Blog Posts">Blog</a></li>
+                <li class="index-2"><a href="/download/" title="Download Citra">Download</a></li>
+                <li class="index-3"><a href="/help/" title="Help">Help</a></li>
+                <li class="index-4"><a href="/wiki/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li class="index-5"><a href="/game/" title="Game Compatibility">Compatibility</a></li>
+                <li class="index-6"><a href="/wiki/home/" title="Wiki Homepage">Dev Wiki</a></li>
+
+                <li class="index-7 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false">
+                        Social <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/rules/" title="">Rules</a></li>
+                        <li class="index-2"><a href="https://community.citra-emu.org/" title="Forums">Community Forums</a></li>
+                        <li class="index-3 last"><a href="/discord/" title="Discord Channel">Discord Chat</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-8 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                aria-haspopup="true" aria-expanded="false">
+                        Media <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/screenshots/" title="Screenshots">Screenshots</a></li>
+                        <li class="index-2 last"><a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q"
+                                                    title="Youtube Channel">Videos</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-9 last"><a href="https://www.patreon.com/citraemu" title="Patreon">Patreon</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+        <div id="mainContainer" class="container" >
+            <div class="row">
+                
+            </div>
+
+            <div class="row row-fluid">
+                <div id="content" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right">
+                    
+  <div class="alert alert-warning">
+    <div class="row">
+      <div class="col-md-2">
+        <strong>Read First!</strong>
+      </div>
+      <div class="col-md-10">
+        <p>The below wiki article is based on user submitted content.<br>
+        Please verify <strong>all</strong> hyperlinks and terminal commands below!</p>
+        See a mistake? Want to contribute? <a href="https://github.com/citra-emu/citra/wiki/contributing/_edit/">Edit this article on Github</a>
+      </div>
+    </div>
+  </div>
+
+	<h1>Contributing</h1>
+	
+
+<h1 id="reporting-issues">Reporting Issues</h1>
+
+<p><strong>The issue tracker is not a support forum.</strong> Unless you can provide precise <em>technical information</em> regarding an issue, you <em>should not post in it</em>. If you need support, first read the <a href="https://github.com/citra-emu/citra/wiki/FAQ">FAQ</a> and then either visit our IRC or <a href="https://citra-emu.org/discord/">Discord</a> channel, <a href="https://community.citra-emu.org">our forum</a> or ask in a general emulation forum such as <a href="https://www.reddit.com/r/emulation/">/r/emulation</a>. If you post support questions, generic messages to the developers or vague reports without technical details, they will be closed and locked.</p>
+
+<p>If you believe you have a valid issue report, please attach the log file (See <a href="https://community.citra-emu.org/t/how-to-upload-the-log-file/296">this</a> guide for getting the log file), as well as your hardware and software information if applicable.</p>
+
+<h1 id="contributing">Contributing</h1>
+
+<p>Citra is a brand new project, so we have a great opportunity to keep things clean and well organized early on. As such, coding style is very important when making commits. We run clang-format on our CI to check the code. Please use it to format your code when contributing. However, it doesn&rsquo;t cover all the rules below. Some of them aren&rsquo;t very strict rules since we want to be flexible and we understand that under certain circumstances some of them can be counterproductive. Just try to follow as many of them as possible.</p>
+
+<h1 id="using-clang-format-version-6-0">Using clang format (version 6.0)</h1>
+
+<p>When generating the native build script for your toolset, cmake will try to find the correct version of clang format (or will download it on windows). Before running cmake, please install clang format version 6.0 for your platform as follows:</p>
+
+<ul>
+<li>Windows: do nothing; cmake will download a pre built binary for MSVC and MINGW. MSVC users can additionally install a clang format Visual Studio extension to add features like format on save.</li>
+<li>macOS: run <code>brew install clang-format</code>.</li>
+<li>Linux: use your package manager to get an appropriate binary.</li>
+</ul>
+
+<p>If clang format is found, then cmake will add a custom build target that can be run at any time to run clang format against <em>all</em> source files and update the formatting in them. This should be used before making a pull request so that the reviewers can spend more time reviewing the code instead of having to worry about minor style violations. On MSVC, you can run clang format by building the clang-format project in the solution. On macOS, you can either use the Makefile target <code>make clang-format</code> or by building the clang-format target in XCode. For Makefile builds, you can use the clang-format target with <code>make clang-format</code>.</p>
+
+<h3 id="general-rules">General Rules</h3>
+
+<ul>
+<li>A lot of code was taken from other projects (e.g. Dolphin, PPSSPP, Gekko, SkyEye). In general, when editing other people&rsquo;s code, follow the style of the module you&rsquo;re in (or better yet, fix the style if it drastically differs from our guide).</li>
+<li>Line width is typically 100 characters. Please do not use 80-characters.</li>
+<li>Don&rsquo;t ever introduce new external dependencies into Core</li>
+<li>Don&rsquo;t use any platform specific code in Core</li>
+<li>Use namespaces often</li>
+<li>Avoid the use of C-style casts and instead prefer C++-style <code>static_cast</code> and <code>reinterpret_cast</code>. Try to avoid using <code>dynamic_cast</code>. Never use <code>const_cast</code>.</li>
+</ul>
+
+<h3 id="naming-rules">Naming Rules</h3>
+
+<ul>
+<li>Functions: <code>PascalCase</code></li>
+<li>Variables: <code>lower_case_underscored</code>. Prefix with <code>g_</code> if global.</li>
+<li>Classes: <code>PascalCase</code></li>
+<li>Files and Directories: <code>lower_case_underscored</code></li>
+<li>Namespaces: <code>PascalCase</code>, <code>_</code> may also be used for clarity (e.g. <code>ARM_InitCore</code>)</li>
+</ul>
+
+<h3 id="indentation-whitespace-style">Indentation/Whitespace Style</h3>
+
+<p>Follow the indentation/whitespace style shown below. Do not use tabs, use 4-spaces instead.</p>
+
+<h3 id="comments">Comments</h3>
+
+<ul>
+<li>For regular comments, use C++ style (<code>//</code>) comments, even for multi-line ones.</li>
+<li>For doc-comments (Doxygen comments), use <code>///</code> if it&rsquo;s a single line, else use the <code>/**</code> <code>*/</code> style featured in the example. Start the text on the second line, not the first containing <code>/**</code>.</li>
+<li>For items that are both defined and declared in two separate files, put the doc-comment only next to the associated declaration. (In a header file, usually.) Otherwise, put it next to the implementation. Never duplicate doc-comments in both places.</li>
+</ul>
+
+<pre><code class="language-cpp">// Includes should be sorted lexicographically
+// STD includes first, then, library includes, and finally citra includes
+// No blank line between #includes (unless conditional #include presents)
+#include 
+#include 
+#include 
+#include &quot;common/math_util.h&quot;
+#include &quot;common/vector_math.h&quot;
+#include &quot;video_core/pica.h&quot;
+#include &quot;video_core/video_core.h&quot;
+
+namespace Example {
+
+// Namespace contents are not indented
+
+// Declare globals at the top
+int g_foo{};            // {} can be used to initialize types as 0, false, or nullptr
+char* g_some_pointer{}; // Pointer * and reference &amp;amp; stick to the type name, and make sure to
+                        // initialize as nullptr!
+
+/// A colorful enum.
+enum SomeEnum {
+    ColorRed,   ///&amp;lt; The color of fire.
+    ColorGreen, ///&amp;lt; The color of grass.
+    ColorBlue,  ///&amp;lt; Not actually the color of water.
+};
+
+/**
+ * Very important struct that does a lot of stuff.
+ * Note that the asterisks are indented by one space to align to the first line.
+ */
+struct Position {
+    int x{}, y{}; // Always intitialize member variables!
+};
+
+// Use &quot;typename&quot; rather than &quot;class&quot; here
+template 
+void FooBar() {
+    const std::string some_string{&quot;prefer uniform initialization&quot;};
+
+    int some_array[]{
+        5,
+        25,
+        7,
+        42,
+    };
+
+    if (note == the_space_after_the_if) {
+        CallAfunction();
+    } else {
+        // Use a space after the // when commenting
+    }
+
+    // Place a single space after the for loop semicolons, prefer pre-increment
+    for (int i{}; i != 25; ++i) {
+        // This is how we write loops
+    }
+
+    DoStuff(this, function, call, takes, many, many, arguments, and_becomes_very_very_long, so,
+            break, it, like, this);
+
+    if (this ||
+        condition_is_also_very_very_long &amp;amp;&amp;amp; and_takes_up_multiple &amp;amp;&amp;amp; lines &amp;amp;&amp;amp; like &amp;amp;&amp;amp; this ||
+        everything || alright || then) {
+
+        // Leave a blank space before the if block body if the condition was continued across
+        // several lines.
+    }
+
+    switch (var) {
+    // No indentation for case label
+    case 1: {
+        int case_var{var + 3};
+        DoSomething(case_var);
+        break;
+    }
+    case 3:
+        DoSomething(var);
+        return;
+
+    default:
+        // Yes, even break for the last case
+        break;
+    }
+
+    std::vector you_can_declare, a_few, variables, like_this;
+}
+
+} // namespace Example
+</code></pre>
+
+
+                </div>
+                <div id="sidebar" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-left">
+                    <div id="advertisement" class = "ad">
+  <h3>Advertisement</h3>
+  <ins class="ad adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4126545610079023"
+       data-ad-slot="4223809695"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="tagcloud hidden-sm hidden-xs">
+  <h3>News Tag Cloud</h3>
+  <ul>
+    
+      <li><a class="taxonomy-citra-release" href="/tags/citra-release">citra-release</a></li>
+    
+      <li><a class="taxonomy-feature-update" href="/tags/feature-update">feature-update</a></li>
+    
+      <li><a class="taxonomy-progress-report" href="/tags/progress-report">progress-report</a></li>
+    
+  </ul>
+</div>
+
+<div id="twitter" class="hidden-sm hidden-xs">
+  <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/citraemu?ref_src=twsrc%5Etfw">Tweet Feed</a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="footer" class="container">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <h1>Citra</h1>
+                    <a href="/">Blog</a>
+                    <a href="/download/">Downloads</a>
+                    <a href="/screenshots/">Screenshots</a>
+                    <a href="https://www.patreon.com/citraemu">Patreon</a>
+                    <a href="/donate/">Donate</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Documentation</h1>
+                    <a href="/help/">Help Documents</a>
+                    <a href="/game/">Compatibility</a>
+                    <a href="/wiki/home/">Dev Wiki</a>
+                    <a href="/wiki/faq/">FAQ</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Blog</h1>
+                    <a href="/">News &amp; Articles</a>
+                    <a href="https://citra-emu.org/index.xml">RSS 2.0</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Social</h1>
+                    <a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q">YouTube</a>
+                    <a href="https://www.facebook.com/citra.emu">Facebook</a>
+                    <a href="https://twitter.com/citraemu">Twitter</a>
+                    <a href="https://community.citra-emu.org/">Forums</a>
+                    <a href="/discord">Discord</a>
+                    <a href="/chat">IRC</a>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Get Involved</h1>
+                    <a href="https://github.com/citra-emu/citra">GitHub / Source</a>
+                    <a href="https://github.com/citra-emu/citra/issues">Issues</a>
+                    <a href="https://github.com/citra-emu/citra/pulls">Pull Requests</a>
+                </div>
+
+            </div>
+            <div id="footer-bottom">
+                <div id="footer-brand"></div>
+                <div id="footer-legal">Copyright © 2021 Citra Emulator Project</div>
+            </div>
+        </div>
+
+        <script src="https://citra-emu.org/js/script.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" type="text/css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			window.addEventListener("DOMContentLoaded", function() {
+			baguetteBox.run('.is-img-preview');
+			});
+		</script>
+
+        
+
+        
+    </body>
+
+</html>

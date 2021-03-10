@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <meta name="theme-color" content="#FF8E03">
+        <meta property="og:title" content="Citra Progress Report - 2015 P2 &middot; Citra" />
+        <meta property="og:site_name" content="Citra" />
+        <meta property="og:url" content="https://citra-emu.org/entry/citra-progress-report-2015-p2/" />
+            <meta property="og:description" content="This month we bring you the second installment of our two-part progress report on Citra in 2015! With this part, we discuss the evolution from Citra being able to barely run a few commercial games at a few frames-per-second, to where it is in 2016: Running many retail games at reasonable speeds, some of which are fully playable with near flawless graphics! We discuss Citra&rsquo;s new &ldquo;dyncom&rdquo; CPU core, the OpenGL renderer, per-pixel lighting, and various bug fixes." />
+<meta name="description" content="This month we bring you the second installment of our two-part progress report on Citra in 2015! With this part, we discuss the evolution from Citra being able to barely run a few commercial games at a few frames-per-second, to where it is in 2016: Running many retail games at reasonable speeds, some of which are fully playable with near flawless graphics! We discuss Citra&rsquo;s new &ldquo;dyncom&rdquo; CPU core, the OpenGL renderer, per-pixel lighting, and various bug fixes." />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://citra-emu.org/images/banners/citra-progress-report-2015-p2.png" />
+<meta property="og:article:published_time" content="2016-03-09T15:30:00-05:00" />
+<meta property="og:article:tag" content="progress-report" />
+
+
+        <meta name="generator" content="Hugo 0.52" />
+
+        <link rel="icon" href="https://citra-emu.org/favicon.ico" />
+        <link rel="shortcut icon" href="https://citra-emu.org/favicon.ico" type="image/x-icon" />
+        <link rel="canonical" href="https://citra-emu.org/entry/citra-progress-report-2015-p2/">
+
+        
+
+        <title>Citra Progress Report - 2015 P2 - Citra</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis" rel="stylesheet">
+        <link rel="stylesheet" href="https://citra-emu.org/css/style.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-73966905-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+        
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-wrapper navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">&nbsp;</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="index-1 first"><a href="/" title="Blog Posts">Blog</a></li>
+                <li class="index-2"><a href="/download/" title="Download Citra">Download</a></li>
+                <li class="index-3"><a href="/help/" title="Help">Help</a></li>
+                <li class="index-4"><a href="/wiki/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li class="index-5"><a href="/game/" title="Game Compatibility">Compatibility</a></li>
+                <li class="index-6"><a href="/wiki/home/" title="Wiki Homepage">Dev Wiki</a></li>
+
+                <li class="index-7 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false">
+                        Social <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/rules/" title="">Rules</a></li>
+                        <li class="index-2"><a href="https://community.citra-emu.org/" title="Forums">Community Forums</a></li>
+                        <li class="index-3 last"><a href="/discord/" title="Discord Channel">Discord Chat</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-8 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                aria-haspopup="true" aria-expanded="false">
+                        Media <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/screenshots/" title="Screenshots">Screenshots</a></li>
+                        <li class="index-2 last"><a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q"
+                                                    title="Youtube Channel">Videos</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-9 last"><a href="https://www.patreon.com/citraemu" title="Patreon">Patreon</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+        <div id="mainContainer" class="container" >
+            <div class="row">
+                
+            </div>
+
+            <div class="row row-fluid">
+                <div id="content" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right">
+                    
+  <a href="https://citra-emu.org/entry/citra-progress-report-2015-p2/">
+  <div class="entry-embed-header">
+      <div class="entry-embed" style="background: url('https://citra-emu.org/images/banners/citra-progress-report-2015-p2.png')">
+          <header>
+              <h1>Citra Progress Report - 2015 P2</h1>
+          </header>
+      </div>
+
+      
+      <div class="entry-meta" style="position: absolute; top: 5px; right: 20px;">
+          March 09 2016
+      </div>
+
+      
+      <div class="entry-meta" style="position: absolute; top: 45px; right: 20px;">
+          progress-report
+      </div>
+      
+  </div>
+</a>
+
+
+  <div class="entry-content">
+    
+
+<p>This month we bring you the second installment of our two-part progress report on Citra in 2015! With this part, we
+ discuss the evolution from Citra being able to barely run a few commercial games at a few frames-per-second, to where
+ it is in 2016: Running many retail games at reasonable speeds, some of which are fully playable with near flawless
+ graphics! We discuss Citra&rsquo;s new &ldquo;dyncom&rdquo; CPU core, the OpenGL renderer, per-pixel lighting, and various bug fixes.
+ Lastly, we wrap up with an outlook for 2016, and a special thanks to everyone who has helped make Citra what it is
+ today!</p>
+
+<h2 id="spring-2015-a-new-cpu-renderer-and-more">Spring 2015: A New CPU, Renderer and More</h2>
+
+<p>The arms race to get games booting ran into a wall. Often, testing games and getting to crash points would be incredibly
+ painful because of how slow the emulator ran. Instead of measuring frames-per-second, testers often referred to
+ seconds-per-frame. Donkey Kong Country Returns 3D would sometimes require three realtime seconds to render a single
+ in-game frame in the software renderer! It took over 90 minutes to capture all of the footage for a three minute video
+ of Super Monkey Ball 3D!</p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/t0TGSeQe1wE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<p>Within the next few months, <a href="https://github.com/bunnei">bunnei</a> and <a href="https://github.com/lioncash">Lioncash</a> replaced
+ the old &ldquo;ARMULATOR&rdquo; CPU core in Citra with a better implementation that was both several times faster and much more
+ accurate. Despite the fact that it was still an interpreter, this new core was still efficient enough that the
+ performance implications were huge. With this new core, games that were light on graphics could reach above half-speed
+ on very strong processors.</p>
+
+<p>Shortly thereafter, a new developer joined the Citra team – <a href="https://github.com/tfarley">tfarley</a> – with the ambitious
+ goal of implementing a hardware renderer using OpenGL. Up until this point, Citra had used a software renderer
+ primarily developed by <a href="http://github.com/neobrain">neobrain</a> to render graphics. While a software renderer is great
+ for development and achieving pixel-perfect accuracy, Citra’s GPU emulation had become the major performance
+ bottleneck. Even with infinitely fast CPU emulation, the software renderer was so slow that no games would run full
+ speed despite this.</p>
+
+<p>While the rest of the team continued with other development efforts, <a href="https://github.com/tfarley">tfarley</a> went on a
+ month-long battle developing this new OpenGL renderer. All of this resulted in Ocarina of Time 3D running nearly
+ perfect in Citra using OpenGL while running at a fairly decent speed! Below is a very early video of Ocarina of Time,
+ before the renderer was completed and merged into CItra&rsquo;s mainline repository.</p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/Hj8sPsB5qXQ" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<h2 id="summer-more-accuracy-more-performance">Summer: More Accuracy, More Performance</h2>
+
+<p>With the summer, development slowed down a bit – but several additional improvements were made. By this point, the
+ team had already made lots of incremental advances in 3DS emulation, resulting in a significant number of retail games
+ booting, such as Super Mario 3D Land, Fire Emblem: Awakening, The Legend of Zelda: A Link Between Worlds, Mario Kart 7,
+ and many more.</p>
+
+<img src="/images/entry/citra-progress-report-2015-p2/earlyunknown1.png"  class="img-responsive center-block"   />
+
+
+<img src="/images/entry/citra-progress-report-2015-p2/earlyunknown2.png"  class="img-responsive center-block"   />
+
+
+<img src="/images/entry/citra-progress-report-2015-p2/earlycrush3d.png"  class="img-responsive center-block"   />
+
+
+<img src="/images/entry/citra-progress-report-2015-p2/earlymario3dland.png"  class="img-responsive center-block"   />
+
+
+<img src="/images/entry/citra-progress-report-2015-p2/earlysteeldiver.png"  class="img-responsive center-block"   />
+
+
+<img src="/images/entry/citra-progress-report-2015-p2/earlyluigi.png"  class="img-responsive center-block"   />
+
+
+<img src="/images/entry/citra-progress-report-2015-p2/earlylinkbetweenworlds.png"  class="img-responsive center-block"   />
+
+
+<img src="/images/entry/citra-progress-report-2015-p2/earlymajorasmask.png"  class="img-responsive center-block"   />
+
+
+<img src="/images/entry/citra-progress-report-2015-p2/earlymk7.png"  class="img-responsive center-block"   />
+
+
+<img src="/images/entry/citra-progress-report-2015-p2/earlyfireemblem.png"  class="img-responsive center-block"   />
+
+
+<p><br></br>
+But there was still one major issue that was blocking many games: video playback. 3DS games use a proprietary format
+ known as “MOFLEX” to play video clips, which are commonly used for intro logos, cut scenes, and more. Not only was the
+ video format unknown, but any time a MOFLEX video was used, Citra would hang in an infinite loop for unknown reasons.
+ However, this issue proved to be no match for our team – within a matter of weeks, Citra developers
+ <a href="https://github.com/yuriks">yuriks</a> and <a href="https://github.com/Subv">Subv</a> reverse-engineered and implemented all of the
+ mechanisms necessary to prevent hanging and play MOFLEX videos!<br></br></p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2015-p2/3.png" alt="Bravely Default" />
+    
+    
+    <figcaption>
+        <h4>
+            Bravely Default&rsquo;s intro sequence relies on MOFLEX video support
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<p>With many games now running stable with fairly accurate rendering, it became evident that with a bit more speed some
+ titles would not only be playable in Citra, but enjoyable to play. On top of this, more speed would make testing even
+ easier, so with a huge library of games now working, the task again came to making things faster.</p>
+
+<p>The cause of the slowdown was very obvious: Citra’s emulation of 3DS vertex shaders. With emulators like Dolphin and
+ PPSSPP, your GPU uses shaders to emulate the target system’s GPU, which does not actually use any shaders of its own.
+ The 3DS, on the other hand, has a more modern GPU that natively supports its own shaders – which are not as trivial to
+ emulate in the same manner. The approach that we took was similar to CPU emulation – and we were using a pure
+ interpreter for the job. As such, the solution was pretty obvious; Even a naively implemented Just-In-Time (JIT)
+ compiler would make our shader emulation scream. With that in mind, <a href="https://github.com/bunnei">bunnei</a> set out to
+ implement a vertex shader JIT.</p>
+
+<p>While it took several weeks to develop, the difference in speed was very obvious. Vertex heavy games were sometimes two
+ or three times as fast, allowing some games like Ocarina of Time 3D to near full speed in many areas!</p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/yhLEs4yEmlU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<h2 id="autumn-closing-out-the-year-with-a-bang">Autumn: Closing out the Year with a Bang!</h2>
+
+<p>After a brief summer hiatus, development on Citra began to pick up again with autumn 2015. While Citra now had a
+ library of games running without severe problems, many still relied on more advanced graphics features that had yet
+ to be reverse-engineered. One of these more widely used features is fragment lighting – a feature that enables complex
+ lighting calculations to be performed on a per-pixel basis. A major breakthrough was made when hacker and homebrew
+ developer fincs made major strides in figuring out the 3DS fragment lighting implementation. Immediately,
+ <a href="https://github.com/bunnei">bunnei</a> began embodying this work into Citra.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2015-p2/rotatecube.gif" alt="Fragment shader test" />
+    
+    
+    <figcaption>
+        <h4>
+            An early fragment lighting demo running in Citra
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<p>Despite that it’s not a fully complete implementation of fragment lighting, the results have significantly improved
+ Citra’s visuals!</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2015-p2/moonbefore.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            It&rsquo;s a super moon!
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2015-p2/moonafter.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            With fragment lighting implemented, the moon became even scarier! H-hurray?
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<p>While no more major features were merged into Citra by the turn of the year, <a href="https://github.com/Subv">Subv</a> came up
+ with one final teaser of things to come before letting 2015 come to a close. CROs, the dynamically linked libraries of
+ the 3DS (similiar to DLLs on Windows), blocked several very popular 3DS games from booting in Citra, such as Pokemon
+ X, Y, Omega Ruby, Alpha Sapphire and Super Smash Bros. for 3DS. While the implementation was far from done, it still
+ was able to boot up some of the games that relied heavily on this feature.</p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/30NwGUYmIpU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<h2 id="citra-in-2016">Citra in 2016</h2>
+
+<p>With 2016 already upon us, it&rsquo;s shaping up to be a pretty exciting year for Citra! In addition to the many tasks
+ discussed in the 2015 progress reports that are still ongoing, we&rsquo;ve got several exciting new features to look forward
+ to:</p>
+
+<ul>
+<li><a href="https://github.com/merrymage">MerryMage</a> has been making some exciting progress on an HLE implementation of the DSP,
+meaning audio support may come sooner than expected!</li>
+<li><a href="https://github.com/tfarley">tfarley</a> has been working on a HW renderer optimization - &ldquo;texture forwarding&rdquo; - that
+minimizes copies of textures/framebuffers to/from emulated RAM. The result of this effort will be both a performance
+improvement as well as support for upscaled rendering!</li>
+<li><a href="https://github.com/yuriks">yuriks</a> has plans to rewrite the vertex shader JIT to fix several inherent flaws, which
+will improve accuracy and address the crashing issues, as well as improved memory and IPC emulation in the kernel
+HLE.</li>
+<li><a href="https://github.com/Subv">Subv</a> is still looking into CRO support, as well as mipmapping and scissor testing.</li>
+<li><a href="http://github.com/ds84182">ds84182</a> is currently working on an implementation of Pica&rsquo;s geometry shaders.</li>
+<li><a href="https://github.com/bunnei">bunnei</a> has plans to work on Circle Pad Pro (required for getting Majora&rsquo;s Mask in game),
+CROs, and a JIT compiler for faster CPU emulation.</li>
+<li><a href="https://github.com/lioncash">Lioncash</a> has plans to continue working on ARM11 CPU emulation, improving both accuracy
+and performance.</li>
+</ul>
+
+<p>With all of these exciting new features upcoming, it&rsquo;s quite possible that 2016 might be the year that Citra becomes
+ official with a v1.0 release!</p>
+
+<h2 id="special-thanks-from-bunnei">Special Thanks from Bunnei</h2>
+
+<p>While working on this article, I found that it was easy to find major changes to write about, but that these really only
+ captured a fraction of the progress made in 2015 – as there was work done literally every single day to make Citra what
+ it is now. While I wish I could draw attention to every contribution made, that’s just not reasonable to do in one
+ article – so instead I’d like to personally thank each person that impacted Citra in the past year:
+ <a href="https://github.com/lioncash">Lioncash</a>, <a href="https://github.com/yuriks">yuriks</a>, <a href="http://github.com/neobrain">neobrain</a>,
+ <a href="https://github.com/Subv">Subv</a>, <a href="http://github.com/archshift">archshift</a>, <a href="http://github.com/linkmauve">linkmauve</a>,
+ <a href="https://github.com/tfarley">tfarley</a>, <a href="http://github.com/purpasmart96">purpasmart96</a>,
+ <a href="http://github.com/aroulin">aroulin</a>, <a href="https://github.com/chinhodado">chinhodado</a>,
+ <a href="https://github.com/polaris-">polaris-</a>, <a href="http://github.com/zawata">zawata</a>,
+ <a href="http://github.com/kevinhartman">kevinhartman</a>, <a href="http://github.com/cruel">Cruel</a>, <a href="http://github.com/lectem">Lectem</a>,
+ <a href="http://github.com/jroweboy">jroweboy</a>, <a href="http://github.com/littlewhite-tb">LittleWhite-tb</a>,
+ <a href="http://github.com/normmatt">Normmatt</a>, <a href="http://github.com/kemenaran">kemenaran</a>, <a href="http://github.com/rohit-n">rohit-n</a>,
+ <a href="http://github.com/yllodra">Yllodra</a>, <a href="http://github.com/xsacha">xsacha</a>, <a href="http://github.com/darkf">darkf</a>,
+ <a href="http://github.com/filfat">filfat</a>, <a href="http://github.com/seannym">SeannyM</a>, <a href="http://github.com/uppfinnarn">uppfinnarn</a>,
+ <a href="http://github.com/kingcom">Kingcom</a>, <a href="http://github.com/zaneo">Zaneo</a>, <a href="http://github.com/wwylele">wwylele</a>,
+ <a href="http://github.com/zangetsu38">Zangetsu38</a>, <a href="http://github.com/apology11">Apology11</a>, <a href="http://github.com/kloen">Kloen</a>,
+ <a href="http://github.com/moochmcgee">MoochMcGee</a>, <a href="http://github.com/gwicks">gwicks</a>, <a href="http://github.com/vaguilar">vaguilar</a>,
+ <a href="http://github.com/chrisvj">chrisvj</a>, <a href="http://github.com/sethpaien">Sethpaien</a>,
+ <a href="http://github.com/gareth422">Gareth422</a>, <a href="http://github.com/jsfernandes">JSFernandes</a>,
+ <a href="http://github.com/esoteric-programmer">esoteric-programmer</a>, <a href="http://github.com/martinlindhe">martinlindhe</a>,
+ <a href="http://github.com/clienthax">clienthax</a>, <a href="http://github.com/ILOVEPIE">ILOVEPIE</a>, <a href="http://github.com/zhuowei">zhuowei</a>,
+ <a href="http://github.com/bentley">Bentley</a>, <a href="http://github.com/mailwl">mailwl</a>, <a href="http://github.com/disruption">Disruption</a>,
+ <a href="http://github.com/lfswang">LFsWang</a>, <a href="http://github.com/antidote">Antidote</a>, <a href="http://github.com/ichfly">ichfly</a>.</p>
+
+<p>I can’t wait to see what you guys bring for 2016!</p>
+
+  </div>
+
+  
+  
+  
+
+  <div class="entry-written-by">
+    
+      <a href="https://community.citra-emu.org/users/bunnei">
+          <img src="https://community.citra-emu.org/user_avatar/community.citra-emu.org/bunnei/120/21_1.png" class="avatar">
+      </a>
+    
+    
+    
+
+    
+      <p>Written by <a href="https://community.citra-emu.org/users/bunnei">bunnei</a> on Wednesday March 09, 2016</p>
+    
+  </div>
+
+  
+    <div class="entry-comments">
+      <div id="discourse-comments"></div>
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://community.citra-emu.org/', topicId: "36" };
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+    </div>
+  
+
+
+                </div>
+                <div id="sidebar" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-left">
+                    <div id="advertisement" class = "ad">
+  <h3>Advertisement</h3>
+  <ins class="ad adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4126545610079023"
+       data-ad-slot="4223809695"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="tagcloud hidden-sm hidden-xs">
+  <h3>News Tag Cloud</h3>
+  <ul>
+    
+      <li><a class="taxonomy-citra-release" href="/tags/citra-release">citra-release</a></li>
+    
+      <li><a class="taxonomy-feature-update" href="/tags/feature-update">feature-update</a></li>
+    
+      <li><a class="taxonomy-progress-report" href="/tags/progress-report">progress-report</a></li>
+    
+  </ul>
+</div>
+
+<div id="twitter" class="hidden-sm hidden-xs">
+  <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/citraemu?ref_src=twsrc%5Etfw">Tweet Feed</a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="footer" class="container">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <h1>Citra</h1>
+                    <a href="/">Blog</a>
+                    <a href="/download/">Downloads</a>
+                    <a href="/screenshots/">Screenshots</a>
+                    <a href="https://www.patreon.com/citraemu">Patreon</a>
+                    <a href="/donate/">Donate</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Documentation</h1>
+                    <a href="/help/">Help Documents</a>
+                    <a href="/game/">Compatibility</a>
+                    <a href="/wiki/home/">Dev Wiki</a>
+                    <a href="/wiki/faq/">FAQ</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Blog</h1>
+                    <a href="/">News &amp; Articles</a>
+                    <a href="https://citra-emu.org/index.xml">RSS 2.0</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Social</h1>
+                    <a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q">YouTube</a>
+                    <a href="https://www.facebook.com/citra.emu">Facebook</a>
+                    <a href="https://twitter.com/citraemu">Twitter</a>
+                    <a href="https://community.citra-emu.org/">Forums</a>
+                    <a href="/discord">Discord</a>
+                    <a href="/chat">IRC</a>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Get Involved</h1>
+                    <a href="https://github.com/citra-emu/citra">GitHub / Source</a>
+                    <a href="https://github.com/citra-emu/citra/issues">Issues</a>
+                    <a href="https://github.com/citra-emu/citra/pulls">Pull Requests</a>
+                </div>
+
+            </div>
+            <div id="footer-bottom">
+                <div id="footer-brand"></div>
+                <div id="footer-legal">Copyright © 2021 Citra Emulator Project</div>
+            </div>
+        </div>
+
+        <script src="https://citra-emu.org/js/script.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" type="text/css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			window.addEventListener("DOMContentLoaded", function() {
+			baguetteBox.run('.is-img-preview');
+			});
+		</script>
+
+        
+
+        
+    </body>
+
+</html>

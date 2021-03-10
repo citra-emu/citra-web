@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Citra</title>
+    <link>https://citra-emu.org/tags/</link>
+    <description>Recent content in Tags on Citra</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 06 Jul 2018 22:45:00 +0530</lastBuildDate>
+    
+	<atom:link href="https://citra-emu.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Citra Release</title>
+      <link>https://citra-emu.org/tags/citra-release/</link>
+      <pubDate>Fri, 06 Jul 2018 22:45:00 +0530</pubDate>
+      
+      <guid>https://citra-emu.org/tags/citra-release/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Feature Update</title>
+      <link>https://citra-emu.org/tags/feature-update/</link>
+      <pubDate>Mon, 14 Sep 2020 22:09:00 +0800</pubDate>
+      
+      <guid>https://citra-emu.org/tags/feature-update/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Progress Report</title>
+      <link>https://citra-emu.org/tags/progress-report/</link>
+      <pubDate>Wed, 15 Jul 2020 22:11:00 +0800</pubDate>
+      
+      <guid>https://citra-emu.org/tags/progress-report/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

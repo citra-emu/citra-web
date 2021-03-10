@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Progress Report on Citra</title>
+    <link>https://citra-emu.org/tags/progress-report/</link>
+    <description>Recent content in Progress Report on Citra</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Jul 2020 22:11:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://citra-emu.org/tags/progress-report/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Citra Mega Progress Report 2019 Q1~2020 Q2</title>
+      <link>https://citra-emu.org/entry/citra-progress-report-2020-q2/</link>
+      <pubDate>Wed, 15 Jul 2020 22:11:00 +0800</pubDate>
+      
+      <guid>https://citra-emu.org/entry/citra-progress-report-2020-q2/</guid>
+      <description>It has been more than a year since the last progress report, not for lack of progress, but for lack of writers. To fill in the gap, developers jroweboy and FearlessTobi independently wrote drafts for a new progress report, and another developer zhaowenlan1779 merged their works and added more content. Together, we are able to present you with an update on all the changes we&amp;rsquo;ve had since 2019 Q1.</description>
+    </item>
+    
+    <item>
+      <title>Citra Progress Report - 2018 Q4~2019 Q1</title>
+      <link>https://citra-emu.org/entry/citra-progress-report-2019-q1/</link>
+      <pubDate>Tue, 02 Apr 2019 08:00:00 +0530</pubDate>
+      
+      <guid>https://citra-emu.org/entry/citra-progress-report-2019-q1/</guid>
+      <description>&lt;p&gt;Hey there, Citra fans! These past 6 months have been crazily exciting, and simply wonderful for Citra overall.
+We&amp;rsquo;ve made major breakthroughs which were long overdue.
+New features, bug fixes, performance improvements, improved game compatibility, and much more await you.
+So buckle up and enjoy the ride!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Citra Progress Report - 2018 Q2</title>
+      <link>https://citra-emu.org/entry/citra-progress-report-2018-q2/</link>
+      <pubDate>Thu, 20 Sep 2018 22:00:00 +0530</pubDate>
+      
+      <guid>https://citra-emu.org/entry/citra-progress-report-2018-q2/</guid>
+      <description>Hello everyone to the summer (or winter, for those on the southern half of this Earth) edition of Citra&amp;rsquo;s progress reports. Although not very many large changes have been made, many fixes have focused on accuracy improvements and implementing some of the sorely needed user experience features.
+Before we go further into this, our Patreon poll results are out. We asked our patrons, which feature they would like to see us work on next and they delivered.</description>
+    </item>
+    
+    <item>
+      <title>Citra Progress Report 2018 Q1</title>
+      <link>https://citra-emu.org/entry/citra-progress-report-2018-q1/</link>
+      <pubDate>Wed, 30 May 2018 19:30:00 +0530</pubDate>
+      
+      <guid>https://citra-emu.org/entry/citra-progress-report-2018-q1/</guid>
+      <description>It&amp;rsquo;s been a while folks - since the last report, we have had many new features come to Citra. Some notable ones include multiplayer improvements, hardware shader improvements (post GLvtx), a logging system rewrite, and the highly coveted camera support. Our continuous integration (CI) systems were optimized as well. Apart from these, we have had many more minor features, improvements, and bug fixes. So, without further ado let&amp;rsquo;s get right into it:</description>
+    </item>
+    
+    <item>
+      <title>Citra Progress Report - 2017 Q4</title>
+      <link>https://citra-emu.org/entry/citra-progress-report-2017-q4/</link>
+      <pubDate>Sun, 04 Feb 2018 17:00:00 -0400</pubDate>
+      
+      <guid>https://citra-emu.org/entry/citra-progress-report-2017-q4/</guid>
+      <description>New year, new changes in Citra. Specifically, lots of technical changes under the hood, from applets to IPC, have made Citra even more accurate and laid a foundation for even more goodies the next year. With many great changes all around, this article is going to be packed to the brim with all the new goodies that have come to Citra during those crimson months.
+But, enough faffing about! Let&amp;rsquo;s get right into it:</description>
+    </item>
+    
+    <item>
+      <title>Citra Progress Report - 2017 September</title>
+      <link>https://citra-emu.org/entry/citra-progress-report-2017-september/</link>
+      <pubDate>Thu, 09 Nov 2017 09:46:00 -0400</pubDate>
+      
+      <guid>https://citra-emu.org/entry/citra-progress-report-2017-september/</guid>
+      <description>Winter arrives once more, and like I mentioned in August&amp;rsquo;s progress report, I am extremely excited for what&amp;rsquo;s in store. In fact, many of the really big goodies I&amp;rsquo;ve decided to seperate to their own articles, which should be coming up in the next few weeks.
+There&amp;rsquo;s also been many changes this month that improve the speed of emulation across the board, on top of the usual improvements in accuracy and features.</description>
+    </item>
+    
+    <item>
+      <title>Citra Progress Report - 2017 August</title>
+      <link>https://citra-emu.org/entry/citra-progress-report-2017-august/</link>
+      <pubDate>Sat, 16 Sep 2017 00:28:00 -0400</pubDate>
+      
+      <guid>https://citra-emu.org/entry/citra-progress-report-2017-august/</guid>
+      <description>2017 has been an amazing year, with more work having been put into the project than ever before, but it&amp;rsquo;s not over yet! Last we met was June, and just two months later the Citra issue tracker is brimming with lots of changes once more. I am extremely excited for this month (and what&amp;rsquo;s coming up the next few months) but we&amp;rsquo;re getting ahead of ourselves! On this progress report, let&amp;rsquo;s check out the big fish in the July and August pond of patches!</description>
+    </item>
+    
+    <item>
+      <title>Citra Progress Report - 2017 June</title>
+      <link>https://citra-emu.org/entry/citra-progress-report-2017-june/</link>
+      <pubDate>Mon, 10 Jul 2017 12:38:00 -0400</pubDate>
+      
+      <guid>https://citra-emu.org/entry/citra-progress-report-2017-june/</guid>
+      <description>The summer of 2017 has just rolled in, and although we don&amp;rsquo;t have a summer of code, the patches continue rolling in regardless. We&amp;rsquo;ve got a ton of fixes this month in the renderer, so this report is going to be very screenshot heavy. With that out of the way, let&amp;rsquo;s get right to it. Implemented Procedural Texture (Texture Unit 3) by wwylele There is a rarely used feature in the 3DS&amp;rsquo; GPU called procedural textures, &amp;ldquo;proctex&amp;rdquo; for short.</description>
+    </item>
+    
+    <item>
+      <title>Citra Progress Report - 2017 P1</title>
+      <link>https://citra-emu.org/entry/citra-progress-report-2017-p1/</link>
+      <pubDate>Wed, 03 May 2017 23:20:00 -0400</pubDate>
+      
+      <guid>https://citra-emu.org/entry/citra-progress-report-2017-p1/</guid>
+      <description>In the last quarter, we&amp;rsquo;ve further improved the speed and accuracy of citra along with supporting more 3DS features, and we are very excited to show what we&amp;rsquo;ve been working on. It&amp;rsquo;s a bit hard to believe, but Citra is already three years old, and in these three years we&amp;rsquo;ve gone from an emulator that could barely run homebrew, to one that can run many commercially available games at playable speeds!</description>
+    </item>
+    
+    <item>
+      <title>Citra Progress Report - 2016 P1</title>
+      <link>https://citra-emu.org/entry/citra-progress-report-2016-p1/</link>
+      <pubDate>Tue, 19 Apr 2016 12:12:00 -0500</pubDate>
+      
+      <guid>https://citra-emu.org/entry/citra-progress-report-2016-p1/</guid>
+      <description>Welcome to the first Citra Progress Report of 2016! While 2015 will be considered the year that Citra first played games, 2016 is quickly shaping up as a year filled with higher compatibility, greater stability and much more as Citra matures. The avalanche of new features from tons of contributors has made it hard to keep up with everything even for developers!
+Because there have been so many changes and there are so many different games, it can be very hard to keep up with what is working and what is not.</description>
+    </item>
+    
+    <item>
+      <title>Citra Progress Report - 2015 P2</title>
+      <link>https://citra-emu.org/entry/citra-progress-report-2015-p2/</link>
+      <pubDate>Wed, 09 Mar 2016 15:30:00 -0500</pubDate>
+      
+      <guid>https://citra-emu.org/entry/citra-progress-report-2015-p2/</guid>
+      <description>This month we bring you the second installment of our two-part progress report on Citra in 2015! With this part, we discuss the evolution from Citra being able to barely run a few commercial games at a few frames-per-second, to where it is in 2016: Running many retail games at reasonable speeds, some of which are fully playable with near flawless graphics! We discuss Citra&amp;rsquo;s new &amp;ldquo;dyncom&amp;rdquo; CPU core, the OpenGL renderer, per-pixel lighting, and various bug fixes.</description>
+    </item>
+    
+    <item>
+      <title>Citra Progress Report - 2015 P1</title>
+      <link>https://citra-emu.org/entry/citra-progress-report-2015-p1/</link>
+      <pubDate>Tue, 23 Feb 2016 23:30:00 -0500</pubDate>
+      
+      <guid>https://citra-emu.org/entry/citra-progress-report-2015-p1/</guid>
+      <description>While Citra was first founded in April of 2014, visible progress for the emulator didn&amp;rsquo;t really happen until the turn of the year. After a long struggle to get anything to boot, 2015 saw Citra evolve from an experimental emulator that couldn&amp;rsquo;t run games into an experimental emulator that can run games. And while it may not seem like Citra is that far along, it is truly amazing how much things have progressed in just a year since the first commercial title booted.</description>
+    </item>
+    
+  </channel>
+</rss>

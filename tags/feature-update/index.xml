@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Feature Update on Citra</title>
+    <link>https://citra-emu.org/tags/feature-update/</link>
+    <description>Recent content in Feature Update on Citra</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Sep 2020 22:09:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://citra-emu.org/tags/feature-update/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Citra Android Update</title>
+      <link>https://citra-emu.org/entry/citra-android-update/</link>
+      <pubDate>Mon, 14 Sep 2020 22:09:00 +0800</pubDate>
+      
+      <guid>https://citra-emu.org/entry/citra-android-update/</guid>
+      <description>Hey there, Citra fans! It&amp;rsquo;s been a few months since our Android version released and its reception has been absolutely wonderful. We wanted to take this opportunity to make an announcement and answer a few questions many of you have had.
+App Installs Citra Android has now reached 500,000+ installs on the Google Play Store!
+This is an absolutely incredible achievement and your enthusiasm is a big factor in what drives development of the app.</description>
+    </item>
+    
+    <item>
+      <title>Citra Android is here!</title>
+      <link>https://citra-emu.org/entry/announcing-citra-android/</link>
+      <pubDate>Sat, 23 May 2020 03:00:00 +0530</pubDate>
+      
+      <guid>https://citra-emu.org/entry/announcing-citra-android/</guid>
+      <description>&lt;p&gt;Hello there emulation aficionados!
+Today we are unveiling the most requested addition for Citra: &lt;strong&gt;Android Support!&lt;/strong&gt; &lt;br&gt;
+That&amp;rsquo;s right, you can finally play 3DS games on the go!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Accurate Audio Emulation Has Arrived</title>
+      <link>https://citra-emu.org/entry/accurate-audio-emulation/</link>
+      <pubDate>Fri, 07 Dec 2018 08:00:00 -0800</pubDate>
+      
+      <guid>https://citra-emu.org/entry/accurate-audio-emulation/</guid>
+      <description>&lt;h2 id=&#34;pokémon-x-y-and-many-more-games-are-finally-working&#34;&gt;Pokémon X / Y and Many More Games Are Finally Working!&lt;/h2&gt;
+
+&lt;p&gt;You&amp;rsquo;ve been asking for it for years now, and we&amp;rsquo;ve been listening, we promise!&lt;/p&gt;
+
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://citra-emu.org/images/entry/accurate-audio-emulation/pokemonleague.png&#34;  /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;
+            The Pokémon league awaits your challenge!
+        &lt;/h4&gt;
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hardware Renderer Updates</title>
+      <link>https://citra-emu.org/entry/improvements-to-hardware-renderer/</link>
+      <pubDate>Sat, 10 Mar 2018 17:00:00 -0400</pubDate>
+      
+      <guid>https://citra-emu.org/entry/improvements-to-hardware-renderer/</guid>
+      <description>&lt;h2 id=&#34;cut-to-the-chase-how-fast-is-this&#34;&gt;Cut to the chase, how fast is this?&lt;/h2&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;container&#34; style=&#34;width: 100%;&#34;&gt;
+    
+    &lt;div class=&#34;is-img-preview&#34;&gt;
+    
+        
+        
+        
+        &lt;div class=&#34;theme-table-image col-sm-6&#34;&gt;
+            &lt;figure style=&#34;padding: 0px;&#34;&gt;
+                
+                    &lt;div class=&#34;embed-responsive embed-responsive-4by3&#34;&gt;
+                        &lt;video class=&#34;embed-responsive-item&#34; preload=&#34;auto&#34; autoplay=&#34;autoplay&#34; muted=&#34;muted&#34; loop=&#34;loop&#34; webkit-playsinline=&#34;&#34;&gt;
+                            &lt;source src=&#34;https://citra-emu.org/images/entry/improvements-to-hardware-renderer/before.mp4&#34; type=&#34;video/mp4&#34;&gt;
+                            Your browser doesn&#39;t support mp4 video. :(
+                        &lt;/video&gt;
+                    &lt;/div&gt;
+                
+                &lt;figcaption&gt;
+                    &lt;h4&gt;
+                        Before
+                    &lt;/h4&gt;
+                &lt;/figcaption&gt;
+            &lt;/figure&gt;
+        &lt;/div&gt;
+    
+        
+        
+        
+        &lt;div class=&#34;theme-table-image col-sm-6&#34;&gt;
+            &lt;figure style=&#34;padding: 0px;&#34;&gt;
+                
+                    &lt;div class=&#34;embed-responsive embed-responsive-4by3&#34;&gt;
+                        &lt;video class=&#34;embed-responsive-item&#34; preload=&#34;auto&#34; autoplay=&#34;autoplay&#34; muted=&#34;muted&#34; loop=&#34;loop&#34; webkit-playsinline=&#34;&#34;&gt;
+                            &lt;source src=&#34;https://citra-emu.org/images/entry/improvements-to-hardware-renderer/after.mp4&#34; type=&#34;video/mp4&#34;&gt;
+                            Your browser doesn&#39;t support mp4 video. :(
+                        &lt;/video&gt;
+                    &lt;/div&gt;
+                
+                &lt;figcaption&gt;
+                    &lt;h4&gt;
+                        After
+                    &lt;/h4&gt;
+                &lt;/figcaption&gt;
+            &lt;/figure&gt;
+        &lt;/div&gt;
+    
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;h4 style=&#34;text-align: center;&#34;&gt;Realtime performance comparison with framelimit off&lt;/h4&gt;</description>
+    </item>
+    
+    <item>
+      <title>Announcing Networking Support</title>
+      <link>https://citra-emu.org/entry/announcing-networking-support/</link>
+      <pubDate>Sat, 04 Nov 2017 07:17:00 -0400</pubDate>
+      
+      <guid>https://citra-emu.org/entry/announcing-networking-support/</guid>
+      <description>Networked Multiplayer is one of those features that was so surprising to see, that the lucky few chosen to test it were wondering if it was real. For the past year, several developers have banded together to bring this amazing implementation of online play to Citra.
+ The Nintendo 3DS heavily relies on wireless for its slew of multiplayer compatible titles. Considering that so many games feel empty without their multiplayer features, we&amp;rsquo;re excited to announce that in select titles, you&amp;rsquo;ll be able to play together with your friends across the world in the latest Canary builds of Citra!</description>
+    </item>
+    
+    <item>
+      <title>Introducing Automatic Updates</title>
+      <link>https://citra-emu.org/entry/introducing-automatic-updates/</link>
+      <pubDate>Sun, 22 Oct 2017 22:47:14 -0500</pubDate>
+      
+      <guid>https://citra-emu.org/entry/introducing-automatic-updates/</guid>
+      <description>Emulators grow quickly. Last month alone, there were 39 pull requests merged to Citra. For this reason, it&amp;rsquo;s important to be able to manage the many different versions of an emulator. Until now however, Citra has had no installer or updater for the nightly builds. Although the now obsolete Bleeding Edge builds did have both of these things, it was limited to Windows, and the installer framework had some issues that restricted what we could do with it.</description>
+    </item>
+    
+    <item>
+      <title>Telemetry (And Why That&#39;s A Good Thing)</title>
+      <link>https://citra-emu.org/entry/telemetry-and-why-thats-a-good-thing/</link>
+      <pubDate>Sat, 26 Aug 2017 21:04:00 -0400</pubDate>
+      
+      <guid>https://citra-emu.org/entry/telemetry-and-why-thats-a-good-thing/</guid>
+      <description>Citra has some issues, and by its nature as an open source project, they are visible to everyone and fixable by anyone. Unfortunately though, most contributions are made by a small minority of developers. These developers have found it difficult to prioritize their efforts, since the majority of issue reports are written scattered across Discord, Reddit, forums, IRC, and too many other places to count.
+Because of this, the Citra team has put together a framework to report data about how Citra is used to our server, and use that data to discover what are the most popular games and hardware configurations, where emulated games crash in Citra most often, and more.</description>
+    </item>
+    
+    <item>
+      <title>HLE Audio Comes to Citra</title>
+      <link>https://citra-emu.org/entry/hle-audio-comes-to-citra/</link>
+      <pubDate>Fri, 20 May 2016 18:04:00 -0500</pubDate>
+      
+      <guid>https://citra-emu.org/entry/hle-audio-comes-to-citra/</guid>
+      <description>Special thanks must be given to fincs and the rest of the 3DS community for their work reverse-engineering the DSP firmware. Without that work, Citra would not be this far with audio emulation.
+As of May 19th, 2016, Citra now has preliminary High Level Emulation (HLE) audio support! This means that users playing on Citra no longer have to listen to the deafening sound of silence in many titles. To get to this point was a huge reverse-engineering effort done by multiple people, with much of the reverse-engineering and the final implementation for Citra coming from MerryMage.</description>
+    </item>
+    
+    <item>
+      <title>Texture Forwarding brings HD output to Citra</title>
+      <link>https://citra-emu.org/entry/texture-forwarding-brings-hd-output-to-citra/</link>
+      <pubDate>Sun, 01 May 2016 21:56:00 -0500</pubDate>
+      
+      <guid>https://citra-emu.org/entry/texture-forwarding-brings-hd-output-to-citra/</guid>
+      <description>One of the big things everyone has been wondering about Citra is when it will be able to render games at HD resolutions. One of the great things about emulators is that they can surpass the limitations of the original console, especially when it comes to graphical fidelity. With the 3DS specifically, many beautifully detailed games are hidden behind staggeringly low resolution screens topping out at 400x240. With Texture Forwarding (from tfarley, based on yuriks early implementation), Citra can now output games at any resolution, and runs faster as well!</description>
+    </item>
+    
+  </channel>
+</rss>

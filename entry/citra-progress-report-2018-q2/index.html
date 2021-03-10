@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <meta name="theme-color" content="#FF8E03">
+        <meta property="og:title" content="Citra Progress Report - 2018 Q2 &middot; Citra" />
+        <meta property="og:site_name" content="Citra" />
+        <meta property="og:url" content="https://citra-emu.org/entry/citra-progress-report-2018-q2/" />
+            <meta property="og:description" content="Hello everyone to the summer (or winter, for those on the southern half of this Earth) edition of Citra&rsquo;s progress reports. Although not very many large changes have been made, many fixes have focused on accuracy improvements and implementing some of the sorely needed user experience features.
+Before we go further into this, our Patreon poll results are out. We asked our patrons, which feature they would like to see us work on next and they delivered." />
+<meta name="description" content="Hello everyone to the summer (or winter, for those on the southern half of this Earth) edition of Citra&rsquo;s progress reports. Although not very many large changes have been made, many fixes have focused on accuracy improvements and implementing some of the sorely needed user experience features.
+Before we go further into this, our Patreon poll results are out. We asked our patrons, which feature they would like to see us work on next and they delivered." />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://citra-emu.org/images/banners/citra-progress-report-2018-q2.png" />
+<meta property="og:article:published_time" content="2018-09-20T22:00:00&#43;05:30" />
+<meta property="og:article:tag" content="progress-report" />
+
+
+        <meta name="generator" content="Hugo 0.52" />
+
+        <link rel="icon" href="https://citra-emu.org/favicon.ico" />
+        <link rel="shortcut icon" href="https://citra-emu.org/favicon.ico" type="image/x-icon" />
+        <link rel="canonical" href="https://citra-emu.org/entry/citra-progress-report-2018-q2/">
+
+        
+
+        <title>Citra Progress Report - 2018 Q2 - Citra</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis" rel="stylesheet">
+        <link rel="stylesheet" href="https://citra-emu.org/css/style.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-73966905-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+        
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-wrapper navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">&nbsp;</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="index-1 first"><a href="/" title="Blog Posts">Blog</a></li>
+                <li class="index-2"><a href="/download/" title="Download Citra">Download</a></li>
+                <li class="index-3"><a href="/help/" title="Help">Help</a></li>
+                <li class="index-4"><a href="/wiki/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li class="index-5"><a href="/game/" title="Game Compatibility">Compatibility</a></li>
+                <li class="index-6"><a href="/wiki/home/" title="Wiki Homepage">Dev Wiki</a></li>
+
+                <li class="index-7 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false">
+                        Social <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/rules/" title="">Rules</a></li>
+                        <li class="index-2"><a href="https://community.citra-emu.org/" title="Forums">Community Forums</a></li>
+                        <li class="index-3 last"><a href="/discord/" title="Discord Channel">Discord Chat</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-8 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                aria-haspopup="true" aria-expanded="false">
+                        Media <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/screenshots/" title="Screenshots">Screenshots</a></li>
+                        <li class="index-2 last"><a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q"
+                                                    title="Youtube Channel">Videos</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-9 last"><a href="https://www.patreon.com/citraemu" title="Patreon">Patreon</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+        <div id="mainContainer" class="container" >
+            <div class="row">
+                
+            </div>
+
+            <div class="row row-fluid">
+                <div id="content" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right">
+                    
+  <a href="https://citra-emu.org/entry/citra-progress-report-2018-q2/">
+  <div class="entry-embed-header">
+      <div class="entry-embed" style="background: url('https://citra-emu.org/images/banners/citra-progress-report-2018-q2.png')">
+          <header>
+              <h1>Citra Progress Report - 2018 Q2</h1>
+          </header>
+      </div>
+
+      
+      <div class="entry-meta" style="position: absolute; top: 5px; right: 20px;">
+          September 20 2018
+      </div>
+
+      
+      <div class="entry-meta" style="position: absolute; top: 45px; right: 20px;">
+          progress-report
+      </div>
+      
+  </div>
+</a>
+
+
+  <div class="entry-content">
+    
+
+<p>Hello everyone to the summer (or winter, for those on the southern half of this
+Earth) edition of Citra&rsquo;s progress reports. Although not very many large changes
+have been made, many fixes have focused on accuracy improvements and implementing
+some of the sorely needed user experience features.</p>
+
+<p>Before we go further into this, our <a href="https://www.patreon.com/citraemu/posts">Patreon</a>
+poll results are out.
+We asked our patrons, which feature they would like to see us work on next and
+they delivered. Here are the results and as you will see, some of these have
+been considered and already implemented.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2018-q2/patreon.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Patreon Poll Results
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<p>To get access to such exclusives in the future and to support this project,
+consider becoming a patron. Now, enough appetizing, have your entr&eacute;e:</p>
+
+<h2 id="add-pause-speed-limit-hotkeys-https-github-com-citra-emu-citra-pull-3594-by-valentinvanelslande-https-github-com-valentinvanelslande"><a href="https://github.com/citra-emu/citra/pull/3594">Add pause, speed limit hotkeys</a> by <a href="https://github.com/valentinvanelslande">valentinvanelslande</a></h2>
+
+<p>Let&rsquo;s start with a simple but sweet one &mdash; you can now assign hotkeys to
+pausing, unpausing, and toggling speed limiting. By default, you can pause with
+<kbd>F4</kbd> and toggle speed limiting with <kbd><kbd>Ctrl</kbd>+<kbd>Z</kbd></kbd>.
+But, of course, you can bind these actions to other keys in Citra&rsquo;s <code>qt-config.ini</code>.
+The property for pausing is <code>Shortcuts\Main%20Window\Continue\Pause\KeySeq</code> and
+for speed toggling it is <code>Shortcuts\Main%20Window\Toggle%20Speed%20Limit\KeySeq</code>.</p>
+
+<h2 id="add-support-for-multiple-game-directories-https-github-com-citra-emu-citra-pull-3617-by-breadfish64-https-github-com-breadfish64"><a href="https://github.com/citra-emu/citra/pull/3617">Add support for multiple game directories</a> by <a href="https://github.com/BreadFish64">BreadFish64</a></h2>
+
+<p>You can now configure Citra to search multiple directories for games and apps!
+This allow you to keep titles across different folders, and if you have any
+launchable titles installed into Citra&rsquo;s virtual SD card or NAND, they&rsquo;ll also
+show up in their own section so you can boot them from the game list.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2018-q2/multiple_gamedirs.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Multiple Game Directories
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<h2 id="add-support-for-stereoscopic-3d-https-github-com-citra-emu-citra-pull-3632-by-n00byking-https-github-com-n00byking"><a href="https://github.com/citra-emu/citra/pull/3632">Add support for stereoscopic 3D</a> by <a href="https://github.com/N00byKing">N00byKing</a></h2>
+
+<p>If you are one of the lucky few with a 3D TV or monitor attached to your
+computer, stereoscopic 3D support has just been added to Citra! You can enable
+it by heading to <kbd><samp>Emulation</samp> &rarr; <samp>Configure&hellip;</samp> &rarr; <samp>Graphics</samp> &rarr; <samp>Layout</samp></kbd>,
+ticking the <samp>Enable Stereoscopic 3D</samp> checkbox, and changing the
+screen layout to <samp>Side by Side</samp>.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2018-q2/3d-sxs.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Although you can&rsquo;t see this in 3D, try crossing your eyes or using a mirror!
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<h2 id="software-keyboard-implementation-https-github-com-citra-emu-citra-pull-3850-by-zhaowenlan1779-https-github-com-zhaowenlan1779-and-jroweboy-https-github-com-jroweboy"><a href="https://github.com/citra-emu/citra/pull/3850">Software Keyboard Implementation</a> by <a href="https://github.com/zhaowenlan1779">zhaowenlan1779</a> and <a href="https://github.com/jroweboy">jroweboy</a></h2>
+
+<p>For the longest time, many games were unplayable or needed workarounds on Citra
+due to them needing the software keyboard applet. The reason being that whenever
+they would try to open it, Citra didn&rsquo;t implement it, and so would simply tell
+the game that the user entered &ldquo;Citra&rdquo; and tapped OK, without actually prompting.
+But now, thanks to zhaowenlan1779 and jroweboy, it now has fully functional
+software keyboard emulation!</p>
+
+<p>Whenever a game requests it, Citra will pause the game and pull up a text box that
+you can fill in like any other prompt.</p>
+
+<figure>
+    <video preload="auto" autoplay="autoplay" muted="muted" loop="loop" webkit-playsinline="">
+        <source src="/images/entry/citra-progress-report-2018-q2/swkbd.mp4" type="video/mp4">
+        Your browser doesn't support mp4 video. :(
+    </video>
+    
+    <figcaption>
+        <h4>
+            Now you can change your name to anything!
+        </h4>
+    </figcaption>
+    
+</figure>
+
+<h2 id="open-source-system-archives-3977-https-github-com-citra-emu-citra-pull-3977-3881-https-github-com-citra-emu-citra-pull-3881-by-b3n30-https-github-com-b3n30">Open Source System Archives (<a href="https://github.com/citra-emu/citra/pull/3977">#3977</a>, <a href="https://github.com/citra-emu/citra/pull/3881">#3881</a>) by <a href="https://github.com/B3n30">B3n30</a></h2>
+
+<p>Many Nintendo 3DS games require the use of system archives, which contain things
+like fonts, a bad word list, and assets for Miis. Because these are copyrighted,
+Citra could not include them, and users had to dump a copy from their consoles,
+which was a generally tedious and error-prone process.</p>
+
+<p>Now, <a href="https://github.com/B3n30">B3n30</a> has created open source alternative fonts
+and a bad word list that can be used in games instead of the official archives.
+And, because these are open source, they are now included with Citra. If a game
+requires either archive, and you haven&rsquo;t dumped them yet, it&rsquo;ll automatically give
+the game the alternative archives. This is a step forward to Citra becoming
+a full-fledged HLE 3DS emulator.</p>
+
+<h2 id="implement-shadow-map-https-github-com-citra-emu-citra-pull-3778-by-wwylele-https-github-com-wwylele"><a href="https://github.com/citra-emu/citra/pull/3778">Implement shadow map</a> by <a href="https://github.com/wwylele">wwylele</a></h2>
+
+<p>Shadow mapping is a way to quickly apply shadows to 3D scenes. It first renders
+the scene without any lighting, texture, or colour information, with a virtual
+camera from where the light source begins. Then, from that rendering the depth
+map is extracted. That is then applied as a texture to the darkened scene, making
+areas of it directly visible from the light source appear more brightly lit.</p>
+
+<p>The PICA200 (the GPU inside the 3DS) and OpenGL both implement this in different
+ways, particularly in two important areas:</p>
+
+<ul>
+<li><p>The first is that PICA200 supports a variant called &ldquo;soft shadows&rdquo;, where the
+depth map is blurred before being applied to the scene. This results in shadows
+that seem less jagged and sharp, making the light source feel more diffuse and
+evenly spread out throughout the scene. OpenGL doesn&rsquo;t support this at all.</p></li>
+
+<li><p>The second is that the PICA200 stores depth maps intended for shadow mapping as
+plain textures in the RGBA8 format. A lot of games exploit this in order to quickly
+convert other types of textures from an internal format to RGBA8. But, OpenGL
+stores these maps in a format internal to that graphics card, like any other map.
+(RGBA8 or 8bit RGBA  is a texture format, which is the combination of an RGB
+(red green blue) color model with an extra 4th alpha channel.)</p></li>
+</ul>
+
+<p>The first point isn&rsquo;t as significant, since the softness can be ignored on OpenGL,
+resulting in a very fast (but inaccurate) shadow mapping. Because games rarely
+use soft shadows, this can be ignored relatively safely.</p>
+
+<p>The second point though, because games use it very often, it has to be implemented
+accurately. The naïve way would be to simply convert internal textures to RGBA8
+manually, but this would slow rendering down to a crawl. The smart way would be
+to try and trick the graphics card driver into performing a similar conversion,
+but such an attempt exposed a lot of issues, leading to instability.</p>
+
+<p>After some very hard work by <a href="https://github.com/wwylele">wwylele</a>, both problems
+were solved with a single solution. OpenGL supports an extension called
+Image Load/Store, which allows shaders to read and write to any texture
+directly. Using this, he created a shader that could accurately implement both
+soft shadows, and convert the depth map from its internal format to RGBA8 very
+quickly.</p>
+
+
+
+
+
+
+
+<div class="container" style="width: 100%;">
+    
+    <div class="is-img-preview">
+    
+        
+        
+        
+        <div class="theme-table-image col-sm-6">
+            <figure style="padding: 0px;">
+                
+                    <a href="/images/entry/citra-progress-report-2018-q2/shadowmap-before.png" title="Before Shadow Mapping">
+                        <img src="/images/entry/citra-progress-report-2018-q2/shadowmap-before.png" alt="Before Shadow Mapping" />
+                    </a>
+                
+                <figcaption>
+                    <h4>
+                        Before Shadow Mapping
+                    </h4>
+                </figcaption>
+            </figure>
+        </div>
+    
+        
+        
+        
+        <div class="theme-table-image col-sm-6">
+            <figure style="padding: 0px;">
+                
+                    <a href="/images/entry/citra-progress-report-2018-q2/shadowmap-after.png" title="After Shadow Mapping">
+                        <img src="/images/entry/citra-progress-report-2018-q2/shadowmap-after.png" alt="After Shadow Mapping" />
+                    </a>
+                
+                <figcaption>
+                    <h4>
+                        After Shadow Mapping
+                    </h4>
+                </figcaption>
+            </figure>
+        </div>
+    
+    </div>
+</div>
+
+
+<p>Unfortunately, because Image Load/Store is an optional extension, not every
+OpenGL 3.3 graphics card will support it. In these cases, Citra will simply ignore
+shadow maps, making the rendering inaccurate but usable. Image Load/Store became
+a mandatory part of OpenGL in version 4.2, so every graphics card that complies
+with OpenGL 4.2 is guaranteed to work correctly.
+<strong>Citra only requires a minimum
+compliance to OpenGL 3.3, but OpenGL 4.2 compliance may lead to more accurate
+rendering.</strong></p>
+
+<h2 id="implement-cubeb-audio-backend-https-github-com-citra-emu-citra-pull-3776-by-darkf-https-github-com-darkf"><a href="https://github.com/citra-emu/citra/pull/3776">Implement cubeb audio backend</a> by <a href="https://github.com/darkf">darkf</a></h2>
+
+<p><a href="https://github.com/kinetiknz/cubeb/"><code>cubeb</code></a> is an audio library (developed by
+the Mozilla Foundation) that&rsquo;s cross-platform, and most importantly <strong><em>fast</em></strong>.
+Reports from <a href="https://dolphin-emu.org/blog/2017/06/03/dolphin-progress-report-may-2017/#50-3937-add-cubeb-audio-backend-by-ligfx">Dolphin&rsquo;s blog</a>
+showed that it ran at a <em>third</em> of the latency of their OpenAL backend. And now,
+thanks to the work done by <a href="https://github.com/darkf">darkf</a> and some fixes
+from <a href="https://github.com/MerryMage">MerryMage</a>, Citra can now benefit from that
+same low latency audio that Dolphin and Mozilla Firefox have. This will lead to
+significantly less distortion and stuttering in your games. Just remember to
+enable it in the configuration menu by setting <code>Output Engine</code> as <code>cubeb</code>.</p>
+
+<h2 id="volume-slider-https-github-com-citra-emu-citra-pull-3831-by-fearlesstobi-https-github-com-fearlesstobi"><a href="https://github.com/citra-emu/citra/pull/3831">Volume Slider</a> by <a href="https://github.com/fearlesstobi">Fearlesstobi</a></h2>
+
+<p>You can now configure the volume level of Citra directly from the configuration
+window. This allows you to set an individual volume level for Citra without
+having to manually set it in your operating system settings.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2018-q2/volume-slider.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Volume Slider
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<h2 id="discord-rich-presence-https-github-com-citra-emu-citra-pull-3883-by-captv0rt3x-https-github-com-captv0rt3x"><a href="https://github.com/citra-emu/citra/pull/3883">Discord Rich Presence</a> by <a href="https://github.com/CaptV0rt3x">CaptV0rt3x</a></h2>
+
+<p>Rich Presence allows you to leverage the totally boring &ldquo;Now Playing&rdquo; section
+in a Discord user&rsquo;s profile. This feature lets users show off when they are
+playing their favorite games on Citra. This has been a common feature request
+from many users, and since many other emulators have already implemented this,
+it made sense to implement it here as well.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2018-q2/rpc.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Discord Rich Presence
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<p>Discord Rich Presence works by creating a local connection with Citra and your
+Discord App. It <strong><em>does not</em></strong> connect to (or) send any data to Discord servers.
+This option is user configurable, so you can choose to show or not to show rich
+presence in your discord status. Just head out to <kbd><samp>Emulation</samp>
+&rarr; <samp>Configure&hellip;</samp> &rarr; <samp>Web</samp> &rarr; <samp>Discord
+Presence</samp></kbd> and check / uncheck &ldquo;Show current game in your Discord
+status&rdquo;.</p>
+
+<h2 id="set-default-values-for-settings-https-github-com-citra-emu-citra-pull-3924-by-zhaowenlan1779-https-github-com-zhaowenlan1779"><a href="https://github.com/citra-emu/citra/pull/3924">Set Default values for settings</a> by <a href="https://github.com/zhaowenlan1779">zhaowenlan1779</a></h2>
+
+<p>The majority of support requests we get are mostly due to users accidentally
+enabling or disabling some settings. But now with this feature, we have
+default values for all our settings. This ensures that in case of any new
+settings changes, majority of the users (who haven&rsquo;t customized those settings)
+will now have the new default value automatically.</p>
+
+<h2 id="add-support-for-encrypted-games-https-github-com-citra-emu-citra-pull-4020-by-wwylele-https-github-com-wwylele"><a href="https://github.com/citra-emu/citra/pull/4020">Add support for encrypted games</a> by <a href="https://github.com/wwylele">wwylele</a></h2>
+
+<p>You can now directly use your encrypted game dumps in Citra, without having to
+decrypt them. This requires that the user provide their keys via a text file
+in <code>sysdata/aes_keys.txt</code>.</p>
+
+<p>Currently all known encryption methods are implemented except for the Seed
+crypto. Seed crypto is used in newer eshop games, which essentially uses an
+additional title-unique key that is stored outside of the ROM.</p>
+
+<h2 id="scripting-support-https-github-com-citra-emu-citra-pull-4016-by-everoddish-https-github-com-everoddish"><a href="https://github.com/citra-emu/citra/pull/4016">Scripting support</a> by <a href="https://github.com/EverOddish">EverOddish</a></h2>
+
+<p>Scripting is an extremely useful feature which allows us to do things like
+debugging emulator internals, reverse engineering 3DS game internals,
+Tool-Assisted-Speedrunning (TAS), and the ability to manipulate memory in
+games. A cheat-like interface could be implemented through this (though, not
+specifically Gameshark / AR codes).</p>
+
+<p>Users can make their own scripts or use publicly available scripts to gain
+power over things like game screen display, inputs, and memory. Scripts can
+also be used to read or modify the internal game state. EverOddish wrote some
+scripts that can read internal stats of the Pok&eacute;mon and automatically
+update image files for your current party. This feature is very useful for
+streamers who might want to display game information on their streams.</p>
+
+<h2 id="movie-game-input-recording-and-playback-2882-https-github-com-citra-emu-citra-pull-2882-3922-https-github-com-citra-emu-citra-pull-3922-by-danzel-https-github-com-danzel-and-zhaowenlan1779-https-github-com-zhaowenlan1779">Movie - game input recording and playback (<a href="https://github.com/citra-emu/citra/pull/2882">#2882</a>, <a href="https://github.com/citra-emu/citra/pull/3922">#3922</a>) by <a href="https://github.com/danzel">danzel</a> and <a href="https://github.com/zhaowenlan1779">zhaowenlan1779</a></h2>
+
+<p>This feature, not to be confused with video/audio recording, implements a way
+to record game inputs and play them back. Every time the hardware reads an
+input device (buttons, touch screen, accelerometer, gyroscope, c-stick) the
+emulator copies (when recording) or replaces (when playing) the values. Once
+playback has finished, we release control of inputs so that the user can take
+control.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2018-q2/movie.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            UI options to record
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<p>For this, danzel heavily took inspiration from dolphin&rsquo;s system and zhaowenlan1779
+wrote the UI for this feature. This method results in <code>.ctm</code> (Citra TAS movie)
+files which are playble in Citra. To play a game&rsquo;s <code>.ctm</code> file you would need
+to have the game and also manually set Citra&rsquo;s system time to the same starting
+value as in the <code>.ctm</code>. This feature makes debugging bugs in games much easier,
+as it doesn&rsquo;t require us to go through the whole process again.</p>
+
+<h2 id="add-system-time-configuration-https-github-com-citra-emu-citra-pull-4043-by-b3n30-https-github-com-b3n30"><a href="https://github.com/citra-emu/citra/pull/4043">Add system time configuration</a> by <a href="https://github.com/b3n30">B3N30</a></h2>
+
+<p>Whenever a game requested time information, Citra always used your PC&rsquo;s system
+time. This method had a couple of issues - for example, if you were playing a game
+at 200% speed for 2 hours. As its running at twice the max speed, playing for
+2 hours in real-time should reflect 4 hours simulated time. But, due to Citra
+sending your PC&rsquo;s time to games, it wasn&rsquo;t happening.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2018-q2/system-clock.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            System Time setting (edited to show both options)
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<p>Also, players might want to set Citra&rsquo;s time to a specific value to ensure
+consistency with TAS or with RNG(random number generator) or for getting
+time specific game events. Earlier you had to modify your PC&rsquo;s system time
+to achieve this but thanks to B3N30, you can now just set it in Citra&rsquo;s
+configuration window.</p>
+
+<h2 id="joystick-hot-plugging-https-github-com-citra-emu-citra-pull-4141-by-b3n30-https-github-com-b3n30"><a href="https://github.com/citra-emu/citra/pull/4141">Joystick Hot-plugging</a> by <a href="https://github.com/b3n30">B3N30</a></h2>
+
+<p>For a long time, Citra didn&rsquo;t support controller hot plugging. This meant that
+if by chance your controller disconnected Citra would fail to detect it after
+re-connection, unless you restarted the emulator. This caused a lot of
+frustration among users who preferred playing with controllers.</p>
+
+<p>Hot plugging (also called hot swapping) is the ability to add and remove
+devices to a computer system while the computer is running and have the
+operating system automatically recognize the change.</p>
+
+<p>Thanks to the efforts of B3N30 and <a href="https://github.com/jroweboy">jroweboy</a>
+(who researched SDL controller configuration), Citra now doesn&rsquo;t fail to detect
+your controllers in case of a disconnection. However, due to heavy rework of
+the existing input configuration code, this requires users to reconfigure their
+controllers after updating Citra.</p>
+
+<h2 id="udp-client-to-provide-motion-touch-controls-4049-https-github-com-citra-emu-citra-pull-4049-4059-https-github-com-citra-emu-citra-pull-4059-by-jroweboy-https-github-com-jroweboy-and-zhaowenlan1779-https-github-com-zhaowenlan1779">UDP client to provide motion &amp; touch controls (<a href="https://github.com/citra-emu/citra/pull/4049">#4049</a>, <a href="https://github.com/citra-emu/citra/pull/4059">#4059</a>) by <a href="https://github.com/jroweboy">jroweboy</a> and <a href="https://github.com/zhaowenlan1779">zhaowenlan1779</a></h2>
+
+<p>Citra&rsquo;s previous motion controls were a bit uncomfortable to use. You had to
+use your mouse&rsquo;s right-click and drag to tilt the screen, but it was often
+hard to figure out where to move the cursor to get the kind of tilt we want.</p>
+
+<p>Using a real device for motion controls is simply much more intuitive and will
+be an all around better experience for users. As such, jroweboy set out to
+implement cemuhook motion/touch protocol which adds the ability for users to
+connect several different devices to citra to send direct motion and touch
+data to citra.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2018-q2/cemuhookudp.png"  />
+    
+    
+    <figcaption>
+        <h4>
+            Motion/Touch Configuration Window
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<p><a href="https://cemuhook.sshnuke.net/">Cemuhook</a> is a very popular plugin developed by <a href="https://github.com/rajkosto">rajkosto</a>
+for Cemu - the Wii U emulator. This protocol was chosen simply because of the
+fact that there aren&rsquo;t many alternatives and this already has good device
+support. Moreover, as it uses UDP, it works on just about anything with a
+network stack and allows the server to even be a remote network device (useful
+for Android motion support). zhaowenlan1779 wrote the UI for this feature,
+to make it easily accessible and configurable by all users.</p>
+
+<h2 id="et-al">Et. al.</h2>
+
+<p>Apart from the above mentioned ones, we have also had a lot of minor optimizations
+and bug fixes ported from yuzu. We&rsquo;ve made changes to our authentication system
+to use JWT (JSON web tokens), added a background color selector, made GDB stub
+improvements, and many more.</p>
+
+<p>Thank you to <a href="https://github.com/citra-emu/citra/graphs/contributors?from=2018-05-20&amp;to=2018-08-31&amp;type=c">everyone</a>
+for pouring your blood and sweat into this project. Citra needs contributors
+like you to stay alive and become the best it can be.</p>
+
+<p>&nbsp;
+<h4 style="text-align:center;">
+<b>Please consider supporting us on <a href="https://www.patreon.com/citraemu">Patreon</a>!<br>
+If you would like to contribute to this project, checkout our <a href="https://github.com/citra-emu/citra">GitHub</a>!</b>
+</h4></p>
+
+  </div>
+
+  
+  
+  
+
+  <div class="entry-written-by">
+    
+      <a href="https://community.citra-emu.org/users/anodium">
+          <img src="https://community.citra-emu.org/user_avatar/community.citra-emu.org/anodium/120/485_1.png" class="avatar">
+      </a>
+    
+    
+      <a href="https://community.citra-emu.org/users/CaptV0rt3x">
+          <img src="https://community.citra-emu.org/user_avatar/community.citra-emu.org/captv0rt3x/120/4767_1.png" class="avatar">
+      </a>
+    
+    
+
+    
+      <p>Written by <a href="https://community.citra-emu.org/users/anodium">anodium</a> and <a href="https://community.citra-emu.org/users/CaptV0rt3x">CaptV0rt3x</a> on Thursday September 20, 2018</p>
+    
+  </div>
+
+  
+    <div class="entry-comments">
+      <div id="discourse-comments"></div>
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://community.citra-emu.org/', topicId: "49673" };
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+    </div>
+  
+
+
+                </div>
+                <div id="sidebar" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-left">
+                    <div id="advertisement" class = "ad">
+  <h3>Advertisement</h3>
+  <ins class="ad adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4126545610079023"
+       data-ad-slot="4223809695"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="tagcloud hidden-sm hidden-xs">
+  <h3>News Tag Cloud</h3>
+  <ul>
+    
+      <li><a class="taxonomy-citra-release" href="/tags/citra-release">citra-release</a></li>
+    
+      <li><a class="taxonomy-feature-update" href="/tags/feature-update">feature-update</a></li>
+    
+      <li><a class="taxonomy-progress-report" href="/tags/progress-report">progress-report</a></li>
+    
+  </ul>
+</div>
+
+<div id="twitter" class="hidden-sm hidden-xs">
+  <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/citraemu?ref_src=twsrc%5Etfw">Tweet Feed</a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="footer" class="container">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <h1>Citra</h1>
+                    <a href="/">Blog</a>
+                    <a href="/download/">Downloads</a>
+                    <a href="/screenshots/">Screenshots</a>
+                    <a href="https://www.patreon.com/citraemu">Patreon</a>
+                    <a href="/donate/">Donate</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Documentation</h1>
+                    <a href="/help/">Help Documents</a>
+                    <a href="/game/">Compatibility</a>
+                    <a href="/wiki/home/">Dev Wiki</a>
+                    <a href="/wiki/faq/">FAQ</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Blog</h1>
+                    <a href="/">News &amp; Articles</a>
+                    <a href="https://citra-emu.org/index.xml">RSS 2.0</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Social</h1>
+                    <a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q">YouTube</a>
+                    <a href="https://www.facebook.com/citra.emu">Facebook</a>
+                    <a href="https://twitter.com/citraemu">Twitter</a>
+                    <a href="https://community.citra-emu.org/">Forums</a>
+                    <a href="/discord">Discord</a>
+                    <a href="/chat">IRC</a>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Get Involved</h1>
+                    <a href="https://github.com/citra-emu/citra">GitHub / Source</a>
+                    <a href="https://github.com/citra-emu/citra/issues">Issues</a>
+                    <a href="https://github.com/citra-emu/citra/pulls">Pull Requests</a>
+                </div>
+
+            </div>
+            <div id="footer-bottom">
+                <div id="footer-brand"></div>
+                <div id="footer-legal">Copyright © 2021 Citra Emulator Project</div>
+            </div>
+        </div>
+
+        <script src="https://citra-emu.org/js/script.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" type="text/css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			window.addEventListener("DOMContentLoaded", function() {
+			baguetteBox.run('.is-img-preview');
+			});
+		</script>
+
+        
+
+        
+    </body>
+
+</html>

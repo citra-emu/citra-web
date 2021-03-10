@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <meta name="theme-color" content="#FF8E03">
+        <meta property="og:title" content="Citra Progress Report - 2017 August &middot; Citra" />
+        <meta property="og:site_name" content="Citra" />
+        <meta property="og:url" content="https://citra-emu.org/entry/citra-progress-report-2017-august/" />
+            <meta property="og:description" content="2017 has been an amazing year, with more work having been put into the project than ever before, but it&rsquo;s not over yet! Last we met was June, and just two months later the Citra issue tracker is brimming with lots of changes once more. I am extremely excited for this month (and what&rsquo;s coming up the next few months) but we&rsquo;re getting ahead of ourselves! On this progress report, let&rsquo;s check out the big fish in the July and August pond of patches!" />
+<meta name="description" content="2017 has been an amazing year, with more work having been put into the project than ever before, but it&rsquo;s not over yet! Last we met was June, and just two months later the Citra issue tracker is brimming with lots of changes once more. I am extremely excited for this month (and what&rsquo;s coming up the next few months) but we&rsquo;re getting ahead of ourselves! On this progress report, let&rsquo;s check out the big fish in the July and August pond of patches!" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://citra-emu.org/images/banners/citra-progress-report-2017-august.png" />
+<meta property="og:article:published_time" content="2017-09-16T00:28:00-04:00" />
+<meta property="og:article:tag" content="progress-report" />
+
+
+        <meta name="generator" content="Hugo 0.52" />
+
+        <link rel="icon" href="https://citra-emu.org/favicon.ico" />
+        <link rel="shortcut icon" href="https://citra-emu.org/favicon.ico" type="image/x-icon" />
+        <link rel="canonical" href="https://citra-emu.org/entry/citra-progress-report-2017-august/">
+
+        
+
+        <title>Citra Progress Report - 2017 August - Citra</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis" rel="stylesheet">
+        <link rel="stylesheet" href="https://citra-emu.org/css/style.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-73966905-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+        
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-wrapper navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">&nbsp;</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="index-1 first"><a href="/" title="Blog Posts">Blog</a></li>
+                <li class="index-2"><a href="/download/" title="Download Citra">Download</a></li>
+                <li class="index-3"><a href="/help/" title="Help">Help</a></li>
+                <li class="index-4"><a href="/wiki/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li class="index-5"><a href="/game/" title="Game Compatibility">Compatibility</a></li>
+                <li class="index-6"><a href="/wiki/home/" title="Wiki Homepage">Dev Wiki</a></li>
+
+                <li class="index-7 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false">
+                        Social <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/rules/" title="">Rules</a></li>
+                        <li class="index-2"><a href="https://community.citra-emu.org/" title="Forums">Community Forums</a></li>
+                        <li class="index-3 last"><a href="/discord/" title="Discord Channel">Discord Chat</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-8 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                aria-haspopup="true" aria-expanded="false">
+                        Media <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/screenshots/" title="Screenshots">Screenshots</a></li>
+                        <li class="index-2 last"><a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q"
+                                                    title="Youtube Channel">Videos</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-9 last"><a href="https://www.patreon.com/citraemu" title="Patreon">Patreon</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+        <div id="mainContainer" class="container" >
+            <div class="row">
+                
+            </div>
+
+            <div class="row row-fluid">
+                <div id="content" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right">
+                    
+  <a href="https://citra-emu.org/entry/citra-progress-report-2017-august/">
+  <div class="entry-embed-header">
+      <div class="entry-embed" style="background: url('https://citra-emu.org/images/banners/citra-progress-report-2017-august.png')">
+          <header>
+              <h1>Citra Progress Report - 2017 August</h1>
+          </header>
+      </div>
+
+      
+      <div class="entry-meta" style="position: absolute; top: 5px; right: 20px;">
+          September 16 2017
+      </div>
+
+      
+      <div class="entry-meta" style="position: absolute; top: 45px; right: 20px;">
+          progress-report
+      </div>
+      
+  </div>
+</a>
+
+
+  <div class="entry-content">
+    
+
+<p>2017 has been an amazing year, with more work having been put into the project
+than ever before, but it&rsquo;s not over yet! Last we met was
+<a href="/entry/citra-progress-report-2017-june/">June</a>, and just two months later the
+<a href="https://github.com/citra-emu/citra/pulls">Citra issue tracker</a> is brimming with
+lots of changes once more. I am extremely excited for this month (and what&rsquo;s coming
+up the next few months) but we&rsquo;re getting ahead of ourselves! On this progress
+report, let&rsquo;s check out the big fish in the July and August pond of patches!</p>
+
+<h2 id="updating-the-software-renderer-this-https-github-com-citra-emu-citra-pull-2766-that-https-github-com-citra-emu-citra-pull-2822-here-https-github-com-citra-emu-citra-pull-2871-there-https-github-com-citra-emu-citra-pull-2872-and-those-https-github-com-citra-emu-citra-pull-2891-by-wwylele-https-github-com-wwylele-and-subv-https-github-com-subv">Updating The Software Renderer (<a href="https://github.com/citra-emu/citra/pull/2766">This</a>, <a href="https://github.com/citra-emu/citra/pull/2822">that</a>, <a href="https://github.com/citra-emu/citra/pull/2871">here</a>, <a href="https://github.com/citra-emu/citra/pull/2872">there</a>, and <a href="https://github.com/citra-emu/citra/pull/2891">those</a>) by <a href="https://github.com/wwylele">wwylele</a> and <a href="https://github.com/Subv">Subv</a></h2>
+
+<p>Citra has two main rendering backends, software and OpenGL, but until very
+recently, no one gave much attention to the software backend. The OpenGL backend
+is faster, makes better use of the GPU, and allows things such as texture forwarding
+for higher resolution rendering. But there is one thing on which the OpenGL backend
+falls flat on its face&mdash;accuracy.</p>
+
+<p>However, <a href="https://github.com/wwylele">wwylele</a> has just revived the software
+renderer (inspired by an attempt <a href="https://github.com/Subv">Subv</a> made prior),
+adding almost all of the features the hardware renderer had received over the years.
+In fact, every addition to the hardware renderer has been given an equivalent
+in software:</p>
+
+<table class="table">
+    
+<thead>
+<tr>
+<th>Feature</th>
+<th>Hardware</th>
+<th>Software</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Fragment Lighting</td>
+<td><a href="https://github.com/citra-emu/citra/pull/1264">#1264</a></td>
+<td><a href="https://github.com/citra-emu/citra/pull/2766">#2766</a>, <a href="https://github.com/citra-emu/citra/pull/2822">#2822</a></td>
+</tr>
+
+<tr>
+<td>Spot Lighting</td>
+<td><a href="https://github.com/citra-emu/citra/pull/2727">#2727</a></td>
+<td><a href="https://github.com/citra-emu/citra/pull/2871">#2871</a></td>
+</tr>
+
+<tr>
+<td>Geometric Factor</td>
+<td><a href="https://github.com/citra-emu/citra/pull/2776">#2776</a></td>
+<td><a href="https://github.com/citra-emu/citra/pull/2872">#2872</a></td>
+</tr>
+
+<tr>
+<td>Bump Mapping</td>
+<td><a href="https://github.com/citra-emu/citra/pull/2762">#2762</a></td>
+<td><a href="https://github.com/citra-emu/citra/pull/2891">#2891</a></td>
+</tr>
+</tbody>
+
+</table>
+
+
+<p>Despite the software backend being incredibly slow, it is important to have a
+complete software implementation of the 3DS&rsquo; GPU so that Citra can be used as a
+stable, working, and complete reference implementation in the future, when
+obtaining a working real console may be much more difficult.</p>
+
+<h2 id="handle-invalid-filenames-when-renaming-https-github-com-citra-emu-citra-pull-2850-by-j-selby-https-github-com-j-selby"><a href="https://github.com/citra-emu/citra/pull/2850">Handle Invalid Filenames When Renaming</a> by <a href="https://github.com/j-selby">j-selby</a></h2>
+
+<p>Citra emulates the 3DS system services at a high level of emulation, or HLE for
+short. What this means is that every time a 3DS application or game running in
+Citra makes a request to the 3DS System Software, Citra captures the request and
+tries to translate it into its PC equivalent, rather then running the 3DS System
+Software directly.</p>
+
+<p>For example, if a game makes a call to <a href="https://www.3dbrew.org/wiki/FS:OpenFile"><code>FS:OpenFile</code></a>,
+Citra in turn calls the operating system&rsquo;s file opening function
+(<a href="https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/fopen-s-wfopen-s"><code>_wfopen_s()</code></a> on Windows,
+or <a href="http://pubs.opengroup.org/onlinepubs/9699919799/functions/open.html"><code>open()</code></a> on macOS and Linux),
+with <a href="/wiki/user-directory/">the path to the virtual SD card</a> added to the beginning.</p>
+
+<p>Now, on top of the usual names for files and folders, there&rsquo;s two special folders
+inside every single folder on your computer, <code>.</code> and <code>..</code>. These aren&rsquo;t actual
+folders in the sense that you can place files and other folders inside of them.
+Instead, they each symbolize the current folder, and the folder one level above
+it, respectively. For example, <code>C:/Windows/System32/..</code> actually means <code>C:/Windows/</code>.</p>
+
+<p>With this in mind, a few Citra developers believed a game could, in theory, chain
+multiple <code>..</code>s together to get to a file they weren&rsquo;t supposed to know even existed,
+like <code>/../../../../Documents/IMPORTANT.docx</code>. Citra would then ask the operating
+system to open the file <code>%AppData%/Citra/sdmc/../../../../Documents/IMPORTANT.docx</code>,
+which <em>actually</em> means that it would open <code>C:/Users/Anodium/Documents/IMPORTANT.docx</code>!</p>
+
+<p>Before you suggest that Citra simply ignore <code>..</code>, a game can use it for legitimate
+purposes. And if it were to use it, it would most likely crash, as the resulting
+file path wouldn&rsquo;t exist.</p>
+
+<p>This was already handled for most file functions in Citra, opening, reading,
+writing, etc. except for a few things, like renaming a file. In this case, the
+malicious game could just ask Citra to change <code>/../../../../Documents/IMPORTANT.docx</code>&rsquo;s
+name to <code>/delicious_secrets.docx</code>, effectively moving <code>IMPORTANT.docx</code> into Citra&rsquo;s
+virtual SD card! From there, the game could just ask Citra to open
+<code>/delicious_secrets.docx</code> to read the file it was originally forbidden from accessing.</p>
+
+<p>This patch now fixes this, such that if any 3DS game or application tries to do
+exploit the rename file function from inside Citra, rather than doing what it asks,
+Citra gives them <code>ERROR_INVALID_PATH</code>, which most games interpret by crashing. So
+far, we haven&rsquo;t found any real 3DS software that tries to do this, but at least
+now future attempts to do so are blocked.</p>
+
+<p>Do note though, that most of us are not security experts, and even for those who are,
+harderning the software is much more difficult and much less worthwhile than actually
+having an accurate 3DS emulation. The surface area of an emulation project is huge,
+and so writing malicious code intending to exploit one is not too difficult in any case.</p>
+
+<p>But at the same time, malware authors generally target either the largest populations,
+or the most lucrative populations, and emulation is neither. And for the effort
+required to do so, most will only toy with the idea in their head, or maybe write
+a proof-of-concept for fun, rather than genuine malicious intent.</p>
+
+<h2 id="fix-edge-cases-for-texturecopy-https-github-com-citra-emu-citra-pull-2809-by-wwylele-https-github-com-wwylele"><a href="https://github.com/citra-emu/citra/pull/2809">Fix Edge Cases for TextureCopy</a> by <a href="https://github.com/wwylele">wwylele</a></h2>
+
+<p>The 3DS GPU has a data transfer mode called <code>TextureCopy</code>, which as the name says,
+is for copying textures but with a configurable gap in case the texture is going
+to be copied into a smaller resolution area. This mode is enabled by setting the
+3rd flag in the GPU and causes it to ignore every other flag except the 2nd, which
+is used to tell it whether or not to crop the texture.</p>
+
+<p>This is nice because it can be used as a quick and easy way for 3DS developers to
+duplicate textures, and can be used in situations such as the one pictured running
+on hardware in Pokémon Super Mystery Dungeon below. But when it came to running
+something that took advantage of this feature in Citra, it didn&rsquo;t always work the
+same as it would on console.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2017-august/texturecopy-before.png" alt="Pokémon Super Mystery Dungeon During Deoxy&#39;s and Rayquaza&#39;s Face Off   I N   S P A C E" />
+    
+    
+    <figcaption>
+        <h4>
+            How jagged
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<p>Fortunately (and to much rejoicing!) wwylele stepped into the ring to wrestle with
+this issue. They prepared a <a href="https://github.com/wwylele/ctrhwtest/tree/master/texture-copy-test">test program</a>
+to help gain an understanding of how the hardware handles the TextureCopy operation
+in comparison to Citra. After the hard work of doing the research was out of the
+way, wwylele implemented it in Citra.</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2017-august/texturecopy-after.png" alt="Pokémon Super Mystery Dungeon During Deoxy&#39;s and Rayquaza&#39;s Face Off   I N   S P A C E" />
+    
+    
+    <figcaption>
+        <h4>
+            Deoxys is having a bit of a hard time, no?
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<h2 id="use-docker-for-linux-builds-https-github-com-citra-emu-citra-pull-2869-by-j-selby-https-github-com-j-selby"><a href="https://github.com/citra-emu/citra/pull/2869">Use Docker For Linux Builds</a> by <a href="https://github.com/j-selby">j-selby</a></h2>
+
+<p>Ubuntu Linux 14.04 is the de-facto standard desktop Linux distribution. It&rsquo;s also
+old. <a href="https://wiki.ubuntu.com/TrustyTahr/ReleaseSchedule#line-37"><em>Very</em> old</a>.
+So old, in fact, that the compiler it ships with can&rsquo;t compile Citra. And our
+buildbot, <a href="https://travis-ci.org/">Travis CI</a>, that automatically compiles and
+builds Citra from source, just so happens to use Ubuntu 14.04 VMs. <em><code>:(</code></em></p>
+
+<p>Formerly, we would update the compiler from a third-party repository before compiling
+Citra itself. This also had the side-effect of updating the standard library that
+comes with the compiler, as each compiler version is inextricably tied to the same
+version of library by design. Unfortunately, a recent update to the library was
+incompatible with a large majority of systems because it&rsquo;s too new for Ubuntu 14.04,
+breaking the Linux build once again.</p>
+
+<p>Now, rather than building Citra directly inside Travis, a
+<a href="https://www.docker.com/">Docker container</a> is started that&rsquo;s running Ubuntu 16.04
+instead, which is much more well supported (and yes, it can compile Citra out of the box!).</p>
+
+<h2 id="ui-themes-https-github-com-citra-emu-citra-pull-2804-by-kloen-https-github-com-kloen"><a href="https://github.com/citra-emu/citra/pull/2804">UI Themes</a> by <a href="https://github.com/kloen">Kloen</a></h2>
+
+<p><a href="https://github.com/kloen">Kloen</a> has put the time and work into Citra&rsquo;s Qt
+frontend to make it themeable. Now users can enjoy a dark mode and other custom
+colour schemes, just by editing a CSS stylesheet!</p>
+
+
+
+<figure >
+    
+        <img src="/images/entry/citra-progress-report-2017-august/theme-comparison.png" alt="Comparison of Dark Theme and Light Theme" />
+    
+    
+    <figcaption>
+        <h4>
+            CHOOSE YOUR CHARACTER
+        </h4>
+    </figcaption>
+    
+</figure>
+
+
+<h2 id="load-shared-font-from-system-archive-https-github-com-citra-emu-citra-pull-2784-by-wwylele-https-github-com-wwylele"><a href="https://github.com/citra-emu/citra/pull/2784">Load Shared Font From System Archive</a> by <a href="https://github.com/wwylele">wwylele</a></h2>
+
+<p><strong>This does not eliminate the need for dumping a shared font from a legitimate system.</strong></p>
+
+<p>This in itself isn&rsquo;t an extremely visible or perceivable change from a user
+perspective, but it is something that helps us take another stride towards
+accurately recreating the way the 3DS actually operates. All system data is
+uniformly stored in the system archive now that the system font can be included
+with it. Citra does still fall back to the deprecated <code>shared_font.bin</code> file if
+it was dumped before, for compatibility&rsquo;s sake. <code>3dsutil</code> has been updated to be
+able to dump everything as a system archive, so that Citra may be able to work
+with it in a way that&rsquo;s more accurate to the actual hardware!</p>
+
+<h2 id="and-everyone-else">And Everyone Else</h2>
+
+<p>Just because your work wasn&rsquo;t written on here doesn&rsquo;t mean it&rsquo;s not as important!
+Every little bit counts, every pull request inches the project one step closer
+down the long road of accurately emulating the Nintendo 3DS. So I would like to
+give my thanks to <a href="https://github.com/citra-emu/citra/graphs/contributors?from=2017-07-10&amp;to=2017-08-30&amp;type=c">everyone who&rsquo;s contributed</a>
+these past two months, for giving us those extra metres down this road.</p>
+
+  </div>
+
+  
+  
+  
+
+  <div class="entry-written-by">
+    
+      <a href="https://community.citra-emu.org/users/anodium">
+          <img src="https://community.citra-emu.org/user_avatar/community.citra-emu.org/anodium/120/485_1.png" class="avatar">
+      </a>
+    
+    
+      <a href="https://community.citra-emu.org/users/saphiresurf">
+          <img src="https://community.citra-emu.org/user_avatar/community.citra-emu.org/saphiresurf/120/695_1.png" class="avatar">
+      </a>
+    
+    
+
+    
+      <p>Written by <a href="https://community.citra-emu.org/users/anodium">anodium</a> and <a href="https://community.citra-emu.org/users/saphiresurf">saphiresurf</a> on Saturday September 16, 2017</p>
+    
+  </div>
+
+  
+    <div class="entry-comments">
+      <div id="discourse-comments"></div>
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://community.citra-emu.org/', topicId: "3566" };
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+    </div>
+  
+
+
+                </div>
+                <div id="sidebar" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-left">
+                    <div id="advertisement" class = "ad">
+  <h3>Advertisement</h3>
+  <ins class="ad adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4126545610079023"
+       data-ad-slot="4223809695"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="tagcloud hidden-sm hidden-xs">
+  <h3>News Tag Cloud</h3>
+  <ul>
+    
+      <li><a class="taxonomy-citra-release" href="/tags/citra-release">citra-release</a></li>
+    
+      <li><a class="taxonomy-feature-update" href="/tags/feature-update">feature-update</a></li>
+    
+      <li><a class="taxonomy-progress-report" href="/tags/progress-report">progress-report</a></li>
+    
+  </ul>
+</div>
+
+<div id="twitter" class="hidden-sm hidden-xs">
+  <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/citraemu?ref_src=twsrc%5Etfw">Tweet Feed</a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="footer" class="container">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <h1>Citra</h1>
+                    <a href="/">Blog</a>
+                    <a href="/download/">Downloads</a>
+                    <a href="/screenshots/">Screenshots</a>
+                    <a href="https://www.patreon.com/citraemu">Patreon</a>
+                    <a href="/donate/">Donate</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Documentation</h1>
+                    <a href="/help/">Help Documents</a>
+                    <a href="/game/">Compatibility</a>
+                    <a href="/wiki/home/">Dev Wiki</a>
+                    <a href="/wiki/faq/">FAQ</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Blog</h1>
+                    <a href="/">News &amp; Articles</a>
+                    <a href="https://citra-emu.org/index.xml">RSS 2.0</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Social</h1>
+                    <a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q">YouTube</a>
+                    <a href="https://www.facebook.com/citra.emu">Facebook</a>
+                    <a href="https://twitter.com/citraemu">Twitter</a>
+                    <a href="https://community.citra-emu.org/">Forums</a>
+                    <a href="/discord">Discord</a>
+                    <a href="/chat">IRC</a>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Get Involved</h1>
+                    <a href="https://github.com/citra-emu/citra">GitHub / Source</a>
+                    <a href="https://github.com/citra-emu/citra/issues">Issues</a>
+                    <a href="https://github.com/citra-emu/citra/pulls">Pull Requests</a>
+                </div>
+
+            </div>
+            <div id="footer-bottom">
+                <div id="footer-brand"></div>
+                <div id="footer-legal">Copyright © 2021 Citra Emulator Project</div>
+            </div>
+        </div>
+
+        <script src="https://citra-emu.org/js/script.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" type="text/css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			window.addEventListener("DOMContentLoaded", function() {
+			baguetteBox.run('.is-img-preview');
+			});
+		</script>
+
+        
+
+        
+    </body>
+
+</html>

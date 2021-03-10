@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <meta name="theme-color" content="#FF8E03">
+        <meta property="og:title" content="AES Keys &middot; Citra" />
+        <meta property="og:site_name" content="Citra" />
+        <meta property="og:url" content="https://citra-emu.org/wiki/aes-keys/" />
+            <meta property="og:description" content="Users can provide some additional crypto keys to enable some advanced features in Citra. These keys are not officially provided by Citra due to legal considerations.
+Instructions to obtain AES Keys Method 1 In this method, you will need to dump your bootrom, native_firm &amp; secret section(for n3ds) from your console.
+Note: You will still need to provide the 0x25 KeyX using Method 2.
+Step 1 - bootrom
+The bootrom boot9." />
+<meta name="description" content="Users can provide some additional crypto keys to enable some advanced features in Citra. These keys are not officially provided by Citra due to legal considerations.
+Instructions to obtain AES Keys Method 1 In this method, you will need to dump your bootrom, native_firm &amp; secret section(for n3ds) from your console.
+Note: You will still need to provide the 0x25 KeyX using Method 2.
+Step 1 - bootrom
+The bootrom boot9." />
+<meta property="og:type" content="website" />
+
+
+        <meta name="generator" content="Hugo 0.52" />
+
+        <link rel="icon" href="https://citra-emu.org/favicon.ico" />
+        <link rel="shortcut icon" href="https://citra-emu.org/favicon.ico" type="image/x-icon" />
+        <link rel="canonical" href="https://citra-emu.org/wiki/aes-keys/">
+
+        
+
+        <title>AES Keys - Citra</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu|Dosis" rel="stylesheet">
+        <link rel="stylesheet" href="https://citra-emu.org/css/style.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-73966905-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+        
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-wrapper navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">&nbsp;</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="index-1 first"><a href="/" title="Blog Posts">Blog</a></li>
+                <li class="index-2"><a href="/download/" title="Download Citra">Download</a></li>
+                <li class="index-3"><a href="/help/" title="Help">Help</a></li>
+                <li class="index-4"><a href="/wiki/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li class="index-5"><a href="/game/" title="Game Compatibility">Compatibility</a></li>
+                <li class="index-6"><a href="/wiki/home/" title="Wiki Homepage">Dev Wiki</a></li>
+
+                <li class="index-7 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       role="button" aria-haspopup="true" aria-expanded="false">
+                        Social <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/rules/" title="">Rules</a></li>
+                        <li class="index-2"><a href="https://community.citra-emu.org/" title="Forums">Community Forums</a></li>
+                        <li class="index-3 last"><a href="/discord/" title="Discord Channel">Discord Chat</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-8 dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                aria-haspopup="true" aria-expanded="false">
+                        Media <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="index-1 first"><a href="/screenshots/" title="Screenshots">Screenshots</a></li>
+                        <li class="index-2 last"><a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q"
+                                                    title="Youtube Channel">Videos</a></li>
+                    </ul>
+                </li>
+
+                <li class="index-9 last"><a href="https://www.patreon.com/citraemu" title="Patreon">Patreon</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+        <div id="mainContainer" class="container" >
+            <div class="row">
+                
+            </div>
+
+            <div class="row row-fluid">
+                <div id="content" class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pull-right">
+                    
+  <div class="alert alert-warning">
+    <div class="row">
+      <div class="col-md-2">
+        <strong>Read First!</strong>
+      </div>
+      <div class="col-md-10">
+        <p>The below wiki article is based on user submitted content.<br>
+        Please verify <strong>all</strong> hyperlinks and terminal commands below!</p>
+        See a mistake? Want to contribute? <a href="https://github.com/citra-emu/citra/wiki/aes-keys/_edit/">Edit this article on Github</a>
+      </div>
+    </div>
+  </div>
+
+	<h1>AES Keys</h1>
+	
+
+<p>Users can provide some additional crypto keys to enable some advanced features in Citra. These keys are not officially provided by Citra due to legal considerations.</p>
+
+<h1 id="instructions-to-obtain-aes-keys">Instructions to obtain AES Keys</h1>
+
+<h3 id="method-1">Method 1</h3>
+
+<p>In this method, you will need to dump your bootrom, native_firm &amp; secret section(for n3ds) from your console.</p>
+
+<p><strong>Note:</strong> You will still need to provide the <code>0x25 KeyX</code> using Method 2.</p>
+
+<p><strong>Step 1</strong> - bootrom</p>
+
+<p>The bootrom boot9.bin can be dumped with Godmode9:</p>
+
+<ul>
+<li>Go to drive <code>M: Memory Virtual</code></li>
+<li>Navigate to <code>boot9.bin</code>, press A</li>
+<li>Select <code>Copy to O:/gm9out</code>. This will give you boot9.bin in gm9out on your SD card</li>
+<li>The <code>boot9.bin</code> needs to be placed in the <code>sysdata</code> folder in the <a href="/wiki/user-directory">User Directory</a>.</li>
+</ul>
+
+<p><strong>Step 2</strong> - native_firm &amp; secret section</p>
+
+<p><strong>For o3DS / o2DS</strong></p>
+
+<ul>
+<li>In GodMode9, navigate to <code>sysnand ctrnand</code> -&gt; <code>title</code> -&gt; and then dump <code>00040138/00000003</code> as cia and install it in Citra.</li>
+</ul>
+
+<p><strong>For n3DS/n2DS</strong></p>
+
+<ul>
+<li>In GodMode9, navigate to <code>sysnand ctrnand</code> -&gt; <code>title</code> -&gt; and then dump <code>00040138/20000003</code> as cia and install it in Citra.</li>
+<li>Dump the secret section with godmode9 and copy the file (sector0x96.bin) to sysdata in the user folder.</li>
+</ul>
+
+<h3 id="method-2">Method 2</h3>
+
+<p>As an alternative, instead of dumping the required files, you can provide all the AES keys manually. The keys are supplied by filling the file <code>sysdata/aes_keys.txt</code> (located in the <a href="/wiki/user-directory">User Directory</a>) in the following format:</p>
+
+<pre><code>slot0x0DKeyX=0123456789ABCDEF0123456789ABCDEF
+slot0x0DKeyY=0123456789ABCDEF0123456789ABCDEF
+slot0x0DKeyN=0123456789ABCDEF0123456789ABCDEF
+slot0x18KeyX=0123456789ABCDEF0123456789ABCDEF
+slot0x1BKeyX=0123456789ABCDEF0123456789ABCDEF
+slot0x25KeyX=0123456789ABCDEF0123456789ABCDEF
+slot0x2CKeyX=0123456789ABCDEF0123456789ABCDEF
+slot0x2DKeyX=0123456789ABCDEF0123456789ABCDEF
+slot0x2DKeyY=0123456789ABCDEF0123456789ABCDEF
+slot0x2DKeyN=0123456789ABCDEF0123456789ABCDEF
+slot0x31KeyX=0123456789ABCDEF0123456789ABCDEF
+slot0x31KeyY=0123456789ABCDEF0123456789ABCDEF
+slot0x31KeyN=0123456789ABCDEF0123456789ABCDEF
+slot0x3DKeyX=0123456789ABCDEF0123456789ABCDEF
+common0=0123456789ABCDEF0123456789ABCDEF
+common1=0123456789ABCDEF0123456789ABCDEF
+</code></pre>
+
+<p>The strings <code>0123456789ABCDEF0123456789ABCDEF</code> in the example above are all placeholder and should be replaced by correct 32-digit hex values of keys. Not all lines in the example are required at the same time. Please read the explanation below about which key enables which feature</p>
+
+<h3 id="loading-encrypted-games">Loading encrypted games</h3>
+
+<p>Required keys: <code>slot0x25KeyX</code> and <code>slot0x2CKeyX</code>.
+  If loading encrypted New 3DS games, <code>slot0x18KeyX</code> and <code>slot0x1BKeyX</code> are also required.</p>
+
+<p>For those who are interested, <a href="https://www.reddit.com/r/3dshacks/comments/56lk5p/game_ncch_and_cdn_encryption_an_explanation/"><strong>here&rsquo;s a write-up about 3DS security</strong></a>, that also talks about the <code>slot0x25KeyX</code>.</p>
+
+<h3 id="sharing-mii-via-qr-code-between-citra-and-3ds">Sharing Mii via QR code between Citra and 3DS</h3>
+
+<p>Required keys: single <code>slot0x2DKeyN</code>, OR <code>slot0x2DKeyX</code>, <code>slot0x2DKeyY</code> together.</p>
+
+<h3 id="generating-accurate-uds-data-frame">Generating accurate UDS data frame</h3>
+
+<p>Required keys: single <code>slot0x31KeyN</code>, OR <code>slot0x31KeyX</code>, <code>slot0x31KeyY</code> together.</p>
+
+<h3 id="using-client-cert-dumped-from-3ds">Using client cert dumped from 3DS</h3>
+
+<p>Required keys: single <code>slot0x0DKeyN</code>, OR <code>slot0x0DKeyX</code>, <code>slot0x0DKeyY</code> together.</p>
+
+<h3 id="installing-encrypted-cia">Installing encrypted CIA</h3>
+
+<p>Required keys: <code>slot0x3DKeyX</code> and <code>common0</code>. <code>common1</code>~<code>5</code>are probably also required for some
+  unusual CIA.</p>
+
+
+                </div>
+                <div id="sidebar" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-left">
+                    <div id="advertisement" class = "ad">
+  <h3>Advertisement</h3>
+  <ins class="ad adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4126545610079023"
+       data-ad-slot="4223809695"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div class="tagcloud hidden-sm hidden-xs">
+  <h3>News Tag Cloud</h3>
+  <ul>
+    
+      <li><a class="taxonomy-citra-release" href="/tags/citra-release">citra-release</a></li>
+    
+      <li><a class="taxonomy-feature-update" href="/tags/feature-update">feature-update</a></li>
+    
+      <li><a class="taxonomy-progress-report" href="/tags/progress-report">progress-report</a></li>
+    
+  </ul>
+</div>
+
+<div id="twitter" class="hidden-sm hidden-xs">
+  <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/citraemu?ref_src=twsrc%5Etfw">Tweet Feed</a>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="footer" class="container">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <h1>Citra</h1>
+                    <a href="/">Blog</a>
+                    <a href="/download/">Downloads</a>
+                    <a href="/screenshots/">Screenshots</a>
+                    <a href="https://www.patreon.com/citraemu">Patreon</a>
+                    <a href="/donate/">Donate</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Documentation</h1>
+                    <a href="/help/">Help Documents</a>
+                    <a href="/game/">Compatibility</a>
+                    <a href="/wiki/home/">Dev Wiki</a>
+                    <a href="/wiki/faq/">FAQ</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Blog</h1>
+                    <a href="/">News &amp; Articles</a>
+                    <a href="https://citra-emu.org/index.xml">RSS 2.0</a>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Social</h1>
+                    <a href="https://www.youtube.com/channel/UC_dcdgzuapBtAY4ol3x-90Q">YouTube</a>
+                    <a href="https://www.facebook.com/citra.emu">Facebook</a>
+                    <a href="https://twitter.com/citraemu">Twitter</a>
+                    <a href="https://community.citra-emu.org/">Forums</a>
+                    <a href="/discord">Discord</a>
+                    <a href="/chat">IRC</a>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h1>Get Involved</h1>
+                    <a href="https://github.com/citra-emu/citra">GitHub / Source</a>
+                    <a href="https://github.com/citra-emu/citra/issues">Issues</a>
+                    <a href="https://github.com/citra-emu/citra/pulls">Pull Requests</a>
+                </div>
+
+            </div>
+            <div id="footer-bottom">
+                <div id="footer-brand"></div>
+                <div id="footer-legal">Copyright © 2021 Citra Emulator Project</div>
+            </div>
+        </div>
+
+        <script src="https://citra-emu.org/js/script.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" type="text/css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			window.addEventListener("DOMContentLoaded", function() {
+			baguetteBox.run('.is-img-preview');
+			});
+		</script>
+
+        
+
+        
+    </body>
+
+</html>
