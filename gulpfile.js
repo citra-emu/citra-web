@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
 const gulp = require('gulp');
 const fs = require('fs');
-const util = require('gulp-util');
 const merge = require('merge-stream');
 const exec = require('child_process').exec;
+const log = require('fancy-log');
+const parseArgs = require('minimist');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const cssnano = require('cssnano');
@@ -12,17 +13,13 @@ const concat = require('gulp-concat');
 const imageResize = require('gulp-image-resize');
 
 gulp.task('scripts:games', function (callback) {
-    exec('yarn install && node app.js', { cwd: './scripts/games/' }, function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
+    exec('yarn install && node app.js', { cwd: './scripts/compatdb/' }, function (err, stdout, stderr) {
         callback(err);
     });
 });
 
 gulp.task('scripts:wiki', function (callback) {
     exec('yarn install && node app.js', { cwd: './scripts/wiki/' }, function (err, stdout, stderr) {
-        console.log(stdout);
-        console.log(stderr);
         callback(err);
     });
 });
@@ -106,7 +103,8 @@ gulp.task('final:publish', function(done) {
 const cname = 'citra-emu.org';
 var finalCommand = null;
 
-if (util.env.production) {
+if (parseArgs(process.argv).production) {
+    process.env.NODE_ENV = 'production';
     process.env.HUGO_ENV = 'PRD';
     process.env.HUGO_BASEURL = `https://${cname}`;
     finalCommand = 'final:publish';
@@ -116,8 +114,8 @@ if (util.env.production) {
     finalCommand = 'final:serve';
 }
 
-util.log(`process.env.HUGO_ENV = '${process.env.HUGO_ENV}'`);
-util.log(`process.env.HUGO_BASEURL = '${process.env.HUGO_BASEURL}'`);
+log.info(`process.env.HUGO_ENV = '${process.env.HUGO_ENV}'`);
+log.info(`process.env.HUGO_BASEURL = '${process.env.HUGO_BASEURL}'`);
 
 gulp.task('default', gulp.series(gulp.parallel('assets:js', 'assets:fonts', 'assets:scss'), 'hugo', 'assets:images', finalCommand));
 gulp.task('all', gulp.series(gulp.parallel('scripts:games', 'scripts:wiki'), gulp.parallel('assets:js', 'assets:fonts', 'assets:scss'), 'hugo', 'assets:images', finalCommand));
