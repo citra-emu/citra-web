@@ -19,7 +19,6 @@
     "gulp-concat": "^2.6.1",
     "gulp-htmlmin": "^5.0.1",
     "gulp-image-resize": "^0.13.1",
-    "gulp-md5-plus": "^1.0.3",
     "gulp-postcss": "^9.0.0",
     "gulp-sass": "^4.1.0",
     "merge-stream": "^2.0.0",
