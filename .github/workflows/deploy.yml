@@ -23,8 +23,8 @@ jobs:
         sudo dpkg -i hugo.deb
         yarn install
         # Install dependencies one-by-one to avoid race-conditions
-        pushd ./scripts/wiki/ && yarn && popd
-        pushd ./scripts/compatdb/ && yarn && popd
+        pushd ./scripts/shared-hugo-scripts/wiki/ && yarn && popd
+        pushd ./scripts/shared-hugo-scripts/compatdb/ && yarn && popd
         hugo version
     - name: Build
       env:
