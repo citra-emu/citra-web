@@ -13,13 +13,13 @@ const concat = require('gulp-concat');
 const imageResize = require('gulp-image-resize');
 
 gulp.task('scripts:games', function (callback) {
-    exec('yarn install && node app.js', { cwd: './scripts/compatdb/' }, function (err, stdout, stderr) {
+    exec('yarn install && node app.js', { cwd: './scripts/shared-hugo-scripts/compatdb/' }, function (err, stdout, stderr) {
         callback(err);
     });
 });
 
 gulp.task('scripts:wiki', function (callback) {
-    exec('yarn install && node app.js', { cwd: './scripts/wiki/' }, function (err, stdout, stderr) {
+    exec('yarn install && node app.js', { cwd: './scripts/shared-hugo-scripts/wiki/' }, function (err, stdout, stderr) {
         callback(err);
     });
 });
