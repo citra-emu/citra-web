@@ -20,4 +20,4 @@ Now, Gulp should have built the Citra website, its external content, and hosted 
 It will print out the `Access URL`s, which you can go to in your browser to view it.
 
 ## Sitemap
-The sitemap for the Citra website can be found in [SITEMAP.md](SITEMAP.md).
+The sitemap for the Citra website can be found in [SITEMAP.md](SITEMAP.md)
