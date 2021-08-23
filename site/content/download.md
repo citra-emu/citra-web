@@ -23,7 +23,7 @@ The Citra updater provides a easy interface to install, update and manage Citra.
 <style>
  .alert {
   padding: 20px;
-  background-color: #ff9800;
+  background-color: #ff8e03;
   color: white;
   margin-bottom: 15px;
 }
