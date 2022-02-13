@@ -1,5 +1,5 @@
 +++
-title = "Multiplayer Rooms"
+title = "Multiplayer"
 description = "Citra's multiplayer feature has the ability to emulate local wireless multiplayer over the Internet."
 +++
 
@@ -116,3 +116,15 @@ Currently, *Citra* rooms grant the following members moderation privileges by de
 Due to complexity, it is not possible to grant other users moderation privileges.
 
 Users with moderation privileges will notice a `Moderation...` button on the right top of the Room dialog. With this you can view the current ban list and unban when needed. You can also right click on a member in the member list and click on `Kick` or `Ban` to impose moderation actions on them. Note that `Block Player` is different from a ban and is available to all users to block messages from certain members only locally.
+
+## Instructions on Using Download Play (LLE)
+Download Play is yet another gimmick Nintendo added to the DS, and then passed on to the 3DS family. Download Play allows players to send and receive short demo games. Not only that, some games like Mario Kart 7 use this for local multiplayer as well. 
+
+Since this is LLE, keep in mind that you need to dump quite a few system files for multiplayer to work on these few games. In the past, this would mean manually looking through GodMode9 trying to find a bunch of different files. However, thanks to threeSD the hassle is no more!
+
+Follow these steps to dump the necessary system files and enable DLP LLE:
+1. Follow the threeSD [Quickstart Guide](https://github.com/zhaowenlan1779/threeSD/wiki/Quickstart-Guide). Remember to **manually select** `System Data > Config savegame` in the contents list!
+1. Open Citra and click on `View > Debugging > Toggle LLE Service Modules` in the menu.
+1. In the widget that appeared, find and check `DLP`.
+
+{{< sidebyside "image" "/images/entry/citra-progress-report-2020-q2/" "dlp_threeSD.png=Dumping system files - remember to select this!" "dlp_citra.png=Enabling DLP LLE in Citra" >}}
