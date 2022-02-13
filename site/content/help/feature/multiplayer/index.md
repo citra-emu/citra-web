@@ -123,6 +123,7 @@ Download Play is yet another gimmick Nintendo added to the DS, and then passed o
 Since this is LLE, keep in mind that you need to dump quite a few system files for multiplayer to work on these few games. In the past, this would mean manually looking through GodMode9 trying to find a bunch of different files. However, thanks to threeSD the hassle is no more!
 
 Follow these steps to dump the necessary system files and enable DLP LLE:
+
 1. Follow the threeSD [Quickstart Guide](https://github.com/zhaowenlan1779/threeSD/wiki/Quickstart-Guide). Remember to **manually select** `System Data > Config savegame` in the contents list!
 1. Open Citra and click on `View > Debugging > Toggle LLE Service Modules` in the menu.
 1. In the widget that appeared, find and check `DLP`.
