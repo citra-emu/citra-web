@@ -11,6 +11,7 @@ const cssnano = require('cssnano');
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
 const imageResize = require('gulp-image-resize');
+const hugo = require('hugo-bin');
 
 gulp.task('scripts:games', function (callback) {
     exec('yarn install && node app.js', { cwd: './scripts/shared-hugo-scripts/compatdb/' }, function (err, stdout, stderr) {
@@ -67,7 +68,7 @@ gulp.task('assets:scss', function () {
 });
 
 gulp.task('hugo', function (cb) {
-    exec('hugo -s ./site/ -d ../build/ -v', function (err, stdout, stderr) {
+    exec(hugo + ' -s ./site/ -d ../build/ -v', function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         cb(err);

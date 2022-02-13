@@ -13,6 +13,7 @@
     "browser-sync": "^2.27.7",
     "cssnano": "^5.0.17",
     "fancy-log": "^2.0.0",
+    "hugo-bin": "0.40.0",
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.3",
     "gulp-clean-css": "^4.3.0",
