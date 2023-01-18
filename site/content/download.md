@@ -30,7 +30,7 @@ The Citra updater provides a easy interface to install, update and manage Citra.
  </style>
  
 <div class="alert">
-  Notice: Citra does NOT support Apple silicon SoC (ARM) MacOS devices. Our Mac builds may run through Rosetta, but you WILL encounter various issues that we won't provide support for. We may eventually support M1 Macs, but not at this time.
+  Notice: Citra does NOT support Apple silicon (M1/M2) MacOS devices. Our Mac builds may run through Rosetta, but you WILL encounter various issues that we won't provide support for. We may eventually support M1 Macs, but not at this time.
 </div>
 <br />
  
