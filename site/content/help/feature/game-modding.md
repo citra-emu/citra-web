@@ -79,6 +79,18 @@ luma/titles/<Title ID>
 ```
 Note that everything demonstrated above is optional. It is possible that a mod contains only some of these files.
 
+### Using 3GX plugins
+Citra can use 3GX plugins by using the same format that the Luma3DS 3GX plugin loader uses. Plugins can be placed in 2 locations:
+```
+- sdmc/luma/plugins/<TITLEID>/<filename>.3gx 
+To set a plugin for a specified game (higher priority).
+
+- sdmc/luma/plugins/default.3gx 
+To set a plugin which would be loaded for all games (lower priority).
+```
+You can find the `sdmc` folder in Citra's [User Directory](https://citra-emu.org/wiki/user-directory/).
+After placing your plugin in the correct location, you'll need to check the 3GX plugin `Enable 3GX plugin loader` option in Citra's System settings. The plugin(s) should now apply the next time you run your game.
+
 ### Conclusion
 If you are a modder looking to distribute mods for Citra and have further questions or doubts, feel free to ask in our Discord.
 
