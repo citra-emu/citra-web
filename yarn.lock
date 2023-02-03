@@ -825,6 +825,11 @@ concat-with-sourcemaps@^1.0.0:
   dependencies:
     source-map "^0.6.1"
 
+concurrent-transform@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/concurrent-transform/-/concurrent-transform-1.0.0.tgz#7a0fdea2f8096239487fdb0addb5edaa7f596f6c"
+  integrity sha512-k/b+CZJbUQW7A/51ZGFc/bQAbGpUuitvhK0hJi/9vJ7l3QBp5Kib+kSaNnrItDTFLx4pYJqCfN95FTuLUFaZGQ==
+
 config-chain@^1.1.11:
   version "1.1.13"
   resolved "https://registry.yarnpkg.com/config-chain/-/config-chain-1.1.13.tgz#fad0795aa6a6cdaff9ed1b68e9dff94372c232f4"
