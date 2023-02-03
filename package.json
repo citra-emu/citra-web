@@ -26,7 +26,8 @@
     "merge-stream": "^2.0.0",
     "minimist": "^1.2.7",
     "postcss": "^8.4",
-    "sass": "^1.57.1"
+    "sass": "^1.57.1",
+    "sass-embedded": "^1.57.1"
   },
   "hugo-bin": {
     "buildTags": "extended"
