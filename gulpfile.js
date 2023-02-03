@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 const gulp = require('gulp');
 const fs = require('fs');
-const merge = require('merge-stream');
 const exec = require('child_process').exec;
 const log = require('fancy-log');
 const parseArgs = require('minimist');
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
+const parallel = require('concurrent-transform');
 const imageResize = require('gulp-image-resize');
 
 gulp.task('scripts:games', function (callback) {
@@ -40,7 +40,7 @@ gulp.task('assets:images', function() {
         .pipe(imageResize({ width: 400, height: 240, crop: false }))
         .pipe(gulp.dest('build/images/screenshots/thumbs'));
 
-    return merge(baseImages, jumbotronImages, bannerImages, boxartImages, iconImages, screenshotImages);
+    return parallel(baseImages, jumbotronImages, bannerImages, boxartImages, iconImages, screenshotImages);
 });
 
 gulp.task('assets:js', function() {
