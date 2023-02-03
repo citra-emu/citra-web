@@ -8,15 +8,25 @@ const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
 const parallel = require('concurrent-transform');
 const imageResize = require('gulp-image-resize');
+const path = require('path');
+
+function findSassBinary() {
+    const modulePath = require.resolve(
+        `sass-embedded-${process.platform}-${process.arch}/` +
+          'dart-sass-embedded/dart-sass-embedded' +
+          (process.platform === 'win32' ? '.bat' : '')
+    );
+    return path.dirname(modulePath);
+}
 
 gulp.task('scripts:games', function (callback) {
-    exec('yarn install && node app.js', { cwd: './scripts/shared-hugo-scripts/compatdb/' }, function (err, stdout, stderr) {
+    exec('yarn run compatdb', { cwd: './scripts/shared-hugo-scripts/' }, function (err, stdout, stderr) {
         callback(err);
     });
 });
 
 gulp.task('scripts:wiki', function (callback) {
-    exec('yarn install && node app.js', { cwd: './scripts/shared-hugo-scripts/wiki/' }, function (err, stdout, stderr) {
+    exec('yarn run wiki', { cwd: './scripts/shared-hugo-scripts/' }, function (err, stdout, stderr) {
         callback(err);
     });
 });
@@ -55,12 +65,14 @@ gulp.task('assets:fonts', function(){
 });
 
 gulp.task('hugo', (callback) => {
+    const sassPath = findSassBinary();
+    process.env.PATH = `${process.env.PATH}:${sassPath}`;
     import('hugo-bin').then((hugo) => {
         exec(hugo.default + ' -s ./site/ -d ../build/ -v --gc', (err, stdout, stderr) => {
             console.log(stdout);
             callback(err);
         });
-    });
+    }).catch(err => callback(err));
 });
 
 gulp.task('final:serve', function(done) {
