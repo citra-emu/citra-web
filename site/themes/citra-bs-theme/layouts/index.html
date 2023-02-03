@@ -3,10 +3,10 @@
 {{ end }}
 
 {{ define "main" }}
-  {{ $paginator := .Paginate (where .Data.Pages "Section" "entry") 3 }}
+  {{ $paginator := .Paginate (where .Site.RegularPages "Section" "entry") 3 }}
 
-  {{ range $paginator.Pages }}
-      {{ .Render "summary" }}
+  {{ range sort $paginator.Pages "Date" "desc" }}
+    {{ .Render "summary" }}
   {{ end }}
 
   {{ partial "pagination" . }}

@@ -1,7 +1,8 @@
 <a href="{{ .Permalink }}">
     <div class="entry-embed-outer">
-        <div class="entry-embed" style="background: url('{{ .Site.BaseURL }}/images/banners/{{ .Params.Banner | default (print .File.BaseFileName ".png") }}')">
-            <header>
+        {{ $slug := path.BaseName .RelPermalink }}
+        <div class="entry-embed" style="background: url('{{ .Site.BaseURL }}/images/banners/{{ .Params.Banner | default (print $slug ".png") }}')">
+              <header>
                 <h1>{{ .Title }}</h1>
             </header>
         </div>

@@ -1,1 +1,11 @@
-<img src="/images/{{.Get "src"}}" {{ with .Get "alt" }}alt="{{ . }}"{{ end }} class="img-responsive {{ with .Get "center" }}center-block{{ end }}" {{ with .Get "width" }}width="{{ . }}"{{end}} {{ with .Get "height" }}height="{{ . }}"{{end}} />
+{{ $src := .Get "src" }}
+{{ $split_src := split $src "." }}
+{{ $extension := index $split_src (sub (len $split_src) 1) }}
+{{ $originals := (.Page.Resources.ByType "image") }}
+{{ $original := $originals.GetMatch (printf "*%s" (path.Base $src)) }}
+{{ $resized := $original }}
+{{- if eq $extension "png" -}}
+{{ $resized_width := math.Min $original.Width 1024 }}
+{{ $resized = $original.Resize (print $resized_width "x q90 jpg" ) }}
+{{- end -}}
+<img src="{{ $resized.Permalink }}" {{ with .Get "alt" }}alt="{{ . }}"{{ end }} class="img-responsive {{ with .Get "center" }}center-block{{ end }}" {{ with .Get "width" }}width="{{ . }}"{{end}} {{ with .Get "height" }}height="{{ . }}"{{end}} />

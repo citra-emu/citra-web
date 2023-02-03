@@ -3,6 +3,7 @@
 {{ $type := index .Params 0 }}
 {{ $path := index .Params 1 }}
 {{ $figures := after 2 .Params }}
+{{ $originals := .Page.Resources }}
 
 <div class="container" style="width: 100%;">
     {{ $.Scratch.Set "size" (div 12 (len $figures)) }}
@@ -11,12 +12,13 @@
         {{ $.Scratch.Set "src" (index (split $figure "=") 0) }}
         {{ $.Scratch.Set "title" (index (split $figure "=") 1) }}
         {{ $.Scratch.Set "link" (index (split $figure "=") 2) }}
+        {{ $resolved_path := $originals.GetMatch ($.Scratch.Get "src") }}
         <div class="theme-table-image col-sm-{{ $.Scratch.Get "size" }}">
             <figure style="padding: 0px;">
                 {{ if eq $type "gifv" }}
                     <div class="embed-responsive embed-responsive-4by3">
                         <video class="embed-responsive-item" preload="auto" autoplay="autoplay" muted="muted" loop="loop" webkit-playsinline="">
-                            <source src="{{ printf "%s%s" $path ($.Scratch.Get "src") }}" type="video/mp4">
+                            <source src="{{ $resolved_path.RelPermalink }}" type="video/mp4">
                             Your browser doesn't support mp4 video. :(
                         </video>
                     </div>
