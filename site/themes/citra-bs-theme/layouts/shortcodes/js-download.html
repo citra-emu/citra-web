@@ -1,0 +1,2 @@
+{{ $js := resources.Get "js/download.js" | js.Build (dict "minify" true "target" "es2015") }}
+<script async type="text/javascript" src="{{ $js.RelPermalink }}"></script>

@@ -8,6 +8,7 @@ site/hugo.exe
 build/
 public/
 site/public/
+site/resources/_gen/
 .publish/
 
 # Dynamic content imported on deploy.

@@ -8,7 +8,18 @@
             {{ if not (.Get "class") }}style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" {{ end }}allowfullscreen frameborder="0" title="YouTube Video"></iframe>
         </div>
     {{ else }}
-        <img src="{{.Get "src"}}" {{ with .Get "alt" }}alt="{{ . }}"{{ end }} />
+        {{ $src := .Get "src" }}
+        {{ $split_src := split $src "." }}
+        {{ $extension := index $split_src (sub (len $split_src) 1) }}
+        {{- if eq $extension "png" -}}
+        {{ $originals := (.Page.Resources.ByType "image") }}
+        {{ $original := $originals.GetMatch (printf "*%s" (path.Base $src)) }}
+        {{ $resized_width := math.Min $original.Width 1024 }}
+        {{ $resized := $original.Resize (print $resized_width "x q90 jpg" ) }}
+        <img src="{{ $resized.Permalink }}" {{ with .Get "alt" }}alt="{{ . }}"{{ end }} />
+        {{- else -}}
+        <img src="{{ $src }}" {{ with .Get "alt" }}alt="{{ . }}"{{ end }} />
+        {{- end -}}
     {{ end }}
     {{ with .Get "title" }}
     <figcaption>
