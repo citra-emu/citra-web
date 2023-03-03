@@ -80,6 +80,18 @@ Nearest Neighbour is a texture filter which is particularly effective at making 
 
 {{< juxtapose "cc0544e8-aba2-11ed-b5bd-6595d9b17862" >}}
 
+## Better Support for Picture-in-Picture Custom Layouts ([#6247](https://github.com/citra-emu/citra/pull/6247)) by [SomeDudeOnDiscord](https://github.com/SomeDudeOnDiscord)
+
+Based on an [older PR](https://github.com/citra-emu/citra/pull/6127) which never saw the light of day, this PR improves our custom layout handling to support a “picture-in-picture” style of displaying the two 3DS screens.
+This enables you to have two screens overlapping one another to fit within one cohesive screen view, which is especially useful when in fullscreen.
+
+The screens can be swapped with each other using the `F9` hotkey within Citra, which allows for a choice of which screen is the main screen and which is the secondary smaller screen. The secondary screen is also slightly transparent, which ensures that the main screen isn’t completely covered up!
+
+This PR was first created by [djrobx](https://github.com/djrobx), however as their initial PR never got merged, [SomeDudeOnDiscord](https://github.com/SomeDudeOnDiscord) brought the changes up to master and ensured that this feature was finally implemented into Citra!
+
+{{< figure src="pip.png"
+    title="A seamless fullscreen experience!" >}}
+
 # Android
 
 If you missed the last announcement, this is a follow up to our previous [Citra Android Update](https://citra-emu.org/entry/citra-android-update/)!
