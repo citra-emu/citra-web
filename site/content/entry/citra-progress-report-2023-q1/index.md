@@ -12,7 +12,7 @@ Welcome back to another Citra Mega Progress Report!
 Yes! We aren't dead! First off, we do apologize for the wait, we are still lacking a full time writer. 
 In the meantime, Citra community moderator [autumnburra](https://community.citra-emu.org/u/autumnburra/summary) and developer [FearlessTobi](https://community.citra-emu.org/u/fltobi/summary) have come together with the assistance of another community moderator, [SleepingSnake](https://community.citra-emu.org/u/sleepingsnake/summary), to provide you, the Citra community, with this awesome report on all the changes we’ve had in Citra since 2020 Q2!
 
-If you keep up to date with messages posted in the ‘#development’ channel in our [Discord server](https://citra-emu.org/discord/), you may already be aware of some of these! But nevertheless, this is a read that you’re not gonna want to miss out on! 
+If you keep up to date with messages posted in the `#development` channel in our [Discord server](https://citra-emu.org/discord/), you may already be aware of some of these! But nevertheless, this is a read that you’re not gonna want to miss out on! 
 
 # Contents
 
@@ -313,7 +313,7 @@ This is another addition which has been highly requested in the Citra community,
 {{< figure src="perGame.png"
     title="New way to configure your games!" >}}
 	
-### Change Monoscopic Render mode to a dropdown ([#6215](https://github.com/citra-emu/citra/pull/6215) by [vitor-k](https://github.com/vitor-k)
+### Change Monoscopic Render mode to a dropdown ([#6215](https://github.com/citra-emu/citra/pull/6215)) by [vitor-k](https://github.com/vitor-k)
 
 Just a small QoL update here! Having a dropdown box to change between two settings is pretty clean, don’t you think? 
 Monoscopic Render emulates the 3DS displaying its 3D capabilities to one eye at a time. Some games render differently depending on which eye the display is focussing on. 
@@ -323,12 +323,12 @@ By adding a dropdown box to change between the left eye and right eye, this ensu
 
 ## Ports from yuzu by [FearlessTobi](https://github.com/FearlessTobi) and [vitor-k](https://github.com/vitor-k)
 
-### Fix framebuffer size on fractional scaling display ([#5435](https://github.com/citra-emu/citra/pull/5435) originally by [kevinxucs](https://github.com/kevinxucs)
+### Fix framebuffer size on fractional scaling display ([#5435](https://github.com/citra-emu/citra/pull/5435)) originally by [kevinxucs](https://github.com/kevinxucs)
 
 Prior to this PR, users using fractional scaling would encounter a bug that made the emulated image not show up correctly.
 Fixing the framebuffer size ensures that the image is displayed correctly on your screen when using the GUI for Citra.
 
-### Add a "Mute Audio" hotkey ([#5463](https://github.com/citra-emu/citra/pull/5463) originally by [Kewlan](https://github.com/Kewlan)
+### Add a "Mute Audio" hotkey ([#5463](https://github.com/citra-emu/citra/pull/5463)) originally by [Kewlan](https://github.com/Kewlan)
 
 This is what it says on the tin! A keyboard hotkey to easily mute your game audio without having to mess about accessing settings. This allows for more seamless gameplay, especially for those who use controllers and just have their keyboard off to the side for hotkey usage. 
 
@@ -345,7 +345,7 @@ This PR updates the discord-rpc submodule to the latest version, as well as a fe
 {{< figure src="discord.png"
     title="Show off your game to all your friends!" >}}
 
-### Fixes to compatibility list translations ([#6123](https://github.com/citra-emu/citra/pull/6123) originally by [Docteh](https://github.com/Docteh)
+### Fixes to compatibility list translations ([#6123](https://github.com/citra-emu/citra/pull/6123)) originally by [Docteh](https://github.com/Docteh)
 
 Translations for the compatibility ratings and sorting categories for ROMs had been completed for many languages, but never officially implemented in Citra! This PR just fixes this little oversight and gives these ratings in many languages from across the world.
 
