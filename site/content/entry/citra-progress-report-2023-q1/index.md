@@ -12,7 +12,7 @@ Welcome back to another Citra Mega Progress Report!
 Yes! We aren't dead! First off, we do apologize for the wait, we are still lacking a full time writer. 
 In the meantime, Citra community moderator [autumnburra](https://community.citra-emu.org/u/autumnburra/summary) and developer [FearlessTobi](https://community.citra-emu.org/u/fltobi/summary) have come together with the assistance of another community moderator, [SleepingSnake](https://community.citra-emu.org/u/sleepingsnake/summary), to provide you, the Citra community, with this awesome report on all the changes we’ve had in Citra since 2020 Q2!
 
-If you keep up to date with messages posted in the `#development` channel in our [Discord server](https://citra-emu.org/discord/), you may already be aware of some of these! But nevertheless, this is a read that you’re not gonna want to miss out on! 
+If you have been keeping up to date with messages posted in the `#development` channel in our [Discord server](https://citra-emu.org/discord/), you may already be aware of some of these! But nevertheless, this is a read that you’re not gonna want to miss out on! 
 
 # Contents
 
@@ -33,11 +33,20 @@ Being able to use rerecording in an emulator is key when wanting to create TAS v
 
 This PR implements many basic rerecording features, following the [TASVideos](https://tasvideos.org/) requirements and desired features for a rerecording emulator, but also adds other needed features for our built-in video dumper such as separate save state slots for each movie, adding a read-only mode, fixing desync and file corruption bugs, and also remaking the UI to be squeaky clean!
 
+To utilise the rerecording features, head to `Tools -> Movie` to record your game as a .CTM (Citra TAS Movie) file. These .CTM files can then be played back from within Citra to use for TAS runs.
+
+{{< figure src="ctm.png"
+    title="" >}}
+
 ## Implement Reverse Interlaced 3D ([#5580](https://github.com/citra-emu/citra/pull/5580)) by [oneup03](https://github.com/oneup03)
 
-Interlaced 3D is the way of displaying stereoscopic 3D content on passive 3D supported monitors and TV screens. This was [first implemented] in Citra in 2019 in a bid to create more ways to view 3D on more devices. However, some monitors render each eye in a reverse order from normal interlaced monitors, such as LG OLED 3DTV's.
-
+Interlaced 3D is the way of displaying stereoscopic 3D content on passive 3D supported monitors and TV screens. This was [first implemented](https://github.com/citra-emu/citra/pull/5018) in Citra in 2019 in a bid to create more ways to view 3D on more devices. However, some monitors render each eye in a reverse order from normal interlaced monitors, such as LG OLED 3DTV's.
 This PR implements a new way to view the 3D capabilities of the 3DS on a new type of screen, keeping the 3D novelty of the 3DS that so many of us love alive.
+
+This setting can be found in `Emulation -> Configure` (`Citra -> Preferences` on MacOS), inside the `Graphics` tab. Make sure to set the **Depth** to 100% as well to utilize this feature.
+
+{{< figure src="rinterlaced.png"
+    title="" >}}
 
 ## Custom folders for SDMC and NAND Directories ([#5759](https://github.com/citra-emu/citra/pull/5759), [#6014](https://github.com/citra-emu/citra/pull/6014), [#6157](https://github.com/citra-emu/citra/pull/6157)) by [nieldm](https://github.com/nieldm) and [SachinVin](https://github.com/SachinVin) and [vitor-k](https://github.com/vitor-k)
 
@@ -47,6 +56,9 @@ Now introducing custom SDMC and NAND directories! SDMC is the name of the emulat
 After the initial implementation by [nieldm](https://github.com/nieldm) came a slew of other issues, such as internal issues with the custom paths and every user being accidentally forced to use custom directories for SDMC and NAND!
 
 All of these issues were ironed out by the joint effort of our developers and we’re proud to say that custom directories for SDMC and NAND are here to stay!
+
+{{< figure src="customstorage.png"
+    title="" >}}
 
 ## Start abstracting the rasterizer cache from OpenGL ([#6013](https://github.com/citra-emu/citra/pull/6103)) by [GPUCode](https://github.com/GPUCode)
 
@@ -64,7 +76,8 @@ In the past, this rasterizer cache was tied with OpenGL and used OpenGL methods 
 
 ## 3GX Plugin Loader ([#6172](https://github.com/citra-emu/citra/pull/6172)) by [PabloMK7](https://github.com/PabloMK7)
 
-`.3gx` plugins are executable files that are mapped into memory and executed when the process runs. This allows developers to expand the behavior of games in a way that would normally be impossible, such as an Action Replay code.
+`.3gx` plugins are executable files that are mapped into memory and executed when the game process runs. When the game runs, the `.3gx` plugins also run 
+simultaneously in a new thread, which grants it the same access rights as the game does. This allows developers to expand the behavior of games in a way that would normally be impossible, such as an Action Replay code.
 
 Using 3GX plugins is another way to add that extra customizability to your 3DS games in a way that the unmodded 3DS can’t do. Many projects use 3GX plugins, such as the Mario Kart 7 modpack [CTGP-7](https://ctgp-7.github.io/). 
 In the past, due to Citra not supporting 3GX plugins, a “lite” version of this modpack was offered to Citra players. But this came with nowhere near as many tracks and features as the main modpack! The addition of this plugin loader grants Citra users with more modpacks to use to alter your game in more ways than before!
@@ -77,6 +90,8 @@ If you hadn’t seen in our previous Progress Report, [Texture Filters](https://
 With texture upscaling, Citra will use one of several algorithms to automatically upsize the image to a higher resolution. 
 
 Nearest Neighbour is a texture filter which is particularly effective at making text stand out and look bolder! With the addition of another highly requested texture filter, you can have more control over how your gameplay looks than ever before!
+
+All of these texture filters, including our shiny new Nearest Neighbour texture filter, can be found in `Emulation -> Configure -> Graphics -> Renderer` in Citra! (`Citra -> Preferences` on MacOS)
 
 {{< juxtapose "cc0544e8-aba2-11ed-b5bd-6595d9b17862" >}}
 
@@ -91,6 +106,33 @@ This PR was first created by [djrobx](https://github.com/djrobx), however as the
 
 {{< figure src="pip.png"
     title="A seamless fullscreen experience!" >}}
+
+## Controller
+
+### Automatic Controller Binding ([#5100](https://github.com/citra-emu/citra/pull/5100)) by [vitor-k](https://github.com/vitor-k)
+
+In the past, to map your controller you were required to manually map every single button and joystick direction. This proved to be a tedious activity and would eat into time that you’d rather use playing games! [vitor-k](https://github.com/vitor-k) implemented a way to automatically map your controller to Citra with the press of a button, provided that your controller is listed in the [SDL Controller Database](https://github.com/gabomdq/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt).
+
+{{< figure src="binding.png"
+    title="Automatically bind your controls easily." >}}
+
+### Disable HIDAPI drivers due to compatibility problems with certain controllers ([#5123](https://github.com/citra-emu/citra/pull/5123), [#5179](https://github.com/citra-emu/citra/pull/5179)) by [vitor-k](https://github.com/vitor-k)
+
+The change of SDL2 from 2.0.8 to 2.0.10 broke some controllers that reported themselves as a Switch or Xbox One controller, such as DS4 controllers. This PR disables the HIDAPI drivers to allow for those affected controllers to begin to work again. HIDAPI drivers were enabled again for SDL2.0.12 and up in a [later PR](https://github.com/citra-emu/citra/pull/5179).
+
+### Implement official GameCube adapter support ([#5735](https://github.com/citra-emu/citra/pull/5735)) by [epicboy](https://github.com/ameerj)
+
+Ported over from yuzu, with code and feature improvements thanks to [german77](https://github.com/german77) and [lioncash](https://github.com/lioncash), this adds a whole new input device to Citra for you to use! Using the official GameCube adapter from Nintendo, you can now use the classic GameCube controllers to play your favorite games on Citra!
+
+Instructions on how to set this up can be found on the [yuzu FAQ](https://yuzu-emu.org/wiki/faq/#how-do-i-use-my-gamecube-controller-adapter).
+
+### Add support for SDL controller accelerometer/gyro events ([#5851](https://github.com/citra-emu/citra/pull/5851)) by [flibitijibibo](https://github.com/flibitijibibo)
+
+Following the release of SDL 2.0.14 came support for motion controls, something which had been anticipated for many years in SDL. In Citra, this can be used as an alternative to mouse controls or CemuhookUDP. This is a big benefit to many users, as setting up Cemuhook can be tedious and outright confusing at times. 
+Setting up SDL motion controls is as easy as pressing a button! (No, seriously. That is all you have to do.)
+
+{{< figure src="motion.png"
+    title="Motion controls at the press of a button!" >}}
 
 # Android
 
@@ -158,33 +200,6 @@ Due to this, you could no longer access Save States, Amiibo, Screen Layout, Over
 
 The solution was to just use the back button found on all devices to open the in-emulation menu instead! This can be accessed from the bottom of the device, next to the home button and recents button. By doing this, the in-emulation menu can be accessible on a number of devices now, such as Chromebooks running Citra Android and VR headsets, not just devices running Android 13.
 
-## Controller
-
-### Automatic Controller Binding ([#5100](https://github.com/citra-emu/citra/pull/5100)) by [vitor-k](https://github.com/vitor-k)
-
-In the past, to map your controller you were required to manually map every single button and joystick direction. This proved to be a tedious activity and would eat into time that you’d rather use playing games! [vitor-k](https://github.com/vitor-k) implemented a way to automatically map your controller to Citra with the press of a button, provided that your controller is listed in the [SDL Controller Database](https://github.com/gabomdq/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt).
-
-{{< figure src="binding.png"
-    title="Automatically bind your controls easily." >}}
-
-### Disable HIDAPI drivers due to compatibility problems with certain controllers ([#5123](https://github.com/citra-emu/citra/pull/5123), [#5179](https://github.com/citra-emu/citra/pull/5179)) by [vitor-k](https://github.com/vitor-k)
-
-The change of SDL2 from 2.0.8 to 2.0.10 broke some controllers that reported themselves as a Switch or Xbox One controller, such as DS4 controllers. This PR disables the HIDAPI drivers to allow for those affected controllers to begin to work again. HIDAPI drivers were enabled again for SDL2.0.12 and up in a [later PR](https://github.com/citra-emu/citra/pull/5179).
-
-### Implement official GameCube adapter support ([#5735](https://github.com/citra-emu/citra/pull/5735)) by [epicboy](https://github.com/ameerj)
-
-Ported over from yuzu, with code and feature improvements thanks to [german77](https://github.com/german77) and [lioncash](https://github.com/lioncash), this adds a whole new input device to Citra for you to use! Using the official GameCube adapter from Nintendo, you can now use the classic GameCube controllers to play your favorite games on Citra!
-
-Instructions on how to set this up can be found on the [yuzu FAQ](https://yuzu-emu.org/wiki/faq/#how-do-i-use-my-gamecube-controller-adapter).
-
-### Add support for SDL controller accelerometer/gyro events ([#5851](https://github.com/citra-emu/citra/pull/5851)) by [flibitijibibo](https://github.com/flibitijibibo)
-
-Following the release of SDL 2.0.14 came support for motion controls, something which had been anticipated for many years in SDL. In Citra, this can be used as an alternative to mouse controls or CemuhookUDP. This is a big benefit to many users, as setting up Cemuhook can be tedious and outright confusing at times. 
-Setting up SDL motion controls is as easy as pressing a button! (No, seriously. That is all you have to do.)
-
-{{< figure src="motion.png"
-    title="Motion controls at the press of a button!" >}}
-
 # Emulation Accuracy
 
 ### Implement APT command 0x0103 ([#5478](https://github.com/citra-emu/citra/pull/5478)) by [xperia64](https://github.com/xperia64)
@@ -197,6 +212,9 @@ These can now be used in games such as Super Smash Bros. for Nintendo 3DS to giv
 For a while, the Mii voices in Tomodachi Life would continuously cut off before they would finish speaking, which could make it hard to understand what they are saying to the player. By implementing a partial embedded buffer, a buffer being an area of memory which stores data on a temporary basis, you can hear the sweet voices of your favorite Miis again!
 
 This also fixes an issue where FMVs in Detective Pikachu would run faster than what the frame rate allowed for.
+
+{{< figure src="tomodachi.png"
+    title="Make sure to take your hayfever medicine, Frank!" >}}
 
 ### service/apt: Implement Deliver Args ([#5611](https://github.com/citra-emu/citra/pull/5611)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
@@ -313,7 +331,7 @@ After experiencing this themselves via accidentally clicking onto another game w
 	
 ## Per-game configurations ([#6187](https://github.com/citra-emu/citra/pull/6187), [#6219](https://github.com/citra-emu/citra/pull/6219)) by [GPUCode](https://github.com/GPUCode)
 
-Based off of the Yuzu implementation of the same name, Per-Game Configurations have landed in Citra! This is part of a series of changes coming to Citra to modernize the frontend of the emulator.
+Based off of the yuzu implementation of the same name, Per-Game Configurations have landed in Citra! This is part of a series of changes coming to Citra to modernize the frontend of the emulator.
 
 Tired of having to change your settings for each game you play every time you launch it? Well, worry no more! With this change to Citra, each of your games now has their own settings profile. 
 You can change the emulation speed, change graphical settings, audio settings such as what audio emulation you’re using, the volume of each game, and so many more!
@@ -328,10 +346,11 @@ This is another addition which has been highly requested in the Citra community,
 ### Change Monoscopic Render mode to a dropdown ([#6215](https://github.com/citra-emu/citra/pull/6215)) by [vitor-k](https://github.com/vitor-k)
 
 Just a small QoL update here! Having a dropdown box to change between two settings is pretty clean, don’t you think? 
-Monoscopic Render emulates the 3DS displaying its 3D capabilities to one eye at a time. Some games render differently depending on which eye the display is focussing on. 
+Stereoscopic is the default in Citra for 3D capabilities, which displays the 3D to both eyes at the same time. Monoscopic Render emulates the 3DS displaying its 3D capabilities to only one eye at a time. Some games render differently depending on which eye the display is focusing on. The major image differences between the eyes happens at 0% depth, as some games do not bother rendering some elements of in game material to both eyes.
+
+[jakedowns](https://github.com/citra-emu/citra/pull/6140) implemented a left eye option for the Monoscopic Renderer to further Citra's compatibility with [ReShade](https://reshade.me/), a post-processing injector for video games. However, the initial tick box included with the PR to switch from the left eye to right eye was just a little clunky. 
 
 By adding a dropdown box to change between the left eye and right eye, this ensures that the games will display correctly on Citra whilst emulating the 3DS 3D capabilities.
-
 
 ## Ports from yuzu by [FearlessTobi](https://github.com/FearlessTobi) and [vitor-k](https://github.com/vitor-k)
 
@@ -361,7 +380,7 @@ This PR updates the discord-rpc submodule to the latest version, as well as a fe
 
 Translations for the compatibility ratings and sorting categories for ROMs had been completed for many languages, but never officially implemented in Citra! This PR just fixes this little oversight and gives these ratings in many languages from across the world.
 
-# Surprise Annoucement
+# Surprise Announcement
 
 Last but not least, we are happy to announce that one of our most requested features is now in development!
 
