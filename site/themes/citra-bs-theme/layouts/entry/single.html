@@ -11,27 +11,27 @@
 
   <div class="entry-written-by">
     {{ if $author }}
-      <a href="https://community.citra-emu.org/users/{{ $author.key }}">
+      <a href="https://community.citra-emu.org/u/{{ $author.key }}">
           <img src="{{ $author.avatar }}" class="avatar">
       </a>
     {{ end }}
     {{ if $coauthor }}
-      <a href="https://community.citra-emu.org/users/{{ $coauthor.key }}">
+      <a href="https://community.citra-emu.org/u/{{ $coauthor.key }}">
           <img src="{{ $coauthor.avatar }}" class="avatar">
       </a>
     {{ end }}
     {{ if $coauthor2 }}
-      <a href="https://community.citra-emu.org/users/{{ $coauthor2.key }}">
+      <a href="https://community.citra-emu.org/u/{{ $coauthor2.key }}">
           <img src="{{ $coauthor2.avatar }}" class="avatar">
       </a>
     {{ end }}
 
     {{ if and (and $author $coauthor) $coauthor2 }}
-      <p>Written by <a href="https://community.citra-emu.org/users/{{ $author.key }}">{{ $author.name }}</a>, <a href="https://community.citra-emu.org/users/{{ $coauthor.key }}">{{ $coauthor.name }}</a> and <a href="https://community.citra-emu.org/users/{{ $coauthor2.key }}">{{ $coauthor2.name }}</a> on {{ .Date.Format "Monday January 02, 2006" }}</p>
+      <p>Written by <a href="https://community.citra-emu.org/u/{{ $author.key }}">{{ $author.name }}</a>, <a href="https://community.citra-emu.org/u/{{ $coauthor.key }}">{{ $coauthor.name }}</a> and <a href="https://community.citra-emu.org/u/{{ $coauthor2.key }}">{{ $coauthor2.name }}</a> on {{ .Date.Format "Monday January 02, 2006" }}</p>
     {{ else if and $author $coauthor }}
-      <p>Written by <a href="https://community.citra-emu.org/users/{{ $author.key }}">{{ $author.name }}</a> and <a href="https://community.citra-emu.org/users/{{ $coauthor.key }}">{{ $coauthor.name }}</a> on {{ .Date.Format "Monday January 02, 2006" }}</p>
+      <p>Written by <a href="https://community.citra-emu.org/u/{{ $author.key }}">{{ $author.name }}</a> and <a href="https://community.citra-emu.org/u/{{ $coauthor.key }}">{{ $coauthor.name }}</a> on {{ .Date.Format "Monday January 02, 2006" }}</p>
     {{ else if $author }}
-      <p>Written by <a href="https://community.citra-emu.org/users/{{ $author.key }}">{{ $author.name }}</a> on {{ .Date.Format "Monday January 02, 2006" }}</p>
+      <p>Written by <a href="https://community.citra-emu.org/u/{{ $author.key }}">{{ $author.name }}</a> on {{ .Date.Format "Monday January 02, 2006" }}</p>
     {{ else }}
       <p>No author was provided. Written on {{ .Date.Format "Monday January 02, 2006" }}</p>
     {{ end }}
