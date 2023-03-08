@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "bootstrap-sass": "^3.4.3",
-    "browser-sync": "^2.27.11",
+    "browser-sync": "^2.28.3",
     "concurrent-transform": "^1.0.0",
-    "cssnano": "^5.1.14",
+    "cssnano": "^5.1.15",
     "fancy-log": "^2.0.0",
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.3",
@@ -22,12 +22,12 @@
     "gulp-image-resize": "^0.13.1",
     "gulp-postcss": "^9.0.1",
     "gulp-sass": "^5.1.0",
-    "hugo-bin": "0.98.0",
+    "hugo-bin": "0.99.2",
     "merge-stream": "^2.0.0",
-    "minimist": "^1.2.7",
+    "minimist": "^1.2.8",
     "postcss": "^8.4",
-    "sass": "^1.57.1",
-    "sass-embedded": "^1.57.1"
+    "sass": "^1.58.3",
+    "sass-embedded": "^1.58.3"
   },
   "hugo-bin": {
     "buildTags": "extended"
