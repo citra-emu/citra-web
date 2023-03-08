@@ -82,11 +82,11 @@ simultaneously in a new thread, which grants it the same access rights as the ga
 Using 3GX plugins is another way to add that extra customizability to your 3DS games in a way that the unmodded 3DS can’t do. Many projects use 3GX plugins, such as the Mario Kart 7 modpack [CTGP-7](https://ctgp-7.github.io/). 
 In the past, due to Citra not supporting 3GX plugins, a “lite” version of this modpack was offered to Citra players. But this came with nowhere near as many tracks and features as the main modpack! The addition of this plugin loader grants Citra users with more modpacks to use to alter your game in more ways than before!
 
-Plugins are loaded from the emulated 3DS SD card. Citra follows the same path as the Luma3DS 3GX Plugin Loader to apply 3GX plugins. Instructions for launching `.3gx` plugins can be found on our [Game Modding](https://citra-emu.org/help/feature/game-modding/#:~:text=Using%203GX%20plugins) page.
+Plugins are loaded from the emulated 3DS SD card. Citra follows the same path as the Luma3DS 3GX Plugin Loader to apply 3GX plugins. Instructions for launching `.3gx` plugins can be found on our [Game Modding](https://citra-emu.org/help/feature/game-modding/#using-3gx-plugins) page.
 
 ## Add Nearest Neighbour Texture Filter ([#6189](https://github.com/citra-emu/citra/pull/6189)) by [venkatrao1](https://github.com/venkatrao1)
 
-If you hadn’t seen in our previous Progress Report, [Texture Filters](https://citra-emu.org/entry/citra-progress-report-2020-q2/#new-features:~:text=Texture%20Filters) were added to Citra!
+If you hadn’t seen in our previous Progress Report, [Texture Filters]([https://citra-emu.org/entry/citra-progress-report-2020-q2/#new-features:~:text=Texture%20Filters](https://citra-emu.org/entry/citra-progress-report-2020-q2/#texture-filters-5017httpsgithubcomcitra-emucitrapull5017-5166httpsgithubcomcitra-emucitrapull5166-5210httpsgithubcomcitra-emucitrapull5210-5270httpsgithubcomcitra-emucitrapull5270-by-breadfish64httpsgithubcombreadfish64)) were added to Citra!
 With texture upscaling, Citra will use one of several algorithms to automatically upsize the image to a higher resolution. 
 
 Nearest Neighbour is a texture filter which is particularly effective at making text stand out and look bolder! With the addition of another highly requested texture filter, you can have more control over how your gameplay looks than ever before!
@@ -391,7 +391,7 @@ Mali GPUs, which are commonly included with Exynos and MediaTek SoCs, are known 
 
 To achieve this feat, [GPUCode](https://github.com/GPUCode) has been undertaking a massive rewrite of the OpenGL backend and the video_core as well, to streamline and simplify the code, making it easier to reuse code between both backends.
 
-Another advantage of Vulkan is being able to use MoltenVK on MacOS devices.We have recently changed our OpenGL requirements from 3.3 to 4.3 (more on this is explained in our [FAQ](https://citra-emu.org/wiki/faq/#:~:text=System%20requirements)) in an effort to modernize Citra's graphical backends. Since Apple has dropped support for modern OpenGL back in 2018, this has resulted in our users on MacOS being stuck on an older version of Citra, not being able to use all the shiny new features we’ve covered here!
+Another advantage of Vulkan is being able to use MoltenVK on MacOS devices.We have recently changed our OpenGL requirements from 3.3 to 4.3 (more on this is explained in our [FAQ](https://citra-emu.org/wiki/faq/#system-requirements)) in an effort to modernize Citra's graphical backends. Since Apple has dropped support for modern OpenGL back in 2018, this has resulted in our users on MacOS being stuck on an older version of Citra, not being able to use all the shiny new features we’ve covered here!
 With this addition of Vulkan, support of Citra will be brought back to thousands of users on their Mac devices!
 
 We are very excited to share more information about Vulkan at a later point, as it is still being worked on every day. Please be patient whilst this massive effort comes to life, as a big project like this does take a long time to materialize!
