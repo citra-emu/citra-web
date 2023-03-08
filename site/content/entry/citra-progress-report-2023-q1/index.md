@@ -20,7 +20,7 @@ If you have been keeping up to date with messages posted in the `#development` c
 1. [Android]({{< relref "#android" >}})
 1. [Emulation Accuracy]({{< relref "#emulation-accuracy" >}})
 1. [Frontend Improvements]({{< relref "#frontend-improvements" >}})
-1. [Surprise Annoucement]({{<relref "#surprise-annoucement" >}})
+1. [Surprise Announcement]({{<relref "#surprise-announcement" >}})
 1. [Conclusion]({{<relref "#conclusion" >}})
 
 # New Features
@@ -77,7 +77,7 @@ In the past, this rasterizer cache was tied with OpenGL and used OpenGL methods 
 ## 3GX Plugin Loader ([#6172](https://github.com/citra-emu/citra/pull/6172)) by [PabloMK7](https://github.com/PabloMK7)
 
 `.3gx` plugins are executable files that are mapped into memory and executed when the game process runs. When the game runs, the `.3gx` plugins also run 
-simultaneously in a new thread, which grants it the same access rights as the game does. This allows developers to expand the behavior of games in a way that would normally be impossible, such as an Action Replay code.
+simultaneously in a new thread, which grants it the same access rights as the game does. This allows developers to expand the behavior of games in a way that would normally be impossible, such as with an Action Replay code.
 
 Using 3GX plugins is another way to add that extra customizability to your 3DS games in a way that the unmodded 3DS can’t do. Many projects use 3GX plugins, such as the Mario Kart 7 modpack [CTGP-7](https://ctgp-7.github.io/). 
 In the past, due to Citra not supporting 3GX plugins, a “lite” version of this modpack was offered to Citra players. But this came with nowhere near as many tracks and features as the main modpack! The addition of this plugin loader grants Citra users with more modpacks to use to alter your game in more ways than before!
@@ -250,8 +250,8 @@ While most games easily run at full speed nowadays, a long running issue in Citr
 
 By implementing more accurate cycle counting, we are happy to announce we have made a first step towards solving this problem, improving FMV video performance by up to 3x! To understand what this means, we need to take a closer look at how a processor works.
 
-On the lowest level, all that a CPU does is process a list of instructions.Some instructions however take longer to execute than others. The time it takes for an instruction to execute is measured in cycles. Previously, we were using a very naive implementation of assuming every instruction would take one cycle. This leads to games idling longer than they should and therefore unnecessarily slowing down the emulation.
-Now [merryhime](https://github.com/merryhime), the creator of [dynarmic](https://github.com/merryhime/dynarmic), has implemented much more accurate cycle counts, significantly reducing this issue.
+On the lowest level, all that a CPU does is process a list of instructions. Some instructions however take longer to execute than others. The time it takes for an instruction to execute is measured in cycles. Previously, we were using a very naive implementation of assuming every instruction would take one cycle. This leads to games idling longer than they should, therefore unnecessarily slowing down the emulation.
+Now [merryhime](https://github.com/merryhime), the author of [dynarmic](https://github.com/merryhime/dynarmic), has implemented much more accurate cycle counts, significantly reducing this issue.
 
 ## Multiplayer Fixes
 
