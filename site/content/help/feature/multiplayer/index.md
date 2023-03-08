@@ -128,4 +128,4 @@ Follow these steps to dump the necessary system files and enable DLP LLE:
 1. Open Citra and click on `View > Debugging > Toggle LLE Service Modules` in the menu.
 1. In the widget that appeared, find and check `DLP`.
 
-{{< sidebyside "image" "/images/entry/citra-progress-report-2020-q2/" "dlp_threeSD.png=Dumping system files - remember to select this!" "dlp_citra.png=Enabling DLP LLE in Citra" >}}
+{{< sidebyside "image" "" "dlp_threeSD.png=Dumping system files - remember to select this!" "dlp_citra.png=Enabling DLP LLE in Citra" >}}
