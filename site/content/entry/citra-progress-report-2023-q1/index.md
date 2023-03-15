@@ -12,7 +12,7 @@ Welcome back to another Citra Mega Progress Report!
 Yes! We aren't dead! First off, we do apologize for the wait, we are still lacking a full time writer. 
 In the meantime, Citra community moderator [autumnburra](https://community.citra-emu.org/u/autumnburra/summary) and developer [FearlessTobi](https://community.citra-emu.org/u/fltobi/summary) have come together with the assistance of another community moderator, [SleepingSnake](https://community.citra-emu.org/u/sleepingsnake/summary), to provide you, the Citra community, with this awesome report on all the changes we’ve had in Citra since 2020 Q2!
 
-If you have been keeping up to date with messages posted in the `#development` channel in our [Discord server](https://citra-emu.org/discord/), you may already be aware of some of these! But nevertheless, this is a read that you’re not gonna want to miss out on! 
+If you have been keeping up to date with messages posted in the `#development` channel in our [Discord server](https://citra-emu.org/discord/), you may already be aware of some of these. But nevertheless, this is a read that you’re not gonna want to miss out on! 
 
 # Contents
 
@@ -33,7 +33,7 @@ Being able to use rerecording in an emulator is key when wanting to create TAS v
 
 This PR implements many basic rerecording features, following the [TASVideos](https://tasvideos.org/) requirements and desired features for a rerecording emulator, but also adds other needed features for our built-in video dumper such as separate save state slots for each movie, adding a read-only mode, fixing desync and file corruption bugs, and also remaking the UI to be squeaky clean!
 
-To utilise the rerecording features, head to `Tools -> Movie` to record your game as a .CTM (Citra TAS Movie) file. These .CTM files can then be played back from within Citra to use for TAS runs.
+To utilize the rerecording features, head to `Tools -> Movie` to record your game as a .CTM (Citra TAS Movie) file. These .CTM files can then be played back from within Citra to use for TAS runs.
 
 {{< figure src="ctm.png"
     title="" >}}
@@ -41,7 +41,7 @@ To utilise the rerecording features, head to `Tools -> Movie` to record your gam
 ## Implement Reverse Interlaced 3D ([#5580](https://github.com/citra-emu/citra/pull/5580)) by [oneup03](https://github.com/oneup03)
 
 Interlaced 3D is the way of displaying stereoscopic 3D content on passive 3D supported monitors and TV screens. This was [first implemented](https://github.com/citra-emu/citra/pull/5018) in Citra in 2019 in a bid to create more ways to view 3D on more devices. However, some monitors render each eye in a reverse order from normal interlaced monitors, such as LG OLED 3DTV's.
-This PR implements a new way to view the 3D capabilities of the 3DS on a new type of screen, keeping the 3D novelty of the 3DS that so many of us love alive.
+This PR implements a new way to view the 3D capabilities on a new type of screen, keeping the 3D novelty of the 3DS that so many of us love alive.
 
 This setting can be found in `Emulation -> Configure` (`Citra -> Preferences` on MacOS), inside the `Graphics` tab. Make sure to set the **Depth** to 100% as well to utilize this feature.
 
@@ -74,15 +74,14 @@ The main function of the rasterizer cache in Citra is to keep textures in the ho
 
 In the past, this rasterizer cache was tied with OpenGL and used OpenGL methods directly. This PR introduces a class called `TextureRuntime`. This is used to abstract away texture operations from the rasterizer cache. By doing this, it allows for other graphic APIs to be easily ported over to Citra, which we will get into more later in this report.
 
-## 3GX Plugin Loader ([#6172](https://github.com/citra-emu/citra/pull/6172)) by [PabloMK7](https://github.com/PabloMK7)
+## Add 3GX Plugin Loader ([#6172](https://github.com/citra-emu/citra/pull/6172)) by [PabloMK7](https://github.com/PabloMK7)
 
-`.3gx` plugins are executable files that are mapped into memory and executed when the game process runs. When the game runs, the `.3gx` plugins also run 
-simultaneously in a new thread, which grants it the same access rights as the game does. This allows developers to expand the behavior of games in a way that would normally be impossible, such as with an Action Replay code.
+`.3gx` plugins are executable files that are mapped into memory and executed when the game process runs. When the game runs, the `.3gx` plugins also run simultaneously in a new thread, which grants it the same access rights as the game does. This allows developers to expand the behavior of games in a way that would normally be impossible, such as with an Action Replay code.
 
-Using 3GX plugins is another way to add that extra customizability to your 3DS games in a way that the unmodded 3DS can’t do. Many projects use 3GX plugins, such as the Mario Kart 7 modpack [CTGP-7](https://ctgp-7.github.io/). 
-In the past, due to Citra not supporting 3GX plugins, a “lite” version of this modpack was offered to Citra players. But this came with nowhere near as many tracks and features as the main modpack! The addition of this plugin loader grants Citra users with more modpacks to use to alter your game in more ways than before!
+Using `.3gx` plugins is another way to add that extra customizability to your 3DS games in a way that the unmodded 3DS can’t do. Many projects use these plugins, such as the Mario Kart 7 modpack [CTGP-7](https://ctgp-7.github.io/). 
+In the past, due to Citra not supporting `.3gx` plugins, a “lite” version of this modpack was offered to Citra players. But this came with nowhere near as many tracks and features as the main modpack! The addition of this plugin loader grants Citra users with more modpacks to use to alter your game in more ways than before.
 
-Plugins are loaded from the emulated 3DS SD card. Citra follows the same path as the Luma3DS 3GX Plugin Loader to apply 3GX plugins. Instructions for launching `.3gx` plugins can be found on our [Game Modding](https://citra-emu.org/help/feature/game-modding/#using-3gx-plugins) page.
+Plugins are loaded from the emulated 3DS SD card. Citra follows the same path as the **Luma3DS 3GX Plugin Loader** to apply `.3gx` plugins. Instructions for launching `.3gx` plugins can be found on our [Game Modding](https://citra-emu.org/help/feature/game-modding/#using-3gx-plugins) page.
 
 ## Add Nearest Neighbour Texture Filter ([#6189](https://github.com/citra-emu/citra/pull/6189)) by [venkatrao1](https://github.com/venkatrao1)
 
@@ -98,9 +97,9 @@ All of these texture filters, including our shiny new Nearest Neighbour texture 
 ## Better Support for Picture-in-Picture Custom Layouts ([#6247](https://github.com/citra-emu/citra/pull/6247)) by [SomeDudeOnDiscord](https://github.com/SomeDudeOnDiscord)
 
 Based on an [older PR](https://github.com/citra-emu/citra/pull/6127) which never saw the light of day, this PR improves our custom layout handling to support a “picture-in-picture” style of displaying the two 3DS screens.
-This enables you to have two screens overlapping one another to fit within one cohesive screen view, which is especially useful when in fullscreen.
+This enables you to have two screens overlapping one another to fit within one cohesive view, which is especially useful when in fullscreen.
 
-The screens can be swapped with each other using the `F9` hotkey within Citra, which allows for a choice of which screen is the main screen and which is the secondary smaller screen. The secondary screen is also slightly transparent, which ensures that the main screen isn’t completely covered up!
+The screens can be swapped using the `F9` hotkey within Citra, which allows for a choice of which screen is the main screen and which is the secondary smaller screen. The secondary screen is also slightly transparent, ensuring that the main screen isn’t completely covered up!
 
 This PR was first created by [djrobx](https://github.com/djrobx), however as their initial PR never got merged, [SomeDudeOnDiscord](https://github.com/SomeDudeOnDiscord) brought the changes up to master and ensured that this feature was finally implemented into Citra!
 
@@ -111,7 +110,7 @@ This PR was first created by [djrobx](https://github.com/djrobx), however as the
 
 ### Automatic Controller Binding ([#5100](https://github.com/citra-emu/citra/pull/5100)) by [vitor-k](https://github.com/vitor-k)
 
-In the past, to map your controller you were required to manually map every single button and joystick direction. This proved to be a tedious activity and would eat into time that you’d rather use playing games! [vitor-k](https://github.com/vitor-k) implemented a way to automatically map your controller to Citra with the press of a button, provided that your controller is listed in the [SDL Controller Database](https://github.com/gabomdq/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt).
+In the past, to configure your controller you were required to manually map every single button and joystick direction. This proved to be a tedious activity and would eat into time that you’d rather use playing games! [vitor-k](https://github.com/vitor-k) implemented a way to automatically map your controller to Citra with the press of a button, provided that your controller is listed in the [SDL Controller Database](https://github.com/gabomdq/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt).
 
 {{< figure src="binding.png"
     title="Automatically bind your controls easily." >}}
@@ -138,8 +137,9 @@ Setting up SDL motion controls is as easy as pressing a button! (No, seriously. 
 
 If you missed the last announcement, this is a follow up to our previous [Citra Android Update](https://citra-emu.org/entry/citra-android-update/)!
 
-We are still updating Citra Android, but all builds are now hosted on our [Nightly repository](https://github.com/citra-emu/citra-nightly/releases) instead of the Google Play Store at the moment. 
-To use all of these brand new features for Android, make sure you have downloaded and installed the latest .apk from our Nightly repository. We will be updating Citra Android on the Google Play Store again some time in the future.
+We are still updating Citra Android, but all builds are now hosted on our [Nightly repository](https://github.com/citra-emu/citra-nightly/releases) instead of the Google Play Store at the moment. This is due to Google's new storage permissions system, which requires a large rewrite of our file handling for Citra Android. We are actively working on getting updates for Citra Android back on the Google Play Store. 
+
+To use all of these brand new features for Android, make sure you have downloaded and installed the latest `.apk` from our Nightly repository.
 
 ## Add Disk Shader Cache ([#216](https://github.com/citra-emu/citra-android/pull/216)) by [SachinVin](https://github.com/SachinVin)
 
@@ -177,9 +177,9 @@ The new cheat menu allows you to input the cheat name, the cheat itself, and any
 Custom Textures are a way for modders to revamp the textures of a game to make them even more amazing than ever before! Due to the low resolution of the 3DS, games often used low-quality, compressed images for the models, so when Citra renders at upscaled resolutions, it’s still just not quite perfect.
 Texture Dumping is a way to gather all textures from a game whilst playing through it. No need to do anything fancy, all you need to do is play! These can be used for archival purposes or to create your own Custom Texture Packs to add right back into Citra.
 
-First [added to Citra Desktop](https://github.com/citra-emu/citra/pull/4868) all the way back in November 2019, first time developer [LevithaninWaves](https://github.com/LeviathaninWaves) tasked themselves with implementing this feature over on our Android build.
+[Added to Citra Desktop](https://github.com/citra-emu/citra/pull/4868) all the way back in November 2019, first time developer [LevithaninWaves](https://github.com/LeviathaninWaves) tasked themselves with implementing this feature over on our Android build.
 
-To add Custom Textures to Citra, navigate to `Internal Storage -> citra-emu`, create a folder called `load`, another folder inside that called `textures` then a folder named with the TitleID of your game. This can be found on the [3DS releases database](http://3dsdb.com/) if you do not know it. 
+To add Custom Textures to Citra, navigate to `Internal Storage -> citra-emu`, create a folder called `load`, another folder inside that called `textures` then a folder named with the TitleID of your game. These TitleIDs can be found on the [3DS releases database](http://3dsdb.com/) if you do not know it. 
 Place your custom textures inside this folder with the TitleID of your game. Dumped textures are stored in  `Internal Storage -> citra-emu -> dump -> textures`.
 Both Dump Textures and Custom Textures can be enabled in `Settings -> Graphics -> Utility`
 
@@ -190,7 +190,7 @@ Both Dump Textures and Custom Textures can be enabled in `Settings -> Graphics -
 
 This addition is basically what it says on the tin. Some homebrew apps require internet access to download data needed for them to work correctly, such as the Mario Kart 7 modpack [CTGP-7](https://ctgp-7.github.io/). As this is what is known as a “normal permission” granted from Android, any users of Citra do not need to agree to any additional privacy policies that may have been introduced due to this.
 
-NOTE: This PR does not mean that Citra Android has multiplayer access. This is only related to homebrew apps at the moment.
+NOTE: This PR *does not* mean that Citra Android has multiplayer access. It is only related to homebrew apps at the moment.
 
 ### Allow opening in-emulation menu by pressing Back ([#6248](https://github.com/citra-emu/citra/pull/6248)) by [JosJuice](https://github.com/JosJuice)
 
@@ -198,7 +198,7 @@ With the Android 13 update released on some devices came a big issue with Citra.
 
 Due to this, you could no longer access Save States, Amiibo, Screen Layout, Overlay, FPS counter and so many more vital options to use Citra! This was a massive problem!
 
-The solution was to just use the back button found on all devices to open the in-emulation menu instead! This can be accessed from the bottom of the device, next to the home button and recents button. By doing this, the in-emulation menu can be accessible on a number of devices now, such as Chromebooks running Citra Android and VR headsets, not just devices running Android 13.
+The solution was to just use the back button found on all devices to open the in-emulation menu instead! This can be accessed from the bottom of the device, next to the home button and recents button. The in-emulation menu is accessible on a number of devices now, such as Chromebooks running Citra Android and VR headsets, not just devices running Android 13.
 
 # Emulation Accuracy
 
@@ -209,7 +209,7 @@ These can now be used in games such as Super Smash Bros. for Nintendo 3DS to giv
 
 ### Initial implementation of partial_embedded_buffer_dirty handling ([#5548](https://github.com/citra-emu/citra/pull/5548)) by [xperia64](https://github.com/xperia64)
 
-For a while, the Mii voices in Tomodachi Life would continuously cut off before they would finish speaking, which could make it hard to understand what they are saying to the player. By implementing a partial embedded buffer, a buffer being an area of memory which stores data on a temporary basis, you can hear the sweet voices of your favorite Miis again!
+For a while, the Mii voices in Tomodachi Life would continuously cut off before they would finish speaking, which could make it hard to understand what they are saying to the player. By implementing a partial embedded buffer, this being an area of memory which stores data on a temporary basis, you can hear the sweet voices of your favorite Miis again!
 
 This also fixes an issue where FMVs in Detective Pikachu would run faster than what the frame rate allowed for.
 
@@ -218,13 +218,13 @@ This also fixes an issue where FMVs in Detective Pikachu would run faster than w
 
 ### service/apt: Implement Deliver Args ([#5611](https://github.com/citra-emu/citra/pull/5611)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
-This partially fixes an issue where some games would just show black and white screens when launched. By implementing Deliver Args, a way to pass arguments from the caller to the callee, as well as `PrepareToDoApplicationJump` and `JumpToApplication` APT services. This allows the game to crash with a fatal error instead of just hanging on a black screen. 
+This partially fixes an issue where some games would just show black and white screens when launched. By implementing Deliver Args, a way to pass arguments from one 3DS application to the another, as well as `PrepareToDoApplicationJump` and `JumpToApplication` APT services. This allows the game to crash with a fatal error instead of just hanging on a black screen. 
 
 This is a step in the right direction for getting these games, such as Sega 3D Classics Collection, to boot correctly on Citra in the future.
 
 ### gl_rasterizer_cache: Remove all fully invalid surfaces from the cache ([#5710](https://github.com/citra-emu/citra/pull/5710)) by [BreadFish64](https://github.com/BreadFish64)
 
-The dead weight of fully invalid surfaces being held in the rasterizer cache impacted many cache management functions and texture lookup times, which in turn impacted performance on some games, such as Pilotwings.
+The dead weight of fully invalid surfaces being held in the rasterizer cache impacted many cache management functions and texture lookup times, which in turn lowered performance on some games, such as Pilotwings.
 
 By removing all fully invalidated surfaces and implementing a map of recycled textures from destroyed surfaces to avoid driver overhead from allocations, performance on poorly behaved games has been greatly increased.
 
@@ -238,7 +238,7 @@ As homebrew apps had no way of telling whether they were running on hardware or 
 
 ### Allow MemoryRef to hold a past-the-end offset ([#6141](https://github.com/citra-emu/citra/pull/6141)) by [vitor-k](https://github.com/vitor-k)
 
-Previously, Citra did not correctly understand any copies or operations being held at the end of the emulated VRAM, which would cause these operations and copies to get completely ignored. This would cause numerous errors in the emulation of games, including some graphics being cut out entirely on HarmoKnight. By allowing MemoryRef to correctly understand these values, they will no longer be ignored and can be executed correctly.
+Previously, Citra did not correctly understand any copies or operations being held at the end of the emulated VRAM, which would cause them to get completely ignored. This would cause numerous errors in the emulation of games, including some graphics being cut out entirely on HarmoKnight. By allowing MemoryRef to correctly understand these values, they will no longer be ignored and can be executed correctly.
 
 {{< sidebyside "image" ""
     "harmoOld.png=What's happened there?"
@@ -274,7 +274,7 @@ Those who host rooms with citra-room will also no longer need to have OpenGL sup
 
 ### UDS: implement GetApplicationData ([#5533](https://github.com/citra-emu/citra/pull/5533)) by [mnml](https://github.com/mnml)
 
-By implementing `NWMUDS:GetApplicationData`, an issue is resolved in which multiplayer communications would only work one way in Dragon Ball Fusions, and fixes multiplayer altogether in Final Fantasy Explorers. `NWMUDS:GetApplicationData` is used to load appdata from the current beacon, which can then only be used whilst connected to the network. 
+By implementing `GetApplicationData`, an issue is resolved in which multiplayer communications would only work one way in Dragon Ball Fusions, and fixes multiplayer altogether in Final Fantasy Explorers. `GetApplicationData` is used to load appdata from the current beacon, which can then only be used whilst connected to the network. 
 
 ### service/frd: return cfg username on GetMyScreenName ([#5792](https://github.com/citra-emu/citra/pull/5792)) by [vitor-k](https://github.com/vitor-k)
 
@@ -299,7 +299,7 @@ Sick of using just the default Light and Dark themes? Inspired by the yuzu theme
 {{< figure src="midnight.png"
     title="Ooh! Shiny new colors!" >}}
 
-### Citra SDL: graceful shutdown on application shutdown ([#6102](https://github.com/citra-emu/citra/pull/6102)) by [ian-h-chamberlain](https://github.com/ian-h-chamberlain)
+### Citra SDL: graceful shutdown on application close ([#6102](https://github.com/citra-emu/citra/pull/6102)) by [ian-h-chamberlain](https://github.com/ian-h-chamberlain)
 
 When closing Citra SDL, the command line counterpart to our normal GUI version that most people will be used to, the window would remain open unintentionally which required a forceful shutdown to close properly. This would result in cleanup tasks, such as video dumping, failing. Which isn’t very nice if you’ve just spent a long time working on a video just to lose it! 
 
@@ -309,10 +309,10 @@ By implementing a graceful shutdown, the window will close normally and a standa
 
 Another very long awaited feature, Separate Windows, has arrived in Citra!
 
-Since the conception of Citra in 2014 (yes, that long ago!) users had been asking for a way to split the two screens of the 3DS shown in Citra into two separate windows. This would allow you to move the two screens around to wherever you want on your PC, and would allow for them to be used on two separate monitors too! Unfortunately, no one was able to do this for a very long time, until [epicboy](https://github.com/ameerj) came along…
+Since the conception of Citra in 2014 (yes, that long ago!) users had been asking for a way to split the two screens of the 3DS shown in Citra into two separate windows. This would allow you to move the two screens around to wherever you want on your PC, and to be used on two separate monitors too! Unfortunately, no one was able to do this for a very long time, until [epicboy](https://github.com/ameerj) came along…
 
-The groundwork for this change had already been put in place with a PR [jroweboy](https://github.com/jroweboy) made for [vsync presentation](https://github.com/citra-emu/citra/pull/4940) back in 2019. The vsync presentation PR was created as a way to force enable vsync for everyone from within Citra. In the past, this was disabled by default. 
-For those who force enabled vsync in their driver settings, Citra wasn’t able to disable vsync, which resulted in inconsistent frame limiting. 
+The groundwork for this change had already been put in place with a PR [jroweboy](https://github.com/jroweboy) made for [VSync presentation](https://github.com/citra-emu/citra/pull/4940) back in 2019. The vsync presentation PR was created as a way to force enable VSync for everyone from within Citra. In the past, this was disabled by default. 
+For those who force enabled VSync in their driver settings, Citra wasn’t able to disable VSync, which resulted in inconsistent frame limiting. 
 This was picked up by [epicboy](https://github.com/ameerj) and molded to work with multiple windows being displayed by one instance of Citra.
 
 To enable this feature, head to `View -> Screen Layout -> Separate Windows` from within Citra. Launch your game, and from there you can edit the size and location of the windows to wherever you want on your PC!
@@ -329,12 +329,14 @@ After experiencing this themselves via accidentally clicking onto another game w
 {{< figure src="stopEmu.png"
     title="No more accidentally losing your progress." >}}
 	
-## Per-game configurations ([#6187](https://github.com/citra-emu/citra/pull/6187), [#6219](https://github.com/citra-emu/citra/pull/6219)) by [GPUCode](https://github.com/GPUCode)
+## Per-game configurations ([#6187](https://github.com/citra-emu/citra/pull/6187), [#6219](https://github.com/citra-emu/citra/pull/6219), [#6224](https://github.com/citra-emu/citra/pull/6224)) by [GPUCode](https://github.com/GPUCode)
 
 Based off of the yuzu implementation of the same name, Per-Game Configurations have landed in Citra! This is part of a series of changes coming to Citra to modernize the frontend of the emulator.
 
 Tired of having to change your settings for each game you play every time you launch it? Well, worry no more! With this change to Citra, each of your games now has their own settings profile. 
-You can change the emulation speed, change graphical settings, audio settings such as what audio emulation you’re using, the volume of each game, and so many more!
+You can change the emulation speed, graphical settings, audio settings such as what audio emulation you’re using, the volume of each game, and many more!
+
+With this PR, the option for **Alternate Speed**, which was available in the general settings of Citra, has been removed in favour of an option called **Per-game Emulation Speed**. This setting works in the exact same was as the previous **Alternate Speed** setting, however it is now found inside of the per-game settings instead of the global settings. The hotkey for this has also been renamed appropriately to reflect the name change of the setting.
 
 Individual config files for each per-game setting you may have are stored in `config -> custom -> <titleid>.ini` These .ini files can be edited using a text editor application, and the changes will appear in Citra.
 
@@ -391,18 +393,22 @@ Mali GPUs, which are commonly included with Exynos and MediaTek SoCs, are known 
 
 To achieve this feat, [GPUCode](https://github.com/GPUCode) has been undertaking a massive rewrite of the OpenGL backend and the video_core as well, to streamline and simplify the code, making it easier to reuse code between both backends.
 
-Another advantage of Vulkan is being able to use MoltenVK on MacOS devices.We have recently changed our OpenGL requirements from 3.3 to 4.3 (more on this is explained in our [FAQ](https://citra-emu.org/wiki/faq/#system-requirements)) in an effort to modernize Citra's graphical backends. Since Apple has dropped support for modern OpenGL back in 2018, this has resulted in our users on MacOS being stuck on an older version of Citra, not being able to use all the shiny new features we’ve covered here!
-With this addition of Vulkan, support of Citra will be brought back to thousands of users on their Mac devices!
+Another advantage of Vulkan is being able to use MoltenVK on MacOS devices. We have recently changed our OpenGL requirements from 3.3 to 4.3 (more on this is explained in our [FAQ](https://citra-emu.org/wiki/faq/#system-requirements)) in an effort to modernize Citra's graphical backends. Since Apple has dropped support for modern OpenGL back in 2018, this has resulted in our users on MacOS being stuck on an older version of Citra, not being able to use all the shiny new features we've covered here!
+Using Vulkan, support of Citra will be brought back to thousands of users on their Mac devices!
 
 We are very excited to share more information about Vulkan at a later point, as it is still being worked on every day. Please be patient whilst this massive effort comes to life, as a big project like this does take a long time to materialize!
 
 {{< sidebyside "image" ""
-    "androidOpenGL.png=OpenGL ES on Samsung Galaxy A03, Unisoc T606 (Mali G57)"
-    "androidVulkan.png=Vulkan on Samsung Galaxy A03, Unisoc T606 (Mali G57)" >}}
+    "androidOpenGL.png=OpenGL ES on Samsung Galaxy A03, Unisoc T606 (Mali G57)
+    FPS: 9 Speed: 31%"
+    "androidVulkan.png=Vulkan on Samsung Galaxy A03, Unisoc T606 (Mali G57)
+    FPS: 30 Speed: 100%" >}}
 
 # Conclusion
 
 All in all, it has been a tremendous couple of years for Citra development, albeit being a bit slow. We are proud of our developers, new and old, who have shown us the love they have for this project in many ways.
+
+If you want to support this project, we have a [Patreon](https://www.patreon.com/citraemu)! Donations to the Patreon goes directly to our team to assist with obtaining hardware for testing and keeping our servers up and running. Donations are not required, but are greatly appreciated!
 
 If you are looking to contribute to Citra or just want to get involved with our community, you can find us on our [Discord server](https://discord.com/invite/FAXfZV9) or on our IRC channel (#citra @ [Libera.Chat](https://libera.chat/)). Additionally, we’re still looking for writers! If you are interested in being a writer of these blog posts, please reach out to us on [Discord](https://discord.com/invite/FAXfZV9).
 
