@@ -399,10 +399,8 @@ Using Vulkan, support of Citra will be brought back to thousands of users on the
 We are very excited to share more information about Vulkan at a later point, as it is still being worked on every day. Please be patient whilst this massive effort comes to life, as a big project like this does take a long time to materialize!
 
 {{< sidebyside "image" ""
-    "androidOpenGL.png=OpenGL ES on Samsung Galaxy A03, Unisoc T606 (Mali G57)
-    FPS: 9 Speed: 31%"
-    "androidVulkan.png=Vulkan on Samsung Galaxy A03, Unisoc T606 (Mali G57)
-    FPS: 30 Speed: 100%" >}}
+    "androidOpenGL.png=OpenGL ES on Samsung Galaxy A03, Unisoc T606 (Mali G57). FPS: 9 Speed: 31%"
+    "androidVulkan.png=Vulkan on Samsung Galaxy A03, Unisoc T606 (Mali G57). FPS: 30 Speed: 100%" >}}
 
 # Conclusion
 
