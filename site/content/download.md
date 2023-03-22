@@ -87,7 +87,7 @@ The Citra updater provides a easy interface to install, update and manage Citra.
 </table>
 <div style="text-align: center; padding: 0px; margin: 0px;"><a href = "https://github.com/citra-emu/citra-canary/releases">Click here to view previous versions...</a></div>
 
-<h3>Android Build <span style='font-size: smaller; margin-left: 6px;'> Last release was  <span id='last-updated-android'></span></span></h3>
+<h3>Google Play Store Build <span style='font-size: smaller; margin-left: 6px;'> Last release was  <span id='last-updated-android'></span></span></h3>
 <table id="downloads-android" class="table">
     <thead>
         <tr>
