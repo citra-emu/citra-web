@@ -186,7 +186,7 @@ Both Dump Textures and Custom Textures can be enabled in `Settings -> Graphics -
 {{< figure src="textures.png"
     title="Games can now be viewed so much clearer thanks to this!" >}}
 
-### Add internet permission to android manifest ([#6167](https://github.com/citra-emu/citra/pull/6167)) by [PabloMK7](https://github.com/PabloMK7)
+### Add internet permission to Android manifest ([#6167](https://github.com/citra-emu/citra/pull/6167)) by [PabloMK7](https://github.com/PabloMK7)
 
 This addition is basically what it says on the tin. Some homebrew apps require internet access to download data needed for them to work correctly, such as the Mario Kart 7 modpack [CTGP-7](https://ctgp-7.github.io/). As this is what is known as a “normal permission” granted from Android, any users of Citra do not need to agree to any additional privacy policies that may have been introduced due to this.
 
@@ -348,7 +348,7 @@ This is another addition which has been highly requested in the Citra community,
 ### Change Monoscopic Render mode to a dropdown ([#6215](https://github.com/citra-emu/citra/pull/6215)) by [vitor-k](https://github.com/vitor-k)
 
 Just a small QoL update here! Having a dropdown box to change between two settings is pretty clean, don’t you think? 
-Stereoscopic is the default in Citra for 3D capabilities, which displays the 3D to both eyes at the same time. Monoscopic Render emulates the 3DS displaying its 3D capabilities to only one eye at a time. Some games render differently depending on which eye the display is focusing on. The major image differences between the eyes happens at 0% depth, as some games do not bother rendering some elements of in game material to both eyes.
+Stereoscopic is the default in Citra for 3D capabilities, which displays the 3D to both eyes at the same time. Monoscopic rendering emulates the 3D capabilities of the 3DS to one screen for each eye. The Stereoscopic 3D modes will use various methods for displaying each screen to the correct eye, but monoscopic mode just chooses one of them to be displayed. Some games render differently depending on which eye is shown. The major image differences between the eyes happens at 0% depth, as some games do not bother rendering some elements of in game material to both eyes.
 
 [jakedowns](https://github.com/citra-emu/citra/pull/6140) implemented a left eye option for the Monoscopic Renderer to further Citra's compatibility with [ReShade](https://reshade.me/), a post-processing injector for video games. However, the initial tick box included with the PR to switch from the left eye to right eye was just a little clunky. 
 
@@ -406,7 +406,7 @@ We are very excited to share more information about Vulkan at a later point, as 
 
 All in all, it has been a tremendous couple of years for Citra development, albeit being a bit slow. We are proud of our developers, new and old, who have shown us the love they have for this project in many ways.
 
-If you want to support this project, we have a [Patreon](https://www.patreon.com/citraemu)! Donations to the Patreon goes directly to our team to assist with obtaining hardware for testing and keeping our servers up and running. Donations are not required, but are greatly appreciated!
+If you want to support this project, we have a [Patreon](https://www.patreon.com/citraemu)! Donations to the Patreon go directly to our team to assist with obtaining hardware for testing and keeping our servers up and running. Donations are not required, but are greatly appreciated!
 
 If you are looking to contribute to Citra or just want to get involved with our community, you can find us on our [Discord server](https://discord.com/invite/FAXfZV9) or on our IRC channel (#citra @ [Libera.Chat](https://libera.chat/)). Additionally, we’re still looking for writers! If you are interested in being a writer of these blog posts, please reach out to us on [Discord](https://discord.com/invite/FAXfZV9).
 
