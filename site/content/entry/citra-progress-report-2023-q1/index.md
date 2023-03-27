@@ -41,7 +41,7 @@ To utilize the rerecording features, head to `Tools -> Movie` to record your gam
 
 ## Implement Reverse Interlaced 3D ([#5580](https://github.com/citra-emu/citra/pull/5580)) by [oneup03](https://github.com/oneup03)
 
-Interlaced 3D is the way of displaying stereoscopic 3D content on passive 3D supported monitors and TV screens. This was [first implemented](https://github.com/citra-emu/citra/pull/5018) in Citra in 2019 in a bid to create more ways to view 3D on more devices. However, some monitors render each eye in a reverse order from normal interlaced monitors, such as LG OLED 3DTV's.
+Interlaced 3D is a method of displaying stereoscopic 3D content on passive 3D supported monitors and TV screens. This was [first implemented](https://github.com/citra-emu/citra/pull/5018) in Citra in 2019 to provide more ways to view 3D on a wider range of devices. However, some monitors, such as LG OLED 3DTV's, render each eye in a reverse order from typical interlaced monitors.
 This PR implements a new way to view the 3D capabilities on a new type of screen, keeping the 3D novelty of the 3DS that so many of us love alive.
 
 This setting can be found in `Emulation -> Configure` (`Citra -> Preferences` on MacOS), inside the `Graphics` tab. Make sure to set the **Depth** to 100% as well to utilize this feature.
@@ -51,15 +51,11 @@ This setting can be found in `Emulation -> Configure` (`Citra -> Preferences` on
 
 ## Custom folders for SDMC and NAND Directories ([#5759](https://github.com/citra-emu/citra/pull/5759), [#6014](https://github.com/citra-emu/citra/pull/6014), [#6157](https://github.com/citra-emu/citra/pull/6157)) by [nieldm](https://github.com/nieldm), [SachinVin](https://github.com/SachinVin) and [vitor-k](https://github.com/vitor-k)
 
-Portability is something that has been important to Citra for a very long time. Alongside our installer build, we also offer loose builds of Citra for manual installation, allowing these to be installed anywhere on the device but still having the save files and alike saved to the default app data folder on your device.
-These manual builds can also be used to run Citra in a fully portable way. For example, if you need to transfer your entire Citra setup between devices using a storage medium such as a USB stick or an SD card, these fully portable builds are quite useful.
+Citra stores the SDMC and NAND folders in a standard [user directory](https://citra-emu.org/wiki/user-directory/) location, which is typically located on the same drive as your operating system. The SDMC folder houses your installed games, updates, DLC, and save data, which can quickly accumulate and become large in size based on your game library. The NAND folder emulates the 3DS's memory chip and contains the system archives and shared fonts of the 3DS, which can be dumped from your own console. However, Citra has its own open-source implementation of these files that comes with every installation of Citra. 
 
-However, there are some caveats with this. Sometimes, it just isn't practical to switch between different Citra builds over and over, for example if you just want to quickly switch the save file for ROM hacks or randomizations of a game.
+Because the user directory is typically not changeable, users who have limited storage space on their primary drive can encounter issues. This PR solves this problem by allowing users to specify a custom location for the SDMC and NAND folders. Adding this was a big feat, with the assistance of multiple developers being called in. 
 
-This is where custom SDMC and NAND directories come in. SDMC is the name of the emulated 3DS SD card in Citra and NAND is the emulated memory chip of the 3DS. These are needed as they contain all data about the 3DS games you are playing, including the save files! This addition allows you to switch between different save files and Citra setups on the fly, without having to set up and launch multiple portable builds. Adding this was a big feat, with the assistance of multiple developers being called in. 
-After the initial implementation by [nieldm](https://github.com/nieldm) came a slew of other issues, such as internal issues with the custom paths and every user being accidentally forced to use custom directories for SDMC and NAND! 
-
-All of these issues were ironed out by the joint effort of our developers and we’re proud to say that custom directories for SDMC and NAND are here to stay!
+After the initial implementation by [nieldm](https://github.com/nieldm) came a slew of other issues, such as internal issues with the custom paths and every user being accidentally forced to use custom directories for SDMC and NAND! All of these issues were ironed out by the joint effort of our developers and we’re proud to say that custom directories for SDMC and NAND are here to stay!
 
 {{< figure src="customstorage.png"
     title="" >}}
@@ -89,7 +85,7 @@ Plugins are loaded from the emulated 3DS SD card. Citra follows the same path as
 
 ## Add Nearest Neighbour Texture Filter ([#6189](https://github.com/citra-emu/citra/pull/6189)) by [venkatrao1](https://github.com/venkatrao1)
 
-If you hadn’t seen in our previous Progress Report, [Texture Filters]([https://citra-emu.org/entry/citra-progress-report-2020-q2/#new-features:~:text=Texture%20Filters](https://citra-emu.org/entry/citra-progress-report-2020-q2/#texture-filters-5017httpsgithubcomcitra-emucitrapull5017-5166httpsgithubcomcitra-emucitrapull5166-5210httpsgithubcomcitra-emucitrapull5210-5270httpsgithubcomcitra-emucitrapull5270-by-breadfish64httpsgithubcombreadfish64)) were added to Citra!
+If you hadn’t seen in our previous Progress Report, [Texture Filters](https://citra-emu.org/entry/citra-progress-report-2020-q2/#texture-filters-5017httpsgithubcomcitra-emucitrapull5017-5166httpsgithubcomcitra-emucitrapull5166-5210httpsgithubcomcitra-emucitrapull5210-5270httpsgithubcomcitra-emucitrapull5270-by-breadfish64httpsgithubcombreadfish64) were added to Citra!
 With texture upscaling, Citra will use one of several algorithms to automatically upsize the image to a higher resolution. 
 
 Nearest Neighbour is a texture filter which is particularly effective at making text stand out and look bolder! With the addition of another highly requested texture filter, you can have more control over how your gameplay looks than ever before!
@@ -178,8 +174,8 @@ The new cheat menu allows you to input the cheat name, the cheat itself, and any
 
 ## Add support for custom textures and texture dumping ([#6144](https://github.com/citra-emu/citra/pull/6144)) by [LeviathaninWaves](https://github.com/LeviathaninWaves)
 
-Custom Textures are a way for modders to revamp the textures of a game to make them even more amazing than ever before! Due to the low resolution of the 3DS, games often used low-quality, compressed images for the models, so when Citra renders at upscaled resolutions, it’s still just not quite perfect.
-Texture Dumping is a way to gather all textures from a game while playing through it. No need to do anything fancy, all you need to do is play! These can be used for archival purposes or to create your own Custom Texture Packs to add right back into Citra.
+Custom Textures are a powerful tool that allows modders to enhance the texture quality of a game, resulting in even more visually stunning gameplay. Due to the low resolution of the 3DS, games often used low-quality, compressed images for their models, so when Citra renders at upscaled resolutions, they can appear less than perfect.
+Texture Dumping is a simple process that allows you to collect all the textures from a game while you play through it. No need to do anything fancy, all you need to do is play! These dumped textures can be used for archival purposes or to create your own Custom Texture Packs, which can then be added back into Citra to enhance the gaming experience even further.
 
 [Added to Citra Desktop](https://github.com/citra-emu/citra/pull/4868) all the way back in November 2019, first time developer [LevithaninWaves](https://github.com/LeviathaninWaves) tasked themselves with implementing this feature over on our Android build.
 
@@ -198,9 +194,9 @@ NOTE: This PR *does not* mean that Citra Android has multiplayer access. It is o
 
 ### Allow opening in-emulation menu by pressing Back ([#6248](https://github.com/citra-emu/citra/pull/6248)) by [JosJuice](https://github.com/JosJuice)
 
-Android 13, which has recently released on some newer devices, has caused several big issues with Citra's UI. No longer could you swipe down from the top to open the in-game menu! Instead, just the phone notification bar would be brought down.
+The recent release of Android 13 on some newer devices has caused significant problems with Citra's user interface. No longer could you swipe down from the top to open the in-game menu. Instead, just the phone notification bar would be brought down.
 
-Due to this, you could no longer access Save States, Amiibo, Screen Layout, Overlay, FPS counter and so many more vital options to use Citra.
+Due to this, you could no longer access Save States, Amiibo, Screen Layout, Overlay, FPS counter and more. This has made it difficult to fully utilize Citra's capabilities on devices running Android 13
 
 The solution was to just use the back button found on all devices to open the in-emulation menu instead! This can be accessed from the bottom of the device, next to the home button and recents button. The in-emulation menu is accessible on a number of devices now, such as Chromebooks running Citra Android and VR headsets, not just devices running Android 13.
 
@@ -209,7 +205,7 @@ The solution was to just use the back button found on all devices to open the in
 ### Implement APT command 0x0103 ([#5478](https://github.com/citra-emu/citra/pull/5478)) by [xperia64](https://github.com/xperia64)
 
 This PR allows for controls introduced by the New Nintendo 3DS to be utilized in Citra while **New 3DS mode** is enabled. The New Nintendo 3DS came with the addition of the C-Stick, and the ZL and ZR trigger buttons. 
-These can now be used in games such as Super Smash Bros. for Nintendo 3DS to give you more control over how you play your game!
+These can now be used in Citra in games such as Super Smash Bros. for Nintendo 3DS to give you more control over how you play your game!
 
 ### Initial implementation of partial_embedded_buffer_dirty handling ([#5548](https://github.com/citra-emu/citra/pull/5548)) by [xperia64](https://github.com/xperia64)
 
@@ -242,7 +238,9 @@ As homebrew apps had no way of telling whether they were running on hardware or 
 
 ### Allow MemoryRef to hold a past-the-end offset ([#6141](https://github.com/citra-emu/citra/pull/6141)) by [vitor-k](https://github.com/vitor-k)
 
-Previously, Citra did not correctly understand any copies or operations being held at the end of the emulated VRAM, which would cause them to get completely ignored. This would cause numerous errors in the emulation of games, including some graphics being cut out entirely on HarmoKnight. By allowing MemoryRef, a wrapper over a pointer to physical memory used for serialization, to correctly understand these values, they will no longer be ignored and can be executed correctly.
+In the past, Citra faced a problem where any copies or operations held at the end of the emulated VRAM were not understood correctly, causing them to be completely ignored. This would cause numerous errors in the emulation of games, including some graphics being cut out entirely on HarmoKnight. 
+
+However, by allowing MemoryRef, a wrapper over a pointer to physical memory used for serialization, these values can now be correctly understood and executed. This means that the errors previously experienced due to ignored values will be resolved, leading to a more accurate and improved emulation of games on Citra.
 
 {{< sidebyside "image" ""
     "harmoOld.png=What's happened there?"
@@ -265,7 +263,7 @@ This PR implements two key services relating to Download Play Applet functionali
 
 ### NWM_UDS: Implement disconnect_reason and EjectClient ([#5331](https://github.com/citra-emu/citra/pull/5331)) by [B3n30](https://github.com/B3n30)
 
-This is required to be able to disconnect from a multiplayer session correctly if the host chooses to terminate the room or force-disconnect clients. This allows for multiplayer to work correctly in certain games, such as the Monster Hunter series.
+The implementation of `disconnect_reason` and `EjectClient` is required to be able to disconnect from a multiplayer session correctly if the host chooses to terminate the room or force-disconnect clients. This allows for multiplayer to work correctly in certain games, such as the Monster Hunter series.
 
 ### service/nwm_uds: Various improvements/corrections ([#5382](https://github.com/citra-emu/citra/pull/5382)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
@@ -284,7 +282,7 @@ By implementing `GetApplicationData`, an issue is resolved in which multiplayer 
 
 When playing multiplayer games, it is helpful to be able to identify your friends. But previously, when using the room feature in some games, everyone was named “Citra”!
 
-Obviously, this caused a lot of confusion and made it very hard to identify individual players. The problem was a stubbed function in the friend service. It was hardcoded to return “Citra” no matter the name the user had configured in the options. [vitor-k](https://github.com/vitor-k) corrected this and now the user-configured name is displayed correctly.
+This issue caused a lot of confusion and made it very hard to identify individual players. The problem was due to a stubbed function in the friend service that was hardcoded to return “Citra”, regardless of the name the user had configured in the Citra settings. [vitor-k](https://github.com/vitor-k) corrected this and now the user-configured name is displayed correctly.
 
 {{< sidebyside "image" ""
     "marioOld.png=Citra, Citra and... Citra?"
@@ -298,7 +296,7 @@ An arguably simpler way of taking screenshots in game, without taking you away f
 
 ### Added Midnight Theme ([#6030](https://github.com/citra-emu/citra/pull/6030)) by [Daisouji](https://github.com/Daisouji)
 
-Sick of using just the default Light and Dark themes? Inspired by the yuzu theme of the same name, “Midnight Blue” and “Midnight Blue Colorful” are available in Citra to give you even more customizability than before!
+Are you tired of the same old Light and Dark themes? Good news! Citra now offers two new themes: "Midnight Blue" and "Midnight Blue Colorful," inspired by the yuzu themes of the same names. These themes provide even more customization options for your Citra experience.
 
 {{< figure src="midnight.png"
     title="Ooh! Shiny new colors!" >}}
@@ -328,7 +326,7 @@ To enable this feature, head to `View -> Screen Layout -> Separate Windows` from
 
 When you run Citra without Single Window Mode enabled, you have the game window and the game list window open at the same time. If you clicked another game in the game list, it’d instantly boot, closing your current game. 
 
-After experiencing this themselves via accidentally clicking onto another game while already in a game, [foghawk](https://github.com/foghawk) added a confirmation check. No longer will you lose any important save data from this issue, and you can carry on playing after selecting one of the two options!
+After experiencing this themselves by accidentally clicking onto another game while already in a game, [foghawk](https://github.com/foghawk) added a confirmation check. No longer will you lose any important save data from this issue, and you can carry on playing after selecting one of the two options!
 
 {{< figure src="stopEmu.png"
     title="No more accidentally losing your progress." >}}
@@ -337,8 +335,7 @@ After experiencing this themselves via accidentally clicking onto another game w
 
 Based off of the yuzu implementation of the same name, Per-Game Configurations have landed in Citra! This is part of a series of changes coming to Citra to modernize the frontend of the emulator.
 
-Tired of having to change your settings for each game you play every time you launch it? Well, worry no more! With this change to Citra, each of your games now has their own settings profile. 
-You can change the emulation speed, graphical settings, audio settings such as what audio emulation you’re using, the volume of each game, and many more!
+With this new change in Citra, you no longer have to manually adjust the settings every time you launch a game. Each game now has its own individual settings profile that you can customize to your liking. You can easily modify the emulation speed, graphical settings, audio settings, and volume of each game, among many other options. This feature saves you time and hassle, allowing you to quickly jump into playing your favorite games without worrying about adjusting settings every time.
 
 With this PR, the option for **Alternate Speed**, which was available in the general settings of Citra, has been removed in favour of an option called **Per-game Emulation Speed**. This setting works in the exact same was as the previous **Alternate Speed** setting, however it is now found inside of the per-game settings instead of the global settings. The hotkey for this has also been renamed appropriately to reflect the name change of the setting.
 
@@ -352,6 +349,7 @@ This is another addition which has been highly requested in the Citra community,
 ### Change Monoscopic Render mode to a dropdown ([#6215](https://github.com/citra-emu/citra/pull/6215)) by [vitor-k](https://github.com/vitor-k)
 
 Just a small QoL update here! Having a dropdown box to change between two settings is pretty clean, don’t you think? 
+
 Stereoscopic is the default in Citra for 3D capabilities, which displays the 3D to both eyes at the same time. Monoscopic rendering emulates the 3D capabilities of the 3DS to one screen for each eye. The Stereoscopic 3D modes will use various methods for displaying each screen to the correct eye, but monoscopic mode just chooses one of them to be displayed. Some games render differently depending on which eye is shown. The major image differences between the eyes happens at 0% depth, as some games do not bother rendering some elements of in game material to both eyes.
 
 [jakedowns](https://github.com/citra-emu/citra/pull/6140) implemented a left eye option for the Monoscopic Renderer to further Citra's compatibility with [ReShade](https://reshade.me/), a post-processing injector for video games. However, the initial tick box included with the PR to switch from the left eye to right eye was just a little clunky. 
