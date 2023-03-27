@@ -1,10 +1,11 @@
 +++
-date = "2023-02-10T18:15:00+00:00"
+date = "2023-03-27T06:00:00+00:00"
 title = "Citra Mega Progress Report 2020 Q2~2023 Q1"
 tags = [ "progress-report" ]
 author = "autumnburra"
 coauthor = "flTobi"
 coauthor2 = "sleepingsnake"
+forum = 747634
 +++
 
 Welcome back to another Citra Mega Progress Report!
@@ -29,7 +30,7 @@ If you have been keeping up to date with messages posted in the `#development` c
 
 Following on from the implementation of a built-in video dumper, mentioned in our previous Progress Report, is the addition of more features to aid all of your video recording and TAS needs!
 
-Being able to use rerecording in an emulator is key when wanting to create TAS videos! These would include features such as adjusting the emulation speed and being able to sync-robust save states. Sync-robustness is the concept that if a save state is launched a certain number of times, it should behave the exact same way each time. Rerecording is used for validation of the TAS script, which is used to get the most optimized speedrun of a game.
+Being able to use rerecording in an emulator is key when wanting to create TAS videos! These would include features such as adjusting the emulation speed and being able to sync-robust save states. Sync-robustness is the concept that if a save state is launched a certain number of times, it should behave the exact same way each time. Rerecording is used for the validation of TAS scripts, which are used to get the most optimized speedrun of a game.
 
 This PR implements many basic rerecording features, following the [TASVideos](https://tasvideos.org/) requirements and desired features for a rerecording emulator, but also adds other needed features for our built-in video dumper such as separate save state slots for each movie, adding a read-only mode, fixing desync and file corruption bugs, and also remaking the UI to be squeaky clean!
 
@@ -50,10 +51,12 @@ This setting can be found in `Emulation -> Configure` (`Citra -> Preferences` on
 
 ## Custom folders for SDMC and NAND Directories ([#5759](https://github.com/citra-emu/citra/pull/5759), [#6014](https://github.com/citra-emu/citra/pull/6014), [#6157](https://github.com/citra-emu/citra/pull/6157)) by [nieldm](https://github.com/nieldm), [SachinVin](https://github.com/SachinVin) and [vitor-k](https://github.com/vitor-k)
 
-Portability is something that has been important to Citra for a very long time. Alongside our installer, we also offer loose builds of Citra for manual installation. These builds can be used to run Citra in a fully portable way.
+Portability is something that has been important to Citra for a very long time. Alongside our installer build, we also offer loose builds of Citra for manual installation, allowing these to be installed anywhere on the device but still having the save files and alike saved to the default app data folder on your device.
+These manual builds can also be used to run Citra in a fully portable way. For example, if you need to transfer your entire Citra setup between devices using a storage medium such as a USB stick or an SD card, these fully portable builds are quite useful.
 
-Despite Citra binaries being portable, data such as save files and game files would still be saved to the user data folder on your device, meaning these files would not be portable across various devices.
-Now introducing custom SDMC and NAND directories! SDMC is the name of the emulated 3DS SD card in Citra and NAND is the emulated memory chip of the 3DS. These are needed as they contain all data about the 3DS games you are playing, including the save files! Adding this was a big feat, with the assistance of multiple developers being called in. 
+However, there are some caveats with this. Sometimes, it just isn't practical to switch between different Citra builds over and over, for example if you just want to quickly switch the save file for ROM hacks or randomizations of a game.
+
+This is where custom SDMC and NAND directories come in. SDMC is the name of the emulated 3DS SD card in Citra and NAND is the emulated memory chip of the 3DS. These are needed as they contain all data about the 3DS games you are playing, including the save files! This addition allows you to switch between different save files and Citra setups on the fly, without having to set up and launch multiple portable builds. Adding this was a big feat, with the assistance of multiple developers being called in. 
 After the initial implementation by [nieldm](https://github.com/nieldm) came a slew of other issues, such as internal issues with the custom paths and every user being accidentally forced to use custom directories for SDMC and NAND! 
 
 All of these issues were ironed out by the joint effort of our developers and we’re proud to say that custom directories for SDMC and NAND are here to stay!
@@ -258,7 +261,7 @@ Now [merryhime](https://github.com/merryhime), the author of [dynarmic](https://
 
 ### APT: implement Set and GetWirelessRebootInfo ([#5328](https://github.com/citra-emu/citra/pull/5328)) by [B3n30](https://github.com/B3n30)
 
-This PR implements two key services relating to Download Play multiplayer on Citra. `SetWirelessRebootInfo` and `GetWirelessRebootInfo` are used to transfer information and arguments between reboots of Download Play. These are necessary so that the app is able to start another app, like in the way Download Play works via transferring a game demo from one console to another. Download Play does not work in Citra just yet. This PR is just to set up the groundwork for that to hopefully work in the future!
+This PR implements two key services relating to Download Play Applet functionality on Citra. `SetWirelessRebootInfo` and `GetWirelessRebootInfo` are used to transfer information and arguments between reboots of Download Play. These are necessary so that the app is able to start another app, like in the way Download Play works via transferring a game demo from one console to another. Download Play does not work in Citra just yet. This PR is just to set up the groundwork for that to hopefully work in the future!
 
 ### NWM_UDS: Implement disconnect_reason and EjectClient ([#5331](https://github.com/citra-emu/citra/pull/5331)) by [B3n30](https://github.com/B3n30)
 
