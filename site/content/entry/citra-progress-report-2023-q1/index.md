@@ -1,5 +1,5 @@
 +++
-date = "2023-03-28T21:30:00+00:00"
+date = "2023-03-28T21:00:00+00:00"
 title = "Citra Mega Progress Report 2020 Q2~2023 Q1"
 tags = [ "progress-report" ]
 author = "autumnburra"
@@ -28,7 +28,7 @@ If you have been keeping up to date with messages posted in the `#development` c
 
 ## Implement basic rerecording features ([#5448](https://github.com/citra-emu/citra/pull/5448)) by [zhaowenlan1779](https://github.com/zhaowenlan1779)
 
-Following on from the built-in video dumper, mentioned in our previous Progress Report, [zhaowenlan1779](https://github.com/zhaowenlan1779) provides some much needed versatility for your video recording and TAS recordings!
+Following on from the built-in video dumper, mentioned in our previous Progress Report, [zhaowenlan1779](https://github.com/zhaowenlan1779) provides some much needed versatility for your video recordings and TAS recordings!
 
 The changes include features such as adjusting the emulation speed and being able to sync-robust save states when rerecording. Sync-robustness is the concept that if a save state is launched a certain number of times, it should behave the exact same way each time. Being able to use rerecording in an emulator is key when wanting to create TAS videos! Rerecording is used for the validation of TAS scripts, which are used to get the most optimized speedrun of a game.
 
@@ -240,7 +240,7 @@ As homebrew apps had no way of telling whether they were running on hardware or 
 
 In the past, Citra faced a problem where any copies or operations held at the end of the emulated VRAM were not understood correctly, causing them to be completely ignored. This would cause numerous errors in the emulation of games, including some graphics being cut out entirely on HarmoKnight. 
 
-However, by allowing MemoryRef, a wrapper over a pointer to physical memory used for serialization, these values can now be correctly understood and executed. This means that the errors previously experienced due to ignored values will be resolved, leading to a more accurate and improved emulation of games on Citra.
+By allowing MemoryRef, a wrapper over a pointer to physical memory used for serialization, to hold a past-the-end offset, these values can now be correctly understood and executed. This means that the errors previously experienced due to ignored values will be resolved, leading to a more accurate and improved emulation of games on Citra.
 
 {{< sidebyside "image" ""
     "harmoOld.png=What's happened there?"
