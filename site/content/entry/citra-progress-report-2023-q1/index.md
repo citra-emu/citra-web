@@ -63,7 +63,7 @@ The initial implementation by [nieldm](https://github.com/nieldm) saw slew of ot
 ## Start abstracting the rasterizer cache from OpenGL ([#6013](https://github.com/citra-emu/citra/pull/6103)) by [GPUCode](https://github.com/GPUCode)
 
 As we are entering the mid 2023’s, Citra is long due for a makeover!
-First on the list of things to make Citra shiny again is a to polish up our OpenGL graphics backend.
+First on the list of things to make Citra shiny again is to polish up our OpenGL graphics backend.
 
 A fundamental part of Citra’s renderer, regardless of the graphics API used, is a component known as the rasterizer cache, which is responsible for tracking all memory reads and writes to the emulated 3DS VRAM. The rasterizer cache is Citra’s version of the texture cache, a concept well known to avid emulation followers. 
 
@@ -117,7 +117,7 @@ In the past, to configure your controller you were required to manually map ever
 
 ### Disable HIDAPI drivers due to compatibility problems with certain controllers ([#5123](https://github.com/citra-emu/citra/pull/5123), [#5179](https://github.com/citra-emu/citra/pull/5179)) by [vitor-k](https://github.com/vitor-k)
 
-The change of SDL2 from 2.0.8 to 2.0.10 broke some controllers that reported themselves as a Switch or Xbox One controller, such as DualShock4 controllers. This PR disables the HIDAPI drivers to allow affected controllers to work again. HIDAPI drivers were enabled again for SDL2.0.12 and up in a [later PR](https://github.com/citra-emu/citra/pull/5179).
+The change of SDL2 from 2.0.8 to 2.0.10 broke some controllers that reported themselves as a Switch or Xbox One controller, such as DualShock 4 controllers. This PR disables the HIDAPI drivers to allow affected controllers to work again. HIDAPI drivers were enabled again for SDL2.0.12 and up in a [later PR](https://github.com/citra-emu/citra/pull/5179).
 
 ### Implement official GameCube adapter support ([#5735](https://github.com/citra-emu/citra/pull/5735)) by [epicboy](https://github.com/ameerj)
 
@@ -149,7 +149,7 @@ A shader is a small program that runs on your GPU. Whenever the game tells Citra
 
 First [implemented on Citra Desktop](https://github.com/citra-emu/citra/pull/4923) back in January 2020, the disk shader cache has proved to be very effective in reducing stutters over time for all games.
 
-By using a disk shader cache, Citra can save these shaders when they are first generated, then is able to preload them on any subsequent launch of the game, eliminating stutter. It was only a matter of time before this was implemented on Android for the benefit of all our Android users, and thanks to [SachinVin](https://github.com/SachinVin) this has been achieved! 
+By using a disk shader cache, Citra can save these shaders when they are first generated, then preload them on any subsequent launch of the game, eliminating stutter. It was only a matter of time before this was implemented on Android for the benefit of all our Android users, and thanks to [SachinVin](https://github.com/SachinVin) this has been achieved! 
 
 {{< figure src="shaders.png"
     title="Less stuttering? Yes, please!" >}}
@@ -259,7 +259,7 @@ Now [merryhime](https://github.com/merryhime), the author of [dynarmic](https://
 
 ### APT: implement Set and GetWirelessRebootInfo ([#5328](https://github.com/citra-emu/citra/pull/5328)) by [B3n30](https://github.com/B3n30)
 
-This PR implements two key services relating to Download Play Applet functionality on Citra. `SetWirelessRebootInfo` and `GetWirelessRebootInfo` are used to transfer information and arguments between reboots of Download Play. These are necessary so that the app is able to start another app, like in the way Download Play works via transferring a game demo from one console to another. Download Play does not work in Citra just yet. This PR is just to law the groundwork for it to hopefully work in the future!
+This PR implements two key services relating to Download Play Applet functionality on Citra. `SetWirelessRebootInfo` and `GetWirelessRebootInfo` are used to transfer information and arguments between reboots of Download Play. These are necessary so that the app is able to start another app, like in the way Download Play works via transferring a game demo from one console to another. Download Play does not work in Citra just yet. This PR is just to lay the groundwork for it to hopefully work in the future!
 
 ### NWM_UDS: Implement disconnect_reason and EjectClient ([#5331](https://github.com/citra-emu/citra/pull/5331)) by [B3n30](https://github.com/B3n30)
 
@@ -402,7 +402,7 @@ We are very excited to share more information about Vulkan at a later point, as 
 
 # Conclusion
 
-All in all, it has been a tremendous couple of years for Citra development, albeit a bit slow. We hope this Progress Report goes a long way to show that Citra development is very much alive and active, despite the long period of silence silence on our website for a long time.
+All in all, it has been a tremendous couple of years for Citra development, albeit a bit slow. We hope this Progress Report goes a long way to show that Citra development is very much alive and active, despite the long period of silence on our website.
 We are proud of our developers, new and old, who have shown us the love they have for this project in many ways. Expect to hear more continued updates from us soon!
 
 If you want to support this project, we have a [Patreon](https://www.patreon.com/citraemu)! Donations to the Patreon go directly to our team to assist with obtaining hardware for testing and keeping our servers up and running. Donations are not required, but are greatly appreciated!
