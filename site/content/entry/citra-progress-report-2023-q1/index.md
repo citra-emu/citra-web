@@ -55,7 +55,7 @@ Citra stores the SDMC and NAND folders in a standard [user directory](https://ci
 
 Because the user directory is typically not changeable, users who have limited storage space on their primary drive can encounter issues. This PR solves this problem by allowing users to specify a custom location for the SDMC and NAND folders. Adding this was a big feat, requiring the assistance of multiple developers.
 
-After the initial implementation by [nieldm](https://github.com/nieldm) came a slew of other issues, such as internal issues with the custom paths and every user being accidentally forced to use custom directories for SDMC and NAND! All of these issues were ironed out by the joint effort of our developers and we’re proud to say that custom directories for SDMC and NAND are here to stay!
+The initial implementation by [nieldm](https://github.com/nieldm) saw slew of other issues, such as internal issues with the custom paths and every user being accidentally forced to use custom directories for SDMC and NAND! All of these issues were ironed out by the joint effort of our developers and we’re proud to say that custom directories for SDMC and NAND are here to stay!
 
 {{< figure src="customstorage.png"
     title="" >}}
