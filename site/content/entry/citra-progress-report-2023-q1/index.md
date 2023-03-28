@@ -92,7 +92,8 @@ Nearest Neighbour is a texture filter which is particularly effective at making 
 
 All of these texture filters, including our shiny new Nearest Neighbour texture filter, can be found in `Emulation -> Configure -> Graphics -> Renderer` in Citra! (`Citra -> Preferences` on MacOS)
 
-{{< juxtapose "cc0544e8-aba2-11ed-b5bd-6595d9b17862" >}}
+<style>.juxtapose-35vh { display:block; margin:auto; width:100%; height:35vh; }</style>
+{{< juxtapose id="cc0544e8-aba2-11ed-b5bd-6595d9b17862" class="juxtapose-35vh" >}}
 
 ## Better Support for Picture-in-Picture Custom Layouts ([#6247](https://github.com/citra-emu/citra/pull/6247)) by [SomeDudeOnDiscord](https://github.com/SomeDudeOnDiscord)
 
