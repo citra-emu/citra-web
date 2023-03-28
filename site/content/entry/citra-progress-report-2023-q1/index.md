@@ -1,5 +1,5 @@
 +++
-date = "2023-03-27T06:00:00+00:00"
+date = "2023-03-28T21:30:00+00:00"
 title = "Citra Mega Progress Report 2020 Q2~2023 Q1"
 tags = [ "progress-report" ]
 author = "autumnburra"
