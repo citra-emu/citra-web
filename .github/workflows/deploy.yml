@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         submodules: true
     - name: Install dependencies
@@ -30,10 +30,11 @@ jobs:
       run: ./.ci/build.sh
     - name: Deploy
       if: ${{ ! github.base_ref }}
-      uses: JamesIves/github-pages-deploy-action@3.7.1
+      uses: JamesIves/github-pages-deploy-action@4.4.1
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: master
-        FOLDER: build
-        CLEAN: true
-        SINGLE_COMMIT: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: master
+        folder: build
+        clean: true
+        single-commit: true
+        force: true
