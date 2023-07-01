@@ -289,7 +289,7 @@ After a bit of profiling, GPUCode found that the backend was handling certain op
 
 {{< sidebyside "image" ""
     "portalbroke.png=Before..."
-    "portalfix.ping=And after!" >}}
+    "portalfix.png=And after!" >}}
 
 ### HP Bar Fix for some games ([#6334](https://github.com/citra-emu/citra/pull/6334)) by [Polar-Zero](https://github.com/Polar-Zero)
 
