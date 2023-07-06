@@ -46,7 +46,7 @@ This means that the old workarounds required to get the HOME Menu to boot are no
 
 {{< mp4 src="eula.mp4" >}}
 
-## Add option to configure to download system files from Nintendo Update Service ([#6269](https://github.com/citra-emu/citra/pull/6269), [#6356](https://github.com/citra-emu/citra/pull/6356)) by [Steveice10](https://github.com/Steveice10) and [B3n30](https://github.com/B3n30)
+### Add option to configure to download system files from Nintendo Update Service ([#6269](https://github.com/citra-emu/citra/pull/6269), [#6356](https://github.com/citra-emu/citra/pull/6356)) by [Steveice10](https://github.com/Steveice10) and [B3n30](https://github.com/B3n30)
 
 With the goal of making the HOME menu fully accessible in mind, Steveice10’s work began. However, before any accuracy improvements could be made, there was the matter of the accessibility of the HOME Menu. Dumping the 3DS System NAND for use in Citra was, relatively speaking, a cumbersome process.
 
@@ -81,9 +81,6 @@ Without this service properly implemented, Citra would exhibit strange glitches,
 Citra did, in fact, have a portion of this module semi-implemented in the past, but it wasn’t exactly put to good use. Back in 2017, Citra developer Subv added the [CheckForSysUpdateEvent syscall](https://github.com/citra-emu/citra/pull/2974), which allowed the HOME Menu to boot.
 However, doing anything other than just looking at the pretty background would softlock the emulator. One of the caveats of this addition was that the LLE NIM applet, used for handling title installations as mentioned above, needed to be enabled from the debugging menu, which wasn’t very user-friendly or obvious.
 
-{{< figure src="lle.png"
-    title="" >}}
-	
 To address this issue, Steveice10 implemented stubs for the nim:u service based on their own reverse engineering work of the 3DS. 
 All the information they uncovered has been added to [3dbrew](https://www.3dbrew.org/wiki/NIM_Services) to contribute to the ongoing effort to better understand the 3DS’s operating system. Feel free to take a look if you’re interested in the dark arts of HLE emulator development!
 
@@ -104,7 +101,7 @@ Instead of returning an empty list of tickets, we can pretend that any installed
 
 Currently, only .cia (CTR Importable Archive) installed titles are detected by the HOME Menu. If you would like to try this out in Citra yourself, make sure your games are dumped as .cia files and installed into Citra via `File > Install CIA…`. Other files, such as .3ds and .cxi, still need to be launched from the Citra game list as normal.
 
-## Fix HLE applet pre-start lifecycle ([#6362](https://github.com/citra-emu/citra/pull/6362)) by [Steveice10](https://github.com/Steveice10)
+### Fix HLE applet pre-start lifecycle ([#6362](https://github.com/citra-emu/citra/pull/6362)) by [Steveice10](https://github.com/Steveice10)
 
 So far, we’ve discussed using the HOME Menu, launching games and applets from it, and completing the system setup process. However, it feels as though we’re forgetting about something… 
 
@@ -124,7 +121,7 @@ You can now say goodbye to wasting time trying to find the correct app name, as 
 But this doesn’t mean that our work is done, far from it. Steveice10 has added a very early approximation of DSP sleep, so that apps will not hang while trying to sleep the DSP when suspending titles. However, some games, such as Pokémon X, may still get stuck on this or exhibit annoying audio artifacts in the process.
 Some apps (e.g. Super Mario 3D Land) may also crash if you try to close them from the HOME menu, due to some services needed for cleaning up kernel resources that are currently not implemented. Most built-in titles, such as Mii Maker or 3DS Sound, should work fine, but DSP sleep still needs more work in order to make it accurate enough for most games and system applets.
 
-## Skip address range checks for privileged memory (un)map ([#6407](https://github.com/citra-emu/citra/pull/6407)) by [Steveice10](https://github.com/Steveice10)
+### Skip address range checks for privileged memory (un)map ([#6407](https://github.com/citra-emu/citra/pull/6407)) by [Steveice10](https://github.com/Steveice10)
 
 The ns:c service was introduced with firmware version 5.0.0-11, and appears to be used only by the Instruction Manual applet for triggering SD/Game Card removal errors when ejecting the media that the manual is stored on.
 By implementing a stub for the aforementioned service, the instruction manual now works on Citra!
@@ -154,7 +151,7 @@ And there you have it! All the changes we have made in Citra to majorly improve 
 
 # Android
 
-## Storage Access Framework ([#6313](https://github.com/citra-emu/citra/pull/6313)) by [hank121314](https://github.com/hank121314)
+### Storage Access Framework ([#6313](https://github.com/citra-emu/citra/pull/6313)) by [hank121314](https://github.com/hank121314)
 
 Oh boy, where to even begin with this one…
 
@@ -185,7 +182,7 @@ As Android is an ever evolving operating system, there are many technologies tha
 
 Android TV support for Citra was planned in the past, but due to a lack of testers and developers, it had to unfortunately be scrapped. Thankfully, with time and effort, we are able to provide support for launching Citra on an Android TV as we initially hoped!
 
-## Citra Android theme overhaul! ([#6332](https://github.com/citra-emu/citra/pull/6332) [#6335](https://github.com/citra-emu/citra/pull/6335), [#6351](https://github.com/citra-emu/citra/pull/6351), [#6355](https://github.com/citra-emu/citra/pull/6355), [#6349](https://github.com/citra-emu/citra/pull/6349)) by [t895](https://github.com/t895)
+### Citra Android theme overhaul! ([#6332](https://github.com/citra-emu/citra/pull/6332) [#6335](https://github.com/citra-emu/citra/pull/6335), [#6351](https://github.com/citra-emu/citra/pull/6351), [#6355](https://github.com/citra-emu/citra/pull/6355), [#6349](https://github.com/citra-emu/citra/pull/6349)) by [t895](https://github.com/t895)
 
 As mentioned in the previous progress report, we are looking to modernize Citra in many ways and get it up to speed with other emulators. This also includes modernization of the Android app! 
 To give the app’s theming a breath of fresh air, t895, developer for the Android apps of the emulators Dolphin and yuzu, has stepped up to this task.
@@ -268,13 +265,13 @@ By upgrading our macOS target to 11 (Big Sur), we can ensure that all features u
 
 # Graphics
 
-## Prepare frontend for multiple graphics APIs ([#6347](https://github.com/citra-emu/citra/pull/6347)) by [GPUCode](https://github.com/GPUCode)
+### Prepare frontend for multiple graphics APIs ([#6347](https://github.com/citra-emu/citra/pull/6347)) by [GPUCode](https://github.com/GPUCode)
 
 For being the first PR in our attempt to move away from OpenGL, this one is quite mundane on the surface compared to the other ones. However, it lays the foundations to allow Citra to support multiple rendering backends by abstracting key rendering functionality into common classes.
 
 A neat result of that effort is that the Software renderer no longer depends on OpenGL hardware acceleration for presentation. This means Citra can technically run on systems without a GPU using the Software renderer. Additionally, the Software renderer has been turned into a Graphics API, so it’s much more obvious when it’s being used. Before, in order to enable Software rendering, one had to disable the Hardware Renderer option, which wasn’t really made obvious to the user. Now, we’ve added a handy little drop down to choose which Graphics API you’d like to use!
 
-## Rasterizer cache refactor ([#6375](https://github.com/citra-emu/citra/pull/6375)) by [GPUCode](https://github.com/GPUCode)
+### Rasterizer cache refactor ([#6375](https://github.com/citra-emu/citra/pull/6375)) by [GPUCode](https://github.com/GPUCode)
 
 Looking at the name of the PR, it’s not immediately obvious what this PR aims to achieve. What it does is rework several important aspects of GPU emulation that had remained untouched for years.
 One of these is that it greatly simplifies texture uploading and downloading, the methods for which had quickly grown to be complex and hard to understand over the years. This was most notably seen when using custom textures combined with texture filters, where the code would just fail, resulting in some pretty messed up looking textures. But more on that later. To summarize, this code is now much simpler and more optimized!
@@ -304,7 +301,7 @@ This issue was again brought to our attention when first time contributor, Polar
 {{< figure src="hpbar.png"
     title="Left: Broken,  Right: Fixed" >}}
 
-## Fix distance vector used when calculating lighting distance attenuation. ([#6366](https://github.com/citra-emu/citra/pull/6366)) by [Steveice10](https://github.com/Steveice10)
+### Fix distance vector used when calculating lighting distance attenuation. ([#6366](https://github.com/citra-emu/citra/pull/6366)) by [Steveice10](https://github.com/Steveice10)
 
 Citra is often referred to as the “Pokémon emulator”, and you wouldn’t be too wrong to assume that. Pokémon games have, by far, been the most popular for the 3DS platform, and this translates over to Citra as well.
 So naturally, when something breaks in the game, it tends to get [overreported](https://github.com/search?q=repo%3Acitra-emu%2Fcitra+pokemon&type=issues&p=2). This is one of those issues that has plagued Pokémon X/Y for a while, so one would assume the solution is quite sophisticated. Right?
@@ -331,7 +328,7 @@ Steveice10 picked up the issue and after writing a couple of basic hardware test
     "xybefore.png=Um, where did the Earth go?!"
     "xynew.png=Finally, the world is back!" >}}
 	
-## Custom textures rewrite ([#6452](https://github.com/citra-emu/citra/pull/6452)) by [GPUCode](https://github.com/GPUCode)
+### Custom textures rewrite ([#6452](https://github.com/citra-emu/citra/pull/6452)) by [GPUCode](https://github.com/GPUCode)
 
 We’ve all been there: controller is properly connected and ready at hand (or keyboard if you prefer, we don’t judge), your favorite game is dumped, set up and ready to be experienced on a shiny new computer, devoid of the limitations imposed by the original hardware. You launch it and… it looks so pixelated and blurry. 
 What gives? 
@@ -381,7 +378,7 @@ Using preloaded custom textures is usually quite taxing on the system RAM, espec
 
 By adding a loading screen, you can now track the progression of your preloaded custom textures as your game boots. It also works as an indicator to let your PC know that the app has not frozen, and to not enter it into a “not responding” state. Additionally, this solves the issue of Citra’s inability to be stopped whilst preloading custom textures, which is handy if you need to stop it for any reason whatsoever.
 
-## Add MMPX texture filter ([#6564](https://github.com/citra-emu/citra/pull/6564)) by [stuken](https://github.com/stuken)
+### Add MMPX texture filter ([#6564](https://github.com/citra-emu/citra/pull/6564)) by [stuken](https://github.com/stuken)
 
 What's better than 5 texture filters? Well, how about 6! Introducing the MMPX texture filter, implemented by first time contributor, [stuken](https://github.com/stuken).
 MMPX is a texture filter centered around the preservation of those classic pixel art styles we typically see in 8- and 16-bit era video games. Sprites, fonts, you name it, it’s been given a sweet pixel art style with this new texture filter!
@@ -392,11 +389,11 @@ This new texture filter can be enabled in `Emulation -> Configure -> Graphics ->
 
 # Audio
 
-## Implement OpenAL backend ([#6450](https://github.com/citra-emu/citra/pull/6450)) by [Steveice10](https://github.com/Steveice10)
+### Implement OpenAL backend ([#6450](https://github.com/citra-emu/citra/pull/6450)) by [Steveice10](https://github.com/Steveice10)
 
-OpenAL, or in Citra's case a variant of OpenAL, OpenAL Soft, is an audio API designed for efficient rendering of multichannel three-dimensional positional audio. Basically, this API adds realism back to game audio by simulating different audio effects.
+OpenAL, or in Citra's case a variant of OpenAL, OpenAL Soft, is an audio API designed for efficient rendering of multichannel audio.
 
-In Citra, however, we do not use this for positional audio. It is there just in case Cubeb, our default audio backend, fails for any reason. To get this working in Citra, though, a few things had to be changed first.
+It supports a wide variety of a platforms and can now be used in case Cubeb, our default audio backend, fails for any reason. To get this working in Citra, though, a few things had to be changed first.
 
 Before this PR, the input audio settings UI assumed that only the Cubeb backend would be used, and, unlike output, did not have a proper selector for other options. The input UI was edited to allow “Real Device (OpenAL)” to be selected, along with “Real Device (Cubeb)” as before. 
 By changing these UI options, along with internal code cleanup to make managing output and input devices more consistent, we can improve Citra’s portability as a whole. We also use OpenAL Soft, as it supports iOS, while Cubeb does not.
@@ -442,7 +439,7 @@ On top of this, we also moved the cheats section to the per-game settings instea
 {{< figure src="cheats.png"
     title="Look, Ma! New settings!" >}}
 
-## Add consolidated GodMode9 key dumping script ([#6396](https://github.com/citra-emu/citra/pull/6396)) by [Steveice10](https://github.com/Steveice10)
+### Add consolidated GodMode9 key dumping script ([#6396](https://github.com/citra-emu/citra/pull/6396)) by [Steveice10](https://github.com/Steveice10)
 
 Something a bit different here… we’ve made our own GodMode9 dumping script!
 
@@ -455,7 +452,7 @@ This new dumping script loosely follows the existing aes_keys.txt format which i
 
 The download link and instructions for using this dumping script can be found on our [AES keys guide](https://citra-emu.org/wiki/aes-keys/). We hope that this will help make your Citra setup experience just that little bit smoother!
 
-## Add Citra AppImage builds ([#6404](https://github.com/citra-emu/citra/pull/6404)) by [TGP17](https://github.com/TGP17)
+### Add Citra AppImage builds ([#6404](https://github.com/citra-emu/citra/pull/6404)) by [TGP17](https://github.com/TGP17)
 
 An AppImage is a format for distributing portable software on Linux in a compact and simple way. AppImages don’t require any outside installation, and can just be run as is. This makes it very easy to use different programs on Linux, especially to those who are new to the operating system, as using the CLI can be intimidating or just plain time consuming.
 
@@ -474,7 +471,7 @@ Unfortunately, many people do not realize this. Which causes a lot of distress a
 {{< figure src="savestate.png"
     title="Don't skip this, it's important!" >}}
 
-## yuzu ports by [Morph1984](https://github.com/Morph1984) and [FearlessTobi](https://github.com/FearlessTobi)
+### yuzu ports by [Morph1984](https://github.com/Morph1984) and [FearlessTobi](https://github.com/FearlessTobi)
 
 ### Enable High DPI fixes for Qt >= 5.14 ([#6262](https://github.com/citra-emu/citra/pull/6262)) originally by [Morph1984](https://github.com/Morph1984)
 
