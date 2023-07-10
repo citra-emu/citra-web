@@ -31,21 +31,6 @@ Something had to change, and fast. Citra needed to expand and find that special 
 
 Enter [Steveice10](https://github.com/Steveice10), the author of [FBI](https://github.com/Steveice10/FBI), legendary title manager for the 3DS. A staple homebrew app of a modded 3DS. With their extensive knowledge of the 3DS operating system and all of its inner workings, they joined the Citra team in order to tackle this issue once and for all.
 
-### Add Config block enums documented by 3dbrew ([#6206](https://github.com/citra-emu/citra/pull/6206)) by [SachinVin](https://github.com/SachinVin)
-
-Upon booting a 3DS for the first time, you will be met with a handy setup guide before being able to access anything else on the system. Needless to say, it’s also the first thing you will encounter when booting the HOME Menu in Citra. 
-Unfortunately, it has also been riddled with issues ever since the beginning of the emulator’s life. Attempting to load the most important and well-known feature of the 3DS setup guide, the Nintendo 3DS User Agreement, would cause the emulator to freeze, thus preventing anyone from actually completing it!
-
-{{< mp4 src="eula-broken.mp4" >}}
-
-It wasn't until recently that the cause of this freeze was really understood. As it turns out, the settings app preloads the software keyboard applet for later use. When the Nintendo 3DS User Agreement is launched, it is supposed to close this preloaded applet, so that it can load the EULA applet instead.
-However, due to a combination of missing logic to provide applets with the correct ‘slot’ (Application, Library Applet, System Applet, or HOME Menu), and the command to close an applet not being implemented, the settings app was unaware that the keyboard applet remained loaded.
-
-By implementing the additional state management required for applets, the accuracy of Citra’s applet manager has been improved tremendously, bringing it closer to the real [APT](https://www.3dbrew.org/wiki/NS_and_APT_Services) behavior of the 3DS. 
-This means that the old workarounds required to get the HOME Menu to boot are no longer required! Not only that, but launching system applets now also works perfectly.
-
-{{< mp4 src="eula.mp4" >}}
-
 ### Add option to configure to download system files from Nintendo Update Service ([#6269](https://github.com/citra-emu/citra/pull/6269), [#6356](https://github.com/citra-emu/citra/pull/6356)) by [Steveice10](https://github.com/Steveice10) and [B3n30](https://github.com/B3n30)
 
 With the goal of making the HOME menu fully accessible in mind, Steveice10’s work began. However, before any accuracy improvements could be made, there was the matter of the accessibility of the HOME Menu. Dumping the 3DS System NAND for use in Citra was, relatively speaking, a cumbersome process.
@@ -101,14 +86,35 @@ Instead of returning an empty list of tickets, we can pretend that any installed
 
 Currently, only .cia (CTR Importable Archive) installed titles are detected by the HOME Menu. If you would like to try this out in Citra yourself, make sure your games are dumped as .cia files and installed into Citra via `File > Install CIA…`. Other files, such as .3ds and .cxi, still need to be launched from the Citra game list as normal.
 
-### Fix HLE applet pre-start lifecycle ([#6362](https://github.com/citra-emu/citra/pull/6362)) by [Steveice10](https://github.com/Steveice10)
+### Implement additional applet state management ([#6303](https://github.com/citra-emu/citra/pull/6303)) by [Steveice10](https://github.com/Steveice10)
+
+Upon booting a 3DS for the first time, you will be met with a handy setup guide before being able to access anything else on the system. Needless to say, it’s also the first thing you will encounter when booting the HOME Menu in Citra.
+Unfortunately, it has also been riddled with issues ever since the beginning of the emulator’s life. Attempting to load the most important and well-known feature of the 3DS setup guide, the Nintendo 3DS User Agreement, would cause the emulator to freeze, thus preventing anyone from actually completing it!
+
+{{< mp4 src="eula-broken.mp4" >}}
+
+It wasn't until recently that the cause of this freeze was really understood. As it turns out, the settings app preloads the software keyboard applet for later use. When the Nintendo 3DS User Agreement is launched, it is supposed to close this preloaded applet, so that it can load the EULA applet instead.
+However, due to a combination of missing logic to provide applets with the correct ‘slot’ (Application, Library Applet, System Applet, or HOME Menu), and the command to close an applet not being implemented, the settings app was unaware that the keyboard applet remained loaded.
+
+By implementing the additional state management required for applets, the accuracy of Citra’s applet manager has been improved tremendously, bringing it closer to the real [APT](https://www.3dbrew.org/wiki/NS_and_APT_Services) behavior of the 3DS. 
+This means that the old workarounds required to get the HOME Menu to boot are no longer required! Not only that, but launching system applets now also works perfectly.
+
+{{< mp4 src="eula.mp4" >}}
+
+### Add Config block enums documented by 3dbrew ([#6206](https://github.com/citra-emu/citra/pull/6206)) by [SachinVin](https://github.com/SachinVin)
+
+Even if one managed to bypass the broken EULA, completing the HOME menu setup still wasn't possible! Upon reaching the Parental Controls setup screen, the emulator would warn the user of a fatal error, with the only options being either continuing, which would freeze Citra, or aborting entirely. This was the last piece of the puzzle to make the setup screen fully usable and it had to be resolved.
+
+Following the advice given by the popup and looking at the generated log files, developer SachinVin spotted some configuration blocks Citra was missing and were being accessed by the setup screen. Adding those missing [configs](https://www.3dbrew.org/wiki/Config_Savegame) fixed opening the Settings applet and, combined with the improved applet state management, allowed the system setup to be completed.
+
+### Implement app management support (suspend, resume, close, etc) ([#6322](https://github.com/citra-emu/citra/pull/6322)) by [Steveice10](https://github.com/Steveice10)
 
 So far, we’ve discussed using the HOME Menu, launching games and applets from it, and completing the system setup process. However, it feels as though we’re forgetting about something… 
 
 Oh! Doesn’t the 3DS let you exit out of apps and back into the HOME Menu, what about that? Well, fear not, we’ve got you all covered.
-By implementing support for most application management commands and home button notifications, operations such as suspending, resuming, and closing applications from the HOME Menu are now fully supported in Citra!
+By implementing support for most application management commands and home button notifications, operations such as suspending, resuming, and closing applications from the HOME Menu are now supported in Citra!
 
-In addition, the GSP module is now able to capture the screen framebuffers, which correctly emulates the effect when suspending applications. All in all, with these changes you can easily boot the HOME menu and use it to launch system applets and games, suspend or close them, and then launch another game or applet! 
+In addition, the GSP module is now able to capture the screen framebuffers, which correctly emulates the effect when suspending applications. All in all, with these changes you can easily boot the HOME menu and use it to launch system applets and games, suspend or close them, and then launch another game or applet!
 
 {{< youtube g1ZXWpl7_2M >}}
 
@@ -120,6 +126,14 @@ You can now say goodbye to wasting time trying to find the correct app name, as 
 	
 But this doesn’t mean that our work is done, far from it. Steveice10 has added a very early approximation of DSP sleep, so that apps will not hang while trying to sleep the DSP when suspending titles. However, some games, such as Pokémon X, may still get stuck on this or exhibit annoying audio artifacts in the process.
 Some apps (e.g. Super Mario 3D Land) may also crash if you try to close them from the HOME menu, due to some services needed for cleaning up kernel resources that are currently not implemented. Most built-in titles, such as Mii Maker or 3DS Sound, should work fine, but DSP sleep still needs more work in order to make it accurate enough for most games and system applets.
+
+### Fix HLE applet pre-start lifecycle ([#6362](https://github.com/citra-emu/citra/pull/6362)) by [Steveice10](https://github.com/Steveice10)
+
+After the afformentioned APT improvements had been merged we started receiving reports of certain games like Bravely Second: End Layer [crashing](https://github.com/citra-emu/citra/issues/6361). This game, as well as others, crashed when the Mii selection dialog was activated. In the absence of system files, Citra will use an open source replacement for Miis. After setting up the HOME menu though, there's no need to use the replacement and the native 3DS selection will be shown. Any Miis you create through Mii Maker will be available in the games you play! However, none of that would be relevant, if the native selection always crashed, right? So, Steveice10 investigated the issue and discovered that the now more accurate applet handling had exposed further inaccuracies. More specifically, problems arose when CancelLibraryApplet was called on an applet that hadn't started yet, as it would fail to receive the cancellation message and de-register itself.
+
+"What's the fix?" you might ask. Firstly, Steveice ensured that the applet update event starts immediately on creation. Then he implemented a distinction between running and active applets to determine what the update event should do each cycle. This fixed the crashing issues, not only in Bravely Second, but in Super Mario 3D Land as well. Enjoy selecting your Miis!
+
+{{< mp4 src="mii.mp4" >}}
 
 ### Skip address range checks for privileged memory (un)map ([#6407](https://github.com/citra-emu/citra/pull/6407)) by [Steveice10](https://github.com/Steveice10)
 
@@ -213,6 +227,12 @@ As it turns out, our disk shader cache opens the cache file every time a new sha
 
 In the end, the solution came from developer SachinVin, who rewrote the disk cache to only open the file once at the beginning of the emulation session.
 
+### Turn GameInfo into a class ([#6494](https://github.com/citra-emu/citra/pull/6494)) by [JosJuice](https://github.com/JosJuice)
+
+SAF strikes again! The slowness of file operations negatively impacted the user experience by making the game list incredibly slow to load. For users who only have a small handful of games in their game list, this wasn't particularly noticeable. However, for anyone with a large enough game library, the loading speed became unbearable.
+
+The only way to alleviate this issue is to limit file access as much as possible, and that's what was done with this PR. Utilizing their android expertise from their work over at Dolphin, JosJuice managed to speed up the process by centralizing game information queries to a single class, instead of having separate file access calls for fetching the TitleID, title name, game icon, etc. This ended up saving a bunch of time that was wasted on opening the same file multiple times.
+
 ### Open cheats by long pressing game in game list ([#6491](https://github.com/citra-emu/citra/pull/6491)) by [JosJuice](https://github.com/JosJuice)
 
 Normally to edit a cheat for a game, you’d have to edit it whilst the game was running. This was fine if the cheat codes were working, but what if they were causing the game to crash? You’d have no way of disabling them unless you crawled through the hell that is the Android file manager. 
@@ -294,7 +314,7 @@ Question time! Have you heard of something called texture tiling? If you are a g
 
 With this information, it wouldn’t be wrong to assume that texture dimensions must be a multiple of 8, otherwise dividing it into tiles wouldn’t really make sense. And in general this assumption holds true, the vast majority of games respect this limitation in their textures. Until they don’t…
 
-Now we get to the fun part: what happens if the texture is smaller than a tile? Being confronted with that question, former Citra developer [wwylele](https://github.com/wwylele) came to the conclusion, after some tests, that such a configuration was not supported by the PICA GPU the 3DS uses. Due to this, the original code that handled these textures was promptly removed when [support for mipmaps](https://github.com/citra-emu/citra/pull/3910) was implemented. Said removal caused [unexpected issues](https://github.com/citra-emu/citra/issues/5139) however, when health bars of all things suddenly went missing in some games. Imagine the horror Citra users came across when in those games the HP bar just did not display correctly! How were you meant to tell if you needed to heal or retreat?
+Now we get to the fun part: what happens if the texture is smaller than a tile? Being confronted with that question, Citra developer [wwylele](https://github.com/wwylele) came to the conclusion, after some tests, that such a configuration was not supported by the PICA GPU the 3DS uses. Due to this, the original code that handled these textures was promptly removed when [support for mipmaps](https://github.com/citra-emu/citra/pull/3910) was implemented. Said removal caused [unexpected issues](https://github.com/citra-emu/citra/issues/5139) however, when health bars of all things suddenly went missing in some games. Imagine the horror Citra users came across when in those games the HP bar just did not display correctly! How were you meant to tell if you needed to heal or retreat?
 
 This issue was again brought to our attention when first time contributor, Polar-Star, opened a pull request reimplementing the code that was removed. With this change, HP bars are fixed and because this bug negatively affected core gameplay of certain games, we opted to accept this change. We are still investigating this issue to figure out the proper hardware behavior in this case, though we suspect it’s not too far off from this.
 
@@ -311,16 +331,13 @@ Given this information, it was most likely a fundamental accuracy issue, which d
 
 Fast forward a year and [hamish-milne](https://github.com/hamish-milne), the mastermind behind one of the most popular features on Citra, save states, attempted to find the cause of this glitch that had eluded many. After poking around for a while, they determined the problem laid in the fragment lighting emulation code. 
 For those who aren’t aware, PICA, the 3DS’s GPU, does not support programmable pixel shaders like more modern systems. This means that Citra must generate a host fragment shader to emulate the fixed function pipeline the GPU exposes. What they ended up discovering is that changing how LUT indices are generated for the distance attenuation feature fixed the background lighting. The issue was finally solved!
-
-{{< figure src="discord.png"
-    title="" >}}
 	
-Unfortunately, this wasn’t the end. After performing some tests, Citra developer [wwylele](https://github.com/wwylele) determined that the solution was not accurate to the hardware and thus could not be accepted into the codebase.
+Unfortunately, this wasn’t the end. After performing some tests, Citra developer [wwylele](https://github.com/wwylele) determined that the solution was not accurate to the hardware and could potentially break games. Due to this, the proposed solution could not be accepted into the codebase.
 
 {{< sidebyside "image" ""
     "lut3ds.png=3DS"
     "lutnew.png=Citra" >}}
-	
+
 And after that, the issue was yet again abandoned throughout Citra’s developer drought. Until recently.
 Steveice10 picked up the issue and after writing a couple of basic hardware tests, came to the conclusion that the bug was different from what everyone had believed. It turns out that Citra always used the view vector when distance attenuation was enabled, something that doesn’t really make sense for directional light, which is usually a directional vector rather than a concrete position. By correcting the code to use the correct length, it not only fixed the background issue, but improved the lighting accuracy in general!
 
@@ -372,11 +389,35 @@ By taking advantage of the fixed-function nature of the PICA200, we can easily a
 
 {{< mp4 src="brickwall.mp4" >}}
 
+We would like to credit [Nerrel](https://www.youtube.com/@Nerrel) for providing us with this awesome demonstration of how normal maps can enhance games like The Legend of Zelda: Majora's Mask 3D. They have started working on incorporating this feature in their [MM3DHD](https://github.com/DeathWrench/MM3DHD) project and we are definitely excited to see the results of this endeavour.
+
 ### Textures loading screen ([#6478](https://github.com/citra-emu/citra/pull/6478)) by [luc-git](https://github.com/luc-git)
 
 Using preloaded custom textures is usually quite taxing on the system RAM, especially if you don’t have much to begin with. Loading can be very slow and, at times, even freeze your entire PC! 
 
 By adding a loading screen, you can now track the progression of your preloaded custom textures as your game boots. It also works as an indicator to let your PC know that the app has not frozen, and to not enter it into a “not responding” state. Additionally, this solves the issue of Citra’s inability to be stopped whilst preloading custom textures, which is handy if you need to stop it for any reason whatsoever.
+
+### Rasterizer cache refactor v2 ([#6479](https://github.com/citra-emu/citra/pull/6479)) by [GPUCode](https://github.com/GPUCode)
+
+It's a given that all great movies get a sequel. And because the first refactor was so good, we decided to make a second one! Well, not quite, but we promise this one is worthwhile too. More specifically, it contained the last pieces needed to fully abstract the video core from OpenGL, fixed a handful of regressions from the first one, and even provided some performance improvements.
+
+Due to the large amount of changes introduced by the previous PR, it was natural for some regressions to slip through the cracks. As we learned the hard way, messing with many parts of the GPU emulation at the same time can result in strange bugs. For example, players of Digimon World Re:Digitize: Decode [reported](https://github.com/citra-emu/citra/issues/6481) that some models went missing after the merge, which was caused by an erroneous change to the OpenGL viewport.
+
+{{< sidebyside "image" ""
+    "digimonbroke.png=Where are you little monster?"
+    "digimonfix.png=Oh, here!" >}}
+
+Next, let's talk about Disney. Not the company, but a pretty obscure game they made for the Nintendo 3DS called Disney Art Academy, where you get to draw Mickey Mouse and his friends using the touchscreen and stylus. Given the nature of the mechanics of the game, where the use of the touchscreen and stylus is centralized, not many people choose to emulate this title. So we were surprised when a bug report came in, stating that the game had become completely broken after the first refactor.
+
+{{< figure src="disneybroke.png"
+    title="This will haunt our dreams..." >}}
+
+After some digging, GPUCode found out that the new mipmap implementation was the culprit that robbed Mickey of his face. To go into more detail, texture downloads were not adjusted to account for multi-level surfaces and thus readbacks of these surfaces did not function correctly. Rendering and reading back from multi-level surfaces is quite unusual and not something we often see in games. Regardless, we are happy it was reported to us so that we could promptly fix it!
+
+{{< figure src="disneyfix.png"
+    title="Mickey got his face back!" >}}
+
+Alright, what about the performance improvement then? Indeed, by changing the data structure used to store surfaces, Citra is now able to cache and search for them more quickly and efficiently. The old interval map was ditched in favour of a simple page table. Memory locality has also been improved by taking [inspiration](https://github.com/citra-emu/citra/blob/master/src/common/slot_vector.h) from [yuzu](https://yuzu-emu.org/)'s texture cache. All in all, this change should yield a couple of extra frames in games that perform many cache operations and especially in cases where interval map lookups would [slow](https://github.com/citra-emu/citra/pull/5183) things down.
 
 ### Add MMPX texture filter ([#6564](https://github.com/citra-emu/citra/pull/6564)) by [stuken](https://github.com/stuken)
 
