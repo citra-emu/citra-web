@@ -82,7 +82,7 @@ What’s the point of being able to access the HOME Menu if I can’t launch my 
 
 Instead of returning an empty list of tickets, we can pretend that any installed CIA has a ticket. That way the HOME Menu will discover and display games correctly.
 
-{{< mp4 src="open.mp4" >}}
+{{< mp4 src="open.mp4" title="It's just like unwrapping a gift on Christmas!" >}}
 
 Currently, only .cia (CTR Importable Archive) installed titles are detected by the HOME Menu. If you would like to try this out in Citra yourself, make sure your games are dumped as .cia files and installed into Citra via `File > Install CIA…`. Other files, such as .3ds and .cxi, still need to be launched from the Citra game list as normal.
 
@@ -91,7 +91,7 @@ Currently, only .cia (CTR Importable Archive) installed titles are detected by t
 Upon booting a 3DS for the first time, you will be met with a handy setup guide before being able to access anything else on the system. Needless to say, it’s also the first thing you will encounter when booting the HOME Menu in Citra.
 Unfortunately, it has also been riddled with issues ever since the beginning of the emulator’s life. Attempting to load the most important and well-known feature of the 3DS setup guide, the Nintendo 3DS User Agreement, would cause the emulator to freeze, thus preventing anyone from actually completing it!
 
-{{< mp4 src="eula-broken.mp4" >}}
+{{< mp4 src="eula-broken.mp4" title="Well... that isn't supposed to happen." >}}
 
 It wasn't until recently that the cause of this freeze was really understood. As it turns out, the settings app preloads the software keyboard applet for later use. When the Nintendo 3DS User Agreement is launched, it is supposed to close this preloaded applet, so that it can load the EULA applet instead.
 However, due to a combination of missing logic to provide applets with the correct ‘slot’ (Application, Library Applet, System Applet, or HOME Menu), and the command to close an applet not being implemented, the settings app was unaware that the keyboard applet remained loaded.
@@ -99,7 +99,7 @@ However, due to a combination of missing logic to provide applets with the corre
 By implementing the additional state management required for applets, the accuracy of Citra’s applet manager has been improved tremendously, bringing it closer to the real [APT](https://www.3dbrew.org/wiki/NS_and_APT_Services) behavior of the 3DS. 
 This means that the old workarounds required to get the HOME Menu to boot are no longer required! Not only that, but launching system applets now also works perfectly.
 
-{{< mp4 src="eula.mp4" >}}
+{{< mp4 src="eula.mp4" title="Now you have another EULA you can skip.., I mean, thoroughly read!" >}}
 
 ### Add Config block enums documented by 3dbrew ([#6206](https://github.com/citra-emu/citra/pull/6206)) by [SachinVin](https://github.com/SachinVin)
 
@@ -133,7 +133,7 @@ After the afformentioned APT improvements had been merged we started receiving r
 
 "What's the fix?" you might ask. Firstly, Steveice ensured that the applet update event starts immediately on creation. Then he implemented a distinction between running and active applets to determine what the update event should do each cycle. This fixed the crashing issues, not only in Bravely Second, but in Super Mario 3D Land as well. Enjoy selecting your Miis!
 
-{{< mp4 src="mii.mp4" >}}
+{{< mp4 src="mii.mp4" title="Wow! An actual Mii selector!" >}}
 
 ### Skip address range checks for privileged memory (un)map ([#6407](https://github.com/citra-emu/citra/pull/6407)) by [Steveice10](https://github.com/Steveice10)
 
@@ -426,7 +426,11 @@ MMPX is a texture filter centered around the preservation of those classic pixel
 
 This new texture filter can be enabled in `Emulation -> Configure -> Graphics -> Renderer` (`Citra -> Preferences` on macOS).
 
-{{< juxtapose id="e103936e-1122-11ee-b5bd-6595d9b17862" >}}
+{{< single-title-imgs-compare
+    "CAPTION"
+    "./none.png"
+    "./mmpx.png"
+    >}} 
 
 # Audio
 
@@ -540,3 +544,5 @@ If you want to support this project, we have a [Patreon](https://www.patreon.com
 If you are looking to contribute to Citra or just want to get involved with our community, you can find us on our [Discord server](https://discord.com/invite/FAXfZV9) or on our IRC channel (#citra @ [Libera.Chat](https://libera.chat/)). 
 
 To those of you who made it to the end, thanks for reading! We have many more exciting things to tell you all about in the future, so stay tuned!
+
+{{< imgs-compare-include-end >}}

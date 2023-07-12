@@ -1,0 +1,26 @@
+{{ $title := .Get 0 }}
+{{ $originals := (.Page.Resources.ByType "image") }}
+<div class="columns is-bottom-marginless">
+    <div class="column is-bottom-paddingless juxtapose">
+    {{ range $param := last 2 .Params }}
+    <!-- image -->
+    {{ $items := split $param "|" }}
+    {{ $src := (index $items 0) }}
+    {{ $subtitle := (index $items 1) }}
+    {{ $split_src := split $src "." }}
+    {{ $extension := index $split_src (sub (len $split_src) 1) }}
+        {{- if eq $extension "png" -}}
+        {{ $original := $originals.GetMatch (printf "*%s" (path.Base $src)) }}
+        {{ $resized_width := math.Min $original.Width 1024 }}
+        {{ $resized := $original.Resize (print $resized_width "x q90 jpg" ) }}
+        <img src="{{ $resized.Permalink }}" alt="{{ $title }}">
+        {{- else -}}
+        <img src="{{ $src }}" alt="{{ $title }}">
+        {{- end -}}
+    {{ end }}
+    </div>
+</div>
+
+{{ if $title }}
+<p class="has-text-centered is-italic has-text-grey-light">{{ $title }}</p>
+{{ end }}
