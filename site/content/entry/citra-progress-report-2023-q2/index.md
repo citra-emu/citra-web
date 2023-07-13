@@ -427,7 +427,7 @@ MMPX is a texture filter centered around the preservation of those classic pixel
 This new texture filter can be enabled in `Emulation -> Configure -> Graphics -> Renderer` (`Citra -> Preferences` on macOS).
 
 {{< single-title-imgs-compare
-    "CAPTION"
+    ""
     "./none.png"
     "./mmpx.png"
     >}} 
