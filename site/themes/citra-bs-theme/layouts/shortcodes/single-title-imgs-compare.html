@@ -21,6 +21,10 @@
     </div>
 </div>
 
-{{ if $title }}
-<p class="has-text-centered is-italic has-text-grey-light">{{ $title }}</p>
+{{ with "title" }}
+<figcaption>
+    <h4 style="text-align: center">
+        {{ $title }}
+    </h4>
+</figcaption>
 {{ end }}

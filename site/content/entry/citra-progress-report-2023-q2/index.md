@@ -99,7 +99,7 @@ However, due to a combination of missing logic to provide applets with the corre
 By implementing the additional state management required for applets, the accuracy of Citra’s applet manager has been improved tremendously, bringing it closer to the real [APT](https://www.3dbrew.org/wiki/NS_and_APT_Services) behavior of the 3DS. 
 This means that the old workarounds required to get the HOME Menu to boot are no longer required! Not only that, but launching system applets now also works perfectly.
 
-{{< mp4 src="eula.mp4" title="Now you have another EULA you can skip.., I mean, thoroughly read!" >}}
+{{< mp4 src="eula.mp4" title="Now you have another EULA you can skip-I mean, thoroughly read!" >}}
 
 ### Add Config block enums documented by 3dbrew ([#6206](https://github.com/citra-emu/citra/pull/6206)) by [SachinVin](https://github.com/SachinVin)
 
@@ -129,7 +129,7 @@ Additionally, some titles (e.g. Super Mario 3D Land) can crash if you try to clo
 
 ### Fix HLE applet pre-start lifecycle ([#6362](https://github.com/citra-emu/citra/pull/6362)) by [Steveice10](https://github.com/Steveice10)
 
-After the afformentioned APT improvements had been merged we started receiving reports of certain games like Bravely Second: End Layer [crashing](https://github.com/citra-emu/citra/issues/6361). This game, as well as others, crashed when the Mii selection dialog was activated. In the absence of system files, Citra will use an open source replacement for Miis. After setting up the HOME menu though, there's no need to use the replacement and the native 3DS selection will be shown. Any Miis you create through Mii Maker will be available in the games you play! However, none of that would be relevant, if the native selection always crashed, right? So, Steveice10 investigated the issue and discovered that the now more accurate applet handling had exposed further inaccuracies. More specifically, problems arose when CancelLibraryApplet was called on an applet that hadn't started yet, as it would fail to receive the cancellation message and de-register itself.
+After the aformentioned APT improvements had been merged, we started receiving reports of certain games, such as Bravely Second: End Layer, [crashing](https://github.com/citra-emu/citra/issues/6361). This game, as well as others, crashed when the Mii selection dialog was activated. In the absence of system files, Citra will use an open source replacement for Miis. But, after setting up the HOME menu, there's no need to use the replacement and the native 3DS selection will be shown instead. Any Miis you create through Mii Maker will be available in the games you play! However, none of that would be relevant, if the native selection always crashed, right? So, Steveice10 investigated the issue and discovered that the now more accurate applet handling had exposed further inaccuracies. More specifically, problems arose when CancelLibraryApplet was called on an applet that hadn't started yet, as it would fail to receive the cancellation message and de-register itself.
 
 "What's the fix?" you might ask. Firstly, Steveice ensured that the applet update event starts immediately on creation. Then he implemented a distinction between running and active applets to determine what the update event should do each cycle. This fixed the crashing issues, not only in Bravely Second, but in Super Mario 3D Land as well. Enjoy selecting your Miis!
 
@@ -409,7 +409,7 @@ Due to the large amount of changes introduced by the previous PR, it was natural
     "digimonbroke.png=Where are you little monster?"
     "digimonfix.png=Oh, here!" >}}
 
-Next, let's talk about Disney. Not the company, but a pretty obscure game they made for the Nintendo 3DS called Disney Art Academy, where you get to draw Mickey Mouse and his friends using the touchscreen and stylus. Given the nature of the mechanics of the game, where the use of the touchscreen and stylus is centralized, not many people choose to emulate this title. So we were surprised when a bug report came in, stating that the game had become completely broken after the first refactor.
+Next, let's talk about Disney. Not the company, but a pretty obscure game they made for the Nintendo 3DS called Disney Art Academy, where you get to draw Mickey Mouse and his friends using the touchscreen and stylus. Given that the core gameplay mechanics require use of the touchscreen and stylus, not many people choose to emulate this title. So we were surprised when a bug report came in, stating that the game had become completely broken after the first refactor.
 
 {{< figure src="disneybroke.png"
     title="This will haunt our dreams..." >}}
@@ -429,7 +429,7 @@ MMPX is a texture filter centered around the preservation of those classic pixel
 This new texture filter can be enabled in `Emulation -> Configure -> Graphics -> Renderer` (`Citra -> Preferences` on macOS).
 
 {{< single-title-imgs-compare
-    ""
+    "Left: unfiltered, Right: MMPX"
     "./none.png"
     "./mmpx.png"
     >}} 
