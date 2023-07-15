@@ -125,7 +125,7 @@ You can now say goodbye to wasting time trying to find the correct app name, as 
     title="Hey, there's even a way to launch the region you want!" >}}
 	
 But this doesn’t mean that our work is done, far from it. Steveice10 has added a very early approximation of DSP sleep, so that apps will not hang while trying to sleep the DSP when suspending titles. However, some games, such as Pokémon X, may still get stuck on this or exhibit annoying audio artifacts in the process.
-Some apps (e.g. Super Mario 3D Land) may also crash if you try to close them from the HOME menu, due to some services needed for cleaning up kernel resources that are currently not implemented. Most built-in titles, such as Mii Maker or 3DS Sound, should work fine, but DSP sleep still needs more work in order to make it accurate enough for most games and system applets.
+Additionally, some titles (e.g. Super Mario 3D Land) can crash if you try to close them from the HOME menu. This is because some services, required for cleaning up kernel resources, are unimplemented currently. Most built-in titles, such as Mii Maker or Nintendo 3DS Sound, should work fine, however. Our experimental Canary builds contain some fixes for these aforementioned issues. These fixes still need more testing before being merged into Nightly though, so we encourage you to give it a try and report any bugs you come across!
 
 ### Fix HLE applet pre-start lifecycle ([#6362](https://github.com/citra-emu/citra/pull/6362)) by [Steveice10](https://github.com/Steveice10)
 
@@ -135,14 +135,16 @@ After the afformentioned APT improvements had been merged we started receiving r
 
 {{< mp4 src="mii.mp4" title="Wow! An actual Mii selector!" >}}
 
-### Skip address range checks for privileged memory (un)map ([#6407](https://github.com/citra-emu/citra/pull/6407)) by [Steveice10](https://github.com/Steveice10)
+### Add stub for ns:c service ([#6409](https://github.com/citra-emu/citra/pull/6409)) by [Steveice10](https://github.com/Steveice10)
 
 The ns:c service was introduced with firmware version 5.0.0-11, and appears to be used only by the Instruction Manual applet for triggering SD/Game Card removal errors when ejecting the media that the manual is stored on.
 By implementing a stub for the aforementioned service, the instruction manual now works on Citra!
 
 {{< figure src="manual.png"
     title="Very important for the preservation of the 3DS." >}}
-	
+
+### Skip address range checks for privileged memory (un)map ([#6407](https://github.com/citra-emu/citra/pull/6407)) by [Steveice10](https://github.com/Steveice10)
+
 Another corner of the HOME Menu that never quite worked was the Internet Browser applet, which would mysteriously cause the execution to break, alongside a healthy dose of memory errors.
 
 ```
@@ -271,12 +273,12 @@ Fortunately, the fix was relatively simple; manually specifying the roles for th
 Somewhat recently, Apple released a new processor for their devices utilizing the ARM architecture, named Apple silicon (M1/M2). Citra’s x86_64 macOS builds technically worked with these new devices through Rosetta 2, in the sense that your game would launch, but it would also result in game bugs; freezing and crashing pretty frequently.
 Building it natively for ARM was often a solution, a solution inaccessible to the average user, unfortunately. An official Citra build was needed for users running those Apple silicon devices.
 
-However, as you may be aware, Apple does not support OpenGL 4.3, which is what Citra uses now. This presented us with a lot more issues. How are we going to get Apple silicon devices to run on Citra when macOS isn’t even a supported platform? 
-Banking off of the fact that we have a new Vulkan graphics backend quickly making its way into Citra (have we mentioned that yet?), Steveice10 got to work implementing a universal macOS build for Citra that covers both x86_64 and arm64. 
+However, as you may be aware, Apple does not support OpenGL 4.3, which presented us with a big issue. Apple officially only supports Metal, their own proprietary graphics API, adding support for which would require a lot of work. So, how are we going to get Apple silicon devices to run on Citra when macOS isn’t even a supported platform?
+Banking off of the fact that we have a new Vulkan graphics backend quickly making its way into Citra (have we mentioned that yet?), we can utilize MoltenVK, a mature translation layer that converts Vulkan API calls to appropriate Metal ones. With this solution in mind, Steveice10 got to work implementing a universal macOS build for Citra that covers both x86_64 and arm64.
 
 Initially, Citra was set up to build a universal app for both architectures all at once. However, due to a new library introduced with Vulkan not supporting multi-arch building correctly, we had to change approaches. Instead, we now build for x86_64 and ARM separately and combine the app at the end, giving us the same result without having to worry about adapting build scripts for multi-arch.
 
-The PR is currently not usable in the latest Nightly, as it is dependent on Vulkan being merged into Citra. It is, however, available to use in Canary. If you have an Apple silicon device and want to use Citra, please switch to the latest experimental Canary release, downloadable through our [installer](https://citra-emu.org/download/).
+The PR is currently not usable in the latest Nightly, as it is dependent on Vulkan being merged into Citra. It is, however, available to use in Canary. If you have an Apple silicon device and want to use Citra, please switch to the latest experimental Canary release, downloadable through our installer.
 
 ### Bump macOS target to 11 (Big Sur) ([#6325](https://github.com/citra-emu/citra/pull/6325)) by [Steveice10](https://github.com/Steveice10)
 
@@ -459,6 +461,12 @@ This also allows for the Linux AppImages (Yeah, we have those now. More on those
 However, this change also has an implication for those who use the built-in video dumper. To use the video dumper, you’ll now have to install FFmpeg yourself, from either their official website or via your package manager of choice.
 
 # Miscellaneous
+
+### Migrate to Qt6 ([#6418](https://github.com/citra-emu/citra/pull/6418),[#6435](https://github.com/citra-emu/citra/pull/6435),[#6682](https://github.com/citra-emu/citra/pull/6435)) by [Steveice10](https://github.com/Steveice10) 
+
+Out with the old and in with the new! Citra has now migrated to Qt6, which brings with it many benefits such as improved [HiDPI support](https://doc.qt.io/qt-6/highdpi.html#conceptual-model), reworked [multimedia libraries](https://doc.qt.io/qt-6/qtmultimedia-changes-qt6.html), as well as better [styling support for Windows](https://www.qt.io/blog/dark-mode-on-windows-11-with-qt-6.5). Needless to say, quite a few changes were needed to be able to support this new version, with the camera implementation being one of the most challenging parts due to the aforementioned multimedia changes. As a result of this change, it's important to mention that, alongside other projects like [Dolphin](https://el.dolphin-emu.org/blog/2022/07/07/dolphin-progress-report-may-and-june-2022/?cr=el), Citra has now dropped support for Windows 7, Windows 8, and 8.1, with Windows 10 becoming the minimum required version. A dwindling user base, combined with security concerns due to lack of regular security updates, have contributed to our decision to make the jump to Qt6, and drop support for these operating systems to focus on their more modern successors.
+
+The changes don't stop there. With the introduction of Qt6, Steveice10 also completely reworked the way Qt dependencies are handled. Instead of needing to manually build and package Qt releases on our [ext-windows-bin](https://github.com/citra-emu/ext-windows-bin), Citra's build system now uses [aqtinstaller](https://github.com/miurahr/aqtinstall), which automatically downloads prebuilt binaries directly from Qt's servers. An added bonus is that we also get more flexibility when it comes to upgrading or adding new Qt libraries!
 
 ### Move CPU speed slider to debug tab and Report Compatibility to help menu ([#6250](https://github.com/citra-emu/citra/pull/6250)) by [FearlessTobi](https://github.com/FearlessTobi)
 
