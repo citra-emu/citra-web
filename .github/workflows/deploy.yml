@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         echo '========== Installing gulp & dependencies =========='
-        sudo apt-get install graphicsmagick
+        sudo apt-get update && sudo apt-get install graphicsmagick
     - name: Build
       env:
         TENANT: 'citra'
