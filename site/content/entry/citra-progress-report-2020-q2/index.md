@@ -138,7 +138,11 @@ Then, turn on the Use Custom Texture option in Graphics -> Enhancements and you 
 
 The following are previews of some awesome texture pack projects by the community. They aren't finished yet, but stay tuned! You can also check out the `#mods-and-texture-packs` channel on the Citra Discord server.
 
-{{< juxtapose id="ec2bf8ba-a025-11ea-a7cb-0edaf8f81e27" >}}
+{{< single-title-imgs-compare
+    "Left: Custom Textures, Right: Original"
+    "./texturepack-post.png"
+    "./normal-post.png"
+    >}} 
 
 Click [here](https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid=ec2bf8ba-a025-11ea-a7cb-0edaf8f81e27) to see a larger version of the above juxtapose.
 
@@ -153,7 +157,11 @@ Along with the change, Breadfish64 has brought in several high quality upscaling
 Seeing that some of these shaders don't work that well with Citra, he even wrote one himself, and [it works really great](https://www.youtube.com/watch?v=8epkdJ4OhQ0)!
 Try it out and see how it looks.
 
-{{< juxtapose id="5435de18-8d65-11ea-a879-0edaf8f81e27" >}}
+{{< single-title-imgs-compare
+    "Left: unfiltered, Right: ScaleForce"
+    "./unfiltered.png"
+    "./levelup.png"
+    >}} 
 
 Click [here](https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid=5435de18-8d65-11ea-a879-0edaf8f81e27) to see a larger version of the above juxtapose.
 
@@ -682,3 +690,5 @@ There are always many more ways to improve, and contributions are always welcome
 If you'd like to contribute, hop in our [Discord](https://citra-emu.org/discord) or IRC (freenode #citra-dev). If you can't contribute code, consider subscribing on [Patreon](https://patreon.com/citraemu)!
 
 We are also looking for blog post writers! Reach out to us on [Discord](https://citra-emu.org/discord) if you are interested.
+
+{{< imgs-compare-include-end >}}
