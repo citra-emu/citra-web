@@ -49,7 +49,7 @@ function getRelease(v, count = 5) {
 
           let env_icon = "/images/icons/file.png";
           if (is_windows) env_icon = "/images/icons/windows.png";
-          else if (asset.name.includes("osx"))
+          else if (asset.name.includes("macos"))
             env_icon = "/images/icons/apple.png";
           else if (asset.name.includes("linux"))
             env_icon = "/images/icons/linux.png";
