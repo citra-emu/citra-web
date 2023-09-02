@@ -27,9 +27,9 @@ The Citra updater provides a easy interface to install, update and manage Citra.
     Unknown platform - Citra is <b>only supported</b> on 64-bit versions of Windows, macOS, Linux, and Android 8 (Oreo) or above.
     If you are running one of these, choose one of the options below.
 </div>
-<a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe" class="btn btn-lg btn-primary dl-updater-button" id="dl-windows-x64">Download for Windows x64</a>
-<a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-mac.dmg" class="btn btn-lg btn-primary dl-updater-button" id="dl-mac-x64">Download for Mac x64</a>
-<a href="https://flathub.org/apps/details/org.citra_emu.citra" class="btn btn-lg btn-primary dl-updater-button" id="dl-linux-x64">Download for Linux x64</a>
+<a href="https://github.com/citra-emu/citra-web/releases/download/2.0/citra-setup-windows.exe" class="btn btn-lg btn-primary dl-updater-button" id="dl-windows-x64">Download for Windows x64</a>
+<a href="https://github.com/citra-emu/citra-web/releases/download/2.0/citra-setup-mac.dmg" class="btn btn-lg btn-primary dl-updater-button" id="dl-mac-x64">Download for macOS Universal</a>
+<a href="https://github.com/citra-emu/citra-web/releases/download/2.0/citra-setup-linux" class="btn btn-lg btn-primary dl-updater-button" id="dl-linux-x64">Download for Linux x64</a>
 <a href='https://play.google.com/store/apps/details?id=org.citra.citra_emu' class="dl-updater-button" id="dl-android-x64"><img style="width:275px" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
 
 <br />
@@ -100,9 +100,9 @@ Hi! We see that you have JavaScript disabled. Unfortunately, this means that we 
 prepare a updater for you, nor are we able to show you the latest archives of Citra either. Here are a few
 links to get you started however:<br />
 <br />
-<a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-windows.exe">Windows x64 Installer</a><br />
-<a href="https://github.com/citra-emu/citra-web/releases/download/1.0/citra-setup-mac.dmg">Mac x64 Installer</a><br />
-<a href="https://flathub.org/apps/details/org.citra_emu.citra">Download for Linux x64</a><br /> 
+<a href="https://github.com/citra-emu/citra-web/releases/download/2.0/citra-setup-windows.exe">Windows x64 Installer</a><br />
+<a href="https://github.com/citra-emu/citra-web/releases/download/2.0/citra-setup-mac.dmg">macOS Universal Installer</a><br />
+<a href="https://github.com/citra-emu/citra-web/releases/download/2.0/citra-setup-linux">Download for Linux x64</a><br /> 
 <a href="https://play.google.com/store/apps/details?id=org.citra.citra_emu">Download for Android</a><br />
 <a href="https://github.com/citra-emu/citra-nightly/releases">Nightly Builds</a><br />
 <a href="https://github.com/citra-emu/citra-canary/releases">Canary Builds</a> <br />
