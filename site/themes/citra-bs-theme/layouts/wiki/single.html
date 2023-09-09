@@ -1,17 +1,4 @@
 {{ define "main" }}
-  <div class="alert alert-warning">
-    <div class="row">
-      <div class="col-md-2">
-        <strong>Read First!</strong>
-      </div>
-      <div class="col-md-10">
-        <p>The below wiki article is based on user submitted content.<br>
-        Please verify <strong>all</strong> hyperlinks and terminal commands below!</p>
-        See a mistake? Want to contribute? <a href="https://github.com/citra-emu/citra/wiki/{{ .File.BaseFileName }}/_edit/">Edit this article on Github</a>
-      </div>
-    </div>
-  </div>
-
 	<h1>{{ .Title }}</h1>
 	{{ .Content }}
 {{ end }}
