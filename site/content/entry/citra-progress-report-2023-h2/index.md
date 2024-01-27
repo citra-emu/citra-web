@@ -12,6 +12,7 @@ forum = 845615
 # Contents
 1. [Emulation]({{< relref "#emulation" >}})
 1. [Network]({{< relref "#network" >}})
+1. [Amiibo]({{< relref "#amiibo" >}})
 1. [Graphics]({{< relref "#graphics" >}})
 1. [Miscellaneous]({{< relref "#miscellaneous" >}})
 1. [Conclusion]({{< relref "#conclusion" >}})
@@ -29,11 +30,11 @@ Steveice10 continued the HOME menu streak, implementing some additional service 
 {{< figure src="sleep.png"
     title="Same as pressing the power button on the 3DS!" >}}
 
-While this might be the only user facing change of Steveice's APT work, there's still more that was done. Symbol discoveries from Fire Emblem Fates gave Steveice the opportunity to rename a bunch of methods to match the official function names used by Nintendo. New 3DS capabilities were also hooked up to the emulated kernel so that APT can more accurately report the current console.
+While this might be the only user facing change of Steveice's APT work, there's still more that was done. Symbol discoveries from Fire Emblem Fates gave Steveice the opportunity to rename a bunch of methods to match the official function names used by Nintendo. New 3DS capabilities were also hooked up to the emulated kernel so that APT can more accurately report the capabilities of the emulated console variant.
 
-Naming things is hard, especially when the thing you are naming isn't well understood. These discoveries always help better clarify the service interface and can especially help when documenting unexplored areas. To nobody's surprise the symbols from the same game also prompted developer [SachinV](https://github.com/SachinVin/) to adjust member variable names in the DSP service in a similar manner.
+Naming things is hard, especially when the thing you are naming isn't well understood. However, some retail games may contain, by accident, valuable debug information, including symbols for services and the OS. These discoveries always help better clarify the service interface and can especially help when documenting unexplored areas. To nobody's surprise the symbols from the same game also prompted developer [SachinV](https://github.com/SachinVin/) to adjust member variable names in the DSP service in a similar manner.
 
-Speaking of the devil, eh the DSP, Steveice10 [stubbed](https://github.com/citra-emu/citra/pull/6684) binary requests SaveState and LoadState that are used by the AAC decoder to implement DSP sleep and wake behavior accordingly. With this change games like Pokemon X and Tales of the Abyss can now suspend to the HOME menu without crashing, with the catch being that the game audio is lost as this isn't a full implementation. We have started taking steps to improve our audio emulation, something that will take time and a lot of effort but we think will be worth it in the end.
+Speaking of the devil, eh the DSP, Steveice10 [stubbed](https://github.com/citra-emu/citra/pull/6684) binary requests SaveState and LoadState that are used by the AAC decoder to implement DSP sleep and wake behaviour accordingly. With this change games like Pokemon X and Tales of the Abyss can now suspend to the HOME menu without crashing, with the catch being that the game audio is lost as this isn't a full implementation. We have started taking steps to improve our audio emulation, something that will take time and a lot of effort but we think will be worth it in the end.
 
 {{< mp4 src="aac_suspend.mp4" title="No more crashing" >}}
 
@@ -43,7 +44,7 @@ A different problem that wasn't strictly a regression but more of an annoyance w
 
 However, These changes required users to manually remove their config save file for the new Citra version to regenerate it appropriately. So, users upgrading from old Citra versions would still experience the same crashes all over again. To end this confusion, Steveice10 reworked the configuration block system to create missing blocks on the fly. Essentially Citra will upgrade the config save for you automatically. Neat!
 
-Finally Steveice10 [optimized](https://github.com/citra-emu/citra/pull/6717) the Y2R decoding process, which shaved about 0.1ms of decoding time on a modern desktop computer and [worked](https://github.com/citra-emu/citra/pull/6690) around a bug that prevented Danball Senki Wars from booting. The game, possibly due to a bug in its code, was calling a service function Y2R_StartConversion multiple times on the same data. Citra did not account for this and the function would work on invalid data the second time around. Yet more evidence that the creativity of gamedevs is trully endless, and certainly will not be last.
+Finally Steveice10 [optimised](https://github.com/citra-emu/citra/pull/6717) the Y2R decoding process, which shaved about 0.1ms of decoding time on a modern desktop computer and [worked](https://github.com/citra-emu/citra/pull/6690) around a bug that prevented Danball Senki Wars from booting. The game, possibly due to a bug in its code, was calling a service function **Y2R_StartConversion** multiple times on the same data. Citra did not account for this and the function would work on invalid data the second time around. Yet more evidence that the creativity of game devs is truly endless, and certainly will not be last.
 
 {{< figure src="danball.png"
     title="Looks like snow alright" >}}
@@ -61,9 +62,8 @@ While not covered in previous progress reports, the road into fully implementing
 
 Another batch of fixes were committed a few months later, which implemented yet more socket functionality, this time not focusing on homebrew, but on games relying on the SOC service for online multiplayer. With those changes, and some console unique data provided from a real console, PabloMK7 finally managed to see the following for the first time on Citra!
 
-{{< sidebyside "image" ""
-    "kart1.png=Mario Kart 7 is now able to go online!"
-    "kart2.png=">}}
+{{< figure src="kart1.png"
+    title="Mario Kart 7 is now able to go online!" >}}
 
 Putting online multiplayer aside for a bit, long time Citra developer FearlessTobi also joined in the fun, this time setting his sights on the New 3DS browser (SKATER). A CRO (3DS equivalent of dll files) adjustment by Steveice was all that it took to make the application boot, but it wasn't very functional without the ability to surf the web, was it?
 
@@ -154,13 +154,17 @@ Go! Go! Kokopolo Harmonious Forest Revenge is a 3DS port of a DSiWare title avai
 
 The problem was also exclusive to the hardware renderers, with the software renderer having correct output, albeit at unplayable frame rates. This fact made GPUCode confident that it wouldn’t be hard to track down the issue by figuring out which part of the rendering pipeline was causing the divergent pixel values. And this was indeed correct, the issue was quickly found to be from the lighting LUT sampling helpers, where the coordinate to sample from was just a few pixels off compared to the software implementation. It appears the game is abusing the LUTs as a sort of colour palette, where even the tiniest differences in sampling would cause incorrect colours to be used. Adjusting the hardware renderers to match the software behaviour was enough to correct all the rendering problems in this game and others, such as 3D Fantasy Zone II.
 
-{{< sidebyside "image" ""
-    "gogo1.png="
-    "gogo2.png=">}}
+{{< single-title-imgs-compare
+    ""
+    "./gogo1.png"
+    "./gogo2.png"
+    >}} 
 
-{{< sidebyside "image" ""
-    "fantasy1.png="
-    "fantasy2.png=">}}
+{{< single-title-imgs-compare
+    "Left: Before, Right: After"
+    "./fantasy1.png"
+    "./fantasy2.png"
+    >}} 
 
 We mentioned before how useful having a software renderer can be for fixing graphical bugs and we hope the previous case shed some light into the why. But just in case, let’s go over another related bugfix.
 
@@ -175,13 +179,17 @@ The important bit here is that any TEV stage can use the output of the previous 
 
 By leaving the vector that holds the output of the current TEV stage uninitialized, holding a possibly non-zero undetermined value, it was accidentally preserving the blue sky colour, while the hardware renderers were initialising this value to zero. After doing a few hardware tests and being pointed to relevant documentation by Steveice10, GPUCode determined that using the previous stage as input in the first stage is a special case and results in the vertex colour being given. Implementing this simple observation fixed the sky problems in Kirby, solved certain maps where the ground was not rendered in Fire Emblem Awakening, and surprisingly brought back the missing eyebrows in Puyo Puyo Chronicles
 
-{{< sidebyside "image" ""
-    "kirby1.png="
-    "kirby2.png=I wish I got a gold medal here as well :<">}}
+{{< single-title-imgs-compare
+    "I wish I got a gold medal here as well :<"
+    "./kirby1.png"
+    "./kirby2.png"
+    >}}
 
-{{< sidebyside "image" ""
-    "brow1.png="
-    "brow2.png=">}}
+{{< single-title-imgs-compare
+    ""
+    "./brow1.png"
+    "./brow2.png"
+    >}}
 
 ## Chapter 2 and the nightmares of precision
 
@@ -212,9 +220,11 @@ This whole discussion about blending started due to an old issue Pokemon Mystery
 
 6 years later, GPUCode revisited the issue and attempted to solve it using modern tools and available extensions. For NVIDIA and AMD users there are dedicated OpenGL extensions that allow us to change this blending behaviour, namely GL_NV_blend_minmax_factor and GL_AMD_blend_minmax_factor. Enabling these extensions is by far the easiest way to achieve the desired behaviour, however the obvious downside is that these have no support outside of their respective vendors (and outside of Windows in AMDs case), which means they will not suffice for everyone.
 
-{{< sidebyside "image" ""
-    "pokemon1.png="
-    "shin1.png=">}}
+{{< single-title-imgs-compare
+    ""
+    "./pokemon1.png"
+    "./pokemon2.png"
+    >}}
 
 The main challenge with emulating blending is accessing the existing framebuffer colour to perform the necessary calculations with the incoming fragment colour. For phones this is rather easy however, where framebuffer fetch extensions for programmable blending are ubiquitous, and cost very little due to the tiled architecture of mobile GPUs. For them, Citra will detect when emulation is necessary, disable the host blending, and perform the blending operations in the fragment shader with these extensions.
 
@@ -222,9 +232,11 @@ What about the rest of the desktop ecosystem though? Luckily for us, Intel iGPUs
 
 The results speak for themselves, Pokemon Gates to Infinity now renders correctly, and, surprisingly, the Shin Megami Tensei games also had their transparency during battles fixed. This is definitely a pleasant surprise, as these games are very popular, and the community has been asking for a fix for a long time now. So we're happy that this endeavour coincidentally fixed this issue as well! For now this change remains OpenGL only, with plans to also implement it for Vulkan in the future.
 
-{{< sidebyside "image" ""
-    "pokemon2.png="
-    "shin2.png=">}}
+{{< single-title-imgs-compare
+    "Battle in style"
+    "./shin1.png"
+    "./shin2.png"
+    >}}
 
 Not stopping there, GPUCode delivered another graphical fix. This time for Weapon Shop de Omasse, where the intro cinematic would not show up properly. Turns out the game does not properly initialise the register used for forming the output vertex from shader registers. Turning to hardware testing, GPUCode found the default that Citra used in this case was incorrect, and changing it to match the testing results fixed the rendering issues.
 
@@ -257,9 +269,11 @@ But the question was, why? These two games are the only ones reported to exhibit
 
 While this marks the end of the graphical fixes, there are still more graphical additions to cover. With the inclusion of Apple Silicon support this year, a feat that required changes to almost every part of the codebase, Citra has expanded its arm64 support greatly. As part of that effort, regular contributor [Wunkolo](https://github.com/Wunkolo) stepped up to make a whole new shader JIT backend targeting the ARM architecture. The dynamic CPU duo, [merryhime](https://github.com/merryhime) and [JosJuice](https://github.com/JosJuice), chimed in and provided valuable feedback, so a big thanks goes out to them as well. The new backend will be enabled by default on arm64 platforms, resulting in a 50% or more performance boost on most games with hardware shaders disabled.
 
-{{< sidebyside "image" ""
-    "mario1.jpg="
-    "mario2.jpg=">}}
+{{< single-title-imgs-compare
+    "The difference is real"
+    "./mario1.jpg"
+    "./mario2.jpg"
+    >}}
 
 The benefit of improving shader JIT performance might not be immediately obvious, when hardware shaders exist and have great performance on the vast majority of devices. However, there are rare situations where hardware shaders cannot be used, causing the emulator to fallback to the software implementation as a means of maintaining accuracy. One such case is geometry shaders, which are very difficult to emulate on the host GPU due to 3DS hardware quirks. Games that make heavy use of these shaders will see a noticeable performance boost with this addition. As an example, the Monster Hunter games use geometry shaders to render the grass, leading to the slow shader interpreter having to handle all those draw calls, causing a significant slowdown. Now, these areas run at full speed with no issues!
 
@@ -286,11 +300,11 @@ Based on this observation by m4wx, GPUCode expanded upon it, by masking out even
 
 Developer SachinV [refactored](https://github.com/citra-emu/citra/pull/7026) DSP interrupt handling which makes the implementation easier to use and unit test.
 
-Steveice10 also landed a bunch of audio improvements, one of which specifically benefits Android users. Since Android phones often vary in performance, Citra employs a dynamic approach to audio streching on said platform, where it is automatically enabled or disabled depending on whether the game is running at full speed or not. This ensures that no jarring audio cutoffs occur during gameplay. However, many users noted that audio streching noticeably lowered the final audio quality and would exhibit strange speedups and slowdowns at random times.
+Steveice10 also landed a bunch of audio improvements, one of which specifically benefits Android users. Since Android phones often vary in performance, Citra employs a dynamic approach to audio stretching on said platform, where it is automatically enabled or disabled depending on whether the game is running at full speed or not. This ensures that no jarring audio cutoffs occur during gameplay. However, many users noted that audio stretching noticeably lowered the final audio quality and would exhibit strange speedups and slowdowns at random times.
 
 To make a long story short, when the time stretcher is turned off, audio samples would be flushed from it into the output before proceeding with regular audio. If the amount of audio in the stretcher was too large for the output buffer, Citra would leave sample data behind in the stretcher. Then, when the stretcher is enabled again, the leftover audio from the past would be played, leading to a desync in audio playback. To solve this, Steveice10 [clears the remaining stretcher data](https://github.com/citra-emu/citra/pull/7081) after flushing to the output as much as possible.
 
-A significant rework was also done to the ACC decoder infrastructure by the same developer. Because the AAC codec used by 3DS games was patented, Citra could not bundle a library to decode it. Rather it needed to rely on the host operating system facilities, which can vary widly on quality and features. For example the Windows WMF ACC decoder is riddled with bugs from having too [low volume](https://www.djuced.com/kb/my-m4a-and-aac-files-volume-are-too-low-on-windows-11-update-22h2/), producing [incorrect](https://forum.blackmagicdesign.com/viewtopic.php?f=21&t=169250#p897900) audio waveforms and, more relevant for us, [causing](https://github.com/citra-emu/citra/issues/5932) audio desync in rhythm games like Rhythm Heaven Megamix.
+A significant rework was also done to the ACC decoder infrastructure by the same developer. Because the AAC codec used by 3DS games was patented, Citra could not bundle a library to decode it. Rather it needed to rely on the host operating system facilities, which can vary widely on quality and features. For example the Windows WMF ACC decoder is riddled with bugs from having too [low volume](https://www.djuced.com/kb/my-m4a-and-aac-files-volume-are-too-low-on-windows-11-update-22h2/), producing [incorrect](https://forum.blackmagicdesign.com/viewtopic.php?f=21&t=169250#p897900) audio waveforms and, more relevant for us, [causing](https://github.com/citra-emu/citra/issues/5932) audio desync in rhythm games like Rhythm Heaven Megamix.
 
 As it turns out though, the patent for ACC-LC, the codec used by the 3DS specifically, has been considered expired for many years. Other groups like [Fedora's legal team](https://bugzilla.redhat.com/show_bug.cgi?id=1501522#c112) and [Flatpak maintainers](https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/merge_requests/293#note_87343708) have also concluded that the patents for AAC-LC have expired and can be considered free for use. With this information, Steivece10 stripped out the various AAC decoder implementations and replaced them with one universal bundled decoder, trimmed down to include only the relevant codec. This makes Citra's support of AAC no longer require specific external dependencies like in the case of Linux. It also makes it consistent across different platforms instead of having varying latency and quality depending on the supported backend. Further work on improving ACC support can be performed on this one backend for all platforms as needed.
 
