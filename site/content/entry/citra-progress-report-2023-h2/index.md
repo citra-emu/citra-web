@@ -19,7 +19,7 @@ forum = 845615
 
 # Emulation
 
-There was a lot of progress this time around in achieving full system emulation. Just this year HOME Menu emulation became a reality which unlocked a whole new world of applications that needed care and attension. Work never ends, does it?
+There was a lot of progress this time around in achieving full system emulation. Just this year, HOME Menu emulation became a reality, unlocking a whole new world of applications that needed care and attention. Work never ends, does it?
 
 Last time we mentioned that, while launching games from the HOME menu worked, suspending or re-launching titles was generally hit-or-miss, with some titles crashing outright. This is because Citra was not cleaning up kernel objects correctly on process shutdown. Games deservedly expect a clean environment when they are launched and any operating system worth its salt is responsible for that. A process in HorizonOS is conceptually quite similar to the concept of a process in modern operating systems. It has its own address space, child threads, and is responsible for babysitting any kernel objects created by those threads.
 
@@ -44,7 +44,7 @@ A different problem that wasn't strictly a regression but more of an annoyance w
 
 However, These changes required users to manually remove their config save file for the new Citra version to regenerate it appropriately. So, users upgrading from old Citra versions would still experience the same crashes all over again. To end this confusion, Steveice reworked the configuration block system to create missing blocks on the fly. Essentially, Citra will upgrade the config save for you automatically. Neat!
 
-Finally Steveice10 optimised the Y2R decoding process, which shaved about 0.1ms of decoding time on a modern desktop computer and worked around a bug that prevented Danball Senki Wars from booting. The game, possibly due to a bug in its code, was calling a service function Y2R_StartConversion multiple times on the same data. Citra did not account for this and the function would work on invalid data the second time around. Yet more evidence that the creativity of game devs is truly endless, and this certainly will not be the last of such cases.
+Finally, Steveice10 optimised the Y2R decoding process, which shaved about 0.1ms of decoding time on a modern desktop computer and worked around a bug that prevented Danball Senki Wars from booting. The game, possibly due to a bug in its code, was calling a service function Y2R_StartConversion multiple times on the same data. Citra did not account for this and the function would work on invalid data the second time around. Yet more evidence that the creativity of game devs is truly endless, and this certainly will not be the last of such cases.
 
 {{< figure src="danball.png"
     title="Looks like snow alright" >}}
@@ -67,7 +67,7 @@ Another batch of fixes were committed a few months later, which implemented yet 
 {{< figure src="kart1.png"
     title="Mario Kart 7 is now able to go online!" >}}
 
-Putting online multiplayer aside, long-time Citra developer FearlessTobi also joined in the fun, this time setting his sights on the New 3DS browser (SKATER). A CRO (3DS equivalent of .dll files) adjustment by Steveice was all that it took to make the application boot, but it wasn't very functional without the ability to surf the web, was it?
+Putting online multiplayer aside, long-time Citra developer FearlessTobi also joined in on the fun, this time setting his sights on the New 3DS browser (SKATER). A CRO (3DS equivalent of .dll files) adjustment by Steveice was all that it took to make the application boot, but it wasn't very functional without the ability to surf the web, was it?
 
 In order to connect online, the browser talks to the HTTPC service, which is responsible for sending and receiving HTTP requests. While the internet browser doesn’t use the HTTPC module to make HTTP requests (it has its own HTTP and SSL stack), it still uses the service to apply other configurations. FearlessTobi implemented some missing service functions which, thankfully, made the browser happy and allowed it to load web pages successfully. Note that with this change, one still cannot watch video content on the browser as that requires the currently unimplemented MVD service.
 
@@ -75,7 +75,7 @@ In order to connect online, the browser talks to the HTTPC service, which is res
     "skater1.png=Google on a 13 year old console, sign me up"
     "skater2.png=You can read this progress report... from Citra">}}
 
-As you can imagine, with the New 3DS browser fixed up, it was really a matter of time until the Old 3DS browser (SPIDER) got the same treatment. First time contributor and [Pretendo Network](https://pretendo.network/) developer [DaniElectra](https://github.com/DaniElectra) jumped in, by fixing a small error in FearlessTobi’s contribution, and stubbing GetConnectingProxyEnable, thus bringing its little brother up to speed.
+As you can imagine, with the New 3DS browser fixed up, it was really a matter of time until the Old 3DS browser (SPIDER) got the same treatment. First time contributor and [Pretendo Network](https://pretendo.network/) developer [DaniElectra](https://github.com/DaniElectra) jumped in, by fixing a small error in FearlessTobi’s contribution, and stubbing GetConnectingProxyEnable, thus bringing its little sibling up to speed.
 
 Now, coming back to online multiplayer, PabloMK7 was facing a small issue with some newer games that had updated network libraries. One of those games was Animal Crossing: New Leaf. While it was possible for a person on Citra to visit a town hosted by a 3DS (as shown in the following post), it was only possible for a person on a 3DS to visit a town hosted by Citra if both devices were inside the same network.
 
@@ -212,7 +212,6 @@ What is happening here is that the missing 2D elements are being rendered with a
 
 The only entirely correct solution to this problem would be to emulate the target floating point number in software, which is the only way to perfectly match the console results. However in practice this is extremely impractical. Not only would the code become much more complex, but also much slower to boot. So GPUCode picked the next best option: defining a small epsilon value around clip plane zero to flush these depth values to zero, thereby avoiding the clipping. The epsilon value was selected based on the affected games and hardware experimentation.
 Clipping problems are defeated and the world has been saved!
-I, too, would be shocked if the screen was cut in half.
 
 As a side note, if you’ve used Citra before, you’ve likely come across the “Accurate Multiplication” setting in the advanced graphics tab. If you thought that setting may be related, you are correct. The general recommendation for that is to leave it disabled unless a specific game requires it. As the helpful tooltip will also tell you, the setting exists because of differences in behaviour of floating point multiplication between your computer and the 3DS. Differences that are very expensive to account for.
 
