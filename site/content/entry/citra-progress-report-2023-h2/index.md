@@ -1,20 +1,22 @@
 +++
-date = "2024-01-25T20:00:00+01:00"
+date = "2024-02-20T20:00:00+01:00"
 title = "Citra Progress Report 2023 H2"
 tags = [ "progress-report" ]
 author = "emufan_4568"
 coauthor = "PabloMK7"
-forum = 845615
+forum = 1013527
 +++
 
-<Intro>
+Welcome readers, and happy (belated) new year! 
+We hope you all had a brilliant 2023, just as we did. The past year saw a boom in development across all areas of 3DS emulation for Citra, which we're super thrilled to share here. From networking changes, to HOME Menu compatibility updates, to graphics enhancements, we've got it all! 
+So strap in - and get ready for the very best of what we cooked up in the latter half of the last year.
 
 # Contents
 1. [Emulation]({{< relref "#emulation" >}})
-1. [Network]({{< relref "#network" >}})
+1. [Networking]({{< relref "#networking" >}})
 1. [Amiibo]({{< relref "#amiibo" >}})
 1. [Graphics]({{< relref "#graphics" >}})
-1. [Miscellaneous]({{< relref "#miscellaneous" >}})
+1. [Audio]({{< relref "#audio" >}})
 1. [Conclusion]({{< relref "#conclusion" >}})
 
 # Emulation
@@ -23,7 +25,7 @@ There was a lot of progress this time around in achieving full system emulation.
 
 Last time we mentioned that, while launching games from the HOME menu worked, suspending or re-launching titles was generally hit-or-miss, with some titles crashing outright. This is because Citra was not cleaning up kernel objects correctly on process shutdown. Games deservedly expect a clean environment when they are launched and any operating system worth its salt is responsible for that. A process in HorizonOS is conceptually quite similar to the concept of a process in modern operating systems. It has its own address space, child threads, and is responsible for babysitting any kernel objects created by those threads.
 
-Given that we are talking about this in a progress report, it’s safe to say that's a problem no more. Steveice10 [pulled](https://github.com/citra-emu/citra/pull/6680) a few strings here and there and made sure that exiting a kernel process releases all the memory it owns and stops its child threads as well.
+Given that we are talking about this in a progress report, it’s safe to say that's a problem no more. Steveice10 [turned](https://github.com/citra-emu/citra/pull/6680) a few nobs here and there and made sure that exiting a kernel process releases all the memory it owns and stops its child threads as well.
 
 Steveice10 continued the HOME menu streak, implementing some additional service commands in the APT module and adding a power button sufficed to complete another crucial part of HOME menu functionality: powering down the console. Whenever the HOME menu has been launched, pressing V on the keyboard will trigger the familiar screen.
 
@@ -107,7 +109,7 @@ PabloMK7 later amended FearlessTobi previous HTTPC work by implementing another 
 
 That's right, we got not 1 but 2 guest celebrity appearances in this article. You might know [Narr the Reg](https://github.com/german77) from his work on the Switch HID service and, of course, Amiibo for the [yuzu emulator](https://yuzu-emu.org/).
 
-With that in mind, it was a pleasant surprise when he offered to port this yuzu Amiibo implementation to Citra. After spending a bit of time reverse engineering the 3DS NFC service, the first time contributor added [amiibo encryption and appdata](https://github.com/citra-emu/citra/pull/6340) that promised to fix all games that had issues with amiibos, an enticing proposition indeed. The new service was also tested against hardware to ensure it was all well and good.
+With that in mind, it was a pleasant surprise when he offered to port the yuzu Amiibo implementation to Citra. After all, Amiibo is a common interface and it's well known that the Switch service is quite similar to its 3DS counterpart. So after spending a bit of time reverse engineering the 3DS service, combined with his existing knowledge, the first time contributor added [amiibo encryption and appdata](https://github.com/citra-emu/citra/pull/6340) that promised to fix all games that had issues with amiibos, an enticing proposition indeed. The new service was also tested against hardware to ensure it was all well and good.
 
 {{< figure src="amiibo_test.png"
     title="Can't escape hardware testing in emulator development" >}}
@@ -132,7 +134,7 @@ Amidst all the shiny new OpenGL features and Vulkan performance improvements, th
 
 Our software renderer has been crucial to the past and future development of Citra and thus a worthwhile piece of code to maintain and evolve. Originally crafted by Mikage developer [neobrain](https://github.com/neobrain/), it has served as a measure of accuracy for the hardware renderers to match, with lots of GPU features such as shadow mapping first having been tested on it before trickling down to the hardware renders.
 
-However, most of the it’s structure had remained the same over the years and differed from the hardware renderers in style. It relied on global state, which made it difficult  to eliminate that from other parts of the video_core project, and had different namespace naming conventions compared to the hardware renderers. With these points in mind [GPUCode](https://github.com/GPUCode) set out to refactor the software renderer, to bring its code closer to the standards of the rest of the codebase nowadays. For the end user not much will change, but the code is tidier, cleaner and more easily maintainable. Always a plus! Not only that, a performance bottleneck relating to memory access was discovered during this effort, and patched, resulting in a noticeable performance boost!
+However, most of the it’s structure had remained the same over the years and differed from the hardware renderers in style. It relied on global state, which made it difficult to eliminate that from other parts of the video_core project, and had different namespace naming conventions compared to the hardware renderers. With these points in mind [GPUCode](https://github.com/GPUCode) set out to refactor the software renderer, to bring its code closer to the standards of the rest of the codebase nowadays. For the end user not much will change, but the code is tidier, cleaner and more easily maintainable. Always a plus! Not only that, a performance bottleneck relating to memory access was discovered during this effort, and patched, resulting in a noticeable performance boost!
 
 Speaking of performance improvements, GPUCode contributed another change to the software renderer that was strictly aimed to improve performance. By processing scanlines in parallel, using multiple threads, performance has almost been doubled in most cases! Of course, that still doesn't make it full speed, since we are talking about a difference of 1 FPS and 2 FPS, but making better use of the system's resources will prove beneficial for future endeavours.
 
@@ -156,7 +158,7 @@ With the above out of the way, it’s finally time to get into the more fancy gr
 
 Go! Go! Kokopolo Harmonious Forest Revenge is a 3DS port of a DSiWare title available exclusively as a 3DS North American physical release. The physical release happened last year on September 16th 2022, sementing it as part of the dying breath of the 3DS ecosystem. Normally games released this late into a console’s lifespan tend to be quick cash grabs, made with existing engines like Unity, which works well on Citra. However this case was different, as the game exhibited peculiar discoloration in its tiled graphics that made it quite disorienting to play.
 
-The problem was also exclusive to the hardware renderers, with the software renderer having correct output, albeit at unplayable frame rates. This fact made GPUCode confident that it wouldn’t be hard to track down the issue by figuring out which part of the rendering pipeline was causing the divergent pixel values. And this was indeed correct, the issue was quickly found to be from the lighting LUT sampling helpers, where the coordinate to sample from was just a few pixels off compared to the software implementation. It appears the game is abusing the LUTs as a sort of colour palette, where even the tiniest differences in sampling would cause incorrect colours to be used. Adjusting the hardware renderers to match the software behaviour was enough to correct all the rendering problems in this game and others, such as 3D Fantasy Zone II.
+The problem was also exclusive to the hardware renderers, with the software renderer having correct output, albeit at unplayable frame rates. This fact made GPUCode confident that it wouldn’t be hard to track down the issue by figuring out which part of the rendering pipeline was causing the divergent pixel values. And this was indeed correct, the issue was quickly found to be from the lighting LUT sampling helpers, where the coordinate to sample from was just a few pixels off compared to the software implementation. These LUTs are simple buffers used by the fixed function lighting unit for its various operation, yet it appears the game is (ab)using them as a sort of colour palette. This means that even the tiniest differences in sampling can cause incorrect colours to be used. Adjusting the hardware renderers to match the software behaviour was enough to correct all the rendering problems in this game and others, such as 3D Fantasy Zone II.
 
 {{< single-title-imgs-compare
     ""
@@ -293,8 +295,6 @@ They say history repeats itself and our shader problems sure do so as well. It w
 It's hard to believe any game would intentionally require that many shaders. Most likely there was some shader duplication going on, that made Citra do unnecessary work. What we couldn't envision was in how many areas this duplication was manifesting.
 
 Contributor [m4wx](https://github.com/m4xw) first [noticed](https://github.com/citra-emu/citra/pull/6895) something peculiar: Citra would always take into consideration the PICA lighting state when generating fragment shaders, even when lighting was disabled completely. Changing lighting parameters shouldn't matter much when the feature is disabled, yet Citra would generate new shaders each time. By masking out parameters when their respective feature is disabled, the amount of generated shaders has been greatly reduced, without any behavioural changes.
-
-<graph.png>
 
 Based on this observation by m4wx, GPUCode expanded upon it, by masking out even more unnecessary parameters, this time in the TEV shader generation. This mainly affected the title screen of A Link Between Worlds, which generated dozens of duplicate shaders. With that change the number of shaders being compiled was halved once more. The final change regarding shader compilation was done on the OpenGL backend. As a remnant of old OpenGL versions, Citra would respecify the uniform interface for every compiled shader, even though that never practically changed. This interface describes what data the fragment shader receives from the vertex shader and what data from the CPU. Utilising ARB_explicit_uniform_location afforded by the OpenGL version upgrade to 4.3, Citra no longer has to do this, further reducing the amount of work done per shader.
 
